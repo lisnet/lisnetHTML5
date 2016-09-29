@@ -1,0 +1,1614 @@
+[
+  {
+    "PUS_IN_SEQUENCIA": 0,
+    "PUS_IN_SEQUENCIAPAI": 0,
+    "MOD_ST_CODIGO": "00001",
+    "MOD_ST_DESCRICAO": "Menu Diario",
+    "state": "menudiario",
+    "stateN": "00001",
+    "telas": [
+      {
+        "PUS_IN_SEQUENCIA": 1,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00032",
+        "MOD_ST_DESCRICAO": "Conferência de Requisições",
+        "state": "menudiario.conferênciaderequisições",
+        "stateN": "00001.00032"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 2,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00203",
+        "MOD_ST_DESCRICAO": "Caixa",
+        "state": "menudiario.caixa",
+        "stateN": "00001.00203"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 3,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00236",
+        "MOD_ST_DESCRICAO": "Estatística de Produtividade",
+        "state": "menudiario.estatísticadeprodutividade",
+        "stateN": "00001.00236"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 4,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00201",
+        "MOD_ST_DESCRICAO": "Impressão do Mapa de Trabalho",
+        "state": "menudiario.impressãodomapadetrabalho",
+        "stateN": "00001.00201"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 5,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00234",
+        "MOD_ST_DESCRICAO": "Relatório de Inconsistências",
+        "state": "menudiario.relatóriodeinconsistências",
+        "stateN": "00001.00234"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 6,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00237",
+        "MOD_ST_DESCRICAO": "Unidade de/para",
+        "state": "menudiario.unidadede/para",
+        "stateN": "00001.00237"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 7,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00220",
+        "MOD_ST_DESCRICAO": "Cadastro de Pacientes",
+        "state": "menudiario.cadastrodepacientes",
+        "stateN": "00001.00220"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 8,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00230",
+        "MOD_ST_DESCRICAO": "Relatório de notificação",
+        "state": "menudiario.relatóriodenotificação",
+        "stateN": "00001.00230"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 9,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00227",
+        "MOD_ST_DESCRICAO": "Orçamento",
+        "state": "menudiario.orçamento",
+        "stateN": "00001.00227"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 10,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00226",
+        "MOD_ST_DESCRICAO": "Fechamento de Caixa",
+        "state": "menudiario.fechamentodecaixa",
+        "stateN": "00001.00226"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 11,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00225",
+        "MOD_ST_DESCRICAO": "Controle de Caixa",
+        "state": "menudiario.controledecaixa",
+        "stateN": "00001.00225"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 12,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00224",
+        "MOD_ST_DESCRICAO": "Conferência de Faturamento",
+        "state": "menudiario.conferênciadefaturamento",
+        "stateN": "00001.00224"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 13,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00223",
+        "MOD_ST_DESCRICAO": "Conferência de Cadastro",
+        "state": "menudiario.conferênciadecadastro",
+        "stateN": "00001.00223"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 14,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00189",
+        "MOD_ST_DESCRICAO": "Versionamento de Flyer",
+        "state": "menudiario.versionamentodeflyer",
+        "stateN": "00001.00189"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 15,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00221",
+        "MOD_ST_DESCRICAO": "Impressão Mapa de Trabalho",
+        "state": "menudiario.impressãomapadetrabalho",
+        "stateN": "00001.00221"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 16,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00200",
+        "MOD_ST_DESCRICAO": "Monitoramente Unidades",
+        "state": "menudiario.monitoramenteunidades",
+        "stateN": "00001.00200"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 17,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00193",
+        "MOD_ST_DESCRICAO": "Orçamentos",
+        "state": "menudiario.orçamentos",
+        "stateN": "00001.00193"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 18,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00222",
+        "MOD_ST_DESCRICAO": "Soroteca Central",
+        "state": "menudiario.sorotecacentral",
+        "stateN": "00001.00222"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 19,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00192",
+        "MOD_ST_DESCRICAO": "Caixa",
+        "state": "menudiario.caixa",
+        "stateN": "00001.00192"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 20,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00003",
+        "MOD_ST_DESCRICAO": "Cadastros",
+        "state": "menudiario.cadastros",
+        "stateN": "00001.00003"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 21,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00035",
+        "MOD_ST_DESCRICAO": "Recepção de Amostras",
+        "state": "menudiario.recepçãodeamostras",
+        "stateN": "00001.00035"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 22,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00072",
+        "MOD_ST_DESCRICAO": "Gerenciamento",
+        "state": "menudiario.gerenciamento",
+        "stateN": "00001.00072"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 23,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00228",
+        "MOD_ST_DESCRICAO": "Relatorio de Pendências",
+        "state": "menudiario.relatoriodependências",
+        "stateN": "00001.00228"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 24,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00074",
+        "MOD_ST_DESCRICAO": "Relatorios",
+        "state": "menudiario.relatorios",
+        "stateN": "00001.00074"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 25,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00132",
+        "MOD_ST_DESCRICAO": "Estatística Demonstrativo de Faturamento",
+        "state": "menudiario.estatísticademonstrativodefaturamento",
+        "stateN": "00001.00132"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 26,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00143",
+        "MOD_ST_DESCRICAO": "Manual de Exames",
+        "state": "menudiario.manualdeexames",
+        "stateN": "00001.00143"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 27,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00036",
+        "MOD_ST_DESCRICAO": "Impressão do Mapa de Trabalho",
+        "state": "menudiario.impressãodomapadetrabalho",
+        "stateN": "00001.00036"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 28,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00033",
+        "MOD_ST_DESCRICAO": "Controle de Material Faltante e Novas Coletas",
+        "state": "menudiario.controledematerialfaltanteenovascoletas",
+        "stateN": "00001.00033"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 29,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00043",
+        "MOD_ST_DESCRICAO": "Manutenção de Requisições",
+        "state": "menudiario.manutençãoderequisições",
+        "stateN": "00001.00043"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 30,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00080",
+        "MOD_ST_DESCRICAO": "Consulta Laudos",
+        "state": "menudiario.consultalaudos",
+        "stateN": "00001.00080"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 31,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00095",
+        "MOD_ST_DESCRICAO": "Painel de Controle",
+        "state": "menudiario.paineldecontrole",
+        "stateN": "00001.00095"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 32,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00096",
+        "MOD_ST_DESCRICAO": "Painel de Controle por usuário",
+        "state": "menudiario.paineldecontroleporusuário",
+        "stateN": "00001.00096"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 33,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00126",
+        "MOD_ST_DESCRICAO": "Estatística Avançada",
+        "state": "menudiario.estatísticaavançada",
+        "stateN": "00001.00126"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 34,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00106",
+        "MOD_ST_DESCRICAO": "Painel de Controle Unidades",
+        "state": "menudiario.paineldecontroleunidades",
+        "stateN": "00001.00106"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 35,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00154",
+        "MOD_ST_DESCRICAO": "Produtividade Cadastro Por Hora",
+        "state": "menudiario.produtividadecadastroporhora",
+        "stateN": "00001.00154"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 36,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00148",
+        "MOD_ST_DESCRICAO": "Pesquisa Manual Exame",
+        "state": "menudiario.pesquisamanualexame",
+        "stateN": "00001.00148"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 37,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00150",
+        "MOD_ST_DESCRICAO": "Agendamento",
+        "state": "menudiario.agendamento",
+        "stateN": "00001.00150"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 38,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00155",
+        "MOD_ST_DESCRICAO": "Lotes para Triagem",
+        "state": "menudiario.lotesparatriagem",
+        "stateN": "00001.00155"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 39,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00153",
+        "MOD_ST_DESCRICAO": "Auditoria",
+        "state": "menudiario.auditoria",
+        "stateN": "00001.00153"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 40,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00163",
+        "MOD_ST_DESCRICAO": "Protocolar Amostras",
+        "state": "menudiario.protocolaramostras",
+        "stateN": "00001.00163"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 41,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00162",
+        "MOD_ST_DESCRICAO": "Monitoramentos de Carros",
+        "state": "menudiario.monitoramentosdecarros",
+        "stateN": "00001.00162"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 42,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00160",
+        "MOD_ST_DESCRICAO": "Liberação de Carros",
+        "state": "menudiario.liberaçãodecarros",
+        "stateN": "00001.00160"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 43,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00167",
+        "MOD_ST_DESCRICAO": "Controle de Coleta",
+        "state": "menudiario.controledecoleta",
+        "stateN": "00001.00167"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 44,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00169",
+        "MOD_ST_DESCRICAO": "Gerenciamento de Imagem",
+        "state": "menudiario.gerenciamentodeimagem",
+        "stateN": "00001.00169"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 45,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00178",
+        "MOD_ST_DESCRICAO": "Gerenciamento Lote",
+        "state": "menudiario.gerenciamentolote",
+        "stateN": "00001.00178"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 46,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00176",
+        "MOD_ST_DESCRICAO": "Contador de Células",
+        "state": "menudiario.contadordecélulas",
+        "stateN": "00001.00176"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 47,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00174",
+        "MOD_ST_DESCRICAO": "Gera Requisição para Tomografia",
+        "state": "menudiario.gerarequisiçãoparatomografia",
+        "stateN": "00001.00174"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 48,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00002",
+        "MOD_ST_DESCRICAO": "Agendamento de Exames",
+        "state": "menudiario.agendamentodeexames",
+        "stateN": "00001.00002"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 49,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00039",
+        "MOD_ST_DESCRICAO": "Emissão de Laudos",
+        "state": "menudiario.emissãodelaudos",
+        "stateN": "00001.00039"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 50,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00051",
+        "MOD_ST_DESCRICAO": "Estatistica Faturamento",
+        "state": "menudiario.estatisticafaturamento",
+        "stateN": "00001.00051"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 51,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00063",
+        "MOD_ST_DESCRICAO": "Gestão de Amostras",
+        "state": "menudiario.gestãodeamostras",
+        "stateN": "00001.00063"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 52,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00164",
+        "MOD_ST_DESCRICAO": "Iniciar Rotina",
+        "state": "menudiario.iniciarrotina",
+        "stateN": "00001.00164"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 53,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00171",
+        "MOD_ST_DESCRICAO": "Soroteca Central",
+        "state": "menudiario.sorotecacentral",
+        "stateN": "00001.00171"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 54,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00149",
+        "MOD_ST_DESCRICAO": "Etiqueta Transporte",
+        "state": "menudiario.etiquetatransporte",
+        "stateN": "00001.00149"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 55,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00157",
+        "MOD_ST_DESCRICAO": "Atendimento",
+        "state": "menudiario.atendimento",
+        "stateN": "00001.00157"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 56,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00021",
+        "MOD_ST_DESCRICAO": "Feriado",
+        "state": "menudiario.feriado",
+        "stateN": "00001.00021"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 57,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00117",
+        "MOD_ST_DESCRICAO": "Orçamento de Exames",
+        "state": "menudiario.orçamentodeexames",
+        "stateN": "00001.00117"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 58,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00029",
+        "MOD_ST_DESCRICAO": "Questionário",
+        "state": "menudiario.questionário",
+        "stateN": "00001.00029"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 59,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00179",
+        "MOD_ST_DESCRICAO": "Bandejamento",
+        "state": "menudiario.bandejamento",
+        "stateN": "00001.00179"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 60,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00180",
+        "MOD_ST_DESCRICAO": "Relatorios de Tomografia",
+        "state": "menudiario.relatoriosdetomografia",
+        "stateN": "00001.00180"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 61,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00181",
+        "MOD_ST_DESCRICAO": "Comprovante de Entrega",
+        "state": "menudiario.comprovantedeentrega",
+        "stateN": "00001.00181"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 62,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00182",
+        "MOD_ST_DESCRICAO": "Container de Setores",
+        "state": "menudiario.containerdesetores",
+        "stateN": "00001.00182"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 63,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00183",
+        "MOD_ST_DESCRICAO": "Atraso de Resultados",
+        "state": "menudiario.atrasoderesultados",
+        "stateN": "00001.00183"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 64,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00184",
+        "MOD_ST_DESCRICAO": "Flyer",
+        "state": "menudiario.flyer",
+        "stateN": "00001.00184"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 65,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00186",
+        "MOD_ST_DESCRICAO": "Registro de Flyers",
+        "state": "menudiario.registrodeflyers",
+        "stateN": "00001.00186"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 67,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00229",
+        "MOD_ST_DESCRICAO": "Período de Fechamento",
+        "state": "menudiario.períododefechamento",
+        "stateN": "00001.00229"
+      }
+    ]
+  },
+  {
+    "PUS_IN_SEQUENCIA": 68,
+    "PUS_IN_SEQUENCIAPAI": 0,
+    "MOD_ST_CODIGO": "00003",
+    "MOD_ST_DESCRICAO": "Cadastros",
+    "state": "cadastros",
+    "stateN": "00003",
+    "telas": [
+      {
+        "PUS_IN_SEQUENCIA": 72,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00251",
+        "MOD_ST_DESCRICAO": "Frase Laudo",
+        "state": "cadastros.fraselaudo",
+        "stateN": "00003.00251"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 73,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00250",
+        "MOD_ST_DESCRICAO": "Questionario",
+        "state": "cadastros.questionario",
+        "stateN": "00003.00250"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 74,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00194",
+        "MOD_ST_DESCRICAO": "Laudo Padrão",
+        "state": "cadastros.laudopadrão",
+        "stateN": "00003.00194"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 75,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00195",
+        "MOD_ST_DESCRICAO": "Tabela de equivalência",
+        "state": "cadastros.tabeladeequivalência",
+        "stateN": "00003.00195"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 76,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00196",
+        "MOD_ST_DESCRICAO": "Planos",
+        "state": "cadastros.planos",
+        "stateN": "00003.00196"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 77,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00199",
+        "MOD_ST_DESCRICAO": "Usuário x Convênio",
+        "state": "cadastros.usuárioxconvênio",
+        "stateN": "00003.00199"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 78,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00064",
+        "MOD_ST_DESCRICAO": "Exames Menu",
+        "state": "cadastros.examesmenu",
+        "stateN": "00003.00064"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 79,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00097",
+        "MOD_ST_DESCRICAO": "Mapa de Triagem",
+        "state": "cadastros.mapadetriagem",
+        "stateN": "00003.00097"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 80,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00090",
+        "MOD_ST_DESCRICAO": "Exame De Para",
+        "state": "cadastros.examedepara",
+        "stateN": "00003.00090"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 81,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00013",
+        "MOD_ST_DESCRICAO": "Material",
+        "state": "cadastros.material",
+        "stateN": "00003.00013"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 82,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00017",
+        "MOD_ST_DESCRICAO": "Bactérias Fungos e Vírus",
+        "state": "cadastros.bactériasfungosevírus",
+        "stateN": "00003.00017"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 83,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00022",
+        "MOD_ST_DESCRICAO": "Frases para Laudo",
+        "state": "cadastros.frasesparalaudo",
+        "stateN": "00003.00022"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 84,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00023",
+        "MOD_ST_DESCRICAO": "Método",
+        "state": "cadastros.método",
+        "stateN": "00003.00023"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 85,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00027",
+        "MOD_ST_DESCRICAO": "Parasitas",
+        "state": "cadastros.parasitas",
+        "stateN": "00003.00027"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 86,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00030",
+        "MOD_ST_DESCRICAO": "Prazo",
+        "state": "cadastros.prazo",
+        "stateN": "00003.00030"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 87,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00031",
+        "MOD_ST_DESCRICAO": "Recipiente",
+        "state": "cadastros.recipiente",
+        "stateN": "00003.00031"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 88,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00053",
+        "MOD_ST_DESCRICAO": "Unidades de Medida",
+        "state": "cadastros.unidadesdemedida",
+        "stateN": "00003.00053"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 89,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00055",
+        "MOD_ST_DESCRICAO": "Sequência de Amostra",
+        "state": "cadastros.sequênciadeamostra",
+        "stateN": "00003.00055"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 90,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00060",
+        "MOD_ST_DESCRICAO": "Texto para Laudos",
+        "state": "cadastros.textoparalaudos",
+        "stateN": "00003.00060"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 91,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00073",
+        "MOD_ST_DESCRICAO": "Mapa Amostra",
+        "state": "cadastros.mapaamostra",
+        "stateN": "00003.00073"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 92,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00011",
+        "MOD_ST_DESCRICAO": "Formatação de Exames",
+        "state": "cadastros.formataçãodeexames",
+        "stateN": "00003.00011"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 93,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00056",
+        "MOD_ST_DESCRICAO": "Grupo de Exames",
+        "state": "cadastros.grupodeexames",
+        "stateN": "00003.00056"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 94,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00098",
+        "MOD_ST_DESCRICAO": "Grupo de Triagem",
+        "state": "cadastros.grupodetriagem",
+        "stateN": "00003.00098"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 95,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00016",
+        "MOD_ST_DESCRICAO": "Antibiótico",
+        "state": "cadastros.antibiótico",
+        "stateN": "00003.00016"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 96,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00190",
+        "MOD_ST_DESCRICAO": "Grupo de Antibióticos",
+        "state": "cadastros.grupodeantibióticos",
+        "stateN": "00003.00190"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 97,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00054",
+        "MOD_ST_DESCRICAO": "Mapa de Antibióticos",
+        "state": "cadastros.mapadeantibióticos",
+        "stateN": "00003.00054"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 98,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00103",
+        "MOD_ST_DESCRICAO": "Convenio De/Para",
+        "state": "cadastros.conveniode/para",
+        "stateN": "00003.00103"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 99,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00019",
+        "MOD_ST_DESCRICAO": "Convenio Unidade",
+        "state": "cadastros.conveniounidade",
+        "stateN": "00003.00019"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 100,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00042",
+        "MOD_ST_DESCRICAO": "Tabela de Preços",
+        "state": "cadastros.tabeladepreços",
+        "stateN": "00003.00042"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 101,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00081",
+        "MOD_ST_DESCRICAO": "Tabela de Preço Original",
+        "state": "cadastros.tabeladepreçooriginal",
+        "stateN": "00003.00081"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 102,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00014",
+        "MOD_ST_DESCRICAO": "Unidades",
+        "state": "cadastros.unidades",
+        "stateN": "00003.00014"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 103,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00026",
+        "MOD_ST_DESCRICAO": "Postos de Coleta",
+        "state": "cadastros.postosdecoleta",
+        "stateN": "00003.00026"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 104,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00015",
+        "MOD_ST_DESCRICAO": "Setores",
+        "state": "cadastros.setores",
+        "stateN": "00003.00015"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 105,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00044",
+        "MOD_ST_DESCRICAO": "Solicitantes",
+        "state": "cadastros.solicitantes",
+        "stateN": "00003.00044"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 106,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00059",
+        "MOD_ST_DESCRICAO": "Local de Entrega",
+        "state": "cadastros.localdeentrega",
+        "stateN": "00003.00059"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 107,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00046",
+        "MOD_ST_DESCRICAO": "Profissões",
+        "state": "cadastros.profissões",
+        "stateN": "00003.00046"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 108,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00052",
+        "MOD_ST_DESCRICAO": "Mapa de Trabalho",
+        "state": "cadastros.mapadetrabalho",
+        "stateN": "00003.00052"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 109,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00057",
+        "MOD_ST_DESCRICAO": "Laboratório de Apoio",
+        "state": "cadastros.laboratóriodeapoio",
+        "stateN": "00003.00057"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 110,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00058",
+        "MOD_ST_DESCRICAO": "Coletores",
+        "state": "cadastros.coletores",
+        "stateN": "00003.00058"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 111,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00018",
+        "MOD_ST_DESCRICAO": "CID",
+        "state": "cadastros.cid",
+        "stateN": "00003.00018"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 112,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00024",
+        "MOD_ST_DESCRICAO": "Motivo",
+        "state": "cadastros.motivo",
+        "stateN": "00003.00024"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 113,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00025",
+        "MOD_ST_DESCRICAO": "Observação",
+        "state": "cadastros.observação",
+        "stateN": "00003.00025"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 114,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00028",
+        "MOD_ST_DESCRICAO": "Status Amostras",
+        "state": "cadastros.statusamostras",
+        "stateN": "00003.00028"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 115,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00088",
+        "MOD_ST_DESCRICAO": "Grupo",
+        "state": "cadastros.grupo",
+        "stateN": "00003.00088"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 116,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00101",
+        "MOD_ST_DESCRICAO": "Local De/Para",
+        "state": "cadastros.localde/para",
+        "stateN": "00003.00101"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 117,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00038",
+        "MOD_ST_DESCRICAO": "Usuários",
+        "state": "cadastros.usuários",
+        "stateN": "00003.00038"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 118,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00113",
+        "MOD_ST_DESCRICAO": "Perfil de Usuários",
+        "state": "cadastros.perfildeusuários",
+        "stateN": "00003.00113"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 119,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00131",
+        "MOD_ST_DESCRICAO": "Exame De Para Retorno",
+        "state": "cadastros.examedepararetorno",
+        "stateN": "00003.00131"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 120,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00133",
+        "MOD_ST_DESCRICAO": "Material De/Para",
+        "state": "cadastros.materialde/para",
+        "stateN": "00003.00133"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 121,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00134",
+        "MOD_ST_DESCRICAO": "Recipiente De/Para",
+        "state": "cadastros.recipientede/para",
+        "stateN": "00003.00134"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 122,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00135",
+        "MOD_ST_DESCRICAO": "Câmara Fria",
+        "state": "cadastros.câmarafria",
+        "stateN": "00003.00135"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 123,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00138",
+        "MOD_ST_DESCRICAO": "Material de Coleta (DASA)",
+        "state": "cadastros.materialdecoleta(dasa)",
+        "stateN": "00003.00138"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 124,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00139",
+        "MOD_ST_DESCRICAO": "Recipiente de Coleta (DASA)",
+        "state": "cadastros.recipientedecoleta(dasa)",
+        "stateN": "00003.00139"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 125,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00140",
+        "MOD_ST_DESCRICAO": "Sementes",
+        "state": "cadastros.sementes",
+        "stateN": "00003.00140"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 126,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00020",
+        "MOD_ST_DESCRICAO": "Cor",
+        "state": "cadastros.cor",
+        "stateN": "00003.00020"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 127,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00151",
+        "MOD_ST_DESCRICAO": "Configurar Agenda",
+        "state": "cadastros.configuraragenda",
+        "stateN": "00003.00151"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 128,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00152",
+        "MOD_ST_DESCRICAO": "Locais de Agendamento",
+        "state": "cadastros.locaisdeagendamento",
+        "stateN": "00003.00152"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 129,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00156",
+        "MOD_ST_DESCRICAO": "Gerenciar Agendas",
+        "state": "cadastros.gerenciaragendas",
+        "stateN": "00003.00156"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 130,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00159",
+        "MOD_ST_DESCRICAO": "Cadastro de Carros",
+        "state": "cadastros.cadastrodecarros",
+        "stateN": "00003.00159"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 131,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00161",
+        "MOD_ST_DESCRICAO": "Procedimento de Coleta",
+        "state": "cadastros.procedimentodecoleta",
+        "stateN": "00003.00161"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 132,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00173",
+        "MOD_ST_DESCRICAO": "Configuração do Pianinho",
+        "state": "cadastros.configuraçãodopianinho",
+        "stateN": "00003.00173"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 133,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00108",
+        "MOD_ST_DESCRICAO": "Usuário por posto",
+        "state": "cadastros.usuárioporposto",
+        "stateN": "00003.00108"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 134,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00185",
+        "MOD_ST_DESCRICAO": "Cadastros para Soroteca",
+        "state": "cadastros.cadastrosparasoroteca",
+        "stateN": "00003.00185"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 135,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00188",
+        "MOD_ST_DESCRICAO": "Flyer De Para",
+        "state": "cadastros.flyerdepara",
+        "stateN": "00003.00188"
+      }
+    ]
+  },
+  {
+    "PUS_IN_SEQUENCIA": 136,
+    "PUS_IN_SEQUENCIAPAI": 0,
+    "MOD_ST_CODIGO": "00007",
+    "MOD_ST_DESCRICAO": "Estatísticas",
+    "state": "estatísticas",
+    "stateN": "00007",
+    "telas": [
+      {
+        "PUS_IN_SEQUENCIA": 137,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00128",
+        "MOD_ST_DESCRICAO": "Estatísticas Faturamento",
+        "state": "estatísticas.estatísticasfaturamento",
+        "stateN": "00007.00128"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 138,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00244",
+        "MOD_ST_DESCRICAO": "Estatística por Local/Posto/Paciente/Exames",
+        "state": "estatísticas.estatísticaporlocal/posto/paciente/exames",
+        "stateN": "00007.00244"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 139,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00232",
+        "MOD_ST_DESCRICAO": "Estatistica Paciente/Unidade/Posto",
+        "state": "estatísticas.estatisticapaciente/unidade/posto",
+        "stateN": "00007.00232"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 140,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00062",
+        "MOD_ST_DESCRICAO": "Estatística Geral",
+        "state": "estatísticas.estatísticageral",
+        "stateN": "00007.00062"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 141,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00082",
+        "MOD_ST_DESCRICAO": "Estatística por Unidade/Posto/Exames",
+        "state": "estatísticas.estatísticaporunidade/posto/exames",
+        "stateN": "00007.00082"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 142,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00070",
+        "MOD_ST_DESCRICAO": "Estatística por Convênios",
+        "state": "estatísticas.estatísticaporconvênios",
+        "stateN": "00007.00070"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 143,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00078",
+        "MOD_ST_DESCRICAO": "Estatística por Requisição",
+        "state": "estatísticas.estatísticaporrequisição",
+        "stateN": "00007.00078"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 144,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00071",
+        "MOD_ST_DESCRICAO": "Estatística por Convênio/Unidade",
+        "state": "estatísticas.estatísticaporconvênio/unidade",
+        "stateN": "00007.00071"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 145,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00100",
+        "MOD_ST_DESCRICAO": "Estatística por Unidade/Posto/Cod.AMB SUS",
+        "state": "estatísticas.estatísticaporunidade/posto/cod.ambsus",
+        "stateN": "00007.00100"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 146,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00083",
+        "MOD_ST_DESCRICAO": "Estatística por Unidade/Posto/Setor",
+        "state": "estatísticas.estatísticaporunidade/posto/setor",
+        "stateN": "00007.00083"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 147,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00065",
+        "MOD_ST_DESCRICAO": "Estatística por Unidade (Quota Exames/Regra Escalonamento)",
+        "state": "estatísticas.estatísticaporunidade(quotaexames/regraescalonamento)",
+        "stateN": "00007.00065"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 148,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00066",
+        "MOD_ST_DESCRICAO": "Estatística por Unidade/Postos",
+        "state": "estatísticas.estatísticaporunidade/postos",
+        "stateN": "00007.00066"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 149,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00079",
+        "MOD_ST_DESCRICAO": "Estatística por Unidade/Postos/Data",
+        "state": "estatísticas.estatísticaporunidade/postos/data",
+        "stateN": "00007.00079"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 150,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00089",
+        "MOD_ST_DESCRICAO": "Estatística por Unidade/Posto/Grupo",
+        "state": "estatísticas.estatísticaporunidade/posto/grupo",
+        "stateN": "00007.00089"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 151,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00121",
+        "MOD_ST_DESCRICAO": "Estatística por Unidade/Postos/Sexo",
+        "state": "estatísticas.estatísticaporunidade/postos/sexo",
+        "stateN": "00007.00121"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 152,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00067",
+        "MOD_ST_DESCRICAO": "Estatística por Unidade/Convênios",
+        "state": "estatísticas.estatísticaporunidade/convênios",
+        "stateN": "00007.00067"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 153,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00069",
+        "MOD_ST_DESCRICAO": "Estatística por Unidade/Postos/Convênios",
+        "state": "estatísticas.estatísticaporunidade/postos/convênios",
+        "stateN": "00007.00069"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 154,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00102",
+        "MOD_ST_DESCRICAO": "Estatística por Unidade/Regra",
+        "state": "estatísticas.estatísticaporunidade/regra",
+        "stateN": "00007.00102"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 155,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00084",
+        "MOD_ST_DESCRICAO": "Estatística por Unidade/Setor",
+        "state": "estatísticas.estatísticaporunidade/setor",
+        "stateN": "00007.00084"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 156,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00068",
+        "MOD_ST_DESCRICAO": "Estatística por Unidade/Convênios Tab.Preço",
+        "state": "estatísticas.estatísticaporunidade/convêniostab.preço",
+        "stateN": "00007.00068"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 157,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00093",
+        "MOD_ST_DESCRICAO": "Estatística por Prontuário",
+        "state": "estatísticas.estatísticaporprontuário",
+        "stateN": "00007.00093"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 158,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00104",
+        "MOD_ST_DESCRICAO": "Estatística por Unidade/Posto/Regra",
+        "state": "estatísticas.estatísticaporunidade/posto/regra",
+        "stateN": "00007.00104"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 159,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00105",
+        "MOD_ST_DESCRICAO": "Estatística por Unidade / Local Entrega",
+        "state": "estatísticas.estatísticaporunidade/localentrega",
+        "stateN": "00007.00105"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 160,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00086",
+        "MOD_ST_DESCRICAO": "Estatística por Unidade Execução/Setor",
+        "state": "estatísticas.estatísticaporunidadeexecução/setor",
+        "stateN": "00007.00086"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 161,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00099",
+        "MOD_ST_DESCRICAO": "Estatística de Quantidade de Pacientes por Unidade/Posto",
+        "state": "estatísticas.estatísticadequantidadedepacientesporunidade/posto",
+        "stateN": "00007.00099"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 162,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00168",
+        "MOD_ST_DESCRICAO": "Estatística de Exames Unidade Posto CRM Qt.Exames",
+        "state": "estatísticas.estatísticadeexamesunidadepostocrmqt.exames",
+        "stateN": "00007.00168"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 163,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00120",
+        "MOD_ST_DESCRICAO": "Estatística de Exames por Unidade/Postos/Solicitantes",
+        "state": "estatísticas.estatísticadeexamesporunidade/postos/solicitantes",
+        "stateN": "00007.00120"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 164,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00263",
+        "MOD_ST_DESCRICAO": "Estatística Faturamento",
+        "state": "estatísticas.estatísticafaturamento",
+        "stateN": "00007.00263"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 165,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00262",
+        "MOD_ST_DESCRICAO": "Estatística Produtividade",
+        "state": "estatísticas.estatísticaprodutividade",
+        "stateN": "00007.00262"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 166,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00129",
+        "MOD_ST_DESCRICAO": "Estatísticas Técnica",
+        "state": "estatísticas.estatísticastécnica",
+        "stateN": "00007.00129"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 167,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00110",
+        "MOD_ST_DESCRICAO": "Estatística de Exames Alterados por Unidade/Posto Detalhado",
+        "state": "estatísticas.estatísticadeexamesalteradosporunidade/postodetalhado",
+        "stateN": "00007.00110"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 168,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00115",
+        "MOD_ST_DESCRICAO": "Estatística de Quantidade de Tubos por Unidade/Posto",
+        "state": "estatísticas.estatísticadequantidadedetubosporunidade/posto",
+        "stateN": "00007.00115"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 169,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00111",
+        "MOD_ST_DESCRICAO": "Estatística de Produção de Exames por Unidade/Postos",
+        "state": "estatísticas.estatísticadeproduçãodeexamesporunidade/postos",
+        "stateN": "00007.00111"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 170,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00137",
+        "MOD_ST_DESCRICAO": "Relatório Específico Projetos Especiais",
+        "state": "estatísticas.relatórioespecíficoprojetosespeciais",
+        "stateN": "00007.00137"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 171,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00124",
+        "MOD_ST_DESCRICAO": "Estatística de Exames Nova Coleta",
+        "state": "estatísticas.estatísticadeexamesnovacoleta",
+        "stateN": "00007.00124"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 172,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00130",
+        "MOD_ST_DESCRICAO": "Estatística de Exames Alterados por Unidade/Posto",
+        "state": "estatísticas.estatísticadeexamesalteradosporunidade/posto",
+        "stateN": "00007.00130"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 173,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00142",
+        "MOD_ST_DESCRICAO": "Estatística de Exames Nova Coleta por Coletor",
+        "state": "estatísticas.estatísticadeexamesnovacoletaporcoletor",
+        "stateN": "00007.00142"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 174,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00158",
+        "MOD_ST_DESCRICAO": "Estatistica de Remarcacoes",
+        "state": "estatísticas.estatisticaderemarcacoes",
+        "stateN": "00007.00158"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 175,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00109",
+        "MOD_ST_DESCRICAO": "Estatística de Quant.Pacientes/Exames por Unidade/Posto/Data",
+        "state": "estatísticas.estatísticadequant.pacientes/examesporunidade/posto/data",
+        "stateN": "00007.00109"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 176,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00122",
+        "MOD_ST_DESCRICAO": "Estatística de Tempo por Unidade/Posto/Paciente/Setor/Local",
+        "state": "estatísticas.estatísticadetempoporunidade/posto/paciente/setor/local",
+        "stateN": "00007.00122"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 177,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00118",
+        "MOD_ST_DESCRICAO": "Estatística de Exames por Local de Coleta Semanal",
+        "state": "estatísticas.estatísticadeexamesporlocaldecoletasemanal",
+        "stateN": "00007.00118"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 178,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00116",
+        "MOD_ST_DESCRICAO": "Estatística de Quantidade de Tubos por Unidade",
+        "state": "estatísticas.estatísticadequantidadedetubosporunidade",
+        "stateN": "00007.00116"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 179,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00085",
+        "MOD_ST_DESCRICAO": "Estatística por Unidade Execução",
+        "state": "estatísticas.estatísticaporunidadeexecução",
+        "stateN": "00007.00085"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 180,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00123",
+        "MOD_ST_DESCRICAO": "Estatística de Pacientes por Faixa Etária",
+        "state": "estatísticas.estatísticadepacientesporfaixaetária",
+        "stateN": "00007.00123"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 181,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00125",
+        "MOD_ST_DESCRICAO": "Estatística de Exames Unidade/Posto/Dia",
+        "state": "estatísticas.estatísticadeexamesunidade/posto/dia",
+        "stateN": "00007.00125"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 182,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00112",
+        "MOD_ST_DESCRICAO": "Estatística de Produção de Exames por Unidade",
+        "state": "estatísticas.estatísticadeproduçãodeexamesporunidade",
+        "stateN": "00007.00112"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 183,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00141",
+        "MOD_ST_DESCRICAO": "Relatório Específico Projeto Doenças Notificação Compulsória",
+        "state": "estatísticas.relatórioespecíficoprojetodoençasnotificaçãocompulsória",
+        "stateN": "00007.00141"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 184,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00146",
+        "MOD_ST_DESCRICAO": "Estatística de Produtividade por Usuário Etapas",
+        "state": "estatísticas.estatísticadeprodutividadeporusuárioetapas",
+        "stateN": "00007.00146"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 185,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00166",
+        "MOD_ST_DESCRICAO": "Estatística de Exames Unidade Posto Quant.Paciente Qt.Exames",
+        "state": "estatísticas.estatísticadeexamesunidadepostoquant.pacienteqt.exames",
+        "stateN": "00007.00166"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 186,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00175",
+        "MOD_ST_DESCRICAO": "Estatística Tomografia Laudos/Revisão por Usuário",
+        "state": "estatísticas.estatísticatomografialaudos/revisãoporusuário",
+        "stateN": "00007.00175"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 187,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00170",
+        "MOD_ST_DESCRICAO": "Estatística Qt.Tubos, Pacientes,Exames por Unidade,Setor",
+        "state": "estatísticas.estatísticaqt.tubos,pacientes,examesporunidade,setor",
+        "stateN": "00007.00170"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 188,
+        "PUS_IN_SEQUENCIAPAI": 2,
+        "MOD_ST_CODIGO": "00119",
+        "MOD_ST_DESCRICAO": "Estatística de Produtividade",
+        "state": "estatísticas.estatísticadeprodutividade",
+        "stateN": "00007.00119"
+      }
+    ]
+  },
+  {
+    "PUS_IN_SEQUENCIA": 189,
+    "PUS_IN_SEQUENCIAPAI": 0,
+    "MOD_ST_CODIGO": "00005",
+    "MOD_ST_DESCRICAO": "Faturamento",
+    "state": "faturamento",
+    "stateN": "00005",
+    "telas": [
+      {
+        "PUS_IN_SEQUENCIA": 191,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00114",
+        "MOD_ST_DESCRICAO": "Estatística de Pendências",
+        "state": "faturamento.estatísticadependências",
+        "stateN": "00005.00114"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 192,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00045",
+        "MOD_ST_DESCRICAO": "Pendências de Faturamento",
+        "state": "faturamento.pendênciasdefaturamento",
+        "stateN": "00005.00045"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 193,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00040",
+        "MOD_ST_DESCRICAO": "Emissão da Fatura",
+        "state": "faturamento.emissãodafatura",
+        "stateN": "00005.00040"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 194,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00092",
+        "MOD_ST_DESCRICAO": "Conferência de Requisições por Prontuário",
+        "state": "faturamento.conferênciaderequisiçõesporprontuário",
+        "stateN": "00005.00092"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 195,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00107",
+        "MOD_ST_DESCRICAO": "Consulta de Lotes",
+        "state": "faturamento.consultadelotes",
+        "stateN": "00005.00107"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 196,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00094",
+        "MOD_ST_DESCRICAO": "Calcula Exames Sem Preço",
+        "state": "faturamento.calculaexamessempreço",
+        "stateN": "00005.00094"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 197,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00077",
+        "MOD_ST_DESCRICAO": "Relatório de Exames Sem Preço",
+        "state": "faturamento.relatóriodeexamessempreço",
+        "stateN": "00005.00077"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 198,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00144",
+        "MOD_ST_DESCRICAO": "Controle de Faturamento Externo",
+        "state": "faturamento.controledefaturamentoexterno",
+        "stateN": "00005.00144"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 199,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00177",
+        "MOD_ST_DESCRICAO": "Relatorio de Fechamento de Caixa",
+        "state": "faturamento.relatoriodefechamentodecaixa",
+        "stateN": "00005.00177"
+      }
+    ]
+  },
+  {
+    "PUS_IN_SEQUENCIA": 200,
+    "PUS_IN_SEQUENCIAPAI": 0,
+    "MOD_ST_CODIGO": "00008",
+    "MOD_ST_DESCRICAO": "Ferramentas",
+    "state": "ferramentas",
+    "stateN": "00008",
+    "telas": [
+      {
+        "PUS_IN_SEQUENCIA": 201,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00172",
+        "MOD_ST_DESCRICAO": "Executar Pesquisa no Banco de Dados",
+        "state": "ferramentas.executarpesquisanobancodedados",
+        "stateN": "00008.00172"
+      },
+      {
+        "PUS_IN_SEQUENCIA": 202,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00191",
+        "MOD_ST_DESCRICAO": "Configurações de Tabelas",
+        "state": "ferramentas.configuraçõesdetabelas",
+        "stateN": "00008.00191"
+      }
+    ]
+  },
+  {
+    "PUS_IN_SEQUENCIA": 203,
+    "PUS_IN_SEQUENCIAPAI": 0,
+    "MOD_ST_CODIGO": "00047",
+    "MOD_ST_DESCRICAO": "Ajuda",
+    "state": "ajuda",
+    "stateN": "00047",
+    "telas": [
+      {
+        "PUS_IN_SEQUENCIA": 204,
+        "PUS_IN_SEQUENCIAPAI": 1,
+        "MOD_ST_CODIGO": "00049",
+        "MOD_ST_DESCRICAO": "Sobre",
+        "state": "ajuda.sobre",
+        "stateN": "00047.00049"
+      }
+    ]
+  }
+]

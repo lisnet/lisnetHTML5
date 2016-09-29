@@ -1,0 +1,23 @@
+{
+    "elements": {},
+    "attributes": {
+        "uib-dropdown-menu": {
+            "context": "ul"
+        },
+        "uib-dropdown": {
+            "context": "div"
+        },
+        "uib-dropdown-toggle": {
+            "context": "a"
+        },
+        "side-navigation": {
+            "context": "ul"
+        },
+        "ui-sref": {
+            "context": "a"
+        },
+        "ui-sref-active": {
+            "context": "li"
+        }
+    }
+}

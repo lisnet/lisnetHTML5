@@ -119,7 +119,7 @@ function loginFunction($scope, $state, $location, buscaUsuarioSeviceAPI, montaUr
                     buscaUsuarioSeviceAPI.buscaUsuarioAjax(_param1, _param2, $scope.userDTO.configLisNet)
                             .then(function successCallback(response) {
                                 var retorno = response.data;
-                                console.log('response.data = ' + JSON.stringify(retorno));
+//                                console.log('response.data = ' + JSON.stringify(retorno));;
                                 if (retorno && retorno.USU_ST_NOME && retorno.USU_ST_SENHA && retorno.PUS_ST_CODIGO) {
                                     
                                     $scope.userDTO.USU_ST_NOME = retorno.USU_ST_NOME;
@@ -134,12 +134,14 @@ function loginFunction($scope, $state, $location, buscaUsuarioSeviceAPI, montaUr
                                     $localStorage.userDTO = $scope.userDTO;
                                     console.log('$scope.userDTO.perfilId: '+$scope.userDTO.perfilId);
                                     
-                                    determinaAparelhoProvider.isMobile($scope.userDTO.deviceDetector) ? buscaUsuarioMenu(_param1, $scope.userDTO.PUS_ST_CODIGO, ev, 'dashboards.dashboard_1') : buscaUsuarioMenu(_param1, $scope.userDTO.PUS_ST_CODIGO, ev, 'dashboards.dashboard_1');
+                                    determinaAparelhoProvider.isMobile($scope.userDTO.deviceDetector) ? buscaUsuarioMenu(_param1, $scope.userDTO.PUS_ST_CODIGO, ev, '00001.00227') : buscaUsuarioMenu(_param1, $scope.userDTO.PUS_ST_CODIGO, ev, '00001.00227');
                               
                                 } else {
                                     $timeout(function () { 
 //                                        if (!dialogLoading.$$state.status) { $mdDialog.hide(dialogLoading); }
-                                    notificacaoProvider.showDialog("Usuário não tem credencias", 'Usuário não tem credencias para entrar no sistema, favor contactar o suporte. 2', 'Fechar', 'Aviso', ev);}, intMinimoDelay);
+                                    notificacaoProvider.sweetDialog("Usuário inválido", "Usuário não tem credencias para entrar no sistema, favor contactar o suporte. 2",'warning','red','X');
+                                }, intMinimoDelay);
+                                
                                 }
                             }, function errorCallback(response) {
                                 console.log(response.statusText);
@@ -181,20 +183,37 @@ function loginFunction($scope, $state, $location, buscaUsuarioSeviceAPI, montaUr
 //                    notificacaoProvider.showDialogWarning("Sem conunicação", 'Sem internet ou servidor fora do ar .. ' + response.data, 'Fechar', 'Aviso', ev);
                 });
     };
+    
+    
+    
+    $scope.stageGO = function (stateGO) {
+        $state.go(stateGO);
+    };
 
-    function atualizaRequisicao(req_in_codigo, pac_in_codigo) {
-        var xhttp = buscaUsuarioSeviceAPI.atualizaVisualizacao(pac_in_codigo, $scope.userDTO.configLisNet);
-        xhttp.onerror = function (e) {
-//            showDialog("Sem acesso a internet", "Aplicativo sem acesso a internet ou Servidor fora do ar", 'Fechar', 'Aviso', ev);
-        };
-        xhttp.onreadystatechange = function () {
-            if (xhttp.readyState === 4 && xhttp.status === 200) {
-//                console.log(xhttp.responseText);
-                $scope.msg = 'Requisicao atualizada com sucesso';
-            } else {
-                $scope.msg = 'Problemas na atualizadacao';
-            }
-        };
+$scope.voltaLogo = function (MOD_ST_CODIGO){
+        switch (MOD_ST_CODIGO){
+            case "00001":
+                return "fa fa-th-large";
+           break;
+           case "00003":
+                return "fa fa-pencil-square-o";
+           break;
+            case "00007":
+                return "fa fa-pie-chart";
+           break;
+            case "00005":
+                return "fa fa-usd";
+           break;
+            case "00008":
+                return "fa fa-cogs";
+           break;
+            case "00047":
+                return "fa fa-life-ring";
+           break;
+           default:
+           return "fa fa-th-large";
+           
+        }  
     };
 
     $scope.logOut = function (){
