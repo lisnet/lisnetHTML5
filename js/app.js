@@ -11,12 +11,11 @@
         'ngIdle',                       // Idle timer
         'ngSanitize',                    // ngSanitize
         'ngAnimate',
-//        'ngMaterial',
         'angularMoment',
         'ngRoute',
         'ngAria',
         'ng.deviceDetector',
-        'reTree',
+//        'reTree',
         'ngStorage'
     ]);
 })();

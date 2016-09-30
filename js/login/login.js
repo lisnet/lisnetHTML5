@@ -5,7 +5,10 @@
  */
 
 
-function loginFunction($scope, $state, $location, buscaUsuarioSeviceAPI, montaUrlLaudoProvider, configLisNet, notificacaoProvider, $localStorage, $window, deviceDetector,   $timeout,determinaAparelhoProvider,sairDoSistemaService) {
+function loginFunction($scope, $state, $location, buscaUsuarioSeviceAPI, montaUrlLaudoProvider, configLisNet, notificacaoProvider,  $window, deviceDetector,   $timeout,determinaAparelhoProvider,sairDoSistemaService,$localStorage,
+    $sessionStorage) {
+    
+    $scope.$storage = $localStorage;
     
     $scope.login ;
     $scope.senha ;
@@ -32,6 +35,7 @@ function loginFunction($scope, $state, $location, buscaUsuarioSeviceAPI, montaUr
 
 
     if ($localStorage.userDTO && typeof $localStorage.userDTO === 'object') {
+//        console.log('loginFunction userDTO no $localStorage');
         $scope.userDTO = $localStorage.userDTO;
         $scope.userDTO.deviceDetector = deviceDetector;
         if (_param1DBName && _param1DBName.length >= intDbLength) {
@@ -54,8 +58,10 @@ function loginFunction($scope, $state, $location, buscaUsuarioSeviceAPI, montaUr
             }
         }
         if ($scope.userDTO.ultimaTela) {
+//            $scope.stageGO($scope.userDTO.ultimaTela);
 //            $state.go($scope.userDTO.ultimaTela);
         }
+//        console.log(JSON.stringify($scope.userDTO.configLisNet));
 
     } else {
         $scope.userDTO = {status: 'out', perfilId: 2, dtCriacao: new Date(), ultimaTela: 'login'};
@@ -134,7 +140,7 @@ function loginFunction($scope, $state, $location, buscaUsuarioSeviceAPI, montaUr
                                     $localStorage.userDTO = $scope.userDTO;
                                     console.log('$scope.userDTO.perfilId: '+$scope.userDTO.perfilId);
                                     
-                                    determinaAparelhoProvider.isMobile($scope.userDTO.deviceDetector) ? buscaUsuarioMenu(_param1, $scope.userDTO.PUS_ST_CODIGO, ev, '00001.00227') : buscaUsuarioMenu(_param1, $scope.userDTO.PUS_ST_CODIGO, ev, '00001.00227');
+                                    determinaAparelhoProvider.isMobile($scope.userDTO.deviceDetector) ? buscaUsuarioMenu(_param1, $scope.userDTO.PUS_ST_CODIGO, ev, 'contrucao.contrucao') : buscaUsuarioMenu(_param1, $scope.userDTO.PUS_ST_CODIGO, ev, 'contrucao.contrucao');
                               
                                 } else {
                                     $timeout(function () { 
@@ -162,13 +168,18 @@ function loginFunction($scope, $state, $location, buscaUsuarioSeviceAPI, montaUr
         }
     };
 
+ 
+
     function  buscaUsuarioMenu(login, perfil, ev, stateGO) {
         buscaUsuarioSeviceAPI.buscaUsuarioMenuJSONAjax(login, perfil, $scope.userDTO.configLisNet)
                 .then(function successCallback(response) {
                     $scope.userDTO.perfil = response.data;
                     if ($scope.userDTO && $scope.userDTO.perfil && $scope.userDTO.perfil.length > 0) {
                         $scope.userDTO.status = 'in';
+                        $scope.userDTO.ultimaTela = stateGO;
                         $localStorage.userDTO = $scope.userDTO;
+//                        loopaPerfil($scope.userDTO.perfil);
+//                            console.log(  JSON.stringify($scope.userDTO.perfil , null , 2) );
                         $state.go(stateGO, {userDTO: angular.toJson($scope.userDTO)});
                     } else {
 //                        notificacaoProvider.sweetDialog("Usuário não tem credencias", 'Usuário não tem credencias para entrar no sistema, favor contactar o suporte.','info','red','X');
@@ -178,7 +189,8 @@ function loginFunction($scope, $state, $location, buscaUsuarioSeviceAPI, montaUr
                     }
                 }, function errorCallback(response) {
 //                    notificacaoProvider.sweetDialog("Sem conunicação", 'Sem internet ou servidor fora do ar .','warning','red','X');
-                        $timeout(function () { if (!dialogLoading.$$state.status) { $mdDialog.hide(dialogLoading); }
+                        $timeout(function () { 
+//                            if (!dialogLoading.$$state.status) { $mdDialog.hide(dialogLoading); }
                                                             notificacaoProvider.showDialogWarning("Sem conunicação", 'Sem internet ou servidor fora do ar .. ' + response.data, 'Fechar', 'Aviso', ev);}, intMinimoDelay);
 //                    notificacaoProvider.showDialogWarning("Sem conunicação", 'Sem internet ou servidor fora do ar .. ' + response.data, 'Fechar', 'Aviso', ev);
                 });
@@ -187,7 +199,15 @@ function loginFunction($scope, $state, $location, buscaUsuarioSeviceAPI, montaUr
     
     
     $scope.stageGO = function (stateGO) {
-        $state.go(stateGO);
+        $scope.userDTO.ultimaTela = stateGO;
+        $localStorage.userDTO = $scope.userDTO;
+        try{
+            $state.go(stateGO);
+        }catch (error){
+            notificacaoProvider.sweetDialog("Erro", "Página não encontrada =  " + error,'warning','red','X');
+            $state.go('contrucao.contrucao');
+        }
+        
     };
 
 $scope.voltaLogo = function (MOD_ST_CODIGO){
@@ -210,16 +230,37 @@ $scope.voltaLogo = function (MOD_ST_CODIGO){
             case "00047":
                 return "fa fa-life-ring";
            break;
+            case "00128":
+                return "fa fa-pie-chart";
+           break;
+           case "00129":
+                return "fa fa-bar-chart";
+           break;
            default:
-           return "fa fa-th-large";
+           return "fa fa-tag";
            
         }  
     };
 
     $scope.logOut = function (){
-        sairDoSistemaService.logOut();
+        console.log('loging Out dude ...');
+        $localStorage.$reset({
+            counter: 42
+        });
+        delete $localStorage.userDTO;
+//        sairDoSistemaService.logOut();
+        $state.go('login');
     };
 
+
+$scope.acheiOFDP = function  (msg){
+    if(msg == '00007.00263'){
+        console.log(msg);    
+    }else if(msg == '00263'){
+        console.log(msg);    
+    }
+    
+};
 
 };
 
