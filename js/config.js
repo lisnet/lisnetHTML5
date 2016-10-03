@@ -94,8 +94,9 @@ console.log('construing config , registrando state');
         })
         .state('00007.00263', {
                             url: "/faturamento",
-                            templateUrl: "views/under_construction.html",
+                            templateUrl: "views/estatistica_faturamento.html",
                             parent:'00007',
+                            controller: estatisticaFaturamento,
                             data: { pageTitle: 'Estatística Faturamento'}  ,resolve: {
                                 loadPlugin: function ($ocLazyLoad) {
                                     return $ocLazyLoad.load([

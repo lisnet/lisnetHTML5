@@ -15,7 +15,6 @@
         'ngRoute',
         'ngAria',
         'ng.deviceDetector',
-//        'reTree',
         'ngStorage'
     ]);
 })();

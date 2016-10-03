@@ -1,0 +1,150 @@
+<div class="row wrapper border-bottom white-bg page-heading"  ng-controller="estatisticaFaturamento" >
+    <div class="col-lg-10">
+        <h2>Estatistica Faturamento</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+            <li>
+                <a>Estatísticas</a>
+            </li>
+            <li class="active">
+                <strong>Faturamento</strong>
+            </li>
+        </ol>
+    </div>
+<!--    <div class="col-lg-2">
+
+    </div>-->
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+
+
+    <div class="row">
+
+        <div class="col-lg-7">
+            
+            
+            <div class="ibox float-e-margins">
+                
+                <div class="ibox-title">
+                    <h5>Estatística Faturamento
+                        <small>... </small>
+                    </h5>
+                    <!--<div ibox-tools></div>-->
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-sm-6 b-r"><h3 class="m-t-none m-b">Ordem do Relatório | Tipo de Relatório</h3>
+
+
+
+                            <label> <input class="checkbox-inline"   icheck type="radio" name="radioTest2" ng-model="estatisticaFaturamento.ordemRelatorio"  value="unidade"  > Unidade </label>
+                            <label> <input class="checkbox-inline"   icheck type="radio" name="radioTest2" ng-model="estatisticaFaturamento.ordemRelatorio" value="convenio" >Convênio</label>
+
+                            <label  style="padding-left: 5px;" > <input class="checkbox-inline"   icheck type="radio" name="radioTest3" ng-model="estatisticaFaturamento.tipoRelatorio"  value="analitico"  >Analitíco</label>
+                            <label> <input class="checkbox-inline"   icheck type="radio" name="radioTest3" ng-model="estatisticaFaturamento.tipoRelatorio" value="sintetico" >Sintetíco</label>
+
+
+                            <br/>
+                            <div class="col-sm-6 b-r"><h3 class="m-t-none m-b">Status do Exame</h3>
+                                <label> <input class="checkbox-inline"   icheck type="checkbox" ng-model="estatisticaFaturamento.faturado"> Faturado</label>
+                                <label> <input class="checkbox-inline"  icheck type="checkbox" ng-model="estatisticaFaturamento.conferido"> Conferido</label>
+                            </div>
+
+
+                        </div>
+                        <div class="col-sm-6">
+
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <p class="input-group">
+                                        <input type="text" class="form-control" 
+                                               uib-datepicker-popup="{{estatisticaFaturamento.format}}" 
+                                               ng-model="estatisticaFaturamento.dtInicio" 
+                                               is-open="popup.inicio" 
+                                               datepicker-options="dateOptions" 
+                                               ng-required="true" 
+                                               close-text="Close" 
+                                               alt-input-formats="altInputFormats" />
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-default" 
+                                                    ng-click="openPopInicio()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                        </span>
+                                    </p>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <p class="input-group">
+                                        <input type="text" class="form-control" 
+                                               uib-datepicker-popup="{{estatisticaFaturamento.format}}" 
+                                               ng-model="estatisticaFaturamento.dtFim" 
+                                               is-open="popup.fim" 
+                                               datepicker-options="dateOptions" 
+                                               ng-required="true" 
+                                               close-text="Close" 
+                                               alt-input-formats="altInputFormats" />
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-default" ng-click="openPopFim()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                        </span>
+                                    </p>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+        </div>
+
+        <div class="col-lg-5">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Escolha as Unidades / Convênios</h5>
+                        <!--<div ibox-tools></div>-->
+                    </div>
+                    <div class="ibox-content">
+                        
+                         <div class="form-group">
+        <span class="col-md-2 control-label">Metadata</span>
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label for="inputKey" class="col-md-1 control-label">Key</label>
+                <div class="col-md-2">
+                    <input type="text" class="form-control" id="inputKey" placeholder="Key">
+                </div>
+                <label for="inputValue" class="col-md-1 control-label">Value</label>
+                <div class="col-md-2">
+                    <input type="text" class="form-control" id="inputValue" placeholder="Value">
+                </div>
+            </div>
+        </div>
+    </div>
+                        
+                        
+                        
+                        <div >
+                        <select class="selectpicker">
+                            <option>pdf</option>
+                            <option>xlsx</option>
+                        </select>
+
+                        
+                            <button class="btn btn-primary" >Gerar Relatótio</button>
+                            
+                         </div>
+                        
+                    </div>
+                </div>
+
+               
+            </div>
+
+
+    </div>

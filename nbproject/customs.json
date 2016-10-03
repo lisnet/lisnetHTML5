@@ -4,6 +4,9 @@
         "uib-dropdown-menu": {
             "context": "ul"
         },
+        "ibox-tools": {
+            "context": "div"
+        },
         "uib-dropdown": {
             "context": "div"
         },
