@@ -8,7 +8,12 @@
  Author     : eros
  */
 
-function estatisticaFaturamento($scope, buscaUsuarioSeviceAPI, $stateParams, $localStorage, notificacaoProvider) {
+function estatisticaFaturamento($scope, buscaUsuarioSeviceAPI, $stateParams, $localStorage, sairDoSistemaService,notificacaoProvider,$window) {
+
+console.log('Inicializando estatisticaFaturamento');
+
+
+
 
 $scope.userDTO = $localStorage.userDTO;
 
@@ -19,6 +24,18 @@ $scope.userDTO = $localStorage.userDTO;
 //        $scope.userDTO = $localStorage.userDTO;
 //    }
 
+    if( $scope.userDTO && $scope.userDTO.status && $scope.userDTO.status === 'out' ){
+        sairDoSistemaService.logOut();
+        $window.open('index.html', '_self');
+    }
+    
+            buscaUsuarioSeviceAPI.buscaUnidades($scope.userDTO.USU_ST_CODIGO, $scope.userDTO.configLisNet).then(function sucessCallBack(response) {
+                $scope.userDTO.unidades = response.data;
+            });
+
+            buscaUsuarioSeviceAPI.buscaConvenios($scope.userDTO.USU_ST_CODIGO, $scope.userDTO.configLisNet).then(function sucessCallBack(response) {
+                $scope.userDTO.convenios = response.data;
+            });
     
 
 
@@ -94,6 +111,19 @@ $scope.userDTO = $localStorage.userDTO;
      $scope.removerConvenio =  function (conStCodigo){
          achaConvenio(conStCodigo,$scope.estatisticaFaturamento.convenios,true);
      } ;
+     
+     $scope.geraRelatorio = function (){
+       var notificacao = {link:"http://www.google.com", icon:"fa-file-pdf-o",descricao:'Relatório de Faturamento',aviso:"2(s) minutos atrás"};  
+       if($scope.userDTO.notificacoes){
+           $scope.userDTO.notificacoes.push(notificacao);
+       }else{
+           $scope.userDTO.notificacoes =[];
+           $scope.userDTO.notificacoes.push(notificacao);
+       }
+           
+       
+     };
+     
      
     function achaUnidade (uniStCodigo, arrayUnidades,remover){
         if(arrayUnidades && arrayUnidades.length > 0){

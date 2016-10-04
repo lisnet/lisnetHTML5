@@ -5,8 +5,11 @@
  */
 
 
-function loginFunction($scope, $state, $location, buscaUsuarioSeviceAPI, montaUrlLaudoProvider, configLisNet, notificacaoProvider,  $window, deviceDetector,   $timeout,determinaAparelhoProvider,sairDoSistemaService,$localStorage,
-    $sessionStorage) {
+function loginFunction($scope, $rootScope,$state, $location, buscaUsuarioSeviceAPI, montaUrlLaudoProvider, configLisNet, notificacaoProvider,  $window, deviceDetector,   $timeout,determinaAparelhoProvider,sairDoSistemaService,$localStorage,
+    $sessionStorage,$window) {
+    
+    
+    console.log('Inicializando loginFunction');
     
     $scope.$storage = $localStorage;
     
@@ -111,6 +114,13 @@ function loginFunction($scope, $state, $location, buscaUsuarioSeviceAPI, montaUr
                 });
     }
 
+    if( $scope.userDTO && $scope.userDTO.status === "out"  ){
+        console.log('Usuario esta fora....');
+        sairDoSistemaService.logOut();
+    }else{
+        console.log('usuário autorizado, com credenciais ..');
+    }
+
 
     $scope.cleanFields = function () {
         $scope.login = '';
@@ -124,13 +134,7 @@ function loginFunction($scope, $state, $location, buscaUsuarioSeviceAPI, montaUr
                 
                     buscaUsuarioSeviceAPI.buscaUsuarioAjax(_param1, _param2, $scope.userDTO.configLisNet)
                             .then(function successCallback(response) {
-                                buscaUsuarioSeviceAPI.buscaUnidades($scope.userDTO.USU_ST_CODIGO, $scope.userDTO.configLisNet).then(function sucessCallBack(response) {
-                                    $scope.userDTO.unidades = response.data;
-                                });
-
-                                buscaUsuarioSeviceAPI.buscaConvenios($scope.userDTO.USU_ST_CODIGO, $scope.userDTO.configLisNet).then(function sucessCallBack(response) {
-                                    $scope.userDTO.convenios = response.data;
-                                });
+                                
                                 var retorno = response.data;
 //                                console.log('response.data = ' + JSON.stringify(retorno));;
                                 if (retorno && retorno.USU_ST_NOME && retorno.USU_ST_SENHA && retorno.PUS_ST_CODIGO) {
@@ -251,13 +255,17 @@ $scope.voltaLogo = function (MOD_ST_CODIGO){
     };
 
     $scope.logOut = function (){
+        $scope.userDTO.status= 'out';
         console.log('loging Out dude ...');
-        $localStorage.$reset({
-            counter: 42
-        });
-        delete $localStorage.userDTO;
-//        sairDoSistemaService.logOut();
+//        $localStorage.$reset({
+//            counter: 42
+//        });
+//        delete $localStorage.userDTO;
+        $rootScope = $rootScope.$new(true);
+        $scope = $scope.$new(true);
+        sairDoSistemaService.logOut();
         $state.go('login');
+//            $window.open('index.html', '_self');
     };
 
 
