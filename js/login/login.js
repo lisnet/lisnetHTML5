@@ -124,6 +124,13 @@ function loginFunction($scope, $state, $location, buscaUsuarioSeviceAPI, montaUr
                 
                     buscaUsuarioSeviceAPI.buscaUsuarioAjax(_param1, _param2, $scope.userDTO.configLisNet)
                             .then(function successCallback(response) {
+                                buscaUsuarioSeviceAPI.buscaUnidades($scope.userDTO.USU_ST_CODIGO, $scope.userDTO.configLisNet).then(function sucessCallBack(response) {
+                                    $scope.userDTO.unidades = response.data;
+                                });
+
+                                buscaUsuarioSeviceAPI.buscaConvenios($scope.userDTO.USU_ST_CODIGO, $scope.userDTO.configLisNet).then(function sucessCallBack(response) {
+                                    $scope.userDTO.convenios = response.data;
+                                });
                                 var retorno = response.data;
 //                                console.log('response.data = ' + JSON.stringify(retorno));;
                                 if (retorno && retorno.USU_ST_NOME && retorno.USU_ST_SENHA && retorno.PUS_ST_CODIGO) {
@@ -136,11 +143,12 @@ function loginFunction($scope, $state, $location, buscaUsuarioSeviceAPI, montaUr
                                     $scope.userDTO.USU_CH_ATIVO = retorno.USU_CH_ATIVO;
                                     $scope.userDTO.USU_ST_EMAIL = retorno.USU_ST_EMAIL;
                                     $scope.userDTO.USU_IN_QTDDIA = retorno.USU_IN_QTDDIA;
-                                    
-                                    $localStorage.userDTO = $scope.userDTO;
                                     console.log('$scope.userDTO.perfilId: '+$scope.userDTO.perfilId);
-                                    
+                                    $localStorage.userDTO = $scope.userDTO;
                                     determinaAparelhoProvider.isMobile($scope.userDTO.deviceDetector) ? buscaUsuarioMenu(_param1, $scope.userDTO.PUS_ST_CODIGO, ev, 'contrucao.contrucao') : buscaUsuarioMenu(_param1, $scope.userDTO.PUS_ST_CODIGO, ev, 'contrucao.contrucao');
+                                    
+                                    
+                                    
                               
                                 } else {
                                     $timeout(function () { 
@@ -202,7 +210,7 @@ function loginFunction($scope, $state, $location, buscaUsuarioSeviceAPI, montaUr
         $scope.userDTO.ultimaTela = stateGO;
         $localStorage.userDTO = $scope.userDTO;
         try{
-            $state.go(stateGO);
+            $state.go(stateGO, {userDTO: angular.toJson($scope.userDTO)});
         }catch (error){
             notificacaoProvider.sweetDialog("Erro", "Página não encontrada =  " + error,'warning','red','X');
             $state.go('contrucao.contrucao');

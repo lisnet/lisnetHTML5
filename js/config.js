@@ -93,7 +93,7 @@ console.log('construing config , registrando state');
             templateUrl: "views/common/content.html"
         })
         .state('00007.00263', {
-                            url: "/faturamento",
+                            url: "/faturamento/:userDTO",
                             templateUrl: "views/estatistica_faturamento.html",
                             parent:'00007',
                             controller: estatisticaFaturamento,
@@ -109,7 +109,7 @@ console.log('construing config , registrando state');
                                         },
                                         {
                                             files: ['css/plugins/iCheck/custom.css','js/plugins/iCheck/icheck.min.js']
-                                        }
+                                        } 
                                     ]);
                                 }
                             }

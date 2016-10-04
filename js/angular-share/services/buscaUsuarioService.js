@@ -139,6 +139,25 @@ angular.module('lisnet').service("buscaUsuarioSeviceAPI",function ($http){
 //        console.log("buscaUnidades = " + JSON.stringify(configLisNet)   + "  ...........");
         var params = '?login=' + login + '&dbname='+configLisNet.defaultDB;
         var url = configLisNet.baseUrl +'/buscaUnidades' + params;
+        console.log('url construida = '+url);
+        return $http({method : 'GET',url : url,
+            headers : {
+                'Content-Type' : 'application/x-www-form-urlencoded',
+                'Access-Control-Allow-Headers': '*',
+                'Access-Control-Allow-Methods':'GET, POST, PUT',
+                'Access-Control-Allow-Origin': '*'
+            }});
+    };
+    /*
+     * 
+     * @param {type} login
+     * @param {type} configLisNet
+     * @returns {unresolved}
+     */
+    this.buscaConvenios = function (login, configLisNet){
+//        console.log("buscaUnidades = " + JSON.stringify(configLisNet)   + "  ...........");
+        var params = '?login=' + login + '&dbname='+configLisNet.defaultDB;
+        var url = configLisNet.baseUrl +'/buscaConvenios' + params;
         return $http({method : 'GET',url : url,
             headers : {
                 'Content-Type' : 'application/x-www-form-urlencoded',
