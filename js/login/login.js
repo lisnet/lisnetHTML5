@@ -5,9 +5,18 @@
  */
 
 
-function loginFunction($scope, $rootScope,$state, $location, buscaUsuarioSeviceAPI, montaUrlLaudoProvider, configLisNet, notificacaoProvider,  $window, deviceDetector,   $timeout,determinaAparelhoProvider,sairDoSistemaService,$localStorage,
-    $sessionStorage,$window) {
+function loginFunction($scope, $rootScope,$state, $location, buscaAPIService, montaUrlLaudoProvider, configLisNet, notificacaoProvider,  deviceDetector,   $timeout,determinaAparelhoProvider,sairDoSistemaService,$localStorage,
+    $sessionStorage,$window,gerenciaRelatorioService,$interval) {
     
+    
+     $scope.killTimer = function() {
+          if (angular.isDefined($scope.userDTO.job)) {
+            $interval.cancel($scope.userDTO.job);
+            $scope.userDTO.job = undefined;
+          }
+     };
+    
+   
     
     console.log('Inicializando loginFunction');
     
@@ -101,7 +110,7 @@ function loginFunction($scope, $rootScope,$state, $location, buscaUsuarioSeviceA
             $scope.userDTO.configLisNet.baseUrl = _url;
             $scope.userDTO.imageSrc = "resources/" + $scope.userDTO.configLisNet.defaultDB + "/img/logo_site.png";
         }
-        buscaUsuarioSeviceAPI.buscaClientes($scope.userDTO.configLisNet)
+        buscaAPIService.buscaClientes($scope.userDTO.configLisNet)
                 .then(function successCallback(response) {
                     $scope.userDTO.configLisNet.clientes = response.data;
                     configLisNet.clientes = response.data;
@@ -132,7 +141,7 @@ function loginFunction($scope, $rootScope,$state, $location, buscaUsuarioSeviceA
             _param1 = _param1.toUpperCase();
             _param2 = _param2.toUpperCase();
                 
-                    buscaUsuarioSeviceAPI.buscaUsuarioAjax(_param1, _param2, $scope.userDTO.configLisNet)
+                    buscaAPIService.buscaUsuarioAjax(_param1, _param2, $scope.userDTO.configLisNet)
                             .then(function successCallback(response) {
                                 
                                 var retorno = response.data;
@@ -181,9 +190,18 @@ function loginFunction($scope, $rootScope,$state, $location, buscaUsuarioSeviceA
     };
 
  
+    $scope.openRelatorio = function (status,codigo_rastreio){
+        console.log('Inside openRelatorio codigo_rastreio = '+codigo_rastreio);
+        if(status === 'B'){
+            var url = $scope.userDTO.configLisNet.baseUrl +'/relatorio/download?codigo_rastreio=' +codigo_rastreio+'&dbname='+$scope.userDTO.configLisNet.defaultDB;
+         $window.open(url, '_blank');
+        }else{
+            
+        }
+    };
 
     function  buscaUsuarioMenu(login, perfil, ev, stateGO) {
-        buscaUsuarioSeviceAPI.buscaUsuarioMenuJSONAjax(login, perfil, $scope.userDTO.configLisNet)
+        buscaAPIService.buscaUsuarioMenuJSONAjax(login, perfil, $scope.userDTO.configLisNet)
                 .then(function successCallback(response) {
                     $scope.userDTO.perfil = response.data;
                     if ($scope.userDTO && $scope.userDTO.perfil && $scope.userDTO.perfil.length > 0) {
@@ -255,17 +273,14 @@ $scope.voltaLogo = function (MOD_ST_CODIGO){
     };
 
     $scope.logOut = function (){
+         $interval.cancel($scope.userDTO.job);
+         
         $scope.userDTO.status= 'out';
         console.log('loging Out dude ...');
-//        $localStorage.$reset({
-//            counter: 42
-//        });
-//        delete $localStorage.userDTO;
         $rootScope = $rootScope.$new(true);
         $scope = $scope.$new(true);
         sairDoSistemaService.logOut();
         $state.go('login');
-//            $window.open('index.html', '_self');
     };
 
 
@@ -277,6 +292,18 @@ $scope.acheiOFDP = function  (msg){
     }
     
 };
+
+    if ($scope.userDTO && $scope.userDTO.status &&  $scope.userDTO.status === 'in') {
+        if($scope.userDTO.job){
+            $interval.cancel($scope.userDTO.job);
+        }
+        $scope.userDTO.job = $interval(function () {
+            console.log('job update relatorio rodando ...');
+                gerenciaRelatorioService.atualizaRelatorios($scope);
+        }, 20000);
+    }
+
+
 
 };
 

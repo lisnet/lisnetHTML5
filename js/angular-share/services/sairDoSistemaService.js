@@ -5,9 +5,10 @@
 
 
 angular.module('lisnet')
-        .service('sairDoSistemaService', function ($state, $localStorage, $sessionStorage) {
+        .service('sairDoSistemaService', function ($state, $localStorage) {
 
     this.logOut = function () {
+       
 //        console.log("rodando sairDoSistema() .........................");
 //        $localStorage.userDTO = 2;
 //        localStorage.removeItem('userDTO');

@@ -130,10 +130,11 @@
                                 <input type="text" class="form-control" 
                                        uib-datepicker-popup="{{estatisticaFaturamento.format}}" 
                                        ng-model="estatisticaFaturamento.dtInicio" 
+                                       ng-change="calcRangeDate()"
                                        is-open="popup.inicio" 
                                        datepicker-options="dateOptions" 
                                        ng-required="true" 
-                                       close-text="Close" 
+                                       close-text="Fechar" 
                                        alt-input-formats="altInputFormats" />
                                 <span class="input-group-btn">
                                     <button type="button" class="btn btn-default" 
@@ -144,13 +145,14 @@
                         <label class="col-lg-2" >Fim:</label>
                         <div class="col-lg-4">
                             <p class="input-group">
-                                <input type="text" class="form-control" 
+                                <input type="text" class="form-control"  
                                        uib-datepicker-popup="{{estatisticaFaturamento.format}}" 
-                                       ng-model="estatisticaFaturamento.dtFim" 
+                                       ng-model="estatisticaFaturamento.dtFim"
+                                       ng-change="calcRangeDate()"
                                        is-open="popup.fim" 
                                        datepicker-options="dateOptions" 
                                        ng-required="true" 
-                                       close-text="Close" 
+                                       close-text="Fechar" 
                                        alt-input-formats="altInputFormats" />
                                 <span class="input-group-btn">
                                     <button type="button" class="btn btn-default  " ng-click="openPopFim()"><i class="glyphicon glyphicon-calendar"></i></button>
@@ -239,6 +241,17 @@
             return false;
         });
     });
+    
+    $(function() {
+  $("#notificacaoLink").on("click",function(e) {
+    e.preventDefault(); // cancel the link itself
+    $.post(this.href,function(data) {
+        alert(data);
+      $("#someContainer").html(data);
+    });
+  });
+});
+
 
 </script>
     

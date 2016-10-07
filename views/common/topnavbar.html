@@ -88,14 +88,17 @@
                     
                     
                     <span  ng-repeat="n in userDTO.notificacoes" >
-                        <li   >
-                        <a ui-sref="{{n.link}}"   >
+                        <li >
+                        <span  id="notificacaoLink"  >
                             <div>
-                                <i    class="{{n.icon}}}"></i> {{n.descricao}}
-                                <span class="pull-right text-muted small">{{n.aviso}}</span>
+                                <!--<i   ng-show="{{n.status  != 'B'}}"  class="{{n.icon}}}"   ></i>-->
+                                <i    ng-click="openRelatorio(n.status,n.id)"  class="{{n.icon}}}"   ></i>
+                                {{n.descricao}}
+                                <span class="pull-right text-muted small ">{{n.aviso}} - {{n.dtInicio | date:  'dd/MM/yyyy'}}</span>
                             </div>
-                        </a>
+                        </span>
                     </li>
+                    <br>
                     <li class="divider"></li>
                     </span>
                     

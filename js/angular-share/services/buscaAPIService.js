@@ -5,7 +5,46 @@
  * http://stackoverflow.com/questions/21915834/angular-http-setting-a-promise-on-the-timeout-config     timeout
  */
 
-angular.module('lisnet').service("buscaUsuarioSeviceAPI",function ($http){
+angular.module('lisnet').service("buscaAPIService",function ($http){
+    
+    
+    
+    this.relatorio = function (comando,json,configLisNet){
+//        console.log("buscaUnidades = " + JSON.stringify(configLisNet)   + "  ...........");
+//        var params = '?dbname='+configLisNet.defaultDB;
+        var url = configLisNet.baseUrl +'/relatorio/' +comando;
+        return $http.post(url,json,
+            {
+                'Content-Type' : 'application/x-www-form-urlencoded',
+                'Access-Control-Allow-Headers': '*',
+                'Access-Control-Allow-Methods':'GET, POST, PUT',
+                'Access-Control-Allow-Origin': '*'
+            }
+        );
+    };
+    
+    
+    this.relatorioGET = function (comando,usu_st_codigo,rel_dt_consulta,codigo_rastreio,limit,configLisNet){
+        var url = configLisNet.baseUrl +'/relatorio/' +comando;
+//        console.log('Inside relatorioGET ....comando: '+comando+'    usu_st_codigo: '+usu_st_codigo+'    rel_dt_consulta: '+rel_dt_consulta+'   codigo_rastreio: '+codigo_rastreio);
+        switch (comando){
+            case 'download':
+                url = url+'?dbname='+configLisNet.defaultDB+'&codigo_rastreio='+codigo_rastreio;
+                break;
+            case 'listar':
+                var max = limit?limit:60;
+                url = url+'?dbname='+configLisNet.defaultDB+'&usu_st_codigo='+usu_st_codigo+'&rel_dt_consulta='+rel_dt_consulta+'&limit='+max;
+                break;
+        }
+        console.log('url = '+url);
+        return $http({method : 'GET',url : url,
+            headers : {
+                'Content-Type' : 'application/x-www-form-urlencoded',
+                'Access-Control-Allow-Headers': '*',
+                'Access-Control-Allow-Methods':'GET, POST, PUT',
+                'Access-Control-Allow-Origin': '*'
+            }});
+    };
     
     
     /**
@@ -336,6 +375,10 @@ angular.module('lisnet').service("buscaUsuarioSeviceAPI",function ($http){
         xhttp.send(params);
         return xhttp;
     };
+    
+    
+    
+     
     
 });
 
