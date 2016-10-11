@@ -128,9 +128,10 @@ function loginFunction($scope, $rootScope,$state, $location, buscaAPIService, mo
 
     if( $scope.userDTO && $scope.userDTO.status === "out"  ){
         console.log('Usuario esta fora....');
+//        notificacaoProvider.sweetWarning('Out','Get a fuck out at here ... dude ....');
         sairDoSistemaService.logOut();
     }else{
-        console.log('usuário autorizado, com credenciais ..');
+//        console.log('usuário autorizado, com credenciais ..');
     }
 
 
@@ -310,6 +311,7 @@ $scope.acheiOFDP = function  (msg){
     }
 };
 $scope.notificacoesResumida = [];
+$scope.notificacoesEnxecucao = 0;
 $scope.resumeNofificacao = function (){
     if($scope.userDTO && $scope.userDTO.notificacoes && $scope.userDTO.notificacoes.length < qdtNotificacaoResumida){
             $scope.notificacoesResumida = $scope.userDTO && $scope.userDTO.notificacoes;
@@ -318,6 +320,7 @@ $scope.resumeNofificacao = function (){
     }else{
             $scope.notificacoesResumida =  $scope.userDTO.notificacoes;
     }
+  
 };
     if ($scope.userDTO && $scope.userDTO.status &&  $scope.userDTO.status === 'in') {
         if($scope.userDTO.job){

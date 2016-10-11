@@ -31,20 +31,22 @@ angular.module('lisnet').service('gerenciaRelatorioService', function (buscaAPIS
             var not = {id: json.codigo_rastreio, icon: "fa fa-bug  fa-2x", descricao: json.rel_st_descricao, aviso: 'erro', status: 'X',dtInicio:new Date()};
             $scope.userDTO.notificacoes.unshift(not);
         });
+        $scope.userDTO.notificacoesEmExecucao  = $scope.userDTO.notificacoesEmExecucao + 1;
     };
     this.atualizaRelatorios = function ($scope) {
         var limit ;
         if(angular.isUndefined($scope.userDTO.notificacoes)){
             $scope.userDTO.notificacoes = [];
-            limit = 40
+            limit = 60;
         }else{
             limit  = $scope.userDTO.notificacoes.length;
         }
          var dt = new Date();
            dt.setMonth(dt.getMonth() -1);
            var strDT = $filter('date')(dt, " dd/MM/yyyy");
-           console.log('Inside atualizaRelatorios ..');
+//           console.log('Inside atualizaRelatorios ..');
            buscaAPIService.relatorioGET('listar',$scope.userDTO.USU_ST_CODIGO,strDT,'nothing',limit,$scope.userDTO.configLisNet).then(function successCallback(response){
+               $scope.userDTO.notificacoesEmExecucao = 0;
 //               console.log('response.data = '+ JSON.stringify(response.data) );
                var arrayRel = response.data;
                var arrayNotf = [];
@@ -56,6 +58,7 @@ angular.module('lisnet').service('gerenciaRelatorioService', function (buscaAPIS
                        case 'A':
                            icon = 'fa fa-cog fa-spin fa-2x text-danger';
                            aviso = 'em execução' ;
+                           $scope.userDTO.notificacoesEmExecucao ++;
                        break;
                        case 'B':
                            icon = 'fa fa-cloud-download  fa-2x text-info';

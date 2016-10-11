@@ -148,6 +148,7 @@ console.log('construing config , registrando state');
                                         {
                                             files: ['css/plugins/iCheck/custom.css','js/plugins/iCheck/icheck.min.js']
                                         } 
+                                        
                                     ]);
                                 }
                             }

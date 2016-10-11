@@ -122,9 +122,9 @@
                                 <input type="text" class="form-control" 
                                        uib-datepicker-popup="{{estatisticaFaturamento.format}}" 
                                        ng-model="estatisticaFaturamento.dtInicio" 
-                                       ng-change="calcRangeDate(true)"
+                                       ng-change="calcRangeDate()"
                                        is-open="popup.inicio" 
-                                       datepicker-options="dateOptions" 
+                                       datepicker-options="dateOptionsMin" 
                                        ng-required="true" 
                                        close-text="Fechar" 
                                        alt-input-formats="altInputFormats" />
@@ -140,9 +140,9 @@
                                 <input type="text" class="form-control"  
                                        uib-datepicker-popup="{{estatisticaFaturamento.format}}" 
                                        ng-model="estatisticaFaturamento.dtFim"
-                                       ng-change="calcRangeDate(false)"
+                                       ng-change="calcRangeDate()"
                                        is-open="popup.fim" 
-                                       datepicker-options="dateOptions" 
+                                       datepicker-options="dateOptionsMax" 
                                        ng-required="true" 
                                        close-text="Fechar" 
                                        alt-input-formats="altInputFormats" />
@@ -181,7 +181,7 @@
 
                         <hr class="visible-lg-block, hidden-lg" >
                         <div  class="col-lg-4">
-                            <button class="btn btn-block  btn-outline  btn-primary"  ng-click="geraRelatorio()" >Gerar Relatótio</button>
+                            <button class="btn btn-block  btn-outline  btn-primary"   ng-disabled="btnGerador"  ng-click="geraRelatorio()" >Gerar Relatótio</button>
                         </div>
 
 

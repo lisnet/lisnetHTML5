@@ -36,7 +36,7 @@ angular.module('lisnet').service("buscaAPIService",function ($http){
                 url = url+'?dbname='+configLisNet.defaultDB+'&usu_st_codigo='+usu_st_codigo+'&rel_dt_consulta='+rel_dt_consulta+'&limit='+max;
                 break;
         }
-        console.log('url = '+url);
+//        console.log('url = '+url);
         return $http({method : 'GET',url : url,
             headers : {
                 'Content-Type' : 'application/x-www-form-urlencoded',
@@ -178,7 +178,7 @@ angular.module('lisnet').service("buscaAPIService",function ($http){
 //        console.log("buscaUnidades = " + JSON.stringify(configLisNet)   + "  ...........");
         var params = '?login=' + login + '&dbname='+configLisNet.defaultDB;
         var url = configLisNet.baseUrl +'/buscaUnidades' + params;
-        console.log('url construida = '+url);
+//        console.log('url construida = '+url);
         return $http({method : 'GET',url : url,
             headers : {
                 'Content-Type' : 'application/x-www-form-urlencoded',
@@ -284,7 +284,7 @@ angular.module('lisnet').service("buscaAPIService",function ($http){
     this.buscaTodosAtendimentoAjax = function (req_in_codigo, req_st_senha, configLisNet){
         var params = '?chave_1=' + req_in_codigo + '&chave_2=' + req_st_senha + '&dbname=' + configLisNet.defaultDB;
         var url = configLisNet.baseUrl + '/buscaTodosAtendimentos' + params;
-                console.log("buscaTodosAtendimentoAjax URL = " + url );
+//                console.log("buscaTodosAtendimentoAjax URL = " + url );
         return $http({method : 'GET',url : url,
             headers : {
                 'Content-Type' : 'application/x-www-form-urlencoded',

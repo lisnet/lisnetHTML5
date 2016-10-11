@@ -146,6 +146,15 @@ angular.module('lisnet')
                                 closeOnConfirm: false,
                                 closeOnCancel: false
                             },function () { SweetAlert.swal("Ok!"); });
+                        },sweetLoading : function () {
+                            SweetAlert.swal({
+                                
+                                title: 'loading',
+                                type: "warning",
+                                template:'<h1>Test template ...</h1>',
+                                confirmButtonColor: 'red',
+                                confirmButtonText: 'ok'
+                            });
                         }
 
                 };

@@ -8,12 +8,12 @@
  Author     : eros
  */
 
-function estatisticaFaturamento($scope, buscaAPIService, $stateParams, $localStorage, sairDoSistemaService, notificacaoProvider, $window, gerenciaRelatorioService, $filter) {
+function estatisticaFaturamento($scope, buscaAPIService, $stateParams, $localStorage, sairDoSistemaService, notificacaoProvider, $window, gerenciaRelatorioService, $filter ,$timeout, $uibModal) {
 
     console.log('Inicializando estatisticaFaturamento');
 
     $scope.userDTO = $localStorage.userDTO;
-
+    var rangeInMonths = 1;
 //    if ($stateParams.userDTO) {
 //        console.log('Usando $stateParams');
 //        $scope.userDTO = angular.fromJson($stateParams.userDTO);
@@ -52,39 +52,70 @@ function estatisticaFaturamento($scope, buscaAPIService, $stateParams, $localSto
     maxDate = new Date(myDate.getFullYear(),myDate.getMonth(),myDate.getDate());
     $scope.estatisticaFaturamento = {ordemRelatorio: 'unidade', tipoRelatorio: 'analitico', faturado: true, conferido: true, format: 'dd/MM/yyyy', dtInicio: new Date(), dtFim: new Date(), minDate: minDate,maxDate:maxDate,todasUnidades: true, todosConvenios: true, tipo: 'pdf', unidades: [], convenios: []};
 
-    $scope.calcRangeDate = function (minOrMax){
-//        console.log('calculando range de datas.  minDate antes = '+ $filter('date')($scope.estatisticaFaturamento.minDate, " dd/MM/yyyy"));
-        if(minOrMax){
-            var dt = $scope.estatisticaFaturamento.dtFim;
-            $scope.estatisticaFaturamento.maxDate = new Date( dt.getFullYear() ,dt.getMonth() + 2,dt.getDate());
-        }else{
-            var dt = $scope.estatisticaFaturamento.dtFim;
-            $scope.estatisticaFaturamento.minDate = new Date( dt.getFullYear() ,dt.getMonth() - 2,dt.getDate());
+    $scope.calcRangeDate = function (){
+        var _dtInicio = $scope.estatisticaFaturamento.dtInicio;
+        var _dtFim = $scope.estatisticaFaturamento.dtFim;
+        
+        if(_dtFim < _dtInicio){
+            $scope.estatisticaFaturamento.dtInicio =  new Date( _dtFim.getFullYear() ,_dtFim.getMonth() ,_dtFim.getDate());
         }
-         
-         
-//       console.log('calculando range de datas.  minDate depois = '+ $filter('date')($scope.estatisticaFaturamento.minDate, " dd/MM/yyyy"));
-        if($scope.estatisticaFaturamento.minDate > $scope.estatisticaFaturamento.dtInicio){
-            $scope.estatisticaFaturamento.dtInicio = $scope.estatisticaFaturamento.minDate; 
+        
+        if(_dtInicio >= $scope.estatisticaFaturamento.minDate){
+            $scope.estatisticaFaturamento.minDate = new Date( _dtFim.getFullYear() ,_dtFim.getMonth() - rangeInMonths ,_dtFim.getDate());
+            $scope.estatisticaFaturamento.maxDate = new Date( _dtInicio.getFullYear() ,_dtInicio.getMonth() + rangeInMonths ,_dtInicio.getDate());
+        }else if(_dtFim <= $scope.estatisticaFaturamento.maxDate){
+            $scope.estatisticaFaturamento.maxDate = new Date( _dtInicio.getFullYear() ,_dtInicio.getMonth() + rangeInMonths ,_dtInicio.getDate());
+            $scope.estatisticaFaturamento.minDate = new Date( _dtFim.getFullYear() ,_dtFim.getMonth() - rangeInMonths ,_dtFim.getDate());
         }
+        
+//        if(minOrMax){
+//            $scope.estatisticaFaturamento.maxDate = new Date( _dtMin.getFullYear() ,_dtMin.getMonth() + rangeInMonths ,_dtMin.getDate());
+//        }else{
+//            $scope.estatisticaFaturamento.minDate = new Date( _dtMax.getFullYear() ,_dtMax.getMonth() - rangeInMonths ,_dtMax.getDate());
+//        }
+         
+//        if($scope.estatisticaFaturamento.minDate > $scope.estatisticaFaturamento.dtInicio){
+//            $scope.estatisticaFaturamento.dtInicio = $scope.estatisticaFaturamento.minDate; 
+//        }
+//        if($scope.estatisticaFaturamento.maxDate <  $scope.estatisticaFaturamento.dtFim){
+//            $scope.estatisticaFaturamento.dtFim = $scope.estatisticaFaturamento.maxDate; 
+//        }
+        
 //        console.log('calculando range de datas.  minDate fim = '+ $filter('date')($scope.estatisticaFaturamento.minDate, " dd/MM/yyyy"));
-        $scope.dateOptions = {
+        $scope.dateOptionsMin = {
             dateDisabled: false,
             formatYear: 'yy',
-            maxDate: $scope.estatisticaFaturamento.maxDate,
+            maxDate: $scope.estatisticaFaturamento.dtFim,
             minDate: $scope.estatisticaFaturamento.minDate,
             startingDay: 1
         };
+        
+         $scope.dateOptionsMax = {
+            dateDisabled: false,
+            formatYear: 'yy',
+            maxDate: $scope.estatisticaFaturamento.maxDate,
+            minDate: $scope.estatisticaFaturamento.dtInicio,
+            startingDay: 1
+        };
+        
      };
     
     $scope.altInputFormats = ['MM/dd/yyyy'];
-    $scope.dateOptions = {
-        dateDisabled: false,
-        formatYear: 'yy',
-        maxDate: $scope.estatisticaFaturamento.maxDate,
-        minDate: $scope.estatisticaFaturamento.minDate,
-        startingDay: 1
-    };
+    $scope.dateOptionsMin = {
+            dateDisabled: false,
+            formatYear: 'yy',
+            maxDate: $scope.estatisticaFaturamento.dtFim,
+            minDate: $scope.estatisticaFaturamento.minDate,
+            startingDay: 1
+        };
+        
+         $scope.dateOptionsMax = {
+            dateDisabled: false,
+            formatYear: 'yy',
+            maxDate: $scope.estatisticaFaturamento.maxDate,
+            minDate: $scope.estatisticaFaturamento.dtInicio,
+            startingDay: 1
+        };
 
     $scope.popup = {
         inicio: false, fim: false
@@ -110,7 +141,7 @@ function estatisticaFaturamento($scope, buscaAPIService, $stateParams, $localSto
                     notificacaoProvider.sweetDialog("Aviso", "Unidade " + uniStCodigo + " jáf foi incluida", 'info', 'orange', 'X');
                 } else {
                     $scope.estatisticaFaturamento.unidades.push(uni);
-                    console.log('achei carai ' + JSON.stringify(uni));
+//                    console.log('achei carai ' + JSON.stringify(uni));
                     delete $scope.uniStCodigo;
                     break;
                 }
@@ -128,7 +159,7 @@ function estatisticaFaturamento($scope, buscaAPIService, $stateParams, $localSto
                         notificacaoProvider.sweetDialog("Aviso", "Convênio " + conStCodigo + " jáf foi incluido", 'info', 'orange', 'X');
                     } else {
                         $scope.estatisticaFaturamento.convenios.push(con);
-                        console.log('achei carai ' + JSON.stringify(con));
+//                        console.log('achei carai ' + JSON.stringify(con));
                         delete $scope.conStCodigo;
                         break;
                     }
@@ -145,8 +176,26 @@ function estatisticaFaturamento($scope, buscaAPIService, $stateParams, $localSto
         achaConvenio(conStCodigo, $scope.estatisticaFaturamento.convenios, true);
     };
 
+
+    
+
     $scope.geraRelatorio = function () {
-        var inicio = $scope.estatisticaFaturamento.dtInicio;
+        if(liberaGerador()){
+            notificacaoProvider.sweetDialog("Aviso", "Você  não possue Unidades ou Convênios para realizar o relatório , favor entrar em contado com a G.I.", 'info', 'orange', 'X');
+            $scope.btnGerador = true;
+        }else{
+            
+                var modalInstance = $uibModal.open({
+                    templateUrl: 'views/modal_loading.html',
+                    controller: ModalInstanceCtrl
+                });
+
+            $timeout(function () {
+//                console.log('timeout is out');
+                     modalInstance.dismiss('cancel');
+            }, 9000);
+            
+              var inicio = $scope.estatisticaFaturamento.dtInicio;
         var fim = $scope.estatisticaFaturamento.dtFim;
         var json = {
             "mod_st_codigo": "999",
@@ -198,15 +247,19 @@ function estatisticaFaturamento($scope, buscaAPIService, $stateParams, $localSto
             }
         }
 
-
         gerenciaRelatorioService.gerarRelatorio(json, $scope);
-//       var notificacao = {link:"http://www.google.com", icon:"fa-file-pdf-o",descricao:'Relatório de Faturamento',aviso:"2(s) minutos atrás"};  
-//       if($scope.userDTO.notificacoes){
-//           $scope.userDTO.notificacoes.push(notificacao);
-//       }else{
-//           $scope.userDTO.notificacoes =[];
-//           $scope.userDTO.notificacoes.push(notificacao);
-//       }
+        
+        }
+      
+
+    };
+
+     function liberaGerador(){
+        if($scope.userDTO.unidades && $scope.userDTO.unidades.length > 0 && $scope.userDTO.convenios && $scope.userDTO.convenios.length > 0){
+            return false;
+        }else{
+            return  true;
+        }
     };
 
     function achaUnidade(uniStCodigo, arrayUnidades, remover) {
