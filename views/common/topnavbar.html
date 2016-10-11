@@ -80,36 +80,46 @@
                 </ul>
             </li>-->
             
-            <li uib-dropdown>
+    <li uib-dropdown    ng-click="resumeNofificacao()" >
                 <a class="count-info" href uib-dropdown-toggle>
-                    <i class="fa fa-bell"></i> <span class="label label-primary">{{userDTO.notificacoes.length}}</span>
+                    <i class="fa fa-bell  "  ></i> <span class="label label-primary">{{userDTO.notificacoes.length}}</span>
                 </a>
                 <ul class="dropdown-alerts" uib-dropdown-menu>
                     
                     
-                    <span  ng-repeat="n in userDTO.notificacoes" >
+                    <span  ng-repeat="n in notificacoesResumida" >
                         <li >
-                        <span  id="notificacaoLink"  >
+                        <span >
                             <div>
                                 <!--<i   ng-show="{{n.status  != 'B'}}"  class="{{n.icon}}}"   ></i>-->
-                                <i    ng-click="openRelatorio(n.status,n.id)"  class="{{n.icon}}}"   ></i>
+                                <i    ng-click="openRelatorio(n.status,n.id)" ng-cloak class="{{n.icon}}}"   ></i>
                                 {{n.descricao}}
-                                <span class="pull-right text-muted small ">{{n.aviso}} - {{n.dtInicio | date:  'dd/MM/yyyy'}}</span>
+                                <span class="pull-right text-muted small  ">{{n.aviso}} - {{n.dtInicio | date:  'dd/MM/yyyy'}}</span>
                             </div>
                         </span>
                     </li>
                     <br>
                     <li class="divider"></li>
                     </span>
-                    
+                   
+                    <li  style="background-color: lightblue">
+                        <div class="text-center link-block">
+                            <a ui-sref="miscellaneous.notify">
+                                <strong>Veja todas as notificações.</strong>
+                                <i class="fa fa-angle-right  "></i>
+                                <i class="fa fa-angle-right  "></i>
+                            </a>
+                        </div>
+                    </li>
  
                 </ul>
             </li>
-            <li>
+            <li    style="padding-left: 15px;"  class="pull-right" >
                 <a    ng-click="logOut()" >
-                    <i style="color: red;"  class="fa fa-sign-out  "   ></i><strong style="color: red;"  >Sair</strong> 
+                    <i style="color: red;"  class="fa fa-sign-out "   ></i><strong style="color: red;"  >Sair</strong> 
                 </a>
             </li>
+            
 
         </ul>
 

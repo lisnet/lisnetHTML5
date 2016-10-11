@@ -26,13 +26,13 @@ function estatisticaFaturamento($scope, buscaAPIService, $stateParams, $localSto
         $window.open('index.html', '_self');
     }
 
-    buscaAPIService.buscaUnidades($scope.userDTO.USU_ST_CODIGO, $scope.userDTO.configLisNet).then(function sucessCallBack(response) {
-        $scope.userDTO.unidades = response.data;
-    });
-
-    buscaAPIService.buscaConvenios($scope.userDTO.USU_ST_CODIGO, $scope.userDTO.configLisNet).then(function sucessCallBack(response) {
-        $scope.userDTO.convenios = response.data;
-    });
+//    buscaAPIService.buscaUnidades($scope.userDTO.USU_ST_CODIGO, $scope.userDTO.configLisNet).then(function sucessCallBack(response) {
+//        $scope.userDTO.unidades = response.data;
+//    });
+//
+//    buscaAPIService.buscaConvenios($scope.userDTO.USU_ST_CODIGO, $scope.userDTO.configLisNet).then(function sucessCallBack(response) {
+//        $scope.userDTO.convenios = response.data;
+//    });
 
 
 
@@ -52,17 +52,29 @@ function estatisticaFaturamento($scope, buscaAPIService, $stateParams, $localSto
     maxDate = new Date(myDate.getFullYear(),myDate.getMonth(),myDate.getDate());
     $scope.estatisticaFaturamento = {ordemRelatorio: 'unidade', tipoRelatorio: 'analitico', faturado: true, conferido: true, format: 'dd/MM/yyyy', dtInicio: new Date(), dtFim: new Date(), minDate: minDate,maxDate:maxDate,todasUnidades: true, todosConvenios: true, tipo: 'pdf', unidades: [], convenios: []};
 
-    $scope.calcRangeDate = function (){
-        console.log('calculando range de datas.');
-         var dt = $scope.estatisticaFaturamento.dtFim;
-         $scope.estatisticaFaturamento.minDate = new Date(
-                dt.getFullYear() ,
-                dt.getMonth() - 2,
-                dt.getDate());
-
+    $scope.calcRangeDate = function (minOrMax){
+//        console.log('calculando range de datas.  minDate antes = '+ $filter('date')($scope.estatisticaFaturamento.minDate, " dd/MM/yyyy"));
+        if(minOrMax){
+            var dt = $scope.estatisticaFaturamento.dtFim;
+            $scope.estatisticaFaturamento.maxDate = new Date( dt.getFullYear() ,dt.getMonth() + 2,dt.getDate());
+        }else{
+            var dt = $scope.estatisticaFaturamento.dtFim;
+            $scope.estatisticaFaturamento.minDate = new Date( dt.getFullYear() ,dt.getMonth() - 2,dt.getDate());
+        }
+         
+         
+//       console.log('calculando range de datas.  minDate depois = '+ $filter('date')($scope.estatisticaFaturamento.minDate, " dd/MM/yyyy"));
         if($scope.estatisticaFaturamento.minDate > $scope.estatisticaFaturamento.dtInicio){
             $scope.estatisticaFaturamento.dtInicio = $scope.estatisticaFaturamento.minDate; 
         }
+//        console.log('calculando range de datas.  minDate fim = '+ $filter('date')($scope.estatisticaFaturamento.minDate, " dd/MM/yyyy"));
+        $scope.dateOptions = {
+            dateDisabled: false,
+            formatYear: 'yy',
+            maxDate: $scope.estatisticaFaturamento.maxDate,
+            minDate: $scope.estatisticaFaturamento.minDate,
+            startingDay: 1
+        };
      };
     
     $scope.altInputFormats = ['MM/dd/yyyy'];

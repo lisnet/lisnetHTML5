@@ -1,0 +1,152 @@
+<!-- Wrapper-->
+<div id="wrapper"  ng-controller="loginFunction"  ng-cloak >
+
+<!-- Navigation -->
+<div ng-include="'views/common/navigation.html'"></div>
+
+<!-- Page wraper -->
+<!-- ng-class with current state name give you the ability to extended customization your view -->
+<div id="page-wrapper" class="gray-bg {{$state.current.name}}">
+
+<!-- Page wrapper -->
+<div ng-include="'views/common/topnavbar.html'"></div>
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-9">
+        <h2>Widgets</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a  ui-sref="widgets">Home</a>
+            </li>
+            <li class="active">
+                <strong>Widgets</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+<div class="row">
+    <div class="col-lg-3">
+        <div class="widget style1">
+            <div class="row">
+                <div class="col-xs-4 text-center">
+                    <i class="fa fa-home fa-5x"></i>
+                </div>
+                <div class="col-xs-8 text-right">
+                    <span> ... </span>
+
+                    <h1 class="font-bold ">{{userDTO.configLisNet.defaultDB.toUpperCase()}}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="widget style1 navy-bg">
+            <div class="row">
+                <div class="col-xs-4">
+                    <i class="fa fa-desktop fa-5x"></i>
+                </div>
+                <div class="col-xs-8 text-right">
+                    <p><span>Navegador: {{userDTO.deviceDetector.browser}} </span></p>
+                    <p><span>Versão: {{userDTO.deviceDetector.browser_version}} </span></p>
+                    <p><span>Sistema: {{userDTO.deviceDetector.os}} </span></p>
+                    
+                    <!--<h2 class="font-bold">26'C</h2>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="widget style1 lazur-bg">
+            <div class="row">
+                <div class="col-xs-4">
+                    <i class="fa fa-university fa-5x"></i>
+                </div>
+                <div class="col-xs-8 text-right">
+                    <span> Unidades </span>
+
+                    <h2 class="font-bold">{{userDTO.unidades.length}}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="widget style1 yellow-bg">
+            <div class="row">
+                <div class="col-xs-4">
+                    <i class="fa fa-plus-square fa-5x"></i>
+                </div>
+                <div class="col-xs-8 text-right">
+                    <span> Convẽnios </span>
+
+                    <h2 class="font-bold">{{userDTO.convenios.length}}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+<div class="row">
+    <div class="col-lg-4">
+        <div class="widget-head-color-box navy-bg p-lg text-center">
+            <div class="m-b-md">
+                <h2 class="font-bold no-margins">
+                    {{userDTO.USU_ST_NOME}}
+                </h2>
+                <!--<small>{{userDTO.USU_ST_CODIGO}}</small>-->
+            </div>
+            <img src="img/ADMIN.jpg"   height="90"  width="90" class="img-circle circle-border m-b-md" alt="profile">
+
+            <div>
+                <span>{{userDTO.USU_ST_EMAIL}}</span> |
+                <span>{{userDTO.USU_ST_NOME}}</span> |
+                <span>{{userDTO.USU_ST_CODIGO}}</span>
+            </div>
+        </div>
+        
+    </div>
+    
+    <div class="col-lg-4">
+        
+        <div class="widget red-bg p-lg text-center">
+            <div class="m-b-md">
+                <i class="fa fa-bell fa-4x"></i>
+
+                <h1 class="m-xs">{{userDTO.notificacoes.length}}</h1>
+
+                <h3 class="font-bold no-margins">
+                    Notificações
+                </h3>
+                <small>.</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="widget yellow-bg p-lg text-center">
+            <div class="m-b-md">
+                <i class="fa fa-thumbs-up fa-4x"></i>
+
+                  <h1 class="m-xs">{{userDTO.dtLogon}} </h1>
+
+                <h3 class="font-bold no-margins">
+                    Data & hora de login no sistema
+                </h3>
+<!--                <small>amount</small>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+ 
+
+</div>
+
+<!-- Footer -->
+<div ng-include="'views/common/footer.html'"></div>
+
+</div>
+<!-- End page wrapper-->
+
+</div>
+<!-- End wrapper-->

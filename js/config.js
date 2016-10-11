@@ -20,6 +20,44 @@ console.log('construing config , registrando state');
     });
  
     $stateProvider
+    .state('widgets', {
+            url: "/widgets",
+            templateUrl: "views/widgets_lisnet.html",
+            data: { pageTitle: 'Widhets' },
+            resolve: {
+                loadPlugin: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        {
+                            serie: true,
+                            name: 'angular-flot',
+                            files: [ 'js/plugins/flot/jquery.flot.js', 'js/plugins/flot/jquery.flot.time.js', 'js/plugins/flot/jquery.flot.tooltip.min.js', 'js/plugins/flot/jquery.flot.spline.js', 'js/plugins/flot/jquery.flot.resize.js', 'js/plugins/flot/jquery.flot.pie.js', 'js/plugins/flot/curvedLines.js', 'js/plugins/flot/angular-flot.js', ]
+                        },
+                        {
+                            files: ['css/plugins/iCheck/custom.css','js/plugins/iCheck/icheck.min.js']
+                        },
+                        {
+                            serie: true,
+                            files: ['js/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js', 'js/plugins/jvectormap/jquery-jvectormap-2.0.2.css']
+                        },
+                        {
+                            serie: true,
+                            files: ['js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js']
+                        },
+                        {
+                            name: 'ui.checkbox',
+                            files: ['js/bootstrap/angular-bootstrap-checkbox.js']
+                        }, 
+                        {
+                           files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
+                        },
+                        {
+                           name: 'oitozero.ngSweetAlert',
+                           files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
+                        }
+                    ]);
+                }
+            }
+        })
         .state('login', {
             url: "/login",
             templateUrl: "views/login.html",

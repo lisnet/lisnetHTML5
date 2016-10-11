@@ -21,8 +21,9 @@
                         <li><a   ng-click="logOut()" >Sair</a></li>
                     </ul>  
                 </div>
-                <div class="logo-element">
-                    LISNET
+                <div class="logo-element"   >
+                    <a ui-sref="widgets" >LISNET</a>
+                    
                 </div>
             </li>
 <!--            <li ng-class="{active: $state.includes('dashboards')}">
@@ -37,6 +38,11 @@
                     <li ui-sref-active="active"><a ui-sref="dashboards.dashboard_5">{{ 'DASHBOARD' | translate }} v.5 </a></li>
                 </ul>
             </li>-->
+
+
+          <li ui-sref-active="active">
+                <a ui-sref="widgets"><i class="fa fa-flask"></i> <span class="nav-label">{{ 'WIDGETS' | translate }}</span></a>
+            </li>
             
             <li  ng-repeat="p in  userDTO.perfil"  ng-class="{active: $state.includes(p.MOD_ST_CODIGO)}"  >
                 <a href="index.html"><i class="{{voltaLogo(p.MOD_ST_CODIGO)}}"></i> <span class="nav-label">{{p.MOD_ST_DESCRICAO}}</span> <span class="fa arrow"></span></a>

@@ -10,8 +10,14 @@
         "uib-dropdown": {
             "context": "div"
         },
+        "page-title": {
+            "context": "title"
+        },
         "uib-dropdown-toggle": {
             "context": "a"
+        },
+        "ui-view": {
+            "context": "div"
         },
         "side-navigation": {
             "context": "ul"

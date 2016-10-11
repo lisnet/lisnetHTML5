@@ -65,25 +65,32 @@ angular.module('lisnet').service('gerenciaRelatorioService', function (buscaAPIS
                            icon = 'fa fa-bug  fa-3x';
                            aviso = 'erro' ;
                        break;
+                       default :
+                           icon = 'fa fa-bug  fa-3x';
+                           aviso = 'erro' ;
                    }
-                   
                     var not = {id: rel.REL_IN_CODIGO, icon: icon, descricao: rel.REL_ST_DESCRICAO, aviso: aviso, status: rel.REL_CH_STATUS,dtInicio:rel.REL_DT_CONSULTA};
                     arrayNotf.push(not);
                }
                if($scope.userDTO.notificacoes.length !== arrayNotf.length){
-                   console.log('Tamanho eh diferente...   $scope.userDTO.notificacoes.length: '+$scope.userDTO.notificacoes.length+"        arrayNotf.length: "+arrayNotf.length);
+//                   console.log('Tamanho eh diferente...   $scope.userDTO.notificacoes.length: '+$scope.userDTO.notificacoes.length+"        arrayNotf.length: "+arrayNotf.length);
                    $scope.userDTO.notificacoes = arrayNotf;
                }else{
                    for(var i = 0 ; i < arrayNotf.length ; i ++){
                        var not = arrayNotf[i];
                        var not2 =$scope.userDTO.notificacoes[i];
                        if(not.codigo_rastreio === not2.codigo_rastreio){
-                           console.log('Inside loop ');
+//                           console.log('Inside loop ');
                            if(not.status !== not2.status){
                                console.log('mudando status ..');
                                not2.status = not.status;
                                not2.aviso = not.aviso;
-                               not2.icon = 'fa fa-cloud-download  fa-2x text-info';
+                               if(not.status === 'B'){
+                                not2.icon = 'fa fa-cloud-download  fa-2x text-info';
+                               }else{
+                                   not2.icon = 'fa fa-bug  fa-3x';
+                               }
+                               
                            }
                        }
                    }

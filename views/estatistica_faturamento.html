@@ -18,119 +18,111 @@
     </div>
 </div>
 
-<div class="wrapper wrapper-content animated fadeInRight"   ng-controller="estatisticaFaturamento"  >
+<div class="wrapper wrapper-content animated fadeInRight"   ng-controller="estatisticaFaturamento"  ng-cloak  >
     <div class="row">
-        <div class="col-lg-7">
+        <div class="col-lg-6">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    
-                                    <div class="col-lg-3 b-r">
-                                        <h5  >Escolha a ordem do relatório.</h5>
-                                    </div>
-                                      <div class="col-lg-3 b-r">
-                                          <label class="col-lg-10 control-label">Unidade</label>
-                                          <input class="col-lg-2 checkbox-inline"   icheck type="radio" name="radioUnidade" ng-model="estatisticaFaturamento.ordemRelatorio"  value="unidade"  > 
-                                      </div>
-                                     
-                                      <div class="col-lg-3">
-                                          <label class="col-lg-10 control-label">Convênio</label>
-                                          <input class="col-lg-2  checkbox-inline"   icheck type="radio" name="radioConvenio" ng-model="estatisticaFaturamento.ordemRelatorio"  value="convenio"  > 
-                                      </div>
-                        
-                    
+                    <h5  >Escolha a ordem do relatório.</h5>
                     <!--<div ibox-tools></div>-->
                 </div>
                 <div class="ibox-content">
                     <div class="row">
-                        <div class="col-sm-6 b-r">
-                            
-                            <!--<h3 class="m-t-none m-b">Sign in</h3>-->
 
-<!--                            <p>Escolha a ordem do relatório.</p>-->
 
-                            <div role="form">
-                                
-                                 <div class="form-group">
-                                     <label class="col-lg-2 control-label">Analítico</label>
-                                      <div class="col-lg-4  b-r">
-                                          <input class="checkbox-inline"  icheck type="radio" name="radioTest3" ng-model="estatisticaFaturamento.tipoRelatorio"  value="analitico"  >
-                                      </div>
-                                     <label class="col-lg-2 control-label">Sintético</label>
-                                      <div class="col-lg-4">
-                                          <input class="checkbox-inline"   icheck type="radio" name="radioTest3" ng-model="estatisticaFaturamento.tipoRelatorio" value="sintetico" >
-                                      </div>
-                                     
-                                </div>
-                                
-                                <div class="form-group"  style="padding-top: 15px;" >
-                                    
-                                    <div class="form-group" >
-                                        
-                                        <div class="col-lg-6">
-                                            <input icheck type="checkbox" ng-model="estatisticaFaturamento.faturado">
-                                            <label   >Faturado</label>
-                                        </div>
-                                        
-                                        
-                                        <div class="col-lg-6">
-                                            <input icheck type="checkbox" ng-model="estatisticaFaturamento.conferido">
-                                            <label  >Conferido</label>
-                                        </div>
-                                        
-                                    </div>
-                        
-                                </div>
-                                
-                                
-                            </div>
+
+                        <div class="col-lg-3">
+                            <label class="control-label">Unidade</label>
+                            <input class="col-lg-6 checkbox-inline"   disabled  icheck type="radio" name="radioUnidade" ng-model="estatisticaFaturamento.ordemRelatorio"  value="unidade"  > 
                         </div>
-                        <div class="col-sm-6">
-                            
-                            <div class="col-lg-6 b-r ">
-                                <h4>Busca Unidade</h4>
-                                <div class="col-lg-10" >
-                                    <input type="text" class="form-control" id="inputKey" placeholder="ex: 001"  ng-model="uniStCodigo"    enter-key="buscaUnidade(uniStCodigo)" >
-                                </div>
-                                <button class="col-lg-2  btn btn-primary fa fa-search " ></button>
-                            </div> 
-                            
-                            <div class="col-lg-6">
-                                <h4>Busca Convênio</h4>
-                                <div class="col-lg-10" >
-                                    <input type="text" class="form-control" id="inputValue" placeholder="ex: 228" ng-model="conStCodigo"   enter-key="buscaConvenio(conStCodigo)" >
-                                </div>
-                                <button class="col-lg-2  btn btn-primary  fa fa-search" ></button>
-                            </div> 
 
+                        <div class="col-lg-3 ">
+                            <label class="control-label">Convênio</label>
+                            <input class="col-lg-6  checkbox-inline"   disabled  icheck type="radio" name="radioConvenio" ng-model="estatisticaFaturamento.ordemRelatorio"  value="convenio"  > 
+                        </div>
+                        <hr class="visible-lg-block, hidden-lg" >
+                        <div class="col-lg-3">
+                            <label class="control-label">Analítico</label>
+                            <input class="col-lg-6 checkbox-inline"  disabled  icheck type="radio" name="radioTest3" ng-model="estatisticaFaturamento.tipoRelatorio"  value="analitico"  >
+                        </div>
+                        <div class="col-lg-3">
+                            <label class="control-label"   >Sintético</label>
+                            <input class="col-lg-6 checkbox-inline"  disabled icheck type="radio" name="radioTest3" ng-model="estatisticaFaturamento.tipoRelatorio" value="sintetico" >
+                        </div>
+                        <hr class="visible-xs-block, hidden-xs" >
+                        <hr class="visible-lg-block, hidden-lg" >
+
+
+                        <div class="col-lg-3">
+                            <input icheck type="checkbox" ng-model="estatisticaFaturamento.faturado">
+                            <label   >Faturado</label>
+                        </div>
+
+                        <div class="col-lg-3 ">
+                            <input icheck type="checkbox" ng-model="estatisticaFaturamento.conferido">
+                            <label  >Conferido</label>
+                        </div>
+                        <hr class="visible-lg-block, hidden-lg" >
+                        <div class="col-lg-6">
+                            <input class="checkbox-inline"   disabled  icheck type="checkbox" name="checkPeriodo" ng-model="estatisticaFaturamento.periodo"  >
+                            <label style="padding-left: 5px;" > Por período de fechamento</label>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
-        <div class="col-lg-5">
+
+        <div class="col-lg-6">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Escolha as datas</h5>
+                    <h5>Escolha Unidade e Convênios</h5>
                     <!--<div ibox-tools></div>-->
-                    <div class="col-lg-6">
-                        <input class="checkbox-inline"   icheck type="checkbox" name="checkPeriodo" ng-model="estatisticaFaturamento.periodo"  >
-                        <label style="padding-left: 5px;" > Por período de fechamento</label>
-                    </div>
-                    
                 </div>
                 <div class="ibox-content">
-                    
+
                     <div class="row">
-                    <div class="form" role="form">
-                        
-                        <label  class="col-lg-2" >Inicio:</label>
-                        <div class="col-lg-4">
+                        <div class="col-lg-6  b-r ">
+                            <h4>Busca Unidade</h4>
+                            <div class="col-lg-10" >
+                                <input type="text" class="form-control" id="inputKey" placeholder="ex: 001"  ng-model="uniStCodigo"    enter-key="buscaUnidade(uniStCodigo)" >
+                            </div>
+                            <button class="col-lg-2  btn btn-primary fa fa-search " ></button>
+                        </div>
+
+                        <hr class="visible-lg-block, hidden-lg" >
+
+                        <div class="col-lg-6">
+                            <h4>Busca Convênio</h4>
+                            <div class="col-lg-10" >
+                                <input type="text" class="form-control" id="inputValue" placeholder="ex: 228" ng-model="conStCodigo"   enter-key="buscaConvenio(conStCodigo)" >
+                            </div>
+                            <button class="col-lg-2  btn btn-primary  fa fa-search" ></button>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Escolha as Datas</h5>
+                    <!--<div ibox-tools></div>-->
+                </div>
+                <div class="ibox-content">
+
+                    <div class="row">
+
+
+                        <label  class="col-lg-2" >Data Inicio:</label>
+                        <div class="col-lg-4  b-r ">
                             <p class="input-group">
                                 <input type="text" class="form-control" 
                                        uib-datepicker-popup="{{estatisticaFaturamento.format}}" 
                                        ng-model="estatisticaFaturamento.dtInicio" 
-                                       ng-change="calcRangeDate()"
+                                       ng-change="calcRangeDate(true)"
                                        is-open="popup.inicio" 
                                        datepicker-options="dateOptions" 
                                        ng-required="true" 
@@ -142,13 +134,13 @@
                                 </span>
                             </p>
                         </div>
-                        <label class="col-lg-2" >Fim:</label>
+                        <label class="col-lg-2" >Data Fim:</label>
                         <div class="col-lg-4">
                             <p class="input-group">
                                 <input type="text" class="form-control"  
                                        uib-datepicker-popup="{{estatisticaFaturamento.format}}" 
                                        ng-model="estatisticaFaturamento.dtFim"
-                                       ng-change="calcRangeDate()"
+                                       ng-change="calcRangeDate(false)"
                                        is-open="popup.fim" 
                                        datepicker-options="dateOptions" 
                                        ng-required="true" 
@@ -159,29 +151,51 @@
                                 </span>
                             </p>
                         </div>
-                        
-                        <div>
-                            <div class="col-lg-2 "  style="padding: 0px 0px 0px 0px; margin: 0px 0px 0px 0px ;  height: 27px; ">
-                                <select class="selectpicker form-control "   ng-model="estatisticaFaturamento.tipo"  style=" " >
-                                    <option>pdf</option>
-                                    <option>xlsx</option>
-                                </select>
-                            </div>
-                            <div class="col-lg-10" >
-                                <button class="btn btn-primary btn-sm  "  ng-click="geraRelatorio()" >Gerar Relatótio</button>
-                            </div>
-                        </div>
-                        
-                    </div>    
+
+
                     </div>
-                    
+
                 </div>
             </div>
         </div>
+
+        <div class="col-lg-6">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Gerar Relatótio</h5>
+                    <!--<div ibox-tools></div>-->
+                </div>
+                <div class="ibox-content">
+
+                    <div class="row">
+                        <div class="col-lg-4"  >
+                            <select class="selectpicker form-control "   ng-model="estatisticaFaturamento.tipo"  style=" " >
+                                <option>pdf</option>
+                                <!--<option>xlsx</option>-->
+                            </select>
+                        </div>
+                        <hr class="visible-lg-block, hidden-lg" >
+                        <div  class="col-lg-4">
+                            <button class="btn btn-block  btn-outline  btn-danger"  ng-click="limparRelatorio()" >Limpar</button>
+                        </div>
+
+                        <hr class="visible-lg-block, hidden-lg" >
+                        <div  class="col-lg-4">
+                            <button class="btn btn-block  btn-outline  btn-primary"  ng-click="geraRelatorio()" >Gerar Relatótio</button>
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
     </div>
-    
-    
-    
+
+
+
     <div >
 
         <div class="ibox float-e-margins"  style="margin-bottom: 5px;" >
@@ -196,15 +210,15 @@
             <div id="animation_box"   class="contact-box  animated " style="padding: 0px 0px 0px 0px;  margin: 0px 0px 0px 0px;"  >
                 <a >
                     <div class="clearfix">
-                        {{uni.UNI_ST_CODIGO }} - {{uni.UNI_ST_DESCRICAO}}
+                        {{uni.UNI_ST_CODIGO}} - {{uni.UNI_ST_DESCRICAO}}
                     </div>
                     <i class="fa fa-trash-o animation_select"  ng-click="removerUnidade(uni.UNI_ST_CODIGO)"  data-animation="rubberBand" ></i>
                 </a>
-                
+
             </div>
         </div>  
     </div>
-    
+
     <div >
 
         <div class="ibox float-e-margins">
@@ -219,40 +233,40 @@
             <div id="animation_box"   class="contact-box  animated " style="padding: 0px 0px 0px 0px;  margin: 0px 0px 0px 0px;"  >
                 <a >
                     <div class="clearfix">
-                        {{con.CON_ST_CODIGO }} - {{con.CON_ST_DESCRICAO}}
+                        {{con.CON_ST_CODIGO}} - {{con.CON_ST_DESCRICAO}}
                     </div>
                     <i class="fa fa-trash-o animation_select"  ng-click="removerConvenio(con.CON_ST_CODIGO)"  data-animation="rubberBand" ></i>
                 </a>
-                
+
             </div>
         </div>
     </div>
-    
-    
+
+
     <script>
 
 // This is just for demo demo purpose - animation css local script
-    $(document).ready(function () {
-        $('.animation_select').click(function () {
-            $('#animation_box').removeAttr('class').attr('class', '');
-            var animation = $(this).attr("data-animation");
-            $('#animation_box').addClass('animated');
-            $('#animation_box').addClass(animation);
-            return false;
-        });
-    });
-    
-    $(function() {
-  $("#notificacaoLink").on("click",function(e) {
-    e.preventDefault(); // cancel the link itself
-    $.post(this.href,function(data) {
-        alert(data);
-      $("#someContainer").html(data);
-    });
-  });
-});
+                $(document).ready(function () {
+                    $('.animation_select').click(function () {
+                        $('#animation_box').removeAttr('class').attr('class', '');
+                        var animation = $(this).attr("data-animation");
+                        $('#animation_box').addClass('animated');
+                        $('#animation_box').addClass(animation);
+                        return false;
+                    });
+                });
+
+                $(function () {
+                    $("#notificacaoLink").on("click", function (e) {
+                        e.preventDefault(); // cancel the link itself
+                        $.post(this.href, function (data) {
+                            alert(data);
+                            $("#someContainer").html(data);
+                        });
+                    });
+                });
 
 
-</script>
-    
+    </script>
+
 </div>

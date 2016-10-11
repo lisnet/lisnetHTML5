@@ -1,12 +1,14 @@
 /*
  *  Login
  *  Author: eroskoller
+ *  http://stackoverflow.com/questions/16619740/angular-should-i-use-this-or-scope
+ *  http://stackoverflow.com/questions/24830679/why-do-we-use-rootscope-broadcast-in-angularjs
  *
  */
 
 
 function loginFunction($scope, $rootScope,$state, $location, buscaAPIService, montaUrlLaudoProvider, configLisNet, notificacaoProvider,  deviceDetector,   $timeout,determinaAparelhoProvider,sairDoSistemaService,$localStorage,
-    $sessionStorage,$window,gerenciaRelatorioService,$interval) {
+    $sessionStorage,$window,gerenciaRelatorioService,$interval,$filter) {
     
     
      $scope.killTimer = function() {
@@ -28,6 +30,7 @@ function loginFunction($scope, $rootScope,$state, $location, buscaAPIService, mo
     var intDbLength = 3;
     var intMinimoDelay = 1000;
     var dialogLoading;
+    var qdtNotificacaoResumida = 10;
     deviceDetector.protocol = $location.protocol();
     deviceDetector.url = document.URL;
     deviceDetector.screenHeight = $window.screen.availHeight;
@@ -158,7 +161,7 @@ function loginFunction($scope, $rootScope,$state, $location, buscaAPIService, mo
                                     $scope.userDTO.USU_IN_QTDDIA = retorno.USU_IN_QTDDIA;
                                     console.log('$scope.userDTO.perfilId: '+$scope.userDTO.perfilId);
                                     $localStorage.userDTO = $scope.userDTO;
-                                    determinaAparelhoProvider.isMobile($scope.userDTO.deviceDetector) ? buscaUsuarioMenu(_param1, $scope.userDTO.PUS_ST_CODIGO, ev, 'contrucao.contrucao') : buscaUsuarioMenu(_param1, $scope.userDTO.PUS_ST_CODIGO, ev, 'contrucao.contrucao');
+                                    determinaAparelhoProvider.isMobile($scope.userDTO.deviceDetector) ? buscaUsuarioMenu(_param1, $scope.userDTO.PUS_ST_CODIGO, ev, 'widgets') : buscaUsuarioMenu(_param1, $scope.userDTO.PUS_ST_CODIGO, ev, 'widgets');
                                     
                                     
                                     
@@ -206,6 +209,7 @@ function loginFunction($scope, $rootScope,$state, $location, buscaAPIService, mo
                     $scope.userDTO.perfil = response.data;
                     if ($scope.userDTO && $scope.userDTO.perfil && $scope.userDTO.perfil.length > 0) {
                         $scope.userDTO.status = 'in';
+                        $scope.userDTO.dtLogon = $filter('date')(new Date(), " dd/MM/yyyy  HH:mm");
                         $scope.userDTO.ultimaTela = stateGO;
                         $localStorage.userDTO = $scope.userDTO;
 //                        loopaPerfil($scope.userDTO.perfil);
@@ -224,11 +228,25 @@ function loginFunction($scope, $rootScope,$state, $location, buscaAPIService, mo
                                                             notificacaoProvider.showDialogWarning("Sem conunicação", 'Sem internet ou servidor fora do ar .. ' + response.data, 'Fechar', 'Aviso', ev);}, intMinimoDelay);
 //                    notificacaoProvider.showDialogWarning("Sem conunicação", 'Sem internet ou servidor fora do ar .. ' + response.data, 'Fechar', 'Aviso', ev);
                 });
+                
+                gerenciaRelatorioService.atualizaRelatorios($scope);
+                  buscaAPIService.buscaUnidades($scope.userDTO.USU_ST_CODIGO, $scope.userDTO.configLisNet).then(function sucessCallBack(response) {
+                        $scope.userDTO.unidades = response.data;
+                    });
+
+                    buscaAPIService.buscaConvenios($scope.userDTO.USU_ST_CODIGO, $scope.userDTO.configLisNet).then(function sucessCallBack(response) {
+                        $scope.userDTO.convenios = response.data;
+                         $localStorage.userDTO = $scope.userDTO;
+                    });
+                 
+                
     };
     
     
     
     $scope.stageGO = function (stateGO) {
+//        console.log('Inside stageGO .....');
+//        $scope.userDTO.dtLogon = new Date();
         $scope.userDTO.ultimaTela = stateGO;
         $localStorage.userDTO = $scope.userDTO;
         try{
@@ -290,9 +308,17 @@ $scope.acheiOFDP = function  (msg){
     }else if(msg == '00263'){
         console.log(msg);    
     }
-    
 };
-
+$scope.notificacoesResumida = [];
+$scope.resumeNofificacao = function (){
+    if($scope.userDTO && $scope.userDTO.notificacoes && $scope.userDTO.notificacoes.length < qdtNotificacaoResumida){
+            $scope.notificacoesResumida = $scope.userDTO && $scope.userDTO.notificacoes;
+    }else if($scope.userDTO && $scope.userDTO.notificacoes && $scope.userDTO.notificacoes.length > qdtNotificacaoResumida){
+            $scope.notificacoesResumida =  $scope.userDTO.notificacoes.slice(0,qdtNotificacaoResumida);
+    }else{
+            $scope.notificacoesResumida =  $scope.userDTO.notificacoes;
+    }
+};
     if ($scope.userDTO && $scope.userDTO.status &&  $scope.userDTO.status === 'in') {
         if($scope.userDTO.job){
             $interval.cancel($scope.userDTO.job);
@@ -300,7 +326,7 @@ $scope.acheiOFDP = function  (msg){
         $scope.userDTO.job = $interval(function () {
             console.log('job update relatorio rodando ...');
                 gerenciaRelatorioService.atualizaRelatorios($scope);
-        }, 20000);
+        }, 30000);
     }
 
 
