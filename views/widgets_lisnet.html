@@ -3,27 +3,27 @@
 </div>
 
 <!-- Skin config -->
-<div ng-include="'views/skin-config.html'"></div>
+<!--<div ng-include="'views/skin-config.html'"></div>-->
 
 <!-- Wrapper-->
-<div id="wrapper"  ng-controller="loginFunction"  ng-cloak >
+<!--<div id="wrapper"  ng-controller="loginFunction"  ng-cloak >-->
 
 <!-- Navigation -->
-<div ng-include="'views/common/navigation.html'"></div>
+<!--<div ng-include="'views/common/navigation.html'"></div>-->
 
 <!-- Page wraper -->
 <!-- ng-class with current state name give you the ability to extended customization your view -->
-<div id="page-wrapper" class="gray-bg {{$state.current.name}}">
+<!--<div id="page-wrapper" class="gray-bg {{$state.current.name}}">-->
 
 <!-- Page wrapper -->
-<div ng-include="'views/common/topnavbar.html'"></div>
+<!--<div ng-include="'views/common/topnavbar.html'"></div>-->
 
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-9">
         <h2>Widgets</h2>
         <ol class="breadcrumb">
             <li>
-                <a  ui-sref="widgets">Home</a>
+                <a  ui-sref="widgets.lisnet">Home</a>
             </li>
             <li class="active">
                 <strong>Widgets</strong>
@@ -31,7 +31,7 @@
         </ol>
     </div>
 </div>
-<div class="wrapper wrapper-content animated fadeInRight">
+<div class="wrapper wrapper-content animated fadeInRight"   ng-controller="loginFunction"  ng-cloak  >
 <div class="row">
     <div class="col-lg-3">
         <div class="widget style1">
@@ -155,11 +155,11 @@
 </div>
 
 <!-- Footer -->
-<div ng-include="'views/common/footer.html'"></div>
+<!--<div ng-include="'views/common/footer.html'"></div>
 
-</div>
+</div>-->
 <!-- End page wrapper-->
 
-</div>
+<!--</div>-->
 
 <!-- End wrapper-->

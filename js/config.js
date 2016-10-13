@@ -22,6 +22,10 @@ console.log('construing config , registrando state');
     $stateProvider
      
     .state('widgets', {
+            abstract: true,
+            url: "/widgets",
+            templateUrl: "views/common/content.html"
+        }).state('widgets.lisnet', {
             url: "/widgets/lisnet",
             templateUrl: "views/widgets_lisnet.html",
             data: { pageTitle: 'Widhets' },

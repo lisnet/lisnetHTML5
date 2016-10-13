@@ -22,7 +22,7 @@
                     </ul>  
                 </div>
                 <div class="logo-element"   >
-                    <a ui-sref="widgets" >{{userDTO.cliente.CLI_ST_CODIGO}}</a>
+                    <a ui-sref="widgets.lisnet" >{{userDTO.cliente.CLI_ST_CODIGO}}</a>
                     
                 </div>
             </li>
@@ -41,7 +41,7 @@
 
 
           <li ui-sref-active="active">
-                <a ui-sref="widgets"><i class="fa fa-flask"></i> <span class="nav-label">{{ 'WIDGETS' | translate }}</span></a>
+                <a ui-sref="widgets.lisnet"><i class="fa fa-flask"></i> <span class="nav-label">{{ 'WIDGETS' | translate }}</span></a>
             </li>
             
             <li  ng-repeat="p in  userDTO.perfil"  ng-class="{active: $state.includes(p.MOD_ST_CODIGO)}"  >

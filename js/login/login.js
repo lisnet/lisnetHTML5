@@ -164,7 +164,7 @@ function loginFunction($scope, $rootScope,$state, $location, buscaAPIService, mo
                                     $scope.userDTO.USU_IN_QTDDIA = retorno.USU_IN_QTDDIA;
                                     console.log('$scope.userDTO.perfilId: '+$scope.userDTO.perfilId);
                                     $localStorage.userDTO = $scope.userDTO;
-                                    determinaAparelhoProvider.isMobile($scope.userDTO.deviceDetector) ? buscaUsuarioMenu(_param1, $scope.userDTO.PUS_ST_CODIGO, ev, 'widgets') : buscaUsuarioMenu(_param1, $scope.userDTO.PUS_ST_CODIGO, ev, 'widgets');
+                                    determinaAparelhoProvider.isMobile($scope.userDTO.deviceDetector) ? buscaUsuarioMenu(_param1, $scope.userDTO.PUS_ST_CODIGO, ev, 'widgets.lisnet') : buscaUsuarioMenu(_param1, $scope.userDTO.PUS_ST_CODIGO, ev, 'widgets.lisnet');
                                     
                                     
                                     
