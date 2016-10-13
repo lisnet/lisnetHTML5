@@ -20,8 +20,9 @@ console.log('construing config , registrando state');
     });
  
     $stateProvider
+     
     .state('widgets', {
-            url: "/widgets",
+            url: "/widgets/lisnet",
             templateUrl: "views/widgets_lisnet.html",
             data: { pageTitle: 'Widhets' },
             resolve: {
