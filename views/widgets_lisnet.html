@@ -1,3 +1,7 @@
+<div ng-controller="widgets" >
+    
+</div>
+
 <!-- Wrapper-->
 <div id="wrapper"  ng-controller="loginFunction"  ng-cloak >
 
@@ -33,9 +37,8 @@
                     <i class="fa fa-home fa-5x"></i>
                 </div>
                 <div class="col-xs-8 text-right">
-                    <span> ... </span>
-
-                    <h1 class="font-bold ">{{userDTO.configLisNet.defaultDB.toUpperCase()}}</h1>
+                    <span> {{userDTO.cliente.CLI_ST_DESCRICAO}} </span>
+                    <h1 class="font-bold  text-uppercase  ">{{userDTO.cliente.CLI_ST_CODIGO}}</h1>
                 </div>
             </div>
         </div>
@@ -155,4 +158,5 @@
 <!-- End page wrapper-->
 
 </div>
+
 <!-- End wrapper-->

@@ -12,29 +12,10 @@ function estatisticaFaturamento($scope, buscaAPIService, $stateParams, $localSto
 
     console.log('Inicializando estatisticaFaturamento');
 
+    sairDoSistemaService.validarLogin();
+
     $scope.userDTO = $localStorage.userDTO;
     var rangeInMonths = 1;
-//    if ($stateParams.userDTO) {
-//        console.log('Usando $stateParams');
-//        $scope.userDTO = angular.fromJson($stateParams.userDTO);
-//    } else {
-//        $scope.userDTO = $localStorage.userDTO;
-//    }
-
-    if ($scope.userDTO && $scope.userDTO.status && $scope.userDTO.status === 'out') {
-        sairDoSistemaService.logOut();
-        $window.open('index.html', '_self');
-    }
-
-//    buscaAPIService.buscaUnidades($scope.userDTO.USU_ST_CODIGO, $scope.userDTO.configLisNet).then(function sucessCallBack(response) {
-//        $scope.userDTO.unidades = response.data;
-//    });
-//
-//    buscaAPIService.buscaConvenios($scope.userDTO.USU_ST_CODIGO, $scope.userDTO.configLisNet).then(function sucessCallBack(response) {
-//        $scope.userDTO.convenios = response.data;
-//    });
-
-
 
     console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<    estatisticaFaturamento  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
 

@@ -1,7 +1,7 @@
 <div class="middle-box text-center loginscreen  animated fadeInDown"  ng-controller="loginFunction" >
     <div>
         <div  >
-            <h1 class="logo-name-lisnet"  style="font-size: 110px;" >LISNET</h1>
+            <h1 class="logo-name-lisnet  text-uppercase "  style="font-size: 85px;" >{{userDTO.cliente.CLI_ST_CODIGO}}</h1>
         </div>
         <!--<p>Login in. To see it in action.</p>-->
         
@@ -25,6 +25,7 @@
             <a class="btn btn-sm btn-white btn-block"  ng-click="logOut()"  >Criar conta</a>
         </div>
         <!--{{userDTO}}-->
-        <p class="m-t"> <small>Lisnet &copy;TMInformática</small> </p>
+        <p class="m-t"> <small class="text-capitalize"  >Lisnet &copy;  <a href="http://tminformatica.com.br/"  target="_blank" > TMInformárica </a> </small> | <strong  class="text-justify  text-uppercase" >{{userDTO.cliente.CLI_ST_CODIGO}}</strong> </p>
+        <!--<p class="m-t"> <strong>{{userDTO.cliente.CLI_ST_CODIGO.toUpperCase()}}</strong> </p>-->
     </div>
 </div>
