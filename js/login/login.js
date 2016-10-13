@@ -94,7 +94,8 @@ function loginFunction($scope, $rootScope,$state, $location, buscaAPIService, mo
             $scope.userDTO.configLisNet.url = _url;
             $scope.userDTO.configLisNet.baseUrl = _url;
             $scope.userDTO.imageSrc = "resources/" + $scope.userDTO.configLisNet.defaultDB + "/img/logo_site.png";
-            $scope.userDTO.cliente = montaUrlLaudoProvider.encontraClientePorNome(configLisNet.clientes, $scope.userDTO.configLisNet.defaultDB);
+            //TODO proper load of clients
+//            $scope.userDTO.cliente = montaUrlLaudoProvider.encontraClientePorNome(configLisNet.clientes, $scope.userDTO.configLisNet.defaultDB);
         } else if ($scope.userDTO.deviceDetector.isMobileDevice) { // mobile cordova phonegap
             if (_param1DBName && _param1DBName.length >= intDbLength) {
                 configLisNet.defaultDB = _param1DBName.toLowerCase();
