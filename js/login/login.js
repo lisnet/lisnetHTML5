@@ -59,7 +59,8 @@ function loginFunction($scope, $rootScope,$state, $location, buscaAPIService, mo
                 console.log("userDTO existem e mudando o dbname ...........");
                 configLisNet.defaultDB = _param1DBName.toLowerCase();
                 $scope.userDTO.configLisNet = configLisNet;
-                _url = 'http://' + $scope.userDTO.configLisNet.defaultDB + '.lisnet.com.br/nodedev/lisnet';
+                //TODO tornar mais dinamico
+                _url = 'http://' + $scope.userDTO.configLisNet.defaultDB + '.lisnet.com.br/nodehomolog/lisnet';
                 $scope.userDTO.configLisNet.url = _url;
                 $scope.userDTO.configLisNet.baseUrl = _url;
                 $scope.userDTO.imageSrc = "resources/" + $scope.userDTO.configLisNet.defaultDB + "/img/logo_site.png";
@@ -83,7 +84,7 @@ function loginFunction($scope, $rootScope,$state, $location, buscaAPIService, mo
         $scope.userDTO.deviceDetector = deviceDetector;
 
         if (locationHostSplit[0] && locationHostSplit[0] != 'localhost' && locationHostSplit[0] != '192' && locationHostSplit[0] != '127' && locationHostSplit[0] != 'developer') {
-            _url = $location.protocol() + '://' + location.host + '/nodedev/lisnet';
+            _url = $location.protocol() + '://' + location.host + '/nodehomolog/lisnet';
             if (_param1DBName && _param1DBName.length >= intDbLength) {
                 configLisNet.defaultDB = _param1DBName.toLowerCase();
             } else {
@@ -100,7 +101,7 @@ function loginFunction($scope, $rootScope,$state, $location, buscaAPIService, mo
             }
 
             $scope.userDTO.configLisNet = configLisNet;
-            _url = 'http://' + $scope.userDTO.configLisNet.defaultDB + '.lisnet.com.br/nodedev/lisnet';
+            _url = 'http://' + $scope.userDTO.configLisNet.defaultDB + '.lisnet.com.br/nodehomolog/lisnet';
             $scope.userDTO.configLisNet.url = _url;
             $scope.userDTO.configLisNet.baseUrl = _url;
             $scope.userDTO.imageSrc = "resources/" + $scope.userDTO.configLisNet.defaultDB + "/img/logo_site.png";
