@@ -83,7 +83,7 @@ function loginFunction($scope, $rootScope,$state, $location, buscaAPIService, mo
         $scope.userDTO = {status: 'out', perfilId: 2, dtCriacao: new Date(), ultimaTela: 'login'};
         $scope.userDTO.deviceDetector = deviceDetector;
 
-        if (locationHostSplit[0] && locationHostSplit[0] != 'localhost' && locationHostSplit[0] != '192' && locationHostSplit[0] != '127' && locationHostSplit[0] != 'developer') {
+        if (locationHostSplit[0] && locationHostSplit[0] !== 'localhost' && locationHostSplit[0] !== '192' && locationHostSplit[0] !== '127' && locationHostSplit[0] !== 'developer') {
             _url = $location.protocol() + '://' + location.host + '/nodehomolog/lisnet';
             if (_param1DBName && _param1DBName.length >= intDbLength) {
                 configLisNet.defaultDB = _param1DBName.toLowerCase();
