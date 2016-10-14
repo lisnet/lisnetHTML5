@@ -213,12 +213,21 @@ function loginFunction($scope, $rootScope,$state, $location, buscaAPIService, mo
                         $scope.userDTO.dtLogon = $filter('date')(new Date(), " dd/MM/yyyy  HH:mm");
                         $scope.userDTO.ultimaTela = stateGO;
                         $localStorage.userDTO = $scope.userDTO;
-//                        loopaPerfil($scope.userDTO.perfil);
-//                            console.log(  JSON.stringify($scope.userDTO.perfil , null , 2) );
 
                         $timeout(function () {
                             modalLoading.dismiss('cancel');
                                 $state.go(stateGO, {userDTO: angular.toJson($scope.userDTO)});
+                                 $timeout(function () {
+                                    modalLoading.dismiss('cancel');
+                                      gerenciaRelatorioService.atualizaRelatorios($scope);
+                                      buscaAPIService.buscaUnidades($scope.userDTO.USU_ST_CODIGO, $scope.userDTO.configLisNet).then(function sucessCallBack(response) {
+                                          $scope.userDTO.unidades = response.data;
+                                      });
+                                      buscaAPIService.buscaConvenios($scope.userDTO.USU_ST_CODIGO, $scope.userDTO.configLisNet).then(function sucessCallBack(response) {
+                                              $scope.userDTO.convenios = response.data;
+                                               $localStorage.userDTO = $scope.userDTO;
+                                      });
+                                }, 2000);
                         }, 1500);
                         
                     } else {
@@ -232,15 +241,7 @@ function loginFunction($scope, $rootScope,$state, $location, buscaAPIService, mo
                                     notificacaoProvider.showDialogWarning("Sem conunicação", 'Sem internet ou servidor fora do ar .. ' + response.data, 'Fechar', 'Aviso', ev);}, intMinimoDelay);
                 });
                 
-                gerenciaRelatorioService.atualizaRelatorios($scope);
-                  buscaAPIService.buscaUnidades($scope.userDTO.USU_ST_CODIGO, $scope.userDTO.configLisNet).then(function sucessCallBack(response) {
-                    $scope.userDTO.unidades = response.data;
-                  });
-
-                    buscaAPIService.buscaConvenios($scope.userDTO.USU_ST_CODIGO, $scope.userDTO.configLisNet).then(function sucessCallBack(response) {
-                        $scope.userDTO.convenios = response.data;
-                         $localStorage.userDTO = $scope.userDTO;
-                    });
+              
     };
     
     
