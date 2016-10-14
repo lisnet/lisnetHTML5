@@ -162,7 +162,7 @@ function estatisticaFaturamento($scope, buscaAPIService, $stateParams, $localSto
 
     $scope.geraRelatorio = function () {
         if(liberaGerador()){
-            notificacaoProvider.sweetDialog("Aviso", "Você  não possue Unidades ou Convênios para realizar o relatório , favor entrar em contado com a G.I.", 'info', 'orange', 'X');
+            notificacaoProvider.sweetDialog("Aviso", "Você  não possue Unidades ou Convênios para realizar o relatório , favor entrar em contado com o suporte.", 'info', 'orange', 'X');
             $scope.btnGerador = true;
         }else{
             
@@ -174,7 +174,7 @@ function estatisticaFaturamento($scope, buscaAPIService, $stateParams, $localSto
             $timeout(function () {
 //                console.log('timeout is out');
                      modalInstance.dismiss('cancel');
-            }, 9000);
+            }, 4000);
             
               var inicio = $scope.estatisticaFaturamento.dtInicio;
         var fim = $scope.estatisticaFaturamento.dtFim;

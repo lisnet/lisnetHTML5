@@ -8,7 +8,7 @@
 
 
 function loginFunction($scope, $rootScope,$state, $location, buscaAPIService, montaUrlLaudoProvider, configLisNet, notificacaoProvider,  deviceDetector,   $timeout,determinaAparelhoProvider,sairDoSistemaService,$localStorage,
-    $sessionStorage,$window,gerenciaRelatorioService,$interval,$filter) {
+    $sessionStorage,$window,gerenciaRelatorioService,$interval,$filter,$localStorage) {
     
     
      $scope.killTimer = function() {
@@ -144,6 +144,9 @@ function loginFunction($scope, $rootScope,$state, $location, buscaAPIService, mo
     
     $scope.buscaUser = function (_param1, _param2, ev) {
         if (_param1 && _param2 ) {
+            
+            var modalLoading = notificacaoProvider.modalLoading('Carregando ','Buscando usuário na base, aguarde  ...','loginFunction');
+            
             _param1 = _param1.toUpperCase();
             _param2 = _param2.toUpperCase();
                 
@@ -164,26 +167,21 @@ function loginFunction($scope, $rootScope,$state, $location, buscaAPIService, mo
                                     $scope.userDTO.USU_IN_QTDDIA = retorno.USU_IN_QTDDIA;
                                     console.log('$scope.userDTO.perfilId: '+$scope.userDTO.perfilId);
                                     $localStorage.userDTO = $scope.userDTO;
-                                    determinaAparelhoProvider.isMobile($scope.userDTO.deviceDetector) ? buscaUsuarioMenu(_param1, $scope.userDTO.PUS_ST_CODIGO, ev, 'widgets.lisnet') : buscaUsuarioMenu(_param1, $scope.userDTO.PUS_ST_CODIGO, ev, 'widgets.lisnet');
-                                    
-                                    
-                                    
-                              
+                                    buscaUsuarioMenu(_param1, $scope.userDTO.PUS_ST_CODIGO, ev,modalLoading ,'widgets.lisnet') ;
+
                                 } else {
+                                    modalLoading.dismiss('cancel');
                                     $timeout(function () { 
-//                                        if (!dialogLoading.$$state.status) { $mdDialog.hide(dialogLoading); }
-                                    notificacaoProvider.sweetDialog("Usuário inválido", "Usuário não tem credencias para entrar no sistema, favor contactar o suporte. 2",'warning','red','X');
-                                }, intMinimoDelay);
-                                
+                                        notificacaoProvider.sweetDialog("Usuário inválido", "Usuário não tem credencias para entrar no sistema, favor contactar o suporte. 2",'warning','red','X');
+                                    }, intMinimoDelay);
                                 }
                             }, function errorCallback(response) {
+                                modalLoading.dismiss('cancel');
                                 console.log(response.statusText);
 //                                TODO loading with SweetDialog
                                 $timeout(function () { 
-//                                    if (!dialogLoading.$$state.status) { $mdDialog.hide(dialogLoading); }
-//                                notificacaoProvider.showDialog("Sem acesso a internet", "Aplicativo sem acesso a internet ou Servidor fora do ar   erro =  " + response.data, 'Fechar', 'Aviso', ev);
                                     notificacaoProvider.sweetDialog("Sem acesso a internet", "Aplicativo sem acesso a internet ou Servidor fora do ar   erro =  " + response.data,'warning','red','X');
-                            }
+                                }
                             , intMinimoDelay);
                                 $timeout(function () {}, 1000);
                             });
@@ -206,7 +204,7 @@ function loginFunction($scope, $rootScope,$state, $location, buscaAPIService, mo
         }
     };
 
-    function  buscaUsuarioMenu(login, perfil, ev, stateGO) {
+    function  buscaUsuarioMenu(login, perfil, ev, modalLoading,stateGO) {
         buscaAPIService.buscaUsuarioMenuJSONAjax(login, perfil, $scope.userDTO.configLisNet)
                 .then(function successCallback(response) {
                     $scope.userDTO.perfil = response.data;
@@ -217,32 +215,32 @@ function loginFunction($scope, $rootScope,$state, $location, buscaAPIService, mo
                         $localStorage.userDTO = $scope.userDTO;
 //                        loopaPerfil($scope.userDTO.perfil);
 //                            console.log(  JSON.stringify($scope.userDTO.perfil , null , 2) );
-                        $state.go(stateGO, {userDTO: angular.toJson($scope.userDTO)});
+
+                        $timeout(function () {
+                            modalLoading.dismiss('cancel');
+                                $state.go(stateGO, {userDTO: angular.toJson($scope.userDTO)});
+                        }, 1500);
+                        
                     } else {
-//                        notificacaoProvider.sweetDialog("Usuário não tem credencias", 'Usuário não tem credencias para entrar no sistema, favor contactar o suporte.','info','red','X');
+                        modalLoading.dismiss('cancel');
                         $timeout(function () { 
-//                            if (!dialogLoading.$$state.status) { $mdDialog.hide(dialogLoading); }
                                     notificacaoProvider.sweetDialog("Usuário não tem credencias", 'Usuário não tem credencias para entrar no sistema, favor contactar o suporte.','info','red','X');}, intMinimoDelay);
                     }
                 }, function errorCallback(response) {
-//                    notificacaoProvider.sweetDialog("Sem conunicação", 'Sem internet ou servidor fora do ar .','warning','red','X');
+                    modalLoading.dismiss('cancel');
                         $timeout(function () { 
-//                            if (!dialogLoading.$$state.status) { $mdDialog.hide(dialogLoading); }
-                                                            notificacaoProvider.showDialogWarning("Sem conunicação", 'Sem internet ou servidor fora do ar .. ' + response.data, 'Fechar', 'Aviso', ev);}, intMinimoDelay);
-//                    notificacaoProvider.showDialogWarning("Sem conunicação", 'Sem internet ou servidor fora do ar .. ' + response.data, 'Fechar', 'Aviso', ev);
+                                    notificacaoProvider.showDialogWarning("Sem conunicação", 'Sem internet ou servidor fora do ar .. ' + response.data, 'Fechar', 'Aviso', ev);}, intMinimoDelay);
                 });
                 
                 gerenciaRelatorioService.atualizaRelatorios($scope);
                   buscaAPIService.buscaUnidades($scope.userDTO.USU_ST_CODIGO, $scope.userDTO.configLisNet).then(function sucessCallBack(response) {
-                        $scope.userDTO.unidades = response.data;
-                    });
+                    $scope.userDTO.unidades = response.data;
+                  });
 
                     buscaAPIService.buscaConvenios($scope.userDTO.USU_ST_CODIGO, $scope.userDTO.configLisNet).then(function sucessCallBack(response) {
                         $scope.userDTO.convenios = response.data;
                          $localStorage.userDTO = $scope.userDTO;
                     });
-                 
-                
     };
     
     

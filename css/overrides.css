@@ -23,3 +23,7 @@ and open the template in the editor.
   letter-spacing: -10px;
   margin-bottom: 0;
 }
+
+.modal-loading{
+    top: 180px;
+}
