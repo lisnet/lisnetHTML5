@@ -22,13 +22,13 @@ angular.module('lisnet').service('gerenciaRelatorioService', function (buscaAPIS
             console.log(response.statusText);
             var json = response.data;
 //            console.log(json);
-            var not = {id: json.codigo_rastreio, icon: "fa fa-cog fa-spin fa-2x text-danger", descricao: json.rel_st_descricao, aviso: 'em execução', status: 'A',dtInicio:new Date()};
+            var not = {id: json.codigo_rastreio, icon: "fa fa-cog fa-spin fa-2x text-danger", descricao: json.relatorio_titulo, aviso: 'em execução', status: 'A',dtInicio:new Date()};
             $scope.userDTO.notificacoes.unshift(not);
         }, function errorCallback(response) {
             console.log(response.statusText);
             var dataResponse = response.data;
             var json = response.data;
-            var not = {id: json.codigo_rastreio, icon: "fa fa-bug  fa-2x", descricao: json.rel_st_descricao, aviso: 'erro', status: 'X',dtInicio:new Date()};
+            var not = {id: json.codigo_rastreio, icon: "fa fa-bug  fa-2x", descricao: json.relatorio_titulo, aviso: 'erro', status: 'X',dtInicio:new Date()};
             $scope.userDTO.notificacoes.unshift(not);
         });
         $scope.userDTO.notificacoesEmExecucao  = $scope.userDTO.notificacoesEmExecucao + 1;

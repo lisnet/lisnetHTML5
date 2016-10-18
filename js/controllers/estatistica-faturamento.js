@@ -180,8 +180,6 @@ function estatisticaFaturamento($scope, buscaAPIService, $stateParams, $localSto
         var fim = $scope.estatisticaFaturamento.dtFim;
         var json = {
             "mod_st_codigo": "999",
-            "codigo_relatorio": "RELATORIO_FATURAMENTO_ANALITICO",
-            "rel_st_descricao": "Relátorio de Faturamento Analítico",
             "usu_st_codigo": $scope.userDTO.USU_ST_CODIGO,
             "rel_st_tipoarquivo": "pdf",
             "dbname": "einstein",
@@ -194,6 +192,17 @@ function estatisticaFaturamento($scope, buscaAPIService, $stateParams, $localSto
             }
         };
 
+        if($scope.estatisticaFaturamento.ordemRelatorio === 'unidade'){
+            json.codigo_relatorio =  "RELATORIO_FATURAMENTO_ANALITICO_UNIDADE_CONVENIO";
+            json.relatorio_titulo = "Relatório Analitico Unidade/Convênio";
+            json.relatorio_subtitulo = "Relatório Analitico Unidade/Convênio SubTituto";
+            json.relatorio_descricao = "Relatório Analitico Unidade/Convênio descrição";
+        }else{
+            json.codigo_relatorio =  "RELATORIO_FATURAMENTO_ANALITICO_CONVENIO_UNIDADE";
+            json.relatorio_titulo = "Relatório Analitico Covênio/Unidade";
+            json.relatorio_subtitulo = "Relatório Analitico Covênio/Unidade SubTituto";
+            json.relatorio_descricao = "Relatório Analitico Covênio/Unidade descrição";
+        }
         if ($scope.estatisticaFaturamento.unidades.length === 0) {
             for (var i = 0; i < $scope.userDTO.unidades.length; i++) {
                 var uni = $scope.userDTO.unidades[i];
