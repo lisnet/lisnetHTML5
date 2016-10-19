@@ -20,7 +20,27 @@ console.log('construing config , registrando state');
     });
  
     $stateProvider
-     
+      .state('login', {
+            url: "/login",
+            templateUrl: "views/login.html",
+            data: { pageTitle: 'Login', specialClass: 'gray-bg' }
+            ,resolve: {
+                                loadPlugin: function ($ocLazyLoad) {
+                                    return $ocLazyLoad.load([
+                                        {
+                                            files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
+                                        },
+                                        {
+                                            name: 'oitozero.ngSweetAlert',
+                                            files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
+                                        },
+                                        {
+                                            files: ['css/plugins/iCheck/custom.css','js/plugins/iCheck/icheck.min.js']
+                                        }
+                                    ]);
+                                }
+                            }
+        })
     .state('widgets', {
             abstract: true,
             url: "/widgets",
@@ -51,7 +71,7 @@ console.log('construing config , registrando state');
                         {
                             name: 'ui.checkbox',
                             files: ['js/bootstrap/angular-bootstrap-checkbox.js']
-                        }, 
+                        },
                         {
                            files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
                         },
@@ -62,27 +82,6 @@ console.log('construing config , registrando state');
                     ]);
                 }
             }
-        })
-        .state('login', {
-            url: "/login",
-            templateUrl: "views/login.html",
-            data: { pageTitle: 'Login', specialClass: 'gray-bg' }
-            ,resolve: {
-                                loadPlugin: function ($ocLazyLoad) {
-                                    return $ocLazyLoad.load([
-                                        {
-                                            files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
-                                        },
-                                        {
-                                            name: 'oitozero.ngSweetAlert',
-                                            files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
-                                        },
-                                        {
-                                            files: ['css/plugins/iCheck/custom.css','js/plugins/iCheck/icheck.min.js']
-                                        }
-                                    ]);
-                                }
-                            }
         })
           .state('erro', {
             url: "/erro",
@@ -130,6 +129,42 @@ console.log('construing config , registrando state');
                                 }
                             }
        })
+        .state('controle', {
+            abstract: true,
+            url: "/controle",
+            templateUrl: "views/common/content.html"
+        }).state('controle.notificacoes', {
+            url: "/notificacoes",
+            templateUrl: "views/controle_notificacoes.html",
+            data: { pageTitle: 'Notificações' },
+            resolve: {
+                loadPlugin: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                         {
+                            serie: true,
+                            files: ['js/plugins/dataTables/datatables.min.js','css/plugins/dataTables/datatables.min.css']
+                        },
+                        {
+                            serie: true,
+                            name: 'datatables',
+                            files: ['js/plugins/dataTables/angular-datatables.min.js']
+                        },
+                        {
+                            serie: true,
+                            name: 'datatables.buttons',
+                            files: ['js/plugins/dataTables/angular-datatables.buttons.min.js']
+                        }, 
+                        {
+                           files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
+                        },
+                        {
+                           name: 'oitozero.ngSweetAlert',
+                           files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
+                        }
+                    ]);
+                }
+            }
+        })
          .state('00007', {
             abstract: true,
             url: "/estatisticas",

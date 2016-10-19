@@ -30,7 +30,7 @@ function loginFunction($scope, $rootScope,$state, $location, buscaAPIService, mo
     var intDbLength = 3;
     var intMinimoDelay = 1000;
     var dialogLoading;
-    var qdtNotificacaoResumida = 10;
+    
     deviceDetector.protocol = $location.protocol();
     deviceDetector.url = document.URL;
     deviceDetector.screenHeight = $window.screen.availHeight;
@@ -194,15 +194,6 @@ function loginFunction($scope, $rootScope,$state, $location, buscaAPIService, mo
     };
 
  
-    $scope.openRelatorio = function (status,codigo_rastreio){
-        console.log('Inside openRelatorio codigo_rastreio = '+codigo_rastreio);
-        if(status === 'B'){
-            var url = $scope.userDTO.configLisNet.baseUrl +'/relatorio/download?codigo_rastreio=' +codigo_rastreio+'&dbname='+$scope.userDTO.configLisNet.defaultDB;
-         $window.open(url, '_blank');
-        }else{
-            
-        }
-    };
 
     function  buscaUsuarioMenu(login, perfil, ev, modalLoading,stateGO) {
         buscaAPIService.buscaUsuarioMenuJSONAjax(login, perfil, $scope.userDTO.configLisNet)
@@ -311,18 +302,21 @@ $scope.acheiOFDP = function  (msg){
         console.log(msg);    
     }
 };
-$scope.notificacoesResumida = [];
-$scope.notificacoesEnxecucao = 0;
-$scope.resumeNofificacao = function (){
-    if($scope.userDTO && $scope.userDTO.notificacoes && $scope.userDTO.notificacoes.length < qdtNotificacaoResumida){
-            $scope.notificacoesResumida = $scope.userDTO && $scope.userDTO.notificacoes;
-    }else if($scope.userDTO && $scope.userDTO.notificacoes && $scope.userDTO.notificacoes.length > qdtNotificacaoResumida){
-            $scope.notificacoesResumida =  $scope.userDTO.notificacoes.slice(0,qdtNotificacaoResumida);
-    }else{
-            $scope.notificacoesResumida =  $scope.userDTO.notificacoes;
-    }
+//$scope.notificacoesResumida = [];
+//$scope.notificacoesEnxecucao = 0;
+//$scope.resumeNofificacao = function (){
+//    if($scope.userDTO && $scope.userDTO.notificacoes && $scope.userDTO.notificacoes.length < qdtNotificacaoResumida){
+//            $scope.notificacoesResumida = $scope.userDTO && $scope.userDTO.notificacoes;
+//    }else if($scope.userDTO && $scope.userDTO.notificacoes && $scope.userDTO.notificacoes.length > qdtNotificacaoResumida){
+//            $scope.notificacoesResumida =  $scope.userDTO.notificacoes.slice(0,qdtNotificacaoResumida);
+//    }else{
+//            $scope.notificacoesResumida =  $scope.userDTO.notificacoes;
+//    }
+//  
+//};;
+
+
   
-};
     if ($scope.userDTO && $scope.userDTO.status &&  $scope.userDTO.status === 'in') {
         if($scope.userDTO.job){
             $interval.cancel($scope.userDTO.job);
