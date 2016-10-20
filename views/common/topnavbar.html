@@ -80,7 +80,7 @@
                             </ul>
                         </li>-->
 
-            <li uib-dropdown      ng-click="resumeNofificacao()" >
+            <li uib-dropdown       ng-click="resumeNofificacao()" >
                 <a class="count-info" href uib-dropdown-toggle>
                     <i class="fa fa-bell  "  ></i> <span class="label label-primary">{{userDTO.notificacoes.length}}</span>
                 </a>
@@ -93,7 +93,7 @@
                                 <div>
                                     <!--<i   ng-show="{{n.status  != 'B'}}"  class="{{n.icon}}}"   ></i>-->
                                     <i    ng-click="openRelatorio(n.status, n.id)" ng-cloak class="{{n.icon}}}"   ></i>
-                                    {{n.descricao}}
+                                    {{n.descricao | ellipsis : 22}}
                                     <span class="pull-right text-muted small  ">{{n.aviso}} - {{n.dtInicio| date:  'dd/MM/yyyy'}}</span>
                                 </div>
                             </span>

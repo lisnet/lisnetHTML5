@@ -1,0 +1,123 @@
+<div class="row wrapper border-bottom white-bg page-heading" ng-controller="login" >
+    <div class="col-lg-10">
+        <h2>Consulta de Laudos</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a   ng-click="stageGO('widgets.lisnet')" >Home</a>
+            </li>
+            <li>
+                <a>Consulta</a>
+            </li>
+            <li class="active">
+                <strong>Consulta de Laudos</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2"   >
+
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight"   ng-controller="consultaLaudos"  ng-cloak  >
+    <div class="ibox-content">
+        <div class="row">
+
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5  >Escolha o Filtro.</h5>
+                        <!--<div ibox-tools></div>-->
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-lg-2">
+                            <div>
+                                <select    chosen id="unidade" class="chosen-select form-control "  tabindex="4" ng-model="userDTO.consultalaudo.unidadeId" >
+                                    <option  ng-repeat=" u in userDTO.unidades" >{{u.UNI_ST_CODIGO}}-{{u.UNI_ST_DESCRICAO}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-2 ">
+                            <input   placeholder="Solicitação" type="text"  id="inputTextRequisicao"  class="form-control" size="20" ng-model="userDTO.consultalaudo.requisicao"   enter-key="quemMudouPorUltimo('REQ_ST_CODIGO')  "    >
+                        </div>
+
+                        <div class="col-lg-2">
+                            <input placeholder="Prontuário" type="text" id="inputTextProntuario"  class="form-control" size="20" ng-model="userDTO.consultalaudo.prontuario" enter-key="quemMudouPorUltimo('PAC_ST_PRONTUARIO')" >
+                        </div>
+                        <div class="col-lg-2">
+                            <input placeholder="Código SUS"  type="text" id="inputTextSUS"    class="form-control" size="20"  ng-model="userDTO.consultalaudo.sus" enter-key="quemMudouPorUltimo('PAC_IN_CODSUS')" >
+                        </div>
+                        <div class="col-lg-4">
+                            <input  placeholder="Nome" type="text"  minlength="5"  id="inputTextNOME"   class="form-control" size="40"  ng-model="userDTO.consultalaudo.nome"  enter-key="quemMudouPorUltimo('PAC_ST_NOME')" >
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="ibox float-e-margins">
+
+                    <div class="row">
+
+                        <label  class="col-lg-1" >Data Inicio:</label>
+                        <div class="col-lg-2  b-r ">
+                            <p class="input-group">
+                                <input type="text" class="form-control" 
+                                       uib-datepicker-popup="{{format}}" 
+                                       ng-model="dataPesquisa.dtInicio" 
+                                       ng-change="calcRangeDate(dataPesquisa.dtFim)"
+                                       is-open="popup.inicio" 
+                                       datepicker-options="dateOptions" 
+                                       ng-required="true" 
+                                       close-text="Fechar" 
+                                       alt-input-formats="altInputFormats" />
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" 
+                                            ng-click="openPopInicio()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
+                            </p>
+                        </div>
+                        <label class="col-lg-1" >Data Fim:</label>
+                        <div class="col-lg-2">
+                            <p class="input-group">
+                                <input type="text" class="form-control"  
+                                       uib-datepicker-popup="{{format}}" 
+                                       ng-model="dataPesquisa.dtFim"
+                                       ng-change="calcRangeDate()"
+                                       is-open="popup.fim" 
+                                       datepicker-options="dateOptions" 
+                                       ng-required="true" 
+                                       close-text="Fechar" 
+                                       alt-input-formats="altInputFormats" />
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default  " ng-click="openPopFim()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
+                            </p>
+                        </div>
+                        <div  class="col-lg-4">
+                            <button class="btn btn-block  btn-outline  btn-primary"   ng-disabled="btnGerador"  ng-click="filtrar($event)" >Filtrar</button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+    </div>
+    <script>
+
+    </script>
+
+</div>

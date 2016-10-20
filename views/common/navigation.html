@@ -26,19 +26,6 @@
                     
                 </div>
             </li>
-<!--            <li ng-class="{active: $state.includes('dashboards')}">
-                <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">{{ 'DASHBOARD' | translate }}</span> <span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('dashboards')}">
-                    <li ui-sref-active="active">
-                            <a ui-sref="dashboards.dashboard_1">{{ 'DASHBOARD' | translate }} v.1</a>
-                    </li>
-                    <li ui-sref-active="active"><a ui-sref="dashboards.dashboard_2">{{ 'DASHBOARD' | translate }} v.2</a></li>
-                    <li ui-sref-active="active"><a ui-sref="dashboards.dashboard_3">{{ 'DASHBOARD' | translate }} v.3</a></li>
-                    <li ui-sref-active="active"><a ui-sref="dashboards.dashboard_4_1">{{ 'DASHBOARD' | translate }} v.4</a></li>
-                    <li ui-sref-active="active"><a ui-sref="dashboards.dashboard_5">{{ 'DASHBOARD' | translate }} v.5 </a></li>
-                </ul>
-            </li>-->
-
 
           <li ui-sref-active="active">
                 <a ui-sref="widgets.lisnet"><i class="fa fa-flask"></i> <span class="nav-label">{{ 'WIDGETS' | translate }}</span></a>
@@ -50,7 +37,7 @@
                 <ul class="nav nav-second-level collapse"  ng-class="{in: $state.includes(p.MOD_ST_CODIGO)}"   > 
                     <li ui-sref-active="active" ng-repeat="f in p.telas"    >
                         <a ng-click="stageGO(f.stateComposto)"  class="font-italic text-muted  text-info"  ng-hide="f.telas"  > {{f.MOD_ST_DESCRICAO}}</a>
-                        <a href="index.html"ng-show="f.telas" ><i  class="{{voltaLogo(f.MOD_ST_CODIGO)}}" ></i> {{f.MOD_ST_DESCRICAO}} <span class="fa arrow"></span></a>
+                        <a href="index.html"ng-show="f.telas" ><i  class="{{voltaLogo(f.MOD_ST_CODIGO)}}" ></i> {{f.MOD_ST_DESCRICAO }} <span class="fa arrow"></span></a>
                         <!--{{acheiOFDP(f.stateN)}}-->
                         <ul class="nav nav-thrird-level collapse"    ng-show="f.telas"   >
                             <li ui-sref-active="active" ng-repeat="n in f.telas"   >

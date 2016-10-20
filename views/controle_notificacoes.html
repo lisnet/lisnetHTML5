@@ -39,10 +39,10 @@
                         </thead>
                         <tbody>
                         <tr ng-repeat="n in userDTO.notificacoes">
-                            <td  ><i  ng-controller="notificacaoBarra"    ng-click="openRelatorio(n.status,n.id)"  ng-cloak class="{{n.icon}}}"   ></i><span ng-hide="true" >{{n.icon}}}</span></td>
-                            <td>{{n.descricao}}</td>
-                            <td><span class="pull-right text-muted small  ">{{n.aviso}}</span></td>
-                            <td><span class="pull-right text-muted small  ">{{n.dtInicio | date:  'dd/MM/yyyy HH:mm:ss'}}</span></td>
+                            <td   style="width: 7%;"  class="text-center"  ><i  ng-controller="notificacaoBarra"    ng-click="openRelatorio(n.status,n.id)"  ng-cloak class="{{n.icon}}}"   ></i><span ng-hide="true" >{{n.icon}}}</span></td>
+                            <td>{{n.descricao | ellipsis : qtdNotificacaoDesc }}</td>
+                            <td style="width: 5%"   ><span class="text-center  text-muted small    ">{{n.aviso}}</span></td>
+                            <td  style="width: 8%" ><span class="pull-right text-muted small  ">{{n.dtInicio | date:  'dd/MM/yyyy HH:mm:ss'}}</span></td>
                         </tr>
                         </tbody>
                     </table>

@@ -27,3 +27,7 @@ and open the template in the editor.
 .modal-loading{
     top: 180px;
 }
+
+.navbar-top-links .dropdown-alerts {
+    margin-left: -65px;
+}

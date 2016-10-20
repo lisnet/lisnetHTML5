@@ -15,6 +15,8 @@ function controleNotificacoes($scope,$localStorage,sairDoSistemaService,DTOption
     sairDoSistemaService.validarLogin();
 
     $scope.userDTO = $localStorage.userDTO;
+    $scope.qtdNotificacaoDesc = $scope.userDTO.deviceDetector.isMobileDevice ? 30 : 300;
+
     
 //    $scope.dtOptions = DTOptionsBuilder.newOptions()
 //        .withDOM('<"html5buttons"B>lTfgitp')

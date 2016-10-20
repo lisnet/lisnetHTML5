@@ -8,8 +8,9 @@
 
 
 function login($scope, $rootScope,$state, $location, buscaAPIService, montaUrlLaudoProvider, configLisNet, notificacaoProvider,  deviceDetector,   $timeout,determinaAparelhoProvider,sairDoSistemaService,$localStorage,
-    $sessionStorage,$window,gerenciaRelatorioService,$interval,$filter,$localStorage) {
+    $sessionStorage,$window,gerenciaRelatorioService,$interval,$filter,$localStorage,$state) {
     
+    console.log('Inicializando login');
     
      $scope.killTimer = function() {
           if (angular.isDefined($scope.userDTO.job)) {
@@ -18,9 +19,14 @@ function login($scope, $rootScope,$state, $location, buscaAPIService, montaUrlLa
           }
      };
     
+//   var arrayStateObj =$state.get();
    
+//   for(i in arrayStateObj){
+//       arrayRegistros.push(arrayStateObj[i].name);
+//   }
     
-    console.log('Inicializando login');
+//    console.log(JSON.stringify($state.get(),null,4));
+//    console.log(arrayRegistros);
     
     $scope.$storage = $localStorage;
     
@@ -194,7 +200,19 @@ function login($scope, $rootScope,$state, $location, buscaAPIService, montaUrlLa
         }
     };
 
- 
+    $scope.userDTO.arrayRegistros =  ["", "login", "widgets", "widgets.lisnet", "erro", "contrucao", "contrucao.contrucao", "controle", "controle.notificacoes", "00001", "00001.00273", "00007", "00007.00263"];
+//    $scope.validaState = function (stateRegistro){
+//        
+//        for(var i =0; i <   $scope.userDTO.arrayRegistros.length ; i ++){
+//            console.log('arrayRegistros[i] = '+$scope.userDTO.arrayRegistros[i]);
+//            if($scope.userDTO.arrayRegistros[i] === stateRegistro){
+//                console.log('Inside validaState = '+stateRegistro+'  achei ...');
+//                return true;
+//            }
+//            return false;
+//        }
+////        return f
+//    };
 
     function  buscaUsuarioMenu(login, perfil, ev, modalLoading,stateGO) {
         buscaAPIService.buscaUsuarioMenuJSONAjax(login, perfil, $scope.userDTO.configLisNet)
@@ -296,13 +314,13 @@ $scope.voltaLogo = function (MOD_ST_CODIGO){
     };
 
 
-$scope.acheiOFDP = function  (msg){
-    if(msg == '00007.00263'){
-        console.log(msg);    
-    }else if(msg == '00263'){
-        console.log(msg);    
-    }
-};
+//$scope.acheiOFDP = function  (msg){
+//    if(msg == '00007.00263'){
+//        console.log(msg);    
+//    }else if(msg == '00263'){
+//        console.log(msg);    
+//    }
+//};
 //$scope.notificacoesResumida = [];
 //$scope.notificacoesEnxecucao = 0;
 //$scope.resumeNofificacao = function (){
