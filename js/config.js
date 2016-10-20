@@ -48,7 +48,7 @@ console.log('construing config , registrando state');
         }).state('widgets.lisnet', {
             url: "/widgets/lisnet",
             templateUrl: "views/widgets_lisnet.html",
-            data: { pageTitle: 'Widhets' },
+            data: { pageTitle: 'Widgets' },
             resolve: {
                 loadPlugin: function ($ocLazyLoad) {
                     return $ocLazyLoad.load([

@@ -53,7 +53,7 @@ angular.module('lisnet').provider('montaUrlLaudoProvider', function () {
                 for(var i = 0 ; i < clientes.length ; i ++) {
                     var cli = clientes[i];
                     
-                    if(cli.CLI_ST_CODIGO === name){
+                    if(cli.CLI_ST_CODIGO.toUpperCase() === name.toUpperCase()){
 //                        console.log(cli);
                         return cli;
                         break;

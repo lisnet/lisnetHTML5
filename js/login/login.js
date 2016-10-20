@@ -7,7 +7,7 @@
  */
 
 
-function loginFunction($scope, $rootScope,$state, $location, buscaAPIService, montaUrlLaudoProvider, configLisNet, notificacaoProvider,  deviceDetector,   $timeout,determinaAparelhoProvider,sairDoSistemaService,$localStorage,
+function login($scope, $rootScope,$state, $location, buscaAPIService, montaUrlLaudoProvider, configLisNet, notificacaoProvider,  deviceDetector,   $timeout,determinaAparelhoProvider,sairDoSistemaService,$localStorage,
     $sessionStorage,$window,gerenciaRelatorioService,$interval,$filter,$localStorage) {
     
     
@@ -20,7 +20,7 @@ function loginFunction($scope, $rootScope,$state, $location, buscaAPIService, mo
     
    
     
-    console.log('Inicializando loginFunction');
+    console.log('Inicializando login');
     
     $scope.$storage = $localStorage;
     
@@ -50,7 +50,7 @@ function loginFunction($scope, $rootScope,$state, $location, buscaAPIService, mo
 
 
     if ($localStorage.userDTO && typeof $localStorage.userDTO === 'object') {
-//        console.log('loginFunction userDTO no $localStorage');
+//        console.log('login userDTO no $localStorage');
         $scope.userDTO = $localStorage.userDTO;
         $scope.userDTO.deviceDetector = deviceDetector;
         if (_param1DBName && _param1DBName.length >= intDbLength) {
@@ -120,6 +120,7 @@ function loginFunction($scope, $rootScope,$state, $location, buscaAPIService, mo
                     $scope.userDTO.configLisNet.clientes = response.data;
                     configLisNet.clientes = response.data;
                     $scope.userDTO.cliente = montaUrlLaudoProvider.encontraClientePorNome($scope.userDTO.configLisNet.clientes, $scope.userDTO.configLisNet.defaultDB);
+                    $scope.userDTO.configLisNet.defaultDB = $scope.userDTO.cliente.CLI_ST_ORACLEUSERNAME;
                     $localStorage.userDTO = $scope.userDTO;
                 }, function errorCallback(response) {
                     console.log(response.statusText);
@@ -145,7 +146,7 @@ function loginFunction($scope, $rootScope,$state, $location, buscaAPIService, mo
     $scope.buscaUser = function (_param1, _param2, ev) {
         if (_param1 && _param2 ) {
             
-            var modalLoading = notificacaoProvider.modalLoading('Carregando ','Buscando usuário na base, aguarde  ...','loginFunction');
+            var modalLoading = notificacaoProvider.modalLoading('Carregando ','Buscando usuário na base, aguarde  ...','login');
             
             _param1 = _param1.toUpperCase();
             _param2 = _param2.toUpperCase();
@@ -333,4 +334,4 @@ $scope.acheiOFDP = function  (msg){
 
 
 angular.module('lisnet')
-        .controller('loginFunction', loginFunction);
+        .controller('login', login);
