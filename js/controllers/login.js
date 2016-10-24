@@ -8,7 +8,7 @@
 
 
 function login($scope, $rootScope,$state, $location, buscaAPIService, montaUrlLaudoProvider, configLisNet, notificacaoProvider,  deviceDetector,   $timeout,determinaAparelhoProvider,sairDoSistemaService,$localStorage,
-    $sessionStorage,$window,gerenciaRelatorioService,$interval,$filter,$localStorage,$state) {
+    $sessionStorage,$window,gerenciaRelatorioService,$interval,$filter,$localStorage,$state,resumePerfilService) {
     
     console.log('Inicializando login');
     
@@ -217,7 +217,10 @@ function login($scope, $rootScope,$state, $location, buscaAPIService, montaUrlLa
     function  buscaUsuarioMenu(login, perfil, ev, modalLoading,stateGO) {
         buscaAPIService.buscaUsuarioMenuJSONAjax(login, perfil, $scope.userDTO.configLisNet)
                 .then(function successCallback(response) {
-                    $scope.userDTO.perfil = response.data;
+//                    var perfil =    response.data;
+//                    $scope.userDTO.perfil = response.data;
+                    $scope.userDTO.perfil = resumePerfilService.resume(response.data);
+                    console.log('JSON.stringify($scope.userDTO.perfil,null,4)  = \n '+JSON.stringify($scope.userDTO.perfil,null,4));
                     if ($scope.userDTO && $scope.userDTO.perfil && $scope.userDTO.perfil.length > 0) {
                         $scope.userDTO.status = 'in';
                         $scope.userDTO.dtLogon = $filter('date')(new Date(), " dd/MM/yyyy  HH:mm");
