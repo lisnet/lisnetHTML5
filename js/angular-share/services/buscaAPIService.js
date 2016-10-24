@@ -1,6 +1,7 @@
 /* 
- * Here comes the text of your license
- * Each line should be prefixed with  * 
+ Created on : Jan 12, 2016, 1:37:18 PM
+ Author     : eros
+ *
  * https://docs.angularjs.org/api/ng/service/$http
  * http://stackoverflow.com/questions/21915834/angular-http-setting-a-promise-on-the-timeout-config     timeout
  */

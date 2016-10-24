@@ -1,6 +1,6 @@
 /* 
- * Here comes the text of your license
- * Each line should be prefixed with  * 
+ Created on : Jan 12, 2016, 1:37:18 PM
+ Author     : eros
  */
 
 angular.module('lisnet')
