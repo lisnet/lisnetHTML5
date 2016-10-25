@@ -85,7 +85,7 @@ console.log('construing config , registrando state');
         })
           .state('erro', {
             url: "/erro",
-            templateUrl: "views/under_construction.html",
+            templateUrl: "views/tmtelas/under_construction.html",
             data: { pageTitle: 'Erro' }
             ,resolve: {
                                 loadPlugin: function ($ocLazyLoad) {
