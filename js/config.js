@@ -77,7 +77,7 @@ console.log('construing config , registrando state');
                         },
                         {
                            name: 'oitozero.ngSweetAlert',
-                           files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
+                           files: ['js/plugins/sweetalert/angular-sweetalert.min.js'] 
                         }
                     ]);
                 }
