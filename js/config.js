@@ -234,6 +234,33 @@ console.log('construing config , registrando state');
                                     ]);
                                 }
                             }
+       }).state('00047', {
+            abstract: true,
+            url: "/Ajuda",
+            templateUrl: "views/common/content.html"
+        })
+        .state('00047.00049', {
+                            url: "/ajuda",
+                            templateUrl: "views/tmtelas/ajuda.html",
+                            parent:'00047',
+                            controller: estatisticaFaturamento,
+                            data: { pageTitle: 'Sobre'}  ,resolve: {
+                                loadPlugin: function ($ocLazyLoad) {
+                                    return $ocLazyLoad.load([
+                                        {
+                                            files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
+                                        },
+                                        {
+                                            name: 'oitozero.ngSweetAlert',
+                                            files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
+                                        },
+                                        {
+                                            files: ['css/plugins/iCheck/custom.css','js/plugins/iCheck/icheck.min.js']
+                                        } 
+                                        
+                                    ]);
+                                }
+                            }
        });
         
         
