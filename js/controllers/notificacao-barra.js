@@ -7,10 +7,11 @@
 function notificacaoBarra($scope, $window, $localStorage,sairDoSistemaService){
     
     console.log('Inicializando notificacaoBarra');
+    sairDoSistemaService.validarLogin();
     $scope.userDTO = $localStorage.userDTO;
     var qdtNotificacaoResumida = 10;
     $scope.notificacoesResumida = [];
-    sairDoSistemaService.validarLogin();
+    
 
     $scope.openRelatorio = function (status,codigo_rastreio){
         console.log('Inside openRelatorio codigo_rastreio = '+codigo_rastreio);

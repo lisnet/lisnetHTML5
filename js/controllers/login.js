@@ -220,7 +220,7 @@ function login($scope, $rootScope,$state, $location, buscaAPIService, montaUrlLa
 //                    var perfil =    response.data;
 //                    $scope.userDTO.perfil = response.data;
                     $scope.userDTO.perfil = resumePerfilService.resume(response.data);
-                    console.log('JSON.stringify($scope.userDTO.perfil,null,4)  = \n '+JSON.stringify($scope.userDTO.perfil,null,4));
+//                    console.log('JSON.stringify($scope.userDTO.perfil,null,4)  = \n '+JSON.stringify($scope.userDTO.perfil,null,4));
                     if ($scope.userDTO && $scope.userDTO.perfil && $scope.userDTO.perfil.length > 0) {
                         $scope.userDTO.status = 'in';
                         $scope.userDTO.dtLogon = $filter('date')(new Date(), " dd/MM/yyyy  HH:mm");

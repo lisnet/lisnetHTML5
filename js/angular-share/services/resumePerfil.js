@@ -4,20 +4,19 @@
  */
 
 
-/* global i */
 
 angular.module('lisnet').service('resumePerfilService', function ($state) {
 
 
     this.resume = function (perfil) {
-//        console.log(JSON.stringify($state.get(), null , 2));
-//        console.log(JSON.stringify(perfil,null,4));
+
+    console.log('resumePerfilService ....................................................................................................................................................................................');
         var arrayStates = [];
         for (x in $state.get()) {
             var _s = $state.get()[x];
             arrayStates.push(_s.name);
         }
-        console.log("arrayStates = " + arrayStates);
+//        console.log("arrayStates = " + arrayStates);
 
         for (i in perfil) {
             var pai = perfil[i];
@@ -25,24 +24,21 @@ angular.module('lisnet').service('resumePerfilService', function ($state) {
                 for (y in pai.telas) {
                     var filho = pai.telas[y];
                     if (filho.telas) {
-                        console.log('Filho com paginas  ...');
+//                        console.log('Filho com paginas  ...');
                         filho.visualisar = true;
                         for (z in filho.telas) {
                             var neto = filho.telas[z];
                             neto.visualisar = this.findState(neto.stateComposto, arrayStates);
                         }
                     } else {
-                        console.log('Filho sem paginas  ...');
+//                        console.log('Filho sem paginas  ...');
                         filho.visualisar = this.findState(filho.stateComposto, arrayStates);
                     }
-
                 }
             } else {
-                console.log('Pai sem paginas  ...');
+//                console.log('Pai sem paginas  ...');
             }
-
         }
-
         return perfil;
     };
 

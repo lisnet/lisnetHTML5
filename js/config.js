@@ -22,7 +22,7 @@ console.log('construing config , registrando state');
     $stateProvider
       .state('login', {
             url: "/login",
-            templateUrl: "views/login.html",
+            templateUrl: "views/tmtelas/login.html",
             data: { pageTitle: 'Login', specialClass: 'gray-bg' }
             ,resolve: {
                                 loadPlugin: function ($ocLazyLoad) {
@@ -47,7 +47,7 @@ console.log('construing config , registrando state');
             templateUrl: "views/common/content.html"
         }).state('widgets.lisnet', {
             url: "/widgets/lisnet",
-            templateUrl: "views/widgets_lisnet.html",
+            templateUrl: "views/tmtelas/widgets_lisnet.html",
             data: { pageTitle: 'Widgets' },
             resolve: {
                 loadPlugin: function ($ocLazyLoad) {
@@ -135,7 +135,7 @@ console.log('construing config , registrando state');
             templateUrl: "views/common/content.html"
         }).state('controle.notificacoes', {
             url: "/notificacoes",
-            templateUrl: "views/controle_notificacoes.html",
+            templateUrl: "views/tmtelas/controle_notificacoes.html",
             data: { pageTitle: 'Notificações' },
             resolve: {
                 loadPlugin: function ($ocLazyLoad) {
@@ -172,7 +172,7 @@ console.log('construing config , registrando state');
         })
         .state('00001.00273', {
                             url: "/consulta/laudo/:userDTO",
-                            templateUrl: "views/consulta_laudos.html",
+                            templateUrl: "views/tmtelas/consulta_laudos.html",
                             parent:'00001',
                             controller: consultaLaudos,
                             data: { pageTitle: 'Consulta de Laudos'}  ,resolve: {
@@ -214,7 +214,7 @@ console.log('construing config , registrando state');
         })
         .state('00007.00263', {
                             url: "/faturamento/:userDTO",
-                            templateUrl: "views/estatistica_faturamento.html",
+                            templateUrl: "views/tmtelas/estatistica_faturamento.html",
                             parent:'00007',
                             controller: estatisticaFaturamento,
                             data: { pageTitle: 'Estatística Faturamento'}  ,resolve: {
