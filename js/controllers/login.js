@@ -8,9 +8,11 @@
 
 
 function login($scope, $rootScope,$state, $location, buscaAPIService, montaUrlLaudoProvider, configLisNet, notificacaoProvider,  deviceDetector,   $timeout,determinaAparelhoProvider,sairDoSistemaService,$localStorage,
-    $sessionStorage,$window,gerenciaRelatorioService,$interval,$filter,$localStorage,$state,resumePerfilService) {
+    $sessionStorage,$window,gerenciaRelatorioService,$interval,$filter,$localStorage,$state,resumePerfilService,configuraAcessoServidoresService) {
     
     console.log('Inicializando login');
+    
+    configuraAcessoServidoresService.configuraLinksAcesso();
     
      $scope.killTimer = function() {
           if (angular.isDefined($scope.userDTO.job)) {
@@ -231,7 +233,7 @@ function login($scope, $rootScope,$state, $location, buscaAPIService, montaUrlLa
                             modalLoading.dismiss('cancel');
                                 $state.go(stateGO, {userDTO: angular.toJson($scope.userDTO)});
                                  $timeout(function () {
-                                    modalLoading.dismiss('cancel');
+//                                    modalLoading.dismiss('cancel');
                                       gerenciaRelatorioService.atualizaRelatorios($scope);
                                       buscaAPIService.buscaUnidades($scope.userDTO.USU_ST_CODIGO, $scope.userDTO.configLisNet).then(function sucessCallBack(response) {
                                           $scope.userDTO.unidades = response.data;

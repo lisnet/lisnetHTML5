@@ -243,7 +243,7 @@ console.log('construing config , registrando state');
                             url: "/ajuda",
                             templateUrl: "views/tmtelas/ajuda.html",
                             parent:'00047',
-                            controller: estatisticaFaturamento,
+//                            controller: estatisticaFaturamento,
                             data: { pageTitle: 'Sobre'}  ,resolve: {
                                 loadPlugin: function ($ocLazyLoad) {
                                     return $ocLazyLoad.load([
