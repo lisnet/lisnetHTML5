@@ -28,20 +28,20 @@ angular.module('lisnet').service('gerenciaRelatorioService', function (buscaAPIS
         });
         $scope.userDTO.notificacoesEmExecucao  = $scope.userDTO.notificacoesEmExecucao + 1;
     };
-    this.atualizaRelatorios = function ($scope) {
+    this.atualizaRelatorios = function (userDTO) {
         var limit ;
-        if(angular.isUndefined($scope.userDTO.notificacoes)){
-            $scope.userDTO.notificacoes = [];
+        if(angular.isUndefined(userDTO.notificacoes)){
+            userDTO.notificacoes = [];
             limit = 60;
         }else{
-            limit  = $scope.userDTO.notificacoes.length;
+            limit  = userDTO.notificacoes.length;
         }
          var dt = new Date();
            dt.setMonth(dt.getMonth() -1);
            var strDT = $filter('date')(dt, " dd/MM/yyyy");
 //           console.log('Inside atualizaRelatorios ..');
-           buscaAPIService.relatorioGET('listar',$scope.userDTO.USU_ST_CODIGO,strDT,'nothing',limit,$scope.userDTO.configLisNet).then(function successCallback(response){
-               $scope.userDTO.notificacoesEmExecucao = 0;
+           buscaAPIService.relatorioGET('listar',userDTO.USU_ST_CODIGO,strDT,'condigo_de_rastrieo',limit,userDTO.configLisNet).then(function successCallback(response){
+               userDTO.notificacoesEmExecucao = 0;
 //               console.log('response.data = '+ JSON.stringify(response.data) );
                var arrayRel = response.data;
                var arrayNotf = [];
@@ -53,7 +53,7 @@ angular.module('lisnet').service('gerenciaRelatorioService', function (buscaAPIS
                        case 'A':
                            icon = 'fa fa-cog fa-spin fa-2x text-danger';
                            aviso = 'em execução' ;
-                           $scope.userDTO.notificacoesEmExecucao ++;
+                           userDTO.notificacoesEmExecucao ++;
                        break;
                        case 'B':
                            icon = 'fa fa-cloud-download  fa-2x text-info';
@@ -70,13 +70,13 @@ angular.module('lisnet').service('gerenciaRelatorioService', function (buscaAPIS
                     var not = {id: rel.REL_IN_CODIGO, icon: icon, descricao: rel.REL_ST_DESCRICAO, aviso: aviso, status: rel.REL_CH_STATUS,dtInicio:rel.REL_DT_CONSULTA};
                     arrayNotf.push(not);
                }
-               if($scope.userDTO.notificacoes.length !== arrayNotf.length){
+               if(userDTO.notificacoes.length !== arrayNotf.length){
 //                   console.log('Tamanho eh diferente...   $scope.userDTO.notificacoes.length: '+$scope.userDTO.notificacoes.length+"        arrayNotf.length: "+arrayNotf.length);
-                   $scope.userDTO.notificacoes = arrayNotf;
+                   userDTO.notificacoes = arrayNotf;
                }else{
                    for(var i = 0 ; i < arrayNotf.length ; i ++){
                        var not = arrayNotf[i];
-                       var not2 =$scope.userDTO.notificacoes[i];
+                       var not2 =userDTO.notificacoes[i];
                        if(not.codigo_rastreio === not2.codigo_rastreio){
 //                           console.log('Inside loop ');
                            if(not.status !== not2.status){

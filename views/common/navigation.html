@@ -1,4 +1,4 @@
-<nav class="navbar-default navbar-static-side" role="navigation" ng-controller="login" >
+<nav class="navbar-default navbar-static-side" role="navigation" >
     <div class="sidebar-collapse">
         <ul side-navigation class="nav metismenu" id="side-menu">
             <li class="nav-header">
@@ -8,9 +8,9 @@
                     <a uib-dropdown-toggle href>
                             <span class="clear">
                                 <span class="block m-t-xs">
-                                    <strong class="font-bold">{{userDTO.USU_ST_NOME}}</strong>
+                                    <strong class="font-bold">{{main.userDTO.USU_ST_NOME}}</strong>
                              </span>
-                                <span class="text-muted text-xs block">{{userDTO.USU_ST_EMAIL}}<b class="caret"></b></span>
+                                <span class="text-muted text-xs block">{{main.userDTO.USU_ST_EMAIL}}<b class="caret"></b></span>
                             </span>
                     </a>
                     <ul uib-dropdown-menu class="animated fadeInRight m-t-xs">
@@ -18,11 +18,11 @@
                         <li><a ui-sref="app.contacts">Contacts</a></li>
                         <li><a ui-sref="mailbox.inbox">Mailbox</a></li>
                         <li class="divider"></li>
-                        <li><a   ng-click="logOut()" >Sair</a></li>
+                        <li><a   ng-click="main.logOut()" >Sair</a></li>
                     </ul>  
                 </div>
                 <div class="logo-element"   >
-                    <a ui-sref="widgets.lisnet" >{{userDTO.cliente.CLI_ST_CODIGO}}</a>
+                    <a ui-sref="widgets.lisnet" >{{main.userDTO.cliente.CLI_ST_CODIGO}}</a>
                     
                 </div>
             </li>
@@ -31,29 +31,26 @@
                 <a ui-sref="widgets.lisnet"><i class="fa fa-flask"></i> <span class="nav-label">{{ 'WIDGETS' | translate }}</span></a>
             </li>
             
-            <li  ng-repeat="p in  userDTO.perfil"  ng-class="{active: $state.includes(p.MOD_ST_CODIGO)}"  >
-                <a href="index.html"><i class="{{voltaLogo(p.MOD_ST_CODIGO)}}"></i> <span class="nav-label">{{p.MOD_ST_DESCRICAO}}</span> <span class="fa arrow"></span></a>
+            <li  ng-repeat="p in  main.userDTO.perfil"  ng-class="{active: $state.includes(p.MOD_ST_CODIGO)}"  >
+                <a href="index.html"><i class="{{main.voltaLogo(p.MOD_ST_CODIGO)}}"></i> <span class="nav-label">{{p.MOD_ST_DESCRICAO}}</span> <span class="fa arrow"></span></a>
                 <!--ng-class="{in: $state.includes(p.state)}"-->
                 <ul class="nav nav-second-level collapse"  ng-class="{in: $state.includes(p.MOD_ST_CODIGO)}"   > 
                     <li ui-sref-active="active" ng-repeat="f in p.telas"    >
-                        <!--<a ng-click="stageGO(f.stateComposto)"  ng-show="n.visualisar"  class="font-italic text-muted  text-info"  ng-hide="f.telas"   > {{f.MOD_ST_DESCRICAO}}</a>-->
+                        <!--<a ng-click="main.stateGO(f.stateComposto)"  ng-show="n.visualisar"  class="font-italic text-muted  text-info"  ng-hide="f.telas"   > {{f.MOD_ST_DESCRICAO}}</a>-->
                         
-                       <a ng-click="stageGO(f.stateComposto)"  class="font-italic text-muted  text-info"    ng-show="f.visualisar  && !f.telas"     > {{f.MOD_ST_DESCRICAO}}</a>
+                       <a ng-click="main.stateGO(f.stateComposto)"  class="font-italic text-muted  text-info"    ng-show="f.visualisar  && !f.telas"     > {{f.MOD_ST_DESCRICAO}}</a>
                         
                         <!--<a href="index.html"ng-show="f.telas"   ng-hide="!n.visualisar"  ><i  class="{{voltaLogo(f.MOD_ST_CODIGO)}}" ></i> {{f.MOD_ST_DESCRICAO }} <span class="fa arrow"></span></a>-->
-                        <a href="index.html"ng-show="f.telas "   ><i  class="{{voltaLogo(f.MOD_ST_CODIGO)}}" ></i> {{f.MOD_ST_DESCRICAO }} <span class="fa arrow"></span></a>
+                        <a href="index.html"ng-show="f.telas "   ><i  class="{{main.voltaLogo(f.MOD_ST_CODIGO)}}" ></i> {{f.MOD_ST_DESCRICAO }} <span class="fa arrow"></span></a>
                         <!--{{acheiOFDP(f.stateN)}}-->
                         <ul class="nav nav-thrird-level collapse"    ng-show="f.telas"   >
                             <li ui-sref-active="active" ng-repeat="n in f.telas"   >
-                                <a ng-click="stageGO(n.stateComposto)"   ng-show="n.visualisar"  class="font-italic text-muted  text-info" > {{n.MOD_ST_DESCRICAO}}</a>
+                                <a ng-click="main.stateGO(n.stateComposto)"   ng-show="n.visualisar"  class="font-italic text-muted  text-info" > {{n.MOD_ST_DESCRICAO}}</a>
                             </li>
                         </ul>
                     </li>    
-                    
                 </ul>
             </li>
-          
-            
         </ul>
 
     </div>

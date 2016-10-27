@@ -8,11 +8,11 @@
 
 
 function login($scope, $rootScope,$state, $location, buscaAPIService, montaUrlLaudoProvider, configLisNet, notificacaoProvider,  deviceDetector,   $timeout,determinaAparelhoProvider,sairDoSistemaService,$localStorage,
-    $sessionStorage,$window,gerenciaRelatorioService,$interval,$filter,$localStorage,$state,resumePerfilService,configuraAcessoServidoresService) {
+    $sessionStorage,$window,gerenciaRelatorioService,$interval,$filter,$localStorage,$state,resumePerfilService,configuraLinks) {
     
     console.log('Inicializando login');
     
-    configuraAcessoServidoresService.configuraLinksAcesso();
+    
     
      $scope.killTimer = function() {
           if (angular.isDefined($scope.userDTO.job)) {
@@ -57,72 +57,75 @@ function login($scope, $rootScope,$state, $location, buscaAPIService, montaUrlLa
     var _param1DBName = $location.search()['dbname'];
 
 
+
     if ($localStorage.userDTO && typeof $localStorage.userDTO === 'object') {
 //        console.log('login userDTO no $localStorage');
         $scope.userDTO = $localStorage.userDTO;
+        configuraLinks.configuraLinksAcesso($scope.userDTO);
         $scope.userDTO.deviceDetector = deviceDetector;
-        if (_param1DBName && _param1DBName.length >= intDbLength) {
-
-            if ($scope.userDTO.deviceDetector.isMobileDevice) {
-                console.log("userDTO existem e mudando o dbname ...........");
-                configLisNet.defaultDB = _param1DBName.toLowerCase();
-                $scope.userDTO.configLisNet = configLisNet;
-                //TODO tornar mais dinamico
-                _url = 'http://' + $scope.userDTO.configLisNet.defaultDB + '.lisnet.com.br/nodehomolog/lisnet';
-                $scope.userDTO.configLisNet.url = _url;
-                $scope.userDTO.configLisNet.baseUrl = _url;
-                $scope.userDTO.imageSrc = "resources/" + $scope.userDTO.configLisNet.defaultDB + "/img/logo_site.png";
-                $localStorage.userDTO = $scope.userDTO;
-            } else {
-                configLisNet.defaultDB = _param1DBName.toLowerCase();
-                $scope.userDTO.configLisNet = configLisNet;
-                $scope.userDTO.imageSrc = "resources/" + $scope.userDTO.configLisNet.defaultDB + "/img/logo_site.png";
-                console.log(JSON.stringify($scope.userDTO.deviceDetector, null, 2));
-                $localStorage.userDTO = $scope.userDTO;
-            }
-        }
+//        if (_param1DBName && _param1DBName.length >= intDbLength) {
+//
+//            if ($scope.userDTO.deviceDetector.isMobileDevice) {
+//                console.log("userDTO existem e mudando o dbname ...........");
+//                configLisNet.defaultDB = _param1DBName.toLowerCase();
+//                $scope.userDTO.configLisNet = configLisNet;
+//                //TODO tornar mais dinamico
+//                _url = 'http://' + $scope.userDTO.configLisNet.defaultDB + '.lisnet.com.br/nodehomolog/lisnet';
+//                $scope.userDTO.configLisNet.url = _url;
+//                $scope.userDTO.configLisNet.baseUrl = _url;
+//                $scope.userDTO.imageSrc = "resources/" + $scope.userDTO.configLisNet.defaultDB + "/img/logo_site.png";
+//                $localStorage.userDTO = $scope.userDTO;
+//            } else {
+//                configLisNet.defaultDB = _param1DBName.toLowerCase();
+//                $scope.userDTO.configLisNet = configLisNet;
+//                $scope.userDTO.imageSrc = "resources/" + $scope.userDTO.configLisNet.defaultDB + "/img/logo_site.png";
+//                console.log(JSON.stringify($scope.userDTO.deviceDetector, null, 2));
+//                $localStorage.userDTO = $scope.userDTO;
+//            }
+//        }
         if ($scope.userDTO.ultimaTela) {
 //            $scope.stageGO($scope.userDTO.ultimaTela);
 //            $state.go($scope.userDTO.ultimaTela);
         }
 //        console.log(JSON.stringify($scope.userDTO.configLisNet));
-
+//        $localStorage.userDTO = $scope.userDTO;
     } else {
         $scope.userDTO = {status: 'out', perfilId: 2, dtCriacao: new Date(), ultimaTela: 'login'};
-        $scope.userDTO.deviceDetector = deviceDetector;
-
-        if (locationHostSplit[0] && locationHostSplit[0] !== 'localhost' && locationHostSplit[0] !== '192' && locationHostSplit[0] !== '127' && locationHostSplit[0] !== 'developer') {
-            _url = $location.protocol() + '://' + location.host + '/nodehomolog/lisnet';
-            if (_param1DBName && _param1DBName.length >= intDbLength) {
-                configLisNet.defaultDB = _param1DBName.toLowerCase();
-            } else {
-                configLisNet.defaultDB = locationHostSplit[0].toLowerCase();
-            }
-            $scope.userDTO.configLisNet = configLisNet;
-            $scope.userDTO.configLisNet.url = _url;
-            $scope.userDTO.configLisNet.baseUrl = _url;
-            $scope.userDTO.imageSrc = "resources/" + $scope.userDTO.configLisNet.defaultDB + "/img/logo_site.png";
-            //TODO proper load of clients
-//            $scope.userDTO.cliente = montaUrlLaudoProvider.encontraClientePorNome(configLisNet.clientes, $scope.userDTO.configLisNet.defaultDB);
-        } else if ($scope.userDTO.deviceDetector.isMobileDevice) { // mobile cordova phonegap
-            if (_param1DBName && _param1DBName.length >= intDbLength) {
-                configLisNet.defaultDB = _param1DBName.toLowerCase();
-            }
-
-            $scope.userDTO.configLisNet = configLisNet;
-            _url = 'http://' + $scope.userDTO.configLisNet.defaultDB + '.lisnet.com.br/nodehomolog/lisnet';
-            $scope.userDTO.configLisNet.url = _url;
-            $scope.userDTO.configLisNet.baseUrl = _url;
-            $scope.userDTO.imageSrc = "resources/" + $scope.userDTO.configLisNet.defaultDB + "/img/logo_site.png";
-        } else {
-            if (_param1DBName && _param1DBName.length >= intDbLength) {
-                configLisNet.defaultDB = _param1DBName.toLowerCase();
-            }
-            $scope.userDTO.configLisNet = configLisNet;
-            $scope.userDTO.configLisNet.url = _url;
-            $scope.userDTO.configLisNet.baseUrl = _url;
-            $scope.userDTO.imageSrc = "resources/" + $scope.userDTO.configLisNet.defaultDB + "/img/logo_site.png";
-        }
+//        $scope.userDTO.configLisNet = configLisNet;
+        configuraLinks.configuraLinksAcesso($scope.userDTO);
+        
+//        if (locationHostSplit[0] && locationHostSplit[0] !== 'localhost' && locationHostSplit[0] !== '192' && locationHostSplit[0] !== '127' && locationHostSplit[0] !== 'developer') {
+//            _url = $location.protocol() + '://' + location.host + '/nodehomolog/lisnet';
+//            if (_param1DBName && _param1DBName.length >= intDbLength) {
+//                configLisNet.defaultDB = _param1DBName.toLowerCase();
+//            } else {
+//                configLisNet.defaultDB = locationHostSplit[0].toLowerCase();
+//            }
+//            $scope.userDTO.configLisNet = configLisNet;
+//            $scope.userDTO.configLisNet.url = _url;
+//            $scope.userDTO.configLisNet.baseUrl = _url;
+//            $scope.userDTO.imageSrc = "resources/" + $scope.userDTO.configLisNet.defaultDB + "/img/logo_site.png";
+//            //TODO proper load of clients
+////            $scope.userDTO.cliente = montaUrlLaudoProvider.encontraClientePorNome(configLisNet.clientes, $scope.userDTO.configLisNet.defaultDB);
+//        } else if ($scope.userDTO.deviceDetector.isMobileDevice) { // mobile cordova phonegap
+//            if (_param1DBName && _param1DBName.length >= intDbLength) {
+//                configLisNet.defaultDB = _param1DBName.toLowerCase();
+//            }
+//
+//            $scope.userDTO.configLisNet = configLisNet;
+//            _url = 'http://' + $scope.userDTO.configLisNet.defaultDB + '.lisnet.com.br/nodehomolog/lisnet';
+//            $scope.userDTO.configLisNet.url = _url;
+//            $scope.userDTO.configLisNet.baseUrl = _url;
+//            $scope.userDTO.imageSrc = "resources/" + $scope.userDTO.configLisNet.defaultDB + "/img/logo_site.png";
+//        } else {
+//            if (_param1DBName && _param1DBName.length >= intDbLength) {
+//                configLisNet.defaultDB = _param1DBName.toLowerCase();
+//            }
+//            $scope.userDTO.configLisNet = configLisNet;
+//            $scope.userDTO.configLisNet.url = _url;
+//            $scope.userDTO.configLisNet.baseUrl = _url;
+//            $scope.userDTO.imageSrc = "resources/" + $scope.userDTO.configLisNet.defaultDB + "/img/logo_site.png";
+//        }
         buscaAPIService.buscaClientes($scope.userDTO.configLisNet)
                 .then(function successCallback(response) {
                     $scope.userDTO.configLisNet.clientes = response.data;
@@ -136,13 +139,12 @@ function login($scope, $rootScope,$state, $location, buscaAPIService, montaUrlLa
                     $localStorage.userDTO = $scope.userDTO;
                 });
     }
-
+    $scope.userDTO.deviceDetector = deviceDetector;
+    $localStorage.userDTO = $scope.userDTO;
+    
     if( $scope.userDTO && $scope.userDTO.status === "out"  ){
         console.log('Usuario esta fora....');
-//        notificacaoProvider.sweetWarning('Out','Get a fuck out at here ... dude ....');
         sairDoSistemaService.logOut();
-    }else{
-//        console.log('usuário autorizado, com credenciais ..');
     }
 
 
@@ -202,7 +204,7 @@ function login($scope, $rootScope,$state, $location, buscaAPIService, montaUrlLa
         }
     };
 
-    $scope.userDTO.arrayRegistros =  ["", "login", "widgets", "widgets.lisnet", "erro", "contrucao", "contrucao.contrucao", "controle", "controle.notificacoes", "00001", "00001.00273", "00007", "00007.00263"];
+//    $scope.userDTO.arrayRegistros =  ["", "login", "widgets", "widgets.lisnet", "erro", "contrucao", "contrucao.contrucao", "controle", "controle.notificacoes", "00001", "00001.00273", "00007", "00007.00263"];
 //    $scope.validaState = function (stateRegistro){
 //        
 //        for(var i =0; i <   $scope.userDTO.arrayRegistros.length ; i ++){
@@ -234,9 +236,11 @@ function login($scope, $rootScope,$state, $location, buscaAPIService, montaUrlLa
                                 $state.go(stateGO, {userDTO: angular.toJson($scope.userDTO)});
                                  $timeout(function () {
 //                                    modalLoading.dismiss('cancel');
-                                      gerenciaRelatorioService.atualizaRelatorios($scope);
+                                      gerenciaRelatorioService.atualizaRelatorios($scope.userDTO);
                                       buscaAPIService.buscaUnidades($scope.userDTO.USU_ST_CODIGO, $scope.userDTO.configLisNet).then(function sucessCallBack(response) {
                                           $scope.userDTO.unidades = response.data;
+//                                          console.log(JSON.stringify(response.data));
+                                             $localStorage.userDTO = $scope.userDTO;
                                       });
                                       buscaAPIService.buscaConvenios($scope.userDTO.USU_ST_CODIGO, $scope.userDTO.configLisNet).then(function sucessCallBack(response) {
                                               $scope.userDTO.convenios = response.data;
@@ -341,15 +345,15 @@ $scope.voltaLogo = function (MOD_ST_CODIGO){
 
 
   
-    if ($scope.userDTO && $scope.userDTO.status &&  $scope.userDTO.status === 'in') {
-        if($scope.userDTO.job){
-            $interval.cancel($scope.userDTO.job);
-        }
-        $scope.userDTO.job = $interval(function () {
-            console.log('job update relatorio rodando ...');
-                gerenciaRelatorioService.atualizaRelatorios($scope);
-        }, 30000);
-    }
+//    if ($scope.userDTO && $scope.userDTO.status &&  $scope.userDTO.status === 'in') {
+//        if($scope.userDTO.job){
+//            $interval.cancel($scope.userDTO.job);
+//        }
+//        $scope.userDTO.job = $interval(function () {
+//            console.log('job update relatorio rodando ...');
+//                gerenciaRelatorioService.atualizaRelatorios($scope);
+//        }, 30000);
+//    }
 
 
 

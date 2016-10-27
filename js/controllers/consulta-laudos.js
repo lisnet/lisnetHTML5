@@ -7,9 +7,8 @@ DTOptionsBuilder,$window,$interval,$timeout,notificacaoProvider,determinaAparelh
 var self = this;
 
 console.log('Inicializando consultaLaudo');
-sairDoSistemaService.validarLogin();
+$scope.userDTO = sairDoSistemaService.validarLogin();
 
-$scope.userDTO = $localStorage.userDTO;
 
 //$scope.userDTO = $localStorage.userDTO;
 //    if ($stateParams.userDTO) {

@@ -15,7 +15,8 @@
         'ngRoute',
         'ngAria',
         'ng.deviceDetector',
-        'ngStorage'
+        'ngStorage',
+        'oitozero.ngSweetAlert'
     ]);
 })();
 

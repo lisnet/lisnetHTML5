@@ -7,12 +7,10 @@ function estatisticaFaturamento($scope, buscaAPIService, $stateParams, $localSto
 
     console.log('Inicializando estatisticaFaturamento');
 
-    sairDoSistemaService.validarLogin();
+    $scope.userDTO = sairDoSistemaService.validarLogin();
 
-    $scope.userDTO = $localStorage.userDTO;
     var rangeInMonths = 1;
 
-    console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<    estatisticaFaturamento  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
 
     var myDate = new Date();
     if($scope.userDTO.USU_IN_QTDDIA && $scope.userDTO.USU_IN_QTDDIA <= 30){

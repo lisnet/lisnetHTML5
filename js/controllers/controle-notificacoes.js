@@ -7,9 +7,8 @@
 function controleNotificacoes($scope,$localStorage,sairDoSistemaService,DTOptionsBuilder){
     
     console.log('Inicializando controleNotificacoes');
-    sairDoSistemaService.validarLogin();
+    $scope.userDTO = sairDoSistemaService.validarLogin();
 
-    $scope.userDTO = $localStorage.userDTO;
     $scope.qtdNotificacaoDesc = $scope.userDTO.deviceDetector.isMobileDevice ? 30 : 300;
 
     

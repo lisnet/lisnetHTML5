@@ -7,9 +7,8 @@
 function notificacaoBarra($scope, $window, $localStorage,sairDoSistemaService){
     
     console.log('Inicializando notificacaoBarra');
-    sairDoSistemaService.validarLogin();
-    $scope.userDTO = $localStorage.userDTO;
-    var qdtNotificacaoResumida = 10;
+    $scope.userDTO = sairDoSistemaService.validarLogin();
+    var qdtNotificacaoResumida = 6;
     $scope.notificacoesResumida = [];
     
 

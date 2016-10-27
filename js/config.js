@@ -12,19 +12,41 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
     IdleProvider.idle(5); // in seconds
     IdleProvider.timeout(120); // in seconds
 console.log('construing config , registrando state');
-    $urlRouterProvider.otherwise("/login");
 
-    $ocLazyLoadProvider.config({
-        // Set to true if you want to see what and when is dynamically loaded
-//        debug: true
-    });
+
+
+    $urlRouterProvider.otherwise("login");
+
+//        $ocLazyLoadProvider.config(
+//        {
+//            // Set to true if you want to see what and when is dynamically loaded
+//            debug: true
+//        });
+        $ocLazyLoadProvider.config({
+//            debug: true
+//            ,
+//            modules: [
+//                                        {
+//                                            files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
+//                                        },
+//                                        {
+//                                            name: 'oitozero.ngSweetAlert',
+//                                            files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
+//                                        },
+//                                        {
+//                                            files: ['css/plugins/iCheck/custom.css','js/plugins/iCheck/icheck.min.js']
+//                                        }
+//                                    ]
+          });
+
  
     $stateProvider
       .state('login', {
             url: "/login",
             templateUrl: "views/tmtelas/login.html",
             data: { pageTitle: 'Login', specialClass: 'gray-bg' }
-            ,resolve: {
+            ,
+            resolve: {
                                 loadPlugin: function ($ocLazyLoad) {
                                     return $ocLazyLoad.load([
                                         {

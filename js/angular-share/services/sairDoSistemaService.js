@@ -5,7 +5,7 @@
 
 
 angular.module('lisnet')
-        .service('sairDoSistemaService', function ($state, $localStorage,$window) {
+        .service('sairDoSistemaService', function ($state, $localStorage,$window,$rootScope) {
 
     this.logOut = function () {
        
@@ -20,6 +20,11 @@ angular.module('lisnet')
 //        localStorage.clear();
 //        $localStorage.$reset();
 //        $sessionStorage.$reset();
+            
+            console.log('loging Out dude ...');
+            $rootScope = $rootScope.$new(true);
+//            $scope = $scope.$new(true);
+            
         
     };
       this.validarLogin = function (){
@@ -34,6 +39,7 @@ angular.module('lisnet')
           this.logOut();
           $window.open('index.html', '_self');
       }else{
+           return userDTO;
           console.log('validarLogin ....');
       }  
     };
