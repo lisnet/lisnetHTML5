@@ -11,12 +11,12 @@
                 <input type="text" class="form-control" placeholder="Usuário"   required  ng-model="login" >
             </div>
             <div class="form-group" ng-hide="main.userDTO.showpassword"  >
-                <input type="password" class="form-control" placeholder="Senha" required="" ng-model="senha"    enter-key="main.buscaUser(login,senha,$event)"   >
+                <input type="password" class="form-control" placeholder="Senha" required="" ng-model="senha"    enter-key="main.buscaUser(login,senha)"   >
             </div>
              <div class="form-group"  ng-show="main.userDTO.showpassword"  >
-                <input type="text" class="form-control" placeholder="Senha" required=""    ng-model="senha"   enter-key="main.buscaUser(login,senha,$event)"   >
+                <input type="text" class="form-control" placeholder="Senha" required=""    ng-model="senha"   enter-key="main.buscaUser(login,senha)"   >
             </div>
-            <button type="submit" class="btn btn-primary block full-width m-b" ng-click="main.buscaUser(login,senha,$event)"    >Login</button>
+            <button type="submit" class="btn btn-primary block full-width m-b" ng-click="main.buscaUser(login,senha)"    >Login</button>
             <!--<input icheck type="checkbox" ng-model="main.userDTO.showpassword">-->
             
             <label> <input icheck type="checkbox" ng-model="main.userDTO.showpassword"> Mostra senha</label>

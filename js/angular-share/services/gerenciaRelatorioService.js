@@ -17,7 +17,7 @@ angular.module('lisnet').service('gerenciaRelatorioService', function (buscaAPIS
             console.log(response.statusText);
             var json = response.data;
 //            console.log(json);
-            var not = {id: json.codigo_rastreio, icon: "fa fa-cog fa-spin fa-2x text-danger", descricao: json.relatorio_titulo, aviso: 'em execução', status: 'A',dtInicio:new Date()};
+            var not = {id: json.codigo_rastreio, icon: "fa fa-cog fa-spin fa-2x text-danger", descricao: json.relatorio_titulo, aviso: 'em execução', status: 'A',dtInicio:new Date(),style:'color: blue'};
             $scope.userDTO.notificacoes.unshift(not);
         }, function errorCallback(response) {
             console.log(response.statusText);
@@ -49,25 +49,30 @@ angular.module('lisnet').service('gerenciaRelatorioService', function (buscaAPIS
                    var rel = arrayRel[i];
                    var icon = null;
                    var aviso = null;
+                   var style  = null;
                    switch (rel.REL_CH_STATUS){
                        case 'A':
-                           icon = 'fa fa-cog fa-spin fa-2x text-danger';
+                           icon = 'fa fa-cog fa-spin fa-2x ';
                            aviso = 'em execução' ;
                            userDTO.notificacoesEmExecucao ++;
+                           style = 'color: blue';
                        break;
                        case 'B':
                            icon = 'fa fa-cloud-download  fa-2x text-info';
                            aviso = 'concluído' ;
+                           style = 'color: green';
                        break;
                        case 'X':
                            icon = 'fa fa-bug  fa-3x';
                            aviso = 'erro' ;
+                           style = 'color: red';
                        break;
                        default :
                            icon = 'fa fa-bug  fa-3x';
                            aviso = 'erro' ;
+                           style ='color: red';
                    }
-                    var not = {id: rel.REL_IN_CODIGO, icon: icon, descricao: rel.REL_ST_DESCRICAO, aviso: aviso, status: rel.REL_CH_STATUS,dtInicio:rel.REL_DT_CONSULTA};
+                    var not = {id: rel.REL_IN_CODIGO, icon: icon, descricao: rel.REL_ST_DESCRICAO, aviso: aviso, status: rel.REL_CH_STATUS,dtInicio:rel.REL_DT_CONSULTA,style:style};
                     arrayNotf.push(not);
                }
                if(userDTO.notificacoes.length !== arrayNotf.length){

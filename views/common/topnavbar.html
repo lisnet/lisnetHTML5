@@ -2,10 +2,11 @@
     <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
             <span minimaliza-sidebar></span>
-            <form role="search" class="navbar-form-custom" method="post" action="views/search_results.html">
+            <form role="search" class="navbar-form-custom" method="post" action="views/search_results.html"  autocomplete="off" >
                 <div class="form-group">
                     <!--                    <input type="text" placeholder="{{ 'SEARCH' | translate }}" class="form-control" name="top-search" id="top-search">-->
-                    <input type="text" placeholder="Procurar tela" class="form-control" name="top-search" id="top-search">
+                    <!--<input type="text" placeholder="Procurar tela" class="form-control" name="top-search" id="top-search">-->
+                    <input type="text" placeholder="Procurar tela" class="form-control" name="top-search" id="top-search" ng-model="telaSelecionada" uib-typeahead="state for state in states | filter:$viewValue | limitTo:8"   enter-key="main.stateGO( cortaString(telaSelecionada))" >
                 </div>
             </form>
         </div>
@@ -81,7 +82,7 @@
                         </li>-->
 
             <li uib-dropdown       ng-click="resumeNofificacao()" >
-                <a class="count-info" href uib-dropdown-toggle>
+                <a class="count-info" href uib-dropdown-toggle   >
                     <i class="fa fa-bell  "  ></i> <span class="label label-primary">{{userDTO.notificacoes.length}}</span>
                 </a>
                 <ul class="dropdown-alerts" uib-dropdown-menu>
@@ -92,7 +93,7 @@
                             <span >
                                 <div>
                                     <!--<i   ng-show="{{n.status  != 'B'}}"  class="{{n.icon}}}"   ></i>-->
-                                    <i    ng-click="openRelatorio(n.status, n.id)" ng-cloak class="{{n.icon}}}"   ></i>
+                                    <i    ng-click="openRelatorio(n.status, n.id)" ng-cloak class="{{n.icon}}}"  style="{{n.style}}"    ></i>
                                     {{n.descricao | ellipsis : 22}}
                                     <span class="pull-right text-muted small  ">{{n.aviso}} - {{n.dtInicio| date:  'dd/MM/yyyy'}}</span>
                                 </div>
@@ -117,7 +118,7 @@
             
             <li    style="padding-left: 15px;"  class="pull-right"   >
                 <a    ng-click="main.logOut()" >
-                    <i style="color: red;"  class="fa fa-sign-out "   ></i><strong style="color: red;"  >Sair</strong> 
+                    <i style="color: red;"  class="fa fa-sign-out   "   ></i><strong style="color: red;"  >Sair</strong> 
                 </a>
             </li>
 

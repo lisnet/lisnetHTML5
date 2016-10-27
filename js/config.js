@@ -68,7 +68,7 @@ console.log('construing config , registrando state');
             url: "/widgets",
             templateUrl: "views/common/content.html"
         }).state('widgets.lisnet', {
-            url: "/widgets/lisnet",
+            url: "/lisnet",
             templateUrl: "views/tmtelas/widgets_lisnet.html",
             data: { pageTitle: 'Widgets' },
             resolve: {
@@ -131,7 +131,7 @@ console.log('construing config , registrando state');
             templateUrl: "views/common/content.html"
         })
         .state('contrucao.contrucao', {
-                            url: "/contrucao/contrucao",
+                            url: "/under_construction",
                             templateUrl: "views/under_construction.html",
                             parent:'contrucao',
                             data: { pageTitle: 'Em construção'}  ,resolve: {

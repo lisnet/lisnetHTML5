@@ -6,21 +6,23 @@
 
 
 angular.module('lisnet')
-        .service('configuraLinks', function ($location, $browser, configLisNet) {
+        .service('configuraLinks', function ($location, $browser, configLisNet,$localStorage) {
 
             this.detertinaAparelho = function (userDTO) {
 
             };
             this.configuraLinksAcesso = function (userDTO) {
-         console.log('urlFinal =  '+urlFinal);
-            console.log("$location.absUrl() = " + $location.absUrl()
-            + "\n $location.url() = " + $location.url()
-            + "\n $location.protocol() = " + $location.protocol()
-            + "\n $location.host() = " + $location.host()
-            + "\n location.host = " + location.host
-            + "\n $location.port() = " + $location.port()
-            + "\n $location.path() = " + $location.path() 
-            + "\n $location.hash() = " + $location.hash());
+                var intDbLength = 4;
+                
+//         console.log('urlFinal =  '+urlFinal);
+//            console.log("$location.absUrl() = " + $location.absUrl()
+//            + "\n $location.url() = " + $location.url()
+//            + "\n $location.protocol() = " + $location.protocol()
+//            + "\n $location.host() = " + $location.host()
+//            + "\n location.host = " + location.host
+//            + "\n $location.port() = " + $location.port()
+//            + "\n $location.path() = " + $location.path() 
+//            + "\n $location.hash() = " + $location.hash());
 //            var _url = $location.protocol() + '://' + location.host + '/lisnet';
 //            console.log('_url = '+_url);
 //        var u = 'http://einstein.lisnet.com.br/nodehomolog/lisnetHTML5/#/login';
@@ -30,7 +32,7 @@ angular.module('lisnet')
 //        split.pop();
 
                 if (userDTO &&   !userDTO.configLisNet) {
-                    console.log('userDTO && !userDTO.configLisNet ');
+//                    console.log('userDTO && !userDTO.configLisNet ');
                     userDTO.configLisNet = configLisNet;
 
                     var locationHostSplit = $location.host().split(".");
@@ -68,6 +70,7 @@ angular.module('lisnet')
                 var _param1DBName = $location.search()['dbname'];
                 if (_param1DBName && _param1DBName.length >= intDbLength) {
                     userDTO.configLisNet.defaultDB = _param1DBName.toLowerCase();
+                    $localStorage.userDTO = userDTO;
                 }
 
 //                userDTO.configLisNet.baseUrl = 'http://localhost:8080/lisnet';

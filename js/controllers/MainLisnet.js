@@ -54,7 +54,7 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
         this.userDTO.deviceDetector = deviceDetector;
 
     } else {
-        this.userDTO = {status: 'out', perfilId: 2, dtCriacao: new Date(), ultimaTela: 'login'};
+        this.userDTO = {status: 'out', perfilId: 2, dtCriacao: new Date(), ultimaTela: 'login',notificationTimer:10000};
 //        $scope.userDTO.configLisNet = configLisNet;
         configuraLinks.configuraLinksAcesso(this.userDTO);
 //        console.log('JSON.stringify(this.userDTO) = '+JSON.stringify(this.userDTO));
@@ -91,10 +91,10 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
         this.senha = '';
     };
     
-    this.buscaUser = function (_param1, _param2, ev) {
+    this.buscaUser = function (_param1, _param2) {
         if (_param1 && _param2 ) {
             
-            var modalLoading = notificacaoProvider.modalLoading('Carregando ','Buscando usuário na base, aguarde  ...','login');
+            var modalLoading = notificacaoProvider.modalLoading('Carregando ','Buscando usuário na base, aguarde  ...','MainLisnet');
             
             _param1 = _param1.toUpperCase();
             _param2 = _param2.toUpperCase();
@@ -116,7 +116,7 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
                                     this.userDTO.USU_IN_QTDDIA = retorno.USU_IN_QTDDIA;
 //                                    this.log('$scope.userDTO.perfilId: '+this.userDTO.perfilId);
                                     $localStorage.userDTO = this.userDTO;
-                                    buscaUsuarioMenu(_param1, this.userDTO.PUS_ST_CODIGO, ev,modalLoading ,'widgets.lisnet') ;
+                                    buscaUsuarioMenu(_param1, this.userDTO.PUS_ST_CODIGO, modalLoading ,'widgets.lisnet') ;
 
                                 } else {
                                     modalLoading.dismiss('cancel');
@@ -156,7 +156,7 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
 ////        return f
 //    };
 
-    function  buscaUsuarioMenu(login, perfil, ev, modalLoading,stateGO) {
+    function  buscaUsuarioMenu(login, perfil,  modalLoading,stateGO) {
         buscaAPIService.buscaUsuarioMenuJSONAjax(login, perfil, this.userDTO.configLisNet)
                 .then(function successCallback(response) {
 //                    var perfil =    response.data;
@@ -185,16 +185,7 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
                                                $localStorage.userDTO = this.userDTO;
                                       });
                                       
-                                      //TODO transformar timer dinamico c $broacast
-                                          if (this.userDTO && this.userDTO.status &&  this.userDTO.status === 'in') {
-                                                if(this.userDTO.job){
-                                                    $interval.cancel(this.userDTO.job);
-                                                }
-                                                this.userDTO.job = $interval(function () {
-                                                    console.log('job update relatorio rodando ...');
-                                                        gerenciaRelatorioService.atualizaRelatorios(this.userDTO);
-                                                }, 30000);
-                                            }
+                                     
                                       
                                       
                                 }, 2000);
@@ -208,7 +199,10 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
                 }, function errorCallback(response) {
                     modalLoading.dismiss('cancel');
                         $timeout(function () { 
-                                    notificacaoProvider.showDialogWarning("Sem conunicação", 'Sem internet ou servidor fora do ar .. ' + response.data, 'Fechar', 'Aviso', ev);}, intMinimoDelay);
+//                                    notificacaoProvider.showDialogWarning("Sem conunicação", 'Sem internet ou servidor fora do ar .. ' + response.data, 'Fechar', 'Aviso', ev);
+                                    notificacaoProvider.sweetDialog("Sem conunicação", 'Sem internet ou servidor fora do ar .. ','info','red','X');
+                                }, intMinimoDelay);
+                                
                 });
                 
               
@@ -294,6 +288,32 @@ this.voltaLogo = function (MOD_ST_CODIGO){
 //  
 //};;
 
+    $rootScope.$on("startNotificacaoTimer", function () {
+        var _interacoes = 0;
+        var _sleep = 60000;
+        console.log('Starting startNotificacaoTimer .....');
+        gerenciaRelatorioService.atualizaRelatorios(this.userDTO);
+        
+        this.userDTO.notificationTimer = 10;
+        this.userDTO.notificationTimerInteracoes = 0;
+        if (this.userDTO && this.userDTO.status && this.userDTO.status === 'in') {
+            if (this.userDTO.job) {
+                $interval.cancel(this.userDTO.job);
+            }
+            this.userDTO.job = $interval(function () {
+                _interacoes ++ ;
+                console.log('job update relatorio rodando ... interacoes =  '+_interacoes+'     _sleep = '+_sleep);
+                gerenciaRelatorioService.atualizaRelatorios(this.userDTO);
+                
+                if(_interacoes >= 5){
+                    _sleep = 120000;
+                }else{
+                    _sleep = 60000;
+                }
+            }, _sleep);
+        }
+    });
+
  if (this.userDTO && this.userDTO.ultimaTela) {
 //            $scope.stageGO($scope.userDTO.ultimaTela);
 //            $state.go($scope.userDTO.ultimaTela);
@@ -308,6 +328,8 @@ this.voltaLogo = function (MOD_ST_CODIGO){
   
 //     console.log('Ultima linha userDTO is defined = '+ ( angular.isDefined(this.userDTO) ));
 }
+
+
 
 
 angular.module('lisnet')
