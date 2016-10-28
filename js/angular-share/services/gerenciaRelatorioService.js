@@ -17,13 +17,13 @@ angular.module('lisnet').service('gerenciaRelatorioService', function (buscaAPIS
             console.log(response.statusText);
             var json = response.data;
 //            console.log(json);
-            var not = {id: json.codigo_rastreio, icon: "fa fa-cog fa-spin fa-2x text-danger", descricao: json.relatorio_titulo, aviso: 'em execução', status: 'A',dtInicio:new Date(),style:'color: blue'};
+            var not = {id: json.codigo_rastreio, icon: "fa fa-cog fa-spin fa-2x ", descricao: json.relatorio_titulo, aviso: 'em execução', status: 'A',dtInicio:new Date(),style:'color: #416a8c'};
             $scope.userDTO.notificacoes.unshift(not);
         }, function errorCallback(response) {
             console.log(response.statusText);
             var dataResponse = response.data;
             var json = response.data;
-            var not = {id: json.codigo_rastreio, icon: "fa fa-bug  fa-2x", descricao: json.relatorio_titulo, aviso: 'erro', status: 'X',dtInicio:new Date()};
+            var not = {id: json.codigo_rastreio, icon: "fa fa-bug  fa-3x", descricao: json.relatorio_titulo, aviso: 'erro', status: 'X',dtInicio:new Date(),style:'color: red'};
             $scope.userDTO.notificacoes.unshift(not);
         });
         $scope.userDTO.notificacoesEmExecucao  = $scope.userDTO.notificacoesEmExecucao + 1;
@@ -55,12 +55,12 @@ angular.module('lisnet').service('gerenciaRelatorioService', function (buscaAPIS
                            icon = 'fa fa-cog fa-spin fa-2x ';
                            aviso = 'em execução' ;
                            userDTO.notificacoesEmExecucao ++;
-                           style = 'color: blue';
+                           style = 'color: #416a8c';
                        break;
                        case 'B':
                            icon = 'fa fa-cloud-download  fa-2x text-info';
                            aviso = 'concluído' ;
-                           style = 'color: green';
+                           style = 'color: #2d4c2d';
                        break;
                        case 'X':
                            icon = 'fa fa-bug  fa-3x';

@@ -16,23 +16,15 @@ function notificacaoBarra($scope, $window, $localStorage,sairDoSistemaService,$r
     String.prototype.isNumber = function(){return /^\d+$/.test(this);};
     $scope.telaSelecionada = '';
     $scope.cortaString = function (str){
-        
-        var idDaPagina = '';
-        if(str.length > 11){
-            if(str.substring(0,5).isNumber()){
-                idDaPagina = str.substring(0,11);
-            }else{
-                idDaPagina = str;
-            }
-        }else{
-            idDaPagina = str;
-        }
+        var _array = str.split('|');
+//        return _array[0];
+        var idDaPagina = _array[0];
         $scope.telaSelecionada = '';
         return idDaPagina;
     };
     $scope.states = [];
-    $scope.states.push('controle.notificacoes');
-    $scope.states.push('widgets.lisnet');
+    $scope.states.push('controle.notificacoes| Controle de Notificações');
+    $scope.states.push('widgets.lisnet| Painel de Widgets do Usuário');
     for (i in $scope.userDTO.perfil) {
 
         var p = $scope.userDTO.perfil[i];
@@ -45,12 +37,12 @@ function notificacaoBarra($scope, $window, $localStorage,sairDoSistemaService,$r
                 for (x in f.telas) {
                     var n = f.telas[x];
                     if (n.visualisar) {
-                        $scope.states.push(n.stateComposto +' | '+n.MOD_ST_DESCRICAO  );
+                        $scope.states.push(n.stateComposto +'| '+n.MOD_ST_DESCRICAO  );
                     }
                 }
             } else {
                 if(f.visualisar){
-                    $scope.states.push(f.stateComposto+' | '+f.MOD_ST_DESCRICAO);
+                    $scope.states.push(f.stateComposto+'| '+f.MOD_ST_DESCRICAO);
                 }
             }
             

@@ -51,6 +51,8 @@ angular.module('lisnet')
                     if (locationHostSplit[0] && locationHostSplit[0] !== 'localhost' && locationHostSplit[0] !== '192' && locationHostSplit[0] !== '127' && locationHostSplit[0] !== 'developer') {
                         console.log('online ......');
                         userDTO.configLisNet.defaultDB = locationHostSplit[0].toLowerCase();
+                        //TODO make sure this is going to be de defualt URL
+                        userDTO.configLisNet.baseUrl = 'http://einstein.lisnet.com.br/nodehomolog/lisnet';
                     } else if (locationHostSplit[0] && locationHostSplit[0] === 'localhost' || locationHostSplit[0] === '192' || locationHostSplit[0] === '127' || locationHostSplit[0] === 'developer') {
                         console.log('localhost ......');
 //                    userDTO.configLisNet.defaultDB = locationHostSplit[0].toLowerCase();
@@ -70,8 +72,10 @@ angular.module('lisnet')
                 var _param1DBName = $location.search()['dbname'];
                 if (_param1DBName && _param1DBName.length >= intDbLength) {
                     userDTO.configLisNet.defaultDB = _param1DBName.toLowerCase();
-                    $localStorage.userDTO = userDTO;
+                    userDTO.configLisNet.defaultDB = _param1DBName.toLowerCase();
+//                    $localStorage.userDTO = userDTO;
                 }
+                $localStorage.userDTO = userDTO;
 
 //                userDTO.configLisNet.baseUrl = 'http://localhost:8080/lisnet';
 
