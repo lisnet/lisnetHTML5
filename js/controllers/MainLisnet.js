@@ -13,16 +13,11 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
     $sessionStorage,$window,gerenciaRelatorioService,$interval,$filter,$localStorage,$state,resumePerfilService,configuraLinks,  $rootScope , $ocLazyLoad, $injector,notificacaoProvider) {
         console.log('Inicializando MainLisnet ..');
         
-
-    
-//    this.userDTO = {status: 'out', perfilId: 2, dtCriacao: new Date(), ultimaTela: 'login'};
-
-    
     $scope.$storage = $localStorage;
-    this.teste = 'holly fuck  dude ...';
     this.login ;
     this.senha ;
     this.mostrar = true;
+    
     var intDbLength = 3;
     var intMinimoDelay = 1000;
     var dialogLoading;
@@ -34,11 +29,7 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
 
     deviceDetector.isMobileDevice = $location.protocol() === 'file' || !!window.cordova ? true : false;
     deviceDetector.isCordova = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
-//    delete $localStorage.userDTO;
 
-    this.perfis = [{id: 0, icon: "fa fa-user", perfil: "Paciente"}
-//        , {id: 2, icon: "fa fa-search", perfil: "Consultas"}
-    ];
 
     var _url = $location.protocol() + '://' + location.host + '/lisnet';
     var locationHostSplit = $location.host().split(".");
@@ -55,36 +46,24 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
 
     } else {
         this.userDTO = {status: 'out', perfilId: 2, dtCriacao: new Date(), ultimaTela: 'login',notificationTimer:10000};
-//        $scope.userDTO.configLisNet = configLisNet;
         configuraLinks.configuraLinksAcesso(this.userDTO);
-//        console.log('JSON.stringify(this.userDTO) = '+JSON.stringify(this.userDTO));
-//        this.userDTO = $localStorage.userDTO;
        
     }
      buscaAPIService.buscaClientes(this.userDTO.configLisNet)
                 .then(function successCallback(response) {
                     this.userDTO = $localStorage.userDTO;
-//                    console.log('JSON.stringify(this.userDTO) = '+JSON.stringify(this.userDTO));
                     this.userDTO.configLisNet.clientes = response.data;
-//                    console.log('JSON.stringify(this.userDTO) = '+JSON.stringify(this.userDTO));
-//                    configLisNet.clientes = response.data;
                     console.log('this.userDTO.configLisNet.defaultDB = '+this.userDTO.configLisNet.defaultDB);
                     this.userDTO.cliente = montaUrlLaudoProvider.encontraClientePorNome(this.userDTO.configLisNet.clientes, this.userDTO.configLisNet.defaultDB);
                     this.userDTO.configLisNet.defaultDB = this.userDTO.cliente.CLI_ST_ORACLEUSERNAME;
                     $localStorage.userDTO = this.userDTO;
                 }, function errorCallback(response) {
                     console.log(response.statusText);
-//                    this.userDTO.cliente = montaUrlLaudoProvider.encontraClientePorNome(this.userDTO.configLisNet.clientes, this.userDTO.configLisNet.defaultDB);
-//                    $localStorage.userDTO = this.userDTO;
                 });
     
     this.userDTO.deviceDetector = deviceDetector;
     $localStorage.userDTO = this.userDTO;
     
-//    if( this.userDTO && this.userDTO.status === "out"  ){
-//        console.log('Usuario esta fora....');
-//        sairDoSistemaService.logOut();
-//    }
 
 
     this.cleanFields = function () {
@@ -138,32 +117,16 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
               
         } else {
             $timeout(function () { 
-//                if (!dialogLoading.$$state.status) { $mdDialog.hide(dialogLoading); }
             notificacaoProvider.sweetDialog("Preencha os campos", 'Preencha todos os campos obrigatórios.','warning','red','X');}, intMinimoDelay);
         }
     };
 
-//    $scope.userDTO.arrayRegistros =  ["", "login", "widgets", "widgets.lisnet", "erro", "contrucao", "contrucao.contrucao", "controle", "controle.notificacoes", "00001", "00001.00273", "00007", "00007.00263"];
-//    $scope.validaState = function (stateRegistro){
-//        
-//        for(var i =0; i <   $scope.userDTO.arrayRegistros.length ; i ++){
-//            console.log('arrayRegistros[i] = '+$scope.userDTO.arrayRegistros[i]);
-//            if($scope.userDTO.arrayRegistros[i] === stateRegistro){
-//                console.log('Inside validaState = '+stateRegistro+'  achei ...');
-//                return true;
-//            }
-//            return false;
-//        }
-////        return f
-//    };
+
 
     function  buscaUsuarioMenu(login, perfil,  modalLoading,stateGO) {
         buscaAPIService.buscaUsuarioMenuJSONAjax(login, perfil, this.userDTO.configLisNet)
                 .then(function successCallback(response) {
-//                    var perfil =    response.data;
-//                    $scope.userDTO.perfil = response.data;
                     this.userDTO.perfil = resumePerfilService.resume(response.data);
-//                    console.log('JSON.stringify($scope.userDTO.perfil,null,4)  = \n '+JSON.stringify($scope.userDTO.perfil,null,4));
                     if (this.userDTO && this.userDTO.perfil && this.userDTO.perfil.length > 0) {
                         this.userDTO.status = 'in';
                         this.userDTO.dtLogon = $filter('date')(new Date(), " dd/MM/yyyy  HH:mm");
@@ -174,11 +137,9 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
                             modalLoading.dismiss('cancel');
                                 
                                  $timeout(function () {
-//                                    modalLoading.dismiss('cancel');
                                       gerenciaRelatorioService.atualizaRelatorios(this.userDTO);
                                       buscaAPIService.buscaUnidades(this.userDTO.USU_ST_CODIGO, this.userDTO.configLisNet).then(function sucessCallBack(response) {
                                           this.userDTO.unidades = response.data;
-//                                          console.log(JSON.stringify(response.data));
                                              $localStorage.userDTO = this.userDTO;
                                       });
                                       buscaAPIService.buscaConvenios(this.userDTO.USU_ST_CODIGO, this.userDTO.configLisNet).then(function sucessCallBack(response) {
@@ -196,7 +157,6 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
                 }, function errorCallback(response) {
                     modalLoading.dismiss('cancel');
                         $timeout(function () { 
-//                                    notificacaoProvider.showDialogWarning("Sem conunicação", 'Sem internet ou servidor fora do ar .. ' + response.data, 'Fechar', 'Aviso', ev);
                                     notificacaoProvider.sweetDialog("Sem conunicação", 'Sem internet ou servidor fora do ar .. ','info','red','X');
                                 }, intMinimoDelay);
                                 
@@ -208,9 +168,8 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
     
     
     this.stateGO = function (stateGO) {
-//        console.log('Inside stageGO .....');
-//        $scope.userDTO.dtLogon = new Date();
         this.userDTO.ultimaTela = stateGO;
+        
         $localStorage.userDTO = this.userDTO;
         try{
             $state.go(stateGO, {userDTO: angular.toJson(this.userDTO)});
@@ -258,6 +217,7 @@ this.voltaLogo = function (MOD_ST_CODIGO){
     };
 
     $rootScope.$on("startNotificacaoTimer", function () {
+        
         var _interacoes = 0;
         var _sleep = 60000;
         console.log('Starting startNotificacaoTimer .....');
@@ -289,12 +249,12 @@ this.voltaLogo = function (MOD_ST_CODIGO){
 //            $state.go($scope.userDTO.ultimaTela);
  }
 
- this.killTimer = function() {
-          if (angular.isDefined(this.userDTO.job)) {
-            $interval.cancel(this.userDTO.job);
-            this.userDTO.job = undefined;
-          }
-     };
+// this.killTimer = function() {
+//          if (angular.isDefined(this.userDTO.job)) {
+//            $interval.cancel(this.userDTO.job);
+//            this.userDTO.job = undefined;
+//          }
+//     };
   
 //     console.log('Ultima linha userDTO is defined = '+ ( angular.isDefined(this.userDTO) ));
 }
