@@ -58,6 +58,9 @@ angular.module('lisnet').provider('montaUrlLaudoProvider', function () {
                         return cli;
                         break;
                     }
+//                    else{
+//                        console.log('cli.CLI_ST_CODIGO.toUpperCase() : '+cli.CLI_ST_CODIGO.toUpperCase() +'   name.toUpperCase(): ' + name.toUpperCase());
+//                    }
                 }
             }
           };  

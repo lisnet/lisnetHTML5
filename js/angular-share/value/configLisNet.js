@@ -9,11 +9,11 @@
 
 
 angular.module("lisnet").value("configLisNet",{
-   url: 'http://localhost:8080/lisnet' ,
+//   url: 'http://localhost:8080/lisnet' ,
    baseUrl: 'http://localhost:8080/lisnet' ,
-   baseUrlDevelop: 'http://localhost:8080/lisnet' ,
-   baseUrlHomolog: 'http://localhost:8080/lisnet' ,
-   baseUrlProduction: 'http://localhost:8080/lisnet' ,
+   baseUrlJava: 'http://localhost:8080/lisnet' ,
+   baseUrlPHP: 'http://localhost:8080/lisnet' ,
+   baseUrlDelphi: 'http://localhost:8080/lisnet' ,
    defaultDB: 'einstein'
 });
 

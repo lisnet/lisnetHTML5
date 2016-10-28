@@ -54,11 +54,11 @@ angular.module('lisnet').service("buscaAPIService",function ($http){
      * @returns {unresolved}
      */
      this.buscaClientes = function (configLisNet){
-         console.log('buscaClientes : '+configLisNet.baseUrl);
+//         console.log('buscaClientes : '+configLisNet.baseUrl);
 //        console.log("buscaUnidades = " + JSON.stringify(configLisNet)   + "  ...........");
 //        var params = '?dbname=einstein';//+configLisNet.defaultDB;
         var url = configLisNet.baseUrl +'/buscaClientes' ;// + params;
-        console.log('buscaClientes   url  = '+url);
+//        console.log('buscaClientes   url  = '+url);
         return $http({method : 'GET',url : url,
             headers : {
                 'Content-Type' : 'application/x-www-form-urlencoded',

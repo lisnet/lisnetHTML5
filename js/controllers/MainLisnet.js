@@ -68,6 +68,7 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
                     this.userDTO.configLisNet.clientes = response.data;
 //                    console.log('JSON.stringify(this.userDTO) = '+JSON.stringify(this.userDTO));
 //                    configLisNet.clientes = response.data;
+                    console.log('this.userDTO.configLisNet.defaultDB = '+this.userDTO.configLisNet.defaultDB);
                     this.userDTO.cliente = montaUrlLaudoProvider.encontraClientePorNome(this.userDTO.configLisNet.clientes, this.userDTO.configLisNet.defaultDB);
                     this.userDTO.configLisNet.defaultDB = this.userDTO.cliente.CLI_ST_ORACLEUSERNAME;
                     $localStorage.userDTO = this.userDTO;
@@ -254,42 +255,14 @@ this.voltaLogo = function (MOD_ST_CODIGO){
 
     this.logOut = function (){
         sairDoSistemaService.logOut();
-//         $interval.cancel(this.userDTO.job);
-//         
-//        this.userDTO.status= 'out';
-//        console.log('loging Out dude ...');
-//        $rootScope = $rootScope.$new(true);
-//        $scope = $scope.$new(true);
-//        sairDoSistemaService.logOut();
-//        $state.go('login');
     };
-
-
-//$scope.acheiOFDP = function  (msg){
-//    if(msg == '00007.00263'){
-//        console.log(msg);    
-//    }else if(msg == '00263'){
-//        console.log(msg);    
-//    }
-//};
-//$scope.notificacoesResumida = [];
-//$scope.notificacoesEnxecucao = 0;
-//$scope.resumeNofificacao = function (){
-//    if($scope.userDTO && $scope.userDTO.notificacoes && $scope.userDTO.notificacoes.length < qdtNotificacaoResumida){
-//            $scope.notificacoesResumida = $scope.userDTO && $scope.userDTO.notificacoes;
-//    }else if($scope.userDTO && $scope.userDTO.notificacoes && $scope.userDTO.notificacoes.length > qdtNotificacaoResumida){
-//            $scope.notificacoesResumida =  $scope.userDTO.notificacoes.slice(0,qdtNotificacaoResumida);
-//    }else{
-//            $scope.notificacoesResumida =  $scope.userDTO.notificacoes;
-//    }
-//  
-//};;
 
     $rootScope.$on("startNotificacaoTimer", function () {
         var _interacoes = 0;
         var _sleep = 60000;
         console.log('Starting startNotificacaoTimer .....');
-        gerenciaRelatorioService.atualizaRelatorios(this.userDTO);
+        $timeout(function (){gerenciaRelatorioService.atualizaRelatorios(this.userDTO);},20000);
+        
         
         this.userDTO.notificationTimer = 10;
         this.userDTO.notificationTimerInteracoes = 0;
