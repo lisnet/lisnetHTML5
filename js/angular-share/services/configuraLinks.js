@@ -56,6 +56,7 @@ angular.module('lisnet')
                     } else if (locationHostSplit[0] && locationHostSplit[0] === 'localhost' || locationHostSplit[0] === '192' || locationHostSplit[0] === '127' || locationHostSplit[0] === 'developer') {
                         console.log('localhost ......');
 //                    userDTO.configLisNet.defaultDB = locationHostSplit[0].toLowerCase();
+                        userDTO.configLisNet.baseUrl = 'http://localhost:8080/lisnet';
                     } else if ($location.protocol() === 'file') {
                         console.log('cordova .......');
                         userDTO.configLisNet.baseUrl = urlFinal;

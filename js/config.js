@@ -132,8 +132,34 @@ console.log('construing config , registrando state');
         })
         .state('contrucao.contrucao', {
                             url: "/under_construction",
-                            templateUrl: "views/under_construction.html",
+                            templateUrl: "views/tmtelas/under_construction.html",
                             parent:'contrucao',
+                            data: { pageTitle: 'Em construção'}  ,resolve: {
+                                loadPlugin: function ($ocLazyLoad) {
+                                    return $ocLazyLoad.load([
+                                        {
+                                            files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
+                                        },
+                                        {
+                                            name: 'oitozero.ngSweetAlert',
+                                            files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
+                                        },
+                                        {
+                                            files: ['css/plugins/iCheck/custom.css','js/plugins/iCheck/icheck.min.js']
+                                        }
+                                    ]);
+                                }
+                            }
+       })
+        .state('problema', {
+            abstract: true,
+            url: "/problema",
+            templateUrl: "views/common/content.html"
+        })
+        .state('problema.tela_nao_existe', {
+                            url: "/problema.tela_nao_existe",
+                            templateUrl: "views/tmtelas/tela_nao_existe.html",
+                            parent:'problema',
                             data: { pageTitle: 'Em construção'}  ,resolve: {
                                 loadPlugin: function ($ocLazyLoad) {
                                     return $ocLazyLoad.load([

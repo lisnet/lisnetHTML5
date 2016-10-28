@@ -168,10 +168,10 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
                         this.userDTO.dtLogon = $filter('date')(new Date(), " dd/MM/yyyy  HH:mm");
                         this.userDTO.ultimaTela = stateGO;
                         $localStorage.userDTO = this.userDTO;
-
+                        $state.go(stateGO, {userDTO: angular.toJson(this.userDTO)});
                         $timeout(function () {
                             modalLoading.dismiss('cancel');
-                                $state.go(stateGO, {userDTO: angular.toJson(this.userDTO)});
+                                
                                  $timeout(function () {
 //                                    modalLoading.dismiss('cancel');
                                       gerenciaRelatorioService.atualizaRelatorios(this.userDTO);
@@ -184,10 +184,6 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
                                               this.userDTO.convenios = response.data;
                                                $localStorage.userDTO = this.userDTO;
                                       });
-                                      
-                                     
-                                      
-                                      
                                 }, 2000);
                         }, 1500);
                         
@@ -219,7 +215,7 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
             $state.go(stateGO, {userDTO: angular.toJson(this.userDTO)});
         }catch (error){
             notificacaoProvider.sweetDialog("Erro", "Página não encontrada =  " + error,'warning','red','X');
-            $state.go('contrucao.contrucao');
+            $state.go('problema.tela_nao_existe');
         }
         
     };
@@ -257,14 +253,15 @@ this.voltaLogo = function (MOD_ST_CODIGO){
     };
 
     this.logOut = function (){
-         $interval.cancel(this.userDTO.job);
-         
-        this.userDTO.status= 'out';
-        console.log('loging Out dude ...');
-        $rootScope = $rootScope.$new(true);
-        $scope = $scope.$new(true);
         sairDoSistemaService.logOut();
-        $state.go('login');
+//         $interval.cancel(this.userDTO.job);
+//         
+//        this.userDTO.status= 'out';
+//        console.log('loging Out dude ...');
+//        $rootScope = $rootScope.$new(true);
+//        $scope = $scope.$new(true);
+//        sairDoSistemaService.logOut();
+//        $state.go('login');
     };
 
 

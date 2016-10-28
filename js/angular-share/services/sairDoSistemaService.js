@@ -5,46 +5,46 @@
 
 
 angular.module('lisnet')
-        .service('sairDoSistemaService', function ($state, $localStorage,$window,$rootScope) {
+        .service('sairDoSistemaService', function ($state, $localStorage, $window, $rootScope) {
 
-    this.logOut = function () {
-       
+            this.logOut = function () {
+                console.log('saindo do sistema, limpando o cache  ...');
 //        console.log("rodando sairDoSistema() .........................");
 //        $localStorage.userDTO = 2;
 //        localStorage.removeItem('userDTO');
-        delete $localStorage.userDTO;
+                delete $localStorage.userDTO;
 //        localStorage.removeItem('urlLaudo');
-        delete $localStorage.urlLaudo;
+                delete $localStorage.urlLaudo;
 //        localStorage.removeItem('urlLaudoPDF');
-        delete $localStorage.urlLaudoPDF;
+                delete $localStorage.urlLaudoPDF;
 //        localStorage.clear();
 //        $localStorage.$reset();
 //        $sessionStorage.$reset();
-            
-            console.log('loging Out dude ...');
-            $rootScope = $rootScope.$new(true);
-//            $scope = $scope.$new(true);
-            
-        
-    };
-      this.validarLogin = function (){
-          var userDTO = $localStorage.userDTO;
-        if(!userDTO ){
-          this.logOut();
-          $window.open('index.html', '_self');
-      }else if (userDTO && !userDTO.status) {
-          this.logOut();
-          $window.open('index.html', '_self');
-      }else if (userDTO && userDTO.status && userDTO.status === 'out') {
-          this.logOut();
-          $window.open('index.html', '_self');
-      }else{
-           return userDTO;
-          console.log('validarLogin ....');
-      }  
-    };
-  
 
-});
+                
+                $rootScope = $rootScope.$new(true);
+//            $scope = $scope.$new(true);
+
+                $window.open('index.html', '_self');
+            };
+            this.validarLogin = function () {
+                var userDTO = $localStorage.userDTO;
+                if (!userDTO) {
+                    this.logOut();
+//                    $window.open('index.html', '_self');
+                } else if (userDTO && !userDTO.status) {
+                    this.logOut();
+//                    $window.open('index.html', '_self');
+                } else if (userDTO && userDTO.status && userDTO.status === 'out') {
+                    this.logOut();
+//                    $window.open('index.html', '_self');
+                } else {
+                    return userDTO;
+                    console.log('validarLogin ....');
+                }
+            };
+
+
+        });
 
 
