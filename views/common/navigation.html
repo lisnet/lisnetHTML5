@@ -28,7 +28,7 @@
             </li>
 
           <li ui-sref-active="active">
-                <a ui-sref="widgets.lisnet"><i class="fa fa-flask"></i> <span class="nav-label">{{ 'WIDGETS' | translate }}</span></a>
+              <a ng-click="main.stateGO('widgets.lisnet')" ><i class="fa fa-flask"></i> <span class="nav-label">{{ 'WIDGETS' | translate }}</span></a>
             </li>
             
             <li  ng-repeat="p in  main.userDTO.perfil"  ng-class="{active: $state.includes(p.MOD_ST_CODIGO)}"  >

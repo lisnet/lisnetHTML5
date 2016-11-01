@@ -171,6 +171,21 @@ angular.module('lisnet')
                                 ' </div> </div>',
                                 controller: controller
                             });
+                        },modalLoadingGenerico:function (title,msg){
+                            return   $uibModal.open({
+                                template:'<div class="inmodal  modal-loading" >   '+
+                                ' <div class="modal-header">  '+
+                                '     <h4 class="modal-title">'+title+'</h4>  '+
+                                '     <strong class="font-bold  text-danger ">'+msg+'</strong>  '+
+                                ' </div>  '+
+                                ' <div class="modal-body">  '+
+                                '     <div class="sk-spinner sk-spinner-three-bounce">  '+
+                                '                         <div class="sk-bounce1"></div>  '+
+                                '                         <div class="sk-bounce2"></div>  '+
+                                '                         <div class="sk-bounce3"></div>  '+
+                                '                     </div>  '+
+                                ' </div> </div>'
+                            });
                         }
 
                 };

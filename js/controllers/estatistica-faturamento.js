@@ -3,10 +3,11 @@
  Author     : eros
  */
 
-function estatisticaFaturamento($scope, buscaAPIService, $stateParams, $localStorage, sairDoSistemaService, notificacaoProvider, $window, gerenciaRelatorioService, $filter ,$timeout, $uibModal) {
+function estatisticaFaturamento($scope, buscaAPIService, $stateParams, $localStorage, sairDoSistemaService, notificacaoProvider, $window, gerenciaRelatorioService, $filter ,$timeout, $uibModal,shareuser) {
 
     console.log('Inicializando estatisticaFaturamento');
 
+    console.log(shareuser.userDTO);
     $scope.userDTO = sairDoSistemaService.validarLogin();
 
     var rangeInMonths = 1;

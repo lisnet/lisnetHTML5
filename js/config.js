@@ -44,8 +44,7 @@ console.log('construing config , registrando state');
       .state('login', {
             url: "/login",
             templateUrl: "views/tmtelas/login.html",
-            data: { pageTitle: 'Login', specialClass: 'gray-bg' }
-            ,
+            data: { pageTitle: 'Login', specialClass: 'gray-bg' },
             resolve: {
                                 loadPlugin: function ($ocLazyLoad) {
                                     return $ocLazyLoad.load([
@@ -184,6 +183,7 @@ console.log('construing config , registrando state');
         }).state('controle.notificacoes', {
             url: "/notificacoes",
             templateUrl: "views/tmtelas/controle_notificacoes.html",
+            controller:"controleNotificacoes",
             data: { pageTitle: 'Notificações' },
             resolve: {
                 loadPlugin: function ($ocLazyLoad) {
@@ -222,8 +222,45 @@ console.log('construing config , registrando state');
                             url: "/consulta/laudo/:userDTO",
                             templateUrl: "views/tmtelas/consulta_laudos.html",
                             parent:'00001',
-                            controller: consultaLaudos,
+                            controller: 'consultaLaudos',
                             data: { pageTitle: 'Consulta de Laudos'}  ,resolve: {
+                                loadPlugin: function ($ocLazyLoad) {
+                                    return $ocLazyLoad.load([
+                             {
+                                serie: true,
+                                files: ['js/plugins/dataTables/datatables.min.js','css/plugins/dataTables/datatables.min.css']
+                            },
+                            {
+                                serie: true,
+                                name: 'datatables',
+                                files: ['js/plugins/dataTables/angular-datatables.min.js']
+                            },
+                            {
+                                serie: true,
+                                name: 'datatables.buttons',
+                                files: ['js/plugins/dataTables/angular-datatables.buttons.min.js']
+                            }, 
+                            {
+                                files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
+                            },
+                            {
+                                name: 'oitozero.ngSweetAlert',
+                                files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
+                            },
+                            {
+                                files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
+                            }
+
+                        ]);
+                    }
+                }
+       })
+        .state('00001.00186', {
+                            url: "/registro/flyers/:userDTO",
+                            templateUrl: "views/tmtelas/registro_flyers.html",
+                            parent:'00001',
+                            controller: 'consultaLaudos',
+                            data: { pageTitle: 'Registro de Flyers'}  ,resolve: {
                                 loadPlugin: function ($ocLazyLoad) {
                                     return $ocLazyLoad.load([
                              {
@@ -264,7 +301,7 @@ console.log('construing config , registrando state');
                             url: "/faturamento/:userDTO",
                             templateUrl: "views/tmtelas/estatistica_faturamento.html",
                             parent:'00007',
-                            controller: estatisticaFaturamento,
+                            controller: 'estatisticaFaturamento',
                             data: { pageTitle: 'Estatística Faturamento'}  ,resolve: {
                                 loadPlugin: function ($ocLazyLoad) {
                                     return $ocLazyLoad.load([

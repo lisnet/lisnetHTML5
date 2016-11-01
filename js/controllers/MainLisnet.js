@@ -1,16 +1,11 @@
 /* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/* 
  Created on : Oct 26, 2016, 3:22:15 PM
  Author     : eros
  */
 
 
 function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService, montaUrlLaudoProvider, configLisNet,  deviceDetector,   $timeout,determinaAparelhoProvider,sairDoSistemaService,$localStorage,
-    $sessionStorage,$window,gerenciaRelatorioService,$interval,$filter,$localStorage,$state,resumePerfilService,configuraLinks,  $rootScope , $ocLazyLoad, $injector,notificacaoProvider) {
+    $sessionStorage,$window,gerenciaRelatorioService,$interval,$filter,$localStorage,$state,resumePerfilService,configuraLinks,  $rootScope , $ocLazyLoad, $injector,notificacaoProvider,shareuser) {
         console.log('Inicializando MainLisnet ..');
         
     $scope.$storage = $localStorage;
@@ -56,6 +51,9 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
                     console.log('this.userDTO.configLisNet.defaultDB = '+this.userDTO.configLisNet.defaultDB);
                     this.userDTO.cliente = montaUrlLaudoProvider.encontraClientePorNome(this.userDTO.configLisNet.clientes, this.userDTO.configLisNet.defaultDB);
                     this.userDTO.configLisNet.defaultDB = this.userDTO.cliente.CLI_ST_ORACLEUSERNAME;
+//                    $scope.state = $state;
+//                    console.log("$state.current.name = "+$state.current.name);
+//                    $state.current.name = 'Porra....';
                     $localStorage.userDTO = this.userDTO;
                 }, function errorCallback(response) {
                     console.log(response.statusText);
@@ -133,6 +131,7 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
                         this.userDTO.ultimaTela = stateGO;
                         $localStorage.userDTO = this.userDTO;
                         $state.go(stateGO, {userDTO: angular.toJson(this.userDTO)});
+                        shareuser.userDTO = this.userDTO;
                         $timeout(function () {
                             modalLoading.dismiss('cancel');
                                 
@@ -169,15 +168,16 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
     
     this.stateGO = function (stateGO) {
         this.userDTO.ultimaTela = stateGO;
-        
         $localStorage.userDTO = this.userDTO;
+        
         try{
-            $state.go(stateGO, {userDTO: angular.toJson(this.userDTO)});
+//            $state.go(stateGO, {userDTO: angular.toJson(this.userDTO)});
+            $state.go(stateGO);
+    
         }catch (error){
             notificacaoProvider.sweetDialog("Erro", "Página não encontrada =  " + error,'warning','red','X');
             $state.go('problema.tela_nao_existe');
         }
-        
     };
 
 this.voltaLogo = function (MOD_ST_CODIGO){
@@ -217,31 +217,35 @@ this.voltaLogo = function (MOD_ST_CODIGO){
     };
 
     $rootScope.$on("startNotificacaoTimer", function () {
-        
         var _interacoes = 0;
         var _sleep = 60000;
-        console.log('Starting startNotificacaoTimer .....');
-        $timeout(function (){gerenciaRelatorioService.atualizaRelatorios(this.userDTO);},20000);
-        
-        
-        this.userDTO.notificationTimer = 10;
-        this.userDTO.notificationTimerInteracoes = 0;
         if (this.userDTO && this.userDTO.status && this.userDTO.status === 'in') {
-            if (this.userDTO.job) {
-                $interval.cancel(this.userDTO.job);
-            }
-            this.userDTO.job = $interval(function () {
-                _interacoes ++ ;
-                console.log('job update relatorio rodando ... interacoes =  '+_interacoes+'     _sleep = '+_sleep);
-                gerenciaRelatorioService.atualizaRelatorios(this.userDTO);
-                
-                if(_interacoes >= 5){
-                    _sleep = 120000;
-                }else{
-                    _sleep = 60000;
+            console.log('Atualizando lista de notificacoes ....');
+            
+            $timeout(function () { gerenciaRelatorioService.atualizaRelatorios(this.userDTO); }, 20000);
+            if ($scope.userDTO && $scope.userDTO.job) {
+                console.log('Job is runnig ...');
+            } else {
+                if (this.userDTO.job) {
+                    $interval.cancel(this.userDTO.job);
                 }
-            }, _sleep);
+                this.userDTO.job = $interval(function () {
+                    console.log('Starting startNotificacaoTimer .....');
+                    _interacoes++;
+//                console.log('job update relatorio rodando ... interacoes =  '+_interacoes+'     _sleep = '+_sleep);
+                    gerenciaRelatorioService.atualizaRelatorios(this.userDTO);
+
+//                    if (_interacoes >= 5) {
+//                        _sleep = 120000;
+//                    } else {
+//                        _sleep = 60000;
+//                    }
+                }, _sleep);
+            }
+        } else {
+            console.log('nothing to do ');
         }
+
     });
 
  if (this.userDTO && this.userDTO.ultimaTela) {
@@ -257,6 +261,10 @@ this.voltaLogo = function (MOD_ST_CODIGO){
 //     };
   
 //     console.log('Ultima linha userDTO is defined = '+ ( angular.isDefined(this.userDTO) ));
+
+
+
+
 }
 
 

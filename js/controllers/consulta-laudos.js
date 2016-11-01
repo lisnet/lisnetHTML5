@@ -6,7 +6,7 @@ function consultaLaudos($scope, $filter, sairDoSistemaService, base64, montaUrlL
 DTOptionsBuilder,$window,$interval,$timeout,notificacaoProvider,determinaAparelhoProvider, $stateParams) {
 var self = this;
 
-console.log('Inicializando consultaLaudo');
+console.log('Inicializando consultaLaudo ' );
 $scope.userDTO = sairDoSistemaService.validarLogin();
 
 

@@ -5,7 +5,7 @@
 
 
 angular.module('lisnet')
-        .service('sairDoSistemaService', function ($state, $localStorage, $window, $rootScope) {
+        .service('sairDoSistemaService', function ($state, $localStorage, $window, $rootScope,shareuser) {
 
             this.logOut = function () {
                 console.log('saindo do sistema, limpando o cache  ...');
@@ -28,7 +28,14 @@ angular.module('lisnet')
                 $window.open('index.html', '_self');
             };
             this.validarLogin = function () {
-                var userDTO = $localStorage.userDTO;
+                var userDTO;
+                if(shareuser.userDTO && shareuser.userDTO.unidades){
+                    console.log('Pegando do share service ...');
+                    userDTO = shareuser.userDTO;
+                }else{
+                    userDTO = $localStorage.userDTO;
+                }
+                
                 if (!userDTO) {
                     this.logOut();
 //                    $window.open('index.html', '_self');

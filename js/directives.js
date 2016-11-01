@@ -33,6 +33,27 @@
  */
 
 
+
+
+
+
+/**
+ * 
+ * @returns {Function} -  Directive para dar a funcionalidade do ng-click p a  tecla ENTER em campos de iINPUT
+ */
+function enterKey () {
+    return function (scope, element, attrs) {
+        element.bind("keydown keypress", function (event) {
+            if(event.which === 13) {
+                scope.$apply(function (){
+                    scope.$eval(attrs.enterKey);
+                });
+                event.preventDefault();
+            }
+        });
+    };
+}
+
 /**
  * pageTitle - Directive for set Page title - mata title
  */
@@ -88,7 +109,7 @@ function responsiveVideo() {
             video
                 .attr('data-aspectRatio', video.height() / video.width())
                 .removeAttr('height')
-                .removeAttr('width')
+                .removeAttr('width');
 
             //We can use $watch on $window.innerWidth also.
             $(window).resize(function() {
@@ -580,6 +601,7 @@ function markdownEditor() {
 angular
     .module('lisnet')
     .directive('pageTitle', pageTitle)
+    .directive('enterKey',enterKey)
     .directive('sideNavigation', sideNavigation)
     .directive('iboxTools', iboxTools)
     .directive('minimalizaSidebar', minimalizaSidebar)
