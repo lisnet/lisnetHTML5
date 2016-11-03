@@ -155,12 +155,12 @@ angular.module('lisnet')
                                 confirmButtonColor: 'red',
                                 confirmButtonText: 'ok'
                             });
-                        },modalLoading:function (title,msg,controller){
+                        },modalLoading:function (title,msg,scope){
                             return   $uibModal.open({
                                 template:'<div class="inmodal  modal-loading" >   '+
                                 ' <div class="modal-header">  '+
                                 '     <h4 class="modal-title">'+title+'</h4>  '+
-                                '     <strong class="font-bold  text-danger ">'+msg+'</strong>  '+
+                                '     <strong class="font-bold  text-navy ">'+msg+'</strong>  '+
                                 ' </div>  '+
                                 ' <div class="modal-body">  '+
                                 '     <div class="sk-spinner sk-spinner-three-bounce">  '+
@@ -169,7 +169,8 @@ angular.module('lisnet')
                                 '                         <div class="sk-bounce3"></div>  '+
                                 '                     </div>  '+
                                 ' </div> </div>',
-                                controller: controller
+                                scope:scope
+//                                controller: controller
                             });
                         },modalLoadingGenerico:function (title,msg){
                             return   $uibModal.open({

@@ -72,7 +72,7 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
     this.buscaUser = function (_param1, _param2) {
         if (_param1 && _param2 ) {
             
-            var modalLoading = notificacaoProvider.modalLoading('Carregando ','Buscando usuário na base, aguarde  ...','MainLisnet');
+            var modalLoading = notificacaoProvider.modalLoading('Carregando ','Buscando usuário na base, aguarde  ...',$scope);
             
             _param1 = _param1.toUpperCase();
             _param2 = _param2.toUpperCase();
@@ -136,22 +136,26 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
 //                        $state.go(stateGO, {userDTO: angular.toJson(this.userDTO)});
                         $state.go('widgets.lisnet');
                         
+                        //todas as chamadas no seu  tempo p nao sobrecarregar nem o cliente nem o servidor
                         $timeout(function () {
                             modalLoading.dismiss('cancel');
-                                
                                  $timeout(function () {
-                                      gerenciaRelatorioService.atualizaRelatorios(this.userDTO);
                                       buscaAPIService.buscaUnidades(this.userDTO.USU_ST_CODIGO, this.userDTO.configLisNet).then(function sucessCallBack(response) {
                                           this.userDTO.unidades = response.data;
                                           shareuser.userDTO.unidades = response.data;
 //                                             $localStorage.userDTO = this.userDTO;
                                       });
-                                      buscaAPIService.buscaConvenios(this.userDTO.USU_ST_CODIGO, this.userDTO.configLisNet).then(function sucessCallBack(response) {
-                                              this.userDTO.convenios = response.data;
-                                              shareuser.userDTO.convenios = response.data;
-//                                               $localStorage.userDTO = this.userDTO;
-                                      });
-                                }, 2000);
+                                            $timeout(function (){buscaAPIService.buscaConvenios(this.userDTO.USU_ST_CODIGO, this.userDTO.configLisNet).then(function sucessCallBack(response) {
+                                                    this.userDTO.convenios = response.data;
+                                                    shareuser.userDTO.convenios = response.data;
+      //                                               $localStorage.userDTO = this.userDTO;
+                                            });
+                                                    $timeout(function (){gerenciaRelatorioService.atualizaRelatorios(this.userDTO);
+                                                         shareuser.userDTO = this.userDTO;
+                                                        $localStorage.userDTO = this.userDTO;
+                                                    },800);
+                                            },700);
+                                }, 800);
                         }, 1500);
                         
                     } else {
@@ -176,9 +180,9 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
 //        console.log('$state.current .name =  ' + $state.current.name);
         if ($state.current.name !== stateGO) {
             try {
-                
-                if($state.href(stateGO)){
-                    this.userDTO.modalLoading = notificacaoProvider.modalLoading('Carregando ....', 'Buscando tela  código = ' + stateGO, 'MainLisnet');
+                if(stateGO === 'sair'){this.logOut();}else{
+                 if($state.href(stateGO)){
+                    this.userDTO.modalLoading = notificacaoProvider.modalLoading('Carregando ....', 'Buscando tela  código = ' + stateGO, $scope);
                     this.userDTO.ultimaTela = stateGO;
                     //            $state.go(stateGO, {userDTO: angular.toJson(this.userDTO)});
                     shareuser.userDTO = this.userDTO;
@@ -193,6 +197,7 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
 //                    userDTO.modalLoading.dismiss('cancel');
                     notificacaoProvider.sweetDialog("Erro", "Página não encontrada =  " + error, 'warning', 'red', 'X');
                     $state.go('problema.tela_nao_existe');
+                }
                 }
                
             } catch (error) {

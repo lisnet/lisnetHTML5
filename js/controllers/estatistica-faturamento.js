@@ -218,7 +218,7 @@ function estatisticaFaturamento($scope, buscaAPIService, $stateParams, $localSto
             notificacaoProvider.sweetDialog("Aviso", "Você  não possue Unidades ou Convênios para realizar o relatório , favor entrar em contado com o suporte.", 'info', 'orange', 'X');
             $scope.btnGerador = true;
         }else{
-                var modalInstance = notificacaoProvider.modalLoading("Relatório em execução","Consultar o icone de trarefas para fazer o download.","estatisticaFaturamento");
+                var modalInstance = notificacaoProvider.modalLoading("Relatório em execução","Consultar o icone de trarefas para fazer o download.",$scope);
 
             $timeout(function () {
 //                console.log('timeout is out');

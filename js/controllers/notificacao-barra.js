@@ -24,7 +24,8 @@ function notificacaoBarra($scope, $window, $localStorage,sairDoSistemaService,$r
     };
     $scope.states = [];
     $scope.states.push('controle.notificacoes| Controle de Notificações');
-    $scope.states.push('widgets.lisnet| Painel de Widgets do Usuário');
+    $scope.states.push('widgets.lisnet| Home Painel de Widgets do Usuário, Inicio , Inĩcio, Começo');
+    $scope.states.push('sair| Sair do Sistema quit exit');
     for (i in $scope.userDTO.perfil) {
 
         var p = $scope.userDTO.perfil[i];
