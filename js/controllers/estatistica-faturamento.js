@@ -3,7 +3,7 @@
  Author     : eros
  */
 
-function estatisticaFaturamento($scope, buscaAPIService, $stateParams, $localStorage, sairDoSistemaService, notificacaoProvider, $window, gerenciaRelatorioService, $filter ,$timeout, $uibModal) {
+function estatisticaFaturamento($scope, buscaAPIService, $stateParams, $localStorage, sairDoSistemaService, notificacaoProvider, $window, gerenciaRelatorioService, $filter ,$timeout, $uibModal,DTOptionsBuilder) {
 
     console.log('Inicializando estatisticaFaturamento');
 
@@ -292,6 +292,44 @@ function estatisticaFaturamento($scope, buscaAPIService, $stateParams, $localSto
       
 
     };
+
+
+ $scope.dtOptions = DTOptionsBuilder.newOptions()
+        .withDOM('<"html5buttons"B>lTfgitp')
+//        .withOption('stateSave', true)
+//        .withOption('lengthMenu', [10,25,50, 100, 150, 200])
+    //        .withLanguage([{url:"//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese.json"}])
+         .withLanguage({
+	"sProcessing":   "A processar...",
+	"sLengthMenu":   "Mostrar _MENU_ registos",
+	"sZeroRecords":  "Não foram encontrados resultados",
+	"sInfo":         "Mostrando de _START_ até _END_ de _TOTAL_ registos",
+	"sInfoEmpty":    "Mostrando de 0 até 0 de 0 registos",
+	"sInfoFiltered": "(filtrado de _MAX_ registos no total)",
+	"sInfoPostFix":  "",
+	"sSearch":       "Procurar:",
+	"sUrl":          "",
+	"oPaginate": {
+	    "sFirst":    "Primeiro",
+	    "sPrevious": "Anterior",
+	    "sNext":     "Seguinte",
+	    "sLast":     "Último"
+	}})
+        .withButtons([
+//            {extend: 'copy',text:'Copiar'},
+//            {extend: 'csv'},
+//            {extend: 'excel', title: 'Lista_de_Notificacoes'},
+//            {extend: 'pdf', title: 'Lista_de_Notificacoes'},
+//            {extend: 'print',text:'Imprimir',
+//                customize: function (win){
+//                    $(win.document.body).addClass('white-bg');
+//                    $(win.document.body).css('font-size', '10px');
+//                    $(win.document.body).find('table')
+//                        .addClass('compact')
+//                        .css('font-size', 'inherit');
+//                }
+//            }
+        ]);  
 
      function liberaGerador(){
         if($scope.userDTO.unidades && $scope.userDTO.unidades.length > 0 && $scope.userDTO.convenios && $scope.userDTO.convenios.length > 0){
