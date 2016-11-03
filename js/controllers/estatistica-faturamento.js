@@ -3,7 +3,7 @@
  Author     : eros
  */
 
-function estatisticaFaturamento($scope, buscaAPIService, $stateParams, $localStorage, sairDoSistemaService, notificacaoProvider, $window, gerenciaRelatorioService, $filter ,$timeout, $uibModal,shareuser) {
+function estatisticaFaturamento($scope, buscaAPIService, $stateParams, $localStorage, sairDoSistemaService, notificacaoProvider, $window, gerenciaRelatorioService, $filter ,$timeout, $uibModal) {
 
     console.log('Inicializando estatisticaFaturamento');
 
@@ -108,6 +108,7 @@ function estatisticaFaturamento($scope, buscaAPIService, $stateParams, $localSto
     };
 
     $scope.buscaUnidade = function (uniStCodigo) {
+        console.log('$scope.estatisticaFaturamento.unidades.length =  '+$scope.estatisticaFaturamento.unidades.length);
         for (var i = 0; i < $scope.userDTO.unidades.length; i++) {
             var uni = $scope.userDTO.unidades[i];
             console.log(uni.UNI_ST_CODIGO);
@@ -124,6 +125,31 @@ function estatisticaFaturamento($scope, buscaAPIService, $stateParams, $localSto
             }
         }
     };
+    $scope.popUnidades =  function (){
+        return  $uibModal.open({
+                    template:'   <div class="ibox-content"   > '
+                    +' <table datatable="ng" dt-options="dtOptions"  class="table table-striped table-bordered table-hover dataTables-example"> '
+                    +'     <thead> '
+                    +'     <tr> '
+                    +'         <th>Add</th> '
+                    +'         <th>Cõdigo</th> '
+                    +'         <th>Descrição</th> '
+                    +'     </tr> '
+                    +'     </thead> '
+                    +'     <tbody> '
+                    +'     <tr ng-repeat="u in userDTO.unidades"  ng-click="buscaUnidade(u.UNI_ST_CODIGO)" > '
+                    +'         <td    ><a  ng-click="buscaUnidade(u.UNI_ST_CODIGO)" ><i class="fa fa-plus-circle" aria-hidden="true"></i></a></td> '      
+                    +'         <td    ><span class="text-center  text-muted small    ">{{u.UNI_ST_CODIGO}}</span></td> '
+                    +'         <td ><span class="pull-right text-muted small  ">{{u.UNI_ST_DESCRICAO}}</span></td> '
+                    +'     </tr> '
+                    +'     </tbody> '
+                    +' </table> '
+               +'  </div>',
+                                scope: $scope
+                            });
+    };  
+    
+    
     $scope.buscaConvenio = function (conStCodigo) {
         if ($scope.userDTO.convenios) {
             for (var i = 0; i < $scope.userDTO.convenios.length; i++) {
@@ -144,6 +170,39 @@ function estatisticaFaturamento($scope, buscaAPIService, $stateParams, $localSto
             notificacaoProvider.sweetDialog("Erro", "Vocẽ não possue convênios em seu  usuário  ", 'warning', 'red', 'X');
         }
     };
+    $scope.popConvenios =  function (){
+        return  $uibModal.open({
+                    template:'   <div class="ibox-content"   > '
+                    +' <table datatable="ng" dt-options="dtOptions"  class="table table-striped table-bordered table-hover dataTables-example"> '
+                    +'     <thead> '
+                    +'     <tr> '
+                    +'         <th>Add</th> '
+                    +'         <th>Cõdigo</th> '
+                    +'         <th>Descrição</th> '
+                    +'     </tr> '
+                    +'     </thead> '
+                    +'     <tbody> '
+                    +'     <tr ng-repeat="c in userDTO.convenios"    ng-click="buscaConvenio(c.CON_ST_CODIGO)" > '
+                    +'         <td    ><a  ng-click="buscaConvenio(c.CON_ST_CODIGO)" ><i class="fa fa-plus-circle" aria-hidden="true"></i></a></td> '      
+                    +'         <td    ><span class="text-center  text-muted small    ">{{c.CON_ST_CODIGO}}</span></td> '
+                    +'         <td ><span class="pull-right text-muted small  ">{{c.CON_ST_DESCRICAO}}</span></td> '
+                    +'     </tr> '
+                    +'     </tbody> '
+                    +' </table> '
+               +'  </div>',
+                                scope: $scope
+                            });
+    };
+    
+    
+    $scope.limparTela = function (){
+        $scope.estatisticaFaturamento.unidades = [];
+        $scope.estatisticaFaturamento.convenios = [];
+        $scope.estatisticaFaturamento.dtInicio = new Date();
+        $scope.estatisticaFaturamento.dtFim = new Date();
+        $scope.estatisticaFaturamento.ordemRelatorio = 'unidade';
+    };
+    
     $scope.removerUnidade = function (uniStCodigo) {
         achaUnidade(uniStCodigo, $scope.estatisticaFaturamento.unidades, true);
     };

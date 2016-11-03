@@ -85,7 +85,7 @@
                             <div class="col-lg-10" >
                                 <input type="text" class="form-control" id="inputKey" placeholder="ex: 001"  ng-model="uniStCodigo"    enter-key="buscaUnidade(uniStCodigo)" >
                             </div>
-                            <button class="col-lg-2  btn btn-primary fa fa-search " ></button>
+                            <button class="col-lg-2  btn btn-primary fa fa-search "  ng-click="popUnidades()"  ></button>
                         </div>
 
                         <hr class="visible-lg-block, hidden-lg" >
@@ -95,7 +95,7 @@
                             <div class="col-lg-10" >
                                 <input type="text" class="form-control" id="inputValue" placeholder="ex: 228" ng-model="conStCodigo"   enter-key="buscaConvenio(conStCodigo)" >
                             </div>
-                            <button class="col-lg-2  btn btn-primary  fa fa-search" ></button>
+                            <button class="col-lg-2  btn btn-primary  fa fa-search" ng-click="popConvenios()"  ></button>
                         </div>
 
                     </div>
@@ -180,7 +180,7 @@
                         </div>
                         <hr class="visible-lg-block, hidden-lg" >
                         <div  class="col-lg-4">
-                            <button class="btn btn-block  btn-outline  btn-danger"  ng-click="limparRelatorio()" >Limpar</button>
+                            <button class="btn btn-block  btn-outline  btn-danger"  ng-click="limparTela()" >Limpar</button>
                         </div>
 
                         <hr class="visible-lg-block, hidden-lg" >

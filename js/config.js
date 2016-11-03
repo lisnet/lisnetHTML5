@@ -321,11 +321,11 @@ console.log('construing config , registrando state');
                             }
        }).state('00047', {
             abstract: true,
-            url: "/Ajuda",
+            url: "/ajuda",
             templateUrl: "views/common/content.html"
         })
         .state('00047.00049', {
-                            url: "/ajuda",
+                            url: "/sobre",
                             templateUrl: "views/tmtelas/ajuda.html",
                             parent:'00047',
 //                            controller: estatisticaFaturamento,
