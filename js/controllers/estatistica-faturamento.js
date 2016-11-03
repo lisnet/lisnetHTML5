@@ -7,7 +7,7 @@ function estatisticaFaturamento($scope, buscaAPIService, $stateParams, $localSto
 
     console.log('Inicializando estatisticaFaturamento');
 
-    console.log(shareuser.userDTO);
+//    console.log(shareuser.userDTO);
     $scope.userDTO = sairDoSistemaService.validarLogin();
 
     var rangeInMonths = 1;

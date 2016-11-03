@@ -29,10 +29,11 @@ angular.module('lisnet')
             };
             this.validarLogin = function () {
                 var userDTO;
-                if(shareuser.userDTO && shareuser.userDTO.unidades){
+                if(shareuser.userDTO && shareuser.userDTO.perfil  ){
                     console.log('Pegando do share service ...');
                     userDTO = shareuser.userDTO;
                 }else{
+                    console.log('Pegando do $localStorage ...');
                     userDTO = $localStorage.userDTO;
                 }
                 
@@ -49,6 +50,9 @@ angular.module('lisnet')
                     return userDTO;
                     console.log('validarLogin ....');
                 }
+                
+                
+                
             };
 
 

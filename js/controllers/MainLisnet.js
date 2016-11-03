@@ -94,7 +94,7 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
                                     this.userDTO.USU_IN_QTDDIA = retorno.USU_IN_QTDDIA;
 //                                    this.log('$scope.userDTO.perfilId: '+this.userDTO.perfilId);
                                     $localStorage.userDTO = this.userDTO;
-                                    buscaUsuarioMenu(_param1, this.userDTO.PUS_ST_CODIGO, modalLoading ,'widgets.lisnet') ;
+                                    buscaUsuarioMenu(_param1, this.userDTO.PUS_ST_CODIGO, modalLoading ) ;
 
                                 } else {
                                     modalLoading.dismiss('cancel');
@@ -121,17 +121,21 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
 
 
 
-    function  buscaUsuarioMenu(login, perfil,  modalLoading,stateGO) {
+    function  buscaUsuarioMenu(login, perfil,  modalLoading) {
         buscaAPIService.buscaUsuarioMenuJSONAjax(login, perfil, this.userDTO.configLisNet)
                 .then(function successCallback(response) {
                     this.userDTO.perfil = resumePerfilService.resume(response.data);
                     if (this.userDTO && this.userDTO.perfil && this.userDTO.perfil.length > 0) {
                         this.userDTO.status = 'in';
                         this.userDTO.dtLogon = $filter('date')(new Date(), " dd/MM/yyyy  HH:mm");
-                        this.userDTO.ultimaTela = stateGO;
-                        $localStorage.userDTO = this.userDTO;
-                        $state.go(stateGO, {userDTO: angular.toJson(this.userDTO)});
+                        this.userDTO.ultimaTela = 'widgets.lisnet';
+                        //metthod preferencia de passar objs para outros controllers , usando memoria e nao IO.
                         shareuser.userDTO = this.userDTO;
+                        //localStorage do userDTO para possibiliar  o refresh F5 , o perfil faz parte da autorizacao do login .
+                        $localStorage.userDTO = this.userDTO;
+//                        $state.go(stateGO, {userDTO: angular.toJson(this.userDTO)});
+                        $state.go('widgets.lisnet');
+                        
                         $timeout(function () {
                             modalLoading.dismiss('cancel');
                                 
@@ -139,11 +143,13 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
                                       gerenciaRelatorioService.atualizaRelatorios(this.userDTO);
                                       buscaAPIService.buscaUnidades(this.userDTO.USU_ST_CODIGO, this.userDTO.configLisNet).then(function sucessCallBack(response) {
                                           this.userDTO.unidades = response.data;
-                                             $localStorage.userDTO = this.userDTO;
+                                          shareuser.userDTO.unidades = response.data;
+//                                             $localStorage.userDTO = this.userDTO;
                                       });
                                       buscaAPIService.buscaConvenios(this.userDTO.USU_ST_CODIGO, this.userDTO.configLisNet).then(function sucessCallBack(response) {
                                               this.userDTO.convenios = response.data;
-                                               $localStorage.userDTO = this.userDTO;
+                                              shareuser.userDTO.convenios = response.data;
+//                                               $localStorage.userDTO = this.userDTO;
                                       });
                                 }, 2000);
                         }, 1500);
@@ -167,17 +173,38 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
     
     
     this.stateGO = function (stateGO) {
-        this.userDTO.ultimaTela = stateGO;
-        $localStorage.userDTO = this.userDTO;
-        
-        try{
-//            $state.go(stateGO, {userDTO: angular.toJson(this.userDTO)});
-            $state.go(stateGO);
-    
-        }catch (error){
-            notificacaoProvider.sweetDialog("Erro", "Página não encontrada =  " + error,'warning','red','X');
-            $state.go('problema.tela_nao_existe');
+//        console.log('$state.current .name =  ' + $state.current.name);
+        if ($state.current.name !== stateGO) {
+            try {
+                
+                if($state.href(stateGO)){
+                    this.userDTO.modalLoading = notificacaoProvider.modalLoading('Carregando ....', 'Buscando tela  código = ' + stateGO, 'MainLisnet');
+                    this.userDTO.ultimaTela = stateGO;
+                    //            $state.go(stateGO, {userDTO: angular.toJson(this.userDTO)});
+                    shareuser.userDTO = this.userDTO;
+                    $timeout(function () {
+                        $state.go(stateGO);
+                        $timeout(function () {
+                            userDTO.modalLoading.dismiss('cancel');
+                        }, 1500);
+                        this.userDTO.ultimaTela = stateGO;
+                    }, 300);
+                }else{
+//                    userDTO.modalLoading.dismiss('cancel');
+                    notificacaoProvider.sweetDialog("Erro", "Página não encontrada =  " + error, 'warning', 'red', 'X');
+                    $state.go('problema.tela_nao_existe');
+                }
+               
+            } catch (error) {
+//                userDTO.modalLoading.dismiss('cancel');
+                notificacaoProvider.sweetDialog("Erro", "Página não encontrada =  " + error, 'warning', 'red', 'X');
+                $state.go('problema.tela_nao_existe');
+            }
+        } else {
+            console.log('the same state');
         }
+
+        $localStorage.userDTO = this.userDTO;
     };
 
 this.voltaLogo = function (MOD_ST_CODIGO){
