@@ -4,7 +4,7 @@
  */
 
 
-angular.module('lisnet').service('gerenciaRelatorioService', function (buscaAPIService,$filter,$http) {
+angular.module('lisnet').service('gerenciaRelatorioService', function (buscaAPIService,$filter,$http,$interval) {
 
 
     this.gerarRelatorio = function (json, $scope) {
@@ -46,7 +46,7 @@ angular.module('lisnet').service('gerenciaRelatorioService', function (buscaAPIS
                var arrayRel = response.data;
                var arrayNotf = [];
                for(var i = 0 ; i < arrayRel.length ; i ++ ){
-                   var rel = arrayRel[i];
+                      var rel = arrayRel[i];
                    var icon = null;
                    var aviso = null;
                    var style  = null;
@@ -74,10 +74,23 @@ angular.module('lisnet').service('gerenciaRelatorioService', function (buscaAPIS
                    }
                     var not = {id: rel.REL_IN_CODIGO, icon: icon, descricao: rel.REL_ST_DESCRICAO, aviso: aviso, status: rel.REL_CH_STATUS,dtInicio:rel.REL_DT_CONSULTA,style:style};
                     arrayNotf.push(not);
+                  
+                 
                }
                if(userDTO.notificacoes.length !== arrayNotf.length){
 //                   console.log('Tamanho eh diferente...   $scope.userDTO.notificacoes.length: '+$scope.userDTO.notificacoes.length+"        arrayNotf.length: "+arrayNotf.length);
-                   userDTO.notificacoes = arrayNotf;
+                     
+//                   userDTO.notificacoes = arrayNotf;
+                   var _int = $interval(function (){
+                       if(arrayNotf && arrayNotf.length > 0){
+                           
+                        userDTO.notificacoes.push(arrayNotf.shift());
+                       }else{
+                           $interval.cancel(_int );
+                       }
+                       
+                   },150);
+                   
                }else{
                    for(var i = 0 ; i < arrayNotf.length ; i ++){
                        var not = arrayNotf[i];

@@ -9,6 +9,7 @@ angular.module('lisnet')
 
             this.logOut = function () {
                 console.log('saindo do sistema, limpando o cache  ...');
+                  delete shareuser;
 //        console.log("rodando sairDoSistema() .........................");
 //        $localStorage.userDTO = 2;
 //        localStorage.removeItem('userDTO');

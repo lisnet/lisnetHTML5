@@ -12,7 +12,7 @@ angular.module('lisnet')
 
             };
     this.constroeUserDTONovo = function (){
-      return {status: 'out', perfilId: 2, dtCriacao: new Date(), ultimaTela: 'login',notificationTimer:10000,hotPages:[]};  
+      return {status: 'out', perfilId: 2, dtCriacao: new Date(), ultimaTela: 'login',notificationTimer:10000,hotPages:[],notificacoes:[]};  
     };
             this.configuraLinksAcesso = function (userDTO) {
                 var intDbLength = 4;

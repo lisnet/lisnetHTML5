@@ -83,7 +83,7 @@ angular.module('lisnet').service("buscaAPIService",function ($http){
 //        console.log('params = '+params);
         var xhttp = new XMLHttpRequest();
         var url =  configLisNet.baseUrl +'/buscaUsuario' + params;
-        console.log('buscaUsuario = '+url);
+//        console.log('buscaUsuario = '+url);
         xhttp.open("GET", url, true);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.setRequestHeader('Access-Control-Allow-Headers', '*');

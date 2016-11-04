@@ -183,7 +183,7 @@ console.log('construing config , registrando state');
         }).state('controle.notificacoes', {
             url: "/notificacoes",
             templateUrl: "views/tmtelas/controle_notificacoes.html",
-            controller:"controleNotificacoes",
+//            controller:"controleNotificacoes",
             data: { pageTitle: 'Notificações' },
             resolve: {
                 loadPlugin: function ($ocLazyLoad) {

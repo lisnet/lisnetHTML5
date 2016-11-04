@@ -7,6 +7,7 @@
 function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService, montaUrlLaudoProvider, configLisNet,  deviceDetector,   $timeout,determinaAparelhoProvider,sairDoSistemaService,$localStorage,
     $sessionStorage,$window,gerenciaRelatorioService,$interval,$filter,$localStorage,$state,resumePerfilService,configuraLinks,  $rootScope , $ocLazyLoad, $injector,notificacaoProvider,shareuser) {
         console.log('Inicializando MainLisnet ..');
+        var vm = this;
         
     $scope.$storage = $localStorage;
     this.login ;
@@ -135,7 +136,6 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
                         $localStorage.userDTO = this.userDTO;
 //                        $state.go(stateGO, {userDTO: angular.toJson(this.userDTO)});
                         $state.go('widgets.lisnet');
-                        
                         //todas as chamadas no seu  tempo p nao sobrecarregar nem o cliente nem o servidor
                         $timeout(function () {
                             modalLoading.dismiss('cancel');
@@ -173,8 +173,6 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
                 
               
     };
-    
-    
     
     this.stateGO = function (stateGO) {
 //        console.log('$state.current .name =  ' + $state.current.name);
@@ -305,6 +303,78 @@ this.voltaLogo = function (MOD_ST_CODIGO){
 //     };
   
 //     console.log('Ultima linha userDTO is defined = '+ ( angular.isDefined(this.userDTO) ));
+
+
+
+//var qdtNotificacaoResumida = 6;
+//    this.notificacoesResumida = [];
+//    
+//    String.prototype.isNumber = function(){return /^\d+$/.test(this);};
+//    this.telaSelecionada = '';
+//    this.cortaString = function (str){
+//        var _array = str.split('|');
+////        return _array[0];
+//        var idDaPagina = _array[0];
+//        $scope.telaSelecionada = '';
+//        return idDaPagina;
+//    };
+//    this.states = [];
+//    this.states.push('controle.notificacoes| Controle de Notificações');
+//    this.states.push('widgets.lisnet| Home Painel de Widgets do Usuário, Inicio , Inĩcio, Começo');
+//    this.states.push('sair| Sair do Sistema quit exit');
+//    
+//       function montaStatesPesquisa() {
+//        for (i in this.userDTO.perfil) {
+//
+//            var p = this.userDTO.perfil[i];
+////        $scope.states.push(p.MOD_ST_CODIGO);
+//
+//            for (y in p.telas) {
+//
+//                var f = p.telas[y];
+//                if (f.telas) {
+//                    for (x in f.telas) {
+//                        var n = f.telas[x];
+//                        if (n.visualisar) {
+//                            vm .states.push(n.stateComposto + '| ' + n.MOD_ST_DESCRICAO);
+//                        }
+//                    }
+//                } else {
+//                    if (f.visualisar) {
+//                        vm .states.push(f.stateComposto + '| ' + f.MOD_ST_DESCRICAO);
+//                    }
+//                }
+//
+//            }
+//        }
+//    };
+//    
+//
+//    this.openRelatorio = function (status,codigo_rastreio){
+//        console.log('Inside openRelatorio codigo_rastreio = '+codigo_rastreio);
+//        if(status === 'B'){
+//            var url = this.userDTO.configLisNet.baseUrl +'/relatorio/download?codigo_rastreio=' +codigo_rastreio+'&dbname='+this.userDTO.configLisNet.defaultDB;
+//         $window.open(url, '_blank');
+//        }else{
+//            
+//        }
+//    };
+//    
+//    this.startTimer = function (){
+//        $rootScope.$broadcast("startNotificacaoTimer");
+//    };
+//    
+//    this.resumeNofificacao = function (){
+//        
+//    if(this.userDTO && this.userDTO.notificacoes && this.userDTO.notificacoes.length < qdtNotificacaoResumida){
+//            this.notificacoesResumida = this.userDTO && this.userDTO.notificacoes;
+//    }else if(this.userDTO && this.userDTO.notificacoes && this.userDTO.notificacoes.length > qdtNotificacaoResumida){
+//            this.notificacoesResumida =  this.userDTO.notificacoes.slice(0,qdtNotificacaoResumida);
+//    }else{
+//            this.notificacoesResumida =  this.userDTO.notificacoes;
+//    }
+//  $rootScope.$broadcast("startNotificacaoTimer");
+//};
 
 
 
