@@ -11,6 +11,9 @@ angular.module('lisnet')
             this.detertinaAparelho = function (userDTO) {
 
             };
+    this.constroeUserDTONovo = function (){
+      return {status: 'out', perfilId: 2, dtCriacao: new Date(), ultimaTela: 'login',notificationTimer:10000,hotPages:[]};  
+    };
             this.configuraLinksAcesso = function (userDTO) {
                 var intDbLength = 4;
                 

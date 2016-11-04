@@ -32,38 +32,38 @@
 
                         <div class="col-lg-3">
                             <label class="control-label">Unidade</label>
-                            <input class="col-lg-6 checkbox-inline"   icheck type="radio" name="radioUnidade" ng-model="estatisticaFaturamento.ordemRelatorio"  value="unidade"  > 
+                            <input class="col-lg-6 checkbox-inline"   icheck type="radio" name="radioUnidade" ng-model="userDTO.estatisticaFaturamento.ordemRelatorio"  value="unidade"  > 
                         </div>
 
                         <div class="col-lg-3 ">
                             <label class="control-label">Convênio</label>
-                            <input class="col-lg-6  checkbox-inline"  icheck type="radio" name="radioConvenio" ng-model="estatisticaFaturamento.ordemRelatorio"  value="convenio"  > 
+                            <input class="col-lg-6  checkbox-inline"  icheck type="radio" name="radioConvenio" ng-model="userDTO.estatisticaFaturamento.ordemRelatorio"  value="convenio"  > 
                         </div>
                         <hr class="visible-lg-block, hidden-lg" >
                         <div class="col-lg-3">
                             <label class="control-label">Analítico</label>
-                            <input class="col-lg-6 checkbox-inline"  disabled  icheck type="radio" name="radioTest3" ng-model="estatisticaFaturamento.tipoRelatorio"  value="analitico"  >
+                            <input class="col-lg-6 checkbox-inline"  disabled  icheck type="radio" name="radioTest3" ng-model="userDTO.estatisticaFaturamento.tipoRelatorio"  value="analitico"  >
                         </div>
                         <div class="col-lg-3">
                             <label class="control-label"   >Sintético</label>
-                            <input class="col-lg-6 checkbox-inline"  disabled icheck type="radio" name="radioTest3" ng-model="estatisticaFaturamento.tipoRelatorio" value="sintetico" >
+                            <input class="col-lg-6 checkbox-inline"  disabled icheck type="radio" name="radioTest3" ng-model="userDTO.estatisticaFaturamento.tipoRelatorio" value="sintetico" >
                         </div>
                         <hr class="visible-xs-block, hidden-xs" >
                         <hr class="visible-lg-block, hidden-lg" >
 
 
                         <div class="col-lg-3">
-                            <input icheck type="checkbox" ng-model="estatisticaFaturamento.faturado">
+                            <input icheck type="checkbox" ng-model="userDTO.estatisticaFaturamento.faturado">
                             <label   >Faturado</label>
                         </div>
 
                         <div class="col-lg-3 ">
-                            <input icheck type="checkbox" ng-model="estatisticaFaturamento.conferido">
+                            <input icheck type="checkbox" ng-model="userDTO.estatisticaFaturamento.conferido">
                             <label  >Conferido</label>
                         </div>
                         <hr class="visible-lg-block, hidden-lg" >
                         <div class="col-lg-6">
-                            <input class="checkbox-inline"   disabled  icheck type="checkbox" name="checkPeriodo" ng-model="estatisticaFaturamento.periodo"  >
+                            <input class="checkbox-inline"   disabled  icheck type="checkbox" name="checkPeriodo" ng-model="userDTO.estatisticaFaturamento.periodo"  >
                             <label style="padding-left: 5px;" > Por período de fechamento</label>
                         </div>
                     </div>
@@ -124,8 +124,8 @@
                         <div class="col-lg-4  b-r ">
                             <p class="input-group">
                                 <input type="text" class="form-control" 
-                                       uib-datepicker-popup="{{estatisticaFaturamento.format}}" 
-                                       ng-model="estatisticaFaturamento.dtInicio" 
+                                       uib-datepicker-popup="{{userDTO.estatisticaFaturamento.format}}" 
+                                       ng-model="userDTO.estatisticaFaturamento.dtInicio" 
                                        ng-change="calcRangeDate()"
                                        is-open="popup.inicio" 
                                        datepicker-options="dateOptionsMin" 
@@ -142,8 +142,8 @@
                         <div class="col-lg-4">
                             <p class="input-group">
                                 <input type="text" class="form-control"  
-                                       uib-datepicker-popup="{{estatisticaFaturamento.format}}" 
-                                       ng-model="estatisticaFaturamento.dtFim"
+                                       uib-datepicker-popup="{{userDTO.estatisticaFaturamento.format}}" 
+                                       ng-model="userDTO.estatisticaFaturamento.dtFim"
                                        ng-change="calcRangeDate()"
                                        is-open="popup.fim" 
                                        datepicker-options="dateOptionsMax" 
@@ -173,7 +173,7 @@
 
                     <div class="row">
                         <div class="col-lg-4"  >
-                            <select class="selectpicker form-control "   ng-model="estatisticaFaturamento.tipo"  style=" " >
+                            <select class="selectpicker form-control "   ng-model="userDTO.estatisticaFaturamento.tipo"  style=" " >
                                 <option>pdf</option>
                                 <!--<option>xlsx</option>-->
                             </select>
@@ -206,7 +206,7 @@
         </div>
     </div>
     <div class="row">
-        <div   class="col-lg-1 "   ng-repeat="uni in estatisticaFaturamento.unidades"  style="padding: 0px 0px 0px 15px;  margin: 0px 0px 0px 0px;" >
+        <div   class="col-lg-1 "   ng-repeat="uni in userDTO.estatisticaFaturamento.unidades"  style="padding: 0px 0px 0px 15px;  margin: 0px 0px 0px 0px;" >
             <div id="animation_box"   class="contact-box  animated " style="padding: 0px 0px 0px 0px;  margin: 0px 0px 0px 0px;"  >
                 <a >
                     <div class="clearfix">
@@ -229,7 +229,7 @@
         </div>
     </div>
     <div class="row">
-        <div   class="col-lg-1 "   ng-repeat="con in estatisticaFaturamento.convenios"  style="padding: 0px 0px 0px 15px;  margin: 0px 0px 0px 0px;" >
+        <div   class="col-lg-1 "   ng-repeat="con in userDTO.estatisticaFaturamento.convenios"  style="padding: 0px 0px 0px 15px;  margin: 0px 0px 0px 0px;" >
             <div id="animation_box"   class="contact-box  animated " style="padding: 0px 0px 0px 0px;  margin: 0px 0px 0px 0px;"  >
                 <a >
                     <div class="clearfix">

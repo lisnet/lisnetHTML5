@@ -40,7 +40,7 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
         this.userDTO.deviceDetector = deviceDetector;
 
     } else {
-        this.userDTO = {status: 'out', perfilId: 2, dtCriacao: new Date(), ultimaTela: 'login',notificationTimer:10000};
+        this.userDTO = configuraLinks.constroeUserDTONovo();
         configuraLinks.configuraLinksAcesso(this.userDTO);
        
     }
@@ -181,18 +181,30 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
         if ($state.current.name !== stateGO) {
             try {
                 if(stateGO === 'sair'){this.logOut();}else{
-                 if($state.href(stateGO)){
-                    this.userDTO.modalLoading = notificacaoProvider.modalLoading('Carregando ....', 'Buscando tela  código = ' + stateGO, $scope);
+                    var hotPage = $state.href(stateGO);
+                 if(hotPage){
+//                     console.log(hotPage);
+                     
+                     console.log('this.userDTO.hotPages.length = '+this.userDTO.hotPages.length);
+//                    this.userDTO.modalLoading = notificacaoProvider.modalLoading('Carregando ....', 'Buscando tela  código = ' + stateGO, $scope);;
                     this.userDTO.ultimaTela = stateGO;
-                    //            $state.go(stateGO, {userDTO: angular.toJson(this.userDTO)});
-                    shareuser.userDTO = this.userDTO;
-                    $timeout(function () {
-                        $state.go(stateGO);
-                        $timeout(function () {
-                            userDTO.modalLoading.dismiss('cancel');
-                        }, 1500);
-                        this.userDTO.ultimaTela = stateGO;
-                    }, 300);
+                    $state.go(stateGO);
+                    $timeout(function (){
+                        
+                                if (this.userDTO.hotPages.filter(function(e) { return e.name == stateGO; }).length > 0) {
+                                    console.log('this.userDTO.hotPages contains the element we re looking for');
+                                  }else if(stateGO !== 'widgets.lisnet'){
+                                    this.userDTO.hotPages.push($state.current);
+                                  }
+//                        console.log(JSON.stringify($state.current,null, 2));
+                    },3000);
+                    
+//                    $timeout(function () {
+//                        $timeout(function () {
+////                            userDTO.modalLoading.dismiss('cancel');
+//                        }, 1500);
+//                        
+//                    }, 300);
                 }else{
 //                    userDTO.modalLoading.dismiss('cancel');
                     notificacaoProvider.sweetDialog("Erro", "Página não encontrada =  " + error, 'warning', 'red', 'X');

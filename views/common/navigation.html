@@ -27,7 +27,17 @@
                 </div>
             </li>
 
-          <li ui-sref-active="active">
+             <li ui-sref-active="active"  ng-show="main.userDTO.hotPages && main.userDTO.hotPages.length > 0" >
+                 <a href="index.html"><i  style="color: #FF6F00;"  class="fa fa-fire"></i> <span  style="color: #FFA000;" class="nav-label">Telas abertas</span> <span class="fa arrow"></span></a>
+                 <ul class="nav nav-second-level collapse"   > 
+                    <li ui-sref-active="active" ng-repeat="h in main.userDTO.hotPages"    >
+                        <a ng-click="main.stateGO(h.name)"  class="font-italic text-muted  text-info"  > {{h.data.pageTitle}}</a>
+                    </li>    
+                </ul>
+            </li>
+            
+            
+            <li ui-sref-active="active">
               <a ng-click="main.stateGO('widgets.lisnet')" ><i class="fa fa-flask"></i> <span class="nav-label">{{ 'WIDGETS' | translate }}</span></a>
             </li>
             
