@@ -28,6 +28,29 @@ and open the template in the editor.
     top: 180px;
 }
 
+/*.modal-dialog {
+  width:50%;
+  height: 50%;
+  margin: 0;
+  padding: 0;
+}
+
+.modal-content {
+  height: auto;
+  min-height: 100%;
+  border-radius: 0;
+}*/
+
+.modal-iframe{
+    /*top: 280px;*/
+    width:100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+/*    width: 900px;
+    height: 900px;*/
+}
+
 .navbar-top-links .dropdown-alerts {
     margin-left: -65px;
 }

@@ -37,7 +37,7 @@
 
                         <div class="col-lg-3 ">
                             <label class="control-label">Convênio</label>
-                            <input class="col-lg-6  checkbox-inline"  icheck type="radio" name="radioConvenio" ng-model="userDTO.estatisticaFaturamento.ordemRelatorio"  value="convenio"  > 
+                            <input class="col-lg-6  checkbox-inline"  disabled icheck type="radio" name="radioConvenio" ng-model="userDTO.estatisticaFaturamento.ordemRelatorio"  value="convenio"  > 
                         </div>
                         <hr class="visible-lg-block, hidden-lg" >
                         <div class="col-lg-3">
@@ -93,7 +93,7 @@
                         <div class="col-lg-6">
                             <h4>Busca Convênio</h4>
                             <div class="col-lg-10" >
-                                <input type="text" class="form-control" id="inputValue" placeholder="ex: 228" ng-model="conStCodigo"   enter-key="buscaConvenio(conStCodigo)" >
+                                <input type="text"   class="form-control" id="inputValue" placeholder="ex: 228" ng-model="conStCodigo"   enter-key="buscaConvenio(conStCodigo)" >
                             </div>
                             <button class="col-lg-2  btn btn-primary  fa fa-search" ng-click="popConvenios()"  ></button>
                         </div>

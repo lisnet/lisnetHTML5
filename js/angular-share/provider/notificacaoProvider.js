@@ -172,6 +172,7 @@ angular.module('lisnet')
                                 scope:scope
 //                                controller: controller
                             });
+                            
                         },modalLoadingGenerico:function (title,msg){
                             return   $uibModal.open({
                                 template:'<div class="inmodal  modal-loading" >   '+
@@ -186,6 +187,25 @@ angular.module('lisnet')
                                 '                         <div class="sk-bounce3"></div>  '+
                                 '                     </div>  '+
                                 ' </div> </div>'
+                            });
+                        },modalIframe:function (title,msg,scope,url){
+                            return   $uibModal.open({
+                                template:
+                                 '<div class="inmodal  modal-iframe"  style="width:100%; height: 100%;" >   '+
+                                ' <div class="modal-header">  '+
+                                '     <h4 class="modal-title">'+title+'</h4>  '+
+                                '     <strong class="font-bold  text-navy ">'+msg+'</strong>  '+
+//                                '     <a href='+url+' target="_blank" >Download</a>'+
+                                ' </div>  '+
+                                ' <div class="modal-body  modal-iframe">  '+
+                                ' <div class="embed-responsive embed-responsive-4by3 ">  '+
+                                '     <iframe class="embed-responsive-item" src="'+url+'"></iframe>  '+
+                                '   </div>  '+
+                                ' </div>  '+
+                                ' </div>',
+                                size: 'lg',
+                                scope:scope
+//                                controller: controller
                             });
                         }
 

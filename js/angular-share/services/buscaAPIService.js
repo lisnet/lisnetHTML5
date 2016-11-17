@@ -302,19 +302,35 @@ angular.module('lisnet').service("buscaAPIService",function ($http){
     * @param {type} configLisNet
     * @returns {XMLHttpRequest}
     */
+//    this.buscaTimeStamp = function (configLisNet){
+//        var params = '?dbname='+configLisNet.defaultDB;
+//        var xhttp = new XMLHttpRequest();
+//        xhttp.open("GET", configLisNet.baseUrl +'/buscaTimeStamp' + params, true);
+//        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+//        
+//        xhttp.setRequestHeader('Access-Control-Allow-Headers', '*');
+//        xhttp.setRequestHeader('Access-Control-Allow-Methods', 'GET, POST, PUT');
+//        xhttp.setRequestHeader('Content-type', 'application/ecmascript');
+//        xhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
+//        
+//        xhttp.send(null);
+//        return xhttp;
+//    };
+    /**
+    * 
+    * @param {type} configLisNet
+    * @returns {XMLHttpRequest}
+    */
     this.buscaTimeStamp = function (configLisNet){
         var params = '?dbname='+configLisNet.defaultDB;
-        var xhttp = new XMLHttpRequest();
-        xhttp.open("GET", configLisNet.baseUrl +'/buscaTimeStamp' + params, true);
-        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        
-        xhttp.setRequestHeader('Access-Control-Allow-Headers', '*');
-        xhttp.setRequestHeader('Access-Control-Allow-Methods', 'GET, POST, PUT');
-        xhttp.setRequestHeader('Content-type', 'application/ecmascript');
-        xhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
-        
-        xhttp.send(null);
-        return xhttp;
+        var url = configLisNet.baseUrl +'/buscaTimeStamp' + params;
+         return $http({method : 'GET',url : url,
+            headers : {
+                'Content-Type' : 'application/x-www-form-urlencoded',
+                'Access-Control-Allow-Headers': '*',
+                'Access-Control-Allow-Methods':'GET, POST, PUT',
+                'Access-Control-Allow-Origin': '*'
+            }});
     };
     /**
      * 

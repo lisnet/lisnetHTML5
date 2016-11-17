@@ -168,10 +168,7 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
                         $timeout(function () { 
                                     notificacaoProvider.sweetDialog("Sem conunicação", 'Sem internet ou servidor fora do ar .. ','info','red','X');
                                 }, intMinimoDelay);
-                                
                 });
-                
-              
     };
     
     this.stateGO = function (stateGO) {

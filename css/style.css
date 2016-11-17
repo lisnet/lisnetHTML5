@@ -8365,3 +8365,11 @@ body.md-skin {
     margin: 0;
   }
 }
+.sexo-masculino {
+    color: #1872ab;
+    font-weight: bold;
+}
+.sexo-feminino {
+    color: #cc5965;
+    font-weight: bold;
+}
