@@ -55,7 +55,7 @@ angular.module('lisnet')
                                 console.log('online ...... locationHostSplit[0].toLowerCase() =  '+locationHostSplit[0].toLowerCase());
                                 userDTO.configLisNet.defaultDB = locationHostSplit[0].toLowerCase();
                                 //TODO make sure this is going to be de defualt URL
-                                userDTO.configLisNet.baseUrl = 'http://einstein.lisnet.com.br/node/homolog';
+                                userDTO.configLisNet.baseUrl = 'http://einstein.lisnet.com.br/nodehomolog/homolog';
                             } else if (locationHostSplit[0] && locationHostSplit[0] === 'localhost' || locationHostSplit[0] === '192' || locationHostSplit[0] === '127' || locationHostSplit[0] === 'developer') {
                                 console.log('localhost ......');
         //                    userDTO.configLisNet.defaultDB = locationHostSplit[0].toLowerCase();
@@ -64,7 +64,7 @@ angular.module('lisnet')
                             } else if ($location.protocol() === 'file') {
                                 console.log('cordova .......');
                                 userDTO.configLisNet.baseUrl = urlFinal;
-                                var ___url = 'http://einstein.lisnet.com.br/node/homolog';
+                                var ___url = 'http://einstein.lisnet.com.br/nodehomolog/homolog';
                                 userDTO.configLisNet.baseUrl = ___url;
                                 userDTO.configLisNet.defaultDB = 'einstein';
                             }
