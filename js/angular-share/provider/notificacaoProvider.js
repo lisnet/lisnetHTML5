@@ -194,7 +194,7 @@ angular.module('lisnet')
                                  '<div class="inmodal  modal-iframe"  style="width:100%; height: 100%;" >   '+
                                 ' <div class="modal-header">  '+
                                 '     <h4 class="modal-title">'+title+'</h4>  '+
-                                '     <strong class="font-bold  text-navy ">'+msg+'</strong>  '+
+                                '     <strong class="font-bold ">'+msg+'</strong>  '+
 //                                '     <a href='+url+' target="_blank" >Download</a>'+
                                 ' <div  id="loadImg" class="sk-spinner sk-spinner-three-bounce"><div class="sk-bounce1"></div><div class="sk-bounce2"></div><div class="sk-bounce3"></div></div> '+
                                 ' </div>  '+
