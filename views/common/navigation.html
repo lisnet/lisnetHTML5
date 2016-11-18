@@ -4,7 +4,7 @@
             <li class="nav-header">
 
                 <div class="profile-element" uib-dropdown>
-                    <img alt="image" class="img-circle" src="img/ADMIN_48x48.jpg"/>
+<!--                    <img alt="image" class="img-circle" src="img/ADMIN_48x48.jpg"/>
                     <a uib-dropdown-toggle href>
                             <span class="clear">
                                 <span class="block m-t-xs">
@@ -14,12 +14,12 @@
                             </span>
                     </a>
                     <ul uib-dropdown-menu class="animated fadeInRight m-t-xs">
-<!--                        <li><a ui-sref="app.profile">Profile</a></li>
-                        <li><a ui-sref="app.contacts">Contacts</a></li>
-                        <li><a ui-sref="mailbox.inbox">Mailbox</a></li>
-                        <li class="divider"></li>-->
                         <li><a   ng-click="main.logOut()"  style="color: red;" >Sair</a></li>
-                    </ul>  
+                    </ul> -->
+                    <div  class="logo-name-lisnet-navigation" >
+                        <a ui-sref="widgets.lisnet"   >{{main.userDTO.cliente.CLI_ST_CODIGO}}</a>
+                    </div>
+                    
                 </div>
                 <div class="logo-element"   >
                     <a ui-sref="widgets.lisnet" >{{main.userDTO.cliente.CLI_ST_CODIGO}}</a>
