@@ -13,6 +13,10 @@ if(!$scope.userDTO.consultalaudo){
     var uni0 = $scope.userDTO.unidades[0];
     $scope.userDTO.consultalaudo  = {unidadeId : uni0.UNI_ST_CODIGO+'-'+uni0.UNI_ST_DESCRICAO,dtInicio:new Date(),dtFim:new Date(),format : 'dd/MM/yyyy'};
 }
+if($scope.userDTO.consultalaudo.dtInicio){
+     $scope.userDTO.consultalaudo.dtInicio = new Date($scope.userDTO.consultalaudo.dtInicio);
+     $scope.userDTO.consultalaudo.dtFim = new Date($scope.userDTO.consultalaudo.dtFim);
+}
 
 
 var rangeInMonths = 1;
@@ -28,7 +32,7 @@ if($scope.userDTO.USU_IN_QTDDIA && $scope.userDTO.USU_IN_QTDDIA <= 30){
     $scope.userDTO.consultalaudo.minDate = new Date(myDate.getFullYear() ,myDate.getMonth() -1 ,myDate.getDate() ) ;
 }
     
- $scope.userDTO.consultalaudo.maxDate = new Date();z
+ $scope.userDTO.consultalaudo.maxDate = new Date();
   $scope.altInputFormats = ['MM/dd/yyyy'];
 
 $scope.calcRangeDate = function (blFuturo){
@@ -268,25 +272,13 @@ $scope.calcRangeDate = function (blFuturo){
 
 //    $scope.urlLaudo = $sce.trustAsResourceUrl(localStorage.getItem('urlLaudo')); //localStorage.getItem('urlLaudo');
     
+    
 
-
-    $scope.montaURLLaudo = function (req_in_codigo, leg_st_codigo, ev) {
+    $scope.montaURLLaudo = function (req_in_codigo, leg_st_codigo, blPdf) {
         
-//        var modalLoading = notificacaoProvider.modalLoading('Aguarde','Em execução',$scope);
-//        notificacaoProvider.showDialogLoding($scope,ev);
-            console.log("req_in_codigo: "+req_in_codigo+"   leg_st_codigo:  "+leg_st_codigo);
         if (leg_st_codigo &&   ( leg_st_codigo === '016' ||  leg_st_codigo === '011' ||  leg_st_codigo === '007')) {
-//            $scope.mostraLaudo = {iframe:false,iframepdf:false,image:false,loading:true};
+            var req = pegaRequisicao(req_in_codigo);
             
-//            if (leg_st_codigo === '016' ||  leg_st_codigo === '011' ) {
-//                $timeout(function(){$scope.mostraLaudo = {iframe:false,iframepdf:true,image:false,loading:false};},2000);
-//            }else{
-//                $timeout(function(){$scope.mostraLaudo = {iframe:true,iframepdf:false,image:false,loading:false};},1000);
-//            }
-            
-            
-//            var cliente = $scope.userDTO.configLisNet;
-//            var xhttp = buscaAPIService.buscaTimeStamp(cliente);
             buscaAPIService.buscaTimeStamp($scope.userDTO.configLisNet).then(
                     function successCallback(response) {
                         var dateAsString = response.data.TIME;
@@ -309,10 +301,14 @@ $scope.calcRangeDate = function (blFuturo){
                             }
 
                         } else {
-//                            notificacaoProvider.closeDialog();
-//                            modalLoading.dismiss('cancel');
-//                            $scope.$apply();
-                                notificacaoProvider.modalIframe('laudo','lauco msg',$scope,urlLaudoPDF);
+                            
+                                 var data = $filter('date')(req.REQ_DT_CADASTRO,'dd/MM/yyyy')
+                                 if(blPdf){
+                                     notificacaoProvider.modalIframe(req.PAC_ST_NOME,'Nome: '+req.PAC_ST_NOME + '   |   Data : '+  data ,$scope,urlLaudoPDF);
+                                 }else{
+                                     notificacaoProvider.modalIframe(req.PAC_ST_NOME,'Nome: '+req.PAC_ST_NOME + '   |  Data : '+  data ,$scope,url);
+                                 }
+                                
 //                               $window.open(urlLaudoPDF, '_blank');
                         }
                     },
@@ -435,6 +431,15 @@ $scope.calcRangeDate = function (blFuturo){
         $scope.retornaDate = function (strDate){
             return new Date(strDate);
         };
+        
+        function pegaRequisicao(REQ_ST_CODIGO){
+            for(x in $scope.userDTO.consultalaudo.requisicoes){
+                var req = $scope.userDTO.consultalaudo.requisicoes[x];
+                if(req.REQ_ST_CODIGO === REQ_ST_CODIGO){
+                    return req;
+                }
+            }
+        }
 
 }
 

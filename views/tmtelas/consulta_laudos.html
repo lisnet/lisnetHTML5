@@ -18,6 +18,7 @@
     </div>
 </div>
 
+
 <div class="wrapper wrapper-content animated fadeInRight"     ng-cloak   ng-controller="consultaLaudos" >
     <div class="ibox-content">
         <div class="row">
@@ -146,23 +147,36 @@
                         <table    datatable="ng" dt-options="dtOptionsMobile" class="table table-striped table-bordered table-hover dataTables-example">
                             <thead>
                                 <tr>
+                                    <th><i class="fa fa-file-pdf-o" aria-hidden="true"></i></th>
                                     <th><i class="fa fa-eye" aria-hidden="true"></i></th>
-                                    <th>N°</th>
+                                    <th>Solicitação</th>
+                                    <th>Pront</th>
+                                    <th>S.U.S</th>
                                     <th>Nome</th>
-                                    <th>Sexo</th>
-                                    <th>Data</th>
+                                    <th><i class="fa fa-venus-mars fa-1x"></i></th>
+                                    <th><i class="fa fa-calendar" aria-hidden="true"></i></th>
                                     <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
 
                                 <tr   ng-repeat="req in userDTO.consultalaudo.requisicoes track by $index "   >
-                                    <td  style="width: 10px;" > <a  style="padding-left: 5px;  " 
-                                             class="fa fa-file-text-o  font-bold pull-right "  
-                                             ng-click="montaURLLaudo(req.REQ_ST_CODIGO, req.LEG_ST_CODIGO, $event)" > 
-                                        </a></td>
+                                    <td  style="width: 10px;" > 
+                                        <a class="fa fa-download  font-bold pull-right " style="padding-left: 5px;  "  ng-show="{{req.LEG_ST_CODIGO === '011' ||  req.LEG_ST_CODIGO ===  '013' }} "    ng-click="montaURLLaudo(req.REQ_ST_CODIGO, req.LEG_ST_CODIGO,true)" >  
+                                            <text  ng-hide="true" >{{req.LEG_ST_CODIGO}}</text>
+                                        </a>
+                                        <i class="fa fa-download  font-bold pull-right   "  style="color:red;"  ng-hide="{{req.LEG_ST_CODIGO === '011' ||  req.LEG_ST_CODIGO ===  '013'  }} " ><text  ng-hide="true" >{{req.LEG_ST_CODIGO}}</text></i>
+                                    </td>
+                                    <td  style="width: 10px;" > 
+                                        <a  style="padding-left: 5px;  "  ng-show="{{req.LEG_ST_CODIGO === '011' ||  req.LEG_ST_CODIGO ===  '013'  }} "  class="fa fa-file-text-o  font-bold pull-right "  ng-click="montaURLLaudo(req.REQ_ST_CODIGO, req.LEG_ST_CODIGO,false)" > <text  ng-hide="true" >{{req.LEG_ST_CODIGO}}</text> </a>
+                                        <i class="fa fa-file-text-o  font-bold pull-right   "  style="color:red;"  ng-hide="{{req.LEG_ST_CODIGO === '011' ||  req.LEG_ST_CODIGO ===  '013'  }} " ><text  ng-hide="true" >{{req.LEG_ST_CODIGO}}</text></i>
+                                    </td>
                                     <td style="width: 60px;"  >{{ req.REQ_ST_CODIGO }}
                                         <!--<md-tooltip md-direction="top">{{req.REQ_ST_CODIGO}}</md-tooltip>-->
+                                    </td>
+                                    <td style="width: 60px;"  >{{ req.PAC_ST_PRONTUARIO }}
+                                    </td>
+                                    <td style="width: 60px;"  >{{ req.PAC_IN_CODSUS }}
                                     </td>
                                     <td>  <div  ng-hide="true" >{{req.PAC_ST_NOME}}</div> {{ req.PAC_ST_NOME }}
 <!--                                      <md-tooltip md-direction="top">
@@ -185,5 +199,4 @@
         
     </div>
    
-
 </div>

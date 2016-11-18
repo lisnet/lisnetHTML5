@@ -10,7 +10,7 @@ function estatisticaFaturamento($scope, buscaAPIService, $stateParams, $localSto
 //    console.log(shareuser.userDTO);
     $scope.userDTO = sairDoSistemaService.validarLogin();
     
-
+    
     var rangeInMonths = 1;
     var myDate = new Date();
     if($scope.userDTO.USU_IN_QTDDIA && $scope.userDTO.USU_IN_QTDDIA <= 30){
@@ -26,6 +26,13 @@ function estatisticaFaturamento($scope, buscaAPIService, $stateParams, $localSto
     maxDate = new Date(myDate.getFullYear(),myDate.getMonth(),myDate.getDate());
     if($scope.userDTO && !$scope.userDTO.estatisticaFaturamento){
         $scope.userDTO.estatisticaFaturamento = {ordemRelatorio: 'unidade', tipoRelatorio: 'analitico', faturado: true, conferido: true, format: 'dd/MM/yyyy', dtInicio: new Date(), dtFim: new Date(), minDate: minDate,maxDate:maxDate,todasUnidades: true, todosConvenios: true, tipo: 'pdf', unidades: [], convenios: []};
+    }else{
+        if($scope.userDTO.estatisticaFaturamento.dtInicio){
+            $scope.userDTO.estatisticaFaturamento.dtInicio = new Date($scope.userDTO.estatisticaFaturamento.dtInicio);
+            $scope.userDTO.estatisticaFaturamento.dtFim = new Date($scope.userDTO.estatisticaFaturamento.dtFim);
+            $scope.userDTO.estatisticaFaturamento.minDate = new Date($scope.userDTO.estatisticaFaturamento.minDate);
+            $scope.userDTO.estatisticaFaturamento.maxDate = new Date($scope.userDTO.estatisticaFaturamento.maxDate);
+       }
     }
     
     shareuser.userDTO = $scope.userDTO;
@@ -44,11 +51,11 @@ function estatisticaFaturamento($scope, buscaAPIService, $stateParams, $localSto
             $scope.userDTO.estatisticaFaturamento.minDate = new Date( _dtFim.getFullYear() ,_dtFim.getMonth() - rangeInMonths ,_dtFim.getDate());
         }
          
-        if($scope.estatisticaFaturamento.minDate > $scope.estatisticaFaturamento.dtInicio){
-            $scope.estatisticaFaturamento.dtInicio = $scope.estatisticaFaturamento.minDate; 
+        if($scope.userDTO.estatisticaFaturamento.minDate > $scope.userDTO.estatisticaFaturamento.dtInicio){
+            $scope.userDTO.estatisticaFaturamento.dtInicio = $scope.userDTO.estatisticaFaturamento.minDate; 
         }
-        if($scope.estatisticaFaturamento.maxDate <  $scope.estatisticaFaturamento.dtFim){
-            $scope.estatisticaFaturamento.dtFim = $scope.estatisticaFaturamento.maxDate; 
+        if($scope.userDTO.estatisticaFaturamento.maxDate <  $scope.userDTO.estatisticaFaturamento.dtFim){
+            $scope.userDTO.estatisticaFaturamento.dtFim = $scope.userDTO.estatisticaFaturamento.maxDate; 
         }
 //        console.log('calculando range de datas.  minDate fim = '+ $filter('date')($scope.estatisticaFaturamento.minDate, " dd/MM/yyyy"));
         $scope.dateOptionsMin = {

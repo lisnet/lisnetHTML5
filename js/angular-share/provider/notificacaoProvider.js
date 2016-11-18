@@ -196,12 +196,14 @@ angular.module('lisnet')
                                 '     <h4 class="modal-title">'+title+'</h4>  '+
                                 '     <strong class="font-bold  text-navy ">'+msg+'</strong>  '+
 //                                '     <a href='+url+' target="_blank" >Download</a>'+
+                                ' <div  id="loadImg" class="sk-spinner sk-spinner-three-bounce"><div class="sk-bounce1"></div><div class="sk-bounce2"></div><div class="sk-bounce3"></div></div> '+
                                 ' </div>  '+
                                 ' <div class="modal-body  modal-iframe">  '+
                                 ' <div class="embed-responsive embed-responsive-4by3 ">  '+
-                                '     <iframe class="embed-responsive-item" src="'+url+'"></iframe>  '+
+                                '     <iframe  id="myiframe" class="embed-responsive-item" src="'+url+'"   onload="myFunc();" ></iframe>  '+
                                 '   </div>  '+
                                 ' </div>  '+
+                                ' <script>function myFunc(){  document.getElementById("loadImg").style.display="none";   } </script> '+
                                 ' </div>',
                                 size: 'lg',
                                 scope:scope
