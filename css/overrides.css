@@ -16,6 +16,14 @@ and open the template in the editor.
   margin-bottom: 0;
 }
 
+.logo-name-lisnet-navigation {
+  color: #e6e6e6;
+  font-size: 40px;
+  font-weight: 100;
+  letter-spacing: -5px;
+  margin-bottom: 0;
+}
+
 .underconstruction-lisnet {
   color: #e6e6e6;
   font-size: 70px;
@@ -27,6 +35,29 @@ and open the template in the editor.
 .modal-loading{
     top: 180px;
 }
+.navbar-top-links .dropdown-alerts {
+    margin-left: -65px;
+}
+
+.middle-box {
+  width: 200px;
+  padding-top: 140px;
+}
+
+.btn-primary {
+	color: #FFFFFF;
+}
+
+.navbar-default {
+  background-color: #2f4050;
+  border-color: #2f4050;
+}
+
+.navbar-static-side {
+  min-height: 100%;
+  height: 100%;
+}
+
 
 /*.modal-dialog {
   width:50%;
@@ -54,3 +85,6 @@ and open the template in the editor.
 .navbar-top-links .dropdown-alerts {
     margin-left: -65px;
 }
+
+/*#loadImg{position:absolute;z-index:999;}
+#loadImg div{display:table-cell;width:950px;height:633px;background:#fff;text-align:center;vertical-align:middle;}*/
