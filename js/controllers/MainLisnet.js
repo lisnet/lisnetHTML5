@@ -126,6 +126,7 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
         buscaAPIService.buscaUsuarioMenuJSONAjax(login, perfil, this.userDTO.configLisNet)
                 .then(function successCallback(response) {
                     this.userDTO.perfil = resumePerfilService.resume(response.data);
+//                    this.userDTO.perfil = response.data;//resumePerfilService.resume(response.data);
                     if (this.userDTO && this.userDTO.perfil && this.userDTO.perfil.length > 0) {
                         this.userDTO.status = 'in';
                         this.userDTO.dtLogon = $filter('date')(new Date(), " dd/MM/yyyy  HH:mm");
@@ -171,11 +172,16 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
                 });
     };
     
+    
+  
+    
     this.stateGO = function (stateGO) {
 //        console.log('$state.current .name =  ' + $state.current.name);
         if ($state.current.name !== stateGO) {
             try {
-                if(stateGO === 'sair'){this.logOut();}else{
+                if(stateGO === 'sair'){
+                    this.logOut();
+                }else{
                     var hotPage = $state.href(stateGO);
                  if(hotPage){
 //                     console.log(hotPage);
