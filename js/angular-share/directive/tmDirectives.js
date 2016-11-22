@@ -11,6 +11,7 @@
  */
 function enterKey () {
     return function (scope, element, attrs) {
+        console.log('Inside enterKey ....');
         element.bind("keydown keypress", function (event) {
             if(event.which === 13) {
                 scope.$apply(function (){
@@ -22,6 +23,40 @@ function enterKey () {
     };
 }
 
+
+function nextFocus() {
+    return {
+        restrict: 'A',
+        link: function ($scope, elem, attrs) {
+            elem.bind('keydown keypress', function (event) {
+                if (event.which === 13) {
+                    console.log('Foda-se ..... carai ...');
+                    event.preventDefault();
+                    var elementToFocus = elem.next('div').find('input')[0];
+                    if (angular.isDefined(elementToFocus)){}
+                        elementToFocus.focus();
+                }
+            });
+        }
+    };
+}
+
+
+function moveMaxLength(){
+    return {
+        restrict: "A",
+        link: function($scope, element) {
+            element.on("input", function(e) {
+                if(element.val().length == element.attr("maxlength")) {
+                    var $nextElement = element.next();
+                    if($nextElement.length) {
+                        $nextElement[0].focus();
+                    }
+                }
+            });
+        }
+    };
+}
 
 function myPage($compile){
     return {
@@ -66,7 +101,9 @@ function autoNext(){
 }
 angular.module('lisnet')
         .directive('enterKey',enterKey)
+        .directive('nextFocus',nextFocus)
         .directive('myPage',myPage)
+        .directive('moveMaxLength',moveMaxLength)
         .directive('autoNext',autoNext);
 
 

@@ -5,6 +5,8 @@
 
 
 
+/* global x, i, y, z */
+
 angular.module('lisnet').service('resumePerfilService', function ($state) {
 
 
@@ -37,6 +39,7 @@ angular.module('lisnet').service('resumePerfilService', function ($state) {
                 }
             } else {
 //                console.log('Pai sem paginas  ...');
+                pai.visualisar = false;
             }
         }
         return perfil;
