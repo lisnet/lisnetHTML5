@@ -36,24 +36,6 @@
 
 
 
-
-/**
- * 
- * @returns {Function} -  Directive para dar a funcionalidade do ng-click p a  tecla ENTER em campos de iINPUT
- */
-function enterKey () {
-    return function (scope, element, attrs) {
-        element.bind("keydown keypress", function (event) {
-            if(event.which === 13) {
-                scope.$apply(function (){
-                    scope.$eval(attrs.enterKey);
-                });
-                event.preventDefault();
-            }
-        });
-    };
-}
-
 /**
  * pageTitle - Directive for set Page title - mata title
  */
@@ -601,7 +583,6 @@ function markdownEditor() {
 angular
     .module('lisnet')
     .directive('pageTitle', pageTitle)
-    .directive('enterKey',enterKey)
     .directive('sideNavigation', sideNavigation)
     .directive('iboxTools', iboxTools)
     .directive('minimalizaSidebar', minimalizaSidebar)
