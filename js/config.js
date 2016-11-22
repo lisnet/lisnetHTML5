@@ -7,7 +7,7 @@
  *
  */
 function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdleProvider, KeepaliveProvider) {
-
+var xhttp = new XMLHttpRequest();
     // Configure Idle settings
     IdleProvider.idle(5); // in seconds
     IdleProvider.timeout(120); // in seconds
@@ -292,6 +292,50 @@ console.log('construing config , registrando state');
 //                    }
 //                }
 //       })
+
+.state('00005', {
+            abstract: true,
+            url: "/faturamento",
+            templateUrl: "views/common/content.html"
+        })
+        .state('00005.00263', {
+                            url: "/faturamento/:userDTO",
+                            templateUrl: "views/tmtelas/estatistica_faturamento.html",
+                            parent:'00005',
+                            controller: 'estatisticaFaturamento',
+                            data: { pageTitle: 'Estatística Faturamento'}  ,resolve: {
+                                loadPlugin: function ($ocLazyLoad) {
+                                    return $ocLazyLoad.load([
+                                           {
+                                            serie: true,
+                                            files: ['js/plugins/dataTables/datatables.min.js','css/plugins/dataTables/datatables.min.css']
+                                        },
+                                        {
+                                            serie: true,
+                                            name: 'datatables',
+                                            files: ['js/plugins/dataTables/angular-datatables.min.js']
+                                        },
+                                        {
+                                            serie: true,
+                                            name: 'datatables.buttons',
+                                            files: ['js/plugins/dataTables/angular-datatables.buttons.min.js']
+                                        }, 
+                                        {
+                                            files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
+                                        },
+                                        {
+                                            name: 'oitozero.ngSweetAlert',
+                                            files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
+                                        },
+                                        {
+                                            files: ['css/plugins/iCheck/custom.css','js/plugins/iCheck/icheck.min.js']
+                                        } 
+                                        
+                                    ]);
+                                }
+                            }
+       })
+
          .state('00007', {
             abstract: true,
             url: "/estatisticas",
@@ -333,7 +377,9 @@ console.log('construing config , registrando state');
                                     ]);
                                 }
                             }
-       }).state('00047', {
+       })
+               
+            .state('00047', {
             abstract: true,
             url: "/ajuda",
             templateUrl: "views/common/content.html"
