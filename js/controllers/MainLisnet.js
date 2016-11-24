@@ -178,54 +178,54 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
     this.stateGO = function (stateGO) {
 //        console.log('$state.current .name =  ' + $state.current.name);
         vm.carregando = true;
-        if ($state.current.name !== stateGO) {
-            try {
-                if(stateGO === 'sair'){
-                    this.logOut();
-                }else{
-                    var hotPage = $state.href(stateGO);
-                 if(hotPage){
+
+        $timeout(function () {
+            if ($state.current.name !== stateGO) {
+                try {
+                    if (stateGO === 'sair') {
+                        this.logOut();
+                    } else {
+                        var hotPage = $state.href(stateGO);
+                        if (hotPage) {
 //                     console.log(hotPage);
-                     
-                     console.log('this.userDTO.hotPages.length = '+this.userDTO.hotPages.length);
+
+                            console.log('this.userDTO.hotPages.length = ' + this.userDTO.hotPages.length);
 //                    this.userDTO.modalLoading = notificacaoProvider.modalLoading('Carregando ....', 'Buscando tela  código = ' + stateGO, $scope);;
-                    this.userDTO.ultimaTela = stateGO;
-                    $state.go(stateGO);
-                    $timeout(function (){
-                        
-                                if (this.userDTO.hotPages.filter(function(e) { return e.name == stateGO; }).length > 0) {
+                            this.userDTO.ultimaTela = stateGO;
+                            $state.go(stateGO);
+                            $timeout(function () {
+
+                                if (this.userDTO.hotPages.filter(function (e) {
+                                    return e.name == stateGO;
+                                }).length > 0) {
                                     console.log('this.userDTO.hotPages contains the element we re looking for');
-                                  }else if(stateGO !== 'widgets.lisnet'){
+                                } else if (stateGO !== 'widgets.lisnet') {
                                     this.userDTO.hotPages.push($state.current);
-                                  }
-                                  vm.carregando = false;
+                                }
+                                vm.carregando = false;
 //                        console.log(JSON.stringify($state.current,null, 2));
-                    },3000);
-                    
-//                    $timeout(function () {
-//                        $timeout(function () {
-////                            userDTO.modalLoading.dismiss('cancel');
-//                        }, 1500);
-//                        
-//                    }, 300);
-                }else{
+                            }, 3000);
+
+                        } else {
 //                    userDTO.modalLoading.dismiss('cancel');
+                            notificacaoProvider.sweetDialog("Erro", "Página não encontrada =  " + error, 'warning', 'red', 'X');
+                            $state.go('problema.tela_nao_existe');
+                        }
+                    }
+
+                } catch (error) {
                     notificacaoProvider.sweetDialog("Erro", "Página não encontrada =  " + error, 'warning', 'red', 'X');
                     $state.go('problema.tela_nao_existe');
                 }
-                }
-               
-            } catch (error) {
-//                userDTO.modalLoading.dismiss('cancel');
-                notificacaoProvider.sweetDialog("Erro", "Página não encontrada =  " + error, 'warning', 'red', 'X');
-                $state.go('problema.tela_nao_existe');
+            } else {
+                vm.carregando = false;
+                console.log('the same state');
             }
-        } else {
-            vm.carregando = false;
-            console.log('the same state');
-        }
 
-        $localStorage.userDTO = this.userDTO;
+            $localStorage.userDTO = this.userDTO;
+        }, 200);
+
+
     };
 
 this.voltaLogo = function (MOD_ST_CODIGO){
