@@ -21,7 +21,6 @@ function estatisticaFaturamento($scope, buscaAPIService, $stateParams, $localSto
         minDate = new Date(myDate.getFullYear() ,myDate.getMonth() -1 ,myDate.getDate() ) ;
     }
 
-    
 
     maxDate = new Date(myDate.getFullYear(),myDate.getMonth(),myDate.getDate());
     if($scope.userDTO && !$scope.userDTO.estatisticaFaturamento){
