@@ -6,7 +6,8 @@
                 <div class="form-group">
                     <!--                    <input type="text" placeholder="{{ 'SEARCH' | translate }}" class="form-control" name="top-search" id="top-search">-->
                     <!--<input type="text" placeholder="Procurar tela" class="form-control" name="top-search" id="top-search">-->
-                    <input type="text" placeholder="Procurar tela" class="form-control" name="top-search" id="top-search" ng-model="telaSelecionada" uib-typeahead="state for state in states | filter:$viewValue | limitTo:8"   enter-key="main.stateGO( cortaString(telaSelecionada))" >
+                    <input type="text"   placeholder="Procurar tela .............." 
+                           class="form-control" name="top-search" id="top-search" ng-model="telaSelecionada" uib-typeahead="state for state in states | filter:$viewValue | limitTo:8"   enter-key="main.stateGO( cortaString(telaSelecionada))" >
                 </div>
             </form>
         </div>

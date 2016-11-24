@@ -41,6 +41,20 @@ console.log('construing config , registrando state');
 
 
     $stateProvider
+            .state('geslab', {
+                url: "/geslab",
+                templateUrl: "views/geslab/geslab_site.html",
+                data: {pageTitle: 'Landing page', specialClass: 'landing-page'},
+                resolve: {
+                    loadPlugin: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load([
+                            {
+                                files: ['js/plugins/wow/wow.min.js']
+                            }
+                        ]);
+                    }
+                }
+            })
             .state('login', {
                 url: "/login",
                 templateUrl: "views/tmtelas/login.html",
