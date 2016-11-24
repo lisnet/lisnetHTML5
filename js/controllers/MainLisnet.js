@@ -177,6 +177,7 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
     
     this.stateGO = function (stateGO) {
 //        console.log('$state.current .name =  ' + $state.current.name);
+        vm.carregando = true;
         if ($state.current.name !== stateGO) {
             try {
                 if(stateGO === 'sair'){
@@ -197,6 +198,7 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
                                   }else if(stateGO !== 'widgets.lisnet'){
                                     this.userDTO.hotPages.push($state.current);
                                   }
+                                  vm.carregando = false;
 //                        console.log(JSON.stringify($state.current,null, 2));
                     },3000);
                     
@@ -219,6 +221,7 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
                 $state.go('problema.tela_nao_existe');
             }
         } else {
+            vm.carregando = false;
             console.log('the same state');
         }
 
