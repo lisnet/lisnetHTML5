@@ -230,7 +230,7 @@ function estatisticaFaturamento($scope, buscaAPIService, $stateParams, $localSto
             "mod_st_codigo": "999",
             "usu_st_codigo": $scope.userDTO.USU_ST_CODIGO,
             "rel_st_tipoarquivo": "pdf",
-            "dbname": "einstein",
+            "dbname": $scope.userDTO.cliente.CLI_ST_ORACLEUSERNAME,
             "parametros": {
                 "unidades": [],
                 "convenios": [],
@@ -242,14 +242,14 @@ function estatisticaFaturamento($scope, buscaAPIService, $stateParams, $localSto
 
         if($scope.userDTO.estatisticaFaturamento.ordemRelatorio === 'unidade'){
             json.codigo_relatorio =  "RELATORIO_FATURAMENTO_ANALITICO_UNIDADE_CONVENIO";
-            json.relatorio_titulo = "Relatório Analitico Unidade/Convênio";
-            json.relatorio_subtitulo = "Relatório Analitico Unidade/Convênio SubTituto";
-            json.relatorio_descricao = "Relatório Analitico Unidade/Convênio descrição";
+            json.relatorio_titulo = "Faturamento Unidade/Convênio "+$scope.userDTO.cliente.CLI_ST_NOME;;
+            json.relatorio_subtitulo = "";
+            json.relatorio_descricao = "........";
         }else{
-            json.codigo_relatorio =  "RELATORIO_FATURAMENTO_ANALITICO_CONVENIO_UNIDADE";
-            json.relatorio_titulo = "Relatório Analitico Covênio/Unidade";
-            json.relatorio_subtitulo = "Relatório Analitico Covênio/Unidade SubTituto";
-            json.relatorio_descricao = "Relatório Analitico Covênio/Unidade descrição";
+            json.codigo_relatorio =  "RELATORIO_FATURAMENTO_ANALITICO_UNIDADE_CONVENIO";
+            json.relatorio_titulo = "Faturamento Convênio/Unidade "+$scope.userDTO.cliente.CLI_ST_NOME;;
+            json.relatorio_subtitulo = "";
+            json.relatorio_descricao = "........";
         }
         if ($scope.userDTO.estatisticaFaturamento.unidades.length === 0) {
             for (var i = 0; i < $scope.userDTO.unidades.length; i++) {

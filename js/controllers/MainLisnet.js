@@ -267,7 +267,9 @@ this.voltaLogo = function (MOD_ST_CODIGO){
         if (this.userDTO && this.userDTO.status && this.userDTO.status === 'in') {
             console.log('Atualizando lista de notificacoes ....');
             
-            $timeout(function () { gerenciaRelatorioService.atualizaRelatorios(this.userDTO); }, 20000);
+            $timeout(function () { gerenciaRelatorioService.atualizaRelatorios(this.userDTO); }, 2000);
+            $timeout(function () { gerenciaRelatorioService.atualizaRelatorios(this.userDTO); }, 10000);
+            $timeout(function () { gerenciaRelatorioService.atualizaRelatorios(this.userDTO); }, 40000);
             if ($scope.userDTO && $scope.userDTO.job) {
                 console.log('Job is runnig ...');
             } else {
