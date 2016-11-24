@@ -9,10 +9,10 @@
         
         <div class="m-t" role="form"   >
             <div class="form-group">
-                <input type="text" class="form-control text-uppercase" placeholder="Usuário"   required  ng-model="login" >
+                <input type="text" class="form-control text-uppercase" placeholder="Usuário"   required  ng-model="login"   onkeydown="if(event.keyCode==13){   event.keyCode=22; return event.keyCode}" >
             </div>
             <div class="form-group" ng-hide="main.userDTO.showpassword"  >
-                <input type="password" class="form-control  text-uppercase" placeholder="Senha" required="" ng-model="senha"    enter-key="main.buscaUser(login,senha)"   >
+                <input type="password" class="form-control  text-uppercase" placeholder="Senha" required="" ng-model="senha"    enter-key="main.buscaUser(login,senha)"     >
             </div>
              <div class="form-group"  ng-show="main.userDTO.showpassword"  >
                 <input type="text" class="form-control  text-uppercase" placeholder="Senha" required=""    ng-model="senha"   enter-key="main.buscaUser(login,senha)"   >

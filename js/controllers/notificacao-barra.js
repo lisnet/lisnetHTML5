@@ -39,12 +39,12 @@ function notificacaoBarra($scope, $window, $localStorage,sairDoSistemaService,$r
                 for (x in f.telas) {
                     var n = f.telas[x];
                     if (n.visualisar) {
-                        $scope.states.push(n.stateComposto +' | '+n.MOD_ST_DESCRICAO  );
+                        $scope.states.push(n.state +' | '+n.MOD_ST_DESCRICAO+' | '+n.MOD_ST_CODIGO  );
                     }
                 }
             } else {
                 if(f.visualisar){
-                    $scope.states.push(f.stateComposto+' | '+f.MOD_ST_DESCRICAO);
+                    $scope.states.push(f.state+' | '+f.MOD_ST_DESCRICAO+' | '+f.MOD_ST_CODIGO);
                 }
             }
             

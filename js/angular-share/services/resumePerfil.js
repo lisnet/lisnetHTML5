@@ -5,6 +5,8 @@
 
 
 
+/* global x, i, y, z */
+
 angular.module('lisnet').service('resumePerfilService', function ($state) {
 
 
@@ -28,15 +30,16 @@ angular.module('lisnet').service('resumePerfilService', function ($state) {
                         filho.visualisar = true;
                         for (z in filho.telas) {
                             var neto = filho.telas[z];
-                            neto.visualisar = this.findState(neto.stateComposto, arrayStates);
+                            neto.visualisar = this.findState(neto.state, arrayStates);
                         }
                     } else {
 //                        console.log('Filho sem paginas  ...');
-                        filho.visualisar = this.findState(filho.stateComposto, arrayStates);
+                        filho.visualisar = this.findState(filho.state, arrayStates);
                     }
                 }
             } else {
 //                console.log('Pai sem paginas  ...');
+                pai.visualisar = false;
             }
         }
         return perfil;
