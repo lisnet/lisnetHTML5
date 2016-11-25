@@ -86,5 +86,33 @@ and open the template in the editor.
     margin-left: -65px;
 }
 
+.geslab-site .header-back {
+  height: 570px;
+  width: 100%;
+}
+.geslab-site .header-back.one {
+  background: url('../views/geslab/teste.jpg') 50% 0 no-repeat;
+}
+.geslab-site .header-back.two {
+  background: url('../img/landing/header_two.jpg') 50% 0 no-repeat;
+}
+.geslab-site .carousel {
+  height: 570px;
+}
+.geslab-site .carousel-caption {
+  z-index: 10;
+}
+.geslab-site .carousel .item {
+  height: 570px;
+  background-color: #777;
+}
+.geslab-site .carousel-inner > .item > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 570px;
+}
+
 /*#loadImg{position:absolute;z-index:999;}
 #loadImg div{display:table-cell;width:950px;height:633px;background:#fff;text-align:center;vertical-align:middle;}*/
