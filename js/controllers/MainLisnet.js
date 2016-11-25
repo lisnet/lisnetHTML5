@@ -210,12 +210,14 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
 //                    userDTO.modalLoading.dismiss('cancel');
                             notificacaoProvider.sweetDialog("Erro", "Página não encontrada =  " + stateGO, 'warning', 'red', 'X');
                             $state.go('problema.tela_nao_existe');
+                            vm.carregando = false;
                         }
                     }
 
                 } catch (error) {
                     notificacaoProvider.sweetDialog("Erro", "Página não encontrada =  " + error, 'warning', 'red', 'X');
                     $state.go('problema.tela_nao_existe');
+                    vm.carregando = false;
                 }
             } else {
                 vm.carregando = false;
