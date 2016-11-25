@@ -4,7 +4,7 @@
             <li class="nav-header">
 
                 <div class="profile-element" uib-dropdown>
-                    <img alt="image"  style="background-color: #f1f1f1"  class="img-rounded"    src="../../resources/img/logo_site.png"/>
+                    <img alt="image"  style="background-color: #f1f1f1"  class="img-rounded"  width="140"   src="../../resources/img/logo_site.png"/>
 <!--                    <img alt="image" class="img-circle" src="img/ADMIN_48x48.jpg"/>
                     <a uib-dropdown-toggle href>
                             <span class="clear">
@@ -17,14 +17,13 @@
                     <ul uib-dropdown-menu class="animated fadeInRight m-t-xs">
                         <li><a   ng-click="main.logOut()"  style="color: red;" >Sair</a></li>
                     </ul> -->
-                    <div  class="logo-name-lisnet-navigation" >
-                        <a ui-sref="widgets.lisnet"   >{{main.userDTO.cliente.CLI_ST_CODIGO}}</a>
-                    </div>
+<!--                    <div  class="logo-name-lisnet-navigation" >
+                        <a ui-sref="widgets.lisnet"   >{{main.userDTO.cliente.CLI_ST_NOME}}</a>
+                    </div>-->
                     
                 </div>
                 <div class="logo-element"   >
-                    <a ui-sref="widgets.lisnet" >{{main.userDTO.cliente.CLI_ST_CODIGO}}</a>
-                    
+                    <a ui-sref="widgets.lisnet" >{{main.userDTO.cliente.CLI_ST_NOME}}</a>
                 </div>
             </li>
 
