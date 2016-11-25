@@ -208,7 +208,7 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
 
                         } else {
 //                    userDTO.modalLoading.dismiss('cancel');
-                            notificacaoProvider.sweetDialog("Erro", "Página não encontrada =  " + error, 'warning', 'red', 'X');
+                            notificacaoProvider.sweetDialog("Erro", "Página não encontrada =  " + stateGO, 'warning', 'red', 'X');
                             $state.go('problema.tela_nao_existe');
                         }
                     }
