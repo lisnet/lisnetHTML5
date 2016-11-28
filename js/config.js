@@ -50,6 +50,13 @@ console.log('construing config , registrando state');
                         return $ocLazyLoad.load([
                             {
                                 files: ['js/plugins/wow/wow.min.js']
+                            },
+                            {
+                                files: ['css/plugins/slick/slick.css', 'css/plugins/slick/slick-theme.css', 'js/plugins/slick/slick.min.js']
+                            },
+                            {
+                                name: 'slick',
+                                files: ['js/plugins/slick/angular-slick.min.js']
                             }
                         ]);
                     }
