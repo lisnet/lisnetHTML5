@@ -242,13 +242,13 @@ function estatisticaFaturamento($scope, buscaAPIService, $stateParams, $localSto
         if($scope.userDTO.estatisticaFaturamento.ordemRelatorio === 'unidade'){
             json.codigo_relatorio =  "RELATORIO_FATURAMENTO_ANALITICO_UNIDADE_CONVENIO";
             json.relatorio_titulo = "Faturamento Unidade/Convênio "+$scope.userDTO.cliente.CLI_ST_NOME;;
+            json.relatorio_descricao = "RELATORIO FATURAMENTO ANALITICO UNIDADE/CONVENIO";
             json.relatorio_subtitulo = "";
-            json.relatorio_descricao = "........";
         }else{
             json.codigo_relatorio =  "RELATORIO_FATURAMENTO_ANALITICO_UNIDADE_CONVENIO";
             json.relatorio_titulo = "Faturamento Convênio/Unidade "+$scope.userDTO.cliente.CLI_ST_NOME;;
+            json.relatorio_descricao = "RELATORIO FATURAMENTO ANALITICO UNIDADE/CONVENIO";
             json.relatorio_subtitulo = "";
-            json.relatorio_descricao = "........";
         }
         if ($scope.userDTO.estatisticaFaturamento.unidades.length === 0) {
             for (var i = 0; i < $scope.userDTO.unidades.length; i++) {

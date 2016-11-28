@@ -170,10 +170,11 @@ $scope.calcRangeDate = function (blFuturo){
         
 //        notificacaoProvider.showDialogLoding($scope,ev);
     console.log('ultimoCampo = '+ultimoCampo);
-        var modalLoading = notificacaoProvider.modalLoading('filtrando','filtrando',$scope);
-        
+        self.modalLoading = notificacaoProvider.modalLoading('filtrando','filtrando',$scope);
         self.activated = true;
-           /*
+      
+        $timeout(function (){
+              /*
             * Debloqueio p nova excucao
             */
 //           $timeout( function(){ console.log('Inside TimeOut');  runFiltrar = true; }, 4000);
@@ -241,7 +242,7 @@ $scope.calcRangeDate = function (blFuturo){
     //                                       notificacaoProvider.closeDialog();
     //                                       modalLoading.dismiss('cancel');
                                 $timeout(function () {
-                                    modalLoading.dismiss('cancel');
+                                    self.modalLoading.dismiss('cancel');
                                 }, 1000);
                             },
                                     function errorCallback(response) {
@@ -250,12 +251,12 @@ $scope.calcRangeDate = function (blFuturo){
     //                                            notificacaoProvider.closeDialog();
     //                                            modalLoading.dismiss('cancel');
                                         $timeout(function () {
-                                            modalLoading.dismiss('cancel');
+                                            self.modalLoading.dismiss('cancel');
                                         }, 1000);
                                     });
                 } else {
                     $timeout(function () {
-                                            modalLoading.dismiss('cancel');
+                                            self.modalLoading.dismiss('cancel');
                                         }, 200);
                 }
            
@@ -263,8 +264,11 @@ $scope.calcRangeDate = function (blFuturo){
 //               alert('Espera porra');
                console.log('Espera porra.......');
 //               notificacaoProvider.showDialog("Aguarde",'Em execução','Fechar','Aviso',ev); 
-               var modalLoading = notificacaoProvider.modalLoading('Aguarde','Em execução',$scope);
+               self.modalLoading = notificacaoProvider.modalLoading('Aguarde','Em execução',$scope);
            }
+        },250);
+        
+         
     };
 
 //    console.log('Running consultaLaudo........');

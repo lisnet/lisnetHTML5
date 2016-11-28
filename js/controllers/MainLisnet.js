@@ -51,13 +51,15 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
                     this.userDTO.configLisNet.clientes = response.data;
                     console.log('this.userDTO.configLisNet.defaultDB = '+this.userDTO.configLisNet.defaultDB);
                     this.userDTO.cliente = montaUrlLaudoProvider.encontraClientePorNome(this.userDTO.configLisNet.clientes, this.userDTO.configLisNet.defaultDB);
+                    this.userDTO.configLisNet.clientes = [this.userDTO.cliente];
                     this.userDTO.configLisNet.defaultDB = this.userDTO.cliente.CLI_ST_ORACLEUSERNAME;
 //                    $scope.state = $state;
 //                    console.log("$state.current.name = "+$state.current.name);
 //                    $state.current.name = 'Porra....';
                     $localStorage.userDTO = this.userDTO;
                 }, function errorCallback(response) {
-                    console.log(response.statusText);
+//                    console.log(response.statusText);
+                    notificacaoProvider.sweetDialog("Sem acesso ao servidor", "Aplicativo sem acesso a internet ou Servidor fora do ar   erro =  " + response.data,'warning','red','X');
                 });
     
     this.userDTO.deviceDetector = deviceDetector;
@@ -208,14 +210,16 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
 
                         } else {
 //                    userDTO.modalLoading.dismiss('cancel');
-                            notificacaoProvider.sweetDialog("Erro", "Página não encontrada =  " + error, 'warning', 'red', 'X');
+                            notificacaoProvider.sweetDialog("Erro", "Página não encontrada =  " + stateGO, 'warning', 'red', 'X');
                             $state.go('problema.tela_nao_existe');
+                            vm.carregando = false;
                         }
                     }
 
                 } catch (error) {
                     notificacaoProvider.sweetDialog("Erro", "Página não encontrada =  " + error, 'warning', 'red', 'X');
                     $state.go('problema.tela_nao_existe');
+                    vm.carregando = false;
                 }
             } else {
                 vm.carregando = false;
