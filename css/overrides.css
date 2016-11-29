@@ -101,19 +101,19 @@ and open the template in the editor.
   width: 100%;
 }
 .geslab-site .header-back.one {
-  background: url('../views/geslab/imagem1.jpg') 50% 0 no-repeat;
+  background: url('../views/geslab/Imagem1.jpg') 50% 0 no-repeat;
 }
 .geslab-site .header-back.two {
-  background: url('../views/geslab/imagem2.jpg') 50% 0 no-repeat;
+  background: url('../views/geslab/Imagem2.jpg') 50% 0 no-repeat;
 }
 .geslab-site .header-back.three {
-  background: url('../views/geslab/imagem3.jpg') 50% 0 no-repeat;
+  background: url('../views/geslab/Imagem3.jpg') 50% 0 no-repeat;
 }
 .geslab-site .header-back.four {
-  background: url('../views/geslab/imagem4.jpg') 50% 0 no-repeat;
+  background: url('../views/geslab/Imagem4.jpg') 50% 0 no-repeat;
 }
 .geslab-site .header-back.five {
-  background: url('../views/geslab/imagem5.jpg') 50% 0 no-repeat;
+  background: url('../views/geslab/Imagem5.jpg') 50% 0 no-repeat;
 }
 
 .geslab-site .carousel {
