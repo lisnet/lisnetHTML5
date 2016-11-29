@@ -95,16 +95,27 @@ and open the template in the editor.
     margin-left: -65px;
 }
 
+
 .geslab-site .header-back {
   height: 570px;
   width: 100%;
 }
 .geslab-site .header-back.one {
-  background: url('../views/geslab/teste.jpg') 50% 0 no-repeat;
+  background: url('../views/geslab/imagem1.jpg') 50% 0 no-repeat;
 }
 .geslab-site .header-back.two {
-  background: url('../img/landing/header_two.jpg') 50% 0 no-repeat;
+  background: url('../views/geslab/imagem2.jpg') 50% 0 no-repeat;
 }
+.geslab-site .header-back.three {
+  background: url('../views/geslab/imagem3.jpg') 50% 0 no-repeat;
+}
+.geslab-site .header-back.four {
+  background: url('../views/geslab/imagem4.jpg') 50% 0 no-repeat;
+}
+.geslab-site .header-back.five {
+  background: url('../views/geslab/imagem5.jpg') 50% 0 no-repeat;
+}
+
 .geslab-site .carousel {
   height: 570px;
 }
@@ -123,9 +134,61 @@ and open the template in the editor.
   height: 570px;
 }
 
-.slick_demo_2 .ibox-content {
+.geslab-site .slick_demo_2 .ibox-content {
         margin: 0 10px;
     }
+
+.geslab-site navbar-default {
+  background-color: white;
+  border-color: #2f4050;
+}
+
+.geslab-site .navbar-default .navbar-nav > li > a:hover,
+.geslab-site .navbar-default .navbar-nav > li > a:focus {
+  color: orange;
+  background: inherit;
+}
+
+.geslab-site .navbar-default .navbar-nav > .active > a,
+.geslab-site .navbar-default .navbar-nav > .active > a:hover {
+  border-top: 6px solid orange;
+}
+.geslab-site a.navy-link {
+  color: orange;
+  text-decoration: none;
+}
+.geslab-site .navbar-scroll.navbar-default .nav li a:hover {
+  color: orange;
+}
+.geslab-site .navbar-default {
+  background-color: white;
+  
+  filter: alpha(opacity=50); 
+  border-color: transparent;
+  transition: all 0.3s ease-in-out 0s;
+}
+.geslab-site .slick-prev:before, .slick-next:before {
+    color: orange !important;
+}
+
+.geslab-site .navbar-default .nav li a {
+    color: black;
+    font-family: 'Open Sans', helvetica, arial, sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+
+.geslab-site  .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover {
+    color: orange;
+}
+.geslab-site  .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav >  a:focus {
+    color: gray;
+}
+
+
 
 
 /*#loadImg{position:absolute;z-index:999;}
