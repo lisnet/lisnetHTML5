@@ -7,7 +7,7 @@
  *
  */
 function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdleProvider, KeepaliveProvider) {
-var xhttp = new XMLHttpRequest();
+//var xhttp = new XMLHttpRequest();
     // Configure Idle settings
     IdleProvider.idle(5); // in seconds
     IdleProvider.timeout(120); // in seconds
@@ -321,6 +321,155 @@ console.log('construing config , registrando state');
                 data: {pageTitle: 'Sobre'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
                         return $ocLazyLoad.load([
+                            {
+                                files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
+                            },
+                            {
+                                name: 'oitozero.ngSweetAlert',
+                                files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
+                            },
+                            {
+                                files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
+                            }
+
+                        ]);
+                    }
+                }
+            })
+            .state('convenios', {
+                url: "/configura/convenios/",
+                templateUrl: "views/tmtelas/tela_padrao.html",
+                params: { modStCodigo: '00006'},
+                parent: 'lisnet',
+//                            controller: 'consultaLaudos',
+                data: {pageTitle: 'Configura Convênios'}, resolve: {
+                    loadPlugin: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load([
+                            {
+                                serie: true,
+                                files: ['js/plugins/dataTables/datatables.min.js', 'css/plugins/dataTables/datatables.min.css']
+                            },
+                            {
+                                serie: true,
+                                name: 'datatables',
+                                files: ['js/plugins/dataTables/angular-datatables.min.js']
+                            },
+                            {
+                                serie: true,
+                                name: 'datatables.buttons',
+                                files: ['js/plugins/dataTables/angular-datatables.buttons.min.js']
+                            },
+                            {
+                                files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
+                            },
+                            {
+                                name: 'oitozero.ngSweetAlert',
+                                files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
+                            },
+                            {
+                                files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
+                            }
+
+                        ]);
+                    }
+                }
+            }).state('material', {
+                url: "/configura/materiais/",
+                templateUrl: "views/tmtelas/tela_padrao.html",
+                params: { modStCodigo: '00013'},
+                parent: 'lisnet',
+//                            controller: 'consultaLaudos',
+                data: {pageTitle: 'Configura Materiais'}, resolve: {
+                    loadPlugin: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load([
+                            {
+                                serie: true,
+                                files: ['js/plugins/dataTables/datatables.min.js', 'css/plugins/dataTables/datatables.min.css']
+                            },
+                            {
+                                serie: true,
+                                name: 'datatables',
+                                files: ['js/plugins/dataTables/angular-datatables.min.js']
+                            },
+                            {
+                                serie: true,
+                                name: 'datatables.buttons',
+                                files: ['js/plugins/dataTables/angular-datatables.buttons.min.js']
+                            },
+                            {
+                                files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
+                            },
+                            {
+                                name: 'oitozero.ngSweetAlert',
+                                files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
+                            },
+                            {
+                                files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
+                            }
+
+                        ]);
+                    }
+                }
+            }).state('setores', {
+                url: "/configura/setores/",
+                templateUrl: "views/tmtelas/tela_padrao.html",
+                params: { modStCodigo: '00015'},
+                parent: 'lisnet',
+//                            controller: 'consultaLaudos',
+                data: {pageTitle: 'Configura Setores'}, resolve: {
+                    loadPlugin: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load([
+                            {
+                                serie: true,
+                                files: ['js/plugins/dataTables/datatables.min.js', 'css/plugins/dataTables/datatables.min.css']
+                            },
+                            {
+                                serie: true,
+                                name: 'datatables',
+                                files: ['js/plugins/dataTables/angular-datatables.min.js']
+                            },
+                            {
+                                serie: true,
+                                name: 'datatables.buttons',
+                                files: ['js/plugins/dataTables/angular-datatables.buttons.min.js']
+                            },
+                            {
+                                files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
+                            },
+                            {
+                                name: 'oitozero.ngSweetAlert',
+                                files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
+                            },
+                            {
+                                files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
+                            }
+
+                        ]);
+                    }
+                }
+            }).state('antibiotico', {
+                url: "/configura/antibioticos/",
+                templateUrl: "views/tmtelas/tela_padrao.html",
+                params: { modStCodigo: '00016'},
+                parent: 'lisnet',
+//                            controller: 'consultaLaudos',
+                data: {pageTitle: 'Configura Antibioticos'}, resolve: {
+                    loadPlugin: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load([
+                            {
+                                serie: true,
+                                files: ['js/plugins/dataTables/datatables.min.js', 'css/plugins/dataTables/datatables.min.css']
+                            },
+                            {
+                                serie: true,
+                                name: 'datatables',
+                                files: ['js/plugins/dataTables/angular-datatables.min.js']
+                            },
+                            {
+                                serie: true,
+                                name: 'datatables.buttons',
+                                files: ['js/plugins/dataTables/angular-datatables.buttons.min.js']
+                            },
                             {
                                 files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
                             },

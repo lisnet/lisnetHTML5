@@ -1,0 +1,19 @@
+select mpa.MOD_ST_CODIGO,mpa.MPA_ST_TABELA,mpa.MPA_ST_DESCRICAO,mpa.MPA_ST_DESCRICAOREL,
+mpt.MPT_ST_CAMPO,mpt.MPT_IN_SEQUENCIA,mpt.MPT_ST_DESCRICAO,mpt.MPT_CH_TIPO,mpt.MPT_IN_TAMANHO,mpt.MPT_CH_OBRIGATORIO,mpt.MPT_ST_PADRAO,mpt.MPT_CH_COMPONENTE,mpt.MPT_ST_COMPLEMENTO,mpt.MPT_CH_ATIVO,mpt.MPT_CH_PESQUISA,mpt.MPT_CH_CHAVE,mpt.MPT_ST_HINT,mpt.MPT_CH_SHOWGRID,mpt.MPT_CH_SHOWFORMULARIO
+ from
+lab_modulopadrao mpa,
+lab_modulopadraotabela mpt
+where mpa.mod_st_codigo = '00006'
+and mpa.mod_st_codigo = mpt.mod_st_codigo
+order by mpt.mpt_in_sequencia asc
+
+
+
+
+
+Tipo só tem 4, 
+C-Caracter, 
+N-Numerico, 
+D-DATA, 
+H-HORA
+MPT_CH_COMPONENTE: E - Edit, C - Checkbox

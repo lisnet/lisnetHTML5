@@ -23,6 +23,13 @@ function notificacaoBarra($scope, $window, $localStorage,sairDoSistemaService,$r
         $scope.telaSelecionada = '';
         return idDaPagina;
     };
+    $scope.cortaStringModStCodigo = function (str){
+        var _array = str.split('|');
+//        return _array[0];
+        var modStCodigo = _array[2].trim();
+//        $scope.telaSelecionada = '';
+        return modStCodigo;
+    };
     $scope.states = [];
     $scope.states.push('controle.notificacoes | Controle de Notificações');
     $scope.states.push('widgets.lisnet | Home Painel de Widgets do Usuário, Inicio , Inĩcio, Começo, Casa');
