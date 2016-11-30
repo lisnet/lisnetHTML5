@@ -16,4 +16,4 @@ C-Caracter,
 N-Numerico, 
 D-DATA, 
 H-HORA
-MPT_CH_COMPONENTE: E - Edit, C - Checkbox
+MPT_CH_COMPONENTE: E - Edit , C - Checkbox
