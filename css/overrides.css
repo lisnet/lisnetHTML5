@@ -182,12 +182,16 @@ and open the template in the editor.
 
 
 .geslab-site  .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover {
-    color: orange;
+  
+    color: black;
 }
 .geslab-site  .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav >  a:focus {
-    color: gray;
+    color: black;
 }
 
+.geslab-site .navbar-scroll .navbar-nav > li > a {
+  padding: 25px 10px;
+}
 
 
 
