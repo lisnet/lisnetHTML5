@@ -10,6 +10,9 @@
         "uib-dropdown": {
             "context": "div"
         },
+        "page-scroll": {
+            "context": "a"
+        },
         "page-title": {
             "context": "title"
         },
