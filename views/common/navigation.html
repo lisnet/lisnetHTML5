@@ -22,7 +22,7 @@
                     </div>-->
                     
                 </div>
-                <div class="logo-element"   >
+                <div class="logo-element logo-element-lisnet"   >
                     <a ui-sref="widgets.lisnet" >{{main.userDTO.cliente.CLI_ST_NOME}}</a>
                 </div>
             </li>
@@ -48,15 +48,15 @@
                     <li ui-sref-active="active" ng-repeat="f in p.telas"    >
                         <!--<a ng-click="main.stateGO(f.stateComposto)"  ng-show="n.visualisar"  class="font-italic text-muted  text-info"  ng-hide="f.telas"   > {{f.MOD_ST_DESCRICAO}}</a>-->
                         
-                       <a ng-click="main.stateGO(f.state)"  class="font-italic text-muted  text-info"       ng-show="f.visualisar  && !f.telas"     > {{f.MOD_ST_DESCRICAO}}</a>
+                       <a  ng-click="main.stateGO(f.state)"  class="font-italic text-muted   "       ng-show="f.visualisar  && !f.telas"     > {{f.MOD_ST_DESCRICAO}}</a>
                         <!--<a ng-click="main.stateGO(f.state)"  class="font-italic text-muted  text-info"       ng-show="main.visualisar(f.state)"     > {{f.MOD_ST_DESCRICAO}}</a>-->
                         
                         <!--<a href="index.html"ng-show="f.telas"   ng-hide="!n.visualisar"  ><i  class="{{voltaLogo(f.MOD_ST_CODIGO)}}" ></i> {{f.MOD_ST_DESCRICAO }} <span class="fa arrow"></span></a>-->
-                        <a href="index.html"ng-show="f.telas  &&  f.telas.length"   ><i  class="{{main.voltaLogo(f.MOD_ST_CODIGO)}}" ></i> {{f.MOD_ST_DESCRICAO }} <span class="fa arrow"></span></a>
+                        <a style="color: gold;" class="text-capitalize"  href="index.html"ng-show="f.telas  &&  f.telas.length"   ><i  class="{{main.voltaLogo(f.MOD_ST_CODIGO)}}" ></i> {{f.MOD_ST_DESCRICAO }} <span class="fa arrow"></span></a>
                         <!--{{acheiOFDP(f.stateN)}}-->
                         <ul class="nav nav-thrird-level collapse"    ng-show="f.telas"   >
                             <li ui-sref-active="active" ng-repeat="n in f.telas"   >
-                                <a ng-click="main.stateGO(n.state)"   ng-show="n.visualisar"  class="font-italic text-muted  text-info" > {{n.MOD_ST_DESCRICAO}}</a>
+                                <a   ng-click="main.stateGO(n.state)"   ng-show="n.visualisar"  class="font-italic text-error" > {{n.MOD_ST_DESCRICAO}}</a>
                                     <!--<a ng-click="main.stateGO(n.state)"   ng-show="main.visualisar(n.state)"  class="font-italic text-muted  text-info" > {{n.MOD_ST_DESCRICAO}}</a>-->
                             </li>
                         </ul>

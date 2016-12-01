@@ -1,10 +1,23 @@
 {
     "status": "in",
     "perfilId": 2,
-    "dtCriacao": "2016-11-30T14:18:45.189Z",
+    "dtCriacao": "2016-12-01T13:45:23.218Z",
     "ultimaTela": "setores",
     "notificationTimer": 10000,
     "hotPages": [
+        {
+            "url": "/configura/antibioticos/",
+            "templateUrl": "views/tmtelas/tela_padrao.html",
+            "params": {
+                "modStCodigo": "00016"
+            },
+            "parent": "lisnet",
+            "data": {
+                "pageTitle": "Configura Antibioticos"
+            },
+            "resolve": {},
+            "name": "antibiotico"
+        },
         {
             "url": "/configura/setores/",
             "templateUrl": "views/tmtelas/tela_padrao.html",
@@ -402,7 +415,7 @@
         "os_version": "unknown",
         "browser_version": "54.0.2840.100",
         "protocol": "http",
-        "url": "http://localhost:8080/lisnetHTML5/index.html",
+        "url": "http://localhost:8080/lisnetHTML5/index.html#/login",
         "screenHeight": 1044,
         "screenWidth": 1920,
         "isMobileDevice": false,
@@ -2390,7 +2403,8 @@
             ]
         }
     ],
-    "dtLogon": " 30/11/2016  12:18",
+    "dtLogon": " 01/12/2016  11:45",
+    "notificacoesEmExecucao": 1,
     "unidades": [
         {
             "UNI_ST_CODIGO": "001",
@@ -2435,7 +2449,6 @@
             "PRJ_ST_CODIGO": "MATRIZ"
         }
     ],
-    "notificacoesEmExecucao": 1,
     "convenios": [
         {
             "CON_ST_CODIGO": "216",
@@ -2764,161 +2777,84 @@
     ],
     "telaPadrao": [
         {
-            "modStCodigo": "00015",
+            "modStCodigo": "00016",
             "state": {
-                "url": "/configura/setores/",
+                "url": "/configura/antibioticos/",
                 "templateUrl": "views/tmtelas/tela_padrao.html",
                 "params": {
-                    "modStCodigo": "00015"
+                    "modStCodigo": "00016"
                 },
                 "parent": "lisnet",
                 "data": {
-                    "pageTitle": "Configura Setores"
+                    "pageTitle": "Configura Antibioticos"
                 },
                 "resolve": {},
-                "name": "setores"
+                "name": "antibiotico"
             },
-            "campos": [
-                {
-                    "MOD_ST_CODIGO": "00015",
-                    "MPA_ST_TABELA": "LAB_SETOR",
-                    "MPA_ST_DESCRICAO": "Setores",
-                    "MPA_ST_DESCRICAOREL": "Setores",
-                    "MPT_ST_CAMPO": "UNI_ST_CODIGO",
-                    "MPT_IN_SEQUENCIA": 1,
-                    "MPT_ST_DESCRICAO": "Unidade",
-                    "MPT_CH_TIPO": "C",
-                    "MPT_IN_TAMANHO": 3,
-                    "MPT_CH_OBRIGATORIO": "S",
-                    "MPT_ST_PADRAO": "@UNIDADE",
-                    "MPT_CH_COMPONENTE": "E",
-                    "MPT_CH_ATIVO": "N",
-                    "MPT_CH_PESQUISA": "N",
-                    "MPT_CH_CHAVE": "S",
-                    "MPT_CH_SHOWGRID": "S",
-                    "MPT_CH_SHOWFORMULARIO": "S"
+            "dTOptionsBuilder": {
+                "dom": "<\"html5buttons\"B>lTfgitp",
+                "stateSave": true,
+                "lengthMenu": [
+                    10,
+                    25,
+                    50,
+                    100,
+                    150,
+                    200
+                ],
+                "language": {
+                    "sProcessing": "A processar...",
+                    "sLengthMenu": "Mostrar _MENU_ registos",
+                    "sZeroRecords": "Não foram encontrados resultados",
+                    "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registos",
+                    "sInfoEmpty": "Mostrando de 0 até 0 de 0 registos",
+                    "sInfoFiltered": "(filtrado de _MAX_ registos no total)",
+                    "sInfoPostFix": "",
+                    "sSearch": "Procurar:",
+                    "sUrl": "",
+                    "oPaginate": {
+                        "sFirst": "Primeiro",
+                        "sPrevious": "Anterior",
+                        "sNext": "Seguinte",
+                        "sLast": "Último"
+                    }
                 },
-                {
-                    "MOD_ST_CODIGO": "00015",
-                    "MPA_ST_TABELA": "LAB_SETOR",
-                    "MPA_ST_DESCRICAO": "Setores",
-                    "MPA_ST_DESCRICAOREL": "Setores",
-                    "MPT_ST_CAMPO": "SET_ST_CODIGO",
-                    "MPT_IN_SEQUENCIA": 2,
-                    "MPT_ST_DESCRICAO": "Código",
-                    "MPT_CH_TIPO": "C",
-                    "MPT_IN_TAMANHO": 3,
-                    "MPT_CH_OBRIGATORIO": "S",
-                    "MPT_CH_COMPONENTE": "E",
-                    "MPT_CH_ATIVO": "S",
-                    "MPT_CH_PESQUISA": "S",
-                    "MPT_CH_CHAVE": "S",
-                    "MPT_CH_SHOWGRID": "S",
-                    "MPT_CH_SHOWFORMULARIO": "S"
-                },
-                {
-                    "MOD_ST_CODIGO": "00015",
-                    "MPA_ST_TABELA": "LAB_SETOR",
-                    "MPA_ST_DESCRICAO": "Setores",
-                    "MPA_ST_DESCRICAOREL": "Setores",
-                    "MPT_ST_CAMPO": "SET_ST_DESCRICAO",
-                    "MPT_IN_SEQUENCIA": 3,
-                    "MPT_ST_DESCRICAO": "Descrição",
-                    "MPT_CH_TIPO": "C",
-                    "MPT_IN_TAMANHO": 60,
-                    "MPT_CH_OBRIGATORIO": "N",
-                    "MPT_CH_COMPONENTE": "E",
-                    "MPT_CH_ATIVO": "S",
-                    "MPT_CH_PESQUISA": "S",
-                    "MPT_CH_CHAVE": "N",
-                    "MPT_CH_SHOWGRID": "S",
-                    "MPT_CH_SHOWFORMULARIO": "S"
-                },
-                {
-                    "MOD_ST_CODIGO": "00015",
-                    "MPA_ST_TABELA": "LAB_SETOR",
-                    "MPA_ST_DESCRICAO": "Setores",
-                    "MPA_ST_DESCRICAOREL": "Setores",
-                    "MPT_ST_CAMPO": "SET_IN_SEQUENCIA",
-                    "MPT_IN_SEQUENCIA": 4,
-                    "MPT_ST_DESCRICAO": "Sequencia",
-                    "MPT_CH_TIPO": "N",
-                    "MPT_IN_TAMANHO": 22,
-                    "MPT_CH_OBRIGATORIO": "N",
-                    "MPT_CH_COMPONENTE": "E",
-                    "MPT_CH_ATIVO": "S",
-                    "MPT_CH_PESQUISA": "N",
-                    "MPT_CH_CHAVE": "N",
-                    "MPT_CH_SHOWGRID": "S",
-                    "MPT_CH_SHOWFORMULARIO": "S"
-                },
-                {
-                    "MOD_ST_CODIGO": "00015",
-                    "MPA_ST_TABELA": "LAB_SETOR",
-                    "MPA_ST_DESCRICAO": "Setores",
-                    "MPA_ST_DESCRICAOREL": "Setores",
-                    "MPT_ST_CAMPO": "SET_IN_DESCARTE",
-                    "MPT_IN_SEQUENCIA": 5,
-                    "MPT_ST_DESCRICAO": "Descarte",
-                    "MPT_CH_TIPO": "N",
-                    "MPT_IN_TAMANHO": 22,
-                    "MPT_CH_OBRIGATORIO": "N",
-                    "MPT_CH_COMPONENTE": "E",
-                    "MPT_CH_ATIVO": "S",
-                    "MPT_CH_PESQUISA": "N",
-                    "MPT_CH_CHAVE": "N",
-                    "MPT_CH_SHOWGRID": "S",
-                    "MPT_CH_SHOWFORMULARIO": "S"
-                },
-                {
-                    "MOD_ST_CODIGO": "00015",
-                    "MPA_ST_TABELA": "LAB_SETOR",
-                    "MPA_ST_DESCRICAO": "Setores",
-                    "MPA_ST_DESCRICAOREL": "Setores",
-                    "MPT_ST_CAMPO": "SET_IN_COR",
-                    "MPT_IN_SEQUENCIA": 6,
-                    "MPT_ST_DESCRICAO": "Cor",
-                    "MPT_CH_TIPO": "N",
-                    "MPT_IN_TAMANHO": 22,
-                    "MPT_CH_OBRIGATORIO": "N",
-                    "MPT_CH_COMPONENTE": "E",
-                    "MPT_CH_ATIVO": "S",
-                    "MPT_CH_PESQUISA": "N",
-                    "MPT_CH_CHAVE": "N",
-                    "MPT_CH_SHOWGRID": "S",
-                    "MPT_CH_SHOWFORMULARIO": "S"
-                },
-                {
-                    "MOD_ST_CODIGO": "00015",
-                    "MPA_ST_TABELA": "LAB_SETOR",
-                    "MPA_ST_DESCRICAO": "Setores",
-                    "MPA_ST_DESCRICAOREL": "Setores",
-                    "MPT_ST_CAMPO": "SET_IN_DIASPENDENCIA",
-                    "MPT_IN_SEQUENCIA": 7,
-                    "MPT_ST_DESCRICAO": "Dias Pendência",
-                    "MPT_CH_TIPO": "N",
-                    "MPT_IN_TAMANHO": 22,
-                    "MPT_CH_OBRIGATORIO": "N",
-                    "MPT_ST_PADRAO": "60",
-                    "MPT_CH_COMPONENTE": "E",
-                    "MPT_CH_ATIVO": "S",
-                    "MPT_CH_PESQUISA": "N",
-                    "MPT_CH_CHAVE": "N",
-                    "MPT_CH_SHOWGRID": "S",
-                    "MPT_CH_SHOWFORMULARIO": "S"
-                }
-            ],
-            "colunas": [
-                "UNI_ST_CODIGO",
-                "SET_ST_CODIGO",
-                "SET_ST_DESCRICAO",
-                "SET_IN_SEQUENCIA",
-                "SET_IN_DESCARTE",
-                "SET_IN_COR",
-                "SET_IN_DIASPENDENCIA"
-            ],
-            "table": "LAB_SETOR",
-            "pesquisa": {}
+                "buttons": [
+                    {
+                        "extend": "copy"
+                    },
+                    {
+                        "extend": "csv"
+                    },
+                    {
+                        "extend": "excel",
+                        "title": "Lista_configuracoes"
+                    },
+                    {
+                        "extend": "pdf",
+                        "title": "Lista_configuracoes"
+                    },
+                    {
+                        "extend": "print"
+                    }
+                ]
+            },
+            "entidade": {
+                "entidade": "LAB_ANTIBIOTICO",
+                "chaves": [
+                    "ANT_ST_CODIGO"
+                ],
+                "colunas": [
+                    {
+                        "nome": "Código",
+                        "coluna": "ANT_ST_CODIGO"
+                    },
+                    {
+                        "nome": "Descrição",
+                        "coluna": "ANT_ST_DESCRICAO"
+                    }
+                ]
+            }
         },
         {
             "modStCodigo": "00015",
@@ -2935,306 +2871,91 @@
                 "resolve": {},
                 "name": "setores"
             },
-            "campos": [
-                {
-                    "MOD_ST_CODIGO": "00015",
-                    "MPA_ST_TABELA": "LAB_SETOR",
-                    "MPA_ST_DESCRICAO": "Setores",
-                    "MPA_ST_DESCRICAOREL": "Setores",
-                    "MPT_ST_CAMPO": "UNI_ST_CODIGO",
-                    "MPT_IN_SEQUENCIA": 1,
-                    "MPT_ST_DESCRICAO": "Unidade",
-                    "MPT_CH_TIPO": "C",
-                    "MPT_IN_TAMANHO": 3,
-                    "MPT_CH_OBRIGATORIO": "S",
-                    "MPT_ST_PADRAO": "@UNIDADE",
-                    "MPT_CH_COMPONENTE": "E",
-                    "MPT_CH_ATIVO": "N",
-                    "MPT_CH_PESQUISA": "N",
-                    "MPT_CH_CHAVE": "S",
-                    "MPT_CH_SHOWGRID": "S",
-                    "MPT_CH_SHOWFORMULARIO": "S"
-                },
-                {
-                    "MOD_ST_CODIGO": "00015",
-                    "MPA_ST_TABELA": "LAB_SETOR",
-                    "MPA_ST_DESCRICAO": "Setores",
-                    "MPA_ST_DESCRICAOREL": "Setores",
-                    "MPT_ST_CAMPO": "SET_ST_CODIGO",
-                    "MPT_IN_SEQUENCIA": 2,
-                    "MPT_ST_DESCRICAO": "Código",
-                    "MPT_CH_TIPO": "C",
-                    "MPT_IN_TAMANHO": 3,
-                    "MPT_CH_OBRIGATORIO": "S",
-                    "MPT_CH_COMPONENTE": "E",
-                    "MPT_CH_ATIVO": "S",
-                    "MPT_CH_PESQUISA": "S",
-                    "MPT_CH_CHAVE": "S",
-                    "MPT_CH_SHOWGRID": "S",
-                    "MPT_CH_SHOWFORMULARIO": "S"
-                },
-                {
-                    "MOD_ST_CODIGO": "00015",
-                    "MPA_ST_TABELA": "LAB_SETOR",
-                    "MPA_ST_DESCRICAO": "Setores",
-                    "MPA_ST_DESCRICAOREL": "Setores",
-                    "MPT_ST_CAMPO": "SET_ST_DESCRICAO",
-                    "MPT_IN_SEQUENCIA": 3,
-                    "MPT_ST_DESCRICAO": "Descrição",
-                    "MPT_CH_TIPO": "C",
-                    "MPT_IN_TAMANHO": 60,
-                    "MPT_CH_OBRIGATORIO": "N",
-                    "MPT_CH_COMPONENTE": "E",
-                    "MPT_CH_ATIVO": "S",
-                    "MPT_CH_PESQUISA": "S",
-                    "MPT_CH_CHAVE": "N",
-                    "MPT_CH_SHOWGRID": "S",
-                    "MPT_CH_SHOWFORMULARIO": "S"
-                },
-                {
-                    "MOD_ST_CODIGO": "00015",
-                    "MPA_ST_TABELA": "LAB_SETOR",
-                    "MPA_ST_DESCRICAO": "Setores",
-                    "MPA_ST_DESCRICAOREL": "Setores",
-                    "MPT_ST_CAMPO": "SET_IN_SEQUENCIA",
-                    "MPT_IN_SEQUENCIA": 4,
-                    "MPT_ST_DESCRICAO": "Sequencia",
-                    "MPT_CH_TIPO": "N",
-                    "MPT_IN_TAMANHO": 22,
-                    "MPT_CH_OBRIGATORIO": "N",
-                    "MPT_CH_COMPONENTE": "E",
-                    "MPT_CH_ATIVO": "S",
-                    "MPT_CH_PESQUISA": "N",
-                    "MPT_CH_CHAVE": "N",
-                    "MPT_CH_SHOWGRID": "S",
-                    "MPT_CH_SHOWFORMULARIO": "S"
-                },
-                {
-                    "MOD_ST_CODIGO": "00015",
-                    "MPA_ST_TABELA": "LAB_SETOR",
-                    "MPA_ST_DESCRICAO": "Setores",
-                    "MPA_ST_DESCRICAOREL": "Setores",
-                    "MPT_ST_CAMPO": "SET_IN_DESCARTE",
-                    "MPT_IN_SEQUENCIA": 5,
-                    "MPT_ST_DESCRICAO": "Descarte",
-                    "MPT_CH_TIPO": "N",
-                    "MPT_IN_TAMANHO": 22,
-                    "MPT_CH_OBRIGATORIO": "N",
-                    "MPT_CH_COMPONENTE": "E",
-                    "MPT_CH_ATIVO": "S",
-                    "MPT_CH_PESQUISA": "N",
-                    "MPT_CH_CHAVE": "N",
-                    "MPT_CH_SHOWGRID": "S",
-                    "MPT_CH_SHOWFORMULARIO": "S"
-                },
-                {
-                    "MOD_ST_CODIGO": "00015",
-                    "MPA_ST_TABELA": "LAB_SETOR",
-                    "MPA_ST_DESCRICAO": "Setores",
-                    "MPA_ST_DESCRICAOREL": "Setores",
-                    "MPT_ST_CAMPO": "SET_IN_COR",
-                    "MPT_IN_SEQUENCIA": 6,
-                    "MPT_ST_DESCRICAO": "Cor",
-                    "MPT_CH_TIPO": "N",
-                    "MPT_IN_TAMANHO": 22,
-                    "MPT_CH_OBRIGATORIO": "N",
-                    "MPT_CH_COMPONENTE": "E",
-                    "MPT_CH_ATIVO": "S",
-                    "MPT_CH_PESQUISA": "N",
-                    "MPT_CH_CHAVE": "N",
-                    "MPT_CH_SHOWGRID": "S",
-                    "MPT_CH_SHOWFORMULARIO": "S"
-                },
-                {
-                    "MOD_ST_CODIGO": "00015",
-                    "MPA_ST_TABELA": "LAB_SETOR",
-                    "MPA_ST_DESCRICAO": "Setores",
-                    "MPA_ST_DESCRICAOREL": "Setores",
-                    "MPT_ST_CAMPO": "SET_IN_DIASPENDENCIA",
-                    "MPT_IN_SEQUENCIA": 7,
-                    "MPT_ST_DESCRICAO": "Dias Pendência",
-                    "MPT_CH_TIPO": "N",
-                    "MPT_IN_TAMANHO": 22,
-                    "MPT_CH_OBRIGATORIO": "N",
-                    "MPT_ST_PADRAO": "60",
-                    "MPT_CH_COMPONENTE": "E",
-                    "MPT_CH_ATIVO": "S",
-                    "MPT_CH_PESQUISA": "N",
-                    "MPT_CH_CHAVE": "N",
-                    "MPT_CH_SHOWGRID": "S",
-                    "MPT_CH_SHOWFORMULARIO": "S"
-                }
-            ],
-            "colunas": [
-                "UNI_ST_CODIGO",
-                "SET_ST_CODIGO",
-                "SET_ST_DESCRICAO",
-                "SET_IN_SEQUENCIA",
-                "SET_IN_DESCARTE",
-                "SET_IN_COR",
-                "SET_IN_DIASPENDENCIA"
-            ],
-            "table": "LAB_SETOR",
-            "pesquisa": {}
-        },
-        [
-            {
-                "modStCodigo": "00015",
-                "state": {
-                    "url": "/configura/setores/",
-                    "templateUrl": "views/tmtelas/tela_padrao.html",
-                    "params": {
-                        "modStCodigo": "00015"
-                    },
-                    "parent": "lisnet",
-                    "data": {
-                        "pageTitle": "Configura Setores"
-                    },
-                    "resolve": {},
-                    "name": "setores"
-                },
-                "campos": [
-                    {
-                        "MOD_ST_CODIGO": "00015",
-                        "MPA_ST_TABELA": "LAB_SETOR",
-                        "MPA_ST_DESCRICAO": "Setores",
-                        "MPA_ST_DESCRICAOREL": "Setores",
-                        "MPT_ST_CAMPO": "UNI_ST_CODIGO",
-                        "MPT_IN_SEQUENCIA": 1,
-                        "MPT_ST_DESCRICAO": "Unidade",
-                        "MPT_CH_TIPO": "C",
-                        "MPT_IN_TAMANHO": 3,
-                        "MPT_CH_OBRIGATORIO": "S",
-                        "MPT_ST_PADRAO": "@UNIDADE",
-                        "MPT_CH_COMPONENTE": "E",
-                        "MPT_CH_ATIVO": "N",
-                        "MPT_CH_PESQUISA": "N",
-                        "MPT_CH_CHAVE": "S",
-                        "MPT_CH_SHOWGRID": "S",
-                        "MPT_CH_SHOWFORMULARIO": "S"
-                    },
-                    {
-                        "MOD_ST_CODIGO": "00015",
-                        "MPA_ST_TABELA": "LAB_SETOR",
-                        "MPA_ST_DESCRICAO": "Setores",
-                        "MPA_ST_DESCRICAOREL": "Setores",
-                        "MPT_ST_CAMPO": "SET_ST_CODIGO",
-                        "MPT_IN_SEQUENCIA": 2,
-                        "MPT_ST_DESCRICAO": "Código",
-                        "MPT_CH_TIPO": "C",
-                        "MPT_IN_TAMANHO": 3,
-                        "MPT_CH_OBRIGATORIO": "S",
-                        "MPT_CH_COMPONENTE": "E",
-                        "MPT_CH_ATIVO": "S",
-                        "MPT_CH_PESQUISA": "S",
-                        "MPT_CH_CHAVE": "S",
-                        "MPT_CH_SHOWGRID": "S",
-                        "MPT_CH_SHOWFORMULARIO": "S"
-                    },
-                    {
-                        "MOD_ST_CODIGO": "00015",
-                        "MPA_ST_TABELA": "LAB_SETOR",
-                        "MPA_ST_DESCRICAO": "Setores",
-                        "MPA_ST_DESCRICAOREL": "Setores",
-                        "MPT_ST_CAMPO": "SET_ST_DESCRICAO",
-                        "MPT_IN_SEQUENCIA": 3,
-                        "MPT_ST_DESCRICAO": "Descrição",
-                        "MPT_CH_TIPO": "C",
-                        "MPT_IN_TAMANHO": 60,
-                        "MPT_CH_OBRIGATORIO": "N",
-                        "MPT_CH_COMPONENTE": "E",
-                        "MPT_CH_ATIVO": "S",
-                        "MPT_CH_PESQUISA": "S",
-                        "MPT_CH_CHAVE": "N",
-                        "MPT_CH_SHOWGRID": "S",
-                        "MPT_CH_SHOWFORMULARIO": "S"
-                    },
-                    {
-                        "MOD_ST_CODIGO": "00015",
-                        "MPA_ST_TABELA": "LAB_SETOR",
-                        "MPA_ST_DESCRICAO": "Setores",
-                        "MPA_ST_DESCRICAOREL": "Setores",
-                        "MPT_ST_CAMPO": "SET_IN_SEQUENCIA",
-                        "MPT_IN_SEQUENCIA": 4,
-                        "MPT_ST_DESCRICAO": "Sequencia",
-                        "MPT_CH_TIPO": "N",
-                        "MPT_IN_TAMANHO": 22,
-                        "MPT_CH_OBRIGATORIO": "N",
-                        "MPT_CH_COMPONENTE": "E",
-                        "MPT_CH_ATIVO": "S",
-                        "MPT_CH_PESQUISA": "N",
-                        "MPT_CH_CHAVE": "N",
-                        "MPT_CH_SHOWGRID": "S",
-                        "MPT_CH_SHOWFORMULARIO": "S"
-                    },
-                    {
-                        "MOD_ST_CODIGO": "00015",
-                        "MPA_ST_TABELA": "LAB_SETOR",
-                        "MPA_ST_DESCRICAO": "Setores",
-                        "MPA_ST_DESCRICAOREL": "Setores",
-                        "MPT_ST_CAMPO": "SET_IN_DESCARTE",
-                        "MPT_IN_SEQUENCIA": 5,
-                        "MPT_ST_DESCRICAO": "Descarte",
-                        "MPT_CH_TIPO": "N",
-                        "MPT_IN_TAMANHO": 22,
-                        "MPT_CH_OBRIGATORIO": "N",
-                        "MPT_CH_COMPONENTE": "E",
-                        "MPT_CH_ATIVO": "S",
-                        "MPT_CH_PESQUISA": "N",
-                        "MPT_CH_CHAVE": "N",
-                        "MPT_CH_SHOWGRID": "S",
-                        "MPT_CH_SHOWFORMULARIO": "S"
-                    },
-                    {
-                        "MOD_ST_CODIGO": "00015",
-                        "MPA_ST_TABELA": "LAB_SETOR",
-                        "MPA_ST_DESCRICAO": "Setores",
-                        "MPA_ST_DESCRICAOREL": "Setores",
-                        "MPT_ST_CAMPO": "SET_IN_COR",
-                        "MPT_IN_SEQUENCIA": 6,
-                        "MPT_ST_DESCRICAO": "Cor",
-                        "MPT_CH_TIPO": "N",
-                        "MPT_IN_TAMANHO": 22,
-                        "MPT_CH_OBRIGATORIO": "N",
-                        "MPT_CH_COMPONENTE": "E",
-                        "MPT_CH_ATIVO": "S",
-                        "MPT_CH_PESQUISA": "N",
-                        "MPT_CH_CHAVE": "N",
-                        "MPT_CH_SHOWGRID": "S",
-                        "MPT_CH_SHOWFORMULARIO": "S"
-                    },
-                    {
-                        "MOD_ST_CODIGO": "00015",
-                        "MPA_ST_TABELA": "LAB_SETOR",
-                        "MPA_ST_DESCRICAO": "Setores",
-                        "MPA_ST_DESCRICAOREL": "Setores",
-                        "MPT_ST_CAMPO": "SET_IN_DIASPENDENCIA",
-                        "MPT_IN_SEQUENCIA": 7,
-                        "MPT_ST_DESCRICAO": "Dias Pendência",
-                        "MPT_CH_TIPO": "N",
-                        "MPT_IN_TAMANHO": 22,
-                        "MPT_CH_OBRIGATORIO": "N",
-                        "MPT_ST_PADRAO": "60",
-                        "MPT_CH_COMPONENTE": "E",
-                        "MPT_CH_ATIVO": "S",
-                        "MPT_CH_PESQUISA": "N",
-                        "MPT_CH_CHAVE": "N",
-                        "MPT_CH_SHOWGRID": "S",
-                        "MPT_CH_SHOWFORMULARIO": "S"
+            "dTOptionsBuilder": {
+                "dom": "<\"html5buttons\"B>lTfgitp",
+                "stateSave": true,
+                "lengthMenu": [
+                    10,
+                    25,
+                    50,
+                    100,
+                    150,
+                    200
+                ],
+                "language": {
+                    "sProcessing": "A processar...",
+                    "sLengthMenu": "Mostrar _MENU_ registos",
+                    "sZeroRecords": "Não foram encontrados resultados",
+                    "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registos",
+                    "sInfoEmpty": "Mostrando de 0 até 0 de 0 registos",
+                    "sInfoFiltered": "(filtrado de _MAX_ registos no total)",
+                    "sInfoPostFix": "",
+                    "sSearch": "Procurar:",
+                    "sUrl": "",
+                    "oPaginate": {
+                        "sFirst": "Primeiro",
+                        "sPrevious": "Anterior",
+                        "sNext": "Seguinte",
+                        "sLast": "Último"
                     }
+                },
+                "buttons": [
+                    {
+                        "extend": "copy"
+                    },
+                    {
+                        "extend": "csv"
+                    },
+                    {
+                        "extend": "excel",
+                        "title": "Lista_configuracoes"
+                    },
+                    {
+                        "extend": "pdf",
+                        "title": "Lista_configuracoes"
+                    },
+                    {
+                        "extend": "print"
+                    }
+                ]
+            },
+            "entidade": {
+                "entidade": "LAB_SETOR",
+                "chaves": [
+                    "UNI_ST_CODIGO",
+                    "SET_ST_CODIGO"
                 ],
                 "colunas": [
-                    "UNI_ST_CODIGO",
-                    "SET_ST_CODIGO",
-                    "SET_ST_DESCRICAO",
-                    "SET_IN_SEQUENCIA",
-                    "SET_IN_DESCARTE",
-                    "SET_IN_COR",
-                    "SET_IN_DIASPENDENCIA"
-                ],
-                "table": "LAB_SETOR",
-                "pesquisa": {}
+                    {
+                        "nome": "Unidade",
+                        "coluna": "UNI_ST_CODIGO"
+                    },
+                    {
+                        "nome": "Código",
+                        "coluna": "SET_ST_CODIGO"
+                    },
+                    {
+                        "nome": "Descrição",
+                        "coluna": "SET_ST_DESCRICAO"
+                    },
+                    {
+                        "nome": "Sequencia",
+                        "coluna": "SET_IN_SEQUENCIA"
+                    },
+                    {
+                        "nome": "Descarte",
+                        "coluna": "SET_IN_DESCARTE"
+                    },
+                    {
+                        "nome": "Cor",
+                        "coluna": "SET_IN_COR"
+                    },
+                    {
+                        "nome": "Dias Pendência",
+                        "coluna": "SET_IN_DIASPENDENCIA"
+                    }
+                ]
             }
-        ]
+        }
     ]
 }

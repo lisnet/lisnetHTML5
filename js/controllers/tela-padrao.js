@@ -5,10 +5,13 @@
 
 function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage, sairDoSistemaService, notificacaoProvider, $window, gerenciaRelatorioService, $filter, $timeout, $uibModal, DTOptionsBuilder, $interval, shareuser) {
 //{tabela:_tabelaNome,modulo:[{"MOD_ST_CODIGO": "00021",... }],conteudo:};
-    var tP = this;
+    var self = this;
 
     $scope.userDTO = sairDoSistemaService.validarLogin();
 //    constroeDTOptionsBuilder();
+    if(angular.isUndefined($scope.dTOptionsBuilder)){
+                               $scope.dTOptionsBuilder = constroeDTOptionsBuilder();
+    }
     var modStCodigo = $stateParams.modStCodigo;
     var moduloPadrao;
     
@@ -32,53 +35,46 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
         console.log('buscando campos .....');
         buscaAPIService.buscaModuloTelaPadrao($scope.userDTO.configLisNet,modStCodigo)
                 .then(function successCallback(response){
-                    moduloPadrao.campos = response.data;
-//                      console.log(JSON.stringify(moduloPadrao.modulo,null,2));
-                      if(moduloPadrao.campos ){
-//                          moduloPadrao.headers = [];
-                          moduloPadrao.chaves = [];
-                          moduloPadrao.colunas = [];
-                            for(var x = 0 ; x <  moduloPadrao.campos.length ; x ++){
-                                
-                                var campo = moduloPadrao.campos[x];
-                                if(!moduloPadrao.table) moduloPadrao.table =campo.MPA_ST_TABELA;
-                                moduloPadrao.colunas.push({nome:campo.MPT_ST_DESCRICAO,coluna:campo.MPT_ST_CAMPO});
-                                var _mp = moduloPadrao.campos[x];
-                                for (var key in _mp){
-                                    var attrName = key;
-                                    var attrValue = _mp[key];
-                                    if(attrName === 'MPT_CH_CHAVE'  && attrValue === 'S' ){
-                                        var _mp0 = moduloPadrao.campos[0];
-//                                        console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
-//                                        console.log(JSON.stringify(_mp,null,2));
-                                        moduloPadrao.chaves.push(_mp.MPT_ST_CAMPO);
-                                    }
-//                                    console.log('attrName: '+attrName+'     attrValue: '+attrValue);
-//                                     tableHead.push(JSON.parse('{ "'+attrName+'" : "'+attrValue+'"  }')  );
-                                }
-                            }
-                            moduloPadrao.pesquisa = {};
-                            $scope.userDTO.telaPadrao.push(moduloPadrao);
-//                            console.log('moduloPadrao = '+JSON.stringify(moduloPadrao,null,2));
-                        }
+                    moduloPadrao.entidade = response.data;
+
                         $scope.moduloPadrao = moduloPadrao;
-                        $scope.moduloPadrao.dTOptionsBuilder = constroeDTOptionsBuilder();
+                       
+                        
                 },function errorCallback(response){
                     notificacaoProvider.sweetWarning("erro", response.statusText);
                 });
     }else{
         $scope.moduloPadrao = moduloPadrao;
-        
-//        console.log(JSON.stringify(moduloPadrao,null,2));
-//        constroeDTOptionsBuilder();
     }
     
     
     
     
     
+    $scope.filtrar = function ( ) {
+        self.modalLoading = notificacaoProvider.modalLoading('filtrando', 'filtrando', $scope);
+        $timeout(function () {
+            buscaAPIService.buscaEntidadeTelaPadrao($scope.userDTO.configLisNet, modStCodigo)
+                    .then(function successCallback(response) {
+                        moduloPadrao.entidade.entidades = response.data;
 
-    
+                        $scope.moduloPadrao = moduloPadrao;
+                        if (angular.isUndefined($scope.dTOptionsBuilder)) {
+                            $scope.dTOptionsBuilder = constroeDTOptionsBuilder();
+                        }
+                        $timeout(function () {
+                            self.modalLoading.dismiss('cancel');
+                        }, 500);
+
+                    }, function errorCallback(response) {
+                        notificacaoProvider.sweetWarning("erro", response.statusText);
+                    });
+        }, 150);
+
+    };
+    $scope.limparTela = function ( ) {
+        moduloPadrao.entidade.entidades = [];
+    };
 
     function  encontraModulo(e) {
         return e.modStCodigo === modStCodigo;
@@ -86,7 +82,7 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
     function montaModulo(_modStCodigo) {
         mp = {modStCodigo: _modStCodigo};
         mp.state = $state.current;
-        mp.dTOptionsBuilder = constroeDTOptionsBuilder();
+//        mp.dTOptionsBuilder = constroeDTOptionsBuilder();
         $scope.userDTO.telaPadrao.push(mp);
         return mp;
     };
