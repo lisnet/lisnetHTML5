@@ -141,6 +141,10 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
                         $state.go('widgets.lisnet');
                         //todas as chamadas no seu  tempo p nao sobrecarregar nem o cliente nem o servidor
                         $timeout(function () {
+                            $timeout(function (){gerenciaRelatorioService.atualizaRelatorios(this.userDTO);
+                                                         shareuser.userDTO = this.userDTO;
+                                                        $localStorage.userDTO = this.userDTO;
+                              },800);
                             modalLoading.dismiss('cancel');
                                  $timeout(function () {
                                       buscaAPIService.buscaUnidades(this.userDTO.USU_ST_CODIGO, this.userDTO.configLisNet).then(function sucessCallBack(response) {
@@ -153,10 +157,7 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
                                                     shareuser.userDTO.convenios = response.data;
       //                                               $localStorage.userDTO = this.userDTO;
                                             });
-                                                    $timeout(function (){gerenciaRelatorioService.atualizaRelatorios(this.userDTO);
-                                                         shareuser.userDTO = this.userDTO;
-                                                        $localStorage.userDTO = this.userDTO;
-                                                    },800);
+                                                    
                                             },700);
                                 }, 800);
                         }, 1500);

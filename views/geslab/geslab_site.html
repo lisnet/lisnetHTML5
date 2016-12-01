@@ -989,8 +989,8 @@
         $('a.page-scroll').bind('click', function(event) {
             var link = $(this);
             $('html, body').stop().animate({
-                scrollTop: $(link.attr('href')).offset().top - 50
-            }, 500);
+                scrollTop: $(link.attr('href')).offset().top - 45
+            }, 600);
             event.preventDefault();
             if($('body').hasClass('body-small')) {
                 $('#navbar').collapse('toggle');

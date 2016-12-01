@@ -89,7 +89,7 @@ angular.module('lisnet').service('gerenciaRelatorioService', function (buscaAPIS
                            $interval.cancel(_int );
                        }
                        
-                   },150);
+                   },200);
                    
                }else{
                    for(var i = 0 ; i < arrayNotf.length ; i ++){
