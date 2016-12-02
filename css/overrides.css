@@ -151,7 +151,7 @@ and open the template in the editor.
 
 .geslab-site .navbar-default .navbar-nav > .active > a,
 .geslab-site .navbar-default .navbar-nav > .active > a:hover {
-  border-top: 6px solid orange;
+ border-top: 6px solid orange;
 }
 .geslab-site a.navy-link {
   color: orange;
