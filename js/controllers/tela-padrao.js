@@ -6,7 +6,6 @@
 function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage, sairDoSistemaService, notificacaoProvider, $window, gerenciaRelatorioService, $filter, $timeout, $uibModal, DTOptionsBuilder, $interval, shareuser) {
 //{tabela:_tabelaNome,modulo:[{"MOD_ST_CODIGO": "00021",... }],conteudo:};
     var self = this;
-
     $scope.userDTO = sairDoSistemaService.validarLogin();
 //    constroeDTOptionsBuilder();
     if(angular.isUndefined($scope.dTOptionsBuilder)){
@@ -31,7 +30,7 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
     
     
     console.log("moduloPadrao.campos is Undefined = "+ angular.isUndefined(moduloPadrao.campos));
-    if(angular.isUndefined(moduloPadrao.campos)){
+    if(angular.isUndefined(moduloPadrao.entidade)){
         console.log('buscando campos .....');
         buscaAPIService.buscaModuloTelaPadrao($scope.userDTO.configLisNet,modStCodigo)
                 .then(function successCallback(response){
@@ -49,15 +48,31 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
     
     
     
+   
     
+    $scope.buscar = function ( blFiltro) {
+        retornaPesquisa();
+        
+        if(blFiltro && moduloPadrao.entidade.pesquisaJSON && moduloPadrao.entidade.pesquisaJSON.campo && moduloPadrao.entidade.pesquisaInput){
+            moduloPadrao.entidade.pesquisaInput = moduloPadrao.entidade.pesquisaInput.toUpperCase();
+            carregarLista(blFiltro);
+        }else if(!blFiltro) {
+            carregarLista(blFiltro);
+        }else{
+            notificacaoProvider.sweetError('Erro', 'preencher os campos para filtrar a pesquisa');
+        }
+        
+        
+
+    };
     
-    $scope.filtrar = function ( ) {
+    function carregarLista(blFiltro){
         self.modalLoading = notificacaoProvider.modalLoading('filtrando', 'filtrando', $scope);
-        $timeout(function () {
-            buscaAPIService.buscaEntidadeTelaPadrao($scope.userDTO.configLisNet, modStCodigo)
+         $timeout(function () {
+            buscaAPIService.buscaEntidadeTelaPadrao($scope.userDTO.configLisNet, moduloPadrao,blFiltro)
                     .then(function successCallback(response) {
                         moduloPadrao.entidade.entidades = response.data;
-
+                        $scope.moduloPadrao.entidade.entidades = response.data;
                         $scope.moduloPadrao = moduloPadrao;
                         if (angular.isUndefined($scope.dTOptionsBuilder)) {
                             $scope.dTOptionsBuilder = constroeDTOptionsBuilder();
@@ -67,15 +82,32 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
                         }, 500);
 
                     }, function errorCallback(response) {
-                        notificacaoProvider.sweetWarning("erro", response.statusText);
+                        notificacaoProvider.sweetError("erro", response.statusText);
                     });
         }, 150);
-
-    };
+        
+    }
+    
     $scope.limparTela = function ( ) {
         moduloPadrao.entidade.entidades = [];
     };
 
+
+    function retornaPesquisa(){
+    if(moduloPadrao.entidade.pesquisas){
+      for(y in moduloPadrao.entidade.pesquisas){
+            var pesquisaJSON = moduloPadrao.entidade.pesquisas[y];
+            if(pesquisaJSON.nome === moduloPadrao.entidade.pesquisa){
+                moduloPadrao.entidade.pesquisaJSON = pesquisaJSON;
+                console.log(JSON.stringify(moduloPadrao.entidade.pesquisaJSON, null, 2));
+                break;
+            }
+        }  
+    }else{
+      console.log('escolha um filtro p pesquisa ..');  
+    }
+        
+    };
     function  encontraModulo(e) {
         return e.modStCodigo === modStCodigo;
     };
