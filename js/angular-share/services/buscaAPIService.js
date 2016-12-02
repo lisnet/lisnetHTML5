@@ -401,10 +401,32 @@ angular.module('lisnet').service("buscaAPIService",function ($http){
  * @param {type} configLisNet
  * @param {type} modStCodigo
  * @returns {unresolved}
+ * @deprecated usar buscaEntidadeTelaPadrao
  */
      this.buscaModuloTelaPadrao = function (configLisNet,modStCodigo){
         var params = '?MOD_ST_CODIGO=' + modStCodigo + '&dbname='+configLisNet.defaultDB;
         var url = configLisNet.baseUrl +'/buscaModuloTelaPadrao'+ params;
+        console.log('buscaModuloTelaPadrao : '+url);
+        return $http({method : 'GET',url : url,
+            headers : {
+                'Content-Type' : 'application/x-www-form-urlencoded',
+                'Access-Control-Allow-Headers': '*',
+                'Access-Control-Allow-Methods':'GET, POST, PUT',
+                'Access-Control-Allow-Origin': '*'
+            }});
+    };
+    /**
+     * 
+     * @param {type} configLisNet
+     * @param {type} modStCodigo
+     * @returns {unresolved}
+     */
+    this.buscaEntidadeTelaPadrao = function (configLisNet,moduloPadrao, blFiltro){
+        var params = '?MOD_ST_CODIGO=' + moduloPadrao.modStCodigo + '&dbname='+configLisNet.defaultDB;
+        if(blFiltro){
+            params = params+'&pesquisaCodigo='+moduloPadrao.entidade.pesquisaJSON.campo+'&pesquisaValor='+moduloPadrao.entidade.pesquisaInput;
+        }
+        var url = configLisNet.baseUrl +'/buscaEntidadeTelaPadrao'+ params;
         console.log('buscaModuloTelaPadrao : '+url);
         return $http({method : 'GET',url : url,
             headers : {
