@@ -77,8 +77,12 @@
                                 <tr   ng-repeat="ent in moduloPadrao.entidade.entidades track by $index "   >
                                     
                                     <td  style="width: 10px;"  ng-repeat="e in ent track by $index "    > 
+                                        
                                         <i  style="color: #0077b3"  ng-show="$index === 0 && e === 'R'" class="fa fa-database" aria-hidden="true"></i>
-                                        <i  ng-show="$index === 0 && e === 'U'" class="fa fa-check-square-o" aria-hidden="true"></i>
+                                        <i  style="color: #085"  ng-show="$index === 0 && e === 'U'" class="fa fa-floppy-o" aria-hidden="true"></i>
+                                        <i  style="color: #0081c2"  ng-show="$index === 0 && e === 'C'" class="fa fa-floppy-o" aria-hidden="true"></i>
+                                        <i  style="color: red"  ng-show="$index === 0 && e === 'D'" class="fa fa-times" aria-hidden="true"></i>
+                                        
                                         <div  ng-show="$index !== 0 " >
                                             {{e}}
                                         </div>
