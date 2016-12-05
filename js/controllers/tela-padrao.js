@@ -55,6 +55,7 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
         
         if(blFiltro && moduloPadrao.entidade.pesquisaJSON && moduloPadrao.entidade.pesquisaJSON.campo && moduloPadrao.entidade.pesquisaInput){
             moduloPadrao.entidade.pesquisaInput = moduloPadrao.entidade.pesquisaInput.toUpperCase();
+            moduloPadrao.entidade.pesquisaInput = moduloPadrao.entidade.pesquisaInput.trim();
             carregarLista(blFiltro);
         }else if(!blFiltro) {
             carregarLista(blFiltro);
