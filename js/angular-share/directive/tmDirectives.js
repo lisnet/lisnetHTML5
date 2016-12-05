@@ -11,7 +11,7 @@
  */
 function enterKey () {
     return function (scope, element, attrs) {
-        console.log('Inside enterKey ....');
+//        console.log('Inside enterKey ....');
         element.bind("keydown keypress", function (event) {
             if(event.which === 13) {
                 scope.$apply(function (){

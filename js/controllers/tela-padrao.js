@@ -31,13 +31,17 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
     
     console.log("moduloPadrao.campos is Undefined = "+ angular.isUndefined(moduloPadrao.campos));
     if(angular.isUndefined(moduloPadrao.entidade)){
+        
         console.log('buscando campos .....');
         buscaAPIService.buscaModuloTelaPadrao($scope.userDTO.configLisNet,modStCodigo)
                 .then(function successCallback(response){
                     moduloPadrao.entidade = response.data;
 
                         $scope.moduloPadrao = moduloPadrao;
-                       
+                        if(!moduloPadrao.entidade.pesquisaTipo){
+                             moduloPadrao.entidade.pesquisaTipo = "0";
+                             moduloPadrao.entidade.pesquisa = moduloPadrao.entidade.pesquisas[0].nome;
+                        }
                         
                 },function errorCallback(response){
                     notificacaoProvider.sweetWarning("erro", response.statusText);
@@ -45,6 +49,7 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
     }else{
         $scope.moduloPadrao = moduloPadrao;
     }
+
     
     
     
@@ -62,16 +67,43 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
         }else{
             notificacaoProvider.sweetError('Erro', 'preencher os campos para filtrar a pesquisa');
         }
+    };
+    
+    $scope.tronarEditavel = function (ent){
+//        console.log("ent  = "+ JSON.stringify(ent,null,2));
+        if(ent.editavel){
+            ent.editavel = false;  
+        }else{
+            ent.editavel = true;  
+        }
+      
+    };
+    
+    $scope.mudarStatus = function (ent){
+        if(!moduloPadrao.entidade.entidadesDB){
+            moduloPadrao.entidade.entidadesDB = [];
+        }
+//        var _array = [];
+//        for(var z = 0; z  <  ent.length ; z ++){
+//            _array.push(ent[z]);
+//        }
+//        moduloPadrao.entidade.entidadesDB.push(_array);
+//        console.log(moduloPadrao.entidade.entidadesDB);
         
-        
-
+        ent[0] = 'U';
+      
     };
     
     function carregarLista(blFiltro){
-        self.modalLoading = notificacaoProvider.modalLoading('filtrando', 'filtrando', $scope);
+        moduloPadrao.title = 'Carregando ...';
+        moduloPadrao.msg = 'Buscando '+moduloPadrao.state.data.pageTitle+' na base de Dados.';
+        self.modalLoading = notificacaoProvider.modalLoading(moduloPadrao.title, moduloPadrao.msg, $scope);
          $timeout(function () {
             buscaAPIService.buscaEntidadeTelaPadrao($scope.userDTO.configLisNet, moduloPadrao,blFiltro)
                     .then(function successCallback(response) {
+                        console.log('Entidades cheram c sucesso ....');
+                        moduloPadrao.title = 'Montando tabelas ...';
+                        moduloPadrao.msg = 'Montando tabelas ...';
                         moduloPadrao.entidade.entidades = response.data;
                         $scope.moduloPadrao.entidade.entidades = response.data;
                         $scope.moduloPadrao = moduloPadrao;
@@ -124,7 +156,8 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
     function constroeDTOptionsBuilder(){
             return  DTOptionsBuilder.newOptions()
                 .withDOM('<"html5buttons"B>lTfgitp')
-                .withOption('stateSave', true)
+                .withOption('stateSave', false)
+//                .withOption('searching', true)
                 .withOption('lengthMenu', [10, 25, 50, 100, 150, 200])
                 //        .withLanguage([{url:"//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese.json"}])
                 .withLanguage({
@@ -144,8 +177,8 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
                         "sLast": "Último"
                     }})
                 .withButtons([
-                    {extend: 'copy'},
-                    {extend: 'csv'},
+//                    {extend: 'copy'},
+//                    {extend: 'csv'},
                     {extend: 'excel', title: 'Lista_configuracoes'},
                     {extend: 'pdf', title: 'Lista_configuracoes'},
                     {extend: 'print',

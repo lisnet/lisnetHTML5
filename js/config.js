@@ -1329,6 +1329,10 @@ console.log('construing config , registrando state');
                             },
                             {
                                 files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
+                            },
+                            {
+                                name: 'ui.switchery',
+                                files: ['css/plugins/switchery/switchery.css','js/plugins/switchery/switchery.js','js/plugins/switchery/ng-switchery.js']
                             }
 
                         ]);
