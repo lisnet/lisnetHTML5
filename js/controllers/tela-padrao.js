@@ -70,7 +70,7 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
     };
     
     $scope.tronarEditavel = function (ent){
-//        console.log("ent  = "+ JSON.stringify(ent,null,2));
+        console.log("ent  = "+ JSON.stringify(ent,null,2));
         if(ent.editavel){
             ent.editavel = false;  
         }else{
@@ -79,18 +79,15 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
       
     };
     
+    
+    
     $scope.mudarStatus = function (ent){
         if(!moduloPadrao.entidade.entidadesDB){
             moduloPadrao.entidade.entidadesDB = [];
         }
-//        var _array = [];
-//        for(var z = 0; z  <  ent.length ; z ++){
-//            _array.push(ent[z]);
-//        }
-//        moduloPadrao.entidade.entidadesDB.push(_array);
-//        console.log(moduloPadrao.entidade.entidadesDB);
-        
         ent[0] = 'U';
+        ent.ngStyle = "color: #085  ";
+        ent.ngClass = "fa fa-floppy-o ";
       
     };
     
@@ -102,11 +99,10 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
             buscaAPIService.buscaEntidadeTelaPadrao($scope.userDTO.configLisNet, moduloPadrao,blFiltro)
                     .then(function successCallback(response) {
                         console.log('Entidades cheram c sucesso ....');
-                        moduloPadrao.title = 'Montando tabelas ...';
-                        moduloPadrao.msg = 'Montando tabelas ...';
-                        moduloPadrao.entidade.entidades = response.data;
-                        $scope.moduloPadrao.entidade.entidades = response.data;
-                        $scope.moduloPadrao = moduloPadrao;
+                        var retornoEntidades = response.data;
+                        colocaIconesEstilos(retornoEntidades);
+                        moduloPadrao.entidade.entidades = retornoEntidades;
+                        
                         if (angular.isUndefined($scope.dTOptionsBuilder)) {
                             $scope.dTOptionsBuilder = constroeDTOptionsBuilder();
                         }
@@ -120,6 +116,65 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
         }, 150);
         
     }
+    
+    function colocaIconesEstilos(data){
+        for(var i = 0; i < data.length; i ++){
+            var _entidade = data[i];
+            _entidade.ngStyle = "color: #0077b3";
+            _entidade.ngClass = "fa fa-database";
+            console.log(' _entidade[0] = '+ _entidade[0]);
+
+                for(var y = 0 ; y < _entidade.length ; y ++){
+                    var _v = _entidade[y];
+                    if(_v && _v.length === 1){
+                        if(_v === 'S'){
+                            _entidade[y] = true;
+                        }else if(_v === 'N'){
+                            _entidade[y] = false;
+                        }
+                    }
+                }
+        }
+    }
+    
+//    $scope.buscaStyles = function (e ) {
+//        if(e === 'R'){
+//            return 'color: #0077b3 ';
+//        }else if(e === 'U'){
+//            return 'color: #085 ';
+//        }else if(e === 'C'){
+//            return '#0081c2';
+//        }else if(e === 'D'){
+//            return 'color: red';
+//        }
+//    };
+    
+//    $scope.buscaIcons = function (e ) {
+//        if(e === 'R'){
+//            return 'fa fa-database ';
+//        }else if(e === 'U'){
+//            return 'fa fa-floppy-o ';
+//        }else if(e === 'C'){
+//            return 'fa fa-floppy-o ';
+//        }else if(e === 'D'){
+//            return 'fa fa-times ';
+//        }
+//    };
+    
+    $scope.buscaTipo = function (chTipo ) {
+        console.log('chTipo = '+chTipo);
+        if(angular.isDefined(chTipo)){
+            if (chTipo.toUpperCase() === 'E') {
+                return 'text';
+            } else if (chTipo.toUpperCase() === 'C') {
+                return 'checkbox';
+            }
+        }else{
+            return 'text';
+        }
+
+        
+    };
     
     $scope.limparTela = function ( ) {
         moduloPadrao.entidade.entidades = [];
@@ -156,7 +211,7 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
     function constroeDTOptionsBuilder(){
             return  DTOptionsBuilder.newOptions()
                 .withDOM('<"html5buttons"B>lTfgitp')
-                .withOption('stateSave', false)
+                .withOption('stateSave', true)
 //                .withOption('searching', true)
                 .withOption('lengthMenu', [10, 25, 50, 100, 150, 200])
                 //        .withLanguage([{url:"//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese.json"}])

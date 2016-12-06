@@ -79,51 +79,38 @@
                                     <th style="width: 10px;" >
                                         <i  style="color: #0077b3"   class="fa fa-pencil" aria-hidden="true"></i>
                                     </th>
-                                    <th style="width: 10px;"  >
-                                        
-                                    </th>
-                                    <th ng-repeat="col in moduloPadrao.entidade.colunas track by $index "  >
+                                    
+                                    <th style="width: 10px;"  ></th>
+                                    
+                                    <th ng-repeat="col in :: moduloPadrao.entidade.colunas "  >
                                         {{col.nome}}
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
 
-                                <tr   ng-repeat="ent in moduloPadrao.entidade.entidades track by $index "   >
+                                <tr   ng-repeat="ent in moduloPadrao.entidade.entidades "   >
                                     
                                     <td style="width: 10px;"  >
                                         <i  style="color: #0077b3"   class="fa fa-pencil" aria-hidden="true" ng-click="tronarEditavel(ent)" ></i>
                                     </td>
                                     
-                                    <td   ng-repeat="e in ent track by $index "      > 
+                                    <td   ng-repeat="e in ent track by $index "    style="with : {{moduloPadrao.entidade.colunas[$index - 1].tamanho}}px"  > 
                                         
-                                        <i  style="color: #0077b3"  ng-show="$index === 0 && e === 'R'" class="fa fa-database" aria-hidden="true"  ></i>
-                                        <i  style="color: #085"  ng-show="$index === 0 && e === 'U'" class="fa fa-floppy-o" aria-hidden="true"></i>
-                                        <i  style="color: #0081c2"  ng-show="$index === 0 && e === 'C'" class="fa fa-floppy-o" aria-hidden="true"></i>
-                                        <i  style="color: red"  ng-show="$index === 0 && e === 'D'" class="fa fa-times" aria-hidden="true"></i>
-                                        
-                                        <!--{{e}}-->
-                                        <!--{{moduloPadrao.entidade.colunas[$index + 1].componente}}-->
-                                        <div ng-show="ent.editavel === true">
-                                            <div  ng-show="$index > 0  && (moduloPadrao.entidade.colunas[$index - 1].componente === 'E'  || moduloPadrao.entidade.colunas[$index - 1].componente === 'e')  " >
-                                                <input   ng-change="mudarStatus(ent)"  type="text"  id="inputTextRequisicao"  class="form-control  text-primary text-capitalize " size="20" ng-model="e"     ng-maxlength="100"  >
-                                            </div>
-
-                                            <div  ng-show="$index > 0  && (moduloPadrao.entidade.colunas[$index - 1].componente == 'C'  || moduloPadrao.entidade.colunas[$index - 1].componente == 'c')  " >
-                                                <input icheck type="checkbox"  ng-model="e"  >
-                                            </div>
+                                        <div ng-if="$index === 0" >
+                                            <i  style="{{ent.ngStyle}}"  class="{{ent.ngClass}}"   aria-hidden="true"  ></i>
                                         </div>
                                         
-                                        <div ng-show="!ent.editavel">
-                                            <div  ng-show="$index > 0  && (moduloPadrao.entidade.colunas[$index - 1].componente === 'E'  || moduloPadrao.entidade.colunas[$index - 1].componente === 'e')  " >
+                                        <div ng-if="$index > 0 ">
+                                            <div ng-if="!ent.editavel &&  moduloPadrao.entidade.colunas[$index - 1].componente === 'E'"   >
                                                 {{e}}
                                             </div>
-
-                                            <div  ng-show="$index > 0  && (moduloPadrao.entidade.colunas[$index - 1].componente === 'C'  || moduloPadrao.entidade.colunas[$index - 1].componente === 'c')  " >
-                                                {{e}}
-                                            </div>
+                                            
+                                            <input   ng-if="ent.editavel &&  moduloPadrao.entidade.colunas[$index - 1].componente === 'E' "    ng-change="mudarStatus(ent)"     class="form-control  text-primary text-capitalize "  ng-model="e"     ng-maxlength="{{moduloPadrao.entidade.colunas[$index - 1].tamanho}}"  >
+                                            <input    ng-if="moduloPadrao.entidade.colunas[$index - 1].componente === 'C' "   icheck type="checkbox"  ng-disabled="!ent.editavel"  ng-model="e" ng-click="charToBoolean(e)" >
+                                            
                                         </div>
-                                                                                
+                                        
 
                                     </td>
                                     

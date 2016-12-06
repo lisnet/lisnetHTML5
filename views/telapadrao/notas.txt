@@ -3,8 +3,9 @@ mpt.MPT_ST_CAMPO,mpt.MPT_IN_SEQUENCIA,mpt.MPT_ST_DESCRICAO,mpt.MPT_CH_TIPO,mpt.M
  from
 lab_modulopadrao mpa,
 lab_modulopadraotabela mpt
-where mpa.mod_st_codigo = '00006'
+where mpa.mod_st_codigo = '00013'
 and mpa.mod_st_codigo = mpt.mod_st_codigo
+and mpt.mpt_ch_ativo = 'S' 
 order by mpt.mpt_in_sequencia asc
 
 
