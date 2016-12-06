@@ -96,7 +96,7 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
         moduloPadrao.msg = 'Buscando '+moduloPadrao.state.data.pageTitle+' na base de Dados.';
         self.modalLoading = notificacaoProvider.modalLoading(moduloPadrao.title, moduloPadrao.msg, $scope);
          $timeout(function () {
-            buscaAPIService.buscaEntidadeTelaPadrao($scope.userDTO.configLisNet, moduloPadrao,blFiltro)
+            buscaAPIService.buscaEntidadeTelaPadrao($scope.userDTO.configLisNet, moduloPadrao,$scope.userDTO.UNI_ST_CODIGO,blFiltro)
                     .then(function successCallback(response) {
                         console.log('Entidades cheram c sucesso ....');
                         var retornoEntidades = response.data;
@@ -108,12 +108,12 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
                         }
                         $timeout(function () {
                             self.modalLoading.dismiss('cancel');
-                        }, 500);
+                        }, 700);
 
                     }, function errorCallback(response) {
                         notificacaoProvider.sweetError("erro", response.statusText);
                     });
-        }, 150);
+        }, 120);
         
     }
     
@@ -137,29 +137,6 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
         }
     }
     
-//    $scope.buscaStyles = function (e ) {
-//        if(e === 'R'){
-//            return 'color: #0077b3 ';
-//        }else if(e === 'U'){
-//            return 'color: #085 ';
-//        }else if(e === 'C'){
-//            return '#0081c2';
-//        }else if(e === 'D'){
-//            return 'color: red';
-//        }
-//    };
-    
-//    $scope.buscaIcons = function (e ) {
-//        if(e === 'R'){
-//            return 'fa fa-database ';
-//        }else if(e === 'U'){
-//            return 'fa fa-floppy-o ';
-//        }else if(e === 'C'){
-//            return 'fa fa-floppy-o ';
-//        }else if(e === 'D'){
-//            return 'fa fa-times ';
-//        }
-//    };
     
     $scope.buscaTipo = function (chTipo ) {
         console.log('chTipo = '+chTipo);
@@ -187,7 +164,7 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
             var pesquisaJSON = moduloPadrao.entidade.pesquisas[y];
             if(pesquisaJSON.nome === moduloPadrao.entidade.pesquisa){
                 moduloPadrao.entidade.pesquisaJSON = pesquisaJSON;
-                console.log(JSON.stringify(moduloPadrao.entidade.pesquisaJSON, null, 2));
+//                console.log(JSON.stringify(moduloPadrao.entidade.pesquisaJSON, null, 2));
                 break;
             }
         }  
@@ -211,7 +188,7 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
     function constroeDTOptionsBuilder(){
             return  DTOptionsBuilder.newOptions()
                 .withDOM('<"html5buttons"B>lTfgitp')
-                .withOption('stateSave', true)
+                .withOption('stateSave', false)
 //                .withOption('searching', true)
                 .withOption('lengthMenu', [10, 25, 50, 100, 150, 200])
                 //        .withLanguage([{url:"//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese.json"}])

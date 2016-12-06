@@ -95,6 +95,7 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
                                     this.userDTO.USU_CH_ATIVO = retorno.USU_CH_ATIVO;
                                     this.userDTO.USU_ST_EMAIL = retorno.USU_ST_EMAIL;
                                     this.userDTO.USU_IN_QTDDIA = retorno.USU_IN_QTDDIA;
+                                    this.userDTO.UNI_ST_CODIGO = retorno.UNI_ST_CODIGO;
 //                                    this.log('$scope.userDTO.perfilId: '+this.userDTO.perfilId);
                                     $localStorage.userDTO = this.userDTO;
                                     buscaUsuarioMenu(_param1, this.userDTO.PUS_ST_CODIGO, modalLoading ) ;
@@ -181,12 +182,12 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
     this.stateGO = function (stateGO) {
 //        console.log('$state.current .name =  ' + $state.current.name);
         vm.carregando = true;
-
+        console.log('stateGO = '+stateGO);
         $timeout(function () {
             if ($state.current.name !== stateGO) {
                 try {
                     if (stateGO === 'sair') {
-                        this.logOut();
+                        vm.logOut();
                     } else {
                         var hotPage = $state.href(stateGO);
                         if (hotPage) {

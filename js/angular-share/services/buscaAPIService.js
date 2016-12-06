@@ -421,8 +421,8 @@ angular.module('lisnet').service("buscaAPIService",function ($http){
      * @param {type} modStCodigo
      * @returns {unresolved}
      */
-    this.buscaEntidadeTelaPadrao = function (configLisNet,moduloPadrao, blFiltro){
-        var params = '?MOD_ST_CODIGO=' + moduloPadrao.modStCodigo + '&dbname='+configLisNet.defaultDB;
+    this.buscaEntidadeTelaPadrao = function (configLisNet,moduloPadrao,uniStCodigo, blFiltro){
+        var params = '?MOD_ST_CODIGO=' + moduloPadrao.modStCodigo + '&UNI_ST_CODIGO='+uniStCodigo+ '&dbname='+configLisNet.defaultDB;
         if(blFiltro){
             params = params+'&pesquisaTipo='+moduloPadrao.entidade.pesquisaTipo+'&pesquisaCodigo='+moduloPadrao.entidade.pesquisaJSON.campo+'&pesquisaValor='+moduloPadrao.entidade.pesquisaInput;
         }
