@@ -8,6 +8,34 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
     var self = this;
     $scope.userDTO = sairDoSistemaService.validarLogin();
 //    constroeDTOptionsBuilder();
+
+//    $scope.altInputFormats = ['MM/dd/yyyy'];
+//    $scope.formatDay  =  'dd/MM/yyyy';
+    $scope.formatHour =  'HH:mm:ss';
+    $scope.popup = {inicio: false, fim: false};
+//    $scope.openPopInicio = function () {$scope.popup.inicio = true;};
+    $scope.opeDataPicker = function (entidade,indexE) {
+//        console.log(JSON.stringify(entidade,null,2));
+//        var dataEnt = 
+                entidade[entidade.length-1].dataPicker[indexE] = true;
+//        dataEnt.dataPicker[indexE] = true;
+    };
+    
+//    $scope.isOpeDataPicker = function (entidade,indexE) {
+//        console.log(JSON.stringify(entidade,null,2));
+//        var dataEnt = entidade[entidade.length-1];
+//         return  dataEnt.dataPicker[indexE] ;
+//    };
+    
+//    $scope.openPopFim = function (entidade) {
+//        dataEnt.fim = true;
+//    };
+    $scope.dateOptions = {
+            dateDisabled: false,
+            formatYear: 'yy',
+            startingDay: 1
+        };
+
     if(angular.isUndefined($scope.dTOptionsBuilder)){
                                $scope.dTOptionsBuilder = constroeDTOptionsBuilder();
     }
@@ -70,7 +98,7 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
     };
     
     $scope.tronarEditavel = function (ent){
-        console.log("ent  = "+ JSON.stringify(ent,null,2));
+//        console.log("ent  = "+ JSON.stringify(ent,null,2));
         if(ent.editavel){
             ent.editavel = false;  
         }else{
@@ -120,9 +148,12 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
     function colocaIconesEstilos(data){
         for(var i = 0; i < data.length; i ++){
             var _entidade = data[i];
-            _entidade.ngStyle = "color: #0077b3";
-            _entidade.ngClass = "fa fa-database";
-            console.log(' _entidade[0] = '+ _entidade[0]);
+            var dataEnt = {};
+            dataEnt.popup = {inicio: false, fim: false};
+            dataEnt.ngStyle = "color: #0077b3";
+            dataEnt.ngClass = "fa fa-database";
+            dataEnt.dataPicker = [];
+//            console.log(' _entidade[0] = '+ _entidade[0]);
 
                 for(var y = 0 ; y < _entidade.length ; y ++){
                     var _v = _entidade[y];
@@ -132,8 +163,13 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
                         }else if(_v === 'N'){
                             _entidade[y] = false;
                         }
+                    }else if(_v && _v.length === 24 && _v.substring(_v.length -1 , _v.length) === 'Z'){
+//                        console.log(_v);
+                        _entidade[y] = new Date(_v);
+                        dataEnt.dataPicker.push(false);
                     }
                 }
+                _entidade.push(dataEnt);
         }
     }
     
