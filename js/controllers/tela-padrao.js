@@ -3,10 +3,13 @@
  Author     : eros
  */
 
-function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage, sairDoSistemaService, notificacaoProvider, $window, gerenciaRelatorioService, $filter, $timeout, $uibModal, DTOptionsBuilder, $interval, shareuser) {
+function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage, sairDoSistemaService, notificacaoProvider, $window, gerenciaRelatorioService, $filter, $timeout, $uibModal, DTOptionsBuilder, $interval, shareuser,helperService) {
 //{tabela:_tabelaNome,modulo:[{"MOD_ST_CODIGO": "00021",... }],conteudo:};
     var self = this;
     $scope.userDTO = sairDoSistemaService.validarLogin();
+    
+    
+    
 //    constroeDTOptionsBuilder();
 
 //    $scope.altInputFormats = ['MM/dd/yyyy'];
@@ -17,7 +20,7 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
     $scope.opeDataPicker = function (entidade,indexE) {
 //        console.log(JSON.stringify(entidade,null,2));
 //        var dataEnt = 
-                entidade[entidade.length-1].dataPicker[indexE] = true;
+                entidade[0].dataPicker[indexE] = true;
 //        dataEnt.dataPicker[indexE] = true;
     };
     
@@ -34,6 +37,12 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
             dateDisabled: false,
             formatYear: 'yy',
             startingDay: 1
+        };
+        
+        $scope.hrOptions = {
+            format:'HH:mm',
+            dateDisabled: false,
+            formatYear: 'yy'
         };
 
     if(angular.isUndefined($scope.dTOptionsBuilder)){
@@ -99,34 +108,59 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
     
     $scope.tronarEditavel = function (ent){
 //        console.log("ent  = "+ JSON.stringify(ent,null,2));
-        if(ent.editavel){
-            ent.editavel = false;  
+        if(ent[0].editavel){
+            ent[0].editavel = false;  
         }else{
-            ent.editavel = true;  
+            ent[0].editavel = true;  
         }
       
     };
     
     
     
-    $scope.mudarStatus = function (ent){
-        if(!moduloPadrao.entidade.entidadesDB){
-            moduloPadrao.entidade.entidadesDB = [];
-        }
-        ent[0] = 'U';
-        ent.ngStyle = "color: #085  ";
-        ent.ngClass = "fa fa-floppy-o ";
-      
+    $scope.mudarStatus = function (ent, indexParent,indexChild){
+        
+        
+        console.log(' index filho  =  '+indexChild);
+        
+        var obj = moduloPadrao.entidade.entidadesDB.filter(function ( obj ) {
+            return obj[0].id === ent[0].id;
+        })[0];
+        
+            var objReferencia = helperService.clonadorDeObj(obj);
+            objReferencia.shift();
+
+            var entReferencia = helperService.clonadorDeObj(ent);
+            entReferencia.shift();
+            
+            if(helperService.comparaObjetos(objReferencia,entReferencia)){
+                console.log("os objs sao iquais ");
+                ent[0].status = 'R';
+                ent[0].ngStyle = "color: #0077b3";
+                ent[0].ngClass = "fa fa-database";
+                ent[0].toolTip= "não há alterações";
+            }else{
+                ent[0].ngStyle = "color: green ";
+                ent[0].status = 'U';
+                ent[0].toolTip= "linha com informações à serem salvas..";
+            }
+            
+            console.log(objReferencia);
+            console.log(entReferencia);
+        
+        
+        
     };
     
     function carregarLista(blFiltro){
+        $scope.limparTela();
         moduloPadrao.title = 'Carregando ...';
         moduloPadrao.msg = 'Buscando '+moduloPadrao.state.data.pageTitle+' na base de Dados.';
         self.modalLoading = notificacaoProvider.modalLoading(moduloPadrao.title, moduloPadrao.msg, $scope);
          $timeout(function () {
             buscaAPIService.buscaEntidadeTelaPadrao($scope.userDTO.configLisNet, moduloPadrao,$scope.userDTO.UNI_ST_CODIGO,blFiltro)
                     .then(function successCallback(response) {
-                        console.log('Entidades cheram c sucesso ....');
+                        console.log('Entidades chegaram c sucesso .... aguarde construcao da tabela');
                         var retornoEntidades = response.data;
                         colocaIconesEstilos(retornoEntidades);
                         moduloPadrao.entidade.entidades = retornoEntidades;
@@ -146,12 +180,16 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
     }
     
     function colocaIconesEstilos(data){
+        moduloPadrao.entidade.entidadesDB = [];
         for(var i = 0; i < data.length; i ++){
             var _entidade = data[i];
             var dataEnt = {};
-            dataEnt.popup = {inicio: false, fim: false};
+            dataEnt.id = i;
+            dataEnt.status = 'R';
+//            dataEnt.popup = {inicio: false, fim: false};
             dataEnt.ngStyle = "color: #0077b3";
             dataEnt.ngClass = "fa fa-database";
+            dataEnt.toolTip= "não há alterações";
             dataEnt.dataPicker = [];
 //            console.log(' _entidade[0] = '+ _entidade[0]);
 
@@ -169,7 +207,13 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
                         dataEnt.dataPicker.push(false);
                     }
                 }
-                _entidade.push(dataEnt);
+                _entidade.shift();
+                _entidade.unshift(dataEnt);
+//                _entidade.push(dataEnt);
+                /*
+                 * salvando o esta original de todos os objs
+                 */
+                moduloPadrao.entidade.entidadesDB.push(helperService.clonadorDeObj(_entidade));
         }
     }
     
@@ -191,6 +235,7 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
     
     $scope.limparTela = function ( ) {
         moduloPadrao.entidade.entidades = [];
+        moduloPadrao.entidade.entidadesDB = [];
     };
 
 

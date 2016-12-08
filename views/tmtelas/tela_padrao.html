@@ -82,17 +82,17 @@
                                     {{col.nome}}
                                 </th>
                                 
-                                <th style="display: none;  width: 1px; "    ></th>
+                                <!--<th style="display: none;  width: 1px; "    ></th>-->
                             </tr>
                         </thead>
                         <tbody>
 
-                            <tr   ng-repeat="ent in moduloPadrao.entidade.entidades"    >
+                            <tr   ng-repeat="ent in moduloPadrao.entidade.entidades  track by $index"    >
 
                                 <td   ng-repeat="e in ent track by $index "    style="with : {{moduloPadrao.entidade.colunas[$index - 1].tamanho}}px"    > 
 
                                     <div ng-if="$index === 0" >
-                                        <i  style="{{ent[ent.length-1].ngStyle}}"  class="{{ent[ent.length-1].ngClass}}"   aria-hidden="true"    ng-click="tronarEditavel(ent)" ></i>
+                                        <i  style="{{ent[0].ngStyle}}"  class="{{ent[0].ngClass}}"   aria-hidden="true"    ng-click="tronarEditavel(ent)"   data-toggle="tooltip" title="{{ent[0].toolTip}}"  ></i>
                                         <!--{{ent[7].ngStyle}}-->
                                     </div>
 
@@ -102,16 +102,16 @@
                                         <!--Data & Hora-->
                                         <span ng-if="moduloPadrao.entidade.colunas[$index - 1].tipo === 'D'" >
                                             <span  ng-if="(moduloPadrao.entidade.colunas[$index - 1].coluna.indexOf('_DT_') !== -1)">
-                                                <spa ng-if="!ent.editavel" >
+                                                <spa ng-if="!ent[0].editavel" >
                                                     {{e| date  : 'dd/MM/yyyy'}}
                                                 </spa>
-                                                <spa ng-if="ent.editavel" >
+                                                <spa ng-if="ent[0].editavel" >
 <!--                                                    {{  ent.popup.fim = false;  ent.openPopFim = function () {ent.popup.fim = true;};}}-->
                                                     <p class="input-group">
                                                         <input type="text" class="form-control"  
                                                              uib-datepicker-popup="dd/MM/yyyy" 
-                                                             ng-model="e"
-                                                             is-open="ent[ent.length-1].dataPicker[$index]" 
+                                                             ng-model="ent[$index]"
+                                                             is-open="ent[0].dataPicker[$index]" 
                                                              datepicker-options="dateOptions" 
                                                              close-text="Fechar"  
                                                              alt-input-formats="['MM/dd/yyyy']" />
@@ -124,41 +124,38 @@
                                                 </spa>
                                             </span>
                                             <span  ng-if="(moduloPadrao.entidade.colunas[$index - 1].coluna.indexOf('_HR_') !== -1)">
-                                                <spa ng-if="!ent.editavel" >
+                                                <spa ng-if="!ent[0].editavel" >
                                                     {{e| date  : 'HH:mm'}}
                                                 </spa>
-                                                <spa ng-if="ent.editavel" >
+                                                <spa ng-if="ent[0].editavel" >
                                                     <!--<input type="datetime-local" id="exampleInput" name="input" ng-model="e" placeholder="HH:mm:ss"   required />-->
-                                                    <p class="input-group">
-                                                        <input type="text" class="form-control"  
-                                                             uib-datepicker-popup="HH:mm" 
-                                                             ng-model="e"
-                                                             is-open="ent[ent.length-1].dataPicker[$index]" 
-                                                             datepicker-options="dateOptions" 
-                                                             close-text="Fechar"  
-                                                             alt-input-formats="['HH:mm']" />
-                                                      <span class="input-group-btn">
-                                                          <button type="button" class="btn btn-default  " ng-click="opeDataPicker(ent,$index)">
-                                                              <i class="glyphicon glyphicon-calendar"></i>
-                                                          </button>
-                                                      </span>
+                                                    <p class="input-group date">
+                                                        <uib-timepicker ng-model="ent[$index]" hour-step="1" minute-step="1" datetimepicker-neutral-timezone></uib-timepicker>
                                                   </p>
                                                 </spa>
                                             </span>
                                         </span>
                                         
                                         <!--String & Chars-->
-                                        <span ng-if="moduloPadrao.entidade.colunas[$index - 1].tipo === 'C'" >
+                                        <span ng-if="moduloPadrao.entidade.colunas[$index - 1].tipo === 'C'  || moduloPadrao.entidade.colunas[$index - 1].tipo === 'N'" >
                                             <span  ng-if="moduloPadrao.entidade.colunas[$index - 1].componente === 'E'">
-                                                <spa ng-if="!ent.editavel" >
+                                                <spa ng-if="!ent[0].editavel" >
                                                     {{e}}
                                                 </spa>
-                                                <spa ng-if="ent.editavel" >
-                                                    <input   ng-change="mudarStatus(ent)"     class="form-control  text-primary text-capitalize "  ng-model="e"     ng-maxlength="{{moduloPadrao.entidade.colunas[$index - 1].tamanho}}"  >
+                                                <spa ng-if="ent[0].editavel" >
+                                                    <span ng-if="moduloPadrao.entidade.colunas[$index - 1].tipo === 'C' " >
+                                                        <input   ng-change="mudarStatus(ent,$parent.$index, $index)"     class="form-control  text-primary text-capitalize "  ng-model="ent[$index]"  >
+                                                    </span>
+                                                    <span ng-if="moduloPadrao.entidade.colunas[$index - 1].tipo === 'N' " >
+                                                        <input   type="number"  ng-change="mudarStatus(ent,$parent.$index, $index)"     class="form-control  text-primary text-capitalize "  ng-model="ent[$index]"  >
+                                                    </span>
+                                                    
+                                                    <!--ng-maxlength="{{moduloPadrao.entidade.colunas[$index - 1].tamanho}}"  >-->
                                                 </spa>
                                             </span>
                                             <span  ng-if="moduloPadrao.entidade.colunas[$index - 1].componente === 'C'">
-                                                <input      icheck type="checkbox"  ng-disabled="!ent.editavel"  ng-model="e"  >
+                                                {{e}}
+                                                <input      icheck type="checkbox"  ng-disabled="!ent[0].editavel"  ng-model="e"  >
                                             </span>
                                         </span>
 
@@ -179,4 +176,6 @@
         </div>
 
     </div>
+    
+    
 </div>

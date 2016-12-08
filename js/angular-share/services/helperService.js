@@ -34,6 +34,21 @@ angular.module('lisnet').service('helperService', function () {
                     return new Date();
                 }
             };
+            
+            this.clonadorDeObj = function (obj) {
+                    if (null === obj || "object" !== typeof obj) return obj;
+                    var copy = obj.constructor();
+                    for (var attr in obj) {
+                        if (obj.hasOwnProperty(attr)) copy[attr] = obj[attr];
+                    }
+                    return copy;
+          };
+          
+          this.comparaObjetos = function (obj1,obj2) {
+//                    if (null === obj1 || "object" !== typeof obj1  && null === obj2 || "object" !== typeof obj2) return false;
+                    return JSON.stringify(obj1) === JSON.stringify(obj2);
+          };
+
 
         }
 
