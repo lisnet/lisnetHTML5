@@ -186,7 +186,7 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
             var dataEnt = {};
             dataEnt.id = i;
             dataEnt.status = 'R';
-//            dataEnt.popup = {inicio: false, fim: false};
+            dataEnt.popup = {inicio: false, fim: false};
             dataEnt.ngStyle = "color: #0077b3";
             dataEnt.ngClass = "fa fa-database";
             dataEnt.toolTip= "não há alterações";

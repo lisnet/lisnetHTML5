@@ -139,23 +139,23 @@
                                         <!--String & Chars-->
                                         <span ng-if="moduloPadrao.entidade.colunas[$index - 1].tipo === 'C'  || moduloPadrao.entidade.colunas[$index - 1].tipo === 'N'" >
                                             <span  ng-if="moduloPadrao.entidade.colunas[$index - 1].componente === 'E'">
-                                                <spa ng-if="!ent[0].editavel" >
+                                                <spa ng-if="!ent[0].editavel ||  moduloPadrao.entidade.colunas[$index - 1].chave === 'S' " >
                                                     {{e}}
                                                 </spa>
-                                                <spa ng-if="ent[0].editavel" >
+                                                <spa ng-if="ent[0].editavel && moduloPadrao.entidade.colunas[$index - 1].chave !== 'S' " >
                                                     <span ng-if="moduloPadrao.entidade.colunas[$index - 1].tipo === 'C' " >
-                                                        <input   ng-change="mudarStatus(ent,$parent.$index, $index)"     class="form-control  text-primary text-capitalize "  ng-model="ent[$index]"  >
+                                                        <input     ng-change="mudarStatus(ent,$parent.$index, $index)"     class="form-control  text-primary text-capitalize "  ng-model="ent[$index]"  >
                                                     </span>
                                                     <span ng-if="moduloPadrao.entidade.colunas[$index - 1].tipo === 'N' " >
-                                                        <input   type="number"  ng-change="mudarStatus(ent,$parent.$index, $index)"     class="form-control  text-primary text-capitalize "  ng-model="ent[$index]"  >
+                                                        <input    type="number"  ng-change="mudarStatus(ent,$parent.$index, $index)"     class="form-control  text-primary text-capitalize "  ng-model="ent[$index]"  >
                                                     </span>
                                                     
                                                     <!--ng-maxlength="{{moduloPadrao.entidade.colunas[$index - 1].tamanho}}"  >-->
                                                 </spa>
                                             </span>
                                             <span  ng-if="moduloPadrao.entidade.colunas[$index - 1].componente === 'C'">
-                                                {{e}}
-                                                <input      icheck type="checkbox"  ng-disabled="!ent[0].editavel"  ng-model="e"  >
+                                                <!--{{e}}-->
+                                                <input      icheck type="checkbox"  ng-disabled="!ent[0].editavel  "  ng-model="ent[$index]"   ng-change="mudarStatus(ent,$parent.$index, $index)"  >
                                             </span>
                                         </span>
 
