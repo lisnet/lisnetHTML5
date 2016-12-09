@@ -3,12 +3,30 @@ mpt.MPT_ST_CAMPO,mpt.MPT_IN_SEQUENCIA,mpt.MPT_ST_DESCRICAO,mpt.MPT_CH_TIPO,mpt.M
  from
 lab_modulopadrao mpa,
 lab_modulopadraotabela mpt
-where mpa.mod_st_codigo = '00006'
+where mpa.mod_st_codigo = '00013'
 and mpa.mod_st_codigo = mpt.mod_st_codigo
+and mpt.mpt_ch_ativo = 'S' 
 order by mpt.mpt_in_sequencia asc
 
 
+select 's' as status,  CON_ST_CODIGO,CON_ST_DESCRICAO,CON_ST_RAZAOSOCIAL,CON_ST_CNPJ,CON_ST_INSCESTADUAL,CON_ST_NUMERO,CON_ST_CEP,CON_ST_ENDERECO,CON_ST_COMPLEMENTO,CON_ST_CIDADE,CON_ST_UF,CON_ST_FONE,CON_ST_FAX,CON_ST_CONTATO,CON_ST_EMAIL,CON_ST_SITE,CON_ST_USUARIO_RESP,CON_ST_BAIRRO,CON_IN_DIA_FECHAMENTO,CON_IN_DIA_PAGAMENTO,CON_BL_OBS,CON_CH_ATIVO,CON_ST_ANS,CON_IN_SEQUENCIAANS,CON_ST_CODIGONOCONVENIO  from LAB_CONVENIO order by CON_ST_CODIGO asc
 
+
+
+select mpa.MOD_ST_CODIGO,mpa.MPA_ST_TABELA,mpa.MPA_ST_DESCRICAO,mpa.MPA_ST_DESCRICAOREL,
+mpt.MPT_ST_CAMPO,mpt.MPT_IN_SEQUENCIA,mpt.MPT_ST_DESCRICAO,mpt.MPT_CH_TIPO,mpt.MPT_IN_TAMANHO,mpt.MPT_CH_OBRIGATORIO,mpt.MPT_ST_PADRAO,mpt.MPT_CH_COMPONENTE,mpt.MPT_ST_COMPLEMENTO,mpt.MPT_CH_ATIVO,mpt.MPT_CH_PESQUISA,mpt.MPT_CH_CHAVE,mpt.MPT_ST_HINT,mpt.MPT_CH_SHOWGRID,mpt.MPT_CH_SHOWFORMULARIO
+ from
+lab_modulopadrao mpa,
+lab_modulopadraotabela mpt
+where mpa.mod_st_codigo = mpt.mod_st_codigo
+--and mpa.mod_st_codigo = mpt.mod_st_codigo
+and mpt.mpt_ch_ativo = 'S'
+order by mpa.mod_st_codigo,mpt.mpt_in_sequencia asc
+
+
+select   'R' as status , ANT_ST_CODIGO,ANT_ST_DESCRICAO  from LAB_ANTIBIOTICO order by ANT_ST_CODIGO asc
+select   'R' as status , ANT_ST_CODIGO,ANT_ST_DESCRICAO  from LAB_ANTIBIOTICO where ANT_ST_CODIGO = "ab"   order by ANT_ST_CODIGO asc
+select   'R' as status , ANT_ST_CODIGO,ANT_ST_DESCRICAO  from LAB_ANTIBIOTICO where ANT_ST_CODIGO = 'ACN'   order by ANT_ST_CODIGO asc
 
 
 Tipo só tem 4, 
@@ -16,4 +34,6 @@ C-Caracter,
 N-Numerico, 
 D-DATA, 
 H-HORA
-MPT_CH_COMPONENTE: E - Edit , C - Checkbox
+
+MPT_CH_COMPONENTE
+ E - Edit , C - Checkbox

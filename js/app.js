@@ -16,6 +16,7 @@
         'ngAria',
         'ng.deviceDetector',
         'ngStorage',
+        'ngResource',
         'oitozero.ngSweetAlert'
     ]);
 })();

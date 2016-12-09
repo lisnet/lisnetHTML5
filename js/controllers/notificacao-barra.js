@@ -26,9 +26,9 @@ function notificacaoBarra($scope, $window, $localStorage,sairDoSistemaService,$r
     $scope.cortaStringModStCodigo = function (str){
         var _array = str.split('|');
 //        return _array[0];
-        var modStCodigo = _array[2].trim();
+//        var modStCodigo = _array[0].trim();
 //        $scope.telaSelecionada = '';
-        return modStCodigo;
+        return  _array[0].trim();
     };
     $scope.states = [];
     $scope.states.push('controle.notificacoes | Controle de Notificações');
