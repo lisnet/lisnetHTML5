@@ -198,8 +198,18 @@ and open the template in the editor.
   padding: 25px 10px;
 }
 
+.tm-site .navbar-default .navbar-nav > .active > a, .landing-page .navbar-default .navbar-nav > .active > a:hover {
+    border-top: 6px solid red;
+}
 
+.tm-site .features-icon {
+    color: red;
+    font-size: 40px;
+}
 
+.tm-site span.navy {
+    color: red;
+}
 
 /*#loadImg{position:absolute;z-index:999;}
 #loadImg div{display:table-cell;width:950px;height:633px;background:#fff;text-align:center;vertical-align:middle;}*/
