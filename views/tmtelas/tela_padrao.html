@@ -21,9 +21,8 @@
 
 <div class="wrapper wrapper-content animated fadeInRight"   ng-controller="telaPadrao" >
     <div class="ibox-content">
-
         <!--{{moduloPadrao}}-->
-
+        
         <div class="row">
 
             <div class="col-lg-12"  ng-cloak >
@@ -56,16 +55,16 @@
                         </div>
 
                         <div  class="col-lg-1">
-                            <button class="btn btn-block  btn-outline  btn-success   full-width "     ng-click="buscar(true)" >Filtrar</button>
+                            <button class="btn btn-block  btn-outline  btn-success   full-width "     ng-click="buscar(true)"  ng-disabled="!jsonTelaPadrao.btnFiltrar" >Filtrar</button>
                         </div>
                         <div  class="col-lg-1">
-                            <button class="btn btn-block  btn-outline  btn-default  full-width "   ng-click="criarNovoRegistro()"  >Criar </button>
+                            <button class="btn btn-block  btn-outline  btn-default  full-width "   ng-click="criarNovoRegistro()"   ng-disabled="!jsonTelaPadrao.btnCriar" >Criar </button>
                         </div>
                         <div  class="col-lg-2">
-                            <button class="btn btn-block  btn-outline  btn-danger  full-width "    ng-click="limparTela()" >Limpar</button>
+                            <button class="btn btn-block  btn-outline  btn-danger  full-width "    ng-click="limparTela() "   >Limpar</button>
                         </div>
                         <div  class="col-lg-2">
-                            <button class="btn btn-block  btn-outline  btn-primary full-width "     ng-click="buscar(false)" >Buscar Todos</button>
+                            <button class="btn btn-block  btn-outline  btn-primary full-width "     ng-click="buscar(false)"  ng-disabled="!jsonTelaPadrao.btnTodos" >Buscar Todos</button>
                         </div>
 
                     </div>

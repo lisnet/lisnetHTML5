@@ -1,22 +1,23 @@
 {
     "status": "in",
     "perfilId": 2,
-    "dtCriacao": "2016-12-08T17:40:45.129Z",
+    "dtCriacao": "2016-12-12T17:14:42.176Z",
     "ultimaTela": "widgets.lisnet",
     "notificationTimer": 10000,
     "hotPages": [
         {
-            "url": "/configura/setores/",
+            "url": "/configura/frasesparalaudo/",
             "templateUrl": "views/tmtelas/tela_padrao.html",
             "params": {
-                "modStCodigo": "00015"
+                "modStCodigo": "00022",
+                "limit": "100"
             },
             "parent": "lisnet",
             "data": {
-                "pageTitle": "Setores"
+                "pageTitle": "Frases para Laudo"
             },
             "resolve": {},
-            "name": "setores"
+            "name": "frasesparalaudo"
         }
     ],
     "notificacoes": [
@@ -2014,7 +2015,7 @@
             ]
         }
     ],
-    "dtLogon": " 08/12/2016  15:40",
+    "dtLogon": " 12/12/2016  15:14",
     "notificacoesEmExecucao": 0,
     "unidades": [
         {
@@ -2122,576 +2123,77 @@
     ],
     "telaPadrao": [
         {
-            "modStCodigo": "00015",
+            "modStCodigo": "00022",
             "state": {
-                "url": "/configura/setores/",
+                "url": "/configura/frasesparalaudo/",
                 "templateUrl": "views/tmtelas/tela_padrao.html",
                 "params": {
-                    "modStCodigo": "00015"
+                    "modStCodigo": "00022",
+                    "limit": "100"
                 },
                 "parent": "lisnet",
                 "data": {
-                    "pageTitle": "Setores"
+                    "pageTitle": "Frases para Laudo"
                 },
                 "resolve": {},
-                "name": "setores"
+                "name": "frasesparalaudo"
             },
             "entidade": {
-                "entidade": "LAB_SETOR",
+                "entidade": "LAB_FRASELAUDO",
                 "chaves": [
-                    "SET_ST_CODIGO"
+                    "FRL_CODIGO"
                 ],
                 "pesquisas": [
                     {
-                        "campo": "SET_ST_CODIGO",
+                        "campo": "FRL_CODIGO",
                         "nome": "Código"
                     },
                     {
-                        "campo": "SET_ST_DESCRICAO",
+                        "campo": "FRL_DESCRICAO",
                         "nome": "Descrição"
                     }
                 ],
                 "colunas": [
                     {
                         "nome": "Código",
-                        "coluna": "SET_ST_CODIGO",
+                        "coluna": "FRL_CODIGO",
                         "componente": "E",
                         "tipo": "C",
                         "obrigatorio": "S",
-                        "tamanho": 3
+                        "tamanho": 6,
+                        "chave": "S"
                     },
                     {
                         "nome": "Descrição",
-                        "coluna": "SET_ST_DESCRICAO",
+                        "coluna": "FRL_DESCRICAO",
                         "componente": "E",
                         "tipo": "C",
-                        "obrigatorio": "N",
-                        "tamanho": 60
+                        "obrigatorio": "S",
+                        "tamanho": 200,
+                        "chave": "N"
                     },
                     {
-                        "nome": "Sequencia",
-                        "coluna": "SET_IN_SEQUENCIA",
-                        "componente": "E",
-                        "tipo": "N",
-                        "obrigatorio": "N",
-                        "tamanho": 22
-                    },
-                    {
-                        "nome": "Descarte",
-                        "coluna": "SET_IN_DESCARTE",
-                        "componente": "E",
-                        "tipo": "N",
-                        "obrigatorio": "N",
-                        "tamanho": 22
-                    },
-                    {
-                        "nome": "Cor",
-                        "coluna": "SET_IN_COR",
-                        "componente": "E",
-                        "tipo": "N",
-                        "obrigatorio": "N",
-                        "tamanho": 22
-                    },
-                    {
-                        "nome": "Dias Pendência",
-                        "coluna": "SET_IN_DIASPENDENCIA",
-                        "componente": "E",
-                        "tipo": "N",
-                        "obrigatorio": "N",
-                        "tamanho": 22
+                        "nome": "Ativo",
+                        "coluna": "FRL_ATIVO",
+                        "componente": "C",
+                        "tipo": "C",
+                        "obrigatorio": "S",
+                        "tamanho": 1,
+                        "chave": "N"
                     }
                 ],
                 "pesquisaTipo": "0",
                 "pesquisa": "Código",
                 "pesquisaJSON": {
-                    "campo": "SET_ST_CODIGO",
+                    "campo": "FRL_CODIGO",
                     "nome": "Código"
                 },
-                "entidades": [
-                    [
-                        {
-                            "id": 0,
-                            "status": "R",
-                            "popup": {
-                                "inicio": false,
-                                "fim": false
-                            },
-                            "ngStyle": "color: #0077b3",
-                            "ngClass": "fa fa-database",
-                            "dataPicker": [
-                            ]
-                        },
-                        "ANP",
-                        "ANATOMIA PATOLOGICA ",
-                        null,
-                        null,
-                        16711680,
-                        60
-                    ],
-                    [
-                        {
-                            "id": 1,
-                            "status": "R",
-                            "popup": {
-                                "inicio": false,
-                                "fim": false
-                            },
-                            "ngStyle": "color: #0077b3",
-                            "ngClass": "fa fa-database",
-                            "dataPicker": [
-                            ]
-                        },
-                        "BIO",
-                        "BIOQUÍMICA",
-                        null,
-                        null,
-                        12615680,
-                        60
-                    ],
-                    [
-                        {
-                            "id": 2,
-                            "status": "R",
-                            "popup": {
-                                "inicio": false,
-                                "fim": false
-                            },
-                            "ngStyle": "color: #0077b3",
-                            "ngClass": "fa fa-database",
-                            "dataPicker": [
-                            ]
-                        },
-                        "BMO",
-                        "BIOLOGIA MOLECULAR",
-                        null,
-                        null,
-                        16777215,
-                        60
-                    ],
-                    [
-                        {
-                            "id": 3,
-                            "status": "R",
-                            "popup": {
-                                "inicio": false,
-                                "fim": false
-                            },
-                            "ngStyle": "color: #0077b3",
-                            "ngClass": "fa fa-database",
-                            "dataPicker": [
-                            ]
-                        },
-                        "CAD",
-                        "CADASTRO",
-                        null,
-                        null,
-                        0,
-                        60
-                    ],
-                    [
-                        {
-                            "id": 4,
-                            "status": "R",
-                            "popup": {
-                                "inicio": false,
-                                "fim": false
-                            },
-                            "ngStyle": "color: #0077b3",
-                            "ngClass": "fa fa-database",
-                            "dataPicker": [
-                            ]
-                        },
-                        "CIT",
-                        "CITOMETRIA DE FLUXO - DASA",
-                        null,
-                        null,
-                        16711808,
-                        60
-                    ],
-                    [
-                        {
-                            "id": 5,
-                            "status": "R",
-                            "popup": {
-                                "inicio": false,
-                                "fim": false
-                            },
-                            "ngStyle": "color: #0077b3",
-                            "ngClass": "fa fa-database",
-                            "dataPicker": [
-                            ]
-                        },
-                        "CON",
-                        "CONFERENCIA",
-                        null,
-                        null,
-                        null,
-                        60
-                    ],
-                    [
-                        {
-                            "id": 6,
-                            "status": "R",
-                            "popup": {
-                                "inicio": false,
-                                "fim": false
-                            },
-                            "ngStyle": "color: #0077b3",
-                            "ngClass": "fa fa-database",
-                            "dataPicker": [
-                            ]
-                        },
-                        "CTG",
-                        "CITOGENETICA - DASA",
-                        null,
-                        null,
-                        0,
-                        60
-                    ],
-                    [
-                        {
-                            "id": 7,
-                            "status": "R",
-                            "popup": {
-                                "inicio": false,
-                                "fim": false
-                            },
-                            "ngStyle": "color: #0077b3",
-                            "ngClass": "fa fa-database",
-                            "dataPicker": [
-                            ]
-                        },
-                        "DIG",
-                        "DIGITAÇÃO",
-                        null,
-                        null,
-                        16777215,
-                        60
-                    ],
-                    [
-                        {
-                            "id": 8,
-                            "status": "R",
-                            "popup": {
-                                "inicio": false,
-                                "fim": false
-                            },
-                            "ngStyle": "color: #0077b3",
-                            "ngClass": "fa fa-database",
-                            "dataPicker": [
-                            ]
-                        },
-                        "ELE",
-                        "ELETROFORESE",
-                        null,
-                        null,
-                        0,
-                        60
-                    ],
-                    [
-                        {
-                            "id": 9,
-                            "status": "R",
-                            "popup": {
-                                "inicio": false,
-                                "fim": false
-                            },
-                            "ngStyle": "color: #0077b3",
-                            "ngClass": "fa fa-database",
-                            "dataPicker": [
-                            ]
-                        },
-                        "ENV",
-                        "ENVIADO / APOIO",
-                        null,
-                        null,
-                        0,
-                        60
-                    ],
-                    [
-                        {
-                            "id": 10,
-                            "status": "R",
-                            "popup": {
-                                "inicio": false,
-                                "fim": false
-                            },
-                            "ngStyle": "color: #0077b3",
-                            "ngClass": "fa fa-database",
-                            "dataPicker": [
-                            ]
-                        },
-                        "FAT",
-                        "FATURAMENTO",
-                        null,
-                        null,
-                        null,
-                        60
-                    ],
-                    [
-                        {
-                            "id": 11,
-                            "status": "R",
-                            "popup": {
-                                "inicio": false,
-                                "fim": false
-                            },
-                            "ngStyle": "color: #0077b3",
-                            "ngClass": "fa fa-database",
-                            "dataPicker": [
-                            ]
-                        },
-                        "HEM",
-                        "HEMATOLOGIA",
-                        null,
-                        null,
-                        255,
-                        60
-                    ],
-                    [
-                        {
-                            "id": 12,
-                            "status": "R",
-                            "popup": {
-                                "inicio": false,
-                                "fim": false
-                            },
-                            "ngStyle": "color: #0077b3",
-                            "ngClass": "fa fa-database",
-                            "dataPicker": [
-                            ]
-                        },
-                        "HOR",
-                        "HORMONOLOGIA",
-                        null,
-                        null,
-                        65535,
-                        60
-                    ],
-                    [
-                        {
-                            "id": 13,
-                            "status": "R",
-                            "popup": {
-                                "inicio": false,
-                                "fim": false
-                            },
-                            "ngStyle": "color: #0077b3",
-                            "ngClass": "fa fa-database",
-                            "dataPicker": [
-                            ]
-                        },
-                        "IMT",
-                        "IMUNO MANUAL TURB",
-                        null,
-                        null,
-                        12632256,
-                        60
-                    ],
-                    [
-                        {
-                            "id": 14,
-                            "status": "R",
-                            "popup": {
-                                "inicio": false,
-                                "fim": false
-                            },
-                            "ngStyle": "color: #0077b3",
-                            "ngClass": "fa fa-database",
-                            "dataPicker": [
-                            ]
-                        },
-                        "IMU",
-                        "IMUNOLOGIA",
-                        null,
-                        null,
-                        12632256,
-                        60
-                    ],
-                    [
-                        {
-                            "id": 15,
-                            "status": "R",
-                            "popup": {
-                                "inicio": false,
-                                "fim": false
-                            },
-                            "ngStyle": "color: #0077b3",
-                            "ngClass": "fa fa-database",
-                            "dataPicker": [
-                            ]
-                        },
-                        "MIC",
-                        "MICROBIOLOGIA",
-                        null,
-                        null,
-                        65280,
-                        60
-                    ],
-                    [
-                        {
-                            "id": 16,
-                            "status": "R",
-                            "popup": {
-                                "inicio": false,
-                                "fim": false
-                            },
-                            "ngStyle": "color: #0077b3",
-                            "ngClass": "fa fa-database",
-                            "dataPicker": [
-                            ]
-                        },
-                        "PAC",
-                        "PAPANICOLAU E CITOLOGICOS",
-                        null,
-                        null,
-                        16711680,
-                        60
-                    ],
-                    [
-                        {
-                            "id": 17,
-                            "status": "R",
-                            "popup": {
-                                "inicio": false,
-                                "fim": false
-                            },
-                            "ngStyle": "color: #0077b3",
-                            "ngClass": "fa fa-database",
-                            "dataPicker": [
-                            ]
-                        },
-                        "PAR",
-                        "PARASITOLOGIA",
-                        null,
-                        null,
-                        16512,
-                        60
-                    ],
-                    [
-                        {
-                            "id": 18,
-                            "status": "R",
-                            "popup": {
-                                "inicio": false,
-                                "fim": false
-                            },
-                            "ngStyle": "color: #0077b3",
-                            "ngClass": "fa fa-database",
-                            "dataPicker": [
-                            ]
-                        },
-                        "SE",
-                        "SEM",
-                        null,
-                        null,
-                        null,
-                        60
-                    ],
-                    [
-                        {
-                            "id": 19,
-                            "status": "R",
-                            "popup": {
-                                "inicio": false,
-                                "fim": false
-                            },
-                            "ngStyle": "color: #0077b3",
-                            "ngClass": "fa fa-database",
-                            "dataPicker": [
-                            ]
-                        },
-                        "SOR",
-                        "SOROTECA",
-                        null,
-                        null,
-                        0,
-                        60
-                    ],
-                    [
-                        {
-                            "id": 20,
-                            "status": "R",
-                            "popup": {
-                                "inicio": false,
-                                "fim": false
-                            },
-                            "ngStyle": "color: #0077b3",
-                            "ngClass": "fa fa-database",
-                            "dataPicker": [
-                            ]
-                        },
-                        "TOM",
-                        "TOMOGRAFIA",
-                        null,
-                        null,
-                        0,
-                        60
-                    ],
-                    [
-                        {
-                            "id": 21,
-                            "status": "R",
-                            "popup": {
-                                "inicio": false,
-                                "fim": false
-                            },
-                            "ngStyle": "color: #0077b3",
-                            "ngClass": "fa fa-database",
-                            "dataPicker": [
-                            ]
-                        },
-                        "TOX",
-                        "TOXICOLOGIA",
-                        null,
-                        null,
-                        0,
-                        60
-                    ],
-                    [
-                        {
-                            "id": 22,
-                            "status": "R",
-                            "popup": {
-                                "inicio": false,
-                                "fim": false
-                            },
-                            "ngStyle": "color: #0077b3",
-                            "ngClass": "fa fa-database",
-                            "dataPicker": [
-                            ]
-                        },
-                        "TRI",
-                        "TRIAGEM",
-                        null,
-                        null,
-                        0,
-                        60
-                    ],
-                    [
-                        {
-                            "id": 23,
-                            "status": "R",
-                            "popup": {
-                                "inicio": false,
-                                "fim": false
-                            },
-                            "ngStyle": "color: #0077b3",
-                            "ngClass": "fa fa-database",
-                            "dataPicker": [
-                            ]
-                        },
-                        "URI",
-                        "URINÁLISE",
-                        null,
-                        null,
-                        33023,
-                        60
-                    ]
+                "entidades": "ORA-00911: invalid character\n",
+                "entidadesDB": [
                 ]
             },
             "title": "Carregando ...",
-            "msg": "Buscando Setores na base de Dados."
+            "msg": "Buscando Frases para Laudo na base de Dados."
         }
     ]
 }
