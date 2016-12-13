@@ -58,13 +58,13 @@
                             <button class="btn btn-block  btn-outline  btn-success   full-width "     ng-click="buscar(true)"  ng-disabled="!jsonTelaPadrao.btnFiltrar" >Filtrar</button>
                         </div>
                         <div  class="col-lg-1">
-                            <button class="btn btn-block  btn-outline  btn-default  full-width "   ng-click="criarNovoRegistro()"   ng-disabled="!jsonTelaPadrao.btnCriar" >Criar </button>
+                            <button class="btn btn-block  btn-outline  btn-info  full-width "   ng-click="criarNovoRegistro()"   ng-disabled="!jsonTelaPadrao.btnCriar" >Criar </button>
                         </div>
                         <div  class="col-lg-2">
                             <button class="btn btn-block  btn-outline  btn-danger  full-width "    ng-click="limparTela() "   >Limpar</button>
                         </div>
                         <div  class="col-lg-2">
-                            <button class="btn btn-block  btn-outline  btn-primary full-width "     ng-click="buscar(false)"  ng-disabled="!jsonTelaPadrao.btnTodos" >Buscar Todos</button>
+                            <button class="btn btn-block  btn-outline  btn-primary full-width "     ng-click="buscar(false)"  ng-disabled="!jsonTelaPadrao.btnTodos"  data-toggle="tooltip"    title="Limite de pesquisa para esta tela {{jsonTelaPadrao.limit}} itens"    >Buscar Todos</button>
                         </div>
 
                     </div>
@@ -78,9 +78,9 @@
                     <table   datatable="ng" dt-options="dTOptionsBuilder" class="table table-striped table-bordered table-hover dataTables-example">
                         <thead>
                             <tr  >
-                                <th style="width: 10px;"  ></th>
+                                <th style="width: 14px;"  ></th>
 
-                                <th ng-repeat="col in :: moduloPadrao.entidade.colunas "  >
+                                <th ng-repeat="col in :: moduloPadrao.entidade.colunas  track by $index"  style=" width: {{moduloPadrao.entidade.colunas[$index - 1].tamanho}}.px"  >
                                     {{col.nome}}
                                 </th>
                                 
@@ -90,12 +90,12 @@
                         <tbody>
 
                             <tr   ng-repeat="ent in moduloPadrao.entidade.entidades  track by $index"    >
-
-                                <td   ng-repeat="e in ent track by $index "    style="with : {{moduloPadrao.entidade.colunas[$index - 1].tamanho}}px"    > 
+                                <!--ng-style="{{ moduloPadrao.entidade.colunas[$index - 1].tamanho? 'width:'moduloPadrao.entidade.colunas[$index - 1].tamanho'.px;' : 'width:10px;' }}"-->   
+                                <td   ng-repeat="e in ent track by $index "  > 
 
                                     <div ng-if="$index === 0" >
                                         <div >
-                                        <i  style="{{ent[0].ngStyle}}"  class="{{ent[0].ngClass}}"   aria-hidden="true"    ng-click="manipulaEntidade(ent,'editar')"     data-toggle="tooltip" title="{{ent[0].toolTip}}"  ></i>
+                                        <i  style="{{ent[0].ngStyle}} ; padding-right: 6px;"  class="{{ent[0].ngClass}}"   aria-hidden="true"    ng-click="manipulaEntidade(ent,'editar')"     data-toggle="tooltip" title="{{ent[0].toolTip}}"  ></i>
                                         <span uib-dropdown     >
                                             <span class="count-info" href uib-dropdown-toggle   >
                                                 <span class="glyphicon glyphicon-option-vertical"></span>
