@@ -471,7 +471,7 @@ console.log('construing config , registrando state');
             }).state('antibiotico', {
                 url: "/configura/antibioticos/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00016',limit:'500',btnFiltrar:true,btnCriar:true,btnTodos:true},
+                params: { modStCodigo: '00016',limit:'250',btnFiltrar:true,btnCriar:true,btnTodos:true},
                 parent: 'lisnet',
 //                            controller: 'consultaLaudos',
                 data: {pageTitle: 'Antibioticos'}, resolve: {
@@ -1845,7 +1845,7 @@ console.log('construing config , registrando state');
             }).state('usuarioxconvenio', {
                 url: "/configura/usuarioxconvenio/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00199',limit:'500',btnFiltrar:true,btnCriar:true,btnTodos:true},
+                params: { modStCodigo: '00199',limit:'220',btnFiltrar:true,btnCriar:true,btnTodos:true},
                 parent: 'lisnet',
                 data: {pageTitle: 'Usuário x Convênio'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {

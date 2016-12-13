@@ -123,16 +123,11 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
              
         }
     };
+    
     $scope.manipulaEntidade = function (ent,acao){
         switch (acao) {
             case 'editar':
                 tronarEditavel(ent);
-                if(ent[0].status !== 'C'){
-                    ent[0].status = 'R';
-                    ent[0].ngClass = "fa fa-database";
-                    ent[0].ngStyle = "color: #0077b3";
-                }
-                
                 break;
             case 'excluir':
                 if(ent[0].status !== 'C'){
@@ -168,8 +163,62 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
                         console.log('nothing TO DO ');
                 }
                 break;
+                
+                 case 'salvar':
+                    if (ent[0].status !== 'R') {
+                        ent[0].editavel = false;
+                        try {
+                            buscaAPIService.salvaEntidadeTelaPadrao($scope.userDTO.configLisNet, moduloPadrao, $scope.userDTO.UNI_ST_CODIGO, ent)
+                                    .then(function   sucesso(response) {
+                                        console.log(response.data);
+                                        ent[0].status = 'R';
+                                        ent[0].ngClass = "fa fa-database";
+                                        ent[0].ngStyle = "color: #0077b3";
+                                        ent[0].toolTip = "não há alterações";
+                                        substituiEntidadeDB(ent);
+                                    }, function erro(response) {
+                                        console.log(response.statusText);
+                                        notificacaoProvider.sweetError('Erro', response.statusText);
+                                    });
+                        } catch (error) {
+                            console.log;
+                            (error);
+                            notificacaoProvider.sweetError('Erro', error);
+                        }
+                    } else {
+                        console.log('nothing TODO ');
+                    }
+                break;
+                
         }
     };
+    
+    function substituiEntidadeDB(ent){
+        console.log('Inside substituiEntidadeDB');
+        console.log(ent);
+        var _index ;
+        for(var i  =0  ; i < moduloPadrao.entidade.entidadesDB.length; i ++){
+            var entDB =moduloPadrao.entidade.entidadesDB[i];
+            if(entDB[0].id === ent[0].id){
+                console.log('achamos no entidadeDB , fazendo a troca');
+               _index  = i; 
+            }
+        }
+        if(_index){
+            console.log('substituindo entidade ...');
+             var entReferencia = helperService.clonadorDeObj(ent);
+            moduloPadrao.entidade.entidadesDB[_index] = entReferencia;
+        }
+//         var obj = moduloPadrao.entidade.entidadesDB.filter(function (obj) {
+//                return obj[0].id === ent[0].id;
+//            })[0];
+//        if(obj){
+//            console.log('achamos no entidadeDB , fazendo a troca');
+//            var entReferencia = helperService.clonadorDeObj(ent);
+//            console.log(entReferencia);
+//            obj = entReferencia;
+//        }
+    }
     
     $scope.criarNovoRegistro = function (){
         console.log("moduloPadrao.entidade.colunas.length   =  "+moduloPadrao.entidade.colunas.length);
@@ -216,7 +265,7 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
             entReferencia.shift();
 
             if (helperService.comparaObjetos(objReferencia, entReferencia)) {
-                console.log("os objs sao iquais ");
+                console.log("they r equals ");
                 ent[0].status = 'R';
                 ent[0].ngStyle = "color: #0077b3";
                 ent[0].ngClass = "fa fa-database";
@@ -233,6 +282,8 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
             console.log('Entidade nao eh editavel no momento ...');
         }
     };
+    
+    
     
     function carregarLista(blFiltro) {
         $scope.limparTela();

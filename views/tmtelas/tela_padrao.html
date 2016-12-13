@@ -78,7 +78,7 @@
                     <table   datatable="ng" dt-options="dTOptionsBuilder" class="table table-striped table-bordered table-hover dataTables-example"   >
                         <thead>
                             <tr  >
-                                <th style="width: 15px;"  ></th>
+                                <th style="width: 17px;"  ></th>
                                    <!--style=" width: {{moduloPadrao.entidade.colunas[$index - 1].tamanho}}"-->
                                 <th ng-repeat="col in :: moduloPadrao.entidade.colunas  track by $index"    >
                                     {{col.nome}}
@@ -105,9 +105,11 @@
                                                     <li class="divider"></li>
                                                     <li   style="font-weight: bold;"  ng-click="manipulaEntidade(ent,'editar')"   ><i  class="fa fa-pencil"   style="color: red; font-weight: bold; color: #003bb3; "  ></i>  Editar</li>
                                                     <li   class="divider"></li>
-                                                    <li   ng-if="ent[0].status !== 'C' " style=" font-weight: bold;"  ng-click="manipulaEntidade(ent,'desfazer')" ><i  class="fa fa-backward"   style="color: red; font-weight: bold; color: #170;"  ></i>  Desfazer</li>
-                                                    <li  ng-if="ent[0].status !== 'C' "  class="divider"></li>
+                                                    <li   ng-if="ent[0].status !== 'C'  && ent[0].status !== 'R' " style=" font-weight: bold;"  ng-click="manipulaEntidade(ent,'desfazer')" ><i  class="fa fa-backward"   style="color: red; font-weight: bold; color: #170;"  ></i>  Desfazer</li>
+                                                    <li  ng-if="ent[0].status !== 'C'  && ent[0].status !== 'R' "  class="divider"></li>
                                                     <li   style="font-weight: bold;"   ng-click="manipulaEntidade(ent,'excluir')" ><i  class="fa fa-times"   style="color: red; font-weight: bold;"  ></i>  Excluir</li>
+                                                    <li  ng-if="ent[0].status !== 'R'  "  class="divider"></li>
+                                                    <li   style="font-weight: bold;"   ng-if="ent[0].status !== 'R'  " ng-click="manipulaEntidade(ent,'salvar')"   ><i  class="fa fa-clipboard"   style="color: #163758 ; font-weight: bold;"  ></i>  Salvar</li>
                                             </ul>
                                         </span>
                                         </div>
