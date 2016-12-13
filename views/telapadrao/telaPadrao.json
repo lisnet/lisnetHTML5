@@ -1,7 +1,7 @@
 {
     "status": "in",
     "perfilId": 2,
-    "dtCriacao": "2016-12-08T17:40:45.129Z",
+    "dtCriacao": "2016-12-13T13:52:54.845Z",
     "ultimaTela": "widgets.lisnet",
     "notificationTimer": 10000,
     "hotPages": [
@@ -9,7 +9,11 @@
             "url": "/configura/setores/",
             "templateUrl": "views/tmtelas/tela_padrao.html",
             "params": {
-                "modStCodigo": "00015"
+                "modStCodigo": "00015",
+                "limit": "200",
+                "btnFiltrar": true,
+                "btnCriar": true,
+                "btnTodos": true
             },
             "parent": "lisnet",
             "data": {
@@ -2014,7 +2018,7 @@
             ]
         }
     ],
-    "dtLogon": " 08/12/2016  15:40",
+    "dtLogon": " 13/12/2016  11:53",
     "notificacoesEmExecucao": 0,
     "unidades": [
         {
@@ -2127,7 +2131,11 @@
                 "url": "/configura/setores/",
                 "templateUrl": "views/tmtelas/tela_padrao.html",
                 "params": {
-                    "modStCodigo": "00015"
+                    "modStCodigo": "00015",
+                    "limit": "200",
+                    "btnFiltrar": true,
+                    "btnCriar": true,
+                    "btnTodos": true
                 },
                 "parent": "lisnet",
                 "data": {
@@ -2158,7 +2166,8 @@
                         "componente": "E",
                         "tipo": "C",
                         "obrigatorio": "S",
-                        "tamanho": 3
+                        "tamanho": 3,
+                        "chave": "S"
                     },
                     {
                         "nome": "Descrição",
@@ -2166,7 +2175,8 @@
                         "componente": "E",
                         "tipo": "C",
                         "obrigatorio": "N",
-                        "tamanho": 60
+                        "tamanho": 60,
+                        "chave": "N"
                     },
                     {
                         "nome": "Sequencia",
@@ -2174,7 +2184,8 @@
                         "componente": "E",
                         "tipo": "N",
                         "obrigatorio": "N",
-                        "tamanho": 22
+                        "tamanho": 22,
+                        "chave": "N"
                     },
                     {
                         "nome": "Descarte",
@@ -2182,7 +2193,8 @@
                         "componente": "E",
                         "tipo": "N",
                         "obrigatorio": "N",
-                        "tamanho": 22
+                        "tamanho": 22,
+                        "chave": "N"
                     },
                     {
                         "nome": "Cor",
@@ -2190,7 +2202,8 @@
                         "componente": "E",
                         "tipo": "N",
                         "obrigatorio": "N",
-                        "tamanho": 22
+                        "tamanho": 22,
+                        "chave": "N"
                     },
                     {
                         "nome": "Dias Pendência",
@@ -2198,7 +2211,8 @@
                         "componente": "E",
                         "tipo": "N",
                         "obrigatorio": "N",
-                        "tamanho": 22
+                        "tamanho": 22,
+                        "chave": "N"
                     }
                 ],
                 "pesquisaTipo": "0",
@@ -2218,6 +2232,7 @@
                             },
                             "ngStyle": "color: #0077b3",
                             "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
                             "dataPicker": [
                             ]
                         },
@@ -2238,6 +2253,7 @@
                             },
                             "ngStyle": "color: #0077b3",
                             "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
                             "dataPicker": [
                             ]
                         },
@@ -2258,6 +2274,7 @@
                             },
                             "ngStyle": "color: #0077b3",
                             "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
                             "dataPicker": [
                             ]
                         },
@@ -2278,6 +2295,7 @@
                             },
                             "ngStyle": "color: #0077b3",
                             "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
                             "dataPicker": [
                             ]
                         },
@@ -2298,6 +2316,7 @@
                             },
                             "ngStyle": "color: #0077b3",
                             "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
                             "dataPicker": [
                             ]
                         },
@@ -2318,6 +2337,7 @@
                             },
                             "ngStyle": "color: #0077b3",
                             "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
                             "dataPicker": [
                             ]
                         },
@@ -2338,6 +2358,7 @@
                             },
                             "ngStyle": "color: #0077b3",
                             "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
                             "dataPicker": [
                             ]
                         },
@@ -2358,6 +2379,7 @@
                             },
                             "ngStyle": "color: #0077b3",
                             "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
                             "dataPicker": [
                             ]
                         },
@@ -2378,6 +2400,7 @@
                             },
                             "ngStyle": "color: #0077b3",
                             "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
                             "dataPicker": [
                             ]
                         },
@@ -2398,6 +2421,7 @@
                             },
                             "ngStyle": "color: #0077b3",
                             "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
                             "dataPicker": [
                             ]
                         },
@@ -2418,6 +2442,7 @@
                             },
                             "ngStyle": "color: #0077b3",
                             "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
                             "dataPicker": [
                             ]
                         },
@@ -2438,6 +2463,7 @@
                             },
                             "ngStyle": "color: #0077b3",
                             "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
                             "dataPicker": [
                             ]
                         },
@@ -2458,6 +2484,7 @@
                             },
                             "ngStyle": "color: #0077b3",
                             "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
                             "dataPicker": [
                             ]
                         },
@@ -2478,6 +2505,7 @@
                             },
                             "ngStyle": "color: #0077b3",
                             "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
                             "dataPicker": [
                             ]
                         },
@@ -2498,6 +2526,7 @@
                             },
                             "ngStyle": "color: #0077b3",
                             "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
                             "dataPicker": [
                             ]
                         },
@@ -2518,6 +2547,7 @@
                             },
                             "ngStyle": "color: #0077b3",
                             "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
                             "dataPicker": [
                             ]
                         },
@@ -2538,6 +2568,7 @@
                             },
                             "ngStyle": "color: #0077b3",
                             "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
                             "dataPicker": [
                             ]
                         },
@@ -2558,6 +2589,7 @@
                             },
                             "ngStyle": "color: #0077b3",
                             "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
                             "dataPicker": [
                             ]
                         },
@@ -2578,6 +2610,7 @@
                             },
                             "ngStyle": "color: #0077b3",
                             "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
                             "dataPicker": [
                             ]
                         },
@@ -2598,6 +2631,7 @@
                             },
                             "ngStyle": "color: #0077b3",
                             "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
                             "dataPicker": [
                             ]
                         },
@@ -2618,6 +2652,7 @@
                             },
                             "ngStyle": "color: #0077b3",
                             "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
                             "dataPicker": [
                             ]
                         },
@@ -2638,6 +2673,7 @@
                             },
                             "ngStyle": "color: #0077b3",
                             "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
                             "dataPicker": [
                             ]
                         },
@@ -2658,6 +2694,7 @@
                             },
                             "ngStyle": "color: #0077b3",
                             "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
                             "dataPicker": [
                             ]
                         },
@@ -2678,6 +2715,513 @@
                             },
                             "ngStyle": "color: #0077b3",
                             "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
+                            "dataPicker": [
+                            ]
+                        },
+                        "URI",
+                        "URINÁLISE",
+                        null,
+                        null,
+                        33023,
+                        60
+                    ]
+                ],
+                "entidadesDB": [
+                    [
+                        {
+                            "id": 0,
+                            "status": "R",
+                            "popup": {
+                                "inicio": false,
+                                "fim": false
+                            },
+                            "ngStyle": "color: #0077b3",
+                            "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
+                            "dataPicker": [
+                            ]
+                        },
+                        "ANP",
+                        "ANATOMIA PATOLOGICA ",
+                        null,
+                        null,
+                        16711680,
+                        60
+                    ],
+                    [
+                        {
+                            "id": 1,
+                            "status": "R",
+                            "popup": {
+                                "inicio": false,
+                                "fim": false
+                            },
+                            "ngStyle": "color: #0077b3",
+                            "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
+                            "dataPicker": [
+                            ]
+                        },
+                        "BIO",
+                        "BIOQUÍMICA",
+                        null,
+                        null,
+                        12615680,
+                        60
+                    ],
+                    [
+                        {
+                            "id": 2,
+                            "status": "R",
+                            "popup": {
+                                "inicio": false,
+                                "fim": false
+                            },
+                            "ngStyle": "color: #0077b3",
+                            "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
+                            "dataPicker": [
+                            ]
+                        },
+                        "BMO",
+                        "BIOLOGIA MOLECULAR",
+                        null,
+                        null,
+                        16777215,
+                        60
+                    ],
+                    [
+                        {
+                            "id": 3,
+                            "status": "R",
+                            "popup": {
+                                "inicio": false,
+                                "fim": false
+                            },
+                            "ngStyle": "color: #0077b3",
+                            "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
+                            "dataPicker": [
+                            ]
+                        },
+                        "CAD",
+                        "CADASTRO",
+                        null,
+                        null,
+                        0,
+                        60
+                    ],
+                    [
+                        {
+                            "id": 4,
+                            "status": "R",
+                            "popup": {
+                                "inicio": false,
+                                "fim": false
+                            },
+                            "ngStyle": "color: #0077b3",
+                            "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
+                            "dataPicker": [
+                            ]
+                        },
+                        "CIT",
+                        "CITOMETRIA DE FLUXO - DASA",
+                        null,
+                        null,
+                        16711808,
+                        60
+                    ],
+                    [
+                        {
+                            "id": 5,
+                            "status": "R",
+                            "popup": {
+                                "inicio": false,
+                                "fim": false
+                            },
+                            "ngStyle": "color: #0077b3",
+                            "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
+                            "dataPicker": [
+                            ]
+                        },
+                        "CON",
+                        "CONFERENCIA",
+                        null,
+                        null,
+                        null,
+                        60
+                    ],
+                    [
+                        {
+                            "id": 6,
+                            "status": "R",
+                            "popup": {
+                                "inicio": false,
+                                "fim": false
+                            },
+                            "ngStyle": "color: #0077b3",
+                            "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
+                            "dataPicker": [
+                            ]
+                        },
+                        "CTG",
+                        "CITOGENETICA - DASA",
+                        null,
+                        null,
+                        0,
+                        60
+                    ],
+                    [
+                        {
+                            "id": 7,
+                            "status": "R",
+                            "popup": {
+                                "inicio": false,
+                                "fim": false
+                            },
+                            "ngStyle": "color: #0077b3",
+                            "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
+                            "dataPicker": [
+                            ]
+                        },
+                        "DIG",
+                        "DIGITAÇÃO",
+                        null,
+                        null,
+                        16777215,
+                        60
+                    ],
+                    [
+                        {
+                            "id": 8,
+                            "status": "R",
+                            "popup": {
+                                "inicio": false,
+                                "fim": false
+                            },
+                            "ngStyle": "color: #0077b3",
+                            "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
+                            "dataPicker": [
+                            ]
+                        },
+                        "ELE",
+                        "ELETROFORESE",
+                        null,
+                        null,
+                        0,
+                        60
+                    ],
+                    [
+                        {
+                            "id": 9,
+                            "status": "R",
+                            "popup": {
+                                "inicio": false,
+                                "fim": false
+                            },
+                            "ngStyle": "color: #0077b3",
+                            "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
+                            "dataPicker": [
+                            ]
+                        },
+                        "ENV",
+                        "ENVIADO / APOIO",
+                        null,
+                        null,
+                        0,
+                        60
+                    ],
+                    [
+                        {
+                            "id": 10,
+                            "status": "R",
+                            "popup": {
+                                "inicio": false,
+                                "fim": false
+                            },
+                            "ngStyle": "color: #0077b3",
+                            "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
+                            "dataPicker": [
+                            ]
+                        },
+                        "FAT",
+                        "FATURAMENTO",
+                        null,
+                        null,
+                        null,
+                        60
+                    ],
+                    [
+                        {
+                            "id": 11,
+                            "status": "R",
+                            "popup": {
+                                "inicio": false,
+                                "fim": false
+                            },
+                            "ngStyle": "color: #0077b3",
+                            "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
+                            "dataPicker": [
+                            ]
+                        },
+                        "HEM",
+                        "HEMATOLOGIA",
+                        null,
+                        null,
+                        255,
+                        60
+                    ],
+                    [
+                        {
+                            "id": 12,
+                            "status": "R",
+                            "popup": {
+                                "inicio": false,
+                                "fim": false
+                            },
+                            "ngStyle": "color: #0077b3",
+                            "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
+                            "dataPicker": [
+                            ]
+                        },
+                        "HOR",
+                        "HORMONOLOGIA",
+                        null,
+                        null,
+                        65535,
+                        60
+                    ],
+                    [
+                        {
+                            "id": 13,
+                            "status": "R",
+                            "popup": {
+                                "inicio": false,
+                                "fim": false
+                            },
+                            "ngStyle": "color: #0077b3",
+                            "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
+                            "dataPicker": [
+                            ]
+                        },
+                        "IMT",
+                        "IMUNO MANUAL TURB",
+                        null,
+                        null,
+                        12632256,
+                        60
+                    ],
+                    [
+                        {
+                            "id": 14,
+                            "status": "R",
+                            "popup": {
+                                "inicio": false,
+                                "fim": false
+                            },
+                            "ngStyle": "color: #0077b3",
+                            "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
+                            "dataPicker": [
+                            ]
+                        },
+                        "IMU",
+                        "IMUNOLOGIA",
+                        null,
+                        null,
+                        12632256,
+                        60
+                    ],
+                    [
+                        {
+                            "id": 15,
+                            "status": "R",
+                            "popup": {
+                                "inicio": false,
+                                "fim": false
+                            },
+                            "ngStyle": "color: #0077b3",
+                            "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
+                            "dataPicker": [
+                            ]
+                        },
+                        "MIC",
+                        "MICROBIOLOGIA",
+                        null,
+                        null,
+                        65280,
+                        60
+                    ],
+                    [
+                        {
+                            "id": 16,
+                            "status": "R",
+                            "popup": {
+                                "inicio": false,
+                                "fim": false
+                            },
+                            "ngStyle": "color: #0077b3",
+                            "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
+                            "dataPicker": [
+                            ]
+                        },
+                        "PAC",
+                        "PAPANICOLAU E CITOLOGICOS",
+                        null,
+                        null,
+                        16711680,
+                        60
+                    ],
+                    [
+                        {
+                            "id": 17,
+                            "status": "R",
+                            "popup": {
+                                "inicio": false,
+                                "fim": false
+                            },
+                            "ngStyle": "color: #0077b3",
+                            "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
+                            "dataPicker": [
+                            ]
+                        },
+                        "PAR",
+                        "PARASITOLOGIA",
+                        null,
+                        null,
+                        16512,
+                        60
+                    ],
+                    [
+                        {
+                            "id": 18,
+                            "status": "R",
+                            "popup": {
+                                "inicio": false,
+                                "fim": false
+                            },
+                            "ngStyle": "color: #0077b3",
+                            "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
+                            "dataPicker": [
+                            ]
+                        },
+                        "SE",
+                        "SEM",
+                        null,
+                        null,
+                        null,
+                        60
+                    ],
+                    [
+                        {
+                            "id": 19,
+                            "status": "R",
+                            "popup": {
+                                "inicio": false,
+                                "fim": false
+                            },
+                            "ngStyle": "color: #0077b3",
+                            "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
+                            "dataPicker": [
+                            ]
+                        },
+                        "SOR",
+                        "SOROTECA",
+                        null,
+                        null,
+                        0,
+                        60
+                    ],
+                    [
+                        {
+                            "id": 20,
+                            "status": "R",
+                            "popup": {
+                                "inicio": false,
+                                "fim": false
+                            },
+                            "ngStyle": "color: #0077b3",
+                            "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
+                            "dataPicker": [
+                            ]
+                        },
+                        "TOM",
+                        "TOMOGRAFIA",
+                        null,
+                        null,
+                        0,
+                        60
+                    ],
+                    [
+                        {
+                            "id": 21,
+                            "status": "R",
+                            "popup": {
+                                "inicio": false,
+                                "fim": false
+                            },
+                            "ngStyle": "color: #0077b3",
+                            "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
+                            "dataPicker": [
+                            ]
+                        },
+                        "TOX",
+                        "TOXICOLOGIA",
+                        null,
+                        null,
+                        0,
+                        60
+                    ],
+                    [
+                        {
+                            "id": 22,
+                            "status": "R",
+                            "popup": {
+                                "inicio": false,
+                                "fim": false
+                            },
+                            "ngStyle": "color: #0077b3",
+                            "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
+                            "dataPicker": [
+                            ]
+                        },
+                        "TRI",
+                        "TRIAGEM",
+                        null,
+                        null,
+                        0,
+                        60
+                    ],
+                    [
+                        {
+                            "id": 23,
+                            "status": "R",
+                            "popup": {
+                                "inicio": false,
+                                "fim": false
+                            },
+                            "ngStyle": "color: #0077b3",
+                            "ngClass": "fa fa-database",
+                            "toolTip": "não há alterações",
                             "dataPicker": [
                             ]
                         },

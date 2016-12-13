@@ -421,12 +421,12 @@ angular.module('lisnet').service("buscaAPIService",function ($http){
      * @param {type} modStCodigo
      * @returns {unresolved}
      */
-    this.buscaEntidadeTelaPadrao = function (configLisNet,moduloPadrao,uniStCodigo, blFiltro){
+    this.buscaEntidadeTelaPadrao = function (configLisNet,moduloPadrao,uniStCodigo, limit ,blFiltro){
         var params = '?MOD_ST_CODIGO=' + moduloPadrao.modStCodigo + '&UNI_ST_CODIGO='+uniStCodigo+ '&dbname='+configLisNet.defaultDB;
         if(blFiltro){
-            params = params+'&pesquisaTipo='+moduloPadrao.entidade.pesquisaTipo+'&pesquisaCodigo='+moduloPadrao.entidade.pesquisaJSON.campo+'&pesquisaValor='+moduloPadrao.entidade.pesquisaInput;
+            params = params+'&pesquisaTipo='+moduloPadrao.entidade.pesquisaTipo+'&pesquisaCodigo='+moduloPadrao.entidade.pesquisaJSON.campo+'&pesquisaValor='+moduloPadrao.entidade.pesquisaInput+'&limit='+limit;
         }
-        var url = configLisNet.baseUrl +'/buscaEntidadeTelaPadrao'+ params;
+        var url = configLisNet.baseUrl +'/buscaEntidadeTelaPadrao'+ params+'&limit='+limit;
         console.log('buscaModuloTelaPadrao : '+url);
         return $http({method : 'GET',url : url,
             headers : {
@@ -436,7 +436,24 @@ angular.module('lisnet').service("buscaAPIService",function ($http){
                 'Access-Control-Allow-Origin': '*'
             }});
     };
-     
+    
+    
+    this.salvaEntidadeTelaPadrao = function (configLisNet,moduloPadrao,uniStCodigo,entidadeJSON){
+//        console.log("salvaEntidadeTelaPadrao = " + JSON.stringify(configLisNet)   + "  ...........");
+//        var params = '?dbname='+configLisNet.defaultDB;
+        var params = '?MOD_ST_CODIGO=' + moduloPadrao.modStCodigo + '&UNI_ST_CODIGO='+uniStCodigo+ '&dbname='+configLisNet.defaultDB;
+        var url = configLisNet.baseUrl +'/salvaEntidadeTelaPadrao'+ params;
+        
+        return $http.put(url,entidadeJSON,
+            {
+                'Content-Type' : 'application/x-www-form-urlencoded',
+                'Access-Control-Allow-Headers': '*',
+                'Access-Control-Allow-Methods':'GET, POST, PUT',
+                'Access-Control-Allow-Origin': '*'
+            }
+        );
+    };
+    
     
 });
 

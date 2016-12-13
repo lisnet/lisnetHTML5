@@ -8,31 +8,15 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
     var self = this;
     $scope.userDTO = sairDoSistemaService.validarLogin();
     
+    $scope.jsonTelaPadrao =  $stateParams;
+    var modStCodigo = $scope.jsonTelaPadrao.modStCodigo;
     
-    
-//    constroeDTOptionsBuilder();
-
-//    $scope.altInputFormats = ['MM/dd/yyyy'];
-//    $scope.formatDay  =  'dd/MM/yyyy';
     $scope.formatHour =  'HH:mm:ss';
     $scope.popup = {inicio: false, fim: false};
-//    $scope.openPopInicio = function () {$scope.popup.inicio = true;};
     $scope.opeDataPicker = function (entidade,indexE) {
-//        console.log(JSON.stringify(entidade,null,2));
-//        var dataEnt = 
                 entidade[0].dataPicker[indexE] = true;
-//        dataEnt.dataPicker[indexE] = true;
     };
     
-//    $scope.isOpeDataPicker = function (entidade,indexE) {
-//        console.log(JSON.stringify(entidade,null,2));
-//        var dataEnt = entidade[entidade.length-1];
-//         return  dataEnt.dataPicker[indexE] ;
-//    };
-    
-//    $scope.openPopFim = function (entidade) {
-//        dataEnt.fim = true;
-//    };
     $scope.dateOptions = {
             dateDisabled: false,
             formatYear: 'yy',
@@ -48,7 +32,7 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
     if(angular.isUndefined($scope.dTOptionsBuilder)){
                                $scope.dTOptionsBuilder = constroeDTOptionsBuilder();
     }
-    var modStCodigo = $stateParams.modStCodigo;
+    
     var moduloPadrao;
     
     if ($scope.userDTO.telaPadrao && $scope.userDTO.telaPadrao.length > 0) {
@@ -72,12 +56,15 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
         console.log('buscando campos .....');
         buscaAPIService.buscaModuloTelaPadrao($scope.userDTO.configLisNet,modStCodigo)
                 .then(function successCallback(response){
+//                    console.log(JSON.stringify(response.data,null, 2));
+//                    console.log(typeof response.data);
                     moduloPadrao.entidade = response.data;
-
                         $scope.moduloPadrao = moduloPadrao;
                         if(!moduloPadrao.entidade.pesquisaTipo){
                              moduloPadrao.entidade.pesquisaTipo = "0";
-                             moduloPadrao.entidade.pesquisa = moduloPadrao.entidade.pesquisas[0].nome;
+                             if(moduloPadrao.entidade.pesquisas &&  moduloPadrao.entidade.pesquisas.length > 0){
+                                moduloPadrao.entidade.pesquisa = moduloPadrao.entidade.pesquisas[0].nome;
+                             }
                         }
                         
                 },function errorCallback(response){
@@ -136,16 +123,11 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
              
         }
     };
+    
     $scope.manipulaEntidade = function (ent,acao){
         switch (acao) {
             case 'editar':
                 tronarEditavel(ent);
-                if(ent[0].status !== 'C'){
-                    ent[0].status = 'R';
-                    ent[0].ngClass = "fa fa-database";
-                    ent[0].ngStyle = "color: #0077b3";
-                }
-                
                 break;
             case 'excluir':
                 if(ent[0].status !== 'C'){
@@ -181,14 +163,69 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
                         console.log('nothing TO DO ');
                 }
                 break;
+                
+                 case 'salvar':
+                    if (ent[0].status !== 'R') {
+                        ent[0].editavel = false;
+                        try {
+                            buscaAPIService.salvaEntidadeTelaPadrao($scope.userDTO.configLisNet, moduloPadrao, $scope.userDTO.UNI_ST_CODIGO, ent)
+                                    .then(function   sucesso(response) {
+                                        console.log(response.data);
+                                        ent[0].status = 'R';
+                                        ent[0].ngClass = "fa fa-database";
+                                        ent[0].ngStyle = "color: #0077b3";
+                                        ent[0].toolTip = "não há alterações";
+                                        substituiEntidadeDB(ent);
+                                    }, function erro(response) {
+                                        console.log(response.statusText);
+                                        notificacaoProvider.sweetError('Erro', response.statusText);
+                                    });
+                        } catch (error) {
+                            console.log;
+                            (error);
+                            notificacaoProvider.sweetError('Erro', error);
+                        }
+                    } else {
+                        console.log('nothing TODO ');
+                    }
+                break;
+                
         }
     };
+    
+    function substituiEntidadeDB(ent){
+        console.log('Inside substituiEntidadeDB');
+        console.log(ent);
+        var _index ;
+        for(var i  =0  ; i < moduloPadrao.entidade.entidadesDB.length; i ++){
+            var entDB =moduloPadrao.entidade.entidadesDB[i];
+            if(entDB[0].id === ent[0].id){
+                console.log('achamos no entidadeDB , fazendo a troca');
+               _index  = i; 
+            }
+        }
+        if(_index){
+            console.log('substituindo entidade ...');
+             var entReferencia = helperService.clonadorDeObj(ent);
+            moduloPadrao.entidade.entidadesDB[_index] = entReferencia;
+        }
+//         var obj = moduloPadrao.entidade.entidadesDB.filter(function (obj) {
+//                return obj[0].id === ent[0].id;
+//            })[0];
+//        if(obj){
+//            console.log('achamos no entidadeDB , fazendo a troca');
+//            var entReferencia = helperService.clonadorDeObj(ent);
+//            console.log(entReferencia);
+//            obj = entReferencia;
+//        }
+    }
     
     $scope.criarNovoRegistro = function (){
         console.log("moduloPadrao.entidade.colunas.length   =  "+moduloPadrao.entidade.colunas.length);
       var _newEnt = [moduloPadrao.entidade.colunas.length+1];
       var _dataEnt = {};
             _dataEnt.id = Number(new Date());
+            _dataEnt.editavel = true;
             _dataEnt.status = 'C';
             _dataEnt.popup = {inicio: false, fim: false};
             _dataEnt.ngStyle = "color: orange";
@@ -228,7 +265,7 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
             entReferencia.shift();
 
             if (helperService.comparaObjetos(objReferencia, entReferencia)) {
-                console.log("os objs sao iquais ");
+                console.log("they r equals ");
                 ent[0].status = 'R';
                 ent[0].ngStyle = "color: #0077b3";
                 ent[0].ngClass = "fa fa-database";
@@ -246,56 +283,73 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
         }
     };
     
-    function carregarLista(blFiltro){
+    
+    
+    function carregarLista(blFiltro) {
         $scope.limparTela();
         moduloPadrao.title = 'Carregando ...';
-        moduloPadrao.msg = 'Buscando '+moduloPadrao.state.data.pageTitle+' na base de Dados.';
+        moduloPadrao.msg = 'Buscando ' + moduloPadrao.state.data.pageTitle + ' na base de Dados.';
         self.modalLoading = notificacaoProvider.modalLoading(moduloPadrao.title, moduloPadrao.msg, $scope);
-         $timeout(function () {
-            buscaAPIService.buscaEntidadeTelaPadrao($scope.userDTO.configLisNet, moduloPadrao,$scope.userDTO.UNI_ST_CODIGO,blFiltro)
-                    .then(function successCallback(response) {
-                        console.log('Entidades chegaram c sucesso .... aguarde construcao da tabela');
-                        var retornoEntidades = response.data;
-                        colocaIconesEstilos(retornoEntidades);
-                        moduloPadrao.entidade.entidades = retornoEntidades;
-                        
-                        if (angular.isUndefined($scope.dTOptionsBuilder)) {
-                            $scope.dTOptionsBuilder = constroeDTOptionsBuilder();
-                        }
-                        $timeout(function () {
-                            self.modalLoading.dismiss('cancel');
-                        }, 700);
+        $timeout(function () {
+            try {
+                buscaAPIService.buscaEntidadeTelaPadrao($scope.userDTO.configLisNet, moduloPadrao, $scope.userDTO.UNI_ST_CODIGO, $scope.jsonTelaPadrao.limit, blFiltro)
+                        .then(function successCallback(response) {
+                            console.log('Entidades chegaram c sucesso .... aguarde construcao da tabela');
+                            var retornoEntidades = response.data;
+//                            console.log(typeof retornoEntidades);
+                            if ((typeof retornoEntidades) === 'object') {
+                                colocaIconesEstilos(retornoEntidades);
+                                moduloPadrao.entidade.entidades = retornoEntidades;
 
-                    }, function errorCallback(response) {
-                        notificacaoProvider.sweetError("erro", response.statusText);
-                    });
+                                if (angular.isUndefined($scope.dTOptionsBuilder)) {
+                                    $scope.dTOptionsBuilder = constroeDTOptionsBuilder();
+                                }
+                                $timeout(function () {
+                                    self.modalLoading.dismiss('cancel');
+                                }, 700);
+                            } else {
+                                self.modalLoading.dismiss('cancel');
+                                notificacaoProvider.sweetError("erro", retornoEntidades);
+                                $scope.limparTela();
+                            }
+
+
+                        }, function errorCallback(response) {
+                            notificacaoProvider.sweetError("erro", response.statusText);
+                        });
+            } catch (error) {
+                notificacaoProvider.sweetError("erro", error);
+            }
+
         }, 120);
-        
-    }
+
+    };
     
-    function colocaIconesEstilos(data){
+    function colocaIconesEstilos(data) {
         moduloPadrao.entidade.entidadesDB = [];
-        for(var i = 0; i < data.length; i ++){
-            var _entidade = data[i];
-            var dataEnt = {};
-            dataEnt.id = i;
-            dataEnt.status = 'R';
-            dataEnt.popup = {inicio: false, fim: false};
-            dataEnt.ngStyle = "color: #0077b3";
-            dataEnt.ngClass = "fa fa-database";
-            dataEnt.toolTip= "não há alterações";
-            dataEnt.dataPicker = [];
+
+        if (data && typeof data != 'string') {
+            for (var i = 0; i < data.length; i++) {
+                var _entidade = data[i];
+                var dataEnt = {};
+                dataEnt.id = i;
+                dataEnt.status = 'R';
+                dataEnt.popup = {inicio: false, fim: false};
+                dataEnt.ngStyle = "color: #0077b3";
+                dataEnt.ngClass = "fa fa-database";
+                dataEnt.toolTip = "não há alterações";
+                dataEnt.dataPicker = [];
 //            console.log(' _entidade[0] = '+ _entidade[0]);
 
-                for(var y = 0 ; y < _entidade.length ; y ++){
+                for (var y = 0; y < _entidade.length; y++) {
                     var _v = _entidade[y];
-                    if(_v && _v.length === 1){
-                        if(_v === 'S'){
+                    if (_v && _v.length === 1) {
+                        if (_v === 'S') {
                             _entidade[y] = true;
-                        }else if(_v === 'N'){
+                        } else if (_v === 'N') {
                             _entidade[y] = false;
                         }
-                    }else if(_v && _v.length === 24 && _v.substring(_v.length -1 , _v.length) === 'Z'){
+                    } else if (_v && _v.length === 24 && _v.substring(_v.length - 1, _v.length) === 'Z') {
 //                        console.log(_v);
                         _entidade[y] = new Date(_v);
                         dataEnt.dataPicker.push(false);
@@ -303,12 +357,16 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
                 }
                 _entidade.shift();
                 _entidade.unshift(dataEnt);
-//                _entidade.push(dataEnt);
-                /*
-                 * salvando o esta original de todos os objs
-                 */
                 moduloPadrao.entidade.entidadesDB.push(helperService.clonadorDeObj(_entidade));
+            }
+        } else {
+//            moduloPadrao.entidade.entidadesDB = [];
+//            moduloPadrao.entidade.entidades = [];
+            console.log('nothing TO DO ....');
+            $scope.limparTela();
         }
+
+
     }
     
     
