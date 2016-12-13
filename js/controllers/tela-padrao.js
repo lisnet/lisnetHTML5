@@ -106,50 +106,144 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
         }
     };
     
-    $scope.tronarEditavel = function (ent){
-//        console.log("ent  = "+ JSON.stringify(ent,null,2));
-        if(ent[0].editavel){
-            ent[0].editavel = false;  
-        }else{
-            ent[0].editavel = true;  
+    tronarEditavel = function (ent) {
+        if (ent[0].editavel) {
+            ent[0].editavel = false;
+        } else {
+            ent[0].editavel = true;
         }
+    };
+    
+    removeEntidade = function (ent){
+        var _index  = moduloPadrao.entidade.entidades.indexOf(ent);
+//        for(var i = 0 ; i < moduloPadrao.entidade.entidades.length; i ++){
+//            var _ent = moduloPadrao.entidade.entidades[i];
+//            if(_ent === ent){
+//               _index  = i;
+//               console.log('bingo .....');
+//            }
+//        }
+
+        console.log('_index = '+_index);
+        if(_index || _index === 0){
+            if(moduloPadrao.entidade.entidades.length === 1){
+                moduloPadrao.entidade.entidades = [];
+                moduloPadrao.entidade.entidadesDB = [];
+            }else{
+                moduloPadrao.entidade.entidades.splice(_index, 1);
+                moduloPadrao.entidade.entidadesDB.splice(_index, 1);
+            }
+             
+        }
+    };
+    $scope.manipulaEntidade = function (ent,acao){
+        switch (acao) {
+            case 'editar':
+                tronarEditavel(ent);
+                if(ent[0].status !== 'C'){
+                    ent[0].status = 'R';
+                    ent[0].ngClass = "fa fa-database";
+                    ent[0].ngStyle = "color: #0077b3";
+                }
+                
+                break;
+            case 'excluir':
+                if(ent[0].status !== 'C'){
+                    ent[0].editavel = false;
+                    ent[0].status = 'D';
+                    ent[0].ngStyle = "color: red";
+                    ent[0].ngClass = "fa fa-times";
+                    ent[0].toolTip= "registro marcado para deleção";
+                }else{
+                    removeEntidade(ent);
+                }
+                
+                break;
+            case 'desfazer':
+                if (ent[0].status !== 'C') {
+                    ent[0].editavel = false;
+                    $timeout(function () {
+                        var obj = moduloPadrao.entidade.entidadesDB.filter(function (obj) {
+                            return obj[0].id === ent[0].id;
+                        })[0];
+                        var objReferencia = helperService.clonadorDeObj(obj);
+                        console.log('desfazendo essa porra ...');
+                        console.log(objReferencia);
+                        for (var x = 1; x < objReferencia.length; x++) {
+                            ent[x] = objReferencia[x];
+                        }
+                        ent[0].status = 'R';
+                        ent[0].ngClass = "fa fa-database";
+                        ent[0].ngStyle = "color: #0077b3";
+                        ent[0].toolTip = "não há alterações";
+                    }, 300);
+                } else {
+                        console.log('nothing TO DO ');
+                }
+                break;
+        }
+    };
+    
+    $scope.criarNovoRegistro = function (){
+        console.log("moduloPadrao.entidade.colunas.length   =  "+moduloPadrao.entidade.colunas.length);
+      var _newEnt = [moduloPadrao.entidade.colunas.length+1];
+      var _dataEnt = {};
+            _dataEnt.id = Number(new Date());
+            _dataEnt.status = 'C';
+            _dataEnt.popup = {inicio: false, fim: false};
+            _dataEnt.ngStyle = "color: orange";
+            _dataEnt.ngClass = "fa fa-star-o";
+            _dataEnt.toolTip= "não há alterações";
+            _dataEnt.dataPicker = [];
+      _newEnt[0] = _dataEnt;
+      for(var x = 0; x < moduloPadrao.entidade.colunas.length; x ++){
+          _newEnt[x+1] = null;
+      }
+      console.log(_newEnt);
+      if(angular.isUndefined(moduloPadrao.entidade.entidades)){
+          moduloPadrao.entidade.entidades = [];
+          moduloPadrao.entidade.entidadesDB = [];
+      }
       
+      moduloPadrao.entidade.entidades.unshift(_newEnt);
+      moduloPadrao.entidade.entidadesDB.unshift(_newEnt);
     };
     
     
     
-    $scope.mudarStatus = function (ent, indexParent,indexChild){
-        
-        
-        console.log(' index filho  =  '+indexChild);
-        
-        var obj = moduloPadrao.entidade.entidadesDB.filter(function ( obj ) {
-            return obj[0].id === ent[0].id;
-        })[0];
-        
+    
+    $scope.mudarStatus = function (ent, indexParent, indexChild) {
+
+        if (ent[0].editavel  && ent[0].status !== 'C' ) {
+            console.log(' index filho  =  ' + indexChild);
+
+            var obj = moduloPadrao.entidade.entidadesDB.filter(function (obj) {
+                return obj[0].id === ent[0].id;
+            })[0];
+
             var objReferencia = helperService.clonadorDeObj(obj);
             objReferencia.shift();
 
             var entReferencia = helperService.clonadorDeObj(ent);
             entReferencia.shift();
-            
-            if(helperService.comparaObjetos(objReferencia,entReferencia)){
+
+            if (helperService.comparaObjetos(objReferencia, entReferencia)) {
                 console.log("os objs sao iquais ");
                 ent[0].status = 'R';
                 ent[0].ngStyle = "color: #0077b3";
                 ent[0].ngClass = "fa fa-database";
-                ent[0].toolTip= "não há alterações";
-            }else{
+                ent[0].toolTip = "não há alterações";
+            } else {
                 ent[0].ngStyle = "color: green ";
                 ent[0].status = 'U';
-                ent[0].toolTip= "linha com informações à serem salvas..";
+                ent[0].toolTip = "registro marcado para atualização";
             }
-            
+
             console.log(objReferencia);
             console.log(entReferencia);
-        
-        
-        
+        } else {
+            console.log('Entidade nao eh editavel no momento ...');
+        }
     };
     
     function carregarLista(blFiltro){
@@ -186,7 +280,7 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
             var dataEnt = {};
             dataEnt.id = i;
             dataEnt.status = 'R';
-//            dataEnt.popup = {inicio: false, fim: false};
+            dataEnt.popup = {inicio: false, fim: false};
             dataEnt.ngStyle = "color: #0077b3";
             dataEnt.ngClass = "fa fa-database";
             dataEnt.toolTip= "não há alterações";
@@ -292,9 +386,10 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
                 .withButtons([
 //                    {extend: 'copy'},
 //                    {extend: 'csv'},
-                    {extend: 'excel', title: 'Lista_configuracoes'},
-                    {extend: 'pdf', title: 'Lista_configuracoes'},
-                    {extend: 'print',
+//                    {extend: 'excel', title: 'Lista_configuracoes'},
+//                    {extend: 'pdf', title: 'Lista_configuracoes'},
+                    {
+//                        extend: 'print',
                         customize: function (win) {
                             $(win.document.body).addClass('white-bg');
                             $(win.document.body).css('font-size', '10px');

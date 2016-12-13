@@ -58,10 +58,13 @@
                         <div  class="col-lg-1">
                             <button class="btn btn-block  btn-outline  btn-success   full-width "     ng-click="buscar(true)" >Filtrar</button>
                         </div>
-                        <div  class="col-lg-2">
-                            <button class="btn btn-block  btn-outline  btn-danger full-width "    ng-click="limparTela()" >Limpar</button>
+                        <div  class="col-lg-1">
+                            <button class="btn btn-block  btn-outline  btn-default  full-width "   ng-click="criarNovoRegistro()"  >Criar </button>
                         </div>
-                        <div  class="col-lg-3">
+                        <div  class="col-lg-2">
+                            <button class="btn btn-block  btn-outline  btn-danger  full-width "    ng-click="limparTela()" >Limpar</button>
+                        </div>
+                        <div  class="col-lg-2">
                             <button class="btn btn-block  btn-outline  btn-primary full-width "     ng-click="buscar(false)" >Buscar Todos</button>
                         </div>
 
@@ -92,8 +95,23 @@
                                 <td   ng-repeat="e in ent track by $index "    style="with : {{moduloPadrao.entidade.colunas[$index - 1].tamanho}}px"    > 
 
                                     <div ng-if="$index === 0" >
-                                        <i  style="{{ent[0].ngStyle}}"  class="{{ent[0].ngClass}}"   aria-hidden="true"    ng-click="tronarEditavel(ent)"   data-toggle="tooltip" title="{{ent[0].toolTip}}"  ></i>
-                                        <!--{{ent[7].ngStyle}}-->
+                                        <div >
+                                        <i  style="{{ent[0].ngStyle}}"  class="{{ent[0].ngClass}}"   aria-hidden="true"    ng-click="manipulaEntidade(ent,'editar')"     data-toggle="tooltip" title="{{ent[0].toolTip}}"  ></i>
+                                        <span uib-dropdown     >
+                                            <span class="count-info" href uib-dropdown-toggle   >
+                                                <span class="glyphicon glyphicon-option-vertical"></span>
+                                            </span>
+                                            <ul class="dropdown-alerts" uib-dropdown-menu     style="width: 60px;"  >
+                                                    <li   style="font-weight: bold;   font-style: italic;"  >  Ações</li>
+                                                    <li class="divider"></li>
+                                                    <li   style="font-weight: bold;"  ng-click="manipulaEntidade(ent,'editar')"   ><i  class="fa fa-pencil"   style="color: red; font-weight: bold; color: #003bb3; "  ></i>  Editar</li>
+                                                    <li   class="divider"></li>
+                                                    <li   ng-if="ent[0].status !== 'C' " style=" font-weight: bold;"  ng-click="manipulaEntidade(ent,'desfazer')" ><i  class="fa fa-backward"   style="color: red; font-weight: bold; color: #170;"  ></i>  Desfazer</li>
+                                                    <li  ng-if="ent[0].status !== 'C' "  class="divider"></li>
+                                                    <li   style="font-weight: bold;"   ng-click="manipulaEntidade(ent,'excluir')" ><i  class="fa fa-times"   style="color: red; font-weight: bold;"  ></i>  Excluir</li>
+                                            </ul>
+                                        </span>
+                                        </div>
                                     </div>
 
                                     <div ng-if="$index > 0  && $index ">
@@ -139,23 +157,23 @@
                                         <!--String & Chars-->
                                         <span ng-if="moduloPadrao.entidade.colunas[$index - 1].tipo === 'C'  || moduloPadrao.entidade.colunas[$index - 1].tipo === 'N'" >
                                             <span  ng-if="moduloPadrao.entidade.colunas[$index - 1].componente === 'E'">
-                                                <spa ng-if="!ent[0].editavel" >
+                                                <spa ng-if="!ent[0].editavel ||  moduloPadrao.entidade.colunas[$index - 1].chave === 'S' " >
                                                     {{e}}
                                                 </spa>
-                                                <spa ng-if="ent[0].editavel" >
+                                                <spa ng-if="ent[0].editavel && moduloPadrao.entidade.colunas[$index - 1].chave !== 'S' " >
                                                     <span ng-if="moduloPadrao.entidade.colunas[$index - 1].tipo === 'C' " >
-                                                        <input   ng-change="mudarStatus(ent,$parent.$index, $index)"     class="form-control  text-primary text-capitalize "  ng-model="ent[$index]"  >
+                                                        <input     ng-change="mudarStatus(ent,$parent.$index, $index)"     class="form-control  text-primary text-capitalize "  ng-model="ent[$index]"  >
                                                     </span>
                                                     <span ng-if="moduloPadrao.entidade.colunas[$index - 1].tipo === 'N' " >
-                                                        <input   type="number"  ng-change="mudarStatus(ent,$parent.$index, $index)"     class="form-control  text-primary text-capitalize "  ng-model="ent[$index]"  >
+                                                        <input    type="number"  ng-change="mudarStatus(ent,$parent.$index, $index)"     class="form-control  text-primary text-capitalize "  ng-model="ent[$index]"  >
                                                     </span>
                                                     
                                                     <!--ng-maxlength="{{moduloPadrao.entidade.colunas[$index - 1].tamanho}}"  >-->
                                                 </spa>
                                             </span>
                                             <span  ng-if="moduloPadrao.entidade.colunas[$index - 1].componente === 'C'">
-                                                {{e}}
-                                                <input      icheck type="checkbox"  ng-disabled="!ent[0].editavel"  ng-model="e"  >
+                                                <!--{{e}}-->
+                                                <input      icheck type="checkbox"  ng-disabled="!ent[0].editavel  "  ng-model="ent[$index]"   ng-change="mudarStatus(ent,$parent.$index, $index)"  >
                                             </span>
                                         </span>
 
@@ -173,6 +191,21 @@
                 </div>
 
             </div>
+            
+            
+<!--            <div  class="col-lg-12" >
+                <div  class="row" >
+                    <div  class="col-lg-6" ></div>
+                    <div  class="col-lg-6" >
+                        <div  class="col-lg-6">
+                            <button class="btn btn-block  btn-primary full-width "   ng-click="criarNovoRegistro()"  >Criar novo registro</button>
+                        </div>
+                        <div  class="col-lg-6">
+                            <button class="btn btn-block  btn-success full-width "     ng-click="buscar(false)" >Salvar alterações</button>
+                        </div>
+                    </div>
+                </div>    
+            </div>-->
         </div>
 
     </div>
