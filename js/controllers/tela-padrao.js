@@ -234,32 +234,45 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
         }
     };
     
-    function carregarLista(blFiltro){
+    function carregarLista(blFiltro) {
         $scope.limparTela();
         moduloPadrao.title = 'Carregando ...';
-        moduloPadrao.msg = 'Buscando '+moduloPadrao.state.data.pageTitle+' na base de Dados.';
+        moduloPadrao.msg = 'Buscando ' + moduloPadrao.state.data.pageTitle + ' na base de Dados.';
         self.modalLoading = notificacaoProvider.modalLoading(moduloPadrao.title, moduloPadrao.msg, $scope);
-         $timeout(function () {
-            buscaAPIService.buscaEntidadeTelaPadrao($scope.userDTO.configLisNet, moduloPadrao,$scope.userDTO.UNI_ST_CODIGO,$scope.jsonTelaPadrao.limit,blFiltro)
-                    .then(function successCallback(response) {
-                        console.log('Entidades chegaram c sucesso .... aguarde construcao da tabela');
-                        var retornoEntidades = response.data;
-                        colocaIconesEstilos(retornoEntidades);
-                        moduloPadrao.entidade.entidades = retornoEntidades;
-                        
-                        if (angular.isUndefined($scope.dTOptionsBuilder) ) {
-                            $scope.dTOptionsBuilder = constroeDTOptionsBuilder();
-                        }
-                        $timeout(function () {
-                            self.modalLoading.dismiss('cancel');
-                        }, 700);
+        $timeout(function () {
+            try {
+                buscaAPIService.buscaEntidadeTelaPadrao($scope.userDTO.configLisNet, moduloPadrao, $scope.userDTO.UNI_ST_CODIGO, $scope.jsonTelaPadrao.limit, blFiltro)
+                        .then(function successCallback(response) {
+                            console.log('Entidades chegaram c sucesso .... aguarde construcao da tabela');
+                            var retornoEntidades = response.data;
+//                            console.log(typeof retornoEntidades);
+                            if ((typeof retornoEntidades) === 'object') {
+                                colocaIconesEstilos(retornoEntidades);
+                                moduloPadrao.entidade.entidades = retornoEntidades;
 
-                    }, function errorCallback(response) {
-                        notificacaoProvider.sweetError("erro", response.statusText);
-                    });
+                                if (angular.isUndefined($scope.dTOptionsBuilder)) {
+                                    $scope.dTOptionsBuilder = constroeDTOptionsBuilder();
+                                }
+                                $timeout(function () {
+                                    self.modalLoading.dismiss('cancel');
+                                }, 700);
+                            } else {
+                                self.modalLoading.dismiss('cancel');
+                                notificacaoProvider.sweetError("erro", retornoEntidades);
+                                $scope.limparTela();
+                            }
+
+
+                        }, function errorCallback(response) {
+                            notificacaoProvider.sweetError("erro", response.statusText);
+                        });
+            } catch (error) {
+                notificacaoProvider.sweetError("erro", error);
+            }
+
         }, 120);
-        
-    }
+
+    };
     
     function colocaIconesEstilos(data) {
         moduloPadrao.entidade.entidadesDB = [];

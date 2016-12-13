@@ -1157,7 +1157,7 @@ console.log('construing config , registrando state');
             }).state('localdeentrega', {
                 url: "/configura/localdeentrega/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00059',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
+                params: { modStCodigo: '00059',limit:'300',btnFiltrar:true,btnCriar:true,btnTodos:true},
                 parent: 'lisnet',
                 data: {pageTitle: 'Local de Entrega'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
