@@ -338,7 +338,6 @@ console.log('construing config , registrando state');
                 url: "/sobre",
                 templateUrl: "views/tmtelas/ajuda.html",
                 parent: 'lisnet',
-//                            controller: estatisticaFaturamento,
                 data: {pageTitle: 'Sobre'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
                         return $ocLazyLoad.load([
