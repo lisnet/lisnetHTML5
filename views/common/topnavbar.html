@@ -106,7 +106,7 @@
                         <li class="divider"></li>
                     </span>
 
-                    <li  style="background-color: lightblue">
+                    <li  style="background-color: lightblue" ng-if="userDTO.notificacoes.length && userDTO.notificacoes.length > 0" >
                         <div class="text-center link-block"   >
                             <a   ng-click="main.stateGO('controle.notificacoes')" >
                                 <strong>Veja todas as notificações.</strong>
@@ -115,7 +115,7 @@
                             </a>
                         </div>
                     </li>
-
+                    <li class="divider"></li>
                 </ul>
             </li>
             
