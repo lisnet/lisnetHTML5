@@ -23,7 +23,7 @@
     <div class="row animated fadeInRight">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
-                
+
                 <div class="ibox-content" id="ibox-content">
 
                     <div id="vertical-timeline" class="vertical-container dark-timeline center-orientation">
@@ -31,7 +31,7 @@
                             <div class="vertical-timeline-icon navy-bg">
                                 <i class="fa fa-building"></i>
                             </div>
-                            {{ userDTO.configLisNet }}
+                            <!--{{ userDTO.configLisNet }}
                             <br>
                             {{varSimple}}
                             <br>
@@ -41,19 +41,15 @@
                             <br>
                             {{arraySimple !== null}}   {{arraySimple.length}}  {{typeOfArray  }}
                             <br>
-                            {{buscaPosicaoArray(2)}}
-                            <div class="vertical-timeline-content">
-                                A <b>GesLab</b> foi fundada com o objetivo de fornecer ao mercado soluções corporativas de consultoria e sistema de informação. Baseada em um modelo organizacional estratégico e uma política de gerenciamento participativo.</p>
-                                    Nossa meta é atender às necessidades das empresas que estão cada vez mais investindo em tecnologia e capacitação de seus profissionais, para acompanhar as mudanças da era digital.
-                                    Somos uma empresa que tem a abrangência nacional e internacional.
-                                    Nossa empresa é focada no desenvolvimento de projetos inovadores nas áreas de Sistemas e Tecnologia da Informação.
-                                    A atuação de nossa empresa ultrapassa o Território Nacional, almejando o mercado internacional.
+                            {{buscaPosicaoArray(2)}}-->
 
+                            <div class="vertical-timeline-content">
+                                {{instgeslab}}
                                 <!--<a href="#" class="btn btn-sm btn-primary"> More info</a>-->
-                                    <span class="vertical-date">
-                                           <b>GESLAB</b><br/>
-                                        <small>1997</small>
-                                    </span>
+                                <span class="vertical-date">
+                                    <b>{{insttitulo}}</b><br/>
+                                    <small>{{instdata.secondage}}</small>
+                                </span>
                             </div>
                         </div>
 
@@ -61,18 +57,12 @@
                             <div class="vertical-timeline-icon blue-bg">
                                 <i class="fa fa-flask"></i>
                             </div>
-
+                            
                             <div class="vertical-timeline-content">
-                                <h2><b>LISNET</b></h2>
-                                <b>Lisnet</b> sistema de informação de gestão e serviços ao diagnóstico. Sendo, um poderoso LIS (Laboratory Information System), desenvolvido para atender todas as necessidades dos laboratórios de Análises Clínicas nos mais variados perfis e abrangência. 
-                                    A riqueza de funcionalidades e a solidez de seus conceitos foram características fundamentais para o sucesso da informatização de diversos serviços públicos e privados, hospitalares e ambulatoriais, assim como laboratórios de apoio, redes de laboratórios, e bancos de sangue.
-                                    A característica principal do LISNet é a mobilidade, com seu funcionamento em nuvens (Cloud-Computing), o acesso ao sistema é através da internet, ou seja o cliente poderá instalar o aplicativo em seu computador portátil ou em seu desktop em casa ou na clínica e ter acesso ao sistema com todas as suas funcionalidades 24 horas por dia mesmo fora do laboratório, bastando ter conexão com a internet, sendo ela 3G, Wi-Fi ou banda larga.
-                               
-                                <!--<a href="#" class="btn btn-sm btn-success"> Download document </a>-->
-                                    <span class="vertical-date">
-                                        Janeiro <br/>
-                                        <small>1994</small>
-                                    </span>
+                                {{lisnetinst}}
+                                <span class="vertical-date">
+                                    <b>{{titulolisnet}}</b><br>
+                                    <small>{{lisnetano[1]}}</small>
                             </div>
                         </div>
 
