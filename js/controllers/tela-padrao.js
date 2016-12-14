@@ -3,7 +3,7 @@
  Author     : eros
  */
 
-function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage, sairDoSistemaService, notificacaoProvider, $window, gerenciaRelatorioService, $filter, $timeout, $uibModal, DTOptionsBuilder, $interval, shareuser,helperService) {
+function telaPadrao($scope,$state ,buscaAPIService, $stateParams, sairDoSistemaService, notificacaoProvider,  $timeout,  DTOptionsBuilder, helperService) {
 //{tabela:_tabelaNome,modulo:[{"MOD_ST_CODIGO": "00021",... }],conteudo:};
     var self = this;
     $scope.userDTO = sairDoSistemaService.validarLogin();
@@ -103,14 +103,6 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
     
     removeEntidade = function (ent){
         var _index  = moduloPadrao.entidade.entidades.indexOf(ent);
-//        for(var i = 0 ; i < moduloPadrao.entidade.entidades.length; i ++){
-//            var _ent = moduloPadrao.entidade.entidades[i];
-//            if(_ent === ent){
-//               _index  = i;
-//               console.log('bingo .....');
-//            }
-//        }
-
         console.log('_index = '+_index);
         if(_index || _index === 0){
             if(moduloPadrao.entidade.entidades.length === 1){
@@ -120,7 +112,6 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
                 moduloPadrao.entidade.entidades.splice(_index, 1);
                 moduloPadrao.entidade.entidadesDB.splice(_index, 1);
             }
-             
         }
     };
     
@@ -130,14 +121,46 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
                 tronarEditavel(ent);
                 break;
             case 'excluir':
-                if(ent[0].status !== 'C'){
-                    ent[0].editavel = false;
-                    ent[0].status = 'D';
-                    ent[0].ngStyle = "color: red";
-                    ent[0].ngClass = "fa fa-times";
-                    ent[0].toolTip= "registro marcado para deleção";
-                }else{
-                    removeEntidade(ent);
+                
+                switch (ent[0].status){
+                    case 'R':
+                        ent[0].editavel = false;
+                        ent[0].status = 'D';
+                        ent[0].ngClass = "fa fa-times";
+                        ent[0].ngStyle = "color: red";
+                        ent[0].toolTip = "deletar linha ?";
+                    break;
+                    case 'D':
+                        try {
+                            self.modalLoading = notificacaoProvider.modalLoading('Excluindo', 'excluindo linha', $scope);
+                            $timeout(function () {
+                                buscaAPIService.salvaEntidadeTelaPadrao($scope.userDTO.configLisNet, moduloPadrao, $scope.userDTO.UNI_ST_CODIGO, ent)
+                                        .then(function   sucesso(response) {
+                                            var _response = response.data;
+                                            var _responseType = typeof _response;
+                                            console.log(typeof _response);
+                                            if (_response && _responseType === 'string' && _response.indexOf('ORA-') !== -1) {
+                                                notificacaoProvider.sweetError('Erro', _response);
+                                            } else {
+                                                removeEntidade(ent);
+                                            }
+                                            console.log(response.data);
+                                            self.modalLoading.dismiss('cancel');
+                                        }, function erro(response) {
+                                            console.log(response.statusText);
+                                            notificacaoProvider.sweetError('Erro', response.statusText);
+                                            self.modalLoading.dismiss('cancel');
+                                        });
+                            }, 300);
+                        } catch (error) {
+                            console.log(error);
+                            self.modalLoading.dismiss('cancel');
+                            notificacaoProvider.sweetError('Erro', error);
+                        }    
+                    break;
+                    case 'C':
+                        removeEntidade(ent);
+                    break;
                 }
                 
                 break;
@@ -230,7 +253,7 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
             _dataEnt.popup = {inicio: false, fim: false};
             _dataEnt.ngStyle = "color: orange";
             _dataEnt.ngClass = "fa fa-star-o";
-            _dataEnt.toolTip= "não há alterações";
+            _dataEnt.toolTip= "novo item à ser salvo.";
             _dataEnt.dataPicker = [];
       _newEnt[0] = _dataEnt;
       for(var x = 0; x < moduloPadrao.entidade.colunas.length; x ++){
@@ -242,8 +265,10 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, $localStorage,
           moduloPadrao.entidade.entidadesDB = [];
       }
       
+//      moduloPadrao.entidade.entidades.push(_newEnt);
+//      moduloPadrao.entidade.entidadesDB.push(helperService.clonadorDeObj(_newEnt));
       moduloPadrao.entidade.entidades.unshift(_newEnt);
-      moduloPadrao.entidade.entidadesDB.unshift(_newEnt);
+      moduloPadrao.entidade.entidadesDB.unshift(helperService.clonadorDeObj(_newEnt));
     };
     
     

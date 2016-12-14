@@ -36,7 +36,7 @@
                             <div>
                                 <select    chosen id="pesquisas" class="chosen-select form-control "  tabindex="4" ng-model="moduloPadrao.entidade.pesquisaTipo" >
                                     <option   value="0"   selected >Semelhante</option>
-                                    <option  value="1" >Começa com</option>
+                                    <option  value="1" >Começa</option>
                                     <option  value="2" >Exatamente</option>
                                 </select>
                             </div>
@@ -58,7 +58,7 @@
                             <button class="btn btn-block  btn-outline  btn-success   full-width "     ng-click="buscar(true)"  ng-disabled="!jsonTelaPadrao.btnFiltrar" >Filtrar</button>
                         </div>
                         <div  class="col-lg-1">
-                            <button class="btn btn-block  btn-outline  btn-info  full-width "   ng-click="criarNovoRegistro()"   ng-disabled="!jsonTelaPadrao.btnCriar" >Criar </button>
+                            <button class="btn btn-block  btn-outline  btn-info  full-width "   ng-click="criarNovoRegistro()"   ng-disabled="!jsonTelaPadrao.btnCriar" ><i  style="color: orange;" class="fa fa-star-o"></i>&nbsp;Criar&nbsp;</button>
                         </div>
                         <div  class="col-lg-2">
                             <button class="btn btn-block  btn-outline  btn-danger  full-width "    ng-click="limparTela() "   >Limpar</button>
@@ -78,7 +78,7 @@
                     <table   datatable="ng" dt-options="dTOptionsBuilder" class="table table-striped table-bordered table-hover dataTables-example"   >
                         <thead>
                             <tr  >
-                                <th style="width: 17px;"  ></th>
+                                <th  ></th>
                                    <!--style=" width: {{moduloPadrao.entidade.colunas[$index - 1].tamanho}}"-->
                                 <th ng-repeat="col in :: moduloPadrao.entidade.colunas  track by $index"    >
                                     {{col.nome}}
@@ -94,24 +94,32 @@
                                 <td   ng-repeat="e in ent track by $index "  > 
 
                                     <div ng-if="$index === 0" >
+                                        
                                         <div >
-                                        <i  style="{{ent[0].ngStyle}} ; padding-right: 6px;"  class="{{ent[0].ngClass}}"   aria-hidden="true"    ng-click="manipulaEntidade(ent,'editar')"     data-toggle="tooltip" title="{{ent[0].toolTip}}"  ></i>
-                                        <span uib-dropdown     >
-                                            <span class="count-info" href uib-dropdown-toggle   >
-                                                <span class="glyphicon glyphicon-option-vertical"></span>
-                                            </span>
-                                            <ul class="dropdown-alerts" uib-dropdown-menu     style="width: 60px;"  >
+
+                                            <i   ng-if="ent[0].status === 'R' || ent[0].status === 'C' " style="{{ent[0].ngStyle}} ; padding-right: 6px;"  class="{{ent[0].ngClass}}"   aria-hidden="true"    ng-click="manipulaEntidade(ent,'editar')"     data-toggle="tooltip" title="{{ent[0].toolTip}}"  ></i>
+
+                                            <i   ng-if="ent[0].status === 'D' "  style="{{ent[0].ngStyle}} ; padding-right: 6px;"  class="{{ent[0].ngClass}}"   aria-hidden="true"    ng-click="manipulaEntidade(ent,'excluir')"     data-toggle="tooltip" title="{{ent[0].toolTip}}"  ></i>
+
+                                            <i   ng-if="ent[0].status === 'D'  || ent[0].status === 'U' "  style="color:green ; padding-right: 6px;"  class="fa fa-backward"   aria-hidden="true"    ng-click="manipulaEntidade(ent,'desfazer')"     data-toggle="tooltip" title="reverter alterações ?"  ></i>
+                                            <i   ng-if="ent[0].status === 'U'  || ent[0].status === 'C' "  style="color: #000\9 ; font-weight: bold;"   class="fa fa-clipboard"   aria-hidden="true"    ng-click="manipulaEntidade(ent,'salvar')"     data-toggle="tooltip" title="salvar alterações ?"  ></i>
+
+                                            <span uib-dropdown   ng-if="ent[0].status === 'R' "  >
+                                                <span class="count-info" href uib-dropdown-toggle   >
+                                                    <span class="glyphicon glyphicon-option-vertical"></span>
+                                                </span>
+                                                <ul class="dropdown-alerts" uib-dropdown-menu    >
                                                     <li   style="font-weight: bold;   font-style: italic;"  >  Ações</li>
                                                     <li class="divider"></li>
                                                     <li   style="font-weight: bold;"  ng-click="manipulaEntidade(ent,'editar')"   ><i  class="fa fa-pencil"   style="color: red; font-weight: bold; color: #003bb3; "  ></i>  Editar</li>
                                                     <li   class="divider"></li>
                                                     <li   ng-if="ent[0].status !== 'C'  && ent[0].status !== 'R' " style=" font-weight: bold;"  ng-click="manipulaEntidade(ent,'desfazer')" ><i  class="fa fa-backward"   style="color: red; font-weight: bold; color: #170;"  ></i>  Desfazer</li>
                                                     <li  ng-if="ent[0].status !== 'C'  && ent[0].status !== 'R' "  class="divider"></li>
-                                                    <li   style="font-weight: bold;"   ng-click="manipulaEntidade(ent,'excluir')" ><i  class="fa fa-times"   style="color: red; font-weight: bold;"  ></i>  Excluir</li>
+                                                    <li   ng-if="ent[0].status !== 'D' "    ng-click="manipulaEntidade(ent,'excluir')" ><i  class="fa fa-times"   style="color: red; font-weight: bold;"  ></i>  Excluir</li>
                                                     <li  ng-if="ent[0].status !== 'R'  "  class="divider"></li>
                                                     <li   style="font-weight: bold;"   ng-if="ent[0].status !== 'R'  " ng-click="manipulaEntidade(ent,'salvar')"   ><i  class="fa fa-clipboard"   style="color: #163758 ; font-weight: bold;"  ></i>  Salvar</li>
-                                            </ul>
-                                        </span>
+                                                </ul>
+                                            </span>
                                         </div>
                                     </div>
 
