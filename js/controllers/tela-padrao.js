@@ -197,12 +197,19 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, sairDoSistemaS
                         try {
                             buscaAPIService.salvaEntidadeTelaPadrao($scope.userDTO.configLisNet, moduloPadrao, $scope.userDTO.UNI_ST_CODIGO, ent)
                                     .then(function   sucesso(response) {
-                                        console.log(response.data);
-                                        ent[0].status = 'R';
-                                        ent[0].ngClass = "fa fa-database";
-                                        ent[0].ngStyle = "color: #0077b3";
-                                        ent[0].toolTip = "não há alterações";
-                                        substituiEntidadeDB(ent);
+                                        var  _response =  response.data;
+                                        var _responseType = typeof _response;
+                                        if (_response && _responseType === 'string' && _response.indexOf('ORA-') !== -1) {
+                                                notificacaoProvider.sweetError('Erro', _response);
+                                            } else {
+                                                console.log(response.data);
+                                                ent[0].status = 'R';
+                                                ent[0].ngClass = "fa fa-database";
+                                                ent[0].ngStyle = "color: #0077b3";
+                                                ent[0].toolTip = "não há alterações";
+                                                substituiEntidadeDB(ent);
+                                            }
+                                        
                                     }, function erro(response) {
                                         console.log(response.statusText);
                                         notificacaoProvider.sweetError('Erro', response.statusText);
@@ -308,8 +315,8 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, sairDoSistemaS
                 ent[0].toolTip = "registro marcado para atualização";
             }
 
-            console.log(objReferencia);
-            console.log(entReferencia);
+//            console.log(objReferencia);
+//            console.log(entReferencia);
         } else {
             console.log('Entidade nao eh editavel no momento ...');
         }

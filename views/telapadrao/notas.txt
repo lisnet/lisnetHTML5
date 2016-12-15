@@ -37,3 +37,28 @@ H-HORA
 
 MPT_CH_COMPONENTE
  E - Edit , C - Checkbox
+
+
+
+
+DELETE FROM LABCLIM.LAB_SETOR WHERE ;
+
+
+INSERT INTO LABCLIM.LAB_SETOR
+	(UNI_ST_CODIGO, SET_ST_CODIGO, SET_ST_DESCRICAO, SET_IN_SEQUENCIA, SET_IN_DESCARTE, SET_IN_COR, SET_CH_ALIQUOTA, SET_IN_DIASPENDENCIA)
+VALUES 
+	('', '', '', , , , '', );
+
+select * from lab_setor
+where set_st_codigo = 'CAD'
+and uni_st_codigo = '001'
+
+001	CAD	CADASTRO/eros	null	null	0	N	60
+select * from lab_antibiotico where ant_st_codigo = 'AB'
+AB	AMPHOTERICIN
+
+
+INSERT INTO LAB_ANTIBIOTICO
+	(ANT_ST_CODIGO, ANT_ST_DESCRICAO)
+VALUES 
+	('AB', 'AMPHOTERICIN');
