@@ -26,19 +26,16 @@ angular.module('lisnet').service('resumePerfilService', function ($state) {
                 for (y in pai.telas) {
                     var filho = pai.telas[y];
                     if (filho.telas) {
-//                        console.log('Filho com paginas  ...');
                         filho.visualisar = true;
                         for (z in filho.telas) {
                             var neto = filho.telas[z];
                             neto.visualisar = this.findState(neto.state, arrayStates);
                         }
                     } else {
-//                        console.log('Filho sem paginas  ...');
                         filho.visualisar = this.findState(filho.state, arrayStates);
                     }
                 }
             } else {
-//                console.log('Pai sem paginas  ...');
                 pai.visualisar = false;
             }
         }

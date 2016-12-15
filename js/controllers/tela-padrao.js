@@ -159,7 +159,11 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, sairDoSistemaS
                         }    
                     break;
                     case 'C':
-                        removeEntidade(ent);
+                        self.modalLoading = notificacaoProvider.modalLoading('Excluindo', 'excluindo linha', $scope);
+                        $timeout(function (){
+                            removeEntidade(ent);
+                            self.modalLoading.dismiss('cancel');
+                        },300);
                     break;
                 }
                 
@@ -225,6 +229,7 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, sairDoSistemaS
             if(entDB[0].id === ent[0].id){
                 console.log('achamos no entidadeDB , fazendo a troca');
                _index  = i; 
+               break;
             }
         }
         if(_index){
@@ -243,32 +248,34 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, sairDoSistemaS
 //        }
     }
     
-    $scope.criarNovoRegistro = function (){
-        console.log("moduloPadrao.entidade.colunas.length   =  "+moduloPadrao.entidade.colunas.length);
-      var _newEnt = [moduloPadrao.entidade.colunas.length+1];
-      var _dataEnt = {};
+    $scope.criarNovoRegistro = function () {
+        console.log("moduloPadrao.entidade.colunas.length   =  " + moduloPadrao.entidade.colunas.length);
+        self.modalLoading = notificacaoProvider.modalLoading('Criando', 'criando nova linha para registro', $scope);
+        $timeout(function () {
+            var _newEnt = [moduloPadrao.entidade.colunas.length + 1];
+            var _dataEnt = {};
             _dataEnt.id = Number(new Date());
             _dataEnt.editavel = true;
             _dataEnt.status = 'C';
             _dataEnt.popup = {inicio: false, fim: false};
             _dataEnt.ngStyle = "color: orange";
             _dataEnt.ngClass = "fa fa-star-o";
-            _dataEnt.toolTip= "novo item à ser salvo.";
+            _dataEnt.toolTip = "novo item à ser salvo.";
             _dataEnt.dataPicker = [];
-      _newEnt[0] = _dataEnt;
-      for(var x = 0; x < moduloPadrao.entidade.colunas.length; x ++){
-          _newEnt[x+1] = null;
-      }
-      console.log(_newEnt);
-      if(angular.isUndefined(moduloPadrao.entidade.entidades)){
-          moduloPadrao.entidade.entidades = [];
-          moduloPadrao.entidade.entidadesDB = [];
-      }
-      
-//      moduloPadrao.entidade.entidades.push(_newEnt);
-//      moduloPadrao.entidade.entidadesDB.push(helperService.clonadorDeObj(_newEnt));
-      moduloPadrao.entidade.entidades.unshift(_newEnt);
-      moduloPadrao.entidade.entidadesDB.unshift(helperService.clonadorDeObj(_newEnt));
+            _newEnt[0] = _dataEnt;
+            for (var x = 0; x < moduloPadrao.entidade.colunas.length; x++) {
+                _newEnt[x + 1] = null;
+            }
+            console.log(_newEnt);
+            if (angular.isUndefined(moduloPadrao.entidade.entidades)) {
+                moduloPadrao.entidade.entidades = [];
+                moduloPadrao.entidade.entidadesDB = [];
+            }
+
+            moduloPadrao.entidade.entidades.unshift(_newEnt);
+            moduloPadrao.entidade.entidadesDB.unshift(helperService.clonadorDeObj(_newEnt));
+            self.modalLoading.dismiss('cancel');
+        }, 300);
     };
     
     

@@ -6,7 +6,7 @@
 
 /* global i, y, x */
 
-function notificacaoBarra($scope, $window, $localStorage,sairDoSistemaService,$rootScope){
+function notificacaoBarra($scope, $window,sairDoSistemaService,$rootScope){
     
     console.log('Inicializando notificacaoBarra');
     $scope.userDTO = sairDoSistemaService.validarLogin();
@@ -42,7 +42,7 @@ function notificacaoBarra($scope, $window, $localStorage,sairDoSistemaService,$r
         for (y in p.telas) {
 
             var f = p.telas[y];
-            if (f.telas) {
+            if (f.telas && f.telas.length > 0 ) {
                 for (x in f.telas) {
                     var n = f.telas[x];
                     if (n.visualisar) {
@@ -51,7 +51,7 @@ function notificacaoBarra($scope, $window, $localStorage,sairDoSistemaService,$r
                 }
             } else {
                 if(f.visualisar){
-                    $scope.states.push(f.state+' | '+f.MOD_ST_DESCRICAO+' | '+f.MOD_ST_CODIGO);
+                    $scope.states.push(f.state +' | '+f.MOD_ST_DESCRICAO+' | '+f.MOD_ST_CODIGO);
                 }
             }
             

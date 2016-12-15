@@ -97,9 +97,9 @@
                                         
                                         <div >
 
-                                            <i   ng-if="ent[0].status === 'R' || ent[0].status === 'C' " style="{{ent[0].ngStyle}} ; padding-right: 6px;"  class="{{ent[0].ngClass}}"   aria-hidden="true"    ng-click="manipulaEntidade(ent,'editar')"     data-toggle="tooltip" title="{{ent[0].toolTip}}"  ></i>
+                                            <i   ng-if="ent[0].status === 'R'  " style="{{ent[0].ngStyle}} ; padding-right: 6px;"  class="{{ent[0].ngClass}}"   aria-hidden="true"    ng-click="manipulaEntidade(ent,'editar')"     data-toggle="tooltip" title="{{ent[0].toolTip}}"  ></i>
 
-                                            <i   ng-if="ent[0].status === 'D' "  style="{{ent[0].ngStyle}} ; padding-right: 6px;"  class="{{ent[0].ngClass}}"   aria-hidden="true"    ng-click="manipulaEntidade(ent,'excluir')"     data-toggle="tooltip" title="{{ent[0].toolTip}}"  ></i>
+                                            <i   ng-if="ent[0].status === 'D'  || ent[0].status === 'C'  "  style="color: red; font-weight: bold; padding-right: 6px;"  class="fa fa-times"   aria-hidden="true"    ng-click="manipulaEntidade(ent,'excluir')"     data-toggle="tooltip" title="excluir linha ?"  ></i>
 
                                             <i   ng-if="ent[0].status === 'D'  || ent[0].status === 'U' "  style="color:green ; padding-right: 6px;"  class="fa fa-backward"   aria-hidden="true"    ng-click="manipulaEntidade(ent,'desfazer')"     data-toggle="tooltip" title="reverter alterações ?"  ></i>
                                             <i   ng-if="ent[0].status === 'U'  || ent[0].status === 'C' "  style="color: #000\9 ; font-weight: bold;"   class="fa fa-clipboard"   aria-hidden="true"    ng-click="manipulaEntidade(ent,'salvar')"     data-toggle="tooltip" title="salvar alterações ?"  ></i>
@@ -166,10 +166,10 @@
                                         <!--String & Chars-->
                                         <span ng-if="moduloPadrao.entidade.colunas[$index - 1].tipo === 'C'  || moduloPadrao.entidade.colunas[$index - 1].tipo === 'N'" >
                                             <span  ng-if="moduloPadrao.entidade.colunas[$index - 1].componente === 'E'">
-                                                <spa ng-if="!ent[0].editavel ||  moduloPadrao.entidade.colunas[$index - 1].chave === 'S' " >
+                                                <spa ng-if="!ent[0].editavel ||  (moduloPadrao.entidade.colunas[$index - 1].chave === 'S' && ent[0].status !== 'C')  " >
                                                     {{e}}
                                                 </spa>
-                                                <spa ng-if="ent[0].editavel && moduloPadrao.entidade.colunas[$index - 1].chave !== 'S' " >
+                                                <spa ng-if="ent[0].editavel && moduloPadrao.entidade.colunas[$index - 1].chave !== 'S' || (moduloPadrao.entidade.colunas[$index - 1].chave === 'S' && ent[0].status === 'C') " >
                                                     <span ng-if="moduloPadrao.entidade.colunas[$index - 1].tipo === 'C' " >
                                                         <input     ng-change="mudarStatus(ent,$parent.$index, $index)"     class="form-control  text-primary text-capitalize "  ng-model="ent[$index]"  >
                                                     </span>
