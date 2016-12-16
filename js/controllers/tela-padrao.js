@@ -83,7 +83,7 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, sairDoSistemaS
         retornaPesquisa();
         
         if(blFiltro && moduloPadrao.entidade.pesquisaJSON && moduloPadrao.entidade.pesquisaJSON.campo && moduloPadrao.entidade.pesquisaInput){
-            moduloPadrao.entidade.pesquisaInput = moduloPadrao.entidade.pesquisaInput.toUpperCase();
+//            moduloPadrao.entidade.pesquisaInput = moduloPadrao.entidade.pesquisaInput.toUpperCase();
             moduloPadrao.entidade.pesquisaInput = moduloPadrao.entidade.pesquisaInput.trim();
             carregarLista(blFiltro);
         }else if(!blFiltro) {
@@ -121,7 +121,6 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, sairDoSistemaS
                 tronarEditavel(ent);
                 break;
             case 'excluir':
-                
                 switch (ent[0].status){
                     case 'R':
                         ent[0].editavel = false;
@@ -166,7 +165,6 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, sairDoSistemaS
                         },300);
                     break;
                 }
-                
                 break;
             case 'desfazer':
                 if (ent[0].status !== 'C') {
@@ -229,7 +227,7 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, sairDoSistemaS
     
     function substituiEntidadeDB(ent){
         console.log('Inside substituiEntidadeDB');
-        console.log(ent);
+//        console.log(ent);
         var _index ;
         for(var i  =0  ; i < moduloPadrao.entidade.entidadesDB.length; i ++){
             var entDB =moduloPadrao.entidade.entidadesDB[i];
@@ -244,15 +242,6 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, sairDoSistemaS
              var entReferencia = helperService.clonadorDeObj(ent);
             moduloPadrao.entidade.entidadesDB[_index] = entReferencia;
         }
-//         var obj = moduloPadrao.entidade.entidadesDB.filter(function (obj) {
-//                return obj[0].id === ent[0].id;
-//            })[0];
-//        if(obj){
-//            console.log('achamos no entidadeDB , fazendo a troca');
-//            var entReferencia = helperService.clonadorDeObj(ent);
-//            console.log(entReferencia);
-//            obj = entReferencia;
-//        }
     }
     
     $scope.criarNovoRegistro = function () {
@@ -273,7 +262,7 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, sairDoSistemaS
             for (var x = 0; x < moduloPadrao.entidade.colunas.length; x++) {
                 _newEnt[x + 1] = null;
             }
-            console.log(_newEnt);
+//            console.log(_newEnt);
             if (angular.isUndefined(moduloPadrao.entidade.entidades)) {
                 moduloPadrao.entidade.entidades = [];
                 moduloPadrao.entidade.entidadesDB = [];

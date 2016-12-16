@@ -1,3 +1,7 @@
+
+<!--https://scotch.io/tutorials/angularjs-form-validation
+https://demos.scotch.io/angular-validation/demos/-->
+
 <div class="row wrapper border-bottom white-bg page-heading"  >
     <div class="col-lg-10" ng-controller="telaPadrao" >
         <h2>{{moduloPadrao.state.data.pageTitle}}</h2>
@@ -51,7 +55,7 @@
                         </div>
 
                         <div class="col-lg-2  ">
-                            <input   placeholder="Campos de Pesquisa" type="text"  id="inputTextRequisicao"  class="form-control  text-primary text-capitalize " size="20" ng-model="moduloPadrao.entidade.pesquisaInput"   enter-key="buscar(true)"   ng-maxlength="300"  >
+                            <input   placeholder="Campos de Pesquisa" type="text"  id="inputTextRequisicao"  class="form-control  text-primary  " size="20" ng-model="moduloPadrao.entidade.pesquisaInput"   enter-key="buscar(true)"   ng-maxlength="300"  >
                         </div>
 
                         <div  class="col-lg-1">
@@ -92,6 +96,7 @@
                             <tr   ng-repeat="ent in moduloPadrao.entidade.entidades  track by $index"    >
                                 <!--ng-style="{{ moduloPadrao.entidade.colunas[$index - 1].tamanho? 'width:'moduloPadrao.entidade.colunas[$index - 1].tamanho'.px;' : 'width:10px;' }}"-->   
                                 <td   ng-repeat="e in ent track by $index "  > 
+                                    <form name="{{ent[0].id}}"  novalidate >
 
                                     <div ng-if="$index === 0" >
                                         
@@ -102,7 +107,7 @@
                                             <i   ng-if="ent[0].status === 'D'  || ent[0].status === 'C'  "  style="color: red; font-weight: bold; padding-right: 6px;"  class="fa fa-times"   aria-hidden="true"    ng-click="manipulaEntidade(ent,'excluir')"     data-toggle="tooltip" title="excluir linha ?"  ></i>
 
                                             <i   ng-if="ent[0].status === 'D'  || ent[0].status === 'U' "  style="color:green ; padding-right: 6px;"  class="fa fa-backward"   aria-hidden="true"    ng-click="manipulaEntidade(ent,'desfazer')"     data-toggle="tooltip" title="reverter alterações ?"  ></i>
-                                            <i   ng-if="ent[0].status === 'U'  || ent[0].status === 'C' "  style="color: #000\9 ; font-weight: bold;"   class="fa fa-clipboard"   aria-hidden="true"    ng-click="manipulaEntidade(ent,'salvar')"     data-toggle="tooltip" title="salvar alterações ?"  ></i>
+                                            <i   ng-disabled="entidadeForm.$invalid"  ng-if="ent[0].status === 'U'  || ent[0].status === 'C' "  style="color: #000\9 ; font-weight: bold;"   class="fa fa-clipboard"   aria-hidden="true"    ng-click="manipulaEntidade(ent,'salvar')"     data-toggle="tooltip" title="salvar alterações ?"  ></i>
 
                                             <span uib-dropdown   ng-if="ent[0].status === 'R' "  >
                                                 <span class="count-info" href uib-dropdown-toggle   >
@@ -124,7 +129,7 @@
                                     </div>
 
                                     <div ng-if="$index > 0  && $index ">
-
+                                        
 
                                         <!--Data & Hora-->
                                         <span ng-if="moduloPadrao.entidade.colunas[$index - 1].tipo === 'D'" >
@@ -134,14 +139,15 @@
                                                 </spa>
                                                 <spa ng-if="ent[0].editavel" >
 <!--                                                    {{  ent.popup.fim = false;  ent.openPopFim = function () {ent.popup.fim = true;};}}-->
-                                                    <p class="input-group">
-                                                        <input type="text" class="form-control"  
+                                                    <p class="input-group" style="width: 140px;" >
+                                                        <input   type="text" class="form-control"  
                                                              uib-datepicker-popup="dd/MM/yyyy" 
                                                              ng-model="ent[$index]"
                                                              is-open="ent[0].dataPicker[$index]" 
                                                              datepicker-options="dateOptions" 
                                                              close-text="Fechar"  
-                                                             alt-input-formats="['MM/dd/yyyy']" />
+                                                             alt-input-formats="['MM/dd/yyyy']" 
+                                                             required="{{moduloPadrao.entidade.colunas[$index - 1].obrigatorio === 'S' }}" />
                                                       <span class="input-group-btn">
                                                           <button type="button" class="btn btn-default  " ng-click="opeDataPicker(ent,$index)">
                                                               <i class="glyphicon glyphicon-calendar"></i>
@@ -157,7 +163,7 @@
                                                 <spa ng-if="ent[0].editavel" >
                                                     <!--<input type="datetime-local" id="exampleInput" name="input" ng-model="e" placeholder="HH:mm:ss"   required />-->
                                                     <p class="input-group date">
-                                                        <uib-timepicker ng-model="ent[$index]" hour-step="1" minute-step="1" datetimepicker-neutral-timezone></uib-timepicker>
+                                                        <uib-timepicker ng-model="ent[$index]" hour-step="1" minute-step="1" datetimepicker-neutral-timezone  required="{{moduloPadrao.entidade.colunas[$index - 1].obrigatorio === 'S' }}" ></uib-timepicker>
                                                   </p>
                                                 </spa>
                                             </span>
@@ -166,30 +172,30 @@
                                         <!--String & Chars-->
                                         <span ng-if="moduloPadrao.entidade.colunas[$index - 1].tipo === 'C'  || moduloPadrao.entidade.colunas[$index - 1].tipo === 'N'" >
                                             <span  ng-if="moduloPadrao.entidade.colunas[$index - 1].componente === 'E'">
-                                                <spa ng-if="!ent[0].editavel ||  (moduloPadrao.entidade.colunas[$index - 1].chave === 'S' && ent[0].status !== 'C')  " >
+                                                <span ng-if="!ent[0].editavel ||  (moduloPadrao.entidade.colunas[$index - 1].chave === 'S' && ent[0].status !== 'C')  " >
                                                     {{e}}
-                                                </spa>
-                                                <spa ng-if="ent[0].editavel && moduloPadrao.entidade.colunas[$index - 1].chave !== 'S' || (moduloPadrao.entidade.colunas[$index - 1].chave === 'S' && ent[0].status === 'C') " >
+                                                </span>
+                                                <span  class="form-group" ng-if="ent[0].editavel && moduloPadrao.entidade.colunas[$index - 1].chave !== 'S' || (moduloPadrao.entidade.colunas[$index - 1].chave === 'S' && ent[0].status === 'C') " >
                                                     <span ng-if="moduloPadrao.entidade.colunas[$index - 1].tipo === 'C' " >
-                                                        <input     ng-change="mudarStatus(ent,$parent.$index, $index)"     class="form-control  text-primary text-capitalize "  ng-model="ent[$index]"  >
+                                                        <input  size="{{moduloPadrao.entidade.colunas[$index - 1].tamanho  }}"  name="{{moduloPadrao.entidade.colunas[$index - 1].nome }}"   placeholder="{{moduloPadrao.entidade.colunas[$index - 1].nome }}"    ng-change="mudarStatus(ent,$parent.$index, $index)"     class="form-control  text-primary  "    
+                                                                required="{{moduloPadrao.entidade.colunas[$index - 1].obrigatorio === 'S' }}"  ng-minlength="{{moduloPadrao.entidade.colunas[$index - 1].obrigatorio === 'S'?1:0 }}" ng-maxlength="{{moduloPadrao.entidade.colunas[$index - 1].obrigatorio}}"   ng-model="ent[$index]"  >
+                                                        <!--<p ng-show="{{ent[0].id}}entidadeForm.{{moduloPadrao.entidade.colunas[$index - 1].nome }}.$invalid && !{{ent[0].id}}entidadeForm.{{moduloPadrao.entidade.colunas[$index - 1].nome }}.$pristine" class="help-block">O Campo {{moduloPadrao.entidade.colunas[$index - 1].nome }} é obrigatório.</p>-->
                                                     </span>
                                                     <span ng-if="moduloPadrao.entidade.colunas[$index - 1].tipo === 'N' " >
-                                                        <input    type="number"  ng-change="mudarStatus(ent,$parent.$index, $index)"     class="form-control  text-primary text-capitalize "  ng-model="ent[$index]"  >
+                                                        <input    type="number"   style="width: {{moduloPadrao.entidade.colunas[$index - 1].tamanho * 4 }}px"  ng-change="mudarStatus(ent,$parent.$index, $index)"   name="{{moduloPadrao.entidade.colunas[$index - 1].nome }}"     
+                                                                  class="form-control  text-primary "   required="{{moduloPadrao.entidade.colunas[$index - 1].obrigatorio === 'S' }}"  ng-model="ent[$index]"  >
                                                     </span>
-                                                    
-                                                    <!--ng-maxlength="{{moduloPadrao.entidade.colunas[$index - 1].tamanho}}"  >-->
-                                                </spa>
+                                                </span>
                                             </span>
                                             <span  ng-if="moduloPadrao.entidade.colunas[$index - 1].componente === 'C'">
                                                 <!--{{e}}-->
-                                                <input      icheck type="checkbox"  ng-disabled="!ent[0].editavel  "  ng-model="ent[$index]"   ng-change="mudarStatus(ent,$parent.$index, $index)"  >
+                                                <input      icheck type="checkbox"  ng-disabled="!ent[0].editavel  "  ng-model="ent[$index]"   ng-change="mudarStatus(ent,$parent.$index, $index)"   required="{{moduloPadrao.entidade.colunas[$index - 1].obrigatorio === 'S' }}"  >
                                             </span>
                                         </span>
 
-
                                     </div>
 
-
+                                    </form>
                                 </td>
 
                             </tr>
