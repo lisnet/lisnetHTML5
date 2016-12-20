@@ -4,10 +4,11 @@
  */
 
 
-function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService, montaUrlLaudoProvider, configLisNet,  deviceDetector,   $timeout,determinaAparelhoProvider,sairDoSistemaService,$localStorage,
-    $sessionStorage,$window,gerenciaRelatorioService,$interval,$filter,$localStorage,$state,resumePerfilService,configuraLinks,  $rootScope , $ocLazyLoad, $injector,notificacaoProvider,shareuser,helperService,$uibModal) {
-        console.log('Inicializando MainLisnet ..');
-        var vm = this;
+function MainLisnet($scope, $rootScope,$state, $location, buscaAPIService, montaUrlLaudoProvider, deviceDetector,   
+$timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$interval,$filter,$localStorage,$state,resumePerfilService,configuraLinks,  $rootScope , notificacaoProvider,shareuser,helperService,$uibModal) {
+    
+    console.log('Inicializando MainLisnet ..');
+    var vm = this;
         
     $scope.$storage = $localStorage;
     this.login ;
@@ -239,36 +240,33 @@ function MainLisnet($http,$scope, $rootScope,$state, $location, buscaAPIService,
     
     
     
-    this.popUnidades =  function (){
-        return  $uibModal.open({
-                    template:'   <div class="ibox-content"   > '
-                    +' <table datatable="ng" dt-options="dtOptions"  class="table table-striped table-bordered table-hover dataTables-example"> '
-                    +'     <thead> '
-                    +'     <tr> '
-                    +'         <th>-</th> '
-                    +'         <th>Cõdigo</th> '
-                    +'         <th>Descrição</th> '
-                    +'     </tr> '
-                    +'     </thead> '
-                    +'     <tbody> '
-                    +'     <tr ng-repeat="u in main.userDTO.unidades"  ng-click="main.escolheUnidade(u.UNI_ST_CODIGO)" > '
-                    +'         <td    ><a  ng-click="main.escolheUnidade(u.UNI_ST_CODIGO)" ><i class="fa fa-plus-circle" aria-hidden="true"></i></a></td> '      
-                    +'         <td    ><span class="text-center  text-muted small    ">{{u.UNI_ST_CODIGO}}</span></td> '
-                    +'         <td ><span class="pull-right text-muted small  ">{{u.UNI_ST_DESCRICAO}}</span></td> '
-                    +'     </tr> '
-                    +'     </tbody> '
-                    +' </table> '
-               +'  </div>',
-                                scope: $scope
-                            });
-    };
+//    this.popUnidades =  function (){
+//        return  $uibModal.open({
+//                    template:'   <div class="ibox-content"   > '
+//                    +' <table datatable="ng" dt-options="dtOptions"  class="table table-striped table-bordered table-hover dataTables-example"> '
+//                    +'     <thead> '
+//                    +'     <tr> '
+//                    +'         <th>-</th> '
+//                    +'         <th>Cõdigo</th> '
+//                    +'         <th>Descrição</th> '
+//                    +'     </tr> '
+//                    +'     </thead> '
+//                    +'     <tbody> '
+//                    +'     <tr ng-repeat="u in main.userDTO.unidades"  ng-click="main.escolheUnidade(u.UNI_ST_CODIGO)" > '
+//                    +'         <td    ><a  ng-click="main.escolheUnidade(u.UNI_ST_CODIGO)" ><i class="fa fa-plus-circle" aria-hidden="true"></i></a></td> '      
+//                    +'         <td    ><span class="text-center  text-muted small    ">{{u.UNI_ST_CODIGO}}</span></td> '
+//                    +'         <td ><span class="pull-right text-muted small  ">{{u.UNI_ST_DESCRICAO}}</span></td> '
+//                    +'     </tr> '
+//                    +'     </tbody> '
+//                    +' </table> '
+//               +'  </div>',
+//                                scope: $scope
+//                            });
+//    };
     
-    this.escolheUnidade = function (uniStCodigo){
-        this.userDTO.unidade = helperService.retornaUnidade(uniStCodigo,this.userDTO.unidades);
-    };
     
 
-this.voltaLogo = function (MOD_ST_CODIGO){
+    this.voltaLogo = function (MOD_ST_CODIGO){
         switch (MOD_ST_CODIGO){
             case "00001":
                 return "fa fa-th-large";
@@ -427,10 +425,10 @@ this.voltaLogo = function (MOD_ST_CODIGO){
 
 
 
+
+
+
+
 }
-
-
-
-
 angular.module('lisnet')
         .controller('MainLisnet',MainLisnet);

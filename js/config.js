@@ -91,9 +91,6 @@ console.log('construing config , registrando state');
                     loadPlugin: function ($ocLazyLoad) {
                         return $ocLazyLoad.load([
                             {
-                                files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
-                            },
-                            {
                                 name: 'oitozero.ngSweetAlert',
                                 files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
                             },
@@ -118,7 +115,7 @@ console.log('construing config , registrando state');
                     {
                         serie: true,
                         name: 'angular-flot',
-                        files: ['js/plugins/flot/jquery.flot.js', 'js/plugins/flot/jquery.flot.time.js', 'js/plugins/flot/jquery.flot.tooltip.min.js', 'js/plugins/flot/jquery.flot.spline.js', 'js/plugins/flot/jquery.flot.resize.js', 'js/plugins/flot/jquery.flot.pie.js', 'js/plugins/flot/curvedLines.js', 'js/plugins/flot/angular-flot.js', ]
+                        files: ['js/plugins/flot/jquery.flot.js', 'js/plugins/flot/jquery.flot.time.js', 'js/plugins/flot/jquery.flot.tooltip.min.js', 'js/plugins/flot/jquery.flot.spline.js', 'js/plugins/flot/jquery.flot.resize.js', 'js/plugins/flot/jquery.flot.pie.js', 'js/plugins/flot/curvedLines.js', 'js/plugins/flot/angular-flot.js']
                     },
                     {
                         files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
@@ -141,6 +138,23 @@ console.log('construing config , registrando state');
                     {
                         name: 'oitozero.ngSweetAlert',
                         files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
+                    },
+                     {
+                        serie: true,
+                        files: ['js/plugins/dataTables/datatables.min.js', 'css/plugins/dataTables/datatables.min.css']
+                    },
+                    {
+                        serie: true,
+                        name: 'datatables',
+                        files: ['js/plugins/dataTables/angular-datatables.min.js']
+                    },
+                    {
+                        serie: true,
+                        name: 'datatables.buttons',
+                        files: ['js/plugins/dataTables/angular-datatables.buttons.min.js']
+                    },
+                    {
+                        files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
                     }
                 ]);
             }
@@ -354,6 +368,39 @@ console.log('construing config , registrando state');
 
                         ]);
                     }
+                }
+            })
+            .state('estatisticaporconvenio-unidade', {
+                url: "/estatistica/conveniounidade",
+                templateUrl: "views/tmtelas/relatorio_unidade_convenio.html",
+                parent: 'lisnet',
+                data: {pageTitle: 'Estatística por Convênio/Unidade', specialClass: 'gray-bg'},
+                resolve: {
+                    loadPlugin: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load([
+                            {
+                                name: 'oitozero.ngSweetAlert',
+                                files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
+                            },
+                            {
+                                files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
+                            },
+                             {
+                                serie: true,
+                                files: ['js/plugins/dataTables/datatables.min.js', 'css/plugins/dataTables/datatables.min.css']
+                            },
+                            {
+                                serie: true,
+                                name: 'datatables',
+                                files: ['js/plugins/dataTables/angular-datatables.min.js']
+                            },
+                            {
+                                serie: true,
+                                name: 'datatables.buttons',
+                                files: ['js/plugins/dataTables/angular-datatables.buttons.min.js']
+                            }
+                                ]);
+                            }
                 }
             })
             .state('convenios', {

@@ -83,8 +83,9 @@ function notificacaoBarra($scope, $window,sairDoSistemaService,$rootScope){
     }
   $rootScope.$broadcast("startNotificacaoTimer");
 };
-    
-}
+ 
+ 
+ }
 
 angular.module('lisnet').
         controller('notificacaoBarra',notificacaoBarra);

@@ -320,7 +320,7 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, sairDoSistemaS
         self.modalLoading = notificacaoProvider.modalLoading(moduloPadrao.title, moduloPadrao.msg, $scope);
         $timeout(function () {
             try {
-                buscaAPIService.buscaEntidadeTelaPadrao($scope.userDTO.configLisNet, moduloPadrao, $scope.userDTO.UNI_ST_CODIGO, $scope.jsonTelaPadrao.limit, blFiltro)
+                buscaAPIService.buscaEntidadeTelaPadrao($scope.userDTO.configLisNet, moduloPadrao, $scope.userDTO.unidade.UNI_ST_CODIGO, $scope.jsonTelaPadrao.limit, blFiltro)
                         .then(function successCallback(response) {
                             console.log('Entidades chegaram c sucesso .... aguarde construcao da tabela');
                             var retornoEntidades = response.data;
