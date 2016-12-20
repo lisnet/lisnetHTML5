@@ -793,115 +793,119 @@ console.log('construing config , registrando state');
                         ]);
                     }
                 }
-            }).state('statusamostras', {
-                url: "/configura/statusamostras/",
-                templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00028',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
-                parent: 'lisnet',
-                data: {pageTitle: 'Status Amostras'}, resolve: {
-                    loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load([
-                            {
-                                serie: true,
-                                files: ['js/plugins/dataTables/datatables.min.js', 'css/plugins/dataTables/datatables.min.css']
-                            },
-                            {
-                                serie: true,
-                                name: 'datatables',
-                                files: ['js/plugins/dataTables/angular-datatables.min.js']
-                            },
-                            {
-                                serie: true,
-                                name: 'datatables.buttons',
-                                files: ['js/plugins/dataTables/angular-datatables.buttons.min.js']
-                            },
-                            {
-                                files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
-                            },
-                            {
-                                name: 'oitozero.ngSweetAlert',
-                                files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
-                            },
-                            {
-                                files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
-                            }
-
-                        ]);
-                    }
-                }
-            }).state('questionario', {
-                url: "/configura/questionario/",
-                templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00029',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
-                parent: 'lisnet',
-                data: {pageTitle: 'Questionário'}, resolve: {
-                    loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load([
-                            {
-                                serie: true,
-                                files: ['js/plugins/dataTables/datatables.min.js', 'css/plugins/dataTables/datatables.min.css']
-                            },
-                            {
-                                serie: true,
-                                name: 'datatables',
-                                files: ['js/plugins/dataTables/angular-datatables.min.js']
-                            },
-                            {
-                                serie: true,
-                                name: 'datatables.buttons',
-                                files: ['js/plugins/dataTables/angular-datatables.buttons.min.js']
-                            },
-                            {
-                                files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
-                            },
-                            {
-                                name: 'oitozero.ngSweetAlert',
-                                files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
-                            },
-                            {
-                                files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
-                            }
-
-                        ]);
-                    }
-                }
-            }).state('prazo', {
-                url: "/configura/prazo/",
-                templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00030',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
-                parent: 'lisnet',
-                data: {pageTitle: 'Prazo'}, resolve: {
-                    loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load([
-                            {
-                                serie: true,
-                                files: ['js/plugins/dataTables/datatables.min.js', 'css/plugins/dataTables/datatables.min.css']
-                            },
-                            {
-                                serie: true,
-                                name: 'datatables',
-                                files: ['js/plugins/dataTables/angular-datatables.min.js']
-                            },
-                            {
-                                serie: true,
-                                name: 'datatables.buttons',
-                                files: ['js/plugins/dataTables/angular-datatables.buttons.min.js']
-                            },
-                            {
-                                files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
-                            },
-                            {
-                                name: 'oitozero.ngSweetAlert',
-                                files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
-                            },
-                            {
-                                files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
-                            }
-
-                        ]);
-                    }
-                }
-            }).state('recipiente', {
+            })
+//                    .state('statusamostras', {
+//                url: "/configura/statusamostras/",
+//                templateUrl: "views/tmtelas/tela_padrao.html",
+//                params: { modStCodigo: '00028',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
+//                parent: 'lisnet',
+//                data: {pageTitle: 'Status Amostras'}, resolve: {
+//                    loadPlugin: function ($ocLazyLoad) {
+//                        return $ocLazyLoad.load([
+//                            {
+//                                serie: true,
+//                                files: ['js/plugins/dataTables/datatables.min.js', 'css/plugins/dataTables/datatables.min.css']
+//                            },
+//                            {
+//                                serie: true,
+//                                name: 'datatables',
+//                                files: ['js/plugins/dataTables/angular-datatables.min.js']
+//                            },
+//                            {
+//                                serie: true,
+//                                name: 'datatables.buttons',
+//                                files: ['js/plugins/dataTables/angular-datatables.buttons.min.js']
+//                            },
+//                            {
+//                                files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
+//                            },
+//                            {
+//                                name: 'oitozero.ngSweetAlert',
+//                                files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
+//                            },
+//                            {
+//                                files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
+//                            }
+//
+//                        ]);
+//                    }
+//                }
+//            })
+//                    .state('questionario', {
+//                url: "/configura/questionario/",
+//                templateUrl: "views/tmtelas/tela_padrao.html",
+//                params: { modStCodigo: '00029',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
+//                parent: 'lisnet',
+//                data: {pageTitle: 'Questionário'}, resolve: {
+//                    loadPlugin: function ($ocLazyLoad) {
+//                        return $ocLazyLoad.load([
+//                            {
+//                                serie: true,
+//                                files: ['js/plugins/dataTables/datatables.min.js', 'css/plugins/dataTables/datatables.min.css']
+//                            },
+//                            {
+//                                serie: true,
+//                                name: 'datatables',
+//                                files: ['js/plugins/dataTables/angular-datatables.min.js']
+//                            },
+//                            {
+//                                serie: true,
+//                                name: 'datatables.buttons',
+//                                files: ['js/plugins/dataTables/angular-datatables.buttons.min.js']
+//                            },
+//                            {
+//                                files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
+//                            },
+//                            {
+//                                name: 'oitozero.ngSweetAlert',
+//                                files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
+//                            },
+//                            {
+//                                files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
+//                            }
+//
+//                        ]);
+//                    }
+//                }
+//            })
+//                    .state('prazo', {
+//                url: "/configura/prazo/",
+//                templateUrl: "views/tmtelas/tela_padrao.html",
+//                params: { modStCodigo: '00030',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
+//                parent: 'lisnet',
+//                data: {pageTitle: 'Prazo'}, resolve: {
+//                    loadPlugin: function ($ocLazyLoad) {
+//                        return $ocLazyLoad.load([
+//                            {
+//                                serie: true,
+//                                files: ['js/plugins/dataTables/datatables.min.js', 'css/plugins/dataTables/datatables.min.css']
+//                            },
+//                            {
+//                                serie: true,
+//                                name: 'datatables',
+//                                files: ['js/plugins/dataTables/angular-datatables.min.js']
+//                            },
+//                            {
+//                                serie: true,
+//                                name: 'datatables.buttons',
+//                                files: ['js/plugins/dataTables/angular-datatables.buttons.min.js']
+//                            },
+//                            {
+//                                files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
+//                            },
+//                            {
+//                                name: 'oitozero.ngSweetAlert',
+//                                files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
+//                            },
+//                            {
+//                                files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
+//                            }
+//
+//                        ]);
+//                    }
+//                }
+//            })
+                    .state('recipiente', {
                 url: "/configura/recipiente/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
                 params: { modStCodigo: '00031',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
@@ -1700,7 +1704,7 @@ console.log('construing config , registrando state');
             }).state('cadastrosparasoroteca', {
                 url: "/configura/cadastrosparasoroteca/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00185',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
+                params: { modStCodigo: '00185',limit:'50',btnFiltrar:true,btnCriar:true,btnTodos:true},
                 parent: 'lisnet',
                 data: {pageTitle: 'Cadastros para Soroteca'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {

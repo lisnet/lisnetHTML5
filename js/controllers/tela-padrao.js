@@ -340,17 +340,13 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, sairDoSistemaS
                                 notificacaoProvider.sweetError("erro", retornoEntidades);
                                 $scope.limparTela();
                             }
-
-
                         }, function errorCallback(response) {
                             notificacaoProvider.sweetError("erro", response.statusText);
                         });
             } catch (error) {
                 notificacaoProvider.sweetError("erro", error);
             }
-
-        }, 120);
-
+        }, 250);
     };
     
     function colocaIconesEstilos(data) {
@@ -487,8 +483,6 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, sairDoSistemaS
                     }
                 ]);
     }
-    
-    
 
 };
 
