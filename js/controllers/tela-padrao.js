@@ -83,7 +83,7 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, sairDoSistemaS
         retornaPesquisa();
         
         if(blFiltro && moduloPadrao.entidade.pesquisaJSON && moduloPadrao.entidade.pesquisaJSON.campo && moduloPadrao.entidade.pesquisaInput){
-            moduloPadrao.entidade.pesquisaInput = moduloPadrao.entidade.pesquisaInput.toUpperCase();
+//            moduloPadrao.entidade.pesquisaInput = moduloPadrao.entidade.pesquisaInput.toUpperCase();
             moduloPadrao.entidade.pesquisaInput = moduloPadrao.entidade.pesquisaInput.trim();
             carregarLista(blFiltro);
         }else if(!blFiltro) {
@@ -121,7 +121,6 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, sairDoSistemaS
                 tronarEditavel(ent);
                 break;
             case 'excluir':
-                
                 switch (ent[0].status){
                     case 'R':
                         ent[0].editavel = false;
@@ -159,10 +158,13 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, sairDoSistemaS
                         }    
                     break;
                     case 'C':
-                        removeEntidade(ent);
+                        self.modalLoading = notificacaoProvider.modalLoading('Excluindo', 'excluindo linha', $scope);
+                        $timeout(function (){
+                            removeEntidade(ent);
+                            self.modalLoading.dismiss('cancel');
+                        },300);
                     break;
                 }
-                
                 break;
             case 'desfazer':
                 if (ent[0].status !== 'C') {
@@ -193,12 +195,19 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, sairDoSistemaS
                         try {
                             buscaAPIService.salvaEntidadeTelaPadrao($scope.userDTO.configLisNet, moduloPadrao, $scope.userDTO.UNI_ST_CODIGO, ent)
                                     .then(function   sucesso(response) {
-                                        console.log(response.data);
-                                        ent[0].status = 'R';
-                                        ent[0].ngClass = "fa fa-database";
-                                        ent[0].ngStyle = "color: #0077b3";
-                                        ent[0].toolTip = "não há alterações";
-                                        substituiEntidadeDB(ent);
+                                        var  _response =  response.data;
+                                        var _responseType = typeof _response;
+                                        if (_response && _responseType === 'string' && _response.indexOf('ORA-') !== -1) {
+                                                notificacaoProvider.sweetError('Erro', _response);
+                                            } else {
+                                                console.log(response.data);
+                                                ent[0].status = 'R';
+                                                ent[0].ngClass = "fa fa-database";
+                                                ent[0].ngStyle = "color: #0077b3";
+                                                ent[0].toolTip = "não há alterações";
+                                                substituiEntidadeDB(ent);
+                                            }
+                                        
                                     }, function erro(response) {
                                         console.log(response.statusText);
                                         notificacaoProvider.sweetError('Erro', response.statusText);
@@ -218,13 +227,14 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, sairDoSistemaS
     
     function substituiEntidadeDB(ent){
         console.log('Inside substituiEntidadeDB');
-        console.log(ent);
+//        console.log(ent);
         var _index ;
         for(var i  =0  ; i < moduloPadrao.entidade.entidadesDB.length; i ++){
             var entDB =moduloPadrao.entidade.entidadesDB[i];
             if(entDB[0].id === ent[0].id){
                 console.log('achamos no entidadeDB , fazendo a troca');
                _index  = i; 
+               break;
             }
         }
         if(_index){
@@ -232,43 +242,36 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, sairDoSistemaS
              var entReferencia = helperService.clonadorDeObj(ent);
             moduloPadrao.entidade.entidadesDB[_index] = entReferencia;
         }
-//         var obj = moduloPadrao.entidade.entidadesDB.filter(function (obj) {
-//                return obj[0].id === ent[0].id;
-//            })[0];
-//        if(obj){
-//            console.log('achamos no entidadeDB , fazendo a troca');
-//            var entReferencia = helperService.clonadorDeObj(ent);
-//            console.log(entReferencia);
-//            obj = entReferencia;
-//        }
     }
     
-    $scope.criarNovoRegistro = function (){
-        console.log("moduloPadrao.entidade.colunas.length   =  "+moduloPadrao.entidade.colunas.length);
-      var _newEnt = [moduloPadrao.entidade.colunas.length+1];
-      var _dataEnt = {};
+    $scope.criarNovoRegistro = function () {
+        console.log("moduloPadrao.entidade.colunas.length   =  " + moduloPadrao.entidade.colunas.length);
+        self.modalLoading = notificacaoProvider.modalLoading('Criando', 'criando nova linha para registro', $scope);
+        $timeout(function () {
+            var _newEnt = [moduloPadrao.entidade.colunas.length + 1];
+            var _dataEnt = {};
             _dataEnt.id = Number(new Date());
             _dataEnt.editavel = true;
             _dataEnt.status = 'C';
             _dataEnt.popup = {inicio: false, fim: false};
             _dataEnt.ngStyle = "color: orange";
             _dataEnt.ngClass = "fa fa-star-o";
-            _dataEnt.toolTip= "novo item à ser salvo.";
+            _dataEnt.toolTip = "novo item à ser salvo.";
             _dataEnt.dataPicker = [];
-      _newEnt[0] = _dataEnt;
-      for(var x = 0; x < moduloPadrao.entidade.colunas.length; x ++){
-          _newEnt[x+1] = null;
-      }
-      console.log(_newEnt);
-      if(angular.isUndefined(moduloPadrao.entidade.entidades)){
-          moduloPadrao.entidade.entidades = [];
-          moduloPadrao.entidade.entidadesDB = [];
-      }
-      
-//      moduloPadrao.entidade.entidades.push(_newEnt);
-//      moduloPadrao.entidade.entidadesDB.push(helperService.clonadorDeObj(_newEnt));
-      moduloPadrao.entidade.entidades.unshift(_newEnt);
-      moduloPadrao.entidade.entidadesDB.unshift(helperService.clonadorDeObj(_newEnt));
+            _newEnt[0] = _dataEnt;
+            for (var x = 0; x < moduloPadrao.entidade.colunas.length; x++) {
+                _newEnt[x + 1] = null;
+            }
+//            console.log(_newEnt);
+            if (angular.isUndefined(moduloPadrao.entidade.entidades)) {
+                moduloPadrao.entidade.entidades = [];
+                moduloPadrao.entidade.entidadesDB = [];
+            }
+
+            moduloPadrao.entidade.entidades.unshift(_newEnt);
+            moduloPadrao.entidade.entidadesDB.unshift(helperService.clonadorDeObj(_newEnt));
+            self.modalLoading.dismiss('cancel');
+        }, 300);
     };
     
     
@@ -301,8 +304,8 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, sairDoSistemaS
                 ent[0].toolTip = "registro marcado para atualização";
             }
 
-            console.log(objReferencia);
-            console.log(entReferencia);
+//            console.log(objReferencia);
+//            console.log(entReferencia);
         } else {
             console.log('Entidade nao eh editavel no momento ...');
         }
@@ -317,7 +320,7 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, sairDoSistemaS
         self.modalLoading = notificacaoProvider.modalLoading(moduloPadrao.title, moduloPadrao.msg, $scope);
         $timeout(function () {
             try {
-                buscaAPIService.buscaEntidadeTelaPadrao($scope.userDTO.configLisNet, moduloPadrao, $scope.userDTO.UNI_ST_CODIGO, $scope.jsonTelaPadrao.limit, blFiltro)
+                buscaAPIService.buscaEntidadeTelaPadrao($scope.userDTO.configLisNet, moduloPadrao, $scope.userDTO.unidade.UNI_ST_CODIGO, $scope.jsonTelaPadrao.limit, blFiltro)
                         .then(function successCallback(response) {
                             console.log('Entidades chegaram c sucesso .... aguarde construcao da tabela');
                             var retornoEntidades = response.data;
@@ -337,17 +340,13 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, sairDoSistemaS
                                 notificacaoProvider.sweetError("erro", retornoEntidades);
                                 $scope.limparTela();
                             }
-
-
                         }, function errorCallback(response) {
                             notificacaoProvider.sweetError("erro", response.statusText);
                         });
             } catch (error) {
                 notificacaoProvider.sweetError("erro", error);
             }
-
-        }, 120);
-
+        }, 250);
     };
     
     function colocaIconesEstilos(data) {
@@ -484,8 +483,6 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, sairDoSistemaS
                     }
                 ]);
     }
-    
-    
 
 };
 

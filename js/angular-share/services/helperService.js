@@ -48,6 +48,20 @@ angular.module('lisnet').service('helperService', function () {
 //                    if (null === obj1 || "object" !== typeof obj1  && null === obj2 || "object" !== typeof obj2) return false;
                     return JSON.stringify(obj1) === JSON.stringify(obj2);
           };
+          
+          this.retornaUnidade = function (uniStCodigo, arrayDeUnidades){
+              if(uniStCodigo && arrayDeUnidades && arrayDeUnidades.length > 0){
+                  for(var y = 0 ; y < arrayDeUnidades.length; y ++){
+                      var _u = arrayDeUnidades[y];
+                      if(uniStCodigo === _u.UNI_ST_CODIGO){
+                          return  this.clonadorDeObj(_u);
+                      }
+                  }
+                  
+              }else{
+                  return null;
+              }
+          };
 
 
         }
