@@ -5,7 +5,7 @@
 
 
 
-angular.module('lisnet').controller('widgetsLisnet',function ($scope,$uibModal,DTOptionsBuilder,sairDoSistemaService,helperService){
+angular.module('lisnet').controller('trocaUnidade',function ($scope,$uibModal,DTOptionsBuilder,sairDoSistemaService,helperService){
     
     var wd = this;
     
@@ -18,29 +18,29 @@ angular.module('lisnet').controller('widgetsLisnet',function ($scope,$uibModal,D
     
     $scope.popUnidades =  function (){
         return  $uibModal.open({
-                    template:'   <div class="ibox-content"  ng-controller="widgetsLisnet" > '
+                    template:'   <div class="ibox-content"  ng-controller="trocaUnidade" > '
+                    +' <span class="m-r-sm text-justify  "  style="font-weight: bold;"    >Unidade: {{main.userDTO.unidade.UNI_ST_CODIGO }} - {{main.userDTO.unidade.UNI_ST_DESCRICAO}}</span> '
+                    +'<hr>'
                     +' <table datatable="ng" dt-options="dtOptionsWidgets"  class="table table-striped table-bordered table-hover dataTables-example"> '
                     +'     <thead> '
                     +'     <tr> '
-                    +'         <th>Cõdigo</th> '
-                    +'         <th>Descrição</th> '
+                    +'         <th style="width:50px;" >Descrição</th> '
                     +'     </tr> '
                     +'     </thead> '
                     +'     <tbody> '
                     +'     <tr ng-repeat="u in userDTO.unidades"   > '
-                    +'         <td   ng-click="escolheUnidade(u.UNI_ST_CODIGO)"   ><span class="text-center  text-muted small    ">{{u.UNI_ST_CODIGO}}</span></td> '
-                    +'         <td ng-click="escolheUnidade(u.UNI_ST_CODIGO)" ><span class="pull-right text-muted small  ">{{u.UNI_ST_DESCRICAO}}</span></td> '
+                    +'         <td  ng-click="escolheUnidade(u.UNI_ST_CODIGO)"   ><span class="text-center  text-muted small    "> <i style="color:blue;"  class="fa fa-exchange" aria-hidden="true"/> {{u.UNI_ST_CODIGO}} - {{u.UNI_ST_DESCRICAO}}</span></td> '
                     +'     </tr> '
                     +'     </tbody> '
                     +' </table> '
-               +'  </div>',
+                    +'  </div>',
                                 scope: $scope
                             });
     };
     
     $scope.dtOptionsWidgets = DTOptionsBuilder.newOptions()
                 .withDOM('<"html5buttons"B>lTfgitp')
-                .withOption('stateSave', false)
+//                .withOption('stateSave', false)
 //                .withOption('searching', true)
                 .withOption('lengthMenu', [10, 25, 50, 100, 150, 200])
                 //        .withLanguage([{url:"//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese.json"}])
@@ -51,8 +51,8 @@ angular.module('lisnet').controller('widgetsLisnet',function ($scope,$uibModal,D
                     "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registos",
                     "sInfoEmpty": "Mostrando de 0 até 0 de 0 registos",
                     "sInfoFiltered": "(filtrado de _MAX_ registos no total)",
-                    "sInfoPostFix": "",
-                    "sSearch": "Procurar:",
+//                    "sInfoPostFix": "",
+//                    "sSearch": "Procurar:",
                     "sUrl": "",
                     "oPaginate": {
                         "sFirst": "Primeiro",
