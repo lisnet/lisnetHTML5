@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<div class="row wrapper border-bottom white-bg page-heading"  >
+    <div class="col-lg-10" ng-controller="telaPadrao" >
+        <h2>{{$state.params.titulo}}</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a   ng-click="main.stateGO('widgets.lisnet')" >Home</a>
+            </li>
+            <li ng-if="$state.params.pai" >
+                <a>{{$state.params.pai}}</a>
+            </li>
+            <li ng-if="$state.params.filho" >
+                <strong>{{$state.params.filho}}</strong>
+            </li>
+            <li class="active"  ng-if="$state.params.neto" >
+                <strong>{{$state.params.neto}}</strong>
+            </li>
+        </ol>
+    </div>
+</div>

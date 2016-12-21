@@ -104,7 +104,8 @@ console.log('construing config , registrando state');
             .state('widgets', {
                 abstract: true,
                 url: "/widgets",
-                templateUrl: "views/common/content.html"
+                templateUrl: "views/common/content.html",
+                params: {titulo: 'Widgets',pai:'Home',filho:'Widgets',modStCodigo: '00006',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true}
             }).state('widgets.lisnet', {
         url: "/lisnet",
         templateUrl: "views/tmtelas/widgets_lisnet.html",
@@ -183,6 +184,7 @@ console.log('construing config , registrando state');
             }).state('contrucao', {
         abstract: true,
         url: "/contrucao",
+        params: {titulo: 'Em conscrução',pai:'Home',filho:'Construção'},
         templateUrl: "views/common/content.html"
     })
             .state('contrucao.contrucao', {
@@ -215,7 +217,8 @@ console.log('construing config , registrando state');
                 url: "/problema.tela_nao_existe",
                 templateUrl: "views/tmtelas/tela_nao_existe.html",
                 parent: 'problema',
-                data: {pageTitle: 'Em construção'}, resolve: {
+                params: {titulo: 'Tela não existe',pai:'Home',filho:'Erro'},
+                data: {pageTitle: 'Tela não existe'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
                         return $ocLazyLoad.load([
                             {
@@ -240,6 +243,7 @@ console.log('construing config , registrando state');
         url: "/notificacoes",
         templateUrl: "views/tmtelas/controle_notificacoes.html",
 //            controller:"controleNotificacoes",
+        params: {titulo: 'Notificações',pai:'Home',filho:'Notificações'},
         data: {pageTitle: 'Notificações'},
         resolve: {
             loadPlugin: function ($ocLazyLoad) {
@@ -278,7 +282,7 @@ console.log('construing config , registrando state');
                 url: "/consulta/laudo/:userDTO",
                 templateUrl: "views/tmtelas/consulta_laudos.html",
                 parent: 'lisnet',
-//                            controller: 'consultaLaudos',
+                params: {titulo: 'Consulta de Laudos',pai:'Home',filho:'Consulta de Laudos'},
                 data: {pageTitle: 'Consulta de Laudos'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
                         return $ocLazyLoad.load([
@@ -316,6 +320,7 @@ console.log('construing config , registrando state');
                 templateUrl: "views/tmtelas/estatistica_faturamento.html",
                 parent: 'lisnet',
                 controller: 'estatisticaFaturamento',
+                params: {titulo: 'Estatística Faturamento',pai:'Estatística',filho:'Estatística Faturamento'},
                 data: {pageTitle: 'Estatística Faturamento'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
                         return $ocLazyLoad.load([
@@ -398,6 +403,10 @@ console.log('construing config , registrando state');
                                 serie: true,
                                 name: 'datatables.buttons',
                                 files: ['js/plugins/dataTables/angular-datatables.buttons.min.js']
+                            },
+                            {
+                                name: 'ui.switchery',
+                                files: ['css/plugins/switchery/switchery.css', 'js/plugins/switchery/switchery.js', 'js/plugins/switchery/ng-switchery.js']
                             }
                                 ]);
                             }
