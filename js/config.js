@@ -105,7 +105,7 @@ console.log('construing config , registrando state');
                 abstract: true,
                 url: "/widgets",
                 templateUrl: "views/common/content.html",
-                params: {titulo: 'Widgets',pai:'Home',filho:'Widgets',modStCodigo: '00006',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true}
+                params: {titulo: 'Widgets',pagina:'Widgets',modStCodigo: '00006',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true}
             }).state('widgets.lisnet', {
         url: "/lisnet",
         templateUrl: "views/tmtelas/widgets_lisnet.html",
@@ -184,7 +184,7 @@ console.log('construing config , registrando state');
             }).state('contrucao', {
         abstract: true,
         url: "/contrucao",
-        params: {titulo: 'Em conscrução',pai:'Home',filho:'Construção'},
+        params: {titulo: 'Em conscrução',pagina:'Em Construção'},
         templateUrl: "views/common/content.html"
     })
             .state('contrucao.contrucao', {
@@ -217,7 +217,7 @@ console.log('construing config , registrando state');
                 url: "/problema.tela_nao_existe",
                 templateUrl: "views/tmtelas/tela_nao_existe.html",
                 parent: 'problema',
-                params: {titulo: 'Tela não existe',pai:'Home',filho:'Erro'},
+                params: {titulo: 'Tela não existe',pagina:'Tela não existe'},
                 data: {pageTitle: 'Tela não existe'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
                         return $ocLazyLoad.load([
@@ -243,7 +243,7 @@ console.log('construing config , registrando state');
         url: "/notificacoes",
         templateUrl: "views/tmtelas/controle_notificacoes.html",
 //            controller:"controleNotificacoes",
-        params: {titulo: 'Notificações',pai:'Home',filho:'Notificações'},
+        params: {titulo: 'Notificações',pagina:'Notificações'},
         data: {pageTitle: 'Notificações'},
         resolve: {
             loadPlugin: function ($ocLazyLoad) {
@@ -272,14 +272,14 @@ console.log('construing config , registrando state');
                 ]);
             }
         }
-    })
-            .state('lisnet', {
+    }).state('lisnet', {
                 abstract: true,
                 url: "/lisnet",
                 templateUrl: "views/common/content.html"
             })
             .state('consultadelaudos', {
                 url: "/consulta/laudo/:userDTO",
+                params: {titulo: 'Notificações',pai:'Consulta',pagina:'Notificações'},
                 templateUrl: "views/tmtelas/consulta_laudos.html",
                 parent: 'lisnet',
                 params: {titulo: 'Consulta de Laudos',pai:'Home',filho:'Consulta de Laudos'},
@@ -320,7 +320,7 @@ console.log('construing config , registrando state');
                 templateUrl: "views/tmtelas/estatistica_faturamento.html",
                 parent: 'lisnet',
                 controller: 'estatisticaFaturamento',
-                params: {titulo: 'Estatística Faturamento',pai:'Estatística',filho:'Estatística Faturamento'},
+                params: {titulo: 'Estatística Faturamento',pai:'Estatística',pagina:'Estatística Faturamento'},
                 data: {pageTitle: 'Estatística Faturamento'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
                         return $ocLazyLoad.load([
@@ -357,6 +357,7 @@ console.log('construing config , registrando state');
                 url: "/sobre",
                 templateUrl: "views/tmtelas/ajuda.html",
                 parent: 'lisnet',
+                params: {titulo: 'Sobre o LisNet e a Geslab',pai:'Ajuda',pagina:'Sobre o LisNet e a Geslab'},
                 data: {pageTitle: 'Sobre'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
                         return $ocLazyLoad.load([
@@ -379,6 +380,7 @@ console.log('construing config , registrando state');
                 url: "/estatistica/conveniounidade",
                 templateUrl: "views/tmtelas/relatorio_unidade_convenio.html",
                 parent: 'lisnet',
+                params: {titulo: 'Estatística por Convênio/Unidade',pai:'Estatística',pagina:'Estatística por Convênio/Unidade'},
                 data: {pageTitle: 'Estatística por Convênio/Unidade', specialClass: 'gray-bg'},
                 resolve: {
                     loadPlugin: function ($ocLazyLoad) {
@@ -415,9 +417,8 @@ console.log('construing config , registrando state');
             .state('convenios', {
                 url: "/configura/convenios/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00006',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
+                params: {titulo: 'Convênios',pai:'Configura',pagina:'Convênios', modStCodigo: '00006',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
                 parent: 'lisnet',
-//                            controller: 'consultaLaudos',
                 data: {pageTitle: 'Convênios'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
                         return $ocLazyLoad.load([
@@ -452,9 +453,8 @@ console.log('construing config , registrando state');
             }).state('material', {
                 url: "/configura/materiais/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00013',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
+                params: {titulo: 'Material',pai:'Configura',pagina:'Material', modStCodigo: '00013',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
                 parent: 'lisnet',
-//                            controller: 'consultaLaudos',
                 data: {pageTitle: 'Materiais'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
                         return $ocLazyLoad.load([
@@ -489,9 +489,8 @@ console.log('construing config , registrando state');
             }).state('setores', {
                 url: "/configura/setores/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00015',limit:'200',btnFiltrar:true,btnCriar:true,btnTodos:true},
+                params: {titulo: 'Setores',pai:'Configura',pagina:'Setores',modStCodigo: '00015',limit:'200',btnFiltrar:true,btnCriar:true,btnTodos:true},
                 parent: 'lisnet',
-//                            controller: 'consultaLaudos',
                 data: {pageTitle: 'Setores'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
                         return $ocLazyLoad.load([
@@ -526,9 +525,8 @@ console.log('construing config , registrando state');
             }).state('antibiotico', {
                 url: "/configura/antibioticos/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00016',limit:'250',btnFiltrar:true,btnCriar:true,btnTodos:true},
+                params: {titulo: 'Antibiótico',pai:'Configura',pagina:'Antibiótico', modStCodigo: '00016',limit:'250',btnFiltrar:true,btnCriar:true,btnTodos:true},
                 parent: 'lisnet',
-//                            controller: 'consultaLaudos',
                 data: {pageTitle: 'Antibioticos'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
                         return $ocLazyLoad.load([
@@ -563,7 +561,7 @@ console.log('construing config , registrando state');
             }).state('bacteriasfungosevirus', {
                 url: "/configura/bacteriasfungosevirus/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00017',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
+                params: {titulo: 'Bactéria,Fungo & Virús',pai:'Configura',pagina:'Bactéria,Fungo & Virús',modStCodigo: '00017',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
                 parent: 'lisnet',
 //                            controller: 'consultaLaudos',
                 data: {pageTitle: 'Bacterias Fungos e Virus'}, resolve: {
@@ -600,7 +598,7 @@ console.log('construing config , registrando state');
             }).state('cid', {
                 url: "/configura/cid/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00018',limit:'500',btnFiltrar:true,btnCriar:true,btnTodos:true},
+                params: {titulo: 'CID',pai:'Configura',pagina:'CID', modStCodigo: '00018',limit:'500',btnFiltrar:true,btnCriar:true,btnTodos:true},
                 parent: 'lisnet',
                 data: {pageTitle: 'CID'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
@@ -636,7 +634,7 @@ console.log('construing config , registrando state');
             }).state('feriado', {
                 url: "/configura/feriado/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00021',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
+                params: {titulo: 'Feriado',pai:'Configura',pagina:'Feriado', modStCodigo: '00021',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
                 parent: 'lisnet',
                 data: {pageTitle: 'Feriado'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
@@ -672,7 +670,7 @@ console.log('construing config , registrando state');
             }).state('frasesparalaudo', {
                 url: "/configura/frasesparalaudo/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00022',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
+                params: {titulo: 'Frase para Laudo',pai:'Configura',pagina:'Frase para Laudo', modStCodigo: '00022',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
                 parent: 'lisnet',
                 data: {pageTitle: 'Frases para Laudo'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
@@ -708,7 +706,7 @@ console.log('construing config , registrando state');
             }).state('metodo', {
                 url: "/configura/metodo/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00023',limit:'500',btnFiltrar:true,btnCriar:true,btnTodos:true},
+                params: {titulo: 'Método',pai:'Configura',pagina:'Método', modStCodigo: '00023',limit:'500',btnFiltrar:true,btnCriar:true,btnTodos:true},
                 parent: 'lisnet',
                 data: {pageTitle: 'Método'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
@@ -744,7 +742,7 @@ console.log('construing config , registrando state');
             }).state('motivo', {
                 url: "/configura/motivo/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00024',limit:'500',btnFiltrar:true,btnCriar:true,btnTodos:true},
+                params: {titulo: 'Motivo',pai:'Configura',pagina:'Motivo', modStCodigo: '00024',limit:'500',btnFiltrar:true,btnCriar:true,btnTodos:true},
                 parent: 'lisnet',
                 data: {pageTitle: 'Motivo'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
@@ -780,7 +778,7 @@ console.log('construing config , registrando state');
             }).state('observacao', {
                 url: "/configura/observacao/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00025',limit:'30',btnFiltrar:true,btnCriar:true,btnTodos:true},
+                params: {titulo: 'Observação',pai:'Configura',pagina:'Observação',modStCodigo: '00025',limit:'30',btnFiltrar:true,btnCriar:true,btnTodos:true},
                 parent: 'lisnet',
                 data: {pageTitle: 'Observação'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
@@ -816,7 +814,7 @@ console.log('construing config , registrando state');
             }).state('parasitas', {
                 url: "/configura/parasitas/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00027',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
+                params: {titulo: 'Parasitas',pai:'Configura',pagina:'Parasitas',modStCodigo: '00027',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
                 parent: 'lisnet',
                 data: {pageTitle: 'Parasitas'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
