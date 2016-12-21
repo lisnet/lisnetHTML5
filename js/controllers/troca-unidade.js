@@ -24,7 +24,7 @@ angular.module('lisnet').controller('trocaUnidade',function ($scope,$uibModal,DT
                     +' <table datatable="ng" dt-options="dtOptionsWidgets"  class="table table-striped table-bordered table-hover dataTables-example"> '
                     +'     <thead> '
                     +'     <tr> '
-                    +'         <th style="width:50px;" >Descrição</th> '
+                    +'         <th style="width:50px;" >Escolha a Unidade</th> '
                     +'     </tr> '
                     +'     </thead> '
                     +'     <tbody> '
