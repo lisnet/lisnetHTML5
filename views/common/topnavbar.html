@@ -93,7 +93,7 @@
 
             <li uib-dropdown       ng-click="resumeNofificacao()" >
                 <a class="count-info" href uib-dropdown-toggle   >
-                    <i class="fa fa-bell  "  ></i> <span class="label label-primary">{{userDTO.notificacoes.length}}</span>
+                    <i  class="fa fa-bell "  ></i> <span    class="label "  ng-class="userDTO.bellClass" >{{userDTO.notificacoes.length}}</span>
                 </a>
                 <ul class="dropdown-alerts" uib-dropdown-menu>
 

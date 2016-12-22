@@ -11,6 +11,10 @@ function notificacaoBarra($scope, $window,sairDoSistemaService,$rootScope){
     console.log('Inicializando notificacaoBarra');
     $scope.userDTO = sairDoSistemaService.validarLogin();
     
+     $scope.userDTO.bellClass = "label-primary";
+    checkNewNotification();
+    
+    
     var qdtNotificacaoResumida = 6;
     $scope.notificacoesResumida = [];
     
@@ -73,7 +77,7 @@ function notificacaoBarra($scope, $window,sairDoSistemaService,$rootScope){
     };
     
     $scope.resumeNofificacao = function (){
-        
+        checkNewNotification();
     if($scope.userDTO && $scope.userDTO.notificacoes && $scope.userDTO.notificacoes.length < qdtNotificacaoResumida){
             $scope.notificacoesResumida = $scope.userDTO && $scope.userDTO.notificacoes;
     }else if($scope.userDTO && $scope.userDTO.notificacoes && $scope.userDTO.notificacoes.length > qdtNotificacaoResumida){
@@ -84,6 +88,16 @@ function notificacaoBarra($scope, $window,sairDoSistemaService,$rootScope){
   $rootScope.$broadcast("startNotificacaoTimer");
 };
  
+ function checkNewNotification() {
+        for (var x in $scope.userDTO.notificacoes) {
+            var not = $scope.userDTO.notificacoes[x];
+            if (not.isNew) {
+                $scope.userDTO.bellClass =  "label-danger";
+                break;
+            }
+        }
+        $scope.userDTO.bellClass =   "label-primary";
+    };
  
  }
 
