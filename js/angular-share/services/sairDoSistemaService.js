@@ -28,6 +28,7 @@ angular.module('lisnet')
 
                 $window.open('index.html', '_self');
             };
+            
             this.validarLogin = function () {
                 var userDTO;
                 if(shareuser.userDTO && shareuser.userDTO.perfil  ){
@@ -44,7 +45,7 @@ angular.module('lisnet')
                 } else if (userDTO && !userDTO.status) {
                     this.logOut();
 //                    $window.open('index.html', '_self');
-                } else if (userDTO && userDTO.status && userDTO.status === 'out') {
+                } else if (userDTO && userDTO.status && userDTO.status !== 'in') {
                     this.logOut();
 //                    $window.open('index.html', '_self');
                 } else {

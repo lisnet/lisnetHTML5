@@ -983,7 +983,7 @@ console.log('construing config , registrando state');
                     .state('recipiente', {
                 url: "/configura/recipiente/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00031',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
+                params: {titulo: 'Recipiente',pai:'Configura',pagina:'Recipiente',modStCodigo: '00031',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
                 parent: 'lisnet',
                 data: {pageTitle: 'Recipiente'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
@@ -1019,7 +1019,7 @@ console.log('construing config , registrando state');
             }).state('solicitantes', {
                 url: "/configura/solicitantes/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00044',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
+                params: {titulo: 'Solicitantes',pai:'Configura',pagina:'Solicitantes', modStCodigo: '00044',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
                 parent: 'lisnet',
                 data: {pageTitle: 'Solicitantes'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
@@ -1055,7 +1055,7 @@ console.log('construing config , registrando state');
             }).state('profissoes', {
                 url: "/configura/profissoes/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00046',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
+                params: {titulo: 'Profissões',pai:'Configura',pagina:'Profissões',modStCodigo: '00046',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
                 parent: 'lisnet',
                 data: {pageTitle: 'Profissões'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
@@ -1091,7 +1091,7 @@ console.log('construing config , registrando state');
             }).state('unidadesdemedida', {
                 url: "/configura/unidadesdemedida/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00053',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
+                params: {titulo: 'Unidade de Medida',pai:'Configura',pagina:'Unidade de Medida',modStCodigo: '00053',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
                 parent: 'lisnet',
                 data: {pageTitle: 'Unidade de Medida'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
@@ -1127,7 +1127,7 @@ console.log('construing config , registrando state');
             }).state('mapadeantibioticos', {
                 url: "/configura/mapadeantibioticos/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00054',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
+                params: {titulo: 'Mapa de Antibióticos',pai:'Configura',pagina:'Mapa de Antibióticos', modStCodigo: '00054',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
                 parent: 'lisnet',
                 data: {pageTitle: 'Mapa de Antibióticos'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
@@ -1163,7 +1163,7 @@ console.log('construing config , registrando state');
             }).state('laboratoriodeapoio', {
                 url: "/configura/laboratoriodeapoio/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00057',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
+                params: {titulo: 'Laboratório de Apoio',pai:'Configura',pagina:'Laboratório de Apoio', modStCodigo: '00057',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
                 parent: 'lisnet',
                 data: {pageTitle: 'Laboratório de Apoio'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
@@ -1199,7 +1199,7 @@ console.log('construing config , registrando state');
             }).state('coletores', {
                 url: "/configura/coletores/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00058',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
+                params: {titulo: 'Coletores',pai:'Configura',pagina:'Coletores',  modStCodigo: '00058',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
                 parent: 'lisnet',
                 data: {pageTitle: 'Coletores'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
@@ -1235,7 +1235,7 @@ console.log('construing config , registrando state');
             }).state('localdeentrega', {
                 url: "/configura/localdeentrega/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00059',limit:'300',btnFiltrar:true,btnCriar:true,btnTodos:true},
+                params: {titulo: 'Local de Entrega',pai:'Configura',pagina:'Local de Entrega', modStCodigo: '00059',limit:'300',btnFiltrar:true,btnCriar:true,btnTodos:true},
                 parent: 'lisnet',
                 data: {pageTitle: 'Local de Entrega'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
@@ -1271,7 +1271,7 @@ console.log('construing config , registrando state');
             }).state('textoparalaudos', {
                 url: "/configura/textoparalaudos/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00060',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
+                params: {titulo: 'Texto para Laudo',pai:'Configura',pagina:'Texto para Laudo',  modStCodigo: '00060',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
                 parent: 'lisnet',
                 data: {pageTitle: 'Texto para Laudos'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
@@ -1307,7 +1307,7 @@ console.log('construing config , registrando state');
             }).state('mapaamostra', {
                 url: "/configura/mapaamostra/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00073',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
+                params: {titulo: 'Mapa de Amostra',pai:'Configura',pagina:'Mapa de Amostra',  modStCodigo: '00073',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
                 parent: 'lisnet',
                 data: {pageTitle: 'Mapa Amostra'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
@@ -1343,7 +1343,7 @@ console.log('construing config , registrando state');
             }).state('grupo', {
                 url: "/configura/grupo/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00088',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
+                params: {titulo: 'Grupo',pai:'Configura',pagina:'Grupo',  modStCodigo: '00088',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
                 parent: 'lisnet',
                 data: {pageTitle: 'Grupo'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
@@ -1379,7 +1379,7 @@ console.log('construing config , registrando state');
             }).state('examedepara', {
                 url: "/configura/examedepara/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00090',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
+                params: {titulo: 'Exame Depara',pai:'Configura',pagina:'Exame Depara', modStCodigo: '00090',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
                 parent: 'lisnet',
                 data: {pageTitle: 'Exame Depara'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
@@ -1419,7 +1419,7 @@ console.log('construing config , registrando state');
             }).state('grupodetriagem', {
                 url: "/configura/grupodetriagem/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00098',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
+                params: {titulo: 'Grupo de Triagem',pai:'Configura',pagina:'Grupo de Triagem' , modStCodigo: '00098',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
                 parent: 'lisnet',
                 data: {pageTitle: 'Grupo de Triagem'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
@@ -1455,7 +1455,7 @@ console.log('construing config , registrando state');
             }).state('localde-para', {
                 url: "/configura/localdepara/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00101',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
+                params: {titulo: 'Local Depara',pai:'Configura',pagina:'Local Depara' , modStCodigo: '00101',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
                 parent: 'lisnet',
                 data: {pageTitle: 'Local depara'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
@@ -1491,7 +1491,7 @@ console.log('construing config , registrando state');
             }).state('examedepararetorno', {
                 url: "/configura/examedepararetorno/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00131',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
+                params: {titulo: 'Exame Depara Retorno',pai:'Configura',pagina:'Exame Depara Retorno' , modStCodigo: '00131',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
                 parent: 'lisnet',
                 data: {pageTitle: 'Exame de para Retorno'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
@@ -1527,7 +1527,7 @@ console.log('construing config , registrando state');
             }).state('materialde-para', {
                 url: "/configura/materialdepara/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00133',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
+                params: {titulo: 'Material Depara',pai:'Configura',pagina:'Material Depara' ,  modStCodigo: '00133',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
                 parent: 'lisnet',
                 data: {pageTitle: 'Material Depara'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
@@ -1563,7 +1563,7 @@ console.log('construing config , registrando state');
             }).state('materialdecoleta(dasa)', {
                 url: "/configura/materialdecoleta-dasa/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00138',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
+                params: {titulo: 'Material de Coleta',pai:'Configura',pagina:'Material de Coleta' , modStCodigo: '00138',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
                 parent: 'lisnet',
                 data: {pageTitle: 'Material de Coleta(DASA)'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
@@ -1599,7 +1599,7 @@ console.log('construing config , registrando state');
             }).state('recipientedecoleta(dasa)', {
                 url: "/configura/recipientedecoleta-dasa/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00139',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
+                params: {titulo: 'Recipiente de Coleta',pai:'Configura',pagina:'Recipiente de Coleta' ,modStCodigo: '00139',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
                 parent: 'lisnet',
                 data: {pageTitle: 'Recipiente de Coleta(DASA)'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
@@ -1635,7 +1635,7 @@ console.log('construing config , registrando state');
             }).state('cadastrodecarros', {
                 url: "/configura/cadastrodecarros/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00159',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
+                params: {titulo: 'Cadastro de Carros',pai:'Configura',pagina:'Cadastro de Carros' , modStCodigo: '00159',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
                 parent: 'lisnet',
                 data: {pageTitle: 'Cadastro de Carros'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
@@ -1671,7 +1671,7 @@ console.log('construing config , registrando state');
             }).state('procedimentodecoleta', {
                 url: "/configura/procedimentodecoleta/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00161',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
+                params: {titulo: 'Procedimento de Coleta',pai:'Configura',pagina:'Procedimento de Coleta' , modStCodigo: '00161',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
                 parent: 'lisnet',
                 data: {pageTitle: 'Procedimento de Coleta'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
@@ -1707,7 +1707,7 @@ console.log('construing config , registrando state');
             }).state('bandejamento', {
                 url: "/configura/bandejamento/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00179',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
+                params: {titulo: 'Badejamento',pai:'Configura',pagina:'Badejamento' , modStCodigo: '00179',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
                 parent: 'lisnet',
                 data: {pageTitle: 'Bandejamento'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
@@ -1743,7 +1743,7 @@ console.log('construing config , registrando state');
             }).state('flyer', {
                 url: "/configura/flyer/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00184',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
+                params: {titulo: 'Flyer',pai:'Configura',pagina:'Flyer' ,  modStCodigo: '00184',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
                 parent: 'lisnet',
                 data: {pageTitle: 'Flyer'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
@@ -1779,7 +1779,7 @@ console.log('construing config , registrando state');
             }).state('cadastrosparasoroteca', {
                 url: "/configura/cadastrosparasoroteca/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00185',limit:'50',btnFiltrar:true,btnCriar:true,btnTodos:true},
+                params: {titulo: 'Cadastro para Soroteca',pai:'Configura',pagina:'Cadastro para Soroteca' ,  modStCodigo: '00185',limit:'50',btnFiltrar:true,btnCriar:true,btnTodos:true},
                 parent: 'lisnet',
                 data: {pageTitle: 'Cadastros para Soroteca'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
@@ -1815,7 +1815,7 @@ console.log('construing config , registrando state');
             }).state('cadastrodesistemas', {
                 url: "/configura/cadastrodesistemas/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00187',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
+                params: {titulo: 'Cadastro de Sistemas',pai:'Configura',pagina:'Cadastro de Sistemas' ,  modStCodigo: '00187',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
                 parent: 'lisnet',
                 data: {pageTitle: 'Cadastro de Sistemas'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
@@ -1851,7 +1851,7 @@ console.log('construing config , registrando state');
             }).state('grupodeantibioticos', {
                 url: "/configura/grupodeantibioticos/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00190',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
+                params: {titulo: 'Grupo de Antibióticos',pai:'Configura',pagina:'Grupo de Antibióticos' ,modStCodigo: '00190',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
                 parent: 'lisnet',
                 data: {pageTitle: 'Grupo de Antibioticos'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
@@ -1887,7 +1887,7 @@ console.log('construing config , registrando state');
             }).state('laudopadrao', {
                 url: "/configura/laudopadrao/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00194',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
+                params: {titulo: 'Laudo Padrão',pai:'Configura',pagina:'Laudo Padrão' , modStCodigo: '00194',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
                 parent: 'lisnet',
                 data: {pageTitle: 'Laudo Padrao'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
@@ -1923,7 +1923,7 @@ console.log('construing config , registrando state');
             }).state('usuarioxconvenio', {
                 url: "/configura/usuarioxconvenio/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00199',limit:'220',btnFiltrar:true,btnCriar:true,btnTodos:true},
+                params: {titulo: 'Usuário x Convênio',pai:'Configura',pagina:'Usuário x Convênio' ,  modStCodigo: '00199',limit:'220',btnFiltrar:true,btnCriar:true,btnTodos:true},
                 parent: 'lisnet',
                 data: {pageTitle: 'Usuário x Convênio'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
@@ -1959,7 +1959,7 @@ console.log('construing config , registrando state');
             }).state('periododefechamento', {
                 url: "/configura/periododefechamento/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00229',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
+                params: {titulo: 'Período de Fechamento',pai:'Configura',pagina:'Período de Fechamento' ,modStCodigo: '00229',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
                 parent: 'lisnet',
                 data: {pageTitle: 'Periodo de Fechamento'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
@@ -1995,7 +1995,7 @@ console.log('construing config , registrando state');
             }).state('fraselaudo', {
                 url: "/configura/fraselaudo/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
-                params: { modStCodigo: '00251',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
+                params: {titulo: 'Frase do Laudo',pai:'Configura',pagina:'Frase do Laudo' ,modStCodigo: '00251',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
                 parent: 'lisnet',
                 data: {pageTitle: 'Frase Laudo'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {

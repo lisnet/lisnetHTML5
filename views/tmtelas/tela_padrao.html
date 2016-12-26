@@ -2,27 +2,6 @@
 <!--https://scotch.io/tutorials/angularjs-form-validation
 https://demos.scotch.io/angular-validation/demos/-->
 
-<!--<div class="row wrapper border-bottom white-bg page-heading"  >
-    <div class="col-lg-10" ng-controller="telaPadrao" >
-        <h2>{{moduloPadrao.state.data.pageTitle}}</h2>
-        <ol class="breadcrumb">
-            <li>
-                <a   ng-click="main.stateGO('widgets.lisnet')" >Home</a>
-            </li>
-            <li>
-                <a>Configura</a>
-            </li>
-            <li class="active">
-                <strong>{{moduloPadrao.state.data.pageTitle}}</strong>
-            </li>
-        </ol>
-    </div>
-    <div class="col-lg-2"   >
-
-    </div>
-</div>-->
-
-
 <div class="wrapper wrapper-content animated fadeInRight"   ng-controller="telaPadrao" >
     <div class="ibox-content">
         <!--{{moduloPadrao}}-->
@@ -35,37 +14,37 @@ https://demos.scotch.io/angular-validation/demos/-->
 
                     <div class="row">
 
-
-                        <div class="col-lg-2">
-                            <div>
-                                <select    chosen id="pesquisas" class="chosen-select form-control "  tabindex="4" ng-model="moduloPadrao.entidade.pesquisaTipo" >
-                                    <option   value="0"   selected >Semelhante</option>
-                                    <option  value="1" >Começa</option>
-                                    <option  value="2" >Exatamente</option>
-                                </select>
-                            </div>
+                        <div class="col-lg-2" style="padding-bottom: 5px; " >
+                            <select    chosen id="pesquisas" class="chosen-select form-control "  tabindex="4" ng-model="moduloPadrao.entidade.pesquisaTipo" >
+                                <option   value="0"   selected >Semelhante</option>
+                                <option  value="1" >Começa</option>
+                                <option  value="2" >Exatamente</option>
+                            </select>
                         </div>
 
-                        <div class="col-lg-2">
-                            <div>
-                                <select    chosen id="pesquisas" class="chosen-select form-control "  tabindex="4" ng-model="moduloPadrao.entidade.pesquisa" >
-                                    <option  ng-repeat=" p in moduloPadrao.entidade.pesquisas" >{{p.nome}}</option>
-                                </select>
-                            </div>
+                        <div class="col-lg-2"  style="padding-bottom: 5px; ">
+                            <select    chosen id="pesquisas" class="chosen-select form-control "  tabindex="4" ng-model="moduloPadrao.entidade.pesquisa" >
+                                <option  ng-repeat=" p in moduloPadrao.entidade.pesquisas" >{{p.nome}}</option>
+                            </select>
                         </div>
 
-                        <div class="col-lg-2  ">
+
+
+                        <div class="col-lg-2  "  style="padding-bottom: 5px; " >
                             <input   placeholder="Campos de Pesquisa" type="text"  id="inputTextRequisicao"  class="form-control  text-primary  " size="20" ng-model="moduloPadrao.entidade.pesquisaInput"   enter-key="buscar(true)"   ng-maxlength="300"  >
                         </div>
 
-                        <div  class="col-lg-1">
-                            <button class="btn btn-block  btn-outline  btn-success   full-width "     ng-click="buscar(true)"  ng-disabled="!jsonTelaPadrao.btnFiltrar" >Filtrar</button>
+                        <div class="col-lg-2"  >
+                            <div  class="col-sm-6"  style="padding: 0px 3px 0px 0px;" >
+                                <button class="btn btn-block  btn-outline  btn-success   full-width "     ng-click="buscar(true)"  ng-disabled="!jsonTelaPadrao.btnFiltrar" >Filtrar</button>
+                            </div>
+                            <div  class="col-sm-6"  style="padding: 0px 0px 0px 3px;" >
+                                <button class="btn btn-block  btn-outline  btn-info  full-width "   ng-click="criarNovoRegistro()"   ng-disabled="!jsonTelaPadrao.btnCriar" ><i  style="color: orange;" class="fa fa-star-o"></i>&nbsp;Criar&nbsp;</button>
+                            </div>
                         </div>
-                        <div  class="col-lg-1">
-                            <button class="btn btn-block  btn-outline  btn-info  full-width "   ng-click="criarNovoRegistro()"   ng-disabled="!jsonTelaPadrao.btnCriar" ><i  style="color: orange;" class="fa fa-star-o"></i>&nbsp;Criar&nbsp;</button>
-                        </div>
+
                         <div  class="col-lg-2">
-                            <button class="btn btn-block  btn-outline  btn-danger  full-width "    ng-click="limparTela() "   >Limpar</button>
+                            <button class="btn btn-block  btn-outline  btn-danger  full-width "    ng-click="limparTela()"   >Limpar</button>
                         </div>
                         <div  class="col-lg-2">
                             <button class="btn btn-block  btn-outline  btn-primary full-width "     ng-click="buscar(false)"  ng-disabled="!jsonTelaPadrao.btnTodos"  data-toggle="tooltip"    title="Limite de pesquisa para esta tela é de {{jsonTelaPadrao.limit}} itens"    >Buscar Todos</button>
@@ -76,8 +55,18 @@ https://demos.scotch.io/angular-validation/demos/-->
                 </div>
 
             </div>
+            <div   style="background-color: #f0f5f5;"  class="col-lg-12"  ng-cloak="true"  ng-hide="moduloPadrao.entidade.entidades && moduloPadrao.entidade.entidades.length > 0"  >
+                <div class="wrapper wrapper-content">
+                    <div class=" text-center animated fadeInRightBig">
+                        <h3 class="font-bold">Faça a sua pesquisa.</h3>
 
-            <div class="col-lg-12"  ng-cloak="true"  >
+                        <div class="error-desc">
+                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12"  ng-cloak="true"  ng-if="moduloPadrao.entidade.entidades && moduloPadrao.entidade.entidades.length > 0"  >
                 <div class="ibox-content"  style="padding: 15px 5px 20px 5px; min-height: 400px;" >
                     <table   datatable="ng" dt-options="dTOptionsBuilder" class="table table-striped table-bordered table-hover dataTables-example"   >
                         <thead>
@@ -139,7 +128,7 @@ https://demos.scotch.io/angular-validation/demos/-->
                                                 <span  class="form-group" ng-if="ent[0].editavel && moduloPadrao.entidade.colunas[$index - 1].chave !== 'S' || (moduloPadrao.entidade.colunas[$index - 1].chave === 'S' && ent[0].status === 'C') " >
                                                     <span ng-if="moduloPadrao.entidade.colunas[$index - 1].tipo === 'C' " >
                                                         <input  size="{{moduloPadrao.entidade.colunas[$index - 1].tamanho  }}"  name="{{moduloPadrao.entidade.colunas[$index - 1].nome }}"  
-                                                                style="width: {{moduloPadrao.entidade.colunas[$index - 1].tamanho * 4 }}px"
+                                                                style=" min-width: 50px;   width: {{moduloPadrao.entidade.colunas[$index - 1].tamanho * 4 }}px ; "
                                                                 placeholder="{{moduloPadrao.entidade.colunas[$index - 1].nome }}"    
                                                                 ng-change="mudarStatus(ent,$parent.$index, $index)"     class="form-control  text-primary  "    
                                                                 required="{{moduloPadrao.entidade.colunas[$index - 1].obrigatorio === 'S' }}"  
