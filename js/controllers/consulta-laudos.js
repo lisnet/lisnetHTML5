@@ -1,6 +1,7 @@
 /* 
  Created on : Jan 12, 2016, 1:37:18 PM
  Author     : eros
+https://github.com/fragaria/angular-daterangepicker
  */
 function consultaLaudos($scope, $filter, sairDoSistemaService, base64, montaUrlLaudoProvider, buscaAPIService, $sce,  $state, $localStorage,
 DTOptionsBuilder,$window,$interval,$timeout,notificacaoProvider,determinaAparelhoProvider, $stateParams, helperService) {

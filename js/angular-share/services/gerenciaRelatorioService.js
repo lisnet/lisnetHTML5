@@ -87,7 +87,7 @@ angular.module('lisnet').service('gerenciaRelatorioService', function (buscaAPIS
                }
                // no casa do login, qd a userDTO.notificacoes  esta vazia.
                if(userDTO.notificacoes.length !== arrayNotf.length){
-                   
+                   var _sleep = arrayNotf.length > 20 ? 100 : 300;
                    userDTO.notificacoes = [];  
                    var _int = $interval(function (){
                        if(arrayNotf && arrayNotf.length > 0){
@@ -95,7 +95,7 @@ angular.module('lisnet').service('gerenciaRelatorioService', function (buscaAPIS
                        }else{
                            $interval.cancel(_int );
                        }
-                   },100);
+                   },_sleep);
                    
                }else{
                    for(var i = 0 ; i < arrayNotf.length ; i ++){
