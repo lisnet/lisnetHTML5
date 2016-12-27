@@ -87,15 +87,14 @@ angular.module('lisnet').service('gerenciaRelatorioService', function (buscaAPIS
                }
                // no casa do login, qd a userDTO.notificacoes  esta vazia.
                if(userDTO.notificacoes.length !== arrayNotf.length){
+                   
                    userDTO.notificacoes = [];  
                    var _int = $interval(function (){
                        if(arrayNotf && arrayNotf.length > 0){
-                           
                         userDTO.notificacoes.push(arrayNotf.shift());
                        }else{
                            $interval.cancel(_int );
                        }
-                       
                    },100);
                    
                }else{
@@ -122,12 +121,12 @@ angular.module('lisnet').service('gerenciaRelatorioService', function (buscaAPIS
      
     };
     
-    this.statusRelatorio = function (codigo_rastreio, $scope) {
-
-    };
-    this.downloadRelatorio = function (codigo_rastreio, $scope) {
-
-    };
+//    this.statusRelatorio = function (codigo_rastreio, $scope) {
+//
+//    };
+//    this.downloadRelatorio = function (codigo_rastreio, $scope) {
+//
+//    };
     
 
 });
