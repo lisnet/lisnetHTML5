@@ -226,7 +226,7 @@ function estatisticaFaturamento($scope, buscaAPIService, $stateParams, $localSto
               var inicio = $scope.userDTO.estatisticaFaturamento.dtInicio;
         var fim = $scope.userDTO.estatisticaFaturamento.dtFim;
         var json = {
-            "mod_st_codigo": "999",
+            "mod_st_codigo": "00051",
             "usu_st_codigo": $scope.userDTO.USU_ST_CODIGO,
             "rel_st_tipoarquivo": "pdf",
             "dbname": $scope.userDTO.cliente.CLI_ST_ORACLEUSERNAME,

@@ -64,7 +64,7 @@ function notificacaoBarra($scope, $window,sairDoSistemaService,$rootScope){
 
     $scope.openRelatorio = function (status,codigo_rastreio){
         console.log('Inside openRelatorio codigo_rastreio = '+codigo_rastreio);
-        if(status === 'B'){
+        if(status === 'P'){
             var url = $scope.userDTO.configLisNet.baseUrl +'/relatorio/download?codigo_rastreio=' +codigo_rastreio+'&dbname='+$scope.userDTO.configLisNet.defaultDB;
          $window.open(url, '_blank');
         }else{
