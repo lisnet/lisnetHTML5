@@ -5,7 +5,7 @@
 
 
 function MainLisnet($scope, $rootScope,$state, $location, buscaAPIService, montaUrlLaudoProvider, deviceDetector,   
-$timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$interval,$filter,$localStorage,$state,resumePerfilService,configuraLinks,  $rootScope , notificacaoProvider,shareuser,helperService,$uibModal) {
+$timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$interval,$filter,$localStorage,$state,resumePerfilService,configuraLinks,  $rootScope , notificacaoProvider,shareuser,helperService) {
     
     console.log('Inicializando MainLisnet ..');
     var vm = this;
@@ -308,9 +308,8 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
         if (this.userDTO && this.userDTO.status && this.userDTO.status === 'in') {
             console.log('Atualizando lista de notificacoes ....');
             
-            $timeout(function () { gerenciaRelatorioService.atualizaRelatorios(this.userDTO); }, 2000);
-            $timeout(function () { gerenciaRelatorioService.atualizaRelatorios(this.userDTO); }, 10000);
-            $timeout(function () { gerenciaRelatorioService.atualizaRelatorios(this.userDTO); }, 40000);
+            $timeout(function () { gerenciaRelatorioService.atualizaRelatorios(this.userDTO); }, 6000);
+            
             if ($scope.userDTO && $scope.userDTO.job) {
                 console.log('Job is runnig ...');
             } else {
@@ -320,14 +319,7 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
                 this.userDTO.job = $interval(function () {
                     console.log('Starting startNotificacaoTimer .....');
                     _interacoes++;
-//                console.log('job update relatorio rodando ... interacoes =  '+_interacoes+'     _sleep = '+_sleep);
                     gerenciaRelatorioService.atualizaRelatorios(this.userDTO);
-
-//                    if (_interacoes >= 5) {
-//                        _sleep = 120000;
-//                    } else {
-//                        _sleep = 60000;
-//                    }
                 }, _sleep);
             }
         } else {
