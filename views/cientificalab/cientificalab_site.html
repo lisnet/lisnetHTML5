@@ -17,15 +17,17 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class="active"><a class="page-scroll" page-scroll href="#page-top">HOME</a></li>
                     <li><a class="page-scroll" page-scroll href="#features">INSTITUCIONAL</a></li>
-                    <li><a class="page-scroll" page-scroll href="#team">CLIENTES</a></li>
-                    <li><a class="page-scroll" page-scroll href="#testimonials">MÉDICOS</a></li>
-                    <li><a class="page-scroll" page-scroll href="#pricing">CERTIFICAÇÕES</a></li>
+                    <!--<li ui-sref-active="active"><a ui-sref="dashboards.dashboard_5">{{ 'DASHBOARD' | translate }} v.5 <span class="label label-primary pull-right">NEW</span></a></li>-->
+                    <li><a ui-sref-active="geslab">SAÚDE</a></li>
+                    <!--<li><a class="page-scroll" page-scroll href="#testimonials"></a></li>
+                    <li><a class="page-scroll" page-scroll href="#pricing"></a></li>-->
                     <li><a class="page-scroll" page-scroll href="#contact">CONTATO</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 </div>
+    
 <div id="inSlider" class="carousel slide carousel-fade" data-ride="carousel" ng-non-bindable>
     <div class="carousel-inner" role="listbox">
         <div class="item active">
@@ -45,74 +47,51 @@
             <div class="header-back one"></div>
         </div>
 </div>
-    <br>
-    <br>
+    <br><br>
     <br>
     <br>
 
 <section id="features" class="container services">
     <div class="row">
-        <div class="col-sm-3">
-            <h2>Full responsive</h2>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
-            <p><a class="navy-link" href="#" role="button">Details &raquo;</a></p>
-        </div>
-        <div class="col-sm-3">
-            <h2>LESS/SASS Files</h2>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
-            <p><a class="navy-link" href="#" role="button">Details &raquo;</a></p>
-        </div>
-        <div class="col-sm-3">
-            <h2>6 Charts Library</h2>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
-            <p><a class="navy-link" href="#" role="button">Details &raquo;</a></p>
-        </div>
-        <div class="col-sm-3">
-            <h2>Advanced Forms</h2>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
-            <p><a class="navy-link" href="#" role="button">Details &raquo;</a></p>
-        </div>
-    </div>
-</section>
-
-<section  class="container features">
-    <div class="row">
         <div class="col-lg-12 text-center">
-            <div class="navy-line"></div>
-            <h1>Over 40+ unique view<br/> <span class="navy"> with many custom components</span> </h1>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. </p>
+            <h1>Sobre a CientifícaLab<br/></h1>
         </div>
     </div>
+    
     <div class="row">
         <div class="col-md-3 text-center wow fadeInLeft">
             <div>
-                <i class="fa fa-mobile features-icon"></i>
-                <h2>Full responsive</h2>
-                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
-            </div>
-            <div class="m-t-lg">
-                <i class="fa fa-bar-chart features-icon"></i>
-                <h2>6 Charts Library</h2>
-                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
+                <i class="fa fa-medkit features-icon"></i>
+                <h2>Suporte</h2>
+                <p>inclui o transporte das amostras e processamento central. Nesse caso, a CientíficaLab fornece materiais de coleta, treinamento aos funcionários públicos e, em alguns casos, reformas nas unidades para assegurar a qualidade de atendimento;</p>
             </div>
         </div>
+
         <div class="col-md-6 text-center  wow zoomIn">
-            <img src="img/landing/perspective.png" alt="dashboard" class="img-responsive">
+            
+            <p>A CientíficaLab, maior referência em medicina diagnóstica no mercado de atendimento ao setor público, atende clientes classificados entre médio (até 150 mil exames processados por mês) e grande porte (acima de 150 mil exames processados por mês).</p>
+
+            <p>A forma e a extensão da prestação dos serviços variam em função da necessidade do ente público que demanda o serviço, podendo compreender três modelos distintos:</p>
+
+            <img src="views/cientificalab/cientificapredio.jpg" alt="dashboard" class="center-orientation">
+            
+            <div class="m-t-lg">
+                <h2>Ambulatorial</h2>
+                <p>além do serviço de suporte, engloba o atendimento do paciente e a coleta das amostras;</p>
+            </div>
+            
         </div>
+        
         <div class="col-md-3 text-center wow fadeInRight">
             <div>
-                <i class="fa fa-envelope features-icon"></i>
-                <h2>Mail pages</h2>
-                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
-            </div>
-            <div class="m-t-lg">
-                <i class="fa fa-google features-icon"></i>
-                <h2>AngularJS version</h2>
-                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
+                <i class="fa fa-hospital-o features-icon"></i>
+                <h2>Hospitalar</h2>
+                <p>refere-se ao atendimento ao paciente, coleta dos exames, processamento local para exames de urgência, transporte e processamento central para os demais exames.</p>
             </div>
         </div>
     </div>
-    <div class="row">
+    
+    <!--<div class="row">
         <div class="col-lg-12 text-center">
             <div class="navy-line"></div>
             <h1>Discover great feautres</h1>
@@ -130,7 +109,7 @@
             <img src="img/landing/dashboard.png" alt="dashboard" class="img-responsive pull-right">
         </div>
     </div>
-</section>
+</section>-->
 
 <section id="team" class="gray-section team">
     <div class="container">
