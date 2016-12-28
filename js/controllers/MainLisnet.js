@@ -75,19 +75,15 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
     
     this.buscaUser = function (_param1, _param2) {
         if (_param1 && _param2 ) {
-            
             var modalLoading = notificacaoProvider.modalLoading('Carregando ','Buscando usuário na base, aguarde  ...',$scope);
-            
             _param1 = _param1.toUpperCase();
             _param2 = _param2.toUpperCase();
-                
+                try{
                     buscaAPIService.buscaUsuarioAjax(_param1, _param2, this.userDTO.configLisNet)
                             .then(function successCallback(response) {
-                                
                                 var retorno = response.data;
 //                                console.log('response.data = ' + JSON.stringify(retorno));;
                                 if (retorno && retorno.USU_ST_NOME && retorno.USU_ST_SENHA && retorno.PUS_ST_CODIGO) {
-                                    
                                     this.userDTO.USU_ST_NOME = retorno.USU_ST_NOME;
                                     this.userDTO.USU_ST_SENHA = retorno.USU_ST_SENHA;
                                     this.userDTO.USU_ST_CODIGO = retorno.USU_ST_CODIGO;
@@ -100,7 +96,6 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
 //                                    this.log('$scope.userDTO.perfilId: '+this.userDTO.perfilId);
                                     $localStorage.userDTO = this.userDTO;
                                     buscaUsuarioMenu(_param1, this.userDTO.PUS_ST_CODIGO, modalLoading ) ;
-
                                 } else {
                                     modalLoading.dismiss('cancel');
                                     $timeout(function () { 
@@ -117,7 +112,9 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
                             , intMinimoDelay);
                                 $timeout(function () {}, 1000);
                             });
-              
+                }catch(error){
+                    notificacaoProvider.sweetDialog("Sem acesso a internet", "Aplicativo sem acesso a internet erro =  " + error,'warning','red','X');
+                }
         } else {
             $timeout(function () { 
             notificacaoProvider.sweetDialog("Preencha os campos", 'Preencha todos os campos obrigatórios.','warning','red','X');}, intMinimoDelay);
