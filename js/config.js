@@ -83,6 +83,27 @@ console.log('construing config , registrando state');
                     }
                 }
             })
+            .state('cientificalab', {     //teste
+                url: "/cientificalab",
+                templateUrl: "views/cientificalab/cientificalab_site.html",
+                data: {pageTitle: 'CientificaLab', specialClass: 'landing-page'},
+                resolve: {
+                    loadPlugin: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load([
+                            {
+                                files: ['js/plugins/wow/wow.min.js']
+                            },
+                            {
+                                files: ['css/plugins/slick/slick.css', 'css/plugins/slick/slick-theme.css', 'js/plugins/slick/slick.min.js']
+                            },
+                            {
+                                name: 'slick',
+                                files: ['js/plugins/slick/angular-slick.min.js']
+                            }
+                        ]);
+                    }
+                }
+            })
             .state('login', {
                 url: "/login",
                 templateUrl: "views/tmtelas/login.html",
