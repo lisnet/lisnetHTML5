@@ -83,7 +83,7 @@ console.log('construing config , registrando state');
                     }
                 }
             })
-            .state('cientificalab', {
+            .state('cientificalab', {     //teste
                 url: "/cientificalab",
                 templateUrl: "views/cientificalab/cientificalab_site.html",
                 data: {pageTitle: 'CientificaLab', specialClass: 'landing-page'},
