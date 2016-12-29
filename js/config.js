@@ -330,6 +330,21 @@ console.log('construing config , registrando state');
                             },
                             {
                                 files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
+                            },
+                             {
+                                files: ['js/plugins/moment/moment.min.js']
+                            },
+                             {
+                                name: 'datePicker',
+                                files: ['css/plugins/datapicker/angular-datapicker.css','js/plugins/datapicker/angular-datepicker.js']
+                            },
+                            {
+                                serie: true,
+                                files: ['js/plugins/daterangepicker/daterangepicker.js', 'css/plugins/daterangepicker/daterangepicker-bs3.css']
+                            },
+                            {
+                                name: 'daterangepicker',
+                                files: ['js/plugins/daterangepicker/angular-daterangepicker.js']
                             }
 
                         ]);
@@ -3565,3 +3580,9 @@ angular
         $rootScope.$state = $state;
 //        $rootScope.$stateProvider = $stateProvider;
     });
+
+
+// angular.module("lisnet")
+//         .constant ('angularMomentConfig',
+//    {preprocess: 'utc',timezone: 'Europe/France'}
+//);

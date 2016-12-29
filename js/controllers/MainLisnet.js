@@ -9,7 +9,6 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
     
     console.log('Inicializando MainLisnet ..');
     var vm = this;
-        
     $scope.$storage = $localStorage;
     this.login ;
     this.senha ;

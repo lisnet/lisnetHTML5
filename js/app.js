@@ -17,7 +17,9 @@
         'ng.deviceDetector',
         'ngStorage',
         'ngResource',
-        'oitozero.ngSweetAlert'
+        'oitozero.ngSweetAlert',
+        'ngMessages',
+        'daterangepicker'
     ]);
 })();
 

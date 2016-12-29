@@ -32,7 +32,7 @@ angular.module('lisnet')
             this.validarLogin = function () {
                 var userDTO;
                 if(shareuser.userDTO && shareuser.userDTO.perfil  ){
-                    console.log('Pegando do share service ...');
+                    console.log('Pegando do share service  da memoria ...');
                     userDTO = shareuser.userDTO;
                 }else{
                     console.log('Pegando do $localStorage ...');

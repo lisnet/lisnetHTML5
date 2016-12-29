@@ -3,13 +3,59 @@
  Author     : eros
 https://github.com/fragaria/angular-daterangepicker
  */
-function consultaLaudos($scope, $filter, sairDoSistemaService, base64, montaUrlLaudoProvider, buscaAPIService, $sce,  $state, $localStorage,
-DTOptionsBuilder,$window,$interval,$timeout,notificacaoProvider,determinaAparelhoProvider, $stateParams, helperService) {
+function consultaLaudos($scope, $filter, sairDoSistemaService,  montaUrlLaudoProvider, buscaAPIService, $sce, $localStorage,
+DTOptionsBuilder,$window, $timeout,notificacaoProvider,determinaAparelhoProvider, helperService,moment) {
 var self = this;
 
 
 console.log('Inicializando consultaLaudo ' );
 $scope.userDTO = sairDoSistemaService.validarLogin();
+
+//console.log(JSON.stringify(moment,null,2));
+
+$scope.date = {
+        startDate: moment().subtract(7, "days"),
+        endDate: moment()
+    };
+
+ $scope.opts = {
+        locale: {
+            format: 'MM/DD/YYYY HH:mm',
+            dateLimit:'{ months: 1 }',
+            applyClass: 'btn-green',
+            applyLabel: "Aplicar",
+            cancelLabel: 'Cancelar',
+            fromLabel: "de",
+            toLabel: "para",
+            customRangeLabel: 'Alcance',
+            daysOfWeek: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
+            firstDay: 1,
+            monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril','Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro','Novembro', 'Desembro']
+        },
+        ranges: {'Últimos 7 dias': [moment().subtract(6, 'days'), moment()],'Últimos 30 dias': [moment().subtract(29, 'days'), moment()] }
+    };
+    
+     $scope.setStartDate = function () {
+        $scope.date.startDate = moment().subtract(4, "days");
+    };
+    $scope.setRange = function () {
+        $scope.date = {
+            startDate: moment().subtract(5, "days"),
+            endDate: moment()
+        };
+    };
+    
+    //Watch for date changes
+    $scope.$watch('date', function(newDate) {
+        console.log('New date set: ', newDate);
+    }, false);
+
+//$scope.datePicker = {};
+//$scope.datePicker.date = {startDate: null, endDate: null};
+
+// this.daterange = {startDate: null, endDate: null};
+$scope.daterange = {startDate: new Date(), endDate: new Date()};
+
 if(!$scope.userDTO.consultalaudo){
     var uni0 = $scope.userDTO.unidades[0];
     $scope.userDTO.consultalaudo  = {unidadeId : uni0.UNI_ST_CODIGO+'-'+uni0.UNI_ST_DESCRICAO,dtInicio:new Date(),dtFim:new Date(),format : 'dd/MM/yyyy'};
@@ -182,8 +228,10 @@ $scope.calcRangeDate = function (blFuturo){
            runFiltrar = true;
            if(runFiltrar){
                runFiltrar = false;
-               var _startFilter =  $filter('date')($scope.userDTO.consultalaudo.dtInicio, 'dd-MM-yyyy');
-               var _endFilter =  $filter('date')($scope.userDTO.consultalaudo.dtFim, 'dd-MM-yyyy');
+               var _startFilter =  $filter('date')($scope.date.startDate._d, 'dd-MM-yyyy');
+               var _endFilter =  $filter('date')($scope.date.endDate._d, 'dd-MM-yyyy');
+//               var _startFilter =  $filter('date')($scope.userDTO.consultalaudo.dtInicio, 'dd-MM-yyyy');
+//               var _endFilter =  $filter('date')($scope.userDTO.consultalaudo.dtFim, 'dd-MM-yyyy');
 //               console.log('----------------------------------------------------------------------------------------------------------------------------------------');
 //               console.log(_startFilter);
 //               var _start = $scope.dataPesquisa.dtInicio.getDate()+'-'+$scope.dataPesquisa.dtInicio.getMonth()+'-'+$scope.dataPesquisa.dtInicio.getFullYear();
@@ -449,3 +497,7 @@ $scope.calcRangeDate = function (blFuturo){
 }
 
 angular.module('lisnet').controller('consultaLaudos', consultaLaudos);
+
+angular.module('lisnet').constant('angularMomentConfig', {
+    timezone: 'Europe/London' // e.g. 'Europe/London'
+});
