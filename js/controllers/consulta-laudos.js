@@ -48,6 +48,7 @@ $scope.date = {
     //Watch for date changes
     $scope.$watch('date', function(newDate) {
         console.log('New date set: ', newDate);
+        ultimoCampo = 'datas';
     }, false);
 
 //$scope.datePicker = {};
