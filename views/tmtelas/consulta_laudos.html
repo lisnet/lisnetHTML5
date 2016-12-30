@@ -23,7 +23,7 @@
                             </div>
 
                             <div class="col-lg-2 ">
-                                <input  name="REQ_ST_CODIGO" placeholder="Solicitação" type="text"  id="inputTextRequisicao"  class="form-control  text-primary" size="20" ng-model="userDTO.consultalaudo.requisicao"   enter-key="quemMudouPorUltimo('REQ_ST_CODIGO')  "  
+                                <input  name="REQ_ST_CODIGO" placeholder="Solicitação" type="text"  id="inputTextRequisicao"  class="form-control  text-primary" size="20" ng-model="userDTO.consultalaudo.requisicao"   ng-change="trocarVisualizacao('REQ_ST_CODIGO')"  enter-key="filtrar()"  
                                         ng-minlength="10" ng-maxlength="12"  >
                                 <div role="alert " >
                                     <span class="error  has-error"   style="color: red;" ng-show="consultalaudoform.REQ_ST_CODIGO.$error.minlength">
@@ -34,15 +34,15 @@
                             </div>
 
                             <div class="col-lg-2">
-                                <input placeholder="Prontuário" type="text" id="inputTextProntuario"  class="form-control" size="20" ng-model="userDTO.consultalaudo.prontuario" enter-key="quemMudouPorUltimo('PAC_ST_PRONTUARIO')" >
+                                <input placeholder="Prontuário" type="text" id="inputTextProntuario"  class="form-control" size="20" ng-model="userDTO.consultalaudo.prontuario"  ng-change="trocarVisualizacao('PAC_ST_PRONTUARIO')"   enter-key="filtrar()" >
                             </div>
-                            
+
                             <div class="col-lg-2">
-                                <input placeholder="Código SUS"  type="text" id="inputTextSUS"    class="form-control" size="20"  ng-model="userDTO.consultalaudo.sus" enter-key="quemMudouPorUltimo('PAC_IN_CODSUS')" >
+                                <input placeholder="Código SUS"  type="text" id="inputTextSUS"    class="form-control" size="20"  ng-model="userDTO.consultalaudo.sus"  ng-change="trocarVisualizacao('PAC_IN_CODSUS')"   enter-key="filtrar()" >
                             </div>
-                            
+
                             <div class="col-lg-4  "   >
-                                <input  placeholder="Nome" type="text"   name="pacname"    id="inputTextNOME"   class="form-control  text-uppercase  has-error" size="40"  ng-model="userDTO.consultalaudo.nome"   enter-key="quemMudouPorUltimo('PAC_ST_NOME')"
+                                <input  placeholder="Nome" type="text"   name="pacname"    id="inputTextNOME"   class="form-control  text-uppercase  has-error" size="40"  ng-change="trocarVisualizacao('PAC_ST_NOME')"   ng-model="userDTO.consultalaudo.nome"   enter-key="filtrar()"
                                         ng-minlength="10" ng-maxlength="100"    >
                                 <div role="alert " >
                                     <span class="error  has-error"   style="color: red;" ng-show="consultalaudoform.pacname.$error.minlength">
@@ -51,9 +51,9 @@
                                         Muito longo</span>
                                 </div>
                             </div>
-                            
+
                         </div>
-                        
+
                     </div>
                 </form>
             </div>
@@ -68,64 +68,64 @@
                         <div class="col-lg-2" >
                             <label   >Escolha a data da pesquisa:</label>
                         </div>
-                        
+
                         <div class="col-lg-4">
                             <!--<input date-range-picker class="form-control date-picker" type="text" ng-model="daterange" />-->
                             <!--<input date-range-picker id="daterange3" name="daterange3" class="form-control date-picker" type="text" ng-model="date"  options="opts" required    />-->
                             <form name="dateForm" class="form-horizontal" ng-class="{'has-error': dateForm.daterange2.$invalid}" >
-                                <input  date-range-picker id="daterange2"   name="daterange2" class="form-control date-picker" type="text" min="'2016-01-01'" max="'2016-12-31'" options="opts"  ng-model="date" required   />
-                             <div class="help-block" ng-messages="dateForm.daterange2.$error">
-                                <p ng-message="min"> Data inicial está muito no passado.</p>
-                                <p ng-message="max">Data final é no futuro.</p>
-                                <p ng-message="required">Datas são necessárias.</p>
-                            </div>
+                                <input  date-range-picker id="daterange2"   name="daterange2" class="form-control date-picker" type="text" min="'2016-01-01'" max="'2016-12-31'" options="opts"   ng-change="trocarVisualizacao('datas')"   ng-model="date" required   />
+                                <div class="help-block" ng-messages="dateForm.daterange2.$error">
+                                    <p ng-message="min"> Data inicial está muito no passado.</p>
+                                    <p ng-message="max">Data final é no futuro.</p>
+                                    <p ng-message="required">Datas são necessárias.</p>
+                                </div>
                             </form>
-                            <div class="form-group">
-<!--                                <label for="daterange3" class="control-label">Picker with custom locale</label>-->
-                                <!--<input date-range-picker id="daterange3" name="daterange3" class="form-control date-picker" type="text" ng-model="daterange"  options="opts" required/>-->
-                            </div>
+<!--                            <div class="form-group">
+                                                                <label for="daterange3" class="control-label">Picker with custom locale</label>
+                                <input date-range-picker id="daterange3" name="daterange3" class="form-control date-picker" type="text" ng-model="daterange"  options="opts" required/>
+                            </div>-->
                         </div>
+
+
+                        <!--                        <label  class="col-lg-1" >Data Inicio:</label>
+                                                <div class="col-lg-2  b-r ">
+                                                    <p class="input-group">
+                                                        <input type="text" class="form-control" 
+                                                               uib-datepicker-popup="{{userDTO.consultalaudo.format}}" 
+                                                               ng-model="userDTO.consultalaudo.dtInicio" 
+                                                               ng-change="calcRangeDate(true)"
+                                                               is-open="popup.inicio" 
+                                                               datepicker-options="userDTO.consultalaudo.dateOptionsMin" 
+                                                               ng-required="true" 
+                                                               close-text="Fechar" 
+                                                               alt-input-formats="altInputFormats" />
+                                                        <span class="input-group-btn">
+                                                            <button type="button" class="btn btn-default" 
+                                                                    ng-click="openPopInicio()"><i class="glyphicon glyphicon-calendar"></i>
+                                                            </button>
+                                                        </span>
+                                                    </p>
+                                                </div>
                         
-
-<!--                        <label  class="col-lg-1" >Data Inicio:</label>
-                        <div class="col-lg-2  b-r ">
-                            <p class="input-group">
-                                <input type="text" class="form-control" 
-                                       uib-datepicker-popup="{{userDTO.consultalaudo.format}}" 
-                                       ng-model="userDTO.consultalaudo.dtInicio" 
-                                       ng-change="calcRangeDate(true)"
-                                       is-open="popup.inicio" 
-                                       datepicker-options="userDTO.consultalaudo.dateOptionsMin" 
-                                       ng-required="true" 
-                                       close-text="Fechar" 
-                                       alt-input-formats="altInputFormats" />
-                                <span class="input-group-btn">
-                                    <button type="button" class="btn btn-default" 
-                                            ng-click="openPopInicio()"><i class="glyphicon glyphicon-calendar"></i>
-                                    </button>
-                                </span>
-                            </p>
-                        </div>
-
-                        <label class="col-lg-1" >Data Fim:</label>
-                        <div class="col-lg-2">
-                            <p class="input-group">
-                                <input type="text" class="form-control"  
-                                       uib-datepicker-popup="{{userDTO.consultalaudo.format}}" 
-                                       ng-model="userDTO.consultalaudo.dtFim"
-                                       ng-change="calcRangeDate(false)"
-                                       is-open="popup.fim" 
-                                       datepicker-options="userDTO.consultalaudo.dateOptionsMax" 
-                                       ng-required="true" 
-                                       close-text="Fechar"  
-                                       alt-input-formats="altInputFormats" />
-                                <span class="input-group-btn">
-                                    <button type="button" class="btn btn-default  " ng-click="openPopFim()">
-                                        <i class="glyphicon glyphicon-calendar"></i>
-                                    </button>
-                                </span>
-                            </p>
-                        </div>-->
+                                                <label class="col-lg-1" >Data Fim:</label>
+                                                <div class="col-lg-2">
+                                                    <p class="input-group">
+                                                        <input type="text" class="form-control"  
+                                                               uib-datepicker-popup="{{userDTO.consultalaudo.format}}" 
+                                                               ng-model="userDTO.consultalaudo.dtFim"
+                                                               ng-change="calcRangeDate(false)"
+                                                               is-open="popup.fim" 
+                                                               datepicker-options="userDTO.consultalaudo.dateOptionsMax" 
+                                                               ng-required="true" 
+                                                               close-text="Fechar"  
+                                                               alt-input-formats="altInputFormats" />
+                                                        <span class="input-group-btn">
+                                                            <button type="button" class="btn btn-default  " ng-click="openPopFim()">
+                                                                <i class="glyphicon glyphicon-calendar"></i>
+                                                            </button>
+                                                        </span>
+                                                    </p>
+                                                </div>-->
 
                         <div  class="col-lg-3">
                             <button class="btn btn-block  btn-outline  btn-danger full-width "   ng-disabled="btnGerador"  ng-click="limparTela()" >Limpar</button>
@@ -145,7 +145,18 @@
 
 
         <div class="row">
-            <div class="col-lg-12">
+            <div   style="background-color: #f0f5f5;"  class="col-lg-12"  ng-cloak="true"  ng-hide="userDTO.consultalaudo.requisicoes && userDTO.consultalaudo.requisicoes.length > 0"  >
+                <div class="wrapper wrapper-content">
+                    <div class=" text-center animated fadeInRightBig">
+                        <h3 class="font-bold">Faça a sua pesquisa.</h3>
+
+                        <div class="error-desc">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12"  ng-if="userDTO.consultalaudo.requisicoes && userDTO.consultalaudo.requisicoes.length > 0" >
                 <div class="ibox-content"  style="padding: 15px 5px 20px 5px; min-height: 400px;" >
                     <table    datatable="ng" dt-options="dtOptionsMobile" class="table table-striped table-bordered table-hover dataTables-example">
                         <thead>

@@ -141,27 +141,26 @@ $scope.calcRangeDate = function (blFuturo){
     $scope.tipoDebusca  = 'data';
 //$scope.tiposDebusca = [{tipo:'data',desc:'Buscar por Datas'},{tipo:'solicitacao',desc:'Buscar por Solicitação'},{tipo:'prontuario',desc:'Buscar por Prontuário'},{tipo:'sus',desc:'Buscar por Código SUS'},{tipo:'nome',desc:'Buscar por Nome'}];
 //$scope.tipoDeBuscaVisualizar = {mostrarData:true,mostrarSolicitacao:false,mostrarProntuario:false,mostrarSUS:false,mostrarNome:false};
-    $scope.trocarVisualizacao = function (){
-        switch ($scope.tipoDebusca){
-            case '':
-                break;
-                case 'data':
+    $scope.trocarVisualizacao = function (tipoDebusca){
+        console.log('tipoDebusca = '+tipoDebusca);
+        switch (tipoDebusca){
+                case 'datas':
 //                    $scope.tipoDeBuscaVisualizar = {mostrarData:true,mostrarSolicitacao:false,mostrarProntuario:false,mostrarSUS:false,mostrarNome:false};
                     ultimoCampo = 'datas';
                 break;
-                case 'solicitacao':
+                case 'REQ_ST_CODIGO':
 //                    $scope.tipoDeBuscaVisualizar = {mostrarData:false,mostrarSolicitacao:true,mostrarProntuario:false,mostrarSUS:false,mostrarNome:false};
                     ultimoCampo = 'REQ_ST_CODIGO';
                 break;
-                case 'prontuario':
+                case 'PAC_ST_PRONTUARIO':
 //                    $scope.tipoDeBuscaVisualizar = {mostrarData:false,mostrarSolicitacao:false,mostrarProntuario:true,mostrarSUS:false,mostrarNome:false};
                     ultimoCampo = 'PAC_ST_PRONTUARIO';
                 break;
-                case 'sus':
+                case 'PAC_IN_CODSUS':
 //                    $scope.tipoDeBuscaVisualizar = {mostrarData:false,mostrarSolicitacao:false,mostrarProntuario:false,mostrarSUS:true,mostrarNome:false};
                     ultimoCampo = 'PAC_IN_CODSUS';
                 break;
-                case 'nome':
+                case 'PAC_ST_NOME':
 //                    $scope.tipoDeBuscaVisualizar = {mostrarData:false,mostrarSolicitacao:false,mostrarProntuario:false,mostrarSUS:false,mostrarNome:true};
                     ultimoCampo = 'PAC_ST_NOME';
                 break;
@@ -205,13 +204,13 @@ $scope.calcRangeDate = function (blFuturo){
 
     var ultimoCampo = 'datas';
     
-    $scope.quemMudouPorUltimo = function (campoID) {
-        console.log(campoID);
-        ultimoCampo = campoID;
-        if(ultimoCampo && ultimoCampo !== 'datas'){
-            $scope.filtrar();
-        }
-    };
+//    $scope.quemMudouPorUltimo = function (campoID) {
+//        console.log(campoID);
+//        ultimoCampo = campoID;
+//        if(ultimoCampo && ultimoCampo !== 'datas'){
+//            $scope.filtrar();
+//        }
+//    };
     runFiltrar = true;
     
     $scope.filtrar = function ( ) {
@@ -314,7 +313,8 @@ $scope.calcRangeDate = function (blFuturo){
 //               alert('Espera porra');
                console.log('Espera porra.......');
 //               notificacaoProvider.showDialog("Aguarde",'Em execução','Fechar','Aviso',ev); 
-               self.modalLoading = notificacaoProvider.modalLoading('Aguarde','Em execução',$scope);
+                $timeout(function (){self.modalLoading = notificacaoProvider.modalLoading('Aguarde','Em execução',$scope);},300);
+               
            }
         },250);
         

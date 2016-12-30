@@ -18,8 +18,8 @@
         'ngStorage',
         'ngResource',
         'oitozero.ngSweetAlert',
-        'ngMessages',
-        'daterangepicker'
+        'ngMessages'
+//        'daterangepicker'
     ]);
 })();
 
