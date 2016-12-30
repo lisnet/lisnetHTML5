@@ -73,8 +73,8 @@
                             <!--<input date-range-picker class="form-control date-picker" type="text" ng-model="daterange" />-->
                             <!--<input date-range-picker id="daterange3" name="daterange3" class="form-control date-picker" type="text" ng-model="date"  options="opts" required    />-->
                             <form name="dateForm" class="form-horizontal" ng-class="{'has-error': dateForm.daterange2.$invalid}" >
-                                <input  date-range-picker id="daterange2"   name="daterange2" class="form-control date-picker" type="text" min="'2016-01-01'" max="'2016-12-31'" options="opts"   ng-change="trocarVisualizacao('datas')"   ng-model="date" required   />
-                                <div class="help-block" ng-messages="dateForm.daterange2.$error">
+                                <input  date-range-picker id="daterange"   name="daterange" class="form-control date-picker" type="text"  range="30"  min="'2016-01-01'" max="'2016-12-31'" options="opts"   ng-change="trocarVisualizacao('datas')"   ng-model="date" required   />
+                                <div class="help-block" ng-messages="dateForm.daterange.$error">
                                     <p ng-message="min"> Data inicial está muito no passado.</p>
                                     <p ng-message="max">Data final é no futuro.</p>
                                     <p ng-message="required">Datas são necessárias.</p>

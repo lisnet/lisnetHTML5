@@ -35,15 +35,15 @@ $scope.date = {
         ranges: {'Últimos 7 dias': [moment().subtract(6, 'days'), moment()],'Últimos 30 dias': [moment().subtract(29, 'days'), moment()] }
     };
     
-     $scope.setStartDate = function () {
-        $scope.date.startDate = moment().subtract(4, "days");
-    };
-    $scope.setRange = function () {
-        $scope.date = {
-            startDate: moment().subtract(5, "days"),
-            endDate: moment()
-        };
-    };
+//     $scope.setStartDate = function () {
+//        $scope.date.startDate = moment().subtract(4, "days");
+//    };
+//    $scope.setRange = function () {
+//        $scope.date = {
+//            startDate: moment().subtract(5, "days"),
+//            endDate: moment()
+//        };
+//    };
     
     //Watch for date changes
     $scope.$watch('date', function(newDate) {
@@ -224,20 +224,13 @@ $scope.calcRangeDate = function (blFuturo){
               /*
             * Debloqueio p nova excucao
             */
-//           $timeout( function(){ console.log('Inside TimeOut');  runFiltrar = true; }, 4000);
            runFiltrar = true;
            if(runFiltrar){
                runFiltrar = false;
                var _startFilter =  $filter('date')($scope.date.startDate._d, 'dd-MM-yyyy');
                var _endFilter =  $filter('date')($scope.date.endDate._d, 'dd-MM-yyyy');
-//               var _startFilter =  $filter('date')($scope.userDTO.consultalaudo.dtInicio, 'dd-MM-yyyy');
-//               var _endFilter =  $filter('date')($scope.userDTO.consultalaudo.dtFim, 'dd-MM-yyyy');
-//               console.log('----------------------------------------------------------------------------------------------------------------------------------------');
-//               console.log(_startFilter);
-//               var _start = $scope.dataPesquisa.dtInicio.getDate()+'-'+$scope.dataPesquisa.dtInicio.getMonth()+'-'+$scope.dataPesquisa.dtInicio.getFullYear();
-//               var _end  = $scope.dataPesquisa.dtFim.getDate()+'-'+$scope.dataPesquisa.dtFim.getMonth()+'-'+$scope.dataPesquisa.dtFim.getFullYear();
+
         var args =  '';
-//        console.log("inicio = "+_startFilter+"    Fim = "+_endFilter);
        var uniStCodigo = $scope.userDTO.consultalaudo.unidadeId.substring(0,3);
        var libetaPesquisa = false;
         switch (ultimoCampo) {
@@ -304,9 +297,7 @@ $scope.calcRangeDate = function (blFuturo){
                                         }, 1000);
                                     });
                 } else {
-                    $timeout(function () {
-                                            self.modalLoading.dismiss('cancel');
-                                        }, 200);
+                    $timeout(function () {self.modalLoading.dismiss('cancel'); }, 200);
                 }
            
            }else{
