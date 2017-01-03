@@ -15,6 +15,7 @@ angular.module("lisnet").value("configLisNet",{
    baseUrlPHP: 'http://localhost:8080/lisnet' ,
    baseUrlDelphi: 'http://localhost:8080/lisnet' ,
    defaultDB: 'fleming'
+//   defaultDB: 'labclim'
 });
 
 
