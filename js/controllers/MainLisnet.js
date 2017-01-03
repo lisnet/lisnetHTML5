@@ -183,6 +183,7 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
 //        console.log('$state.current .name =  ' + $state.current.name);
         vm.carregando = true;
         console.log('stateGO = '+stateGO);
+        if(stateGO){
         $timeout(function () {
             if ($state.current.name !== stateGO) {
                 try {
@@ -230,7 +231,12 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
 
             $localStorage.userDTO = this.userDTO;
         }, 200);
-
+    
+        }else{
+            vm.carregando = false;
+        console.log('Do nothing ...');    
+        }
+        
 
     };
     

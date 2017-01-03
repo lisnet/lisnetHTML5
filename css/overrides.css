@@ -246,3 +246,8 @@ background-image: none;
 }
 /*#loadImg{position:absolute;z-index:999;}
 #loadImg div{display:table-cell;width:950px;height:633px;background:#fff;text-align:center;vertical-align:middle;}*/
+
+
+.inputcolor input[type=text]:focus,input[type=password]:focus,input[type=number]:focus{
+    background-color:#cedde0;
+}

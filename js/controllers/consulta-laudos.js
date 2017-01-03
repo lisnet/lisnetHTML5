@@ -4,23 +4,29 @@
 https://github.com/fragaria/angular-daterangepicker
  */
 function consultaLaudos($scope, $filter, sairDoSistemaService,  montaUrlLaudoProvider, buscaAPIService, $sce, $localStorage,
-DTOptionsBuilder,$window, $timeout,notificacaoProvider,determinaAparelhoProvider, helperService,moment) {
+DTOptionsBuilder,$window, $timeout,notificacaoProvider,determinaAparelhoProvider, helperService,moment,$filter) {
 var self = this;
 
 
 console.log('Inicializando consultaLaudo ' );
 $scope.userDTO = sairDoSistemaService.validarLogin();
 
+$scope.strMax = $filter('date')(new Date(), "yyyy-MM-dd");
+var dtMin = new Date();
+dtMin.setYear(dtMin.getYear()-1);
+$scope.strMin = $filter('date')(dtMin, "yyyy-MM-dd");
+
+console.log('typeof = '+typeof $scope.strMax  +"  strMax = "+$scope.strMax);
+
 //console.log(JSON.stringify(moment,null,2));
 
-$scope.date = {
-        startDate: moment().subtract(7, "days"),
+ $scope.date = {
+        startDate: moment().subtract(1, "days"),
         endDate: moment()
     };
 
  $scope.opts = {
         locale: {
-            format: 'MM/DD/YYYY HH:mm',
             dateLimit:'{ months: 1 }',
             applyClass: 'btn-green',
             applyLabel: "Aplicar",
