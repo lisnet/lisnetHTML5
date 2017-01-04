@@ -340,20 +340,32 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
     //       this.userDTO.controleDoTempo = $interval(function (){},60000);
             var a = moment();
             var b = moment(this.userDTO.dtLogon);
-            var diffTempo = a.diff(b, 'minutes');
-            this.userDTO.tempoLogado = diffTempo + ' minuto(s)';
-            if (diffTempo >= 60) {
+            var segundos = a.diff(b, 'seconds');
+            var diffTempo = 0;
+            if(segundos < 3600){
+                diffTempo = a.diff(b, 'minutes');
+                this.userDTO.tempoLogado = diffTempo + ' minuto(s)';
+            }else if(segundos > 3600 && segundos < 86400) {
                 diffTempo = a.diff(b, 'hours');
                 this.userDTO.tempoLogado = diffTempo + ' hora(s)';
-            }
-            if (diffTempo >= 24) {
+            }else if(segundos > 86400) {
                 diffTempo = a.diff(b, 'days');
                 this.userDTO.tempoLogado = diffTempo + ' dia(s)';
             }
-            if (diffTempo >= 30) {
-                diffTempo = a.diff(b, 'months');
-                this.userDTO.tempoLogado = diffTempo + ' mêse(s)';
-            }
+//            var diffTempo = a.diff(b, 'minutes');
+//            
+//            if (diffTempo >= 60) {
+//                diffTempo = a.diff(b, 'hours');
+//                
+//            }
+//            if (diffTempo >= 24) {
+//                diffTempo = a.diff(b, 'days');
+//                this.userDTO.tempoLogado = diffTempo + ' dia(s)';
+//            }
+//            if (diffTempo >= 30) {
+//                diffTempo = a.diff(b, 'months');
+//                this.userDTO.tempoLogado = diffTempo + ' mêse(s)';
+//            }
             console.log('Difference btw 2 dates :   ' + diffTempo);
         }
 
