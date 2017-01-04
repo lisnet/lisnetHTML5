@@ -255,3 +255,7 @@ background-image: none;
 .navbar-fixed-top, .navbar-static-top {
     background-color: #cdd8e2;
 }
+
+.tm-site .header-back.one {
+  background: url('../views/tmsite/tela1.jpg') 50% 0 no-repeat;
+}
