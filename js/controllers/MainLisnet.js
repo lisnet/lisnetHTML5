@@ -343,15 +343,15 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
             var diffTempo = a.diff(b, 'minutes');
             this.userDTO.tempoLogado = diffTempo + ' minuto(s)';
             if (diffTempo >= 60) {
-                diffTempo = b.diff(a, 'hours');
+                diffTempo = a.diff(b, 'hours');
                 this.userDTO.tempoLogado = diffTempo + ' hora(s)';
             }
             if (diffTempo >= 24) {
-                diffTempo = b.diff(a, 'days');
+                diffTempo = a.diff(b, 'days');
                 this.userDTO.tempoLogado = diffTempo + ' dia(s)';
             }
             if (diffTempo >= 30) {
-                diffTempo = b.diff(a, 'months');
+                diffTempo = a.diff(b, 'months');
                 this.userDTO.tempoLogado = diffTempo + ' mêse(s)';
             }
             console.log('Difference btw 2 dates :   ' + diffTempo);
