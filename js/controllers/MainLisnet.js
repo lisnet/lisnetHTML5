@@ -5,9 +5,10 @@
 
 
 function MainLisnet($scope, $rootScope,$state, $location, buscaAPIService, montaUrlLaudoProvider, deviceDetector,   
-$timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$interval,$filter,$localStorage,$state,resumePerfilService,configuraLinks,  $rootScope , notificacaoProvider,shareuser,helperService) {
+$timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$interval,$filter,$localStorage,$state,resumePerfilService,configuraLinks,  $rootScope , notificacaoProvider,shareuser,helperService,moment) {
     
     console.log('Inicializando MainLisnet ..');
+    
     var vm = this;
     $scope.$storage = $localStorage;
     this.login ;
@@ -43,8 +44,9 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
     } else {
         this.userDTO = configuraLinks.constroeUserDTONovo();
         configuraLinks.configuraLinksAcesso(this.userDTO);
-       
     }
+//    if( angular.isDefined(this.userDTO) ){contarTempoLogado();}
+    
      buscaAPIService.buscaClientes(this.userDTO.configLisNet)
                 .then(function successCallback(response) {
                     this.userDTO = $localStorage.userDTO;
@@ -129,7 +131,8 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
 //                    this.userDTO.perfil = response.data;//resumePerfilService.resume(response.data);
                     if (this.userDTO && this.userDTO.perfil && this.userDTO.perfil.length > 0) {
                         this.userDTO.status = 'in';
-                        this.userDTO.dtLogon = $filter('date')(new Date(), " dd/MM/yyyy  HH:mm");
+//                        this.userDTO.dtLogon = $filter('date')(new Date(), " dd/MM/yyyy  HH:mm");
+                        this.userDTO.dtLogon = new Date();
                         this.userDTO.ultimaTela = 'widgets.lisnet';
                         //metthod preferencia de passar objs para outros controllers , usando memoria e nao IO.
                         shareuser.userDTO = this.userDTO;
@@ -139,10 +142,10 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
                         $state.go('widgets.lisnet');
                         //todas as chamadas no seu  tempo p nao sobrecarregar nem o cliente nem o servidor
                         $timeout(function () {
-                            $timeout(function (){gerenciaRelatorioService.atualizaRelatorios(this.userDTO);
-                                                         shareuser.userDTO = this.userDTO;
-                                                        $localStorage.userDTO = this.userDTO;
-                              },800);
+//                            $timeout(function (){gerenciaRelatorioService.atualizaRelatorios(this.userDTO);
+//                                                         shareuser.userDTO = this.userDTO;
+//                                                        $localStorage.userDTO = this.userDTO;
+//                              },800);
                             modalLoading.dismiss('cancel');
                                  $timeout(function () {
                                       buscaAPIService.buscaUnidades(this.userDTO.USU_ST_CODIGO, this.userDTO.configLisNet).then(function sucessCallBack(response) {
@@ -160,6 +163,9 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
                                             });
                                                     
                                             },700);
+                                            contarTempoLogado();
+                                            $rootScope.$broadcast("startNotificacaoTimer");
+                                            
                                 }, 800);
                         }, 1500);
                         
@@ -177,7 +183,7 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
     };
     
     
-  
+    
     
     this.stateGO = function (stateGO) {
 //        console.log('$state.current .name =  ' + $state.current.name);
@@ -312,23 +318,44 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
             
             $timeout(function () { gerenciaRelatorioService.atualizaRelatorios(this.userDTO); }, 6000);
             
-            if ($scope.userDTO && $scope.userDTO.job) {
+            if (this.userDTO && this.userDTO.job) {
                 console.log('Job is runnig ...');
-            } else {
-                if (this.userDTO.job) {
-                    $interval.cancel(this.userDTO.job);
-                }
+                $interval.cancel(this.userDTO.job);
+            } 
+                
                 this.userDTO.job = $interval(function () {
                     console.log('Starting startNotificacaoTimer .....');
                     _interacoes++;
                     gerenciaRelatorioService.atualizaRelatorios(this.userDTO);
+                    contarTempoLogado();
                 }, _sleep);
-            }
+            
         } else {
             console.log('nothing to do ');
         }
 
     });
+    
+        function contarTempoLogado() {
+    //       this.userDTO.controleDoTempo = $interval(function (){},60000);
+            var a = moment();
+            var b = moment(this.userDTO.dtLogon);
+            var diffTempo = a.diff(b, 'minutes');
+            this.userDTO.tempoLogado = diffTempo + ' minuto(s)';
+            if (diffTempo >= 60) {
+                diffTempo = b.diff(a, 'hours');
+                this.userDTO.tempoLogado = diffTempo + ' hora(s)';
+            }
+            if (diffTempo >= 24) {
+                diffTempo = b.diff(a, 'days');
+                this.userDTO.tempoLogado = diffTempo + ' dia(s)';
+            }
+            if (diffTempo >= 30) {
+                diffTempo = b.diff(a, 'months');
+                this.userDTO.tempoLogado = diffTempo + ' mêse(s)';
+            }
+            console.log('Difference btw 2 dates :   ' + diffTempo);
+        }
 
  if (this.userDTO && this.userDTO.ultimaTela) {
 //            $scope.stageGO($scope.userDTO.ultimaTela);
