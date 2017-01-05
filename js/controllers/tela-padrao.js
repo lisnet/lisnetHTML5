@@ -43,7 +43,7 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, sairDoSistemaS
         } else {
             moduloPadrao =   montaModulo(modStCodigo);
         }
-
+        moduloPadrao.msgBusca = "Faça a sua pesquisa.";
     } else {
         $scope.userDTO.telaPadrao = [];
         moduloPadrao =  montaModulo(modStCodigo);
@@ -325,7 +325,7 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, sairDoSistemaS
                             console.log('Entidades chegaram c sucesso .... aguarde construcao da tabela');
                             var retornoEntidades = response.data;
 //                            console.log(typeof retornoEntidades);
-                            if ((typeof retornoEntidades) === 'object') {
+                            if (retornoEntidades && (typeof retornoEntidades) === 'object' &&  retornoEntidades.length > 0) {
                                 colocaIconesEstilos(retornoEntidades);
                                 moduloPadrao.entidade.entidades = retornoEntidades;
 
@@ -337,14 +337,15 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, sairDoSistemaS
                                 }, 700);
                             } else {
                                 self.modalLoading.dismiss('cancel');
-                                notificacaoProvider.sweetError("erro", retornoEntidades);
                                 $scope.limparTela();
+                                moduloPadrao.msgBusca = "Sua pesquisa não retornou resultados.";
                             }
                         }, function errorCallback(response) {
                             notificacaoProvider.sweetError("erro", response.statusText);
                         });
             } catch (error) {
                 notificacaoProvider.sweetError("erro", error);
+                $scope.moduloPadrao.msgBusca = error;
             }
         }, 250);
     };
@@ -412,6 +413,7 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, sairDoSistemaS
     $scope.limparTela = function ( ) {
         moduloPadrao.entidade.entidades = [];
         moduloPadrao.entidade.entidadesDB = [];
+        moduloPadrao.msgBusca = "Faça a sua pesquisa.";
     };
 
 
