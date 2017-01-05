@@ -232,9 +232,9 @@ angular.module('lisnet').service("buscaAPIService",function ($http){
      * @param {type} configLisNet
      * @returns {unresolved}
      */
-    this.buscaRequisicoes = function (args,configLisNet){
+    this.buscaRequisicoes = function (args,limit,configLisNet){
 //        console.log("buscaRequisicoes = " + JSON.stringify(configLisNet)   + "  ...........");
-        var params =  args + '&dbname='+configLisNet.defaultDB;
+        var params =  args + '&dbname='+configLisNet.defaultDB+ '&limit='+limit;
         var url = configLisNet.baseUrl +'/buscaRequisicoes' + params;
 //                console.log("buscaRequisicoes URL = " + url );
         return $http({method : 'GET',url : url,
