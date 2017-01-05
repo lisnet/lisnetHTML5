@@ -300,10 +300,9 @@ console.log('construing config , registrando state');
             })
             .state('consultadelaudos', {
                 url: "/consulta/laudo/:userDTO",
-                params: {titulo: 'Notificações',pai:'Consulta',pagina:'Notificações'},
                 templateUrl: "views/tmtelas/consulta_laudos.html",
                 parent: 'lisnet',
-                params: {titulo: 'Consulta de Laudos',pai:'Home',filho:'Consulta de Laudos'},
+                params: {titulo: 'Consulta de Laudos',pai:'Consulta',filho:'Laudos',pagina:'Consulta de Laudos',limit:'500'},
                 data: {pageTitle: 'Consulta de Laudos'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
                         return $ocLazyLoad.load([

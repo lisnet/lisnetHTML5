@@ -4,12 +4,13 @@
 https://github.com/fragaria/angular-daterangepicker
  */
 function consultaLaudos($scope, $filter, sairDoSistemaService,  montaUrlLaudoProvider, buscaAPIService, $sce, $localStorage,
-DTOptionsBuilder,$window, $timeout,notificacaoProvider,determinaAparelhoProvider, helperService,moment,$filter) {
+DTOptionsBuilder,$window, $timeout,notificacaoProvider,determinaAparelhoProvider, helperService,moment,$filter,$stateParams) {
 var self = this;
 
 
 console.log('Inicializando consultaLaudo ' );
 $scope.userDTO = sairDoSistemaService.validarLogin();
+$scope.paramsStateConfig =  $stateParams;
 
 $scope.strMax = $filter('date')(new Date(), "yyyy-MM-dd");
 var dtMin = new Date();
@@ -282,22 +283,17 @@ $scope.calcRangeDate = function (blFuturo){
         }
         console.log('args = '+args);
                 if (libetaPesquisa) {
-                    buscaAPIService.buscaRequisicoes(args, $scope.userDTO.configLisNet)
+                    buscaAPIService.buscaRequisicoes(args,$scope.paramsStateConfig.limit ,$scope.userDTO.configLisNet)
                             .then(function successCallback(response) {
                                 $scope.userDTO.consultalaudo.requisicoes = response.data;
                                 console.log("Quantidade total de registros : " + $scope.userDTO.consultalaudo.requisicoes.length);
                                 $localStorage.userDTO = $scope.userDTO;
-    //                                       notificacaoProvider.closeDialog();
-    //                                       modalLoading.dismiss('cancel');
                                 $timeout(function () {
                                     self.modalLoading.dismiss('cancel');
                                 }, 1000);
                             },
                                     function errorCallback(response) {
                                         console.log(response.statusText);
-    //                                            showDialog("Sem unidades","Usuario não tem unidades cadastradas",'Fechar','Aviso',response.statusText); 
-    //                                            notificacaoProvider.closeDialog();
-    //                                            modalLoading.dismiss('cancel');
                                         $timeout(function () {
                                             self.modalLoading.dismiss('cancel');
                                         }, 1000);

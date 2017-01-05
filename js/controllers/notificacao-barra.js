@@ -27,6 +27,15 @@ function notificacaoBarra($scope, $window,sairDoSistemaService,$rootScope){
         $scope.telaSelecionada = '';
         return idDaPagina;
     };
+    
+ $scope.onSelect = function ($item, $model, $label) {
+    $scope.$item = $item;
+    $scope.$model = $model;
+    $scope.$label = $label;
+    console.log("$item = "+$item+" $model =  "+ $model+ "  $label = " +  $label);
+        return  $scope.cortaString($item);
+};
+    
     $scope.cortaStringModStCodigo = function (str){
         var _array = str.split('|');
 //        return _array[0];

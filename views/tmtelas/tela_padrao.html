@@ -36,10 +36,10 @@ https://demos.scotch.io/angular-validation/demos/-->
 
                         <div class="col-lg-2"  >
                             <div  class="col-sm-6"  style="padding: 0px 3px 0px 0px;" >
-                                <button class="btn btn-block  btn-outline  btn-success   full-width "     ng-click="buscar(true)"  ng-disabled="!jsonTelaPadrao.btnFiltrar" >Filtrar</button>
+                                <button class="btn btn-block  btn-outline  btn-success   full-width "     ng-click="buscar(true)"  ng-disabled="!paramsStateConfig.btnFiltrar" >Filtrar</button>
                             </div>
                             <div  class="col-sm-6"  style="padding: 0px 0px 0px 3px;" >
-                                <button class="btn btn-block  btn-outline  btn-info  full-width "   ng-click="criarNovoRegistro()"   ng-disabled="!jsonTelaPadrao.btnCriar" ><i  style="color: orange;" class="fa fa-star-o"></i>&nbsp;Criar&nbsp;</button>
+                                <button class="btn btn-block  btn-outline  btn-info  full-width "   ng-click="criarNovoRegistro()"   ng-disabled="!paramsStateConfig.btnCriar" ><i  style="color: orange;" class="fa fa-star-o"></i>&nbsp;Criar&nbsp;</button>
                             </div>
                         </div>
 
@@ -47,7 +47,7 @@ https://demos.scotch.io/angular-validation/demos/-->
                             <button class="btn btn-block  btn-outline  btn-danger  full-width "    ng-click="limparTela()"   >Limpar</button>
                         </div>
                         <div  class="col-lg-2">
-                            <button class="btn btn-block  btn-outline  btn-primary full-width "     ng-click="buscar(false)"  ng-disabled="!jsonTelaPadrao.btnTodos"  data-toggle="tooltip"    title="Limite de pesquisa para esta tela é de {{jsonTelaPadrao.limit}} itens"    >Buscar Todos</button>
+                            <button class="btn btn-block  btn-outline  btn-primary full-width "     ng-click="buscar(false)"  ng-disabled="!paramsStateConfig.btnTodos"  data-toggle="tooltip"    title="Limite de pesquisa para esta tela é de {{paramsStateConfig.limit}} itens"    >Buscar Todos</button>
                         </div>
 
                     </div>
@@ -92,12 +92,9 @@ https://demos.scotch.io/angular-validation/demos/-->
                                         <div >
 
                                             <i   ng-if="ent[0].status === 'R'  " style="{{ent[0].ngStyle}} ; padding-right: 6px;"  class="{{ent[0].ngClass}}"   aria-hidden="true"    ng-click="manipulaEntidade(ent,'editar')"     data-toggle="tooltip" title="{{ent[0].toolTip}}"  ></i>
-
                                             <i   ng-if="ent[0].status === 'D'  || ent[0].status === 'C'  "  style="color: red; font-weight: bold; padding-right: 6px;"  class="fa fa-times"   aria-hidden="true"    ng-click="manipulaEntidade(ent,'excluir')"     data-toggle="tooltip" title="excluir linha ?"  ></i>
-
                                             <i   ng-if="ent[0].status === 'D'  || ent[0].status === 'U' "  style="color:green ; padding-right: 6px;"  class="fa fa-backward"   aria-hidden="true"    ng-click="manipulaEntidade(ent,'desfazer')"     data-toggle="tooltip" title="reverter alterações ?"  ></i>
                                             <i   ng-disabled="entidadeForm.$invalid"  ng-if="ent[0].status === 'U'  || ent[0].status === 'C' "  style="color: #000\9 ; font-weight: bold;"   class="fa fa-clipboard"   aria-hidden="true"    ng-click="manipulaEntidade(ent,'salvar')"     data-toggle="tooltip" title="salvar alterações ?"  ></i>
-
                                             <span uib-dropdown   ng-if="ent[0].status === 'R' "  >
                                                 <span class="count-info" href uib-dropdown-toggle   >
                                                     <span class="glyphicon glyphicon-option-vertical"></span>
@@ -203,20 +200,6 @@ https://demos.scotch.io/angular-validation/demos/-->
 
             </div>
             
-            
-<!--            <div  class="col-lg-12" >
-                <div  class="row" >
-                    <div  class="col-lg-6" ></div>
-                    <div  class="col-lg-6" >
-                        <div  class="col-lg-6">
-                            <button class="btn btn-block  btn-primary full-width "   ng-click="criarNovoRegistro()"  >Criar novo registro</button>
-                        </div>
-                        <div  class="col-lg-6">
-                            <button class="btn btn-block  btn-success full-width "     ng-click="buscar(false)" >Salvar alterações</button>
-                        </div>
-                    </div>
-                </div>    
-            </div>-->
         </div>
 
     </div>
