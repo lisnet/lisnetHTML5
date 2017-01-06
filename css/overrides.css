@@ -124,6 +124,9 @@ and open the template in the editor.
 .geslab-site .carousel {
   height: 570px;
 }
+.tm-site .carousel {
+  height: 900px;
+}
 .geslab-site .carousel-caption {
   z-index: 10;
 }
@@ -257,5 +260,18 @@ background-image: none;
 }
 
 .tm-site .header-back.one {
-  background: url('../views/tmsite/Tela1.jpg') 50% 0 no-repeat;
+  background: url('../views/tmsite/TELATMSITE.jpg') 50% 0 no-repeat;
 }
+
+.tm-site .navy-line {
+    width: 60px;
+    height: 1px;
+    margin: 60px auto 0;
+    border-bottom: 2px solid transparent;
+}
+
+
+.tm-site .header-back {
+    height: 900px;
+}
+
