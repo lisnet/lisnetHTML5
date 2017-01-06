@@ -263,14 +263,6 @@ background-image: none;
   background: url('../views/tmsite/TELATMSITE.jpg') 50% 0 no-repeat;
 }
 
-.table-striped>tbody>tr:nth-child(odd)>td,
-tr.found{
-    background-color:#dce6f7;
-}
-
-.table-striped tbody tr:hover td, .table-hover tbody tr:hover th {
-    background-color:#c6ffe9;
-
 .tm-site .navy-line {
     width: 60px;
     height: 1px;
@@ -282,4 +274,14 @@ tr.found{
 .tm-site .header-back {
     height: 900px;
 }
+
+.table-striped>tbody>tr:nth-child(odd)>td,
+tr.found{
+    background-color:#dce6f7;
+}
+
+.table-striped tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color:#c6ffe9;
+}
+
 
