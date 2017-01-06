@@ -1,28 +1,37 @@
 <div class="row border-bottom"  ng-controller="notificacaoBarra" >
+    
     <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+        
         <div class="navbar-header">
             <span minimaliza-sidebar></span>
-            <form role="search" class="navbar-form-custom" method="post" action="views/search_results.html"  autocomplete="off"   >
+            <form role="search" class="navbar-form-custom"   autocomplete="off"  style="display: inline;"   >
                 <div class="form-group">
                     <input type="text" style="font-weight: bolder;  font-size: 18px;" placeholder="Procurar tela .............." class="form-control " name="top-search" 
                            id="top-search" ng-model="telaSelecionada" uib-typeahead="state for state in states | filter:$viewValue | limitTo:8"     typeahead-on-select="main.stateGO( cortaString($item))" >
                     <!--typeahead-on-select="main.stateGO( onSelect($item, $model, $label))"  enter-key="main.stateGO( cortaString(telaSelecionada))" --> 
                 </div>
             </form>
-        <div  ng-show="main.carregando"  style="padding-top: 17px;"  id="loadImgTela" class="navbar-right sk-spinner sk-spinner-three-bounce"><div class="sk-bounce1"></div><div class="sk-bounce2"></div><div class="sk-bounce3"></div></div>            
+        <div  ng-show="main.carregando"  style="padding-top: 17px;"  id="loadImgTela" class="navbar-right sk-spinner sk-spinner-three-bounce  visible-lg-block "><div class="sk-bounce1"></div><div class="sk-bounce2"></div><div class="sk-bounce3"></div></div>            
         </div>
         
         <ul class="nav navbar-top-links navbar-right">
             <li style="padding-right: 1px;"   class="b-r" >
-                <span class="m-r-sm text-justify  "  style="font-weight: bold;"    >Unidade: {{main.userDTO.unidade.UNI_ST_CODIGO }}</span>
+                <span class="m-r-sm text-justify  "  style="font-weight: bold;"    > <label  class="hidden-md hidden-sm hidden-xs  text-justify " >Unidade:</label> 
+                <i  data-toggle="tooltip"    title="Unidade {{main.userDTO.unidade.UNI_ST_DESCRICAO }}" class="fa fa-home hidden-lg" style="color: #0044cc" ></i>   {{main.userDTO.unidade.UNI_ST_CODIGO }}</span>
             </li>
             <li ng-controller="trocaUnidade"  style="padding-right: 1px;padding-left: 1px;"   class="b-r"  ng-click="popUnidades()"  >
-                <i class="fa fa-exchange"  style="padding-right: 1px; color: orangered; " ></i>
-                <span class="m-r-sm text-danger  "  style="font-weight: bold;"   >Trocar de Unidade.</span>
+                <i  data-toggle="tooltip"    title="Trocar de Unidade." class="fa fa-exchange"  style="padding-right: 1px; color: orangered; " ></i>
+                <span class="m-r-sm text-danger  hidden-md hidden-sm hidden-xs "  style="font-weight: bold;"   >Trocar de Unidade.</span>
             </li>
-            <li style="padding-left: 1px;" >
+            <li     class="pull-right"   >
+                <a    ng-click="main.logOut()"  style="padding-right: 20px;" data-toggle="tootip"  title="Sair do Sistema"  >
+                    <strong  class="hidden-md hidden-sm hidden-xs"   style="color: #f75172;  "  >Sair</strong> 
+                    <i style="color: #f75172; "  class="fa fa-power-off"   ></i>
+                </a>
+            </li>
+<!--            <li style="padding-left: 1px;" >
                 <span class="m-r-sm text-muted welcome-message">Bem Vindo ao LisNet.</span>
-            </li>
+            </li>-->
             <!--            <li uib-dropdown>
                             <a class="count-info" href uib-dropdown-toggle>
                                 Language
@@ -124,14 +133,6 @@
                     <li class="divider"></li>
                 </ul>
             </li>
-            
-            
-            <li    style="padding-left: 15px;"  class="pull-right"   >
-                <a    ng-click="main.logOut()" >
-                    <i style="color: red;"  class="fa fa-sign-out   "   ></i><strong style="color: red;"  >Sair</strong> 
-                </a>
-            </li>
-
 
         </ul>
 

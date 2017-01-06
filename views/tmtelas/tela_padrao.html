@@ -2,7 +2,7 @@
 <!--https://scotch.io/tutorials/angularjs-form-validation
 https://demos.scotch.io/angular-validation/demos/-->
 
-<div class="wrapper wrapper-content animated fadeInRight  inputcolor"   ng-controller="telaPadrao" >
+<div class="wrapper wrapper-content animated fadeInRight  inputcolor"   ng-controller="telaPadrao"  style="padding-bottom: 0px;" >
     <div class="ibox-content">
         <!--{{moduloPadrao}}-->
         
@@ -34,19 +34,19 @@ https://demos.scotch.io/angular-validation/demos/-->
                             <input   placeholder="Campos de Pesquisa" type="text"  id="inputTextRequisicao"  class="form-control  text-primary  " size="20" ng-model="moduloPadrao.entidade.pesquisaInput"   enter-key="buscar(true)"   ng-maxlength="300"  >
                         </div>
 
-                        <div class="col-lg-2"  >
+                        <div class="col-lg-2"   >
                             <div  class="col-sm-6"  style="padding: 0px 3px 0px 0px;" >
                                 <button class="btn btn-block  btn-outline  btn-success   full-width "     ng-click="buscar(true)"  ng-disabled="!paramsStateConfig.btnFiltrar" >Filtrar</button>
                             </div>
                             <div  class="col-sm-6"  style="padding: 0px 0px 0px 3px;" >
-                                <button class="btn btn-block  btn-outline  btn-info  full-width "   ng-click="criarNovoRegistro()"   ng-disabled="!paramsStateConfig.btnCriar" ><i  style="color: orange;" class="fa fa-star-o"></i>&nbsp;Criar&nbsp;</button>
+                                <button class="btn btn-block  btn-outline  btn-info  full-width "  data-animation="bounce"  ng-click="criarNovoRegistro()"   ng-disabled="!paramsStateConfig.btnCriar" ><i  style="color: orange;" class="fa fa-star-o"></i>&nbsp;Criar&nbsp;</button>
                             </div>
                         </div>
 
                         <div  class="col-lg-2">
-                            <button class="btn btn-block  btn-outline  btn-danger  full-width "    ng-click="limparTela()"   >Limpar</button>
+                            <button class="btn btn-block  btn-outline  btn-danger  full-width  animation_select"  data-animation="flash"  ng-click="limparTela()"   >Limpar</button>
                         </div>
-                        <div  class="col-lg-2">
+                        <div  class="col-lg-2 ">
                             <button class="btn btn-block  btn-outline  btn-primary full-width "     ng-click="buscar(false)"  ng-disabled="!paramsStateConfig.btnTodos"  data-toggle="tooltip"    title="Limite de pesquisa para esta tela é de {{paramsStateConfig.limit}} itens"    >Buscar Todos</button>
                         </div>
 
@@ -56,7 +56,7 @@ https://demos.scotch.io/angular-validation/demos/-->
 
             </div>
             <div   style="background-color: #f0f5f5;"  class="col-lg-12"  ng-cloak="true"  ng-hide="moduloPadrao.entidade.entidades && moduloPadrao.entidade.entidades.length > 0"  >
-                <div class="wrapper wrapper-content">
+                <div class="wrapper wrapper-content"  >
                     <div class=" text-center animated fadeInRightBig">
                         <h3 class="font-bold">{{moduloPadrao.msgBusca}}</h3>
 
@@ -68,7 +68,7 @@ https://demos.scotch.io/angular-validation/demos/-->
             </div>
             <div class="col-lg-12"  ng-cloak="true"  ng-if="moduloPadrao.entidade.entidades && moduloPadrao.entidade.entidades.length > 0"  >
                 <div class="ibox-content"  style="padding: 15px 5px 20px 5px; min-height: 400px;" >
-                    <table   datatable="ng" dt-options="dTOptionsBuilder" class="table table-striped table-bordered table-hover dataTables-example"  ng-cloak >
+                    <table   datatable="ng" dt-options="dTOptionsBuilder" class="table table-striped table-bordered table-hover dataTables-example"  ng-cloak   >
                         <thead>
                             <tr  >
                                 <th  ></th>
@@ -204,5 +204,18 @@ https://demos.scotch.io/angular-validation/demos/-->
 
     </div>
     
-    
+    <script>
+
+// This is just for demo demo purpose - animation css local script
+    $(document).ready(function () {
+        $('.animation_select').click(function () {
+            $('#animation_box').removeAttr('class').attr('class', '');
+            var animation = $(this).attr("data-animation");
+            $('#animation_box').addClass('animated');
+            $('#animation_box').addClass(animation);
+            return false;
+        });
+    });
+
+</script>
 </div>

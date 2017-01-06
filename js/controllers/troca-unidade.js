@@ -40,7 +40,7 @@ angular.module('lisnet').controller('trocaUnidade',function ($scope,$uibModal,DT
     
     $scope.dtOptionsWidgets = DTOptionsBuilder.newOptions()
                 .withDOM('<"html5buttons"B>lTfgitp')
-//                .withOption('stateSave', false)
+                .withOption('stateSave', false)
 //                .withOption('searching', true)
                 .withOption('lengthMenu', [10, 25, 50, 100, 150, 200])
                 //        .withLanguage([{url:"//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese.json"}])
