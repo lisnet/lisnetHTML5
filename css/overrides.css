@@ -262,6 +262,13 @@ background-image: none;
 .tm-site .header-back.one {
   background: url('../views/tmsite/TELATMSITE.jpg') 50% 0 no-repeat;
 }
+.table-striped>tbody>tr:nth-child(odd)>td,
+tr.found{
+    background-color:#dce6f7;
+}
+
+.table-striped tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color:#c6ffe9;
 
 .tm-site .navy-line {
     width: 60px;

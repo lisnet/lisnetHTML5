@@ -400,8 +400,8 @@ $scope.calcRangeDate = function (blFuturo){
 
  $scope.dtOptions = DTOptionsBuilder.newOptions()
         .withDOM('<"html5buttons"B>lTfgitp')
-        .withOption('stateSave', true)
-        .withOption('lengthMenu', [10,25,50, 100, 150, 200])
+        .withOption('stateSave', false)
+        .withOption('lengthMenu', [15,30,50, 100, 150, 200])
     //        .withLanguage([{url:"//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese.json"}])
          .withLanguage({
 	"sProcessing":   "A processar...",
@@ -439,7 +439,7 @@ $scope.calcRangeDate = function (blFuturo){
         
         $scope.dtOptionsMobile = DTOptionsBuilder.newOptions()
                 .withDOM('<"html5buttons"B>lTfgitp')
-                .withOption('stateSave', true)
+                .withOption('stateSave', false)
                 //        .withLanguage([{url:"//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese.json"}])
 //                .withDisplayLength(2)
                 .withOption('lengthMenu', [10,25,50, 100, 150, 200])
