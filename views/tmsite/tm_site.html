@@ -1,65 +1,97 @@
 <div class="tm-site">
 
     <div class="navbar-wrapper">
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-            <div class="container">
-                <div class="navbar-header page-scroll">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    
-                </div>
-                
-                <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                            <li class="active"><a class="page-scroll" page-scroll href="#page-top" style="color: #002a80">Home</a></li>
-                            <li><a class="page-scroll" page-scroll href="#features" style="color: #002a80">Institucional</a></li>
-                            <li><a class="page-scroll" page-scroll href="#team" style="color: #002a80">Produtos</a></li>
-                            <li><a class="page-scroll" page-scroll href="#testimonials" style="color: #002a80">Clientes</a></li>
-                            <li><a class="page-scroll" page-scroll href="#pricing" style="color: #002a80">Suporte</a></li>
-                            <li><a class="page-scroll" page-scroll href="#contact" style="color: #002a80    ">Contato</a></li>
-                        </ul>
-                    </div>
-                </div>
-        </nav>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header page-scroll" style="color: red">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <img src="views/tmsite/LogoTM-New.png" alt="logo" height="80px;" width="90px;" style="padding-left: 5px;"/>
+                Tecnologia e Serviços</a>
             </div>
-    
-    <div id="inSlider" class="tm-site  carousel slide carousel-fade" data-ride="carousel" ng-non-bindable>
-        <div class="carousel-inner" role="listbox">
-            <div class="item active">
-                
-                <div class="carousel-caption hidden-sm hidden-md hidden-xs" style="padding-left:60%">
-                    <h1 style="color: white"><b>Tecnologia e Sistema<br/></h1
-                    <h3>Controle total do seu laboratório, a escolha certa para a sua empresa</h3>
-                    <div class="carousel-image wow zoomIn"></br</br>
-                        
-                        
-                        <img src="views/tmsite/LogoTM.jpg" alt="N aparece" width="150" height="130" class="img-rounded"/>
-                    </div>
-                </div> 
-                
-                
-                <div class="carousel-caption hidden-lg" style="padding-right: 3%">
-                    <h2 style="color: white"><b>Tecnologia e Sistema<br/></h2>
-                    <h3>Controle total do seu laboratório, a escolha certa para a sua empresa</h3>
-                    <div class="carousel-image wow zoomIn"></br</br>
-                        
-                        
-                    </div>
-                </div> 
-
-                
-                <!-- Set background for slide in css -->
-                <div class="header-back one"></div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a class="page-scroll" page-scroll href="#page-top">Home</a></li>
+                    <li><a class="page-scroll" page-scroll href="#features">Institucional</a></li>
+                    <li><a class="page-scroll" page-scroll href="#team">Produtos</a></li>
+                    <li><a class="page-scroll" page-scroll href="#testimonials">Clientes</a></li>
+                    <li><a class="page-scroll" page-scroll href="#pricing">Suporte</a></li>
+                    <li><a class="page-scroll" page-scroll href="#contact">Contato</a></li>
+                </ul>
             </div>
         </div>
-    </div>
+    </nav>
+</div>
+<div id="inSlider" class="carousel slide carousel-fade" data-ride="carousel" ng-non-bindable>
+    <ol class="carousel-indicators">
+        <li data-target="inSlider" data-slide-to="0" class="active"></li>
+        <li data-target="inSlider" data-slide-to="1"></li>
+        <li data-target="inSlider" data-slide-to="2"></li>
+    </ol>
+    
+    <div class="carousel-inner" role="listbox">
+        
+        <div class="item active">
+            
+            <div class="container">
+                
+                <div class="carousel-caption">
+                    
+                    <!--<img src="img/landing/laptop.png" alt="laptop" style="padding-left: 5px;"/>-->
+                        <div class="row">
+                        <div class="col-md-12 text-center wow animated bounceInLeft"  style="padding-left: 250px; margin-top: 230px;">
+                            <h1>Média de 8.200 exames por mês</h1>
+                            <h1>em mais de 500 equipamentos</h1>
+                            <h1>interfaceados por nossos sistemas</h1>
+                        </div>
+                    </div>
 
+                </div>
+                <div class="carousel-image wow zoomIn">
+                </div>
+            </div>
+            <!-- Set background for slide in css -->
+            <div class="header-back one"></div>
 
-<section id="features" class="gray-section team">
+        </div>
+    
+        <div class="item">
+            <div class="container">
+                <div class="carousel-caption blank wow animated lightSpeedIn" style="padding-right: 400px;">
+                    <h1>Controle total do seu laboratório.</h1>
+                </div>
+            </div>
+            <!-- Set background for slide in css -->
+            <div class="header-back two"></div>
+        </div>
+
+        <div class="item">
+            <div class="container">
+                <div class="carousel-caption blank wow animated pulse" style="padding-right: 400px; margin-top: 280px;">
+                    <h1 style="#d0d3d8">A escolha certa para a sua Empresa.</h1>
+                </div>
+            </div>
+            <!-- Set background for slide in css -->
+            <div class="header-back three"></div>
+        </div>
+        
+    
+        <a class="left carousel-control" data-target="#inSlider" role="button" data-slide="prev" style="margin-top: 230px;">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" data-target="#inSlider" role="button" data-slide="next" style="margin-top: 230px;">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+</div>
+    
+    <section id="features" class="gray-section team">
     <div class="container">
         <div class="row m-b-lg">
             <div class="col-lg-12 text-center">
@@ -83,9 +115,7 @@
     </div>
 </section>    
 
-
-
-<section id="team" class="gray-section team">
+    <section id="team" class="gray-section team">
     <div class="container">
         <div class="row m-b-lg">
             <div class="col-lg-12 text-center">
@@ -428,51 +458,50 @@
                     <!-- Local script for menu handle -->
                     <!-- It can be also directive -->
 
-                    <script>
-                        $(document).ready(function () {
-                            // Page scrolling feature
-                            $('a.page-scroll').bind('click', function (event) {
-                                var link = $(this);
-                                $('html, body').stop().animate({
-                                    scrollTop: $(link.attr('href')).offset().top - 50
-                                }, 500);
-                                event.preventDefault();
-                                if ($('body').hasClass('body-small')) {
-                                    $('#navbar').collapse('toggle');
-                                }
-                            });
+<script>
+    $(document).ready(function () {
+        // Page scrolling feature
+        $('a.page-scroll').bind('click', function(event) {
+            var link = $(this);
+            $('html, body').stop().animate({
+                scrollTop: $(link.attr('href')).offset().top - 50
+            }, 500);
+            event.preventDefault();
+            if($('body').hasClass('body-small')) {
+                $('#navbar').collapse('toggle');
+            }
+        });
 
-                            // Activate WOW.js plugin for animation on scrol
-                            new WOW().init();
-                        });
+        // Activate WOW.js plugin for animation on scrol
+        new WOW().init();
+    });
 
-                        var cbpAnimatedHeader = (function () {
-                            var docElem = document.documentElement,
-                                    header = document.querySelector('.navbar-default'),
-                                    didScroll = false,
-                                    changeHeaderOn = 200;
-                            function init() {
-                                window.addEventListener('scroll', function (event) {
-                                    if (!didScroll) {
-                                        didScroll = true;
-                                        setTimeout(scrollPage, 250);
-                                    }
-                                }, false);
-                            }
-                            function scrollPage() {
-                                var sy = scrollY();
-                                if (sy >= changeHeaderOn) {
-                                    $(header).addClass('navbar-scroll')
-                                } else {
-                                    $(header).removeClass('navbar-scroll')
-                                }
-                                didScroll = false;
-                            }
-                            function scrollY() {
-                                return window.pageYOffset || docElem.scrollTop;
-                            }
-                            init();
+    var cbpAnimatedHeader = (function() {
+        var docElem = document.documentElement,
+                header = document.querySelector( '.navbar-default' ),
+                didScroll = false,
+                changeHeaderOn = 200;
+        function init() {
+            window.addEventListener( 'scroll', function( event ) {
+                if( !didScroll ) {
+                    didScroll = true;
+                    setTimeout( scrollPage, 250 );
+                }
+            }, false );
+        }
+        function scrollPage() {
+            var sy = scrollY();
+            if ( sy >= changeHeaderOn ) {
+                $(header).addClass('navbar-scroll')
+            }else {
+                $(header).removeClass('navbar-scroll')
+            }
+            didScroll = false;
+        }
+        function scrollY() {
+            return window.pageYOffset || docElem.scrollTop;
+        }
+        init();
 
-                        })();
-                    </script>
-            </div>
+    })();
+</script>
