@@ -11,7 +11,8 @@
                 "ng-hide": {},
                 "ng-cloak": {}
             }
-        }
+        },
+        "slick": {}
     },
     "attributes": {
         "uib-dropdown-menu": {
