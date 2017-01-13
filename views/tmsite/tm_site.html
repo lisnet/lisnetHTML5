@@ -11,13 +11,12 @@
                         <span class="icon-bar"></span>
                     </button>
                     
-                <div class="hidden-sm hidden-md hidden-xs">    
-                    <img src="views/tmsite/LogoTM-New.png" alt="logo" height="80px;" width="90px;" style="padding-left: 5px;"/>
-                    Tecnologia e Serviços</a>
+                <div id="idDoLogo" class="hidden-sm hidden-md hidden-xs">    
+                    <img src="views/tmsite/logotmcab.jpg" alt="logo" style="padding-left: 5px; height: 65px; width: 200px;"/>
                 </div>
                     
                 <div class="hidden-lg">    
-                    <img src="views/tmsite/LogoTM-New.png" alt="logo" height="80px;" width="90px;" style="padding-left: 5px;"/>
+                    <img src="views/tmsite/LogoTM-New.png" alt="logo" height="80px;" width="90px;" style="text-align: center"/>
                 </div>
                     
                 </div>
@@ -536,6 +535,7 @@
 
 <script>
     $(document).ready(function () {
+        $('#idDoLogo').hide();
         // Page scrolling feature
         $('a.page-scroll').bind('click', function(event) {
             var link = $(this);
@@ -551,6 +551,30 @@
         // Activate WOW.js plugin for animation on scrol
         new WOW().init();
     });
+    
+    var totalItems = $('.item').length;
+    var currentIndex = $('div.active').index() + 1;
+        $('#inSlider').carousel({
+            interval: 4000
+        });
+        $('#inSlider').on('slid.bs.carousel', function() {
+            currentIndex = $('div.active').index() + 1;
+            $('#idDoLogo').removeAttr('class').attr('class', '');
+            $('#idDoLogo').removeAttr('style').attr('style', '');
+            // alert (currentIndex);
+                if(currentIndex == 1){
+                 //$('#idDoLogo').hide();
+                    $('#idDoLogo').addClass('fadeOut');
+                     $('#idDoLogo').addClass('animated');
+                }else{
+                // $('#idDoLogo').show();  
+                 $('#idDoLogo').addClass('fadeIn');
+                 $('#idDoLogo').addClass('animated');
+                 if(currentIndex == totalItems){
+                     currentIndex = 0;
+                 }
+                }   
+        });
 
     var cbpAnimatedHeader = (function() {
         var docElem = document.documentElement,
