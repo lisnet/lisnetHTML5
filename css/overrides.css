@@ -515,3 +515,20 @@ height: 160px;
 border: 1px solid #dcdee2;
 border-radius: 15px;
 }
+
+
+@media (max-width: 768px) {
+    #idDoLogo img{display:none;}
+  .html5buttons {
+    float: none;
+    margin-top: 10px;
+  }
+  .dataTables_length {
+    float: none;
+  }
+}
+
+
+
+  
+  
