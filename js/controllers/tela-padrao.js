@@ -1,6 +1,7 @@
 /* 
  Created on : Nov 29, 2016, 2:10:26 PM
  Author     : eros
+Select * from table where upper(table.name) like upper('IgNoreCaSe');
  */
 
 function telaPadrao($scope,$state ,buscaAPIService, $stateParams, sairDoSistemaService, notificacaoProvider,  $timeout,  DTOptionsBuilder, helperService) {
@@ -40,7 +41,7 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, sairDoSistemaS
         if ($scope.userDTO.telaPadrao.filter(encontraModulo).length > 0) {
             moduloPadrao = $scope.userDTO.telaPadrao.filter(encontraModulo)[0];
             console.log('moduloPadrao da memoria ...  ');
-        } else {
+        } else {tah
             moduloPadrao =   montaModulo(modStCodigo);
         }
         moduloPadrao.msgBusca = "Faça a sua pesquisa.";
