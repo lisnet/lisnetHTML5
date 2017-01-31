@@ -1,0 +1,83 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Sep 27, 2016, 4:24:45 PM
+    Author     : eros
+*/
+.tm-site .carousel {
+  height: 900px;
+}
+
+.tm-site .navbar-default .navbar-nav > .active > a, .landing-page .navbar-default .navbar-nav > .active > a:hover {
+    border-top: 6px solid red;
+}
+
+.tm-site .features-icon {
+    color: red;
+    font-size: 40px;
+}
+
+.tm-site span.navy {
+    color: red;
+}
+
+.tm-site body {
+background-image: none;
+}
+
+.tm-site .header-back.one {
+  background: url('../views/tmsite/Background/TMTELA3.jpg') 50% 0 no-repeat;
+}
+
+.tm-site .header-back.two {
+  background: url('../views/tmsite/Background/TMTELA2.jpg') 50% 0 no-repeat;
+}
+
+.tm-site .header-back.three {
+  background: url('../views/tmsite/Background/TMTELA1.jpg') 50% 0 no-repeat;
+}
+
+.tm-site .navy-line {
+    width: 60px;
+    height: 1px;
+    margin: 60px auto 0;
+    border-bottom: 2px solid transparent;
+}
+
+.tm-site .header-back {
+    height: 900px;
+}
+
+.tm-site .navbar-default {
+  background-color: white;
+  
+  filter: alpha(opacity=50); 
+  border-color: transparent;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.tm-site .navbar-default .nav li a {
+    color: black;
+    font-family: 'Open Sans', helvetica, arial, sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.tm-site  .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover {
+  
+    color: black;
+}
+.tm-site  .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav >  a:focus {
+    color: black;
+}
+
+.tm-site .navbar-scroll .navbar-nav > li > a {
+  padding: 25px 10px;
+}
+
+

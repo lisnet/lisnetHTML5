@@ -79,16 +79,14 @@ and open the template in the editor.
   margin: 0;
   padding: 0;
 }
-
 .modal-content {
   height: auto;
   min-height: 100%;
   border-radius: 0;
 }*/
-
 .modal-iframe{
     /*top: 280px;*/
-    width:100%;
+  width:100%;
   height: 100%;
   margin: 0;
   padding: 0;
@@ -100,23 +98,27 @@ and open the template in the editor.
     margin-left: -65px;
 }
 
-
 .geslab-site .header-back {
   height: 570px;
   width: 100%;
 }
+
 .geslab-site .header-back.one {
   background: url('../views/geslab/Imagem1.jpg') 50% 0 no-repeat;
 }
+
 .geslab-site .header-back.two {
   background: url('../views/geslab/Imagem2.jpg') 50% 0 no-repeat;
 }
+
 .geslab-site .header-back.three {
   background: url('../views/geslab/Imagem3.jpg') 50% 0 no-repeat;
 }
+
 .geslab-site .header-back.four {
   background: url('../views/geslab/Imagem4.jpg') 50% 0 no-repeat;
 }
+
 .geslab-site .header-back.five {
   background: url('../views/geslab/Imagem5.jpg') 50% 0 no-repeat;
 }
@@ -124,13 +126,20 @@ and open the template in the editor.
 .geslab-site .carousel {
   height: 570px;
 }
+
+.tm-site .carousel {
+  height: 900px;
+}
+
 .geslab-site .carousel-caption {
   z-index: 10;
 }
+
 .geslab-site .carousel .item {
   height: 570px;
   background-color: #777;
 }
+
 .geslab-site .carousel-inner > .item > img {
   position: absolute;
   top: 0;
@@ -140,8 +149,8 @@ and open the template in the editor.
 }
 
 .geslab-site .slick_demo_2 .ibox-content {
-        margin: 0 10px;
-    }
+  margin: 0 10px;
+}
 
 .geslab-site navbar-default {
   background-color: white;
@@ -158,20 +167,23 @@ and open the template in the editor.
 .geslab-site .navbar-default .navbar-nav > .active > a:hover {
  border-top: 6px solid orange;
 }
+
 .geslab-site a.navy-link {
   color: orange;
   text-decoration: none;
 }
+
 .geslab-site .navbar-scroll.navbar-default .nav li a:hover {
   color: orange;
 }
+
 .geslab-site .navbar-default {
   background-color: white;
-  
   filter: alpha(opacity=50); 
   border-color: transparent;
   transition: all 0.3s ease-in-out 0s;
 }
+
 .geslab-site .slick-prev:before, .slick-next:before {
     color: orange !important;
 }
@@ -185,11 +197,11 @@ and open the template in the editor.
     font-size: 14px;
 }
 
-
 .geslab-site  .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover {
   
     color: black;
 }
+
 .geslab-site  .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav >  a:focus {
     color: black;
 }
@@ -215,14 +227,13 @@ and open the template in the editor.
 background-image: none;
 }
 
-
-
 .cientificalab .header-back {
   height: 570px;
   width: 100%;
 }
+
 .cientificalab .header-back.one {
-  background: url('../views/cientificalab/teste1.jpg') 50% 0 no-repeat;
+  background: url('../views/cientificalab/carrousel.jpg') 50% 0 no-repeat;
 }
 
 .cintificalab .navbar-default .navbar-nav > .active > a, .landing-page .navbar-default .navbar-nav > .active > a:hover {
@@ -246,8 +257,6 @@ background-image: none;
 }
 /*#loadImg{position:absolute;z-index:999;}
 #loadImg div{display:table-cell;width:950px;height:633px;background:#fff;text-align:center;vertical-align:middle;}*/
-
-
 .inputcolor input[type=text]:focus,input[type=password]:focus,input[type=number]:focus{
     background-color:#cedde0;
 }
@@ -257,8 +266,28 @@ background-image: none;
 }
 
 .tm-site .header-back.one {
-  background: url('../views/tmsite/Tela1.jpg') 50% 0 no-repeat;
+  background: url('../views/tmsite/Background/TMTELA1.jpg') 50% 0 no-repeat;
 }
+
+.tm-site .header-back.two {
+  background: url('../views/tmsite/Background/TMTELA3.jpg') 50% 0 no-repeat;
+}
+
+.tm-site .header-back.three {
+  background: url('../views/tmsite/Background/TMTELA2.jpg') 50% 0 no-repeat;
+}
+
+.tm-site .navy-line {
+    width: 60px;
+    height: 1px;
+    margin: 60px auto 0;
+    border-bottom: 2px solid transparent;
+}
+
+.tm-site .header-back {
+    height: 900px;
+}
+
 .table-striped>tbody>tr:nth-child(odd)>td,
 tr.found{
     background-color:#dce6f7;
@@ -268,6 +297,238 @@ tr.found{
     background-color:#c6ffe9;
 }
 
-.text-thiago {
-  color: #003399;
+.divsitetmlogo {
+filter: alpha(opacity=90);
+padding-left: -40px;
+background: rgba(179, 209, 255, 0.8);
+position: relative;
+top: 0;
+left: 0;
+position: relative;
+width: 0px;       
+height: 55px;
+border-radius: 15px;
+box-shadow: 1px 1px 2px #888888;
+text-shadow:2px 2px rgba(113, 100, 100, 0);
+letter-spacing: 8.5px;
 }
+
+.divback1 {
+filter: alpha(opacity=90);
+padding:6px;
+background: rgba(255, 255, 255, 0.8);
+position: relative;
+margin-top: 50px;
+top: 0;
+left: 0;
+position: relative;
+width: 720px;       
+height: 180px;
+border-radius: 15px;
+box-shadow: 1px 1px 2px #888888;
+text-shadow:2px 2px rgba(113, 100, 100, 0.61);
+letter-spacing: 8.5px;
+}
+
+.divback2 {
+filter: alpha(opacity=90);
+padding:5px 0px 10px 10px;
+background: rgba(255, 255, 255, 0.8);
+position: relative;
+margin-top: 50px;
+top: 0;
+left: 0;
+position: relative;
+width: 760px;       
+height: 70px;
+border-radius: 15px;
+box-shadow: 1px 1px 2px #888888;
+text-shadow:2px 2px rgba(113, 100, 100, 0.61);
+letter-spacing: 8.5px;
+}
+
+.divback3 {
+filter: alpha(opacity=90);
+padding:5px 0px 10px 10px;
+background: rgba(255, 255, 255, 0.8);
+position: relative;
+margin-top: 50px;
+top: 0;
+left: 0;
+position: relative;
+width: 740px;       
+height: 70px;
+border-radius: 15px;
+box-shadow: 1px 1px 2px #888888;
+text-shadow:2px 2px rgba(113, 100, 100, 0.61);
+letter-spacing: 8.5px;
+}
+
+.divbackmobile {
+filter: alpha(opacity=90);
+padding:5px;
+background: rgba(255, 255, 255, 0.8);
+position: relative;
+margin-top: 50px;
+top: 0;
+left: 0;
+position: relative;
+width: 250px;       
+height: 80px;
+border-radius: 15px;
+box-shadow: 1px 1px 2px #888888;
+text-shadow:1px 1px rgba(113, 100, 100, 0.61);
+}
+
+.divbackmobile1 {
+filter: alpha(opacity=90);
+padding:5px;
+background: rgba(255, 255, 255, 0.8);
+position: relative;
+margin-top: 50px;
+top: 0;
+left: 0;
+position: relative;
+width: 250px;       
+height: 40px;
+border-radius: 15px;
+box-shadow: 1px 1px 2px #888888;
+text-shadow:2px 2px rgba(113, 100, 100, 0.61);
+}
+
+.divbackmobile2 {
+filter: alpha(opacity=90);
+padding:5px;
+background: rgba(255, 255, 255, 0.8);
+position: relative;
+margin-top: 50px;
+top: 0;
+left: 0;
+position: relative;
+width: 220px;       
+height: 35px;
+border-radius: 15px;
+box-shadow: 1px 1px 2px #888888;
+text-shadow:2px 2px rgba(113, 100, 100, 0.61);
+}
+
+.divtminformatica {
+filter: alpha(opacity=90);
+background: rgba(255, 255, 255, 0.8);
+padding:1px;
+position: relative;
+top: 0;
+left: 0;
+position: relative;
+margin-top: 20px;
+width: 350px;       
+height: 100px;
+border-radius: 15px;
+box-shadow: 1px 1px 2px #888888;
+text-shadow:2px 2px rgba(113, 100, 100, 0.61);
+}
+
+.divsitetm h1{
+text-shadow:2px 2px rgba(113, 100, 100, 0.61);
+}
+
+.texttmsite{
+opacity: 10;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+}
+
+.tm-site .navbar-default {
+  background-color: white;
+  
+  filter: alpha(opacity=50); 
+  border-color: transparent;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.tm-site .navbar-default .nav li a {
+    color: black;
+    font-family: 'Open Sans', helvetica, arial, sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.tm-site  .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover {
+    color: black;
+}
+
+.tm-site  .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav >  a:focus {
+    color: black;
+}
+
+.tm-site .navbar-scroll .navbar-nav > li > a {
+  padding: 25px 10px;
+}
+
+.cientificalab .carousel {
+  height: 900px;
+}
+
+.cientificalab .navbar-default {
+  background-color: white;
+  filter: alpha(opacity=50); 
+  border-color: transparent;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.cientificalab .navbar-default .nav li a {
+    color: #6999e5;
+    font-family: 'Open Sans', helvetica, arial, sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.cientificalab  .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover {
+    color: #6999e5;
+}
+
+.cientificalab  .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav >  a:focus {
+    color: #6999e5;
+}
+
+.cientificalab .navbar-scroll .navbar-nav > li > a {
+  padding: 25px 10px;
+}
+
+.textcientificalab {
+filter: alpha(opacity=90);
+padding:5px;
+background: rgb(204, 204, 204);
+background: rgba(204, 204, 204, 0.4);
+position: relative;
+top: 0;
+left: 0;
+position: relative;
+width: 510px;       
+height: 160px;
+border: 1px solid #dcdee2;
+border-radius: 15px;
+}
+
+
+@media (max-width: 768px) {
+    #idDoLogo img{display:none;}
+  .html5buttons {
+    float: none;
+    margin-top: 10px;
+  }
+  .dataTables_length {
+    float: none;
+  }
+}
+
+
+
+  
+  

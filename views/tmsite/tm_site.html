@@ -3,7 +3,7 @@
     <div class="navbar-wrapper">
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
-                <div class="navbar-header page-scroll">
+                <div class="navbar-header page-scroll" style="color: red">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
@@ -11,42 +11,120 @@
                         <span class="icon-bar"></span>
                     </button>
                     
+                <div id="idDoLogo" class="hidden-sm hidden-md hidden-xs">    
+                    <img src="views/tmsite/logotmcab.jpg" alt="logo" style="padding-left: 5px; height: 65px; width: 200px;"/>
                 </div>
-                
+
+                    <!--<div class="hidden-lg">    
+                   <img src="views/tmsite/LogoTM-New.png" alt="logo" height="80px;" width="90px;" style="text-align: center"/>
+                    </div>-->
+
+                </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                            <li class="active"><a class="page-scroll" page-scroll href="#page-top" style="color: #002a80">Home</a></li>
-                            <li><a class="page-scroll" page-scroll href="#features" style="color: #002a80">Institucional</a></li>
-                            <li><a class="page-scroll" page-scroll href="#team" style="color: #002a80">Produtos</a></li>
-                            <li><a class="page-scroll" page-scroll href="#testimonials" style="color: #002a80">Clientes</a></li>
-                            <li><a class="page-scroll" page-scroll href="#pricing" style="color: #002a80">Suporte</a></li>
-                            <li><a class="page-scroll" page-scroll href="#contact" style="color: #002a80    ">Contato</a></li>
-                        </ul>
-                    </div>
+                        <li class="active"><a class="page-scroll" page-scroll href="#page-top">Home</a></li>
+                        <li><a class="page-scroll" page-scroll href="#features">Institucional</a></li>
+                        <li><a class="page-scroll" page-scroll href="#team">Produtos</a></li>
+                        <li><a class="page-scroll" page-scroll href="#testimonials">Clientes</a></li>
+                        <li><a class="page-scroll" page-scroll href="#pricing">Suporte</a></li>
+                        <li><a class="page-scroll" page-scroll href="#contact">Contato</a></li>
+                    </ul>
                 </div>
-        </nav>
             </div>
-    
-    <div id="inSlider" class="tm-site  carousel slide carousel-fade" data-ride="carousel" ng-non-bindable>
+        </nav>
+    </div>
+    <div id="inSlider" class="carousel slide carousel-fade" data-ride="carousel" ng-non-bindable>
+        <ol class="carousel-indicators">
+            <li data-target="inSlider" data-slide-to="0" class="active"></li>
+            <li data-target="inSlider" data-slide-to="1"></li>
+            <li data-target="inSlider" data-slide-to="2"></li>
+            <li data-target="inSlider" data-slide-to="3"></li>
+        </ol>
+
         <div class="carousel-inner" role="listbox">
             <div class="item active">
-                <div class="carousel-caption" style="padding-left:60%">
-                    <h1 style="color: white"><b>Tecnologia e Sistema<br/></h1
-                    <h3>Controle total do seu laboratório, a escolha certa para a sua empresa</h3>
-                    <div class="carousel-image wow zoomIn"></br</br>
+                <div class="container">
+                    <div class="carousel-caption">
+                        <!--<img src="img/landing/laptop.png" alt="laptop" style="padding-left: 5px;"/>-->
+
+                            <div class="row">
+                                <div class="col-md-12 text-center wow animated bounceInRight"  style="padding-left: -50px; margin-top: -30px;">
+                                    <div class="divsitetmlogo">
+                                        <img src="views/tmsite/LogoTM-New.png" class="img-rounded" style="height: 300px; width: 350px;">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12 text-center wow animated bounceInLeft"  style="padding-left: 400px; margin-top: 0px;">
+                                    <div class="divback1">
+                                        <h1 style="text-shadow:2px 2px rgba(113, 100, 100, 0.61); letter-spacing: - 0.5px; color: #24315E">Média de 8.200 exames por mês</h1>
+                                        <h1 style="text-shadow:2px 2px rgba(113, 100, 100, 0.61); letter-spacing: - 0.5px; color: #24315E">em mais de 500 equipamentos</h1>
+                                        <h1 style="text-shadow:2px 2px rgba(113, 100, 100, 0.61); letter-spacing: - 0.5px; color: #24315E">interfaceados por nossos sistemas</h1>
+                                    </div>
+                                </div>
+                            </div>
+                            
+
+                            <div class="row wow animated fadeInUpBig">
+                                <div class="col-sm-4 text-center">
+                                    <div class="divtminformatica">
+                                    <h1> <span style="color: red">TM</span> <span style="color: #24315E">Informática</span> </h1>
+                                    <h3 style="color: #24315E">Tecnologia e Serviços</h3>
+                                    </div>
+                                </div>
+                            </div>
                         
-                        <img src="views/tmsite/LogoTM.jpg" alt="N aparece" width="150" height="130" class="img-rounded"/>
+                        </div>
+                    <div class="carousel-image wow zoomIn">
                     </div>
-                </div> 
-                
+                </div>
                 <!-- Set background for slide in css -->
                 <div class="header-back one"></div>
+
             </div>
+            
+
+        <div class="item">
+            <div class="container">
+                <div class="carousel-caption blank wow animated lightSpeedIn" style="padding-right: 400px;">
+                    <div class="divback2">
+                        <h1 style="color: #24315E">Controle total do seu laboratório.</h1>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Set background for slide in css -->
+            <div class="header-back two"></div>
         </div>
-    </div>
 
-
-<section id="features" class="gray-section team">
+        <div class="item">
+            <div class="container">
+                <div class="carousel-caption blank wow animated pulse" style="padding-right: 400px; margin-top: 280px;">
+                    <div class="divback3">
+                    <h1 style="color: #24315E">A escolha certa para a sua Empresa.</h1>
+                </div>
+                </div>
+            </div>
+            
+            <!-- Set background for slide in css -->
+            <div class="header-back three"></div>
+        </div>
+        
+        
+    
+        <a class="left carousel-control" data-target="#inSlider" role="button" data-slide="prev" style="margin-top: 230px; color: #24315E">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" data-target="#inSlider" role="button" data-slide="next" style="margin-top: 230px; color: #24315E">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+</div>
+    
+    <section id="features" class="gray-section team">
     <div class="container">
         <div class="row m-b-lg">
             <div class="col-lg-12 text-center">
@@ -70,9 +148,7 @@
     </div>
 </section>    
 
-
-
-<section id="team" class="gray-section team">
+    <section id="team" class="gray-section team">
     <div class="container">
         <div class="row m-b-lg">
             <div class="col-lg-12 text-center">
@@ -121,12 +197,13 @@
             <div class="container">
                 <div class="row m-b-lg">
                     <div class="col-lg-12 text-center">
+                        <div class="navy-line"></div>
+                        <h1 style="text-align: center">
+                            TMSOROTECA
+                        </h1>
                         <div class="row features-block">
-                            
                             <div class="col-lg-6 features-text wow fadeInLeft">
-                                <h1 style="text-align: center">
-                                    TMSOROTECA
-                                </h1>
+
                                 <h3>Controla o armazenamento e pesquisa das amostras em estantes e freezers, além de ser como uma ferramenta para verificação de exames pendentes. </h3>
                                 <p style="text-align: left">Principais Características:</p>
                                 <p style="text-align: left">Cadastro de estante(grade) e freezers de acordo com a necessidade.</p>
@@ -139,9 +216,29 @@
                             </div>
 
                             <div class="col-lg-6 text-right wow fadeInRight">
-                                <h1 style="text-align: center">
-                                    TMRESULTADO
-                                </h1>
+                                <img src="views/tmsite/Background/tmsoro.jpg" alt="dashboard" class="img-responsive pull-right">
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="container">
+                    <div class="row m-b-lg">
+                        <div class="col-lg-12 text-center">
+                            
+                            <div class="navy-line"></div>
+                            <h1 style="text-align: center">
+                                TMRESULTADO
+                            </h1>
+                            
+                            <div class="row features-block">
+                                <div class="col-lg-6 features-text wow fadeInLeft">
+                                     <img src="views/tmsite/Background/tmresu.jpg" alt="dashboard" class="img-responsive pull-right">
+                                </div>
+
+                            <div class="col-lg-6 text-right wow fadeInRight">
+                                
                                 <p style="text-align: center"></p>
                                 <h3>Sistema para visualização de resultados de exames.</h3>
                                 <p style="text-align: left">Consulta de resultados de exames e impressão de laudos via intranet, internet, leve e prático.</p>
@@ -152,15 +249,19 @@
                                 <p style="text-align: left">Visualização apenas dos pedidos solicitados.</p>
                                 <p style="text-align: left">Senha de acesso individual.</p>
                             </div>
-
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+
+                        
 
                 <div class="container">
                     <div class="row m-b-lg">
                         <div class="col-lg-12 text-center">
+                            <div class="navy-line"></div>
                             <div class="row features-block">
+                                
                                 <div class="col-lg-6 features-text wow fadeInLeft">
                                     <h1 style="text-align: center">
                                         TMCOUNTER
@@ -171,6 +272,7 @@
                                     <p style="text-align: left">O instrumento possui uma entrada para leitor de código de barras para facilitar a localização da amostra e identificação do paciente no display sem a necessidade de digitar o código evitando possíveis erros de digitação. Também possui uma saída serial e conexão TCP/IP que permite a integração com os sistemas de interfaceamento.</p>
                                     <p style="text-align: left">Após a contagem e confirmação do resultado, estes serão enviados ao seu sistema de informação finalizando assim o processo dentro da área técnica e já habilitando a assinatura do laudo final.</p>
                                 </div>
+                                
                                 <div class="col-lg-6 text-right wow fadeInRight">
                                     <h1 style="text-align: center">
                                         TMPORT
@@ -178,13 +280,13 @@
                                     <h3>Conversor Serial/TCP para equipamentos laboratoriais. </h3>
                                     <p style="text-align: left">Equipamento utilizado para comunicação e conexões de periféricos seriais RS232 à rede Ethernet 10/100 Base-T que permite redirecionamento de porta COM (Windows) e TTY (Unix), além de disponibilizar portas de entrada e saída (I/O). Tornando a comunicação entre o interface e o equipamento mais segura</p>
                                     <p style="text-align: left">Equipamento individual, tornando-o uma ferramenta prática na eventual mudança de local do equipamento. </p>
-
                                 </div>
 
                             </div>
                         </div>
                     </div>
                 </div>
+            
                 </section>
 
                 <br><br><br><br>
@@ -197,6 +299,7 @@
                 <section id="testimonials">
 
                     <div class="container">
+                        <div class="navy-line"></div>
                         <div class="row">
 
                             <h2 style="text-align: center">
@@ -348,7 +451,7 @@
                                 <p>
                                     Suporte técnico de segunda a sexta-feira 24 horas pela central telefônica (11) 4195-2102 
                                     Aos sábados, suporte técnico até as 22:00 pela central telefônica (11) 4195-2102 
-                                    Aos sábados após as 22:00, domingos e feriados pelo telefone (11) 7808-0896 /(11) 99799-4479
+                                    Aos sábados após as 22:00, domingos e feriados pelo telefone (11) 7808-0896
                                 </p>
                             </div>
                         </div>
@@ -358,9 +461,8 @@
                         <div class="row">
 
                             <div class="col-lg-6 wow zoomIn">
-                                <i class="fa fa-envelope-o features-icon" style="color: blue"></i>
-                                <a>E-MAIL</a>
-                                <p>suporte@tminformatica.com.br</p>
+                                <a class="fa fa-envelope-o features-icon" style="color: blue" href="mailto:suporte@tminformatica.com.br"></a>
+                                <a href="mailto:suporte@tminformatica.com.br">suporte@tminformatica.com.br</a>
                             </div>
 
                             <div class="col-lg-6 wow zoomIn">
@@ -389,13 +491,15 @@
                                 <p>Hoje a evidência é o ponto crucial para o sucesso, sabendo disso nos colocamos a disposição para uma visita em seu laboratório
                                     nosso departamento comercial está a disposição para demonstrar nossos produtos.</p>
 
-                                <p style="color: black;">Horário de atendimento:  Segunda-feira à Sexta-feira - Das 9:00h às 18:00h</p>
+                                <p style="color: black;">Suporte técnico telefônico e remoto de segunda a sexta-feira 24 horas pela central telefônica (11-4195-2102)</p>
+                                <p style="color: black;">Aos sábados, suporte técnico telefônico e remoto até as 22:00 pela central telefônica (11-4195-2102)</p>
+                                <p style="color: black;">Plantão aos sábados após as 22:00, domingos e feriados pelo telefone (11 – 7808-0896)</p>
                             </div>
                         </div>
                         <div class="row m-b-lg">
-                            <div class="col-lg-3 col-lg-offset-3">
+                            <div class="col-lg-4 col-lg-offset-4">
                                 <ul class="list-icons">
-                                    <li><i class="fa fa-map-marker pr-10"></i>Av. Andromeda, 885 - Alphaville</li>
+                                    <li><i class="fa fa-map-marker pr-10"></i>Av. Andromeda, 885 - Alphaville, Barueri - SP</li>
                                     <li><i class="fa fa-building-o pr-10"></i> 7<sup>o</sup> Andar - Sala 723</li>
                                     <li><i class="fa fa-globe pr-10"></i>CEP: 06473-000</li>
                                     <li><i class="fa fa-phone pr-10"></i> (11) 4195-2102</li>
@@ -404,56 +508,84 @@
                             </div>
                         </div>
                     </div>
+                </div>
+        </div>
+    </div>
+</div>
 
-                    <p>Copyright © 2016 TMInformática - Todos os Direitos Reservados</p>
+                    <p>Copyright © 2016 TMInformática - Todos os Direitos Reservados - Design by Porto</p>
                     <!-- Local script for menu handle -->
                     <!-- It can be also directive -->
 
-                    <script>
-                        $(document).ready(function () {
-                            // Page scrolling feature
-                            $('a.page-scroll').bind('click', function (event) {
-                                var link = $(this);
-                                $('html, body').stop().animate({
-                                    scrollTop: $(link.attr('href')).offset().top - 50
-                                }, 500);
-                                event.preventDefault();
-                                if ($('body').hasClass('body-small')) {
-                                    $('#navbar').collapse('toggle');
-                                }
-                            });
+<script>
+    $(document).ready(function () {
+        $('#idDoLogo').hide();
+        // Page scrolling feature
+        $('a.page-scroll').bind('click', function(event) {
+            var link = $(this);
+            $('html, body').stop().animate({
+                scrollTop: $(link.attr('href')).offset().top - 50
+            }, 500);
+            event.preventDefault();
+            if($('body').hasClass('body-small')) {
+                $('#navbar').collapse('toggle');
+            }
+        });
 
-                            // Activate WOW.js plugin for animation on scrol
-                            new WOW().init();
-                        });
+        // Activate WOW.js plugin for animation on scrol
+        new WOW().init();
+    });
+    
+    var totalItems = $('.item').length;
+    var currentIndex = $('div.active').index() + 1;
+        $('#inSlider').carousel({
+            interval: 5000
+        });
+        $('#inSlider').on('slid.bs.carousel', function() {
+            currentIndex = $('div.active').index() + 1;
+            $('#idDoLogo').removeAttr('class').attr('class', '');
+            $('#idDoLogo').removeAttr('style').attr('style', '');
+            // alert (currentIndex);
+                if(currentIndex == 1){
+                 //$('#idDoLogo').hide();
+                    $('#idDoLogo').addClass('fadeOut');
+                     $('#idDoLogo').addClass('animated');
+                }else{
+                // $('#idDoLogo').show();  
+                 $('#idDoLogo').addClass('fadeIn');
+                 $('#idDoLogo').addClass('animated');
+                 if(currentIndex == totalItems){
+                     currentIndex = 0;
+                 }
+                }   
+        });
 
-                        var cbpAnimatedHeader = (function () {
-                            var docElem = document.documentElement,
-                                    header = document.querySelector('.navbar-default'),
-                                    didScroll = false,
-                                    changeHeaderOn = 200;
-                            function init() {
-                                window.addEventListener('scroll', function (event) {
-                                    if (!didScroll) {
-                                        didScroll = true;
-                                        setTimeout(scrollPage, 250);
-                                    }
-                                }, false);
-                            }
-                            function scrollPage() {
-                                var sy = scrollY();
-                                if (sy >= changeHeaderOn) {
-                                    $(header).addClass('navbar-scroll')
-                                } else {
-                                    $(header).removeClass('navbar-scroll')
-                                }
-                                didScroll = false;
-                            }
-                            function scrollY() {
-                                return window.pageYOffset || docElem.scrollTop;
-                            }
-                            init();
+    var cbpAnimatedHeader = (function() {
+        var docElem = document.documentElement,
+                header = document.querySelector( '.navbar-default' ),
+                didScroll = false,
+                changeHeaderOn = 200;
+        function init() {
+            window.addEventListener( 'scroll', function( event ) {
+                if( !didScroll ) {
+                    didScroll = true;
+                    setTimeout( scrollPage, 250 );
+                }
+            }, false );
+        }
+        function scrollPage() {
+            var sy = scrollY();
+            if ( sy >= changeHeaderOn ) {
+                $(header).addClass('navbar-scroll')
+            }else {
+                $(header).removeClass('navbar-scroll')
+            }
+            didScroll = false;
+        }
+        function scrollY() {
+            return window.pageYOffset || docElem.scrollTop;
+        }
+        init();
 
-                        })();
-                    </script>
-            </div>
+    })();
+</script>
