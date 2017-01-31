@@ -8354,6 +8354,7 @@ body.md-skin {
     display: none;
   }
 }
+
 @media print {
   nav.navbar-static-side {
     display: none;
@@ -8365,6 +8366,7 @@ body.md-skin {
     margin: 0;
   }
 }
+
 .sexo-masculino {
     color: #1872ab;
     font-weight: bold;
