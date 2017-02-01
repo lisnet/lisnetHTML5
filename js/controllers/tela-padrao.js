@@ -41,7 +41,7 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, sairDoSistemaS
         if ($scope.userDTO.telaPadrao.filter(encontraModulo).length > 0) {
             moduloPadrao = $scope.userDTO.telaPadrao.filter(encontraModulo)[0];
             console.log('moduloPadrao da memoria ...  ');
-        } else {tah
+        } else {
             moduloPadrao =   montaModulo(modStCodigo);
         }
         moduloPadrao.msgBusca = "Faça a sua pesquisa.";
