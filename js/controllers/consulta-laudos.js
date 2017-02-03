@@ -10,6 +10,10 @@ var self = this;
 
 console.log('Inicializando consultaLaudo ' );
 $scope.userDTO = sairDoSistemaService.validarLogin();
+if(!$scope.userDTO.consultalaudo){
+    var uni0 = $scope.userDTO.unidades[0];
+    $scope.userDTO.consultalaudo  = {unidadeId : uni0.UNI_ST_CODIGO+'-'+uni0.UNI_ST_DESCRICAO,dtInicio:new Date(),dtFim:new Date(),format : 'dd/MM/yyyy'};
+}
 $scope.paramsStateConfig =  $stateParams;
 
 $scope.strMax = $filter('date')(new Date(), "yyyy-MM-dd");
@@ -64,10 +68,7 @@ console.log('typeof = '+typeof $scope.strMax  +"  strMax = "+$scope.strMax);
 // this.daterange = {startDate: null, endDate: null};
 $scope.daterange = {startDate: new Date(), endDate: new Date()};
 
-if(!$scope.userDTO.consultalaudo){
-    var uni0 = $scope.userDTO.unidades[0];
-    $scope.userDTO.consultalaudo  = {unidadeId : uni0.UNI_ST_CODIGO+'-'+uni0.UNI_ST_DESCRICAO,dtInicio:new Date(),dtFim:new Date(),format : 'dd/MM/yyyy'};
-}
+
 if($scope.userDTO.consultalaudo.dtInicio){
      $scope.userDTO.consultalaudo.dtInicio = new Date($scope.userDTO.consultalaudo.dtInicio);
      $scope.userDTO.consultalaudo.dtFim = new Date($scope.userDTO.consultalaudo.dtFim);

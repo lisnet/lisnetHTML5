@@ -65,6 +65,9 @@ console.log('construing config , registrando state');
             {
                 name: 'ui.switchery',
                 files: ['css/plugins/switchery/switchery.css', 'js/plugins/switchery/switchery.js', 'js/plugins/switchery/ng-switchery.js']
+            },
+            {
+                            files: ['js/plugins/jasny/jasny-bootstrap.min.js']
             }
         ];
     };
@@ -516,7 +519,7 @@ console.log('construing config , registrando state');
 //                }
 //            })
              .state('cadastrodepacientes', {
-                url: "/configura/convenios/",
+                url: "/cadastro/pacientes/",
                 templateUrl: "views/tmtelas/cadastro_paciente.html",
                 params: {titulo: 'Cadastro de Paciente',pai:'Cadastro',pagina:'Cadastro de Paciente', modStCodigo: '00220'},
                 parent: 'lisnet',
