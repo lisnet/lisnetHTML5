@@ -127,14 +127,11 @@
                 </div>
             </div>
 
-            {{userDTO.cadastroPaciente.requisicoes.length}}
-            {{userDTO.cadastroPaciente.pacientes.length}}
-
             <div class="ibox-content">
                 
                 
-                
-                    <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="8">
+                <div class="table-responsive">
+                    <table class="footable table table-stripped toggle-arrow-tiny table-bordered table-hover dataTables-example" data-page-size="10">
                         <thead>
                         <tr>
 
@@ -145,15 +142,13 @@
                             <th>S.U.S</th>
                             <th>C.P.F</th>
                             <th>Endereço</th>
-                            <th data-hide="all">Company</th>
-                            <th data-hide="all">Completed</th>
-                            <th data-hide="all">Task</th>
-                            <th data-hide="all">Date</th>
-                            <th>Action</th>
+                            
+                            <th data-hide="all">Requisições</th>
+                            
                         </tr>
                         </thead>
                         <tbody>
-                        <tr ng-repeat=" p in userDTO.cadastroPaciente.pacientes"  >
+                            <tr ng-repeat=" p in userDTO.cadastroPaciente.pacientes"  foo-table  >
                             <td>{{p.PAC_IN_CODIGO}}</small></td>
                             <td>{{p.PAC_ST_NOME}}</td>
                             <td>{{p.PAC_ST_SEXO}}</td>
@@ -162,11 +157,32 @@
                             <td>{{p.PAC_ST_CPF}}</td>
                             <td>{{constroeEndereco(p)}}</td>
                             
-                            <td>Inceptos Hymenaeos Ltd</td>
-                            <td><span class="pie">0.52/1.561</span></td>
-                            <td>20%</td>
-                            <td>Jul 14, 2013</td>
-                            <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
+                            <td>
+<!--                                <div ng-repeat="r in p.requisicoes">
+                                    {{r.REQ_ST_CODIGO}}
+                                </div>-->
+                                
+                                <table     class="table table-striped table-bordered table-hover dataTables-example"  ng-cloak   >
+                                    <thead>
+
+                                    <th>Código</th>
+                                    <th>Data</th>
+                                    <th>Unidade</th>
+                                    <th>Flag</th>
+                                    <th>Externo</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr  ng-repeat="r in p.requisicoes" >
+                                           <td>{{r.REQ_ST_CODIGO}}</td>
+                                           <td>{{r.REQ_DT_CADASTRO}}</td>
+                                           <td>{{r.UNI_ST_CODIGO}}</td>
+                                           <td>{{r.LEG_ST_CODIGO}}</td>
+                                           <td>{{r.REQ_ST_CODIGOALT}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                           </td>
+                            
                         </tr>
                         
                         </tbody>
@@ -178,7 +194,7 @@
                             </tr>
                         </tfoot>
                     </table>
-                
+                </div>
             </div>
         </div>
 

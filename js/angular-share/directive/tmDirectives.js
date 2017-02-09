@@ -99,11 +99,33 @@ function autoNext(){
        }
     };
 }
+
+function fooTable (){
+  return function(scope, element){
+    var footableTable = element.parents('table');
+    if( !scope.$last ) {
+        return false;
+    }
+    scope.$evalAsync(function(){
+
+        if (! footableTable.hasClass('footable-loaded')) {
+            footableTable.footable();
+        }
+
+        footableTable.trigger('footable_initialized');
+        footableTable.trigger('footable_resize');
+        footableTable.data('footable').redraw();
+
+    });
+  };
+}
+
 angular.module('lisnet')
         .directive('enterKey',enterKey)
         .directive('nextFocus',nextFocus)
         .directive('myPage',myPage)
         .directive('moveMaxLength',moveMaxLength)
-        .directive('autoNext',autoNext);
+        .directive('autoNext',autoNext)
+        .directive('fooTable',fooTable);
 
 
