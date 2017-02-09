@@ -1,0 +1,188 @@
+
+
+<div class="wrapper wrapper-content animated fadeInRight  inputcolor"   ng-controller="cadastroPaciente" style="padding-bottom: 0px;" >
+    <div class="ibox-content">
+        <div class="row">
+            <div class="col-lg-12" >
+                <form name="cadastropacienteform" >
+                    <div class="ibox-title">
+                        <h5  >Escolha o Filtro.</h5>
+                        <!--<div ibox-tools></div>-->
+                    </div>
+                    <div class="col-lg-6"   >
+                        <div class="input-group  "  style="width: 100%;" >
+                            <input   name="PAC_ST_NOME" placeholder="NOME" type="text"  id="inputTextPacStNome"  class="form-control "  ng-model="userDTO.cadastroPaciente.pacStNome"    
+                                     ng-change="trocarVisualizacao('PAC_ST_NOME',userDTO.cadastroPaciente.pacStNome)"
+                                     ng-focus="trocarVisualizacao('PAC_ST_NOME',userDTO.cadastroPaciente.pacStNome)"
+                                    ng-minlength="5" ng-maxlength="300" 
+                                    enter-key="filtrar()" >
+                            <span class="input-group-addon" ng-if="userDTO.cadastroPaciente.ultimoCampo === 'PAC_ST_NOME' " >
+                                <i ng-click="filtrar()"  class="fa fa-search  "  style="color: #006621 ; text-shadow: 1px 1px 1px #ccc;    font-size: 1.5em;   " ></i>
+                            </span>
+                        </div>
+                        <div role="alert " >
+                            <span class="error  has-error"   style="color: red;" ng-show="cadastropacienteform.PAC_ST_NOME.$error.minlength">
+                                Muito curto  , menos de 5 </span>
+                            <span class="error"   style="color: red;" ng-show="cadastropacienteform.PAC_ST_NOME.$error.maxlength">
+                                Muito longo, mais de 300 </span>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3">
+                        <div class="input-group  " style="width: 100%;" >
+                            <input type="text" class="form-control" data-mask="99/99/9999" placeholder="Data Nascimento" ng-model="userDTO.cadastroPaciente.pacDtNascimento"
+                                   ng-change="trocarVisualizacao('PAC_DT_NASCIMENTO',userDTO.cadastroPaciente.pacDtNascimento)"
+                                   ng-focus="trocarVisualizacao('PAC_DT_NASCIMENTO',userDTO.cadastroPaciente.pacDtNascimento)" />
+                            <span class="input-group-addon"   ng-if="userDTO.cadastroPaciente.ultimoCampo === 'PAC_DT_NASCIMENTO' "   >
+                                <i ng-click="filtrar()"  class="fa fa-search  "  style="color: #006621 ; text-shadow: 1px 1px 1px #ccc;    font-size: 1.5em;" ></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3">
+                        <div class="input-group  "  style="width: 100%;" >
+                            <input type="text"  name="REQ_ST_CODIGO" class="form-control" data-mask="9999999999" placeholder="Solicitação" ng-model="userDTO.cadastroPaciente.reqStCodigo"
+                                   ng-change="trocarVisualizacao('REQ_ST_CODIGO',userDTO.cadastroPaciente.reqStCodigo)"
+                                   ng-focus="trocarVisualizacao('REQ_ST_CODIGO',userDTO.cadastroPaciente.reqStCodigo)"
+                                   ng-minlength="10" ng-maxlength="12"   />
+                            <span class="input-group-addon"  ng-if="userDTO.cadastroPaciente.ultimoCampo === 'REQ_ST_CODIGO' " >
+                                <i ng-click="filtrar()"  class="fa fa-search  "  style="color: #006621 ; text-shadow: 1px 1px 1px #ccc;    font-size: 1.5em;" ></i>
+                            </span>
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            
+            <div class="col-lg-12" >
+                <form name="cadastropacienteform" >
+                                            
+                    <div class="col-lg-3">
+                        <div class="input-group  " style="width: 100%;" >
+                            <input type="text" class="form-control" data-mask="99.999.999-*" placeholder="Numero RG" ng-model="userDTO.cadastroPaciente.pacStRG"
+                                   ng-change="trocarVisualizacao('PAC_ST_RG',userDTO.cadastroPaciente.pacStRG)"
+                                   ng-focus="trocarVisualizacao('PAC_ST_RG',userDTO.cadastroPaciente.pacStRG)"  >
+                            <span class="input-group-addon"  ng-if="userDTO.cadastroPaciente.ultimoCampo === 'PAC_ST_RG' " >
+                                <i ng-click="filtrar()"  class="fa fa-search  "  style="color: #006621 ; text-shadow: 1px 1px 1px #ccc;    font-size: 1.5em;" ></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="input-group  "  style="width: 100%;" >
+                            <input type="text" class="form-control" data-mask="999.999.999-99" placeholder="CPF" ng-model="userDTO.cadastroPaciente.pacStCPF"
+                                   ng-change="trocarVisualizacao('PAC_ST_CPF',userDTO.cadastroPaciente.pacStCPF)"
+                                   ng-focus="trocarVisualizacao('PAC_ST_CPF',userDTO.cadastroPaciente.pacStCPF)"   >
+                            <span class="input-group-addon"  ng-if="userDTO.cadastroPaciente.ultimoCampo === 'PAC_ST_CPF' " >
+                                <i ng-click="filtrar()"  class="fa fa-search  "  style="color: #006621 ; text-shadow: 1px 1px 1px #ccc;    font-size: 1.5em;" ></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="input-group  " style="width: 100%;" >
+                        <input type="text" class="form-control " data-mask="99999999999999" placeholder="S.U.S" ng-model="userDTO.cadastroPaciente.pacStSUS"
+                               ng-change="trocarVisualizacao('PAC_IN_CODSUS',userDTO.cadastroPaciente.pacStSUS)"
+                               ng-focus="trocarVisualizacao('PAC_IN_CODSUS',userDTO.cadastroPaciente.pacStSUS)"  >
+                            <span class="input-group-addon"  ng-if="userDTO.cadastroPaciente.ultimoCampo === 'PAC_IN_CODSUS' " >
+                                <i ng-click="filtrar()"  class="fa fa-search  "  style="color: #006621 ; text-shadow: 1px 1px 1px #ccc;    font-size: 1.5em;" ></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="input-group" style="width: 100%;" >
+                        <input type="text"  name="REQ_ST_CODIGOALT" class="form-control"  placeholder="Código Interno" ng-model="userDTO.cadastroPaciente.reqStCodigoAlt"
+                               ng-change="trocarVisualizacao('REQ_ST_CODIGOALT',userDTO.cadastroPaciente.reqStCodigoAlt)"
+                               ng-focus="trocarVisualizacao('REQ_ST_CODIGOALT',userDTO.cadastroPaciente.reqStCodigoAlt)"   ng-minlength="8" ng-maxlength="16"   >
+                            <span class="input-group-addon"  ng-if="userDTO.cadastroPaciente.ultimoCampo === 'REQ_ST_CODIGOALT' " >
+                                <i ng-click="filtrar()"  class="fa fa-search  "  style="color: #006621 ; text-shadow: 1px 1px 1px #ccc;    font-size: 1.5em;" ></i>
+                            </span>
+                        </div>
+                        
+                        <div role="alert " >
+                            <span class="error  has-error"   style="color: red;" ng-show="cadastropacienteform.REQ_ST_CODIGOALT.$error.minlength">
+                                Muito curto  , menos de 8 </span>
+                            <span class="error"   style="color: red;" ng-show="cadastropacienteform.REQ_ST_CODIGOALT.$error.maxlength">
+                                Muito longo, mais de 16 </span>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        
+        <hr>
+         <div class="row">
+            <div   style="background-color: #f0f5f5;"  class="col-lg-12"    ng-hide="userDTO.cadastroPaciente.pacientes && userDTO.cadastroPaciente.pacientes.length > 0"  >
+                <div class="wrapper wrapper-content">
+                    <div class=" text-center animated fadeInRightBig">
+                        <h3 class="font-bold">Faça a sua pesquisa.</h3>
+
+                        <div class="error-desc">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+             
+             {{userDTO.cadastroPaciente.requisicoes.length}}
+             {{userDTO.cadastroPaciente.pacientes.length}}
+             
+             <div class="ibox-content">
+             
+                    <table class="footable table table-stripped toggle-arrow-tiny" datatable="ng" dt-options="dtOptions"   ng-cloak >
+                        <thead>
+                        <tr>
+                            <th data-toggle="true">Código</th>
+                            <th>Nome</th>
+                            <!--<th>Sexo</th>-->
+                            <th>Prontuário</th>
+                            <th>S.U.S</th>
+                            <th>C.P.F</th>
+                            <th>Endereço</th>
+                            
+                            <th data-hide="all">Company</th>
+                            <th data-hide="all">Completed</th>
+                            <th data-hide="all">Task</th>
+                            <th data-hide="all">Date</th>
+                            
+                        </tr>
+                        </thead>
+                        <tbody>
+                            
+                       <tr ng-repeat=" p in userDTO.cadastroPaciente.pacientes"  >
+                            <td>
+                                <code>{{p.PAC_IN_CODIGO}}</code>
+                            </td>
+                            <td><strong>{{p.PAC_ST_NOME}}</strong></td>
+                            <td>{{p.PAC_ST_PRONTUARIO}}</</td>
+                            <td>{{p.PAC_IN_CODSUS}}</td>
+                            <td>{{p.PAC_ST_CPF}}</td>
+                            <td>{{constroeEndereco(p)}}</td>
+                            
+                            
+                            <td>Inceptos Hymenaeos Ltd</td>
+                            <td><span class="pie">0.52/1.561</span></td>
+                            <td>20%</td>
+                            <td>Jul 14, 2013</td>
+                            
+                        </tr>
+                        
+                        </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="5">
+                                        <ul class="pagination pull-right"></ul>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                    </table>
+             </div>
+         </div>
+        
+        
+    </div>
+
+</div>

@@ -23,7 +23,9 @@
                             </div>
 
                             <div class="col-lg-2 ">
-                                <input  name="REQ_ST_CODIGO" placeholder="Solicitação" type="text"  id="inputTextRequisicao"  class="form-control  text-primary" size="20" ng-model="userDTO.consultalaudo.requisicao"   ng-change="trocarVisualizacao('REQ_ST_CODIGO')"  enter-key="filtrar()"  
+                                <input  name="REQ_ST_CODIGO" placeholder="Solicitação" type="text"  id="inputTextRequisicao"  
+                                        class="form-control  text-primary" size="20" ng-model="userDTO.consultalaudo.requisicao"   
+                                        ng-change="trocarVisualizacao('REQ_ST_CODIGO',userDTO.consultalaudo.requisicao)"  enter-key="filtrar()"  
                                         ng-minlength="10" ng-maxlength="12"  >
                                 <div role="alert " >
                                     <span class="error  has-error"   style="color: red;" ng-show="consultalaudoform.REQ_ST_CODIGO.$error.minlength">
@@ -34,15 +36,15 @@
                             </div>
 
                             <div class="col-lg-2">
-                                <input placeholder="Prontuário" type="text" id="inputTextProntuario"  class="form-control" size="20" ng-model="userDTO.consultalaudo.prontuario"  ng-change="trocarVisualizacao('PAC_ST_PRONTUARIO')"   enter-key="filtrar()" >
+                                <input placeholder="Prontuário" type="text" id="inputTextProntuario"  class="form-control" size="20" ng-model="userDTO.consultalaudo.prontuario"  ng-change="trocarVisualizacao('PAC_ST_PRONTUARIO',userDTO.consultalaudo.prontuario)"   enter-key="filtrar()" >
                             </div>
 
                             <div class="col-lg-2">
-                                <input placeholder="Código SUS"  type="text" id="inputTextSUS"    class="form-control" size="20"  ng-model="userDTO.consultalaudo.sus"  ng-change="trocarVisualizacao('PAC_IN_CODSUS')"   enter-key="filtrar()" >
+                                <input placeholder="Código SUS"  type="text" id="inputTextSUS"    class="form-control" size="20"  ng-model="userDTO.consultalaudo.sus"  ng-change="trocarVisualizacao('PAC_IN_CODSUS',userDTO.consultalaudo.sus)"   enter-key="filtrar()" >
                             </div>
 
                             <div class="col-lg-4  "   >
-                                <input  placeholder="Nome" type="text"   name="pacname"    id="inputTextNOME"   class="form-control  text-uppercase  has-error" size="40"  ng-change="trocarVisualizacao('PAC_ST_NOME')"   ng-model="userDTO.consultalaudo.nome"   enter-key="filtrar()"
+                                <input  placeholder="Nome" type="text"   name="pacname"    id="inputTextNOME"   class="form-control  text-uppercase  has-error" size="40"  ng-change="trocarVisualizacao('PAC_ST_NOME',userDTO.consultalaudo.nome)"   ng-model="userDTO.consultalaudo.nome"   enter-key="filtrar()"
                                         ng-minlength="10" ng-maxlength="100"    >
                                 <div role="alert " >
                                     <span class="error  has-error"   style="color: red;" ng-show="consultalaudoform.pacname.$error.minlength">
@@ -73,7 +75,7 @@
                             <!--<input date-range-picker class="form-control date-picker" type="text" ng-model="daterange" />-->
                             <!--<input date-range-picker id="daterange3" name="daterange3" class="form-control date-picker" type="text" ng-model="date"  options="opts" required    />-->
                             <form name="dateForm" class="form-horizontal" ng-class="{'has-error': dateForm.daterange2.$invalid}" >
-                                <input  date-range-picker id="daterange"   name="daterange" class="form-control date-picker" type="text"  range="30"  min="strMin" max="strMax" options="opts"   ng-change="trocarVisualizacao('datas')"   ng-model="date" required   />
+                                <input  date-range-picker id="daterange"   name="daterange" class="form-control date-picker" type="text"  range="30"  min="strMin" max="strMax" options="opts"   ng-change="trocarVisualizacao('datas','datas')"   ng-model="date" required   />
                                 <div class="help-block" ng-messages="dateForm.daterange.$error">
                                     <p ng-message="min"> Data inicial está muito no passado.</p>
                                     <p ng-message="max">Data final é no futuro.</p>

@@ -1,9 +1,9 @@
 /**
+ * INSPINIA - Responsive Admin Theme
  *
- *
- *
- *
- *
+ * Inspinia theme use AngularUI Router to manage routing and views
+ * Each view are defined as state.
+ * Initial there are written state for all view in theme.
  *
  */
 function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdleProvider, KeepaliveProvider) {
@@ -38,33 +38,10 @@ console.log('construing config , registrando state');
 //                                        }
 //                                    ]
           });
-          var _arrayLibsTelaPadrao = [
-                            {
-                                serie: true,
-                                files: ['js/plugins/dataTables/datatables.min.js', 'css/plugins/dataTables/datatables.min.css']
-                            },
-                            {
-                                serie: true,
-                                name: 'datatables',
-                                files: ['js/plugins/dataTables/angular-datatables.min.js']
-                            },
-                            {
-                                serie: true,
-                                name: 'datatables.buttons',
-                                files: ['js/plugins/dataTables/angular-datatables.buttons.min.js']
-                            },
-                            {
-                                files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
-                            },
-                            {
-                                name: 'oitozero.ngSweetAlert',
-                                files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
-                            },
-                            {
-                                files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
-                            }
 
-                        ];
+    
+
+
 
     $stateProvider
             .state('geslab', {
@@ -331,109 +308,7 @@ console.log('construing config , registrando state');
                 params: {titulo: 'Consulta de Laudos',pai:'Consulta',filho:'Laudos',pagina:'Consulta de Laudos',limit:'500'},
                 data: {pageTitle: 'Consulta de Laudos'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load([
-                            {
-                                files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
-                            },
-                            {
-                                name: 'oitozero.ngSweetAlert',
-                                files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
-                            },
-                            {
-                                files: ['js/plugins/moment/moment.min.js']
-                            },
-                            {
-                                name: 'ui.knob',
-                                files: ['js/plugins/jsKnob/jquery.knob.js', 'js/plugins/jsKnob/angular-knob.js']
-                            },
-                            {
-                                files: ['css/plugins/ionRangeSlider/ion.rangeSlider.css', 'css/plugins/ionRangeSlider/ion.rangeSlider.skinFlat.css', 'js/plugins/ionRangeSlider/ion.rangeSlider.min.js']
-                            },
-                            {
-                                insertBefore: '#loadBefore',
-                                name: 'localytics.directives',
-                                files: ['css/plugins/chosen/bootstrap-chosen.css', 'js/plugins/chosen/chosen.jquery.js', 'js/plugins/chosen/chosen.js']
-                            },
-                            {
-                                name: 'nouislider',
-                                files: ['css/plugins/nouslider/jquery.nouislider.css', 'js/plugins/nouslider/jquery.nouislider.min.js', 'js/plugins/nouslider/angular-nouislider.js']
-                            },
-                            {
-                                name: 'datePicker',
-                                files: ['css/plugins/datapicker/angular-datapicker.css', 'js/plugins/datapicker/angular-datepicker.js']
-                            },
-                            {
-                                files: ['js/plugins/jasny/jasny-bootstrap.min.js']
-                            },
-                            {
-                                files: ['css/plugins/clockpicker/clockpicker.css', 'js/plugins/clockpicker/clockpicker.js']
-                            },
-                            {
-                                name: 'ui.switchery',
-                                files: ['css/plugins/switchery/switchery.css', 'js/plugins/switchery/switchery.js', 'js/plugins/switchery/ng-switchery.js']
-                            },
-                            {
-                                name: 'colorpicker.module',
-                                files: ['css/plugins/colorpicker/colorpicker.css', 'js/plugins/colorpicker/bootstrap-colorpicker-module.js']
-                            },
-                            {
-                                name: 'ngImgCrop',
-                                files: ['js/plugins/ngImgCrop/ng-img-crop.js', 'css/plugins/ngImgCrop/ng-img-crop.css']
-                            },
-                            {
-                                serie: true,
-                                files: ['js/plugins/daterangepicker/daterangepicker.js', 'css/plugins/daterangepicker/daterangepicker-bs3.css']
-                            },
-                            {
-                                name: 'daterangepicker',
-                                files: ['js/plugins/daterangepicker/angular-daterangepicker.js']
-                            },
-                            {
-                                files: ['css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css']
-                            },
-                            {
-                                name: 'ui.select',
-                                files: ['js/plugins/ui-select/select.min.js', 'css/plugins/ui-select/select.min.css']
-                            },
-                            {
-                                files: ['css/plugins/touchspin/jquery.bootstrap-touchspin.min.css', 'js/plugins/touchspin/jquery.bootstrap-touchspin.min.js']
-                            },
-                            {
-                                name: 'ngTagsInput',
-                                files: ['js/plugins/ngTags//ng-tags-input.min.js', 'css/plugins/ngTags/ng-tags-input-custom.min.css']
-                            },
-                            {
-                                files: ['js/plugins/dualListbox/jquery.bootstrap-duallistbox.js', 'css/plugins/dualListbox/bootstrap-duallistbox.min.css']
-                            },
-                            {
-                                name: 'frapontillo.bootstrap-duallistbox',
-                                files: ['js/plugins/dualListbox/angular-bootstrap-duallistbox.js']
-                            },
-                            {
-                                serie: true,
-                                files: ['js/plugins/dataTables/datatables.min.js', 'css/plugins/dataTables/datatables.min.css']
-                            },
-                            {
-                                serie: true,
-                                name: 'datatables',
-                                files: ['js/plugins/dataTables/angular-datatables.min.js']
-                            },
-                            {
-                                serie: true,
-                                name: 'datatables.buttons',
-                                files: ['js/plugins/dataTables/angular-datatables.buttons.min.js']
-                            },
-                            {
-                                files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
-                            },
-                            {
-                                name: 'oitozero.ngSweetAlert',
-                                files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
-                            },
-                            {
-                                files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
-                            }  
-                        ]);
+                        return $ocLazyLoad.load(telaComplexa());
                     }
                 }
             })
@@ -498,88 +373,37 @@ console.log('construing config , registrando state');
                     }
                 }
             })
-            .state('estatisticaporconvenio-unidade', {
-                url: "/estatistica/conveniounidade",
-                templateUrl: "views/tmtelas/relatorio_unidade_convenio.html",
+//            .state('estatisticaporconvenio-unidade', {
+//                url: "/estatistica/conveniounidade",
+//                templateUrl: "views/tmtelas/relatorio_unidade_convenio.html",
+//                parent: 'lisnet',
+//                params: {titulo: 'Estatística por Convênio/Unidade',pai:'Estatística',pagina:'Estatística por Convênio/Unidade'},
+//                data: {pageTitle: 'Estatística por Convênio/Unidade', specialClass: 'gray-bg'},
+//                resolve: {
+//                    loadPlugin: function ($ocLazyLoad) {
+//                        return $ocLazyLoad.load(telaPadraoLazyLoad());
+//                            }
+//                }
+//            })
+             .state('cadastrodepacientes', {
+                url: "/cadastro/pacientes/",
+                templateUrl: "views/tmtelas/cadastro_paciente.html",
+                params: {titulo: 'Cadastro de Paciente',pai:'Cadastro',pagina:'Cadastro de Paciente', modStCodigo: '00220',limit:'500'},
                 parent: 'lisnet',
-                params: {titulo: 'Estatística por Convênio/Unidade',pai:'Estatística',pagina:'Estatística por Convênio/Unidade'},
-                data: {pageTitle: 'Estatística por Convênio/Unidade', specialClass: 'gray-bg'},
-                resolve: {
+                data: {pageTitle: 'Cadastro de Paciente'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load([
-                            {
-                                name: 'oitozero.ngSweetAlert',
-                                files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
-                            },
-                            {
-                                files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
-                            },
-                             {
-                                serie: true,
-                                files: ['js/plugins/dataTables/datatables.min.js', 'css/plugins/dataTables/datatables.min.css']
-                            },
-                            {
-                                serie: true,
-                                name: 'datatables',
-                                files: ['js/plugins/dataTables/angular-datatables.min.js']
-                            },
-                            {
-                                serie: true,
-                                name: 'datatables.buttons',
-                                files: ['js/plugins/dataTables/angular-datatables.buttons.min.js']
-                            },
-                            {
-                                name: 'ui.switchery',
-                                files: ['css/plugins/switchery/switchery.css', 'js/plugins/switchery/switchery.js', 'js/plugins/switchery/ng-switchery.js']
-                            }
-                                ]);
-                            }
-                }
-            })
-            .state('cadastrodepacientes', {
-                url: "/cadastro/paciente/",
-                templateUrl: "views/tmtelas/cadastro-paciente.html",
-                params: {titulo: 'Cadastro de Pacientes',pai:'Cadastro',pagina:'Cadastro de Pacientes' ,  modStCodigo: '00220'},
-                parent: 'lisnet',
-                data: {pageTitle: 'Cadastro de Pacientes'}, resolve: {
-                    loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load([
-                            {
-                                serie: true,
-                                files: ['js/plugins/dataTables/datatables.min.js', 'css/plugins/dataTables/datatables.min.css']
-                            },
-                            {
-                                serie: true,
-                                name: 'datatables',
-                                files: ['js/plugins/dataTables/angular-datatables.min.js']
-                            },
-                            {
-                                serie: true,
-                                name: 'datatables.buttons',
-                                files: ['js/plugins/dataTables/angular-datatables.buttons.min.js']
-                            },
-                            {
-                                files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
-                            },
-                            {
-                                name: 'oitozero.ngSweetAlert',
-                                files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
-                            },
-                            {
-                                files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
-                            }
-
-                        ]);
+                        return $ocLazyLoad.load( telaComplexa());
                     }
                 }
-            }).state('convenios', {
+            })
+            .state('convenios', {
                 url: "/configura/convenios/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
                 params: {titulo: 'Convênios',pai:'Configura',pagina:'Convênios', modStCodigo: '00006',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
                 parent: 'lisnet',
                 data: {pageTitle: 'Convênios'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(_arrayLibsTelaPadrao);
+                        return $ocLazyLoad.load( telaPadraoLazyLoad());
                     }
                 }
             }).state('material', {
@@ -589,7 +413,7 @@ console.log('construing config , registrando state');
                 parent: 'lisnet',
                 data: {pageTitle: 'Materiais'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(_arrayLibsTelaPadrao);
+                        return $ocLazyLoad.load(telaPadraoLazyLoad());
                     }
                 }
             }).state('setores', {
@@ -599,7 +423,7 @@ console.log('construing config , registrando state');
                 parent: 'lisnet',
                 data: {pageTitle: 'Setores'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(_arrayLibsTelaPadrao);
+                        return $ocLazyLoad.load(telaPadraoLazyLoad());
                     }
                 }
             }).state('antibiotico', {
@@ -609,7 +433,7 @@ console.log('construing config , registrando state');
                 parent: 'lisnet',
                 data: {pageTitle: 'Antibioticos'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(_arrayLibsTelaPadrao);
+                        return $ocLazyLoad.load(telaPadraoLazyLoad());
                     }
                 }
             }).state('bacteriasfungosevirus', {
@@ -620,7 +444,7 @@ console.log('construing config , registrando state');
 //                            controller: 'consultaLaudos',
                 data: {pageTitle: 'Bacterias Fungos e Virus'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(_arrayLibsTelaPadrao);
+                        return $ocLazyLoad.load(telaPadraoLazyLoad());
                     }
                 }
             }).state('cid', {
@@ -630,7 +454,7 @@ console.log('construing config , registrando state');
                 parent: 'lisnet',
                 data: {pageTitle: 'CID'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(_arrayLibsTelaPadrao);
+                        return $ocLazyLoad.load(telaPadraoLazyLoad());
                     }
                 }
             }).state('feriado', {
@@ -640,7 +464,7 @@ console.log('construing config , registrando state');
                 parent: 'lisnet',
                 data: {pageTitle: 'Feriado'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(_arrayLibsTelaPadrao);
+                        return $ocLazyLoad.load(telaPadraoLazyLoad());
                     }
                 }
             }).state('frasesparalaudo', {
@@ -650,7 +474,7 @@ console.log('construing config , registrando state');
                 parent: 'lisnet',
                 data: {pageTitle: 'Frases para Laudo'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(_arrayLibsTelaPadrao);
+                        return $ocLazyLoad.load(telaPadraoLazyLoad());
                     }
                 }
             }).state('metodo', {
@@ -660,7 +484,7 @@ console.log('construing config , registrando state');
                 parent: 'lisnet',
                 data: {pageTitle: 'Método'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(_arrayLibsTelaPadrao);
+                        return $ocLazyLoad.load(telaPadraoLazyLoad());
                     }
                 }
             }).state('motivo', {
@@ -670,7 +494,7 @@ console.log('construing config , registrando state');
                 parent: 'lisnet',
                 data: {pageTitle: 'Motivo'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(_arrayLibsTelaPadrao);
+                        return $ocLazyLoad.load(telaPadraoLazyLoad());
                     }
                 }
             }).state('observacao', {
@@ -680,7 +504,7 @@ console.log('construing config , registrando state');
                 parent: 'lisnet',
                 data: {pageTitle: 'Observação'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(_arrayLibsTelaPadrao);
+                        return $ocLazyLoad.load(telaPadraoLazyLoad());
                     }
                 }
             }).state('parasitas', {
@@ -690,7 +514,7 @@ console.log('construing config , registrando state');
                 parent: 'lisnet',
                 data: {pageTitle: 'Parasitas'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(_arrayLibsTelaPadrao);
+                        return $ocLazyLoad.load(telaPadraoLazyLoad());
                     }
                 }
             })
@@ -812,7 +636,7 @@ console.log('construing config , registrando state');
                 parent: 'lisnet',
                 data: {pageTitle: 'Recipiente'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(_arrayLibsTelaPadrao);
+                        return $ocLazyLoad.load(telaPadraoLazyLoad());
                     }
                 }
             }).state('solicitantes', {
@@ -822,7 +646,7 @@ console.log('construing config , registrando state');
                 parent: 'lisnet',
                 data: {pageTitle: 'Solicitantes'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(_arrayLibsTelaPadrao);
+                        return $ocLazyLoad.load(telaPadraoLazyLoad());
                     }
                 }
             }).state('profissoes', {
@@ -832,7 +656,7 @@ console.log('construing config , registrando state');
                 parent: 'lisnet',
                 data: {pageTitle: 'Profissões'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(_arrayLibsTelaPadrao);
+                        return $ocLazyLoad.load(telaPadraoLazyLoad());
                     }
                 }
             }).state('unidadesdemedida', {
@@ -842,7 +666,7 @@ console.log('construing config , registrando state');
                 parent: 'lisnet',
                 data: {pageTitle: 'Unidade de Medida'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(_arrayLibsTelaPadrao);
+                        return $ocLazyLoad.load(telaPadraoLazyLoad());
                     }
                 }
             }).state('mapadeantibioticos', {
@@ -852,7 +676,7 @@ console.log('construing config , registrando state');
                 parent: 'lisnet',
                 data: {pageTitle: 'Mapa de Antibióticos'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(_arrayLibsTelaPadrao);
+                        return $ocLazyLoad.load(telaPadraoLazyLoad());
                     }
                 }
             }).state('laboratoriodeapoio', {
@@ -862,7 +686,7 @@ console.log('construing config , registrando state');
                 parent: 'lisnet',
                 data: {pageTitle: 'Laboratório de Apoio'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(_arrayLibsTelaPadrao);
+                        return $ocLazyLoad.load(telaPadraoLazyLoad());
                     }
                 }
             }).state('coletores', {
@@ -872,7 +696,7 @@ console.log('construing config , registrando state');
                 parent: 'lisnet',
                 data: {pageTitle: 'Coletores'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(_arrayLibsTelaPadrao);
+                        return $ocLazyLoad.load(telaPadraoLazyLoad());
                     }
                 }
             }).state('localdeentrega', {
@@ -882,7 +706,7 @@ console.log('construing config , registrando state');
                 parent: 'lisnet',
                 data: {pageTitle: 'Local de Entrega'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(_arrayLibsTelaPadrao);
+                        return $ocLazyLoad.load(telaPadraoLazyLoad());
                     }
                 }
             }).state('textoparalaudos', {
@@ -892,7 +716,7 @@ console.log('construing config , registrando state');
                 parent: 'lisnet',
                 data: {pageTitle: 'Texto para Laudos'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(_arrayLibsTelaPadrao);
+                        return $ocLazyLoad.load(telaPadraoLazyLoad());
                     }
                 }
             }).state('mapaamostra', {
@@ -902,7 +726,7 @@ console.log('construing config , registrando state');
                 parent: 'lisnet',
                 data: {pageTitle: 'Mapa Amostra'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(_arrayLibsTelaPadrao);
+                        return $ocLazyLoad.load(telaPadraoLazyLoad());
                     }
                 }
             }).state('grupo', {
@@ -912,7 +736,7 @@ console.log('construing config , registrando state');
                 parent: 'lisnet',
                 data: {pageTitle: 'Grupo'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(_arrayLibsTelaPadrao);
+                        return $ocLazyLoad.load(telaPadraoLazyLoad());
                     }
                 }
             }).state('examedepara', {
@@ -922,7 +746,7 @@ console.log('construing config , registrando state');
                 parent: 'lisnet',
                 data: {pageTitle: 'Exame Depara'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(_arrayLibsTelaPadrao);
+                        return $ocLazyLoad.load(telaPadraoLazyLoad());
                     }
                 }
             }).state('grupodetriagem', {
@@ -932,7 +756,7 @@ console.log('construing config , registrando state');
                 parent: 'lisnet',
                 data: {pageTitle: 'Grupo de Triagem'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(_arrayLibsTelaPadrao);
+                        return $ocLazyLoad.load(telaPadraoLazyLoad());
                     }
                 }
             }).state('localde-para', {
@@ -942,7 +766,7 @@ console.log('construing config , registrando state');
                 parent: 'lisnet',
                 data: {pageTitle: 'Local depara'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(_arrayLibsTelaPadrao);
+                        return $ocLazyLoad.load(telaPadraoLazyLoad());
                     }
                 }
             }).state('examedepararetorno', {
@@ -952,7 +776,7 @@ console.log('construing config , registrando state');
                 parent: 'lisnet',
                 data: {pageTitle: 'Exame de para Retorno'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(_arrayLibsTelaPadrao);
+                        return $ocLazyLoad.load(telaPadraoLazyLoad());
                     }
                 }
             }).state('materialde-para', {
@@ -962,7 +786,7 @@ console.log('construing config , registrando state');
                 parent: 'lisnet',
                 data: {pageTitle: 'Material Depara'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(_arrayLibsTelaPadrao);
+                        return $ocLazyLoad.load(telaPadraoLazyLoad());
                     }
                 }
             }).state('materialdecoleta(dasa)', {
@@ -972,7 +796,7 @@ console.log('construing config , registrando state');
                 parent: 'lisnet',
                 data: {pageTitle: 'Material de Coleta(DASA)'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(_arrayLibsTelaPadrao);
+                        return $ocLazyLoad.load(telaPadraoLazyLoad());
                     }
                 }
             }).state('recipientedecoleta(dasa)', {
@@ -982,7 +806,7 @@ console.log('construing config , registrando state');
                 parent: 'lisnet',
                 data: {pageTitle: 'Recipiente de Coleta(DASA)'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(_arrayLibsTelaPadrao);
+                        return $ocLazyLoad.load(telaPadraoLazyLoad());
                     }
                 }
             }).state('cadastrodecarros', {
@@ -992,7 +816,7 @@ console.log('construing config , registrando state');
                 parent: 'lisnet',
                 data: {pageTitle: 'Cadastro de Carros'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(_arrayLibsTelaPadrao);
+                        return $ocLazyLoad.load(telaPadraoLazyLoad());
                     }
                 }
             }).state('procedimentodecoleta', {
@@ -1002,7 +826,7 @@ console.log('construing config , registrando state');
                 parent: 'lisnet',
                 data: {pageTitle: 'Procedimento de Coleta'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(_arrayLibsTelaPadrao);
+                        return $ocLazyLoad.load(telaPadraoLazyLoad());
                     }
                 }
             }).state('bandejamento', {
@@ -1012,7 +836,7 @@ console.log('construing config , registrando state');
                 parent: 'lisnet',
                 data: {pageTitle: 'Bandejamento'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(_arrayLibsTelaPadrao);
+                        return $ocLazyLoad.load(telaPadraoLazyLoad());
                     }
                 }
             }).state('flyer', {
@@ -1022,7 +846,7 @@ console.log('construing config , registrando state');
                 parent: 'lisnet',
                 data: {pageTitle: 'Flyer'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(_arrayLibsTelaPadrao);
+                        return $ocLazyLoad.load(telaPadraoLazyLoad());
                     }
                 }
             }).state('cadastrosparasoroteca', {
@@ -1032,7 +856,7 @@ console.log('construing config , registrando state');
                 parent: 'lisnet',
                 data: {pageTitle: 'Cadastros para Soroteca'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(_arrayLibsTelaPadrao);
+                        return $ocLazyLoad.load(telaPadraoLazyLoad());
                     }
                 }
             }).state('cadastrodesistemas', {
@@ -1042,7 +866,7 @@ console.log('construing config , registrando state');
                 parent: 'lisnet',
                 data: {pageTitle: 'Cadastro de Sistemas'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(_arrayLibsTelaPadrao);
+                        return $ocLazyLoad.load(telaPadraoLazyLoad());
                     }
                 }
             }).state('grupodeantibioticos', {
@@ -1052,7 +876,7 @@ console.log('construing config , registrando state');
                 parent: 'lisnet',
                 data: {pageTitle: 'Grupo de Antibioticos'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(_arrayLibsTelaPadrao);
+                        return $ocLazyLoad.load(telaPadraoLazyLoad());
                     }
                 }
             }).state('laudopadrao', {
@@ -1062,7 +886,7 @@ console.log('construing config , registrando state');
                 parent: 'lisnet',
                 data: {pageTitle: 'Laudo Padrao'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(_arrayLibsTelaPadrao);
+                        return $ocLazyLoad.load(telaPadraoLazyLoad());
                     }
                 }
             }).state('usuarioxconvenio', {
@@ -1072,7 +896,7 @@ console.log('construing config , registrando state');
                 parent: 'lisnet',
                 data: {pageTitle: 'Usuário x Convênio'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(_arrayLibsTelaPadrao);
+                        return $ocLazyLoad.load(telaPadraoLazyLoad());
                     }
                 }
             }).state('periododefechamento', {
@@ -1082,7 +906,7 @@ console.log('construing config , registrando state');
                 parent: 'lisnet',
                 data: {pageTitle: 'Periodo de Fechamento'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(_arrayLibsTelaPadrao);
+                        return $ocLazyLoad.load(telaPadraoLazyLoad());
                     }
                 }
             }).state('fraselaudo', {
@@ -1092,7 +916,7 @@ console.log('construing config , registrando state');
                 parent: 'lisnet',
                 data: {pageTitle: 'Frase Laudo'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(_arrayLibsTelaPadrao);
+                        return $ocLazyLoad.load(telaPadraoLazyLoad());
                     }
                 }
             });
@@ -2622,6 +2446,157 @@ console.log('construing config , registrando state');
 //            templateUrl: "views/off_canvas.html",
 //            data: { pageTitle: 'Off canvas menu', specialClass: 'canvas-menu' }
 //        });
+
+
+
+
+function telaPadraoLazyLoad() {
+        return   [
+            {
+                name: 'oitozero.ngSweetAlert',
+                files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
+            },
+            {
+                files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
+            },
+            {
+                serie: true,
+                files: ['js/plugins/dataTables/datatables.min.js', 'css/plugins/dataTables/datatables.min.css']
+            },
+            {
+                serie: true,
+                name: 'datatables',
+                files: ['js/plugins/dataTables/angular-datatables.min.js']
+            },
+            {
+                serie: true,
+                name: 'datatables.buttons',
+                files: ['js/plugins/dataTables/angular-datatables.buttons.min.js']
+            },
+            {
+                name: 'ui.switchery',
+                files: ['css/plugins/switchery/switchery.css', 'js/plugins/switchery/switchery.js', 'js/plugins/switchery/ng-switchery.js']
+            },
+            {
+                            files: ['js/plugins/jasny/jasny-bootstrap.min.js']
+            }
+        ];
+    };
+    
+    
+    function telaComplexa() {
+        return   [
+                            {
+                                files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
+                            },
+                            {
+                                name: 'oitozero.ngSweetAlert',
+                                files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
+                            },
+                            {
+                                files: ['js/plugins/moment/moment.min.js']
+                            },
+                            {
+                                name: 'ui.knob',
+                                files: ['js/plugins/jsKnob/jquery.knob.js', 'js/plugins/jsKnob/angular-knob.js']
+                            },
+                            {
+                                files: ['css/plugins/ionRangeSlider/ion.rangeSlider.css', 'css/plugins/ionRangeSlider/ion.rangeSlider.skinFlat.css', 'js/plugins/ionRangeSlider/ion.rangeSlider.min.js']
+                            },
+                            {
+                                insertBefore: '#loadBefore',
+                                name: 'localytics.directives',
+                                files: ['css/plugins/chosen/bootstrap-chosen.css', 'js/plugins/chosen/chosen.jquery.js', 'js/plugins/chosen/chosen.js']
+                            },
+                            {
+                                name: 'nouislider',
+                                files: ['css/plugins/nouslider/jquery.nouislider.css', 'js/plugins/nouslider/jquery.nouislider.min.js', 'js/plugins/nouslider/angular-nouislider.js']
+                            },
+                            {
+                                name: 'datePicker',
+                                files: ['css/plugins/datapicker/angular-datapicker.css', 'js/plugins/datapicker/angular-datepicker.js']
+                            },
+                            {
+                                files: ['js/plugins/jasny/jasny-bootstrap.min.js']
+                            },
+                            {
+                                files: ['css/plugins/clockpicker/clockpicker.css', 'js/plugins/clockpicker/clockpicker.js']
+                            },
+                            {
+                                name: 'ui.switchery',
+                                files: ['css/plugins/switchery/switchery.css', 'js/plugins/switchery/switchery.js', 'js/plugins/switchery/ng-switchery.js']
+                            },
+                            {
+                                name: 'colorpicker.module',
+                                files: ['css/plugins/colorpicker/colorpicker.css', 'js/plugins/colorpicker/bootstrap-colorpicker-module.js']
+                            },
+                            {
+                                name: 'ngImgCrop',
+                                files: ['js/plugins/ngImgCrop/ng-img-crop.js', 'css/plugins/ngImgCrop/ng-img-crop.css']
+                            },
+                            {
+                                serie: true,
+                                files: ['js/plugins/daterangepicker/daterangepicker.js', 'css/plugins/daterangepicker/daterangepicker-bs3.css']
+                            },
+                            {
+                                name: 'daterangepicker',
+                                files: ['js/plugins/daterangepicker/angular-daterangepicker.js']
+                            },
+                            {
+                                files: ['css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css']
+                            },
+                            {
+                                name: 'ui.select',
+                                files: ['js/plugins/ui-select/select.min.js', 'css/plugins/ui-select/select.min.css']
+                            },
+                            {
+                                files: ['css/plugins/touchspin/jquery.bootstrap-touchspin.min.css', 'js/plugins/touchspin/jquery.bootstrap-touchspin.min.js']
+                            },
+                            {
+                                name: 'ngTagsInput',
+                                files: ['js/plugins/ngTags//ng-tags-input.min.js', 'css/plugins/ngTags/ng-tags-input-custom.min.css']
+                            },
+                            {
+                                files: ['js/plugins/dualListbox/jquery.bootstrap-duallistbox.js', 'css/plugins/dualListbox/bootstrap-duallistbox.min.css']
+                            },
+                            {
+                                name: 'frapontillo.bootstrap-duallistbox',
+                                files: ['js/plugins/dualListbox/angular-bootstrap-duallistbox.js']
+                            },
+                            {
+                                serie: true,
+                                files: ['js/plugins/dataTables/datatables.min.js', 'css/plugins/dataTables/datatables.min.css']
+                            },
+                            {
+                                serie: true,
+                                name: 'datatables',
+                                files: ['js/plugins/dataTables/angular-datatables.min.js']
+                            },
+                            {
+                                serie: true,
+                                name: 'datatables.buttons',
+                                files: ['js/plugins/dataTables/angular-datatables.buttons.min.js']
+                            },
+                            {
+                                files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
+                            },
+                            {
+                                name: 'oitozero.ngSweetAlert',
+                                files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
+                            },
+                            {
+                                files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
+                            },
+                            {
+                                files: ['js/plugins/footable/footable.all.min.js', 'css/plugins/footable/footable.core.css']
+                            },
+                            {
+                                name: 'ui.footable',
+                                files: ['js/plugins/footable/angular-footable.js']
+                            }
+                        ];
+    };
+
 
 }
 angular

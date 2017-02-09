@@ -10,12 +10,19 @@ var self = this;
 
 console.log('Inicializando consultaLaudo ' );
 $scope.userDTO = sairDoSistemaService.validarLogin();
+if(!$scope.userDTO.consultalaudo){
+    var uni0 = $scope.userDTO.unidades[0];
+    $scope.userDTO.consultalaudo  = {unidadeId : uni0.UNI_ST_CODIGO+'-'+uni0.UNI_ST_DESCRICAO,dtInicio:new Date(),dtFim:new Date(),format : 'dd/MM/yyyy'};
+}
 $scope.paramsStateConfig =  $stateParams;
 
 $scope.strMax = $filter('date')(new Date(), "yyyy-MM-dd");
 var dtMin = new Date();
 dtMin.setYear(dtMin.getYear()-1);
 $scope.strMin = $filter('date')(dtMin, "yyyy-MM-dd");
+
+var ultimoCampo = 'datas';
+var valorCampo;
 
 console.log('typeof = '+typeof $scope.strMax  +"  strMax = "+$scope.strMax);
 
@@ -64,10 +71,7 @@ console.log('typeof = '+typeof $scope.strMax  +"  strMax = "+$scope.strMax);
 // this.daterange = {startDate: null, endDate: null};
 $scope.daterange = {startDate: new Date(), endDate: new Date()};
 
-if(!$scope.userDTO.consultalaudo){
-    var uni0 = $scope.userDTO.unidades[0];
-    $scope.userDTO.consultalaudo  = {unidadeId : uni0.UNI_ST_CODIGO+'-'+uni0.UNI_ST_DESCRICAO,dtInicio:new Date(),dtFim:new Date(),format : 'dd/MM/yyyy'};
-}
+
 if($scope.userDTO.consultalaudo.dtInicio){
      $scope.userDTO.consultalaudo.dtInicio = new Date($scope.userDTO.consultalaudo.dtInicio);
      $scope.userDTO.consultalaudo.dtFim = new Date($scope.userDTO.consultalaudo.dtFim);
@@ -148,7 +152,7 @@ $scope.calcRangeDate = function (blFuturo){
     $scope.tipoDebusca  = 'data';
 //$scope.tiposDebusca = [{tipo:'data',desc:'Buscar por Datas'},{tipo:'solicitacao',desc:'Buscar por Solicitação'},{tipo:'prontuario',desc:'Buscar por Prontuário'},{tipo:'sus',desc:'Buscar por Código SUS'},{tipo:'nome',desc:'Buscar por Nome'}];
 //$scope.tipoDeBuscaVisualizar = {mostrarData:true,mostrarSolicitacao:false,mostrarProntuario:false,mostrarSUS:false,mostrarNome:false};
-    $scope.trocarVisualizacao = function (tipoDebusca){
+    $scope.trocarVisualizacao = function (tipoDebusca,valor){
         console.log('tipoDebusca = '+tipoDebusca);
         switch (tipoDebusca){
                 case 'datas':
@@ -175,6 +179,7 @@ $scope.calcRangeDate = function (blFuturo){
 //                    $scope.tipoDeBuscaVisualizar = {mostrarData:true,mostrarSolicitacao:false,mostrarProntuario:false,mostrarSUS:false,mostrarNome:false};
                     ultimoCampo = 'datas';
         }  
+        valorCampo = valor;
 };
 
 
@@ -209,7 +214,7 @@ $scope.calcRangeDate = function (blFuturo){
     };
 
 
-    var ultimoCampo = 'datas';
+    
     
 //    $scope.quemMudouPorUltimo = function (campoID) {
 //        console.log(campoID);
@@ -241,35 +246,6 @@ $scope.calcRangeDate = function (blFuturo){
        var uniStCodigo = $scope.userDTO.consultalaudo.unidadeId.substring(0,3);
        var libetaPesquisa = false;
         switch (ultimoCampo) {
-            case 'REQ_ST_CODIGO':
-                console.log('Inside de Case '+ultimoCampo);
-                if($scope.userDTO.consultalaudo.requisicao){
-                    libetaPesquisa = true;
-                    args = "?campoDePesquisa=REQ_ST_CODIGO&valor="+$scope.userDTO.consultalaudo.requisicao+"&unidade="+uniStCodigo;
-                } 
-                break;
-            case 'PAC_ST_PRONTUARIO':
-                console.log('Inside de Case '+ultimoCampo);
-                if($scope.userDTO.consultalaudo.prontuario){
-                    libetaPesquisa = true;
-                    args = "?campoDePesquisa=PAC_ST_PRONTUARIO&valor="+$scope.userDTO.consultalaudo.prontuario+"&unidade="+uniStCodigo;
-                } 
-                break;
-            case 'PAC_IN_CODSUS':
-                console.log('Inside de Case '+ultimoCampo);
-                if($scope.userDTO.consultalaudo.sus){
-                    libetaPesquisa = true;
-                    args = "?campoDePesquisa=PAC_IN_CODSUS&valor="+$scope.userDTO.consultalaudo.sus+"&unidade="+uniStCodigo;
-                } 
-                break;
-            case 'PAC_ST_NOME':
-                console.log('Inside de Case '+ultimoCampo);
-                if($scope.userDTO.consultalaudo.nome){
-                     libetaPesquisa = true;
-                     args = "?campoDePesquisa=PAC_ST_NOME&valor="+$scope.userDTO.consultalaudo.nome.toUpperCase()+"&unidade="+uniStCodigo;
-                }
-                
-                break;
             case 'datas':
                 console.log('Inside de Case '+ultimoCampo);
                  libetaPesquisa = true;
@@ -278,7 +254,7 @@ $scope.calcRangeDate = function (blFuturo){
             default :
                 console.log('Inside de Case Default');
                  libetaPesquisa = true;
-                args = "?campoDePesquisa=datas&dtInicio="+_startFilter+"&dtFim="+_endFilter+"&unidade="+uniStCodigo;
+                args = "?campoDePesquisa="+ultimoCampo+"&valor="+valorCampo+"&unidade="+uniStCodigo;
 
         }
         console.log('args = '+args);
