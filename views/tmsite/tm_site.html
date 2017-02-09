@@ -42,17 +42,17 @@
             <div class="container">
                 <div class="carousel-caption">
 
-                        <div class="col-md-12 text-center wow animated bounceInRight"  style="padding-left: -50px; margin-top: -30px;">
+                        <div class="col-md-12 text-center wow animated bounceInRight   tmsiteback1posicaologo " >
                             <div class="divsitetmlogo">
-                                <img src="views/tmsite/LogoTM-New.png" class="img-rounded" style="height: 300px; width: 350px;">
+                                <img src="views/tmsite/LogoTM-New.png" class="img-rounded  tmsitelogosize" >
                             </div>
                         </div>
 
-                        <div class="col-md-12 text-center wow animated bounceInLeft"  style="padding-left: 400px; margin-top: 0px;">
-                            <div class="divback1">
-                                <h1 style="text-shadow:2px 2px rgba(113, 100, 100, 0.61); letter-spacing: - 0.5px; color: #24315E">Média de 8.200 exames por mês</h1>
-                                <h1 style="text-shadow:2px 2px rgba(113, 100, 100, 0.61); letter-spacing: - 0.5px; color: #24315E">em mais de 500 equipamentos</h1>
-                                <h1 style="text-shadow:2px 2px rgba(113, 100, 100, 0.61); letter-spacing: - 0.5px; color: #24315E">interfaceados por nossos sistemas</h1>
+                        <div class="col-md-12 text-center wow animated bounceInLeft    tmsiteback1posicao"  >
+                            <div  class="tmsiteback1" >
+                                <p><text style="text-shadow:2px 2px rgba(113, 100, 100, 0.61); letter-spacing: - 0.5px; color: #24315E">Média de 8.200 exames por mês</text></p>
+                                <p><text style="text-shadow:2px 2px rgba(113, 100, 100, 0.61); letter-spacing: - 0.5px; color: #24315E">em mais de 500 equipamentos</text></p>
+                                <p><text style="text-shadow:2px 2px rgba(113, 100, 100, 0.61); letter-spacing: - 0.5px; color: #24315E">interfaceados por nossos sistemas</text></p>
                             </div>
                         </div>
                     
@@ -80,7 +80,7 @@
 <div class="item">
             <div class="container">
                 <div class="carousel-caption blank" style="color: #24315E;">
-                    <div class="divback1">
+                    <div class="tmsiteback2">
                         <h1>We create meaningful <br/> interfaces that inspire.</h1>
                         <h3>Cras justo odio, dapibus ac facilisis in, egestas eget quam.</h3>
                     </div>
@@ -660,7 +660,7 @@
     var totalItems = $('.item').length;
     var currentIndex = $('div.active').index() + 1;
         $('#inSlider').carousel({
-            interval: 5000
+            interval: 50000
         });
         $('#inSlider').on('slid.bs.carousel', function() {
             currentIndex = $('div.active').index() + 1;
