@@ -5,7 +5,7 @@
 
 
 
-angular.module('lisnet').controller('trocaUnidade',function ($scope,$uibModal,DTOptionsBuilder,sairDoSistemaService,helperService){
+angular.module('lisnet').controller('trocaUnidade',function ($scope,$uibModal,DTOptionsBuilder,sairDoSistemaService,helperService,$uibModal){
     
     var wd = this;
     
@@ -16,27 +16,29 @@ angular.module('lisnet').controller('trocaUnidade',function ($scope,$uibModal,DT
         $scope.userDTO.unidade = helperService.retornaUnidade(uniStCodigo,$scope.userDTO.unidades);
     };
     
+    
     $scope.popUnidades =  function (){
-        return  $uibModal.open({
-                    template:'   <div class="ibox-content"  ng-controller="trocaUnidade" > '
-                    +' <span class="m-r-sm text-justify  "  style="font-weight: bold;"    >Unidade: {{main.userDTO.unidade.UNI_ST_CODIGO }} - {{main.userDTO.unidade.UNI_ST_DESCRICAO}}</span> '
-                    +'<hr>'
-                    +' <table datatable="ng" dt-options="dtOptionsWidgets"  class="table table-striped table-bordered table-hover dataTables-example"> '
-                    +'     <thead> '
-                    +'     <tr> '
-                    +'         <th style="width:50px;" >Escolha a Unidade</th> '
-                    +'     </tr> '
-                    +'     </thead> '
-                    +'     <tbody> '
-                    +'     <tr ng-repeat="u in userDTO.unidades"   > '
-                    +'         <td  ng-click="escolheUnidade(u.UNI_ST_CODIGO)"   ><span class="text-center  text-muted small    "> <i style="color:blue;"  class="fa fa-exchange" aria-hidden="true"/> {{u.UNI_ST_CODIGO}} - {{u.UNI_ST_DESCRICAO}}</span></td> '
-                    +'     </tr> '
-                    +'     </tbody> '
-                    +' </table> '
-                    +'  </div>',
-                                scope: $scope
-                            });
+        
+        var modalInstance  = $uibModal.open({
+            templateUrl: 'views/troca_unidade_modal.html',
+            size: 'lg',
+            controller: ModalInstanceCtrl,
+            scope: $scope
+        });
+        
     };
+    
+    function ModalInstanceCtrl($scope, $uibModalInstance) {
+
+        $scope.ok = function () {
+            $uibModalInstance.close();
+        };
+
+        $scope.cancel = function () {
+            $uibModalInstance.dismiss('cancel');
+        };
+    }
+    
     
     $scope.dtOptionsWidgets = DTOptionsBuilder.newOptions()
                 .withDOM('<"html5buttons"B>lTfgitp')

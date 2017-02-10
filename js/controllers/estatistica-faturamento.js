@@ -124,29 +124,32 @@ function estatisticaFaturamento($scope, buscaAPIService, $stateParams, $localSto
             }
         }
     };
-    $scope.popUnidades =  function (){
-        return  $uibModal.open({
-                    template:'   <div class="ibox-content"   > '
-                    +' <table datatable="ng" dt-options="dtOptions"  class="table table-striped table-bordered table-hover dataTables-example"> '
-                    +'     <thead> '
-                    +'     <tr> '
-                    +'         <th>Add</th> '
-                    +'         <th>Cõdigo</th> '
-                    +'         <th>Descrição</th> '
-                    +'     </tr> '
-                    +'     </thead> '
-                    +'     <tbody> '
-                    +'     <tr ng-repeat="u in userDTO.unidades"  ng-click="buscaUnidade(u.UNI_ST_CODIGO)" > '
-                    +'         <td    ><a  ng-click="buscaUnidade(u.UNI_ST_CODIGO)" ><i class="fa fa-plus-circle" aria-hidden="true"></i></a></td> '      
-                    +'         <td    ><span class="text-center  text-muted small    ">{{u.UNI_ST_CODIGO}}</span></td> '
-                    +'         <td ><span class="pull-right text-muted small  ">{{u.UNI_ST_DESCRICAO}}</span></td> '
-                    +'     </tr> '
-                    +'     </tbody> '
-                    +' </table> '
-               +'  </div>',
-                                scope: $scope
-                            });
-    };  
+//    $scope.popUnidades =  function (){
+//        
+//        
+//        
+//        return  $uibModal.open({
+//                    template:'   <div class="ibox-content"   > '
+//                    +' <table datatable="ng" dt-options="dtOptions"  class="table table-striped table-bordered table-hover dataTables-example"> '
+//                    +'     <thead> '
+//                    +'     <tr> '
+//                    +'         <th>Add</th> '
+//                    +'         <th>Cõdigo</th> '
+//                    +'         <th>Descrição</th> '
+//                    +'     </tr> '
+//                    +'     </thead> '
+//                    +'     <tbody> '
+//                    +'     <tr ng-repeat="u in userDTO.unidades"  ng-click="buscaUnidade(u.UNI_ST_CODIGO)" > '
+//                    +'         <td    ><a  ng-click="buscaUnidade(u.UNI_ST_CODIGO)" ><i class="fa fa-plus-circle" aria-hidden="true"></i></a></td> '      
+//                    +'         <td    ><span class="text-center  text-muted small    ">{{u.UNI_ST_CODIGO}}</span></td> '
+//                    +'         <td ><span class="pull-right text-muted small  ">{{u.UNI_ST_DESCRICAO}}</span></td> '
+//                    +'     </tr> '
+//                    +'     </tbody> '
+//                    +' </table> '
+//               +'  </div>',
+//                                scope: $scope
+//                            });
+//    };  
     
     
     $scope.buscaConvenio = function (conStCodigo) {

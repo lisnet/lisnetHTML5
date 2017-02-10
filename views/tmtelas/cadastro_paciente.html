@@ -1,5 +1,20 @@
 
+<style media="screen" type="text/css">
 
+.footable-row-detail-inner {
+    width: 100%;
+}
+
+.footable-row-detail-name {
+    /* display: table-cell; */
+    border-radius: 25px;
+    border: 2px solid #73AD21;
+    padding-left: 5px; 
+    width: 40px;
+    height: 50%;
+}
+
+</style>
 <div class="wrapper wrapper-content animated fadeInRight  inputcolor"   ng-controller="cadastroPaciente" style="padding-bottom: 0px;" >
     <div class="ibox-content">
         <div class="row">
@@ -143,7 +158,7 @@
                             <th>C.P.F</th>
                             <th>Endereço</th>
                             
-                            <th data-hide="all">Requisições</th>
+                            <th data-hide="all"><strong>Requisições</strong></th>
                             
                         </tr>
                         </thead>
@@ -174,7 +189,7 @@
                                     <tbody>
                                         <tr  ng-repeat="r in p.requisicoes" >
                                            <td>{{r.REQ_ST_CODIGO}}</td>
-                                           <td>{{r.REQ_DT_CADASTRO}}</td>
+                                           <td>{{r.REQ_DT_CADASTRO | date: 'dd/MM/yyyy'}}</td>
                                            <td>{{r.UNI_ST_CODIGO}}</td>
                                            <td>{{r.LEG_ST_CODIGO}}</td>
                                            <td>{{r.REQ_ST_CODIGOALT}}</td>
