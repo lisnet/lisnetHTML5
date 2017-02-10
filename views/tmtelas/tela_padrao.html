@@ -127,7 +127,7 @@ https://demos.scotch.io/angular-validation/demos/-->
                                                 <span  class="form-group" ng-if="ent[0].editavel && moduloPadrao.entidade.colunas[$index - 1].chave !== 'S' || (moduloPadrao.entidade.colunas[$index - 1].chave === 'S' && ent[0].status === 'C') " >
                                                     <span ng-if="moduloPadrao.entidade.colunas[$index - 1].tipo === 'C' " >
                                                         <input  autocomplete="off"  size="{{moduloPadrao.entidade.colunas[$index - 1].tamanho  }}"  name="{{moduloPadrao.entidade.colunas[$index - 1].nome }}"  
-                                                                style=" min-width: 50px;   width: {{moduloPadrao.entidade.colunas[$index - 1].tamanho * 4 }}px ; "
+                                                                style=" min-width: 50px;   width: {{moduloPadrao.entidade.colunas[$index - 1].tamanho * 4 }}px ;  max-width: 700px; "
                                                                 placeholder="{{moduloPadrao.entidade.colunas[$index - 1].nome }}"    
                                                                 ng-change="mudarStatus(ent,$parent.$index, $index)"     class="form-control  text-primary inputcolor "    
                                                                 required="{{moduloPadrao.entidade.colunas[$index - 1].obrigatorio === 'S' }}"  
