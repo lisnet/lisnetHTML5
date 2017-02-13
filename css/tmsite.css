@@ -81,16 +81,14 @@ background-image: none;
 }
 
 
-@media (max-width: 767px) {
-  .menu-visible-md {
+@media (max-width: 768px) {
+      .menu-visible-md {
     display: block !important;
   }
   .menu-visible-lg {
     display: block !important;
   }
-}
-
-@media (max-width: 1136px) {
+  
     .tmsiteback1 {
         filter: alpha(opacity=70);
         padding:6px;
@@ -196,7 +194,15 @@ background-image: none;
     
 }
 
-@media (min-width: 1136px){
+@media only screen
+and (min-width: 768px)
+and (max-width:1024px){
+    
+}
+
+
+
+@media (min-width: 1024px){
     .tmsiteback1 {
         filter: alpha(opacity=90);
         padding:6px;
