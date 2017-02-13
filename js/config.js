@@ -114,6 +114,9 @@ console.log('construing config , registrando state');
                 resolve: {
                     loadPlugin: function ($ocLazyLoad) {
                         return $ocLazyLoad.load([
+                             {
+                                files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
+                            },
                             {
                                 name: 'oitozero.ngSweetAlert',
                                 files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
