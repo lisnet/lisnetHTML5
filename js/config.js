@@ -188,6 +188,17 @@ console.log('construing config , registrando state');
             }
         }
     })
+            .state('configuraperfil', {
+                url: "/configura/perfil",
+                templateUrl: "views/tmtelas/configura_perfil.html",
+                 parent: 'lisnet',
+                data: {pageTitle: 'Configura Perfil', specialClass: 'gray-bg'},
+                resolve: {
+                    loadPlugin: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load(telaPadraoLazyLoad());
+                    }
+                }
+            })
             .state('erro', {
                 url: "/erro",
                 templateUrl: "views/tmtelas/under_construction.html",
@@ -2455,6 +2466,9 @@ console.log('construing config , registrando state');
 
 function telaPadraoLazyLoad() {
         return   [
+             {
+                files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
+            },
             {
                 name: 'oitozero.ngSweetAlert',
                 files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
@@ -2482,6 +2496,9 @@ function telaPadraoLazyLoad() {
             },
             {
                             files: ['js/plugins/jasny/jasny-bootstrap.min.js']
+            },
+            {
+                files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
             }
         ];
     };
