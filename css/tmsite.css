@@ -90,23 +90,19 @@ background-image: none;
   }
 }
 
-/* Smartphones (portrait and landscape) ———– */
-@media only screen
-and (min-device-width : 320px)
-and (max-device-width : 480px) {
-/* Styles */
-.tmsiteback1 {
+@media (max-width: 1136px) {
+    .tmsiteback1 {
         filter: alpha(opacity=70);
         padding:6px;
         background: rgba(255, 255, 255, 0.8);
         position: relative;
-        margin-top: 50px;
+        margin-top: 0px;
         top: 0;
         left: 0;
         position: relative;
-        width: 420px;       
-        height: 110px;
-        border-radius: 10px;
+        width: 300px;       
+        height: 80px;
+        border-radius: 5px;
         box-shadow: 1px 1px 2px #888888;
         text-shadow:2px 2px rgba(113, 100, 100, 0.61);
         letter-spacing: 1.5px;
@@ -115,7 +111,7 @@ and (max-device-width : 480px) {
         padding-left: 0px; margin-top: 50px;
     }
     .tmsiteback1 {
-        font-size: 18px;
+        font-size: 12px;
     }
     
     .tmsiteback1posicaologo{
@@ -125,16 +121,83 @@ and (max-device-width : 480px) {
     .tmsitelogosize{
         height: 90px; width: 92px;
     }
-
+    
+    .divtminformatica {
+        filter: alpha(opacity=90);
+        background: rgba(255, 255, 255, 0.8);
+        padding:10px;
+        position: relative;
+        top: 0;
+        left: 0;
+        position: relative;
+        margin-top: 20px;
+        width: 250px;       
+        height: 100px;
+        border-radius: 15px;
+        box-shadow: 1px 1px 2px #888888;
+        text-shadow:2px 2px rgba(113, 100, 100, 0.61);
+    }
+    
+    .tela2 {
+        filter: alpha(opacity=70);
+        padding:6px;
+        background: rgba(255, 255, 255, 0.8);
+        position: relative;
+        margin-top: 0px;
+        top: 0;
+        left: 0;
+        position: relative;
+        width: 200px;       
+        height: 45px;
+        font-size: 12px;
+        border-radius: 5px;
+        box-shadow: 1px 1px 2px #888888;
+        text-shadow:2px 2px rgba(113, 100, 100, 0.61);
+        letter-spacing: 1.5px;
+    }
+    .tela2{
+        padding-left: 0px; margin-top: 50px;
+    }
+    .tela2 {
+        font-size: 12px;
+    }
+    .tela2posicao{
+        padding-left: 0px; margin-top: 50px;
+    }
+    
+    .tela3 {
+        filter: alpha(opacity=70);
+        padding:6px;
+        background: rgba(255, 255, 255, 0.8);
+        position: relative;
+        margin-top: 0px;
+        top: 0;
+        left: 0;
+        position: relative;
+        width: 200px;       
+        height: 45px;
+        font-size: 12px;
+        border-radius: 5px;
+        box-shadow: 1px 1px 2px #888888;
+        text-shadow:2px 2px rgba(113, 100, 100, 0.61);
+        letter-spacing: 1.5px;
+    }
+    .tela3{
+        padding-left: 0px; margin-top: 50px;
+    }
+    .tela3 {
+        font-size: 12px;
+    }
+    .tela3posicao{
+        padding-left: 0px; margin-top: 50px;
+    }
+    
+    
+    
 }
 
-
-/* iPads (portrait and landscape) ———– */
-@media only screen
-and (min-device-width : 768px)
-and (max-device-width : 1024px) {
-/* Styles */
-.tmsiteback1 {
+@media (min-width: 1136px){
+    .tmsiteback1 {
         filter: alpha(opacity=90);
         padding:6px;
         background: rgba(255, 255, 255, 0.8);
@@ -148,33 +211,44 @@ and (max-device-width : 1024px) {
         border-radius: 15px;
         box-shadow: 1px 1px 2px #888888;
         text-shadow:2px 2px rgba(113, 100, 100, 0.61);
-        letter-spacing: 4.5px;
+        letter-spacing: 0.5px;
     }
     .tmsiteback1posicao{
         padding-left: 400px; margin-top: 0px;
     }
     .tmsiteback1 {
-        font-size: 84px;
+        font-size: 24px;
     }
     .landing-page .carousel-caption p {
         margin-bottom: 20px;
-        font-size: 24px;
+        font-size: 30px;
         line-height: 1.4;
     }
     .tmsiteback1posicaologo{
         padding-left: -50px; 
-        margin-top: -30px;
+        margin-top: -40px;
     }
     .tmsitelogosize{
-        height: 300px; width: 350px;
+        height: 300px; width: 320px;
     }
-}
-
-
-
-@media  only screen  and   (min-width: 1024px)
-            and (max-width: 1924px){
-    .tmsiteback1 {
+    
+    .divtminformatica {
+        filter: alpha(opacity=90);
+        background: rgba(255, 255, 255, 0.8);
+        padding:10px;
+        position: relative;
+        top: 0;
+        left: 0;
+        position: relative;
+        margin-top: 20px;
+        width: 350px;       
+        height: 100px;
+        border-radius: 15px;
+        box-shadow: 1px 1px 2px #888888;
+        text-shadow:2px 2px rgba(113, 100, 100, 0.61);
+    }
+    
+    .tela2 {
         filter: alpha(opacity=90);
         padding:6px;
         background: rgba(255, 255, 255, 0.8);
@@ -183,36 +257,16 @@ and (max-device-width : 1024px) {
         top: 0;
         left: 0;
         position: relative;
-        width: 720px;       
-        height: 180px;
+        width: 650px;       
+        height: 50px;
         border-radius: 15px;
         box-shadow: 1px 1px 2px #888888;
         text-shadow:2px 2px rgba(113, 100, 100, 0.61);
-        letter-spacing: 4.5px;
+        letter-spacing: 0.5px;
     }
-    .tmsiteback1posicao{
-        padding-left: 400px; margin-top: 0px;
-    }
-    .tmsiteback1 {
-        font-size: 84px;
-    }
-    .landing-page .carousel-caption p {
-        margin-bottom: 20px;
-        font-size: 24px;
-        line-height: 1.4;
-    }
-    .tmsiteback1posicaologo{
-        padding-left: -50px; 
-        margin-top: -30px;
-    }
-    .tmsitelogosize{
-        height: 300px; width: 350px;
-    }
-}
-
-@media (max-width: 1024px) {
-    .tmsiteback1 {
-        filter: alpha(opacity=70);
+    
+    .tela3 {
+        filter: alpha(opacity=90);
         padding:6px;
         background: rgba(255, 255, 255, 0.8);
         position: relative;
@@ -220,33 +274,15 @@ and (max-device-width : 1024px) {
         top: 0;
         left: 0;
         position: relative;
-        width: 420px;       
-        height: 110px;
-        border-radius: 10px;
+        width: 650px;       
+        height: 50px;
+        border-radius: 15px;
         box-shadow: 1px 1px 2px #888888;
         text-shadow:2px 2px rgba(113, 100, 100, 0.61);
-        letter-spacing: 1.5px;
-    }
-    .tmsiteback1posicao{
-        padding-left: 0px; margin-top: 50px;
-    }
-    .tmsiteback1 {
-        font-size: 18px;
-    }
-    
-    .tmsiteback1posicaologo{
-        padding-left: -40px; 
-        margin-top: -45px;
-    }
-    .tmsitelogosize{
-        height: 90px; width: 92px;
+        letter-spacing: 0.5px;
     }
     
 }
-
-
-
-
 
 
 
@@ -287,26 +323,11 @@ height: 100%;
   padding: 25px 10px;
 }
 
-.divtminformatica {
-filter: alpha(opacity=90);
-background: rgba(255, 255, 255, 0.8);
-padding:1px;
-position: relative;
-top: 0;
-left: 0;
-position: relative;
-margin-top: 20px;
-width: 330px;       
-height: 100px;
-border-radius: 15px;
-box-shadow: 1px 1px 2px #888888;
-text-shadow:2px 2px rgba(113, 100, 100, 0.61);
-}
 
 .divsitetm h1{
 text-shadow:2px 2px rgba(113, 100, 100, 0.61);
 }
-
+    
 
 
 .tmsiteback2 {
@@ -391,21 +412,9 @@ box-shadow: 1px 1px 2px #888888;
 text-shadow:2px 2px rgba(113, 100, 100, 0.61);
 }
 
-.divtminformatica {
-filter: alpha(opacity=90);
-background: rgba(255, 255, 255, 0.8);
-padding:1px;
-position: relative;
-top: 0;
-left: 0;
-position: relative;
-margin-top: 20px;
-width: 330px;       
-height: 100px;
-border-radius: 15px;
-box-shadow: 1px 1px 2px #888888;
-text-shadow:2px 2px rgba(113, 100, 100, 0.61);
-}
+
+
+
 
 .divsitetm h1{
 text-shadow:2px 2px rgba(113, 100, 100, 0.61);
