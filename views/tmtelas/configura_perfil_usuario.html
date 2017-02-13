@@ -1,0 +1,70 @@
+
+<style media="screen" type="text/css">
+
+</style>
+<div class="wrapper wrapper-content animated fadeInRight  inputcolor"   ng-controller="configuraPerfilUsuario" style="padding-bottom: 0px;" >
+    <div class="ibox-content">
+        <div class="row">
+            <div class="col-lg-12">
+                <form name="configuraperfilusuarioform" >
+
+
+                    <div class="col-lg-2" >
+                        <label >Nome</label>
+                        <div class="form-group"  >
+                            <input class="form-control  text-uppercase"  name="USU_ST_NOME"  type="text" ng-model="userDTO.configuraPerfil.usuario.USU_ST_NOME" ng-disabled="{{userDTO.configuraPerfil.editar}}" ng-minlength="4" ng-maxlength="70"  >
+                            <div role="alert " >
+                                <span class="error  has-error"   style="color: red;" ng-show="configuraperfilusuarioform.USU_ST_NOME.$error.minlength">
+                                    Muito curto  , menos de 4 </span>
+                                <span class="error"   style="color: red;" ng-show="consultalaudoform.USU_ST_NOME.$error.maxlength">
+                                    Muito longo, mais de 70 </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5" >
+                        <label >Senha</label>
+                        <div class="col-lg-12" >
+                            <div class="form-group  col-lg-6"  >
+                                <input  name="USU_ST_SENHA"  class="form-control  text-uppercase" type="password" ng-model="userDTO.configuraPerfil.usuario.USU_ST_SENHA" ng-disabled="{{userDTO.configuraPerfil.editar}}"  ng-minlength="4" ng-maxlength="20" >
+                                <div role="alert " >
+                                    <span class="error  has-error"   style="color: red;" ng-show="configuraperfilusuarioform.USU_ST_SENHA.$error.minlength">
+                                        Muito curto  , menos de 4 </span>
+                                    <span class="error"   style="color: red;" ng-show="consultalaudoform.USU_ST_SENHA.$error.maxlength">
+                                        Muito longo, mais de 70 </span>
+                                </div>
+                            </div>
+                            <div class="form-group  col-lg-6"  >
+                                <input  name="USU_ST_SENHACONFIRMAR" class="form-control  text-uppercase" type="password" ng-model="userDTO.configuraPerfil.usuario.USU_ST_SENHACONFIRMAR" ng-disabled="{{userDTO.configuraPerfil.editar}}"  ng-minlength="4" ng-maxlength="20" >
+                                <div role="alert " >
+                                    <span class="error  has-error"   style="color: red;" ng-show="configuraperfilusuarioform.USU_ST_SENHACONFIRMAR.$error.minlength">
+                                        Muito curto  , menos de 4 </span>
+                                    <span class="error"   style="color: red;" ng-show="consultalaudoform.USU_ST_SENHACONFIRMAR.$error.maxlength">
+                                        Muito longo, mais de 70 </span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-2">
+                        <label >Email</label>
+                        <div class="form-group"  >
+                            <input class="form-control  text-uppercase" type="text" ng-model="userDTO.configuraPerfil.usuario.USU_ST_EMAIL" ng-disabled="{{userDTO.configuraPerfil.editar}}"  >
+                        </div>
+                    </div>
+                    <div  class="col-lg-3"  style="padding-top: 10px;" >
+                        <button class="btn btn-warning btn-circle   btn-lg "  ng-disabled="{{userDTO.configuraPerfil.isNew}}"  type="button" ng-click="reverter()"  data-toggle="tooltip" title="Reverter alterações"  ><i class="fa fa-backward"></i></button>
+                        <button class="btn btn-info btn-circle  btn-lg"  ng-disabled="{{userDTO.configuraPerfil.isNew}}"  type="button" ng-click="salvarAlteracoes()"  data-toggle="tooltip" title="Salvar alterações"  ><i class="fa fa-floppy-o"></i></button>
+                        <button class="btn btn-default  btn-circle  btn-lg" type="button" ng-click="cancel()"  data-toggle="tooltip" title="Editar Perfil de Usuário"  ><i class="fa fa-pencil-square-o"></i></button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+
+
+        </div>
+
+    </div>

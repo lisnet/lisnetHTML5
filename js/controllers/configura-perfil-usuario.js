@@ -16,7 +16,7 @@ function configuraPerfilUsuario($scope, sairDoSistemaService, notificacaoProvide
     $scope.userDTO = sairDoSistemaService.validarLogin();
     if (!$scope.userDTO.configuraPerfil) {
         var _u  = $scope.userDTO;
-        var _usuario = {USU_ST_NOME:_u.USU_ST_NOME,USU_ST_SENHA:_u.USU_ST_SENHA,USU_ST_EMAIL:_u.USU_ST_EMAIL};
+        var _usuario = {USU_ST_NOME:_u.USU_ST_NOME,USU_ST_SENHA:_u.USU_ST_SENHA,USU_ST_SENHACONFIRMAR:_u.USU_ST_SENHA,USU_ST_EMAIL:_u.USU_ST_EMAIL};
         $scope.userDTO.configuraPerfil = {
             usuarioDB:_usuario,
                  usuario:helperService.clonadorDeObj(_usuario)};
