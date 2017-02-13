@@ -11,7 +11,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 
-                <div id="idDoLogo" class="hidden-sm hidden-md hidden-xs">    
+            <div id="idDoLogo" class="hidden-sm hidden-md hidden-xs " >    
                     <img src="views/tmsite/logotmcab.jpg" alt="logo" style="padding-left: 5px; height: 65px; width: 200px;"/>
                 </div>
 
@@ -534,10 +534,19 @@
             interval: 5000
         });
         $('#inSlider').on('slid.bs.carousel', function() {
+            console.log('$(window).width() = '+ $(window).width());
             currentIndex = $('div.active').index() + 1;
             $('#idDoLogo').removeAttr('class').attr('class', '');
             $('#idDoLogo').removeAttr('style').attr('style', '');
             // alert (currentIndex);
+                
+                if($window.width() >=768 && $window.width() <= 1024) {
+                     $('#idDoLogo').removeAttr('class').attr('class', '');
+                     $('#idDoLogo').removeAttr('style').attr('style', '');
+                if($window.width(){
+                    
+                }
+                 
                 if(currentIndex == 1){
                  //$('#idDoLogo').hide();
                     $('#idDoLogo').addClass('fadeOut');
@@ -550,6 +559,7 @@
                      currentIndex = 0;
                  }
                 }   
+            }
         });
 
     var cbpAnimatedHeader = (function() {
@@ -580,4 +590,5 @@
         init();
 
     })();
+    
 </script>
