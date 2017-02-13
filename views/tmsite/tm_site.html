@@ -536,28 +536,31 @@
         $('#inSlider').on('slid.bs.carousel', function() {
             console.log('$(window).width() = '+ $(window).width());
             currentIndex = $('div.active').index() + 1;
-            $('#idDoLogo').removeAttr('class').attr('class', '');
-            $('#idDoLogo').removeAttr('style').attr('style', '');
+            
             // alert (currentIndex);
+            // 
+             var comprimento = $(window).width();
+//                $(window).width() >=768 && $(window/).width() <= 1024
+//                alert('$(window).width() = '+_wd);
                 
-                if($window.width() >=768 && $window.width() <= 1024) {
+                
+                
+                if(comprimento < 769 ||  comprimento > 1024) {
+                    
                      $('#idDoLogo').removeAttr('class').attr('class', '');
                      $('#idDoLogo').removeAttr('style').attr('style', '');
-                if($window.width(){
-                    
-                }
                  
-                if(currentIndex == 1){
-                 //$('#idDoLogo').hide();
-                    $('#idDoLogo').addClass('fadeOut');
-                     $('#idDoLogo').addClass('animated');
-                }else{
-                // $('#idDoLogo').show();  
-                 $('#idDoLogo').addClass('fadeIn');
-                 $('#idDoLogo').addClass('animated');
-                 if(currentIndex == totalItems){
-                     currentIndex = 0;
-                 }
+                        if(currentIndex === 1){
+                         //$('#idDoLogo').hide();
+                            $('#idDoLogo').addClass('fadeOut');
+                             $('#idDoLogo').addClass('animated');
+                        }else{
+                        // $('#idDoLogo').show();  
+                         $('#idDoLogo').addClass('fadeIn');
+                         $('#idDoLogo').addClass('animated');
+                         if(currentIndex == totalItems){
+                             currentIndex = 0;
+                         }
                 }   
             }
         });
