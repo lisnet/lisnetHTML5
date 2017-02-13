@@ -70,7 +70,7 @@
                 </h2>
                 <!--<small>{{main.userDTO.USU_ST_CODIGO}}</small>-->
             </div>
-            <img src="img/ADMIN.jpg"   height="90"  width="90" class="img-circle circle-border m-b-md" alt="profile">
+            <img  ng-click="main.stateGO('configuraperfil')"    data-toggle="tooltip" title="Editar Perfil de Usuário"  src="img/ADMIN.jpg"   height="90"  width="90" class="img-circle circle-border m-b-md" alt="profile">
 
             <div>
                 <span>{{main.userDTO.USU_ST_EMAIL}}</span> |
@@ -81,11 +81,11 @@
         
     </div>
     
-    <div class="col-lg-4"  ng-click="main.stateGO('controle.notificacoes')" >
+    <div class="col-lg-4"    >
         
-        <div class="widget red-bg p-lg text-center">
-            <div class="m-b-md">
-                <i class="fa fa-bell fa-4x"></i>
+        <div class="widget red-bg p-lg text-center"  ng-click="main.stateGO('controle.notificacoes')"  data-toggle="tooltip" title="Central de Notificações" >
+            <div class="m-b-md"   >
+                <i class="fa fa-bell fa-4x"   ></i>
 
                 <h1 class="m-xs">{{main.userDTO.notificacoes.length}}</h1>
 
