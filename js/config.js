@@ -188,9 +188,9 @@ console.log('construing config , registrando state');
             }
         }
     })
-            .state('configuraperfil', {
+            .state('configuraperfilusuario', {
                 url: "/configura/perfil",
-                templateUrl: "views/tmtelas/configura_perfil.html",
+                templateUrl: "views/tmtelas/configura_perfil_usuario.html",
                  parent: 'lisnet',
                 data: {pageTitle: 'Configura Perfil', specialClass: 'gray-bg'},
                 resolve: {
