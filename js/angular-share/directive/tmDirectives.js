@@ -120,12 +120,34 @@ function fooTable (){
   };
 }
 
+
+function compareTo() {
+    return {
+        require: "ngModel",
+        scope: {
+            otherModelValue: "=compareTo"
+        },
+        link: function(scope, element, attributes, ngModel) {
+             
+            ngModel.$validators.compareTo = function(modelValue) {
+                return modelValue == scope.otherModelValue;
+            };
+ 
+            scope.$watch("otherModelValue", function() {
+                ngModel.$validate();
+            });
+        }
+    };
+};
+
+
 angular.module('lisnet')
         .directive('enterKey',enterKey)
         .directive('nextFocus',nextFocus)
         .directive('myPage',myPage)
         .directive('moveMaxLength',moveMaxLength)
         .directive('autoNext',autoNext)
-        .directive('fooTable',fooTable);
+        .directive('fooTable',fooTable)
+        .directive('compareTo',compareTo);
 
 
