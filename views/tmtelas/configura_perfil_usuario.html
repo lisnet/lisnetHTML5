@@ -28,7 +28,7 @@
                     </div>
                     <div class="col-lg-2" >
                         <label >Senha</label>
-                        <div class="form-group   col-lg-12" >
+                        <div class="form-group " >
                                 <input  name="USU_ST_SENHA"  required  class="form-control  " type="password" ng-model="userDTO.configuraPerfil.usuario.USU_ST_SENHA" ng-disabled="userDTO.configuraPerfil.editar"  ng-minlength="userDTO.configuraPerfil.lengthMinSenha" ng-maxlength="userDTO.configuraPerfil.lengthMaxSenha" >
                                 <div role="alert " >
                                     <span class="error  has-error"   style="color: red;" ng-show="configuraperfilusuarioform.USU_ST_SENHA.$error.minlength">
@@ -37,12 +37,10 @@
                                         Muito longo, mais de {{userDTO.configuraPerfil.lengthMaxSenha}} </span>
                                 </div>
                         </div>
-
                     </div>
-                    
                     <div class="col-lg-2" >
                         <label >Comfirma Senha</label>
-                        <div class="form-group  col-lg-12" >
+                        <div class="form-group" >
                                 <input  name="USU_ST_SENHACONFIRMAR" required  class="form-control  " type="password" ng-model="userDTO.configuraPerfil.usuario.USU_ST_SENHACONFIRMAR" ng-disabled="userDTO.configuraPerfil.editar"  ng-minlength="userDTO.configuraPerfil.lengthMinSenha" ng-maxlength="userDTO.configuraPerfil.lengthMaxSenha" 
                                         compare-to="userDTO.configuraPerfil.usuario.USU_ST_SENHA">
                                 <div ng-messages="configuraperfilusuarioform.USU_ST_SENHACONFIRMAR.$error">

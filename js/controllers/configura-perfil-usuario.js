@@ -45,10 +45,11 @@ function configuraPerfilUsuario($scope, sairDoSistemaService, notificacaoProvide
         
         var _nome = $scope.userDTO.configuraPerfil.usuario.USU_ST_NOME;
         var _senha = $scope.userDTO.configuraPerfil.usuario.USU_ST_SENHA;
+        var _senhaConfirma = $scope.userDTO.configuraPerfil.usuario.USU_ST_SENHACONFIRMAR;
         var _email = $scope.userDTO.configuraPerfil.usuario.USU_ST_EMAIL;
         
         if( ( _nome && _nome.length >=  _perfil.lengthMinNome  && _nome.length <= _perfil.lengthMaxNome) 
-                && (_senha && _senha.length >=  _perfil.lengthMinSenha  && _senha.length <= _perfil.lengthMaxSenha) 
+                && (_senha && _senha.length >=  _perfil.lengthMinSenha  && _senha.length <= _perfil.lengthMaxSenha  && _senhaConfirma && _senha === _senhaConfirma ) 
                 && (_email && _email.length >=  _perfil.lengthMinEmail  && _email.length <= _perfil.lengthMaxEmail ) ){
             return true;
         }

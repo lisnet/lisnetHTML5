@@ -44,7 +44,7 @@ function notificacaoBarra($scope, $window,sairDoSistemaService,$rootScope){
         return  _array[0].trim();
     };
     $scope.states = [];
-    $scope.states.push('configuraperfilusuario | Configuração de Perfil de Usuário');
+    $scope.states.push('configuraperfilusuario | Editar / Configurar Usuário');
     $scope.states.push('controle.notificacoes | Controle de Notificações');
     $scope.states.push('widgets.lisnet | Home Painel de Widgets do Usuário, Inicio , Inĩcio, Começo, Casa');
     $scope.states.push('sair | Sair do Sistema quit exit :q');
