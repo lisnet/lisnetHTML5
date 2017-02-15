@@ -106,7 +106,7 @@ https://demos.scotch.io/angular-validation/demos/-->
                                             <i   ng-disabled="entidadeForm.$invalid"  ng-if="ent[0].status === 'U'  || ent[0].status === 'C' "  style="color: #000\9 ; font-weight: bold;"   class="fa fa-clipboard"   aria-hidden="true"    ng-click="manipulaEntidade(ent,'salvar')"     data-toggle="tooltip" title="salvar alterações ?"  ></i>
                                             <span uib-dropdown   ng-if="ent[0].status === 'R' "   class="btn-group"  >
                                                 <span class="count-info " href uib-dropdown-toggle   ng-disabled="disabled" >
-                                                    <span class="glyphicon glyphicon-option-vertical"   data-toggle="tooltip"    title="bla bla bla bla"  ></span>
+                                                    <span class="glyphicon glyphicon-option-vertical"   ></span>
                                                 </span>
                                                 <ul class="dropdown-alerts" uib-dropdown-menu    >
                                                     <li   style="font-weight: bold;   font-style: italic;"  >  Ações</li>
@@ -134,7 +134,7 @@ https://demos.scotch.io/angular-validation/demos/-->
                                                 <span  class="form-group" ng-if="ent[0].editavel && moduloPadrao.entidade.colunas[$index - 1].chave !== 'S' || (moduloPadrao.entidade.colunas[$index - 1].chave === 'S' && ent[0].status === 'C') " >
                                                     <span ng-if="moduloPadrao.entidade.colunas[$index - 1].tipo === 'C' " >
                                                         <input  autocomplete="off"  size="{{moduloPadrao.entidade.colunas[$index - 1].tamanho  }}"  name="{{moduloPadrao.entidade.colunas[$index - 1].nome }}"  
-                                                                style=" min-width: 20px;   width: {{moduloPadrao.entidade.colunas[$index - 1].tamanho * 4 }}px ;  max-width: 700px; "
+                                                                style=" min-width: 150px;   width: {{moduloPadrao.entidade.colunas[$index - 1].tamanho * 7 }}px ;  max-width: 700px; "
                                                                 placeholder="{{moduloPadrao.entidade.colunas[$index - 1].nome }}"    
                                                                 ng-change="mudarStatus(ent,$parent.$index, $index)"     class="form-control  text-primary inputcolor "    
                                                                 required="{{moduloPadrao.entidade.colunas[$index - 1].obrigatorio === 'S' }}"  
