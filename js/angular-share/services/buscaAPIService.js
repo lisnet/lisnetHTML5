@@ -454,6 +454,20 @@ angular.module('lisnet').service("buscaAPIService",function ($http){
         );
     };
     
+    this.atualizaUsuario = function (configLisNet,usuarioJSON){
+
+        var params = '?dbname='+configLisNet.defaultDB;
+        var url = configLisNet.baseUrl +'/atualizaUsuario'+ params;
+        
+        return $http.put(url,usuarioJSON,{
+                'Content-Type' : 'application/x-www-form-urlencoded',
+                'Access-Control-Allow-Headers': '*',
+                'Access-Control-Allow-Methods':'GET, POST, PUT',
+                'Access-Control-Allow-Origin': '*'
+            }
+        );
+    };
+    
     
 });
 
