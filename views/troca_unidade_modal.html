@@ -2,6 +2,23 @@
 .modal-lg {
     width: 500px;
 }
+
+
+.inmodal .modal-header {
+    padding: 10px 10px;
+    text-align: center;
+}
+
+.modal-body {
+    padding: 10px 10px 5px 10px;
+}
+.dataTables_wrapper {
+    padding-bottom: 1px;
+}
+.inmodal .modal-title {
+    font-size: 22px;
+    color: #117596;
+}
 </style>
 
 <div class="inmodal"  ng-controller="trocaUnidade"  >
@@ -28,7 +45,8 @@
     <div class="modal-footer">
         <!--<button type="button" class="btn btn-white" ng-click="cancel()">Fechar</button>-->
         <!--<button class="btn btn-warning btn-circle" type="button"  ng-click="cancel()" ><i class="fa fa-times"></i></button>-->
-         <button class="btn btn-info btn-circle  btn-lg" type="button" ng-click="cancel()"  ><i class="fa fa-check"></i></button>
+         <!--<button class="btn btn-info btn-circle  btn-lg" type="button" ng-click="cancel()"  ><i class="fa fa-times  "></i></button>-->
+         <i class="fa fa-times  fa-3x  text-danger" aria-hidden="true"  ng-click="cancel()"   ></i>
     </div>
 </div>
 

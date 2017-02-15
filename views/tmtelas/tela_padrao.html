@@ -4,6 +4,13 @@ https://demos.scotch.io/angular-validation/demos/-->
 
 
 <div class="wrapper wrapper-content animated fadeInRight  inputcolor"   ng-controller="telaPadrao"  style="padding-bottom: 0px;" >
+    
+    <style media="screen" type="text/css">
+        .btn-group:hover>.dropdown-menu {
+            display: block;
+        }
+    </style>
+    
     <div class="ibox-content">
         <!--{{moduloPadrao}}-->
         
@@ -97,9 +104,9 @@ https://demos.scotch.io/angular-validation/demos/-->
                                             <i   ng-if="ent[0].status === 'D'  || ent[0].status === 'C'  "  style="color: red; font-weight: bold; padding-right: 6px;"  class="fa fa-times"   aria-hidden="true"    ng-click="manipulaEntidade(ent,'excluir')"     data-toggle="tooltip" title="excluir linha ?"  ></i>
                                             <i   ng-if="ent[0].status === 'D'  || ent[0].status === 'U' "  style="color:green ; padding-right: 6px;"  class="fa fa-backward"   aria-hidden="true"    ng-click="manipulaEntidade(ent,'desfazer')"     data-toggle="tooltip" title="reverter alterações ?"  ></i>
                                             <i   ng-disabled="entidadeForm.$invalid"  ng-if="ent[0].status === 'U'  || ent[0].status === 'C' "  style="color: #000\9 ; font-weight: bold;"   class="fa fa-clipboard"   aria-hidden="true"    ng-click="manipulaEntidade(ent,'salvar')"     data-toggle="tooltip" title="salvar alterações ?"  ></i>
-                                            <span uib-dropdown   ng-if="ent[0].status === 'R' "  >
-                                                <span class="count-info" href uib-dropdown-toggle   >
-                                                    <span class="glyphicon glyphicon-option-vertical"></span>
+                                            <span uib-dropdown   ng-if="ent[0].status === 'R' "   class="btn-group"  >
+                                                <span class="count-info " href uib-dropdown-toggle   ng-disabled="disabled" >
+                                                    <span class="glyphicon glyphicon-option-vertical"   data-toggle="tooltip"    title="bla bla bla bla"  ></span>
                                                 </span>
                                                 <ul class="dropdown-alerts" uib-dropdown-menu    >
                                                     <li   style="font-weight: bold;   font-style: italic;"  >  Ações</li>
