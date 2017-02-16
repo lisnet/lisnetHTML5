@@ -9,6 +9,9 @@ https://demos.scotch.io/angular-validation/demos/-->
         .btn-group:hover>.dropdown-menu {
             display: block;
         }
+        dataTables_wrapper {
+    padding-bottom: 90px;
+}
     </style>
     
     <div class="ibox-content">
@@ -43,19 +46,21 @@ https://demos.scotch.io/angular-validation/demos/-->
                         </div>
 
                         <div class="col-lg-2"   >
-                            <div  class="col-sm-6"  style="padding: 0px 3px 0px 0px;" >
-                                <button class="btn btn-block  btn-outline  btn-success   full-width "     ng-click="buscar(true)"  ng-disabled="!paramsStateConfig.btnFiltrar" >Filtrar</button>
+                            <button class="btn btn-outline  btn-success  btn-rounded  "     ng-click="buscar(true)"  ng-disabled="!paramsStateConfig.btnFiltrar" >&nbsp;Filtrar&nbsp;</button>
+                            <button class="btn btn-outline  btn-info  btn-rounded"  data-animation="bounce"  ng-click="criarNovoRegistro()"   ng-disabled="!paramsStateConfig.btnCriar" ><i  style="color: orange;" class="fa fa-star-o"></i>&nbsp;Criar&nbsp;</button>
+<!--                            <div  class="col-md-6"  style="padding: 0px 3px 0px 0px;" >
+                                
                             </div>
-                            <div  class="col-sm-6"  style="padding: 0px 0px 0px 3px;" >
-                                <button class="btn btn-block  btn-outline  btn-info  full-width "  data-animation="bounce"  ng-click="criarNovoRegistro()"   ng-disabled="!paramsStateConfig.btnCriar" ><i  style="color: orange;" class="fa fa-star-o"></i>&nbsp;Criar&nbsp;</button>
-                            </div>
+                            <div  class="col-md-6"  style="padding: 0px 0px 0px 3px;" >
+                                    
+                            </div>-->
                         </div>
 
                         <div  class="col-lg-2">
-                            <button class="btn btn-block  btn-outline  btn-danger  full-width  animation_select"  data-animation="flash"  ng-click="limparTela()"   >Limpar</button>
+                            <button class="btn btn-outline  btn-danger  full-width  animation_select"  data-animation="flash"  ng-click="limparTela()"   >Limpar</button>
                         </div>
                         <div  class="col-lg-2 ">
-                            <button class="btn btn-block  btn-outline  btn-primary full-width "     ng-click="buscar(false)"  ng-disabled="!paramsStateConfig.btnTodos"  data-toggle="tooltip"    title="Limite de pesquisa para esta tela é de {{paramsStateConfig.limit}} itens"    >Buscar Todos</button>
+                            <button class="btn btn-outline  btn-primary full-width "     ng-click="buscar(false)"  ng-disabled="!paramsStateConfig.btnTodos"  data-toggle="tooltip"    title="Limite de pesquisa para esta tela é de {{paramsStateConfig.limit}} itens"    >Buscar Todos</button>
                         </div>
 
                     </div>
