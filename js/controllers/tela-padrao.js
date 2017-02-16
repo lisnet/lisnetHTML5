@@ -450,7 +450,7 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, sairDoSistemaS
                 .withDOM('<"html5buttons"B>lTfgitp')
                 .withOption('stateSave', false)
 //                .withOption('searching', true)
-                .withOption('lengthMenu', [15, 30, 50, 100, 150, 200])
+                .withOption('lengthMenu', [10, 30, 50, 100, 150, 200])
                 //        .withLanguage([{url:"//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese.json"}])
                 .withLanguage({
                     "sProcessing": "A processar...",

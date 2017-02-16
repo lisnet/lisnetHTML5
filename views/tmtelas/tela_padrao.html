@@ -9,9 +9,10 @@ https://demos.scotch.io/angular-validation/demos/-->
         .btn-group:hover>.dropdown-menu {
             display: block;
         }
-        dataTables_wrapper {
-    padding-bottom: 90px;
-}
+        .btn-group:focus>.dropdown-menu {
+            display: block;
+        }
+        
     </style>
     
     <div class="ibox-content">
@@ -45,9 +46,13 @@ https://demos.scotch.io/angular-validation/demos/-->
                             <input   placeholder="Campos de Pesquisa" type="text"  id="inputTextRequisicao"  class="form-control  text-primary  " size="20" ng-model="moduloPadrao.entidade.pesquisaInput"   enter-key="buscar(true)"   ng-maxlength="300"  >
                         </div>
 
-                        <div class="col-lg-2"   >
+                        <div class="col-lg-6"   >
+                            <p>
                             <button class="btn btn-outline  btn-success  btn-rounded  "     ng-click="buscar(true)"  ng-disabled="!paramsStateConfig.btnFiltrar" >&nbsp;Filtrar&nbsp;</button>
                             <button class="btn btn-outline  btn-info  btn-rounded"  data-animation="bounce"  ng-click="criarNovoRegistro()"   ng-disabled="!paramsStateConfig.btnCriar" ><i  style="color: orange;" class="fa fa-star-o"></i>&nbsp;Criar&nbsp;</button>
+                            <button class="btn btn-outline  btn-danger  animation_select  btn-rounded "  data-animation="flash"  ng-click="limparTela()"   >Limpar</button>
+                            <button class="btn btn-outline  btn-primary btn-rounded "     ng-click="buscar(false)"  ng-disabled="!paramsStateConfig.btnTodos"  data-toggle="tooltip"    title="Limite de pesquisa para esta tela é de {{paramsStateConfig.limit}} itens"    >&nbsp;&nbsp;Buscar Todos&nbsp;&nbsp;</button>
+                            
 <!--                            <div  class="col-md-6"  style="padding: 0px 3px 0px 0px;" >
                                 
                             </div>
@@ -56,12 +61,12 @@ https://demos.scotch.io/angular-validation/demos/-->
                             </div>-->
                         </div>
 
-                        <div  class="col-lg-2">
-                            <button class="btn btn-outline  btn-danger  full-width  animation_select"  data-animation="flash"  ng-click="limparTela()"   >Limpar</button>
+<!--                        <div  class="col-lg-2">
+                            
                         </div>
                         <div  class="col-lg-2 ">
-                            <button class="btn btn-outline  btn-primary full-width "     ng-click="buscar(false)"  ng-disabled="!paramsStateConfig.btnTodos"  data-toggle="tooltip"    title="Limite de pesquisa para esta tela é de {{paramsStateConfig.limit}} itens"    >Buscar Todos</button>
-                        </div>
+                            
+                        </div>-->
 
                     </div>
 
@@ -98,12 +103,10 @@ https://demos.scotch.io/angular-validation/demos/-->
 
                             <tr   ng-repeat="ent in moduloPadrao.entidade.entidades  track by $index"    >
                                 <!--ng-style="{{ moduloPadrao.entidade.colunas[$index - 1].tamanho? 'width:'moduloPadrao.entidade.colunas[$index - 1].tamanho'.px;' : 'width:10px;' }}"-->   
-                                <td   ng-repeat="e in ent track by $index "  > 
+                                <td   ng-repeat="e in ent track by $index "    > 
                                     <form name="{{ent[0].id}}"  novalidate >
 
-                                    <div ng-if="$index === 0" >
-                                        
-                                        <div >
+                                        <div ng-if="$index === 0"  style="min-width: 35px;" >
 
                                             <i   ng-if="ent[0].status === 'R'  " style="{{ent[0].ngStyle}} ; padding-right: 6px;"  class="{{ent[0].ngClass}}"   aria-hidden="true"    ng-click="manipulaEntidade(ent,'editar')"     data-toggle="tooltip" title="{{ent[0].toolTip}}"  ></i>
                                             <i   ng-if="ent[0].status === 'D'  || ent[0].status === 'C'  "  style="color: red; font-weight: bold; padding-right: 6px;"  class="fa fa-times"   aria-hidden="true"    ng-click="manipulaEntidade(ent,'excluir')"     data-toggle="tooltip" title="excluir linha ?"  ></i>
@@ -114,21 +117,21 @@ https://demos.scotch.io/angular-validation/demos/-->
                                                     <span class="glyphicon glyphicon-option-vertical"   ></span>
                                                 </span>
                                                 <ul class="dropdown-alerts" uib-dropdown-menu    >
-                                                    <li   style="font-weight: bold;   font-style: italic;"  >  Ações</li>
-                                                    <li class="divider"></li>
-                                                    <li   style="font-weight: bold;"  ng-click="manipulaEntidade(ent,'editar')"   ><i  class="fa fa-pencil"   style="color: red; font-weight: bold; color: #003bb3; "  ></i>  Editar</li>
-                                                    <li   class="divider"></li>
-                                                    <li   ng-if="ent[0].status !== 'C'  && ent[0].status !== 'R' " style=" font-weight: bold;"  ng-click="manipulaEntidade(ent,'desfazer')" ><i  class="fa fa-backward"   style="color: red; font-weight: bold; color: #170;"  ></i>  Desfazer</li>
+                                                    <!--<li  class="btn btn-outline  btn-success  btn-rounded  " style="font-weight: bold;   font-style: italic;"  >  Ações </li>-->
+                                                    <!--<li class="divider"></li>-->
+                                                    <li   class="btn btn-outline  btn-success  btn-rounded "  style="font-weight: bold;"  ng-click="manipulaEntidade(ent,'editar')"   ><i  class="fa fa-pencil"   style="color: red; font-weight: bold; color: #003bb3; "  ></i>  Editar</li>
+                                                    <!--<li   class="divider"></li>-->
+                                                    <li   class="btn btn-outline  btn-primary  btn-rounded "  ng-if="ent[0].status !== 'C'  && ent[0].status !== 'R' " style=" font-weight: bold;"  ng-click="manipulaEntidade(ent,'desfazer')" ><i  class="fa fa-backward"   style="color: red; font-weight: bold; color: #170;"  ></i>  Desfazer</li>
                                                     <li  ng-if="ent[0].status !== 'C'  && ent[0].status !== 'R' "  class="divider"></li>
-                                                    <li   ng-if="ent[0].status !== 'D' "    ng-click="manipulaEntidade(ent,'excluir')" ><i  class="fa fa-times"   style="color: red; font-weight: bold;"  ></i>  Excluir</li>
-                                                    <li  ng-if="ent[0].status !== 'R'  "  class="divider"></li>
-                                                    <li   style="font-weight: bold;"   ng-if="ent[0].status !== 'R'  " ng-click="manipulaEntidade(ent,'salvar')"   ><i  class="fa fa-clipboard"   style="color: #163758 ; font-weight: bold;"  ></i>  Salvar</li>
+                                                    <li  class="btn btn-outline  btn-danger  btn-rounded "  ng-if="ent[0].status !== 'D' "    ng-click="manipulaEntidade(ent,'excluir')" ><i  class="fa fa-times"   style="color: red; font-weight: bold;"  ></i>  Excluir</li>
+                                                    <!--<li  ng-if="ent[0].status !== 'R'  "  class="divider"></li>-->
+                                                    <li  class="btn btn-outline  btn-warning  btn-rounded " style="font-weight: bold;"   ng-if="ent[0].status !== 'R'  " ng-click="manipulaEntidade(ent,'salvar')"   ><i  class="fa fa-clipboard"   style="color: #163758 ; font-weight: bold;"  ></i>  Salvar</li>
                                                 </ul>
                                             </span>
-                                        </div>
+                                            
                                     </div>
 
-                                        <div ng-if="$index > 0  && $index " >
+                                        <div ng-if="$index > 0  && $index "  >
                                         
                                         <!--String & Chars-->
                                         <span ng-if="moduloPadrao.entidade.colunas[$index - 1].tipo === 'C'  || moduloPadrao.entidade.colunas[$index - 1].tipo === 'N'" >
