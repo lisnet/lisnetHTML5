@@ -12,6 +12,15 @@ https://demos.scotch.io/angular-validation/demos/-->
         .btn-group:focus>.dropdown-menu {
             display: block;
         }
+
+        .dropdown-menu {
+            border-radius: 15px;
+            margin: -35px 13px 0;
+            width: 200px;
+        }
+
+dropdowns.less:35
+
         
     </style>
     
@@ -114,7 +123,7 @@ https://demos.scotch.io/angular-validation/demos/-->
                                             <i   ng-disabled="entidadeForm.$invalid"  ng-if="ent[0].status === 'U'  || ent[0].status === 'C' "  style="color: #000\9 ; font-weight: bold;"   class="fa fa-clipboard"   aria-hidden="true"    ng-click="manipulaEntidade(ent,'salvar')"     data-toggle="tooltip" title="salvar alterações ?"  ></i>
                                             <span uib-dropdown   ng-if="ent[0].status === 'R' "   class="btn-group"  >
                                                 <span class="count-info " href uib-dropdown-toggle   ng-disabled="disabled" >
-                                                    <span class="glyphicon glyphicon-option-vertical"   ></span>
+                                                    <span class="glyphicon glyphicon-option-horizontal "   ></span>
                                                 </span>
                                                 <ul class="dropdown-alerts" uib-dropdown-menu    >
                                                     <!--<li  class="btn btn-outline  btn-success  btn-rounded  " style="font-weight: bold;   font-style: italic;"  >  Ações </li>-->
@@ -128,7 +137,6 @@ https://demos.scotch.io/angular-validation/demos/-->
                                                     <li  class="btn btn-outline  btn-warning  btn-rounded " style="font-weight: bold;"   ng-if="ent[0].status !== 'R'  " ng-click="manipulaEntidade(ent,'salvar')"   ><i  class="fa fa-clipboard"   style="color: #163758 ; font-weight: bold;"  ></i>  Salvar</li>
                                                 </ul>
                                             </span>
-                                            
                                     </div>
 
                                         <div ng-if="$index > 0  && $index "  >
