@@ -22,33 +22,46 @@
         padding: 2px 10px;
         font-size: 12px;
     }
+    
+    .wizard > .steps > ul > li {
+        width: 20%;
+    }
+    .p-lg {
+    padding: 10px;
+}
 
 </style>
 
 <div class="wrapper wrapper-content animated fadeInRight  inputcolor"   ng-controller="cadastroPaciente" style="padding-bottom: 0px;" >
-
+    
 
     <div ng-include="'views/tmtelas/cadastro_paciente_busca_paciente.html'" ng-if="userDTO.cadastroPaciente.showBuscaPaciente"  ></div>
 
     <div class="row"  ng-hide="userDTO.cadastroPaciente.showBuscaPaciente" >
         <div class="col-lg-12">
+            
+            
             <div class="ibox">
-
+                
                 <div class="ibox-content wizard">
-
+                    
                     <div class="steps clearfix">
+                        
                         <ul>
-                            <li ui-sref-active="current">
-                                <a  ng-click="goToStep('cadastrodepacientes.constroe_paciente')"   ui-sref="cadastrodepacientes.constroe_paciente" class="btn-default"><span>1</span> Constroe Paciente</a>
+                            <li>
+                                <a   ng-click="goToStep('cadastrodepacientes')"  class="btn btn-danger  btn-outline" ><i class="fa fa-search "></i></a>
                             </li>
                             <li ui-sref-active="current">
-                                <a ng-click="goToStep('cadastrodepacientes.constroe_requisicao')"  ui-sref="cadastrodepacientes.constroe_requisicao" class="btn-default"><span>2</span> Constroe Requisição</a>
+                                <a    ui-sref="cadastrodepacientes.constroe_paciente" class="btn-default  text-center"> Paciente</a>
                             </li>
                             <li ui-sref-active="current">
-                                <a  ng-click="goToStep('cadastrodepacientes.dados_complementares')"  ui-sref="cadastrodepacientes.dados_complementares" class="btn-default"><span>3</span> Dados Complementares</a>
+                                <a  ui-sref="cadastrodepacientes.constroe_requisicao" class="btn-default  text-center"> Requisição</a>
                             </li>
                             <li ui-sref-active="current">
-                                <a  ng-click="goToStep('cadastrodepacientes.inclue_exames')"  ui-sref="cadastrodepacientes.inclue_exames" class="btn-default"><span>4</span> Exames</a>
+                                <a   ui-sref="cadastrodepacientes.dados_complementares" class="btn-default  text-center">Complementares</a>
+                            </li>
+                            <li ui-sref-active="current">
+                                <a   ui-sref="cadastrodepacientes.inclue_exames" class="btn-default  text-center"> Exames</a>
                             </li>
                         </ul>
                     </div>
@@ -74,4 +87,5 @@
         <div ng-include="'views/tmtelas/cadastro_paciente_constroe_requisicao_dados_complementares.html'" ng-if="userDTO.cadastroPaciente.showConstroeRequisicaoDadosComplementares"  ></div>
         <div ng-include="'views/tmtelas/cadastro_paciente_constroe_requisicao_exames.html'" ng-if="userDTO.cadastroPaciente.showConstroeRequisicaoExames"  ></div>-->
 
+    
 </div>

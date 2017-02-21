@@ -11,17 +11,27 @@
 
 /* global y */
 
-function cadastroPaciente($scope, sairDoSistemaService, notificacaoProvider, buscaAPIService, $stateParams, $localStorage, $timeout, $filter,DTOptionsBuilder,helperService,$state) {
+function cadastroPaciente($scope, sairDoSistemaService, notificacaoProvider, buscaAPIService, $stateParams, $localStorage, $timeout, $filter,DTOptionsBuilder,helperService,$state,$rootScope,$timeout) {
 
     var self = this;
     $scope.userDTO = sairDoSistemaService.validarLogin();
     
     if (!$scope.userDTO.cadastroPaciente) {
         $scope.inputPAC_ST_NOME = true;
-        $scope.userDTO.cadastroPaciente = {showBuscaPaciente:true,showConstroePaciente:false,showConstroeRequisicao:false,ultimoCampo:'',pacienteDB:null,paciente:null,pacientes:{},requisicao:{exames:[]}};
+        $scope.userDTO.cadastroPaciente = {showBuscaPaciente:true,ultimoStep:'cadastrodepacientes',showConstroePaciente:false,showConstroeRequisicao:false,ultimoCampo:'',pacienteDB:null,paciente:null,pacientes:{},requisicao:{exames:[]}};
     }else{
         $state.go($scope.userDTO.cadastroPaciente.ultimoStep);
     }
+    
+    $rootScope.$on('$stateChangeStart',
+            function (event, toState, toParams, fromState, fromParams) {
+                $timeout(function () {
+                    if ($state.current.name.includes("cadastrodepacientes")) {
+                        console.log("$state.current.name: " + $state.current.name);
+                        $scope.userDTO.cadastroPaciente.ultimoStep = $state.current.name;
+                    }
+                }, 500);
+            });
 
     $scope.paramsStateConfig = $stateParams;
     
@@ -115,7 +125,9 @@ function cadastroPaciente($scope, sairDoSistemaService, notificacaoProvider, bus
     
     $scope.goToStep = function (step){
         $scope.userDTO.cadastroPaciente.ultimoStep = step;
+        $scope.userDTO.cadastroPaciente.showBuscaPaciente =true;
         $state.go(step);
+        $scope.inputPAC_ST_NOME = true;
     };
     
     $scope.encontraPaciente = function (PAC_IN_CODIGO){
