@@ -14,6 +14,7 @@ if(!$scope.userDTO.consultalaudo){
     var uni0 = $scope.userDTO.unidades[0];
     $scope.userDTO.consultalaudo  = {unidadeId : uni0.UNI_ST_CODIGO+'-'+uni0.UNI_ST_DESCRICAO,dtInicio:new Date(),dtFim:new Date(),format : 'dd/MM/yyyy'};
 }
+$scope.inputREQ_ST_CODIGO = true;
 $scope.paramsStateConfig =  $stateParams;
 
 $scope.strMax = $filter('date')(new Date(), "yyyy-MM-dd");

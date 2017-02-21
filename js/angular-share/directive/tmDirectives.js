@@ -158,7 +158,55 @@ function compareTo() {
     };
 };
 
+ function focus($timeout, $parse) {
+//     console.log('Inside focus controle.. directive');
+    return {
+      restrict: 'A',
+      link: function(scope, element, attrs) {
+          scope.$watch(attrs.focus, function(newValue, oldValue) {
+              if (newValue) { element[0].focus(); }
+          });
+          element.bind("blur", function(e) {
+              $timeout(function() {
+                  scope.$apply(attrs.focus + "=false"); 
+              }, 0);
+          });
+          element.bind("focus", function(e) {
+              $timeout(function() {
+                  scope.$apply(attrs.focus + "=true");
+              }, 0);
+          });
+      }
+    };
+  };
 
+function keyFunction($timeout, $parse) {
+
+    return function (scope, element, attrs) {
+        console.log('Inside keyFunction....');
+        element.bind("keydown keypress", function (event) {
+            if (event.which !== 13 && event.which !== 22) {
+                event.preventDefault();
+//                scope.$watch(attrs.focus, function (newValue, oldValue) {
+//                    if (newValue) {
+//                        element[0].focus();
+//                    }
+//                });
+                element.bind("blur", function (e) {
+                    $timeout(function () {
+                        scope.$apply(attrs.focus + "=false");
+                    }, 0);
+                });
+                element.bind("focus", function (e) {
+                    $timeout(function () {
+                        scope.$apply(attrs.focus + "=true");
+                    }, 0);
+                });
+
+            }
+        });
+    };
+}
 
 
 angular.module('lisnet')
@@ -169,6 +217,7 @@ angular.module('lisnet')
         .directive('autoNext',autoNext)
         .directive('fooTable',fooTable)
         .directive('capitalize',capitalize)
+        .directive('focus',focus)
         .directive('compareTo',compareTo);
 
 

@@ -26,7 +26,7 @@ function configuraPerfilUsuario($scope, sairDoSistemaService, notificacaoProvide
             lengthMinEmail:15,lengthMaxEmail:100};
     }
     $scope.paramsStateConfig = $stateParams;
-    
+    $scope.btnEditar = true;
     
     $scope.editar = function (){
         if($scope.userDTO.configuraPerfil.editar){

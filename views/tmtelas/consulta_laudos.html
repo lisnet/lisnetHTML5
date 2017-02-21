@@ -23,10 +23,11 @@
                             </div>
 
                             <div class="col-lg-2 ">
-                                <input  name="REQ_ST_CODIGO" placeholder="Solicitação" type="text"  id="inputTextRequisicao"  
+                                <input  focus="inputREQ_ST_CODIGO"  name="REQ_ST_CODIGO" placeholder="Solicitação" type="text"  id="inputTextRequisicao"  
                                         class="form-control  text-primary" size="20" ng-model="userDTO.consultalaudo.requisicao"   
                                         ng-change="trocarVisualizacao('REQ_ST_CODIGO',userDTO.consultalaudo.requisicao)"  enter-key="filtrar()"  
-                                        ng-minlength="10" ng-maxlength="12"  >
+                                        ng-minlength="10" ng-maxlength="12" 
+                                         >
                                 <div role="alert " >
                                     <span class="error  has-error"   style="color: red;" ng-show="consultalaudoform.REQ_ST_CODIGO.$error.minlength">
                                         Muito curto  , menos de 10 </span>

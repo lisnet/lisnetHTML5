@@ -410,6 +410,27 @@ console.log('construing config , registrando state');
                     }
                 }
             })
+          
+            .state('cadastrodepacientes.constroe_paciente', {
+                url: 'constroe_paciente',
+                templateUrl: 'views/tmtelas/cadastro_paciente_constroe_paciente.html',
+                data: {pageTitle: 'Constroe Paciente',state: 'cadastrodepacientes.constroe_paciente'}
+            })
+            .state('cadastrodepacientes.constroe_requisicao', {
+                url: 'constroe_requisicao',
+                templateUrl: 'views/tmtelas/cadastro_paciente_constroe_requisicao.html',
+                data: {pageTitle: 'Constroe Requisição',state: 'cadastrodepacientes.constroe_requisicao'}
+            })
+            .state('cadastrodepacientes.dados_complementares', {
+                url: 'dados_complementares',
+                templateUrl: 'views/tmtelas/cadastro_paciente_constroe_requisicao_dados_complementares.html',
+                data: {pageTitle: 'Dados Complementares',state: 'cadastrodepacientes.dados_complementares'}
+            })
+            .state('cadastrodepacientes.inclue_exames', {
+                url: 'inclue_exames',
+                templateUrl: 'views/tmtelas/cadastro_paciente_constroe_requisicao_exames.html',
+                data: {pageTitle: 'Incluir Exames',state: 'cadastrodepacientes.inclue_exames'}
+            })
             .state('convenios', {
                 url: "/configura/convenios/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
@@ -2613,7 +2634,11 @@ function telaPadraoLazyLoad() {
                             {
                                 name: 'ui.footable',
                                 files: ['js/plugins/footable/angular-footable.js']
+                            },
+                            {
+                                files: ['css/plugins/steps/jquery.steps.css']    
                             }
+                            
                         ];
     };
 

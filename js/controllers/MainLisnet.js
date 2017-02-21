@@ -14,6 +14,7 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
     this.login ;
     this.senha ;
     this.mostrar = true;
+    $scope.inputLoginFocus = true; 
     
     var intDbLength = 3;
     var intMinimoDelay = 1000;
@@ -162,12 +163,12 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
       //                                               $localStorage.userDTO = this.userDTO;
                                             });
                                                     
-                                            },700);
+                                            },500);
                                             contarTempoLogado();
                                             $rootScope.$broadcast("startNotificacaoTimer");
-                                            
-                                }, 800);
-                        }, 1500);
+                                            $scope.inputPesquisaTelaFocus = true; 
+                                }, 400);
+                        }, 500);
                         
                     } else {
                         modalLoading.dismiss('cancel');
@@ -316,7 +317,7 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
         if (this.userDTO && this.userDTO.status && this.userDTO.status === 'in') {
             console.log('Atualizando lista de notificacoes ....');
             
-            $timeout(function () { gerenciaRelatorioService.atualizaRelatorios(this.userDTO); }, 6000);
+            $timeout(function () { gerenciaRelatorioService.atualizaRelatorios(this.userDTO); }, 500);
             
             if (this.userDTO && this.userDTO.job) {
                 console.log('Job is runnig ...');

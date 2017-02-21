@@ -9,6 +9,8 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, sairDoSistemaS
     var self = this;
     $scope.userDTO = sairDoSistemaService.validarLogin();
     
+    $scope.inputCampoDePesquisa = true;
+    
     $scope.paramsStateConfig =  $stateParams;
     var modStCodigo = $scope.paramsStateConfig.modStCodigo;
     
