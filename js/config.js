@@ -416,6 +416,11 @@ console.log('construing config , registrando state');
                 templateUrl: 'views/tmtelas/cadastro_paciente_constroe_paciente.html',
                 data: {pageTitle: 'Constroe Paciente',state: 'cadastrodepacientes.constroe_paciente'}
             })
+            .state('cadastrodepacientes.constroe_paciente_contato', {
+                url: 'constroe_paciente',
+                templateUrl: 'views/tmtelas/cadastro_paciente_constroe_paciente_contato.html',
+                data: {pageTitle: 'Constroe Paciente',state: 'cadastrodepacientes.constroe_paciente'}
+            })
             .state('cadastrodepacientes.constroe_requisicao', {
                 url: 'constroe_requisicao',
                 templateUrl: 'views/tmtelas/cadastro_paciente_constroe_requisicao.html',

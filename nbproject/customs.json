@@ -15,18 +15,6 @@
         "slick": {}
     },
     "attributes": {
-        "uib-dropdown-menu": {
-            "context": "ul"
-        },
-        "ibox-tools": {
-            "context": "div"
-        },
-        "uib-dropdown": {
-            "context": "div"
-        },
-        "page-scroll": {
-            "context": "a"
-        },
         "page-title": {
             "context": "title"
         },
@@ -45,7 +33,21 @@
         "dt-options": {
             "context": "table"
         },
+        "ng-messages-include": {},
+        "ng-messages": {},
         "ui-sref": {
+            "context": "a"
+        },
+        "uib-dropdown-menu": {
+            "context": "ul"
+        },
+        "ibox-tools": {
+            "context": "div"
+        },
+        "uib-dropdown": {
+            "context": "div"
+        },
+        "page-scroll": {
             "context": "a"
         },
         "ui-sref-active": {
