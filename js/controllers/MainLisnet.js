@@ -194,6 +194,7 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
         $timeout(function () {
             if ($state.current.name !== stateGO) {
                 try {
+                    
                     if (stateGO === 'sair') {
                         vm.logOut();
                     } else {
@@ -214,7 +215,8 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
                                 } else if (stateGO !== 'widgets.lisnet') {
                                     this.userDTO.hotPages.push($state.current);
                                 }
-                                vm.carregando = false;
+                               
+//                                vm.carregando = false;
 //                        console.log(JSON.stringify($state.current,null, 2));
                             }, 1500);
 
@@ -222,14 +224,14 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
 //                    userDTO.modalLoading.dismiss('cancel');
                             notificacaoProvider.sweetDialog("Erro", "Página não encontrada =  " + stateGO, 'warning', 'red', 'X');
                             $state.go('problema.tela_nao_existe');
-                            vm.carregando = false;
+//                            vm.carregando = false;
                         }
                     }
 
                 } catch (error) {
                     notificacaoProvider.sweetDialog("Erro", "Página não encontrada =  " + error, 'warning', 'red', 'X');
                     $state.go('problema.tela_nao_existe');
-                    vm.carregando = false;
+//                    vm.carregando = false;
                 }
             } else {
                 vm.carregando = false;
@@ -244,6 +246,9 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
         console.log('Do nothing ...');    
         }
         
+         $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams, options) {
+                                        vm.carregando = false;
+          });
 
     };
     

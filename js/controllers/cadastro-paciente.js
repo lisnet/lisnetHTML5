@@ -189,7 +189,7 @@ function cadastroPaciente($scope, sairDoSistemaService, notificacaoProvider, bus
                     })[0];
         $scope.userDTO.cadastroPaciente.pacienteDB = _pac;
         $scope.userDTO.cadastroPaciente.paciente = helperService.clonadorDeObj(_pac);
-        console.log("pacienteDB = "+JSON.stringify(_pac,null,2));
+//        console.log("pacienteDB = "+JSON.stringify(_pac,null,2));
         $scope.userDTO.cadastroPaciente.showBuscaPaciente = false;
         $scope.userDTO.cadastroPaciente.showConstroePaciente = true;
         $scope.userDTO.cadastroPaciente.ultimoStep = 'cadastrodepacientes.constroe_paciente';
