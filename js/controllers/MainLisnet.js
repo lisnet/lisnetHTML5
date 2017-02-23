@@ -216,7 +216,7 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
                                 }
                                 vm.carregando = false;
 //                        console.log(JSON.stringify($state.current,null, 2));
-                            }, 3000);
+                            }, 1500);
 
                         } else {
 //                    userDTO.modalLoading.dismiss('cancel');
@@ -237,7 +237,7 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
             }
 
             $localStorage.userDTO = this.userDTO;
-        }, 200);
+        }, 1);
     
         }else{
             vm.carregando = false;

@@ -401,7 +401,7 @@ console.log('construing config , registrando state');
 //            })
              .state('cadastrodepacientes', {
                 url: "/cadastro/pacientes/",
-                templateUrl: "views/tmtelas/cadastro_paciente.html",
+                templateUrl: "views/tmtelas/cadastro_paciente/cadastro_paciente.html",
                 params: {titulo: 'Cadastro de Paciente',pai:'Cadastro',pagina:'Cadastro de Paciente', modStCodigo: '00220',limit:'500'},
                 parent: 'lisnet',
                 data: {pageTitle: 'Cadastro de Paciente'}, resolve: {
@@ -410,30 +410,29 @@ console.log('construing config , registrando state');
                     }
                 }
             })
-          
             .state('cadastrodepacientes.constroe_paciente', {
                 url: 'constroe_paciente',
-                templateUrl: 'views/tmtelas/cadastro_paciente_constroe_paciente.html',
+                templateUrl: 'views/tmtelas/cadastro_paciente/cadastro_paciente_constroe_paciente.html',
                 data: {pageTitle: 'Constroe Paciente',state: 'cadastrodepacientes.constroe_paciente'}
             })
             .state('cadastrodepacientes.constroe_paciente_contato', {
-                url: 'constroe_paciente',
-                templateUrl: 'views/tmtelas/cadastro_paciente_constroe_paciente_contato.html',
-                data: {pageTitle: 'Constroe Paciente',state: 'cadastrodepacientes.constroe_paciente'}
+                url: 'constroe_paciente_contato',
+                templateUrl: 'views/tmtelas/cadastro_paciente/cadastro_paciente_constroe_paciente_contato.html',
+                data: {pageTitle: 'Contato',state: 'cadastrodepacientes.constroe_paciente_contato'}
             })
             .state('cadastrodepacientes.constroe_requisicao', {
                 url: 'constroe_requisicao',
-                templateUrl: 'views/tmtelas/cadastro_paciente_constroe_requisicao.html',
+                templateUrl: 'views/tmtelas/cadastro_paciente/cadastro_paciente_constroe_requisicao.html',
                 data: {pageTitle: 'Constroe Requisição',state: 'cadastrodepacientes.constroe_requisicao'}
             })
             .state('cadastrodepacientes.dados_complementares', {
                 url: 'dados_complementares',
-                templateUrl: 'views/tmtelas/cadastro_paciente_constroe_requisicao_dados_complementares.html',
+                templateUrl: 'views/tmtelas/cadastro_paciente/cadastro_paciente_constroe_requisicao_dados_complementares.html',
                 data: {pageTitle: 'Dados Complementares',state: 'cadastrodepacientes.dados_complementares'}
             })
             .state('cadastrodepacientes.inclue_exames', {
                 url: 'inclue_exames',
-                templateUrl: 'views/tmtelas/cadastro_paciente_constroe_requisicao_exames.html',
+                templateUrl: 'views/tmtelas/cadastro_paciente/cadastro_paciente_constroe_requisicao_exames.html',
                 data: {pageTitle: 'Incluir Exames',state: 'cadastrodepacientes.inclue_exames'}
             })
             .state('convenios', {

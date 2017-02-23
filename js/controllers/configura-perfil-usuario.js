@@ -31,6 +31,7 @@ function configuraPerfilUsuario($scope, sairDoSistemaService, notificacaoProvide
     $scope.editar = function (){
         if($scope.userDTO.configuraPerfil.editar){
             $scope.userDTO.configuraPerfil.editar = false;
+            $timeout(function (){$scope.inputUSU_ST_NOMEFocus = true;},500);
         }else{
             $scope.userDTO.configuraPerfil.editar = true;
         }

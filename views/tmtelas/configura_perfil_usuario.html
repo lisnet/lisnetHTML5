@@ -15,7 +15,7 @@
                         <label >Nome</label>
                         <div class="form-group"  >
                             <input class="form-control  "  required  name="USU_ST_NOME"  type="text" ng-model="userDTO.configuraPerfil.usuario.USU_ST_NOME" ng-disabled="userDTO.configuraPerfil.editar" 
-                                   ng-minlength="userDTO.configuraPerfil.lengthMinNome" ng-maxlength="userDTO.configuraPerfil.lengthMaxNome"  capitalize  >
+                                   ng-minlength="userDTO.configuraPerfil.lengthMinNome" ng-maxlength="userDTO.configuraPerfil.lengthMaxNome"  capitalize  focus="inputUSU_ST_NOMEFocus"  >
                             <div ng-messages="configuraperfilusuarioform.USU_ST_NOME.$error">
                                     <div   ng-messages-include="views/tmtelas/messages.html" ></div>
                             </div>

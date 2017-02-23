@@ -1,0 +1,29 @@
+<div class="ibox-content  animated fadeInRight"  >
+    <div class="row">
+        <div class="col-lg-12" >
+            
+            <div   ng-if="userDTO.cadastroPaciente.config.SOL_ST_CODIGO.visible" >
+                <label >{{userDTO.cadastroPaciente.config.SOL_ST_CODIGO.label}}</label>
+                <div class="form-inline ">
+                        <select style="width: 70px;"   name="SOL_ST_ESTADO"  id="pesquisas" class="chosen-select form-control "   autofocus
+                                    ng-model="userDTO.cadastroPaciente.requisicao.SOL_ST_ESTADO"   >
+                            <option ng-repeat="u in userDTO.cadastroPaciente.ufs " value="{{u}}"  >{{u}}</option>
+                        </select>
+                    <input   style="width: 60px;;" type="text" class="form-control  "  name="PRO_ST_CODIGO"   ng-model="userDTO.cadastroPaciente.requisicao.PRO_ST_CODIGO" ng-disabled="userDTO.cadastroPaciente.config.SOL_ST_CODIGO.disable"
+                             capitalize focus="inputPRO_ST_CODIGO"  ng-required="{{userDTO.cadastroPaciente.config.SOL_ST_CODIGO.required}}"
+                             ng-minlength="0"  ng-maxlength="3"  />
+                    
+                    <input   style="width: 60px;;" type="text" class="form-control  "  name="SOL_ST_CODIGO"   ng-model="userDTO.cadastroPaciente.requisicao.SOL_ST_CODIGO" ng-disabled="userDTO.cadastroPaciente.config.SOL_ST_CODIGO.disable"
+                             capitalize focus="inputSOL_ST_CODIGO"  ng-required="{{userDTO.cadastroPaciente.config.SOL_ST_CODIGO.required}}"
+                             ng-minlength="userDTO.cadastroPaciente.config.SOL_ST_CODIGO.min"  ng-maxlength="userDTO.cadastroPaciente.config.SOL_ST_CODIGO.max"  />
+                    <div ng-messages="cpform.SOL_ST_CODIGO.$error"   class="ngmesssagecpform" >
+                        <div   ng-messages-include="views/tmtelas/messages.html" ></div>
+                    </div>
+                    <input   style="width: 70%"  type="text" class="form-control inputsolicitacaoteladesc"  name="SOL_ST_NOME"   ng-model="userDTO.cadastroPaciente.requisicao.coletor.SOL_ST_NOME" ng-disabled="true" />
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+</div>
