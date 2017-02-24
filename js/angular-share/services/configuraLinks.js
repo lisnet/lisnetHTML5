@@ -6,17 +6,18 @@
 
 
 angular.module('lisnet')
-        .service('configuraLinks', function ($location, $browser, configLisNet,$localStorage) {
+        .service('configuraLinks', function ($location, $browser, configLisNet, $localStorage) {
 
             this.detertinaAparelho = function (userDTO) {
 
             };
-    this.constroeUserDTONovo = function (){
-      return {status: 'out', perfilId: 2, dtCriacao: new Date(), ultimaTela: 'login',notificationTimer:10000,hotPages:[],notificacoes:[]};  
-    };
+            this.constroeUserDTONovo = function () {
+                return {status: 'out', perfilId: 2, dtCriacao: new Date(), ultimaTela: 'login', notificationTimer: 10000, hotPages: [], notificacoes: [],
+                    ufs: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RO", "RS", "RR", "SC", "SE", "SP", "TO"]};
+            };
             this.configuraLinksAcesso = function (userDTO) {
                 var intDbLength = 4;
-                
+
 //         console.log('urlFinal =  '+urlFinal);
 //            console.log("$location.absUrl() = " + $location.absUrl()
 //            + "\n $location.url() = " + $location.url()
@@ -34,45 +35,45 @@ angular.module('lisnet')
 //        console.log(urlFinal);
 //        split.pop();
 
-                if (userDTO ) {
+                if (userDTO) {
 
-                            userDTO.configLisNet = configLisNet;
+                    userDTO.configLisNet = configLisNet;
 
-                            var locationHostSplit = $location.host().split(".");
-                            var u = $location.absUrl();
-                            var split = u.split("/");
-                            split.splice(split.length - 3, 3);
-                            var urlFinal = '';
-                            for (var i = 0; i < split.length; i++) {
-                                urlFinal = urlFinal + split[i] + '/';
-                            }
-                            urlFinal = urlFinal + 'lisnet';
-                            console.log(urlFinal);
-                            userDTO.configLisNet.baseUrl = urlFinal;
-        //                userDTO.configLisNet.defaultDB = locationHostSplit[0].toLowerCase();
-        //                console.log(_param1DBName);
-                            if (locationHostSplit[0] && locationHostSplit[0] !== 'localhost' && locationHostSplit[0] !== '192' && locationHostSplit[0] !== '127' && locationHostSplit[0] !== 'developer' ) {
-                                console.log('online ...... locationHostSplit[0].toLowerCase() =  '+locationHostSplit[0].toLowerCase());
-                                userDTO.configLisNet.defaultDB = locationHostSplit[0].toLowerCase();
-                                //TODO make sure this is going to be de defualt URL
-                                userDTO.configLisNet.baseUrl = 'http://'+userDTO.configLisNet.defaultDB+'.lisnet.com.br/node/homolog';
-                            } else if (locationHostSplit[0] && locationHostSplit[0] === 'localhost' || locationHostSplit[0] === '192' || locationHostSplit[0] === '127' || locationHostSplit[0] === 'developer') {
-                                console.log('localhost ......');
-        //                    userDTO.configLisNet.defaultDB = locationHostSplit[0].toLowerCase();
-                                userDTO.configLisNet.baseUrl = $location.protocol()+'://'+location.host+'/node/dev';
+                    var locationHostSplit = $location.host().split(".");
+                    var u = $location.absUrl();
+                    var split = u.split("/");
+                    split.splice(split.length - 3, 3);
+                    var urlFinal = '';
+                    for (var i = 0; i < split.length; i++) {
+                        urlFinal = urlFinal + split[i] + '/';
+                    }
+                    urlFinal = urlFinal + 'lisnet';
+                    console.log(urlFinal);
+                    userDTO.configLisNet.baseUrl = urlFinal;
+                    //                userDTO.configLisNet.defaultDB = locationHostSplit[0].toLowerCase();
+                    //                console.log(_param1DBName);
+                    if (locationHostSplit[0] && locationHostSplit[0] !== 'localhost' && locationHostSplit[0] !== '192' && locationHostSplit[0] !== '127' && locationHostSplit[0] !== 'developer') {
+                        console.log('online ...... locationHostSplit[0].toLowerCase() =  ' + locationHostSplit[0].toLowerCase());
+                        userDTO.configLisNet.defaultDB = locationHostSplit[0].toLowerCase();
+                        //TODO make sure this is going to be de defualt URL
+                        userDTO.configLisNet.baseUrl = 'http://' + userDTO.configLisNet.defaultDB + '.lisnet.com.br/node/homolog';
+                    } else if (locationHostSplit[0] && locationHostSplit[0] === 'localhost' || locationHostSplit[0] === '192' || locationHostSplit[0] === '127' || locationHostSplit[0] === 'developer') {
+                        console.log('localhost ......');
+                        //                    userDTO.configLisNet.defaultDB = locationHostSplit[0].toLowerCase();
+                        userDTO.configLisNet.baseUrl = $location.protocol() + '://' + location.host + '/node/dev';
 //                                console.log('userDTO.configLisNet.baseUrl = '+userDTO.configLisNet.baseUrl);
-                            } else if ($location.protocol() === 'file') {
-                                console.log('cordova .......');
-                                userDTO.configLisNet.baseUrl = urlFinal;
-                                var ___url = 'http://einstein.lisnet.com.br/node/homolog';
-                                userDTO.configLisNet.baseUrl = ___url;
-                                userDTO.configLisNet.defaultDB = 'einstein';
-                            }
+                    } else if ($location.protocol() === 'file') {
+                        console.log('cordova .......');
+                        userDTO.configLisNet.baseUrl = urlFinal;
+                        var ___url = 'http://einstein.lisnet.com.br/node/homolog';
+                        userDTO.configLisNet.baseUrl = ___url;
+                        userDTO.configLisNet.defaultDB = 'einstein';
+                    }
 
 
                 } else {
-                    console.log('jah foi configurado ..... angular.isDefined = .'+angular.isDefined(userDTO));
-                    console.log('jah foi configurado ..... angular.isDefined  userDTO.configLisNet = .'+angular.isDefined(userDTO.configLisNet));
+                    console.log('jah foi configurado ..... angular.isDefined = .' + angular.isDefined(userDTO));
+                    console.log('jah foi configurado ..... angular.isDefined  userDTO.configLisNet = .' + angular.isDefined(userDTO.configLisNet));
                 }
                 var _param1DBName = $location.search()['dbname'];
                 if (_param1DBName && _param1DBName.length >= intDbLength) {

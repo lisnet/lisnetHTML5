@@ -113,21 +113,22 @@ console.log('construing config , registrando state');
                 data: {pageTitle: 'Login', specialClass: 'gray-bg'},
                 resolve: {
                     loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load([
-                             {
-                                files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
-                            },
-                            {
-                                name: 'oitozero.ngSweetAlert',
-                                files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
-                            },
-                            {
-                                files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
-                            }
-                        ]);
+                        return $ocLazyLoad.load(telaComplexa());
                     }
                 }
             })
+ //                                [
+//                             {
+//                                files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
+//                            },
+//                            {
+//                                name: 'oitozero.ngSweetAlert',
+//                                files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
+//                            },
+//                            {
+//                                files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
+//                            }
+//                        ]
             .state('widgets', {
                 abstract: true,
                 url: "/widgets",

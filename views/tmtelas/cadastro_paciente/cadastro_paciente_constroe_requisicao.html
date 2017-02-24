@@ -1,7 +1,7 @@
 <fieldset>
     <div class="ibox-content  animated fadeInRight" ng-controller="cadastroPaciente" >
 
-        
+
 
         <div class="row">
             <div class="col-lg-12" >
@@ -51,8 +51,16 @@
                         <div   ng-messages-include="views/tmtelas/messages.html" ></div>
                     </div>
                 </div>
-                
-                
+
+            </div>
+            <!--{{userDTO.cadastroPaciente.paciente}}-->
+        </div>
+
+        <hr>
+        
+        <div class="row  solicitacaopanel">
+            <div class="col-lg-12  " >
+
                 <div class="col-lg-4 "  ng-if="userDTO.cadastroPaciente.config.UNI_ST_CODIGO.visible" >
                     <label >{{userDTO.cadastroPaciente.config.UNI_ST_CODIGO.label}}</label>
                     <div class="form-group form-inline ">
@@ -64,7 +72,7 @@
                         <input  style="width: 75%"  type="text" class="form-control inputsolicitacaoteladesc"  name="UNI_ST_DESCRICAO"   ng-model="userDTO.cadastroPaciente.requisicao.unidade.UNI_ST_DESCRICAO" ng-disabled="true" />
                     </div>
                 </div>
-                
+
                 <div class="col-lg-4 "  ng-if="userDTO.cadastroPaciente.config.ORI_ST_CODIGO.visible" >
                     <label >{{userDTO.cadastroPaciente.config.ORI_ST_CODIGO.label}}</label>
                     <div class="form-group form-inline ">
@@ -87,7 +95,7 @@
                         <input   style="width: 75%"  type="text" class="form-control inputsolicitacaoteladesc"  name="CON_ST_DESCRICAO"   ng-model="userDTO.cadastroPaciente.requisicao.convenio.CON_ST_DESCRICAO" ng-disabled="true" />
                     </div>
                 </div>
-                
+
                 <div class="col-lg-4 "  ng-if="userDTO.cadastroPaciente.config.REG_ST_CODIGO.visible" >
                     <label >{{userDTO.cadastroPaciente.config.REG_ST_CODIGO.label}}</label>
                     <div class="form-group form-inline ">
@@ -99,7 +107,7 @@
                         <input   style="width: 75%"  type="text" class="form-control inputsolicitacaoteladesc"  name="REG_ST_DESCRICAO"   ng-model="userDTO.cadastroPaciente.requisicao.regra.REG_ST_DESCRICAO" ng-disabled="true" />
                     </div>
                 </div>
-                
+
                 <div class="col-lg-4 "  ng-if="userDTO.cadastroPaciente.config.LOC_ST_CODIGO.visible" >
                     <label >{{userDTO.cadastroPaciente.config.LOC_ST_CODIGO.label}}</label>
                     <div class="form-group form-inline ">
@@ -111,7 +119,7 @@
                         <input   style="width: 75%"  type="text" class="form-control inputsolicitacaoteladesc"  name="LOC_ST_DESCRICAO"   ng-model="userDTO.cadastroPaciente.requisicao.local.LOC_ST_DESCRICAO" ng-disabled="true" />
                     </div>
                 </div>
-                
+
                 <div class="col-lg-4 "  ng-if="userDTO.cadastroPaciente.config.CID_ST_CODIGO.visible" >
                     <label >{{userDTO.cadastroPaciente.config.CID_ST_CODIGO.label}}</label>
                     <div class="form-group form-inline ">
@@ -127,6 +135,5 @@
             </div>
         </div>
         <hr>
-        <!--{{userDTO.cadastroPaciente.paciente}}-->
     </div>
 </fieldset>

@@ -67,7 +67,7 @@
                         <select   name="PAC_ST_ESTADO"  id="pesquisas" class="chosen-select form-control "   autofocus
                                     ng-model="userDTO.cadastroPaciente.paciente.PAC_ST_ESTADO" 
                                     ng-disabled="userDTO.cadastroPaciente.config.PAC_ST_ESTADO.disable" ng-required="{{userDTO.cadastroPaciente.config.PAC_ST_ESTADO.required}}" >
-                            <option ng-repeat="u in userDTO.cadastroPaciente.ufs " value="{{u}}"  >{{u}}</option>
+                            <option ng-repeat="u in userDTO.ufs " value="{{u}}"  >{{u}}</option>
                         </select>
                         <div ng-messages="cpform.PAC_ST_ESTADO.$error"  class="ngmesssagecpform" >
                                     <div   ng-messages-include="views/tmtelas/messages.html" ></div>

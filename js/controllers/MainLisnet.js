@@ -77,7 +77,7 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
     
     this.buscaUser = function (_param1, _param2) {
         if (_param1 && _param2 ) {
-            var modalLoading = notificacaoProvider.modalLoading('Carregando ','Buscando usuário na base, aguarde  ...',$scope);
+            vm.modalLoading = notificacaoProvider.modalLoading('Carregando ','Buscando usuário na base, aguarde  ...',$scope);
             _param1 = _param1.toUpperCase();
             _param2 = _param2.toUpperCase();
                 try{
@@ -97,15 +97,15 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
                                     this.userDTO.UNI_ST_CODIGO = retorno.UNI_ST_CODIGO;
 //                                    this.log('$scope.userDTO.perfilId: '+this.userDTO.perfilId);
                                     $localStorage.userDTO = this.userDTO;
-                                    buscaUsuarioMenu(_param1, this.userDTO.PUS_ST_CODIGO, modalLoading ) ;
+                                    buscaUsuarioMenu(_param1, this.userDTO.PUS_ST_CODIGO ) ;
                                 } else {
-                                    modalLoading.dismiss('cancel');
+                                    vm.modalLoading.dismiss('cancel');
                                     $timeout(function () { 
                                         notificacaoProvider.sweetDialog("Usuário inválido", "Usuário não tem credencias para entrar no sistema, favor contactar o suporte. 2",'warning','red','X');
                                     }, intMinimoDelay);
                                 }
                             }, function errorCallback(response) {
-                                modalLoading.dismiss('cancel');
+                                vm.modalLoading.dismiss('cancel');
                                 console.log(response.statusText);
 //                                TODO loading with SweetDialog
                                 $timeout(function () { 
@@ -125,7 +125,7 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
 
 
 
-    function  buscaUsuarioMenu(login, perfil,  modalLoading) {
+    function  buscaUsuarioMenu(login, perfil) {
         buscaAPIService.buscaUsuarioMenuJSONAjax(login, perfil, this.userDTO.configLisNet)
                 .then(function successCallback(response) {
                     this.userDTO.perfil = resumePerfilService.resume(response.data);
@@ -140,14 +140,16 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
                         //localStorage do userDTO para possibiliar  o refresh F5 , o perfil faz parte da autorizacao do login .
                         $localStorage.userDTO = this.userDTO;
 //                        $state.go(stateGO, {userDTO: angular.toJson(this.userDTO)});
-                        $state.go('widgets.lisnet');
+//                        $state.go('widgets.lisnet');
+                        vm.stateGO('widgets.lisnet');
                         //todas as chamadas no seu  tempo p nao sobrecarregar nem o cliente nem o servidor
                         $timeout(function () {
 //                            $timeout(function (){gerenciaRelatorioService.atualizaRelatorios(this.userDTO);
 //                                                         shareuser.userDTO = this.userDTO;
 //                                                        $localStorage.userDTO = this.userDTO;
 //                              },800);
-                            modalLoading.dismiss('cancel');
+//                              
+//                            vm.modalLoading.dismiss('cancel');
                                  $timeout(function () {
                                       buscaAPIService.buscaUnidades(this.userDTO.USU_ST_CODIGO, this.userDTO.configLisNet).then(function sucessCallBack(response) {
                                           this.userDTO.unidades = response.data;
@@ -171,12 +173,12 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
                         }, 500);
                         
                     } else {
-                        modalLoading.dismiss('cancel');
+                        vm.modalLoading.dismiss('cancel');
                         $timeout(function () { 
                                     notificacaoProvider.sweetDialog("Usuário não tem credencias", 'Usuário não tem credencias para entrar no sistema, favor contactar o suporte.','info','red','X');}, intMinimoDelay);
                     }
                 }, function errorCallback(response) {
-                    modalLoading.dismiss('cancel');
+                    vm.modalLoading.dismiss('cancel');
                         $timeout(function () { 
                                     notificacaoProvider.sweetDialog("Sem conunicação", 'Sem internet ou servidor fora do ar .. ','info','red','X');
                                 }, intMinimoDelay);
@@ -215,10 +217,7 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
                                 } else if (stateGO !== 'widgets.lisnet') {
                                     this.userDTO.hotPages.push($state.current);
                                 }
-                               
-//                                vm.carregando = false;
-//                        console.log(JSON.stringify($state.current,null, 2));
-                            }, 1500);
+                            }, 500);
 
                         } else {
 //                    userDTO.modalLoading.dismiss('cancel');
@@ -247,7 +246,13 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
         }
         
          $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams, options) {
-                                        vm.carregando = false;
+             console.log('$stateChangeSuccess : '+$state.current.name);
+             vm.carregando = false;
+             if(vm.modalLoading){
+                 console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<  Cancelando Loading modal  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
+                vm.modalLoading.dismiss('cancel');
+             }
+             
           });
 
     };

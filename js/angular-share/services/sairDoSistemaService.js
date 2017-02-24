@@ -30,28 +30,35 @@ angular.module('lisnet')
             };
             
             this.validarLogin = function () {
-                var userDTO;
+                var userDTO = shareuser.userDTO && shareuser.userDTO.perfil ? shareuser.userDTO : $localStorage.userDTO;
                 if(shareuser.userDTO && shareuser.userDTO.perfil  ){
                     console.log('Pegando do share service  da memoria ...');
-                    userDTO = shareuser.userDTO;
+//                    userDTO = shareuser.userDTO;
                 }else{
                     console.log('Pegando do $localStorage ...');
-                    userDTO = $localStorage.userDTO;
+//                    userDTO = $localStorage.userDTO;
                 }
                 
-                if (!userDTO) {
-                    this.logOut();
-//                    $window.open('index.html', '_self');
-                } else if (userDTO && !userDTO.status) {
-                    this.logOut();
-//                    $window.open('index.html', '_self');
-                } else if (userDTO && userDTO.status && userDTO.status !== 'in') {
-                    this.logOut();
-//                    $window.open('index.html', '_self');
-                } else {
+                if (userDTO && userDTO.USU_CH_ATIVO && userDTO.USU_CH_ATIVO === 'S' && userDTO.perfil && userDTO.status && userDTO.status === 'in') {
                     return userDTO;
+                } else {
                     console.log('validarLogin ....');
+                    this.logOut();
                 }
+                
+//                if (!userDTO) {
+//                    this.logOut();
+////                    $window.open('index.html', '_self');
+//                } else if (userDTO && !userDTO.status) {
+//                    this.logOut();
+////                    $window.open('index.html', '_self');
+//                } else if (userDTO && userDTO.status && userDTO.status !== 'in') {
+//                    this.logOut();
+////                    $window.open('index.html', '_self');
+//                } else {
+//                    return userDTO;
+//                    console.log('validarLogin ....');
+//                }
                 
                 
                 

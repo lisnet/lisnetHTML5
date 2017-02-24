@@ -18,7 +18,7 @@
                         <label >{{userDTO.cadastroPaciente.config.PAC_ST_NOME.label}}</label>
                         <input  type="text" class="form-control"  name="PAC_ST_NOME" ng-model="userDTO.cadastroPaciente.paciente.PAC_ST_NOME" ng-disabled="userDTO.cadastroPaciente.config.PAC_ST_NOME.disable"
                                 ng-minlength="userDTO.cadastroPaciente.config.PAC_ST_NOME.min"  ng-maxlength="userDTO.cadastroPaciente.config.PAC_ST_NOME.max"  
-                                capitalize focus="inputPAC_ST_NOMEBUSCA"   ng-required="{{userDTO.cadastroPaciente.config.PAC_ST_NOME.required}}"  >
+                                capitalize focus="inputPAC_ST_NOME"   ng-required="{{userDTO.cadastroPaciente.config.PAC_ST_NOME.required}}"    >
                         <div ng-messages="cpform.PAC_ST_NOME.$error"  class="ngmesssagecpform"  >
                                     <div   ng-messages-include="views/tmtelas/messages.html" ></div>
                          </div>
