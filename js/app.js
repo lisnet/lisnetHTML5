@@ -18,7 +18,8 @@
         'ngStorage',
         'ngResource',
         'oitozero.ngSweetAlert',
-        'ngMessages'
+        'ngMessages',
+        'cfp.hotkeys'
 //        'daterangepicker'
     ]);
 })();

@@ -27,6 +27,7 @@ angular.module('lisnet')
 //            $scope = $scope.$new(true);
 
                 $window.open('index.html', '_self');
+                
             };
             
             this.validarLogin = function () {
@@ -35,6 +36,7 @@ angular.module('lisnet')
                     console.log('Pegando do share service  da memoria ...');
 //                    userDTO = shareuser.userDTO;
                 }else{
+                    shareuser.userDTO = userDTO;
                     console.log('Pegando do $localStorage ...');
 //                    userDTO = $localStorage.userDTO;
                 }
@@ -42,25 +44,9 @@ angular.module('lisnet')
                 if (userDTO && userDTO.USU_CH_ATIVO && userDTO.USU_CH_ATIVO === 'S' && userDTO.perfil && userDTO.status && userDTO.status === 'in') {
                     return userDTO;
                 } else {
-                    console.log('validarLogin ....');
+                    console.log('login invalido , saindo do sistema agora ..');
                     this.logOut();
                 }
-                
-//                if (!userDTO) {
-//                    this.logOut();
-////                    $window.open('index.html', '_self');
-//                } else if (userDTO && !userDTO.status) {
-//                    this.logOut();
-////                    $window.open('index.html', '_self');
-//                } else if (userDTO && userDTO.status && userDTO.status !== 'in') {
-//                    this.logOut();
-////                    $window.open('index.html', '_self');
-//                } else {
-//                    return userDTO;
-//                    console.log('validarLogin ....');
-//                }
-                
-                
                 
             };
 

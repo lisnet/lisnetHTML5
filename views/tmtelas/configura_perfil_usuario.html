@@ -8,7 +8,7 @@
      
         <div class="row">
             <div class="col-lg-12">
-                <form name="configuraperfilusuarioform"   ng-submit="configuraPerfilUsuario.submit(configuraperfilusuarioform.$valid)"   >
+                <form name="configuraperfilusuarioform"   ng-submit="configuraPerfilUsuario.submit(configuraperfilusuarioform.$valid)"  autocomplete="off"   >
 
 
                     <div class="col-lg-2" >
@@ -16,7 +16,7 @@
                         <div class="form-group"  >
                             <input class="form-control  "  required  name="USU_ST_NOME"  type="text" ng-model="userDTO.configuraPerfil.usuario.USU_ST_NOME" ng-disabled="userDTO.configuraPerfil.editar" 
                                    ng-minlength="userDTO.configuraPerfil.lengthMinNome" ng-maxlength="userDTO.configuraPerfil.lengthMaxNome"  capitalize  focus="inputUSU_ST_NOMEFocus"  >
-                            <div ng-messages="configuraperfilusuarioform.USU_ST_NOME.$error">
+                            <div ng-messages="configuraperfilusuarioform.USU_ST_NOME.$error"  class="error-messages" >
                                     <div   ng-messages-include="views/tmtelas/messages.html" ></div>
                             </div>
 <!--                            <div role="alert " >
@@ -44,7 +44,7 @@
                         <div class="form-group" >
                                 <input  name="USU_ST_SENHACONFIRMAR" required  class="form-control  " type="password" ng-model="userDTO.configuraPerfil.usuario.USU_ST_SENHACONFIRMAR" ng-disabled="userDTO.configuraPerfil.editar"  ng-minlength="userDTO.configuraPerfil.lengthMinSenha" ng-maxlength="userDTO.configuraPerfil.lengthMaxSenha" 
                                         compare-to="userDTO.configuraPerfil.usuario.USU_ST_SENHA"  capitalize >
-                                <div ng-messages="configuraperfilusuarioform.USU_ST_SENHACONFIRMAR.$error">
+                                <div ng-messages="configuraperfilusuarioform.USU_ST_SENHACONFIRMAR.$error" class="error-messages" >
                                     <div   ng-messages-include="views/tmtelas/messages.html" ></div>
                                 </div>
 <!--                                <div role="alert " >
@@ -61,7 +61,7 @@
                         <label >Email</label>
                         <div class="form-group"  >
                             <input class="form-control"   required  name="USU_ST_EMAIL"  type="email" ng-model="userDTO.configuraPerfil.usuario.USU_ST_EMAIL" ng-disabled="userDTO.configuraPerfil.editar"   ng-minlength="userDTO.configuraPerfil.lengthMinEmail" ng-maxlength="userDTO.configuraPerfil.lengthMaxEmail"  >
-                            <div ng-messages="configuraperfilusuarioform.USU_ST_EMAIL.$error">
+                            <div ng-messages="configuraperfilusuarioform.USU_ST_EMAIL.$error" class="error-messages" >
                                     <div   ng-messages-include="views/tmtelas/messages.html" ></div>
                             </div>
 <!--                            <div role="alert " >

@@ -437,6 +437,37 @@ angular.module('lisnet').service("buscaAPIService",function ($http){
             }});
     };
     
+    this.buscaPaciente = function (configLisNet,pacInCodigo){
+        var params = '?PAC_IN_CODIGO=' + pacInCodigo + '&dbname='+configLisNet.defaultDB;
+        
+        var url = configLisNet.baseUrl +'/buscaPaciente'+ params;
+        console.log('buscaPaciente : '+url);
+        return $http({method : 'GET',url : url,
+            headers : {
+                'Content-Type' : 'application/x-www-form-urlencoded',
+                'Access-Control-Allow-Headers': '*',
+                'Access-Control-Allow-Methods':'GET, POST, PUT',
+                'Access-Control-Allow-Origin': '*'
+            }});
+    };
+    
+    this.buscaEndereco = function (configLisNet,cep){
+        
+        var urlExterna = 'https://viacep.com.br/ws/'+cep+'/json/';
+        var params = '?caminho=' + urlExterna;
+        var url = configLisNet.baseUrl +'/buscaPaciente'+ params;
+        
+        console.log('buscaEndereco : '+cep);
+        
+        return $http({method : 'GET',url : url,
+            headers : {
+                'Content-Type' : 'application/x-www-form-urlencoded',
+                'Access-Control-Allow-Headers': '*',
+                'Access-Control-Allow-Methods':'GET, POST, PUT',
+                'Access-Control-Allow-Origin': '*'
+            }});
+    };
+    
     
     this.salvaEntidadeTelaPadrao = function (configLisNet,moduloPadrao,uniStCodigo,entidadeJSON){
 //        console.log("salvaEntidadeTelaPadrao = " + JSON.stringify(configLisNet)   + "  ...........");

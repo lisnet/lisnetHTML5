@@ -7,8 +7,8 @@
             <div class="col-lg-2"  ng-if="userDTO.cadastroPaciente.config.REQ_ST_DUM.visible" >
                 <label >{{userDTO.cadastroPaciente.config.REQ_ST_DUM.label}}</label>
                 <input type="text" class="form-control"  name="REQ_ST_DUM"  data-mask="99/99/9999"  ng-model="userDTO.cadastroPaciente.requisicao.REQ_ST_DUM"
-                       ng-disabled="userDTO.cadastroPaciente.config.REQ_ST_DUM.disable" focus="inputREQ_ST_DUM" ng-required="{{userDTO.cadastroPaciente.config.REQ_ST_DUM.required}}" />
-                <div ng-messages="cpform.REQ_ST_DUM.$error"  class="ngmesssagecpform" >
+                       ng-disabled="userDTO.cadastroPaciente.config.REQ_ST_DUM.disable || userDTO.cadastroPaciente.config.constroe_complementares" focus="inputREQ_ST_DUM" ng-required="{{userDTO.cadastroPaciente.config.REQ_ST_DUM.required}}" />
+                <div ng-messages="cpform.REQ_ST_DUM.$error"  class="error-messages" >
                     <div   ng-messages-include="views/tmtelas/messages.html" ></div>
                 </div>
             </div>
@@ -16,11 +16,11 @@
                 <label >{{userDTO.cadastroPaciente.config.REQ_CH_GESTANTE.label}}</label>
                 <select   name="REQ_CH_GESTANTE"  id="pesquisas" class="chosen-select form-control "   autofocus
                           ng-model="userDTO.cadastroPaciente.requisicao.REQ_CH_GESTANTE" 
-                          ng-disabled="userDTO.cadastroPaciente.config.REQ_CH_GESTANTE.disable" ng-required="{{userDTO.cadastroPaciente.config.REQ_CH_GESTANTE.required}}" >
+                          ng-disabled="userDTO.cadastroPaciente.config.REQ_CH_GESTANTE.disable  || userDTO.cadastroPaciente.config.constroe_complementares" ng-required="{{userDTO.cadastroPaciente.config.REQ_CH_GESTANTE.required}}" >
                     <option  value="S" >SIM</option>
                     <option  value="N" >NÃO</option>
                 </select>
-                <div ng-messages="cpform.REQ_CH_GESTANTE.$error"  class="ngmesssagecpform" >
+                <div ng-messages="cpform.REQ_CH_GESTANTE.$error"  class="error-messages" >
                     <div   ng-messages-include="views/tmtelas/messages.html" ></div>
                 </div>
             </div>
@@ -29,11 +29,11 @@
                 <label >{{userDTO.cadastroPaciente.config.REQ_CH_RN.label}}</label>
                 <select   name="REQ_CH_RN"  id="pesquisas" class="chosen-select form-control "   autofocus
                           ng-model="userDTO.cadastroPaciente.requisicao.REQ_CH_RN" 
-                          ng-disabled="userDTO.cadastroPaciente.config.REQ_CH_RN.disable" ng-required="{{userDTO.cadastroPaciente.config.REQ_CH_RN.required}}" >
+                          ng-disabled="userDTO.cadastroPaciente.config.REQ_CH_RN.disable || userDTO.cadastroPaciente.config.constroe_complementares" ng-required="{{userDTO.cadastroPaciente.config.REQ_CH_RN.required}}" >
                     <option  value="S" >SIM</option>
                     <option  value="N" >NÃO</option>
                 </select>
-                <div ng-messages="cpform.REQ_CH_RN.$error"  class="ngmesssagecpform" >
+                <div ng-messages="cpform.REQ_CH_RN.$error"  class="error-messages" >
                     <div   ng-messages-include="views/tmtelas/messages.html" ></div>
                 </div>
             </div>
@@ -41,8 +41,8 @@
             <div class="col-lg-1"  ng-if="userDTO.cadastroPaciente.config.REQ_ST_PESO.visible" >
                 <label >{{userDTO.cadastroPaciente.config.REQ_ST_PESO.label}}</label>
                 <input type="text" class="form-control"  name="REQ_ST_PESO"  ng-model="userDTO.cadastroPaciente.requisicao.REQ_ST_PESO"
-                       ng-disabled="userDTO.cadastroPaciente.config.REQ_ST_PESO.disable" focus="inputREQ_ST_PESO" ng-required="{{userDTO.cadastroPaciente.config.REQ_ST_PESO.required}}" />
-                <div ng-messages="cpform.REQ_ST_PESO.$error"  class="ngmesssagecpform" >
+                       ng-disabled="userDTO.cadastroPaciente.config.REQ_ST_PESO.disable || userDTO.cadastroPaciente.config.constroe_complementares" focus="inputREQ_ST_PESO" ng-required="{{userDTO.cadastroPaciente.config.REQ_ST_PESO.required}}" />
+                <div ng-messages="cpform.REQ_ST_PESO.$error"  class="error-messages" >
                     <div   ng-messages-include="views/tmtelas/messages.html" ></div>
                 </div>
             </div>
@@ -50,8 +50,8 @@
             <div class="col-lg-1"  ng-if="userDTO.cadastroPaciente.config.REQ_ST_ALTURA.visible" >
                 <label >{{userDTO.cadastroPaciente.config.REQ_ST_ALTURA.label}}</label>
                 <input type="text" class="form-control"  name="REQ_ST_ALTURA"  ng-model="userDTO.cadastroPaciente.requisicao.REQ_ST_ALTURA"
-                       ng-disabled="userDTO.cadastroPaciente.config.REQ_ST_ALTURA.disable" focus="inputREQ_ST_ALTURA" ng-required="{{userDTO.cadastroPaciente.config.REQ_ST_ALTURA.required}}" />
-                <div ng-messages="cpform.REQ_ST_ALTURA.$error"  class="ngmesssagecpform" >
+                       ng-disabled="userDTO.cadastroPaciente.config.REQ_ST_ALTURA.disable || userDTO.cadastroPaciente.config.constroe_complementares" focus="inputREQ_ST_ALTURA" ng-required="{{userDTO.cadastroPaciente.config.REQ_ST_ALTURA.required}}" />
+                <div ng-messages="cpform.REQ_ST_ALTURA.$error"  class="error-messages" >
                     <div   ng-messages-include="views/tmtelas/messages.html" ></div>
                 </div>
             </div>
@@ -59,9 +59,10 @@
             <div class="col-lg-4 "  ng-if="userDTO.cadastroPaciente.config.COL_ST_CODIGO.visible" >
                 <label >{{userDTO.cadastroPaciente.config.COL_ST_CODIGO.label}}</label>
                 <div class="form-group form-inline ">
-                    <input   style="width: 15%;" type="text" class="form-control  "  name="COL_ST_CODIGO"   ng-model="userDTO.cadastroPaciente.requisicao.COL_ST_CODIGO" ng-disabled="userDTO.cadastroPaciente.config.COL_ST_CODIGO.disable"
+                    <input   style="width: 15%;" type="text" class="form-control  "  name="COL_ST_CODIGO"   ng-model="userDTO.cadastroPaciente.requisicao.COL_ST_CODIGO" 
+                             ng-disabled="userDTO.cadastroPaciente.config.COL_ST_CODIGO.disable || userDTO.cadastroPaciente.config.constroe_complementares"
                              capitalize focus="inputCOL_ST_CODIGO"  ng-required="{{userDTO.cadastroPaciente.config.COL_ST_CODIGO.required}}" />
-                    <div ng-messages="cpform.COL_ST_CODIGO.$error"   class="ngmesssagecpform" >
+                    <div ng-messages="cpform.COL_ST_CODIGO.$error"   class="error-messages" >
                         <div   ng-messages-include="views/tmtelas/messages.html" ></div>
                     </div>
                     <input   style="width: 75%"  type="text" class="form-control inputsolicitacaoteladesc"  name="COL_ST_CODIGO"   ng-model="userDTO.cadastroPaciente.requisicao.coletor.COL_ST_CODIGO" ng-disabled="true" />
@@ -71,8 +72,8 @@
             <div class="col-lg-2"  ng-if="userDTO.cadastroPaciente.config.REQ_DT_COLETA.visible" >
                 <label >{{userDTO.cadastroPaciente.config.REQ_DT_COLETA.label}}</label>
                 <input type="text" class="form-control"  name="REQ_DT_COLETA"  data-mask="99/99/9999  99:99"  ng-model="userDTO.cadastroPaciente.requisicao.REQ_DT_COLETA"
-                       ng-disabled="userDTO.cadastroPaciente.config.REQ_DT_COLETA.disable" focus="inputREQ_DT_COLETA" ng-required="{{userDTO.cadastroPaciente.config.REQ_DT_COLETA.required}}" />
-                <div ng-messages="cpform.REQ_DT_COLETA.$error"  class="ngmesssagecpform" >
+                       ng-disabled="userDTO.cadastroPaciente.config.REQ_DT_COLETA.disable || userDTO.cadastroPaciente.config.constroe_complementares" focus="inputREQ_DT_COLETA" ng-required="{{userDTO.cadastroPaciente.config.REQ_DT_COLETA.required}}" />
+                <div ng-messages="cpform.REQ_DT_COLETA.$error"  class="error-messages" >
                     <div   ng-messages-include="views/tmtelas/messages.html" ></div>
                 </div>
             </div>
@@ -87,9 +88,9 @@
             <div class="col-lg-2"  ng-if="userDTO.cadastroPaciente.config.REQ_ST_QUARTO.visible" >
                 <label >{{userDTO.cadastroPaciente.config.REQ_ST_QUARTO.label}}</label>
                 <input type="text" class="form-control"  name="REQ_ST_QUARTO"  ng-model="userDTO.cadastroPaciente.requisicao.REQ_ST_QUARTO"
-                       ng-disabled="userDTO.cadastroPaciente.config.REQ_ST_QUARTO.disable" focus="inputREQ_ST_QUARTO" ng-required="{{userDTO.cadastroPaciente.config.REQ_ST_QUARTO.required}}" 
+                       ng-disabled="userDTO.cadastroPaciente.config.REQ_ST_QUARTO.disable || userDTO.cadastroPaciente.config.constroe_complementares" focus="inputREQ_ST_QUARTO" ng-required="{{userDTO.cadastroPaciente.config.REQ_ST_QUARTO.required}}" 
                        ng-minlength="userDTO.cadastroPaciente.config.REQ_ST_QUARTO.min"  ng-maxlength="userDTO.cadastroPaciente.config.REQ_ST_QUARTO.max" />
-                <div ng-messages="cpform.REQ_ST_QUARTO.$error"  class="ngmesssagecpform" >
+                <div ng-messages="cpform.REQ_ST_QUARTO.$error"  class="error-messages" >
                     <div   ng-messages-include="views/tmtelas/messages.html" ></div>
                 </div>
             </div>
@@ -97,9 +98,9 @@
             <div class="col-lg-2"  ng-if="userDTO.cadastroPaciente.config.REQ_ST_LEITO.visible" >
                 <label >{{userDTO.cadastroPaciente.config.REQ_ST_LEITO.label}}</label>
                 <input type="text" class="form-control"  name="REQ_ST_LEITO"  ng-model="userDTO.cadastroPaciente.requisicao.REQ_ST_LEITO"
-                       ng-disabled="userDTO.cadastroPaciente.config.REQ_ST_LEITO.disable" focus="inputREQ_ST_LEITO" ng-required="{{userDTO.cadastroPaciente.config.REQ_ST_LEITO.required}}" 
+                       ng-disabled="userDTO.cadastroPaciente.config.REQ_ST_LEITO.disable || userDTO.cadastroPaciente.config.constroe_complementares" focus="inputREQ_ST_LEITO" ng-required="{{userDTO.cadastroPaciente.config.REQ_ST_LEITO.required}}" 
                        ng-minlength="userDTO.cadastroPaciente.config.REQ_ST_LEITO.min"  ng-maxlength="userDTO.cadastroPaciente.config.REQ_ST_LEITO.max" />
-                <div ng-messages="cpform.REQ_ST_LEITO.$error"  class="ngmesssagecpform" >
+                <div ng-messages="cpform.REQ_ST_LEITO.$error"  class="error-messages" >
                     <div   ng-messages-include="views/tmtelas/messages.html" ></div>
                 </div>
             </div>
@@ -107,9 +108,9 @@
             <div class="col-lg-8"  ng-if="userDTO.cadastroPaciente.config.REQ_BL_OBSERVACAO.visible" >
                 <label >{{userDTO.cadastroPaciente.config.REQ_BL_OBSERVACAO.label}}</label>
                 <input type="text" class="form-control"  name="REQ_BL_OBSERVACAO"  ng-model="userDTO.cadastroPaciente.requisicao.REQ_BL_OBSERVACAO"
-                       ng-disabled="userDTO.cadastroPaciente.config.REQ_BL_OBSERVACAO.disable" focus="inputREQ_BL_OBSERVACAO" ng-required="{{userDTO.cadastroPaciente.config.REQ_BL_OBSERVACAO.required}}" 
+                       ng-disabled="userDTO.cadastroPaciente.config.REQ_BL_OBSERVACAO.disable || userDTO.cadastroPaciente.config.constroe_complementares" focus="inputREQ_BL_OBSERVACAO" ng-required="{{userDTO.cadastroPaciente.config.REQ_BL_OBSERVACAO.required}}" 
                        ng-minlength="userDTO.cadastroPaciente.config.REQ_BL_OBSERVACAO.min"  ng-maxlength="userDTO.cadastroPaciente.config.REQ_BL_OBSERVACAO.max" />
-                <div ng-messages="cpform.REQ_BL_OBSERVACAO.$error"  class="ngmesssagecpform" >
+                <div ng-messages="cpform.REQ_BL_OBSERVACAO.$error"  class="error-messages" >
                     <div   ng-messages-include="views/tmtelas/messages.html" ></div>
                 </div>
             </div>
@@ -118,4 +119,15 @@
         </div>
     </div>
     <hr>
+        <div class="row " >
+            <div class="col-lg-12  form-inline " >
+                <div  class="pull-right  " >
+                    <a  ng-click="editarTela('cadastrodepacientes.dados_complementares')" class="btn btn-warning  text-center ">Editar &nbsp;|&nbsp;F2</a>
+                    <!--<a  ng-click="salvar('paciente')" class="btn btn-  text-center ">Editar &nbsp;|&nbsp;F2</a>-->
+                    <a ng-click="salvarAlteracoes('cadastrodepacientes.constroe_paciente')"  class="btn btn-info btn-outline"  ng-if="!compara(userDTO.cadastroPaciente.requisicao , userDTO.cadastroPaciente.requisicaoDB)"  data-toggle="tooltip" title="Salvar alterações"  ><i class="fa fa-floppy-o"></i>&nbsp;Salvar&nbsp;|&nbsp;F8</a>
+                    <a ui-sref="cadastrodepacientes.constroe_requisicao" class="btn btn-primary  text-center ">Voltar&nbsp;|&nbsp;Ctrl+esquerda</a>
+                    <a ui-sref="cadastrodepacientes.inclue_exames" class="btn btn-info  text-center ">Proximo&nbsp;|&nbsp;Ctrl+direita</a>
+                </div>
+            </div>
+        </div>
 </div>

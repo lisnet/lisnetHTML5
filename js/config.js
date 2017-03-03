@@ -411,6 +411,11 @@ console.log('construing config , registrando state');
                     }
                 }
             })
+            .state('cadastrodepacientes.busca_paciente', {
+                url: 'busca_paciente',
+                templateUrl: 'views/tmtelas/cadastro_paciente/cadastro_paciente_busca_paciente.html',
+                data: {pageTitle: 'Busca Paciente',state: 'cadastrodepacientes.busca_paciente'}
+            })
             .state('cadastrodepacientes.constroe_paciente', {
                 url: 'constroe_paciente',
                 templateUrl: 'views/tmtelas/cadastro_paciente/cadastro_paciente_constroe_paciente.html',

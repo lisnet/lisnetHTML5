@@ -10,33 +10,33 @@
                     <div class="col-lg-1"   >
                         <label >{{userDTO.cadastroPaciente.config.PAC_IN_CODIGO.label}}</label>
                         <input  type="text" class="form-control"  name="PAC_IN_CODIGO"   ng-model="userDTO.cadastroPaciente.paciente.PAC_IN_CODIGO" ng-disabled="true" />
-                        <div ng-messages="cpform.PAC_IN_CODIGO.$error"   class="ngmesssagecpform" >
+                        <div ng-messages="cpform.PAC_IN_CODIGO.$error"   class="error-messages" >
                                     <div   ng-messages-include="views/tmtelas/messages.html" ></div>
                          </div>
                     </div>
                     <div class="col-lg-5" >
                         <label >{{userDTO.cadastroPaciente.config.PAC_ST_NOME.label}}</label>
-                        <input  type="text" class="form-control"  name="PAC_ST_NOME" ng-model="userDTO.cadastroPaciente.paciente.PAC_ST_NOME" ng-disabled="userDTO.cadastroPaciente.config.PAC_ST_NOME.disable"
+                        <input  type="text" class="form-control"  name="PAC_ST_NOME" ng-model="userDTO.cadastroPaciente.paciente.PAC_ST_NOME" ng-disabled="userDTO.cadastroPaciente.config.PAC_ST_NOME.disable || userDTO.cadastroPaciente.config.constroe_paciente"
                                 ng-minlength="userDTO.cadastroPaciente.config.PAC_ST_NOME.min"  ng-maxlength="userDTO.cadastroPaciente.config.PAC_ST_NOME.max"  
                                 capitalize focus="inputPAC_ST_NOME"   ng-required="{{userDTO.cadastroPaciente.config.PAC_ST_NOME.required}}"    >
-                        <div ng-messages="cpform.PAC_ST_NOME.$error"  class="ngmesssagecpform"  >
+                        <div ng-messages="cpform.PAC_ST_NOME.$error"  class="error-messages"  >
                                     <div   ng-messages-include="views/tmtelas/messages.html" ></div>
                          </div>
-                        
+                        {{userDTO.cadastroPaciente.constroe_paciente}}
                     </div>
                     <div class="col-lg-3"  ng-if="userDTO.cadastroPaciente.config.PAC_DT_NASCIMENTO.visible" >
                         <label >{{userDTO.cadastroPaciente.config.PAC_DT_NASCIMENTO.label}}</label>
                             <input type="text" class="form-control"  name="PAC_DT_NASCIMENTO"  data-mask="99/99/9999" placeholder="Data Nascimento" ng-model="userDTO.cadastroPaciente.paciente.PAC_DT_NASCIMENTO"
-                                   ng-disabled="userDTO.cadastroPaciente.config.PAC_DT_NASCIMENTO.disable" focus="inputPAC_DT_NASCIMENTO" ng-required="{{userDTO.cadastroPaciente.config.PAC_DT_NASCIMENTO.required}}" />
-                            <div ng-messages="cpform.PAC_DT_NASCIMENTO.$error"  class="ngmesssagecpform" >
+                                   ng-disabled="userDTO.cadastroPaciente.config.PAC_DT_NASCIMENTO.disable || userDTO.cadastroPaciente.config.constroe_paciente" focus="inputPAC_DT_NASCIMENTO" ng-required="{{userDTO.cadastroPaciente.config.PAC_DT_NASCIMENTO.required}}" />
+                            <div ng-messages="cpform.PAC_DT_NASCIMENTO.$error"  class="error-messages" >
                                 <div   ng-messages-include="views/tmtelas/messages.html" ></div>
                             </div>
                     </div>
                     <div class="col-lg-1"  ng-if="userDTO.cadastroPaciente.config.PAC_IN_IDADE.visible">
                         <label >{{userDTO.cadastroPaciente.config.PAC_IN_IDADE.label}}</label>
                             <input type="text" class="form-control"  name="PAC_IN_IDADE"  data-mask="999"  ng-model="userDTO.cadastroPaciente.paciente.PAC_IN_IDADE"
-                                   ng-disabled="userDTO.cadastroPaciente.config.PAC_IN_IDADE.disable" focus="inputPAC_IN_IDADE"  ng-required="{{userDTO.cadastroPaciente.config.PAC_IN_IDADE.required}}"  />
-                            <div ng-messages="cpform.PAC_IN_IDADE.$error"  class="ngmesssagecpform" >
+                                   ng-disabled="userDTO.cadastroPaciente.config.PAC_IN_IDADE.disable || userDTO.cadastroPaciente.config.constroe_paciente" focus="inputPAC_IN_IDADE"  ng-required="{{userDTO.cadastroPaciente.config.PAC_IN_IDADE.required}}"  />
+                            <div ng-messages="cpform.PAC_IN_IDADE.$error"  class="error-messages" >
                                     <div   ng-messages-include="views/tmtelas/messages.html" ></div>
                          </div>
                     </div>
@@ -44,11 +44,11 @@
                         <label ><i class="{{userDTO.cadastroPaciente.config.PAC_ST_SEXO.label}}" aria-hidden="true"></i></label>
                         <select   name="PAC_ST_SEXO"  id="pesquisas" class="chosen-select form-control "  autofocus
                                     ng-model="userDTO.cadastroPaciente.paciente.PAC_ST_SEXO" 
-                                    ng-disabled="userDTO.cadastroPaciente.config.PAC_ST_SEXO.disable" ng-required="{{userDTO.cadastroPaciente.config.PAC_ST_SEXO.required}}" >
+                                    ng-disabled="userDTO.cadastroPaciente.config.PAC_ST_SEXO.disable || userDTO.cadastroPaciente.config.constroe_paciente" ng-required="{{userDTO.cadastroPaciente.config.PAC_ST_SEXO.required}}" >
                                 <option  value="F" >F</option>
                                 <option  value="M" >M</option>
                         </select>
-                        <div ng-messages="cpform.PAC_ST_SEXO.$error"  class="ngmesssagecpform" >
+                        <div ng-messages="cpform.PAC_ST_SEXO.$error"  class="error-messages" >
                                     <div   ng-messages-include="views/tmtelas/messages.html" ></div>
                          </div>
                     </div>
@@ -56,45 +56,45 @@
                         <label >{{userDTO.cadastroPaciente.config.PAC_ST_ESTADOCIVIL.label}}</label>
                         <select   name="PAC_ST_ESTADOCIVIL"  id="pesquisas" class="chosen-select form-control "   autofocus
                                     ng-model="userDTO.cadastroPaciente.paciente.PAC_ST_ESTADOCIVIL" 
-                                    ng-disabled="userDTO.cadastroPaciente.config.PAC_ST_ESTADOCIVIL.disable" ng-required="{{userDTO.cadastroPaciente.config.PAC_ST_ESTADOCIVIL.required}}" >
+                                    ng-disabled="userDTO.cadastroPaciente.config.PAC_ST_ESTADOCIVIL.disable || userDTO.cadastroPaciente.config.constroe_paciente" ng-required="{{userDTO.cadastroPaciente.config.PAC_ST_ESTADOCIVIL.required}}" >
                                 <option  value="SOLTEIRO" >SOLTEIRO</option>
                                 <option  value="CASADO" >CASADO</option>
                                 <option  value="SEPARADO" >SEPARADO</option>
                                 <option  value="UNIÃO ESTÁVEL" >UNIÃO ESTÁVEL</option>
                         </select>
-                        <div ng-messages="cpform.PAC_ST_ESTADOCIVIL.$error"  class="ngmesssagecpform" >
+                        <div ng-messages="cpform.PAC_ST_ESTADOCIVIL.$error"  class="error-messages" >
                                     <div   ng-messages-include="views/tmtelas/messages.html" ></div>
                          </div>
                     </div>
                     <div class="col-lg-2"  ng-if="userDTO.cadastroPaciente.config.PAC_ST_RG.visible" >
                         <label >{{userDTO.cadastroPaciente.config.PAC_ST_RG.label}}</label>
-                        <input  type="text" class="form-control"  name="PAC_ST_RG" data-mask="99.999.999-*"   ng-model="userDTO.cadastroPaciente.paciente.PAC_ST_RG" ng-disabled="userDTO.cadastroPaciente.config.PAC_ST_RG.disable"
+                        <input  type="text" class="form-control"  name="PAC_ST_RG" data-mask="99.999.999-*"   ng-model="userDTO.cadastroPaciente.paciente.PAC_ST_RG" ng-disabled="userDTO.cadastroPaciente.config.PAC_ST_RG.disable || userDTO.cadastroPaciente.config.constroe_paciente"
                                 ng-minlength="userDTO.cadastroPaciente.config.PAC_ST_RG.min"  ng-maxlength="userDTO.cadastroPaciente.config.PAC_ST_RG.max"  capitalize focus="inputPAC_ST_RG"  ng-required="{{userDTO.cadastroPaciente.config.PAC_ST_RG.required}}" />
-                        <div ng-messages="cpform.PAC_ST_RG.$error"  class="ngmesssagecpform" >
+                        <div ng-messages="cpform.PAC_ST_RG.$error"  class="error-messages" >
                                     <div   ng-messages-include="views/tmtelas/messages.html" ></div>
                          </div>
                     </div>
                     <div class="col-lg-2"  ng-if="userDTO.cadastroPaciente.config.PAC_ST_CPF.visible" >
                         <label >{{userDTO.cadastroPaciente.config.PAC_ST_CPF.label}}</label>
-                        <input  style="padding-left: 3px; padding-right: 3px;"  type="text" class="form-control"  name="PAC_ST_CPF" data-mask="999.999.999-99"   ng-model="userDTO.cadastroPaciente.paciente.PAC_ST_CPF" ng-disabled="userDTO.cadastroPaciente.config.PAC_ST_CPF.disable"
+                        <input  style="padding-left: 3px; padding-right: 3px;"  type="text" class="form-control"  name="PAC_ST_CPF" data-mask="999.999.999-99"   ng-model="userDTO.cadastroPaciente.paciente.PAC_ST_CPF" ng-disabled="userDTO.cadastroPaciente.config.PAC_ST_CPF.disable  || userDTO.cadastroPaciente.config.constroe_paciente"
                                 ng-minlength="userDTO.cadastroPaciente.config.PAC_ST_CPF.min"  ng-maxlength="userDTO.cadastroPaciente.config.PAC_ST_CPF.max"  capitalize focus="inputPAC_ST_CPF"  ng-required="{{userDTO.cadastroPaciente.config.PAC_ST_CPF.required}}" />
-                        <div ng-messages="cpform.PAC_ST_CPF.$error"   class="ngmesssagecpform" >
+                        <div ng-messages="cpform.PAC_ST_CPF.$error"   class="error-messages" >
                                     <div   ng-messages-include="views/tmtelas/messages.html" ></div>
                          </div>
                     </div>
                     <div class="col-lg-2"  ng-if="userDTO.cadastroPaciente.config.PAC_IN_CODSUS.visible" >
                         <label >{{userDTO.cadastroPaciente.config.PAC_IN_CODSUS.label}}</label>
-                        <input  type="text" class="form-control"  name="PAC_IN_CODSUS"   ng-model="userDTO.cadastroPaciente.paciente.PAC_IN_CODSUS" ng-disabled="userDTO.cadastroPaciente.config.PAC_IN_CODSUS.disable"
+                        <input  type="text" class="form-control"  name="PAC_IN_CODSUS"   ng-model="userDTO.cadastroPaciente.paciente.PAC_IN_CODSUS" ng-disabled="userDTO.cadastroPaciente.config.PAC_IN_CODSUS.disable  || userDTO.cadastroPaciente.config.constroe_paciente "
                                 ng-minlength="userDTO.cadastroPaciente.config.PAC_IN_CODSUS.min"  ng-maxlength="userDTO.cadastroPaciente.config.PAC_IN_CODSUS.max"  capitalize focus="inputPAC_IN_CODSUS"  ng-required="{{userDTO.cadastroPaciente.config.PAC_IN_CODSUS.required}}" />
-                        <div ng-messages="cpform.PAC_IN_CODSUS.$error"   class="ngmesssagecpform" >
+                        <div ng-messages="cpform.PAC_IN_CODSUS.$error"   class="error-messages" >
                                     <div   ng-messages-include="views/tmtelas/messages.html" ></div>
                          </div>
                     </div>
                     <div class="col-lg-2"  ng-if="userDTO.cadastroPaciente.config.PAC_ST_PRONTUARIO.visible" >
                         <label >{{userDTO.cadastroPaciente.config.PAC_ST_PRONTUARIO.label}}</label>
-                        <input  type="text" class="form-control"  name="PAC_ST_PRONTUARIO"   ng-model="userDTO.cadastroPaciente.paciente.PAC_ST_PRONTUARIO" ng-disabled="userDTO.cadastroPaciente.config.PAC_ST_PRONTUARIO.disable"
+                        <input  type="text" class="form-control"  name="PAC_ST_PRONTUARIO"   ng-model="userDTO.cadastroPaciente.paciente.PAC_ST_PRONTUARIO" ng-disabled="userDTO.cadastroPaciente.config.PAC_ST_PRONTUARIO.disable  || userDTO.cadastroPaciente.config.constroe_paciente "
                                 ng-minlength="userDTO.cadastroPaciente.config.PAC_ST_PRONTUARIO.min"  ng-maxlength="userDTO.cadastroPaciente.config.PAC_ST_PRONTUARIO.max"  capitalize focus="inputPAC_ST_PRONTUARIO"  ng-required="{{userDTO.cadastroPaciente.config.PAC_ST_PRONTUARIO.required}}" />
-                        <div ng-messages="cpform.PAC_ST_PRONTUARIO.$error"   class="ngmesssagecpform" >
+                        <div ng-messages="cpform.PAC_ST_PRONTUARIO.$error"   class="error-messages" >
                                     <div   ng-messages-include="views/tmtelas/messages.html" ></div>
                          </div>
                     </div>
@@ -103,31 +103,31 @@
                         <label >{{userDTO.cadastroPaciente.config.PAC_ST_COR.label}}</label>
                         <select   name="PAC_ST_COR"  id="pesquisas" class="chosen-select form-control "   autofocus
                                     ng-model="userDTO.cadastroPaciente.paciente.PAC_ST_COR" 
-                                    ng-disabled="userDTO.cadastroPaciente.config.PAC_ST_COR.disable" ng-required="{{userDTO.cadastroPaciente.config.PAC_ST_COR.required}}" >
+                                    ng-disabled="userDTO.cadastroPaciente.config.PAC_ST_COR.disable  || userDTO.cadastroPaciente.config.constroe_paciente " ng-required="{{userDTO.cadastroPaciente.config.PAC_ST_COR.required}}" >
                                 <option  value="B" >BRANCO</option>
                                 <option  value="N" >NEGRO</option>
                                 <option  value="P" >PARDO</option>
                                 <option  value="A" >AMARELO</option>
                         </select>
-                        <div ng-messages="cpform.PAC_ST_COR.$error"  class="ngmesssagecpform" >
+                        <div ng-messages="cpform.PAC_ST_COR.$error"  class="error-messages" >
                                     <div   ng-messages-include="views/tmtelas/messages.html" ></div>
                          </div>
                     </div>
                     
                     <div class="col-lg-5"  ng-if="userDTO.cadastroPaciente.config.PAC_ST_RESP.visible" >
                         <label >{{userDTO.cadastroPaciente.config.PAC_ST_RESP.label}}</label>
-                        <input  type="text" class="form-control"  name="PAC_ST_RESP"   ng-model="userDTO.cadastroPaciente.paciente.PAC_ST_RESP" ng-disabled="userDTO.cadastroPaciente.config.PAC_ST_RESP.disable"
+                        <input  type="text" class="form-control"  name="PAC_ST_RESP"   ng-model="userDTO.cadastroPaciente.paciente.PAC_ST_RESP" ng-disabled="userDTO.cadastroPaciente.config.PAC_ST_RESP.disable || userDTO.cadastroPaciente.config.constroe_paciente "
                                 ng-minlength="userDTO.cadastroPaciente.config.PAC_ST_RESP.min"  ng-maxlength="userDTO.cadastroPaciente.config.PAC_ST_RESP.max"  capitalize focus="inputPAC_ST_RESP"  ng-required="{{userDTO.cadastroPaciente.config.PAC_ST_RESP.required}}" />
-                        <div ng-messages="cpform.PAC_ST_RESP.$error"   class="ngmesssagecpform" >
+                        <div ng-messages="cpform.PAC_ST_RESP.$error"   class="error-messages" >
                                     <div   ng-messages-include="views/tmtelas/messages.html" ></div>
                          </div>
                     </div>
                     
                     <div class="col-lg-7"  ng-if="userDTO.cadastroPaciente.config.PAC_ST_NOMEMAE.visible" >
                         <label >{{userDTO.cadastroPaciente.config.PAC_ST_NOMEMAE.label}}</label>
-                        <input  type="text" class="form-control"  name="PAC_ST_NOMEMAE"   ng-model="userDTO.cadastroPaciente.paciente.PAC_ST_NOMEMAE" ng-disabled="userDTO.cadastroPaciente.config.PAC_ST_NOMEMAE.disable"
+                        <input  type="text" class="form-control"  name="PAC_ST_NOMEMAE"   ng-model="userDTO.cadastroPaciente.paciente.PAC_ST_NOMEMAE" ng-disabled="userDTO.cadastroPaciente.config.PAC_ST_NOMEMAE.disable  ||  userDTO.cadastroPaciente.config.constroe_paciente "
                                 ng-minlength="userDTO.cadastroPaciente.config.PAC_ST_NOMEMAE.min"  ng-maxlength="userDTO.cadastroPaciente.config.PAC_ST_NOMEMAE.max"  capitalize focus="inputPAC_ST_NOMEMAE"  ng-required="{{userDTO.cadastroPaciente.config.PAC_ST_NOMEMAE.required}}" />
-                        <div ng-messages="cpform.PAC_ST_NOMEMAE.$error"   class="ngmesssagecpform" >
+                        <div ng-messages="cpform.PAC_ST_NOMEMAE.$error"   class="error-messages" >
                                     <div   ng-messages-include="views/tmtelas/messages.html" ></div>
                          </div>
                     </div>
@@ -140,6 +140,19 @@
         
         
         <hr>
-        <!--{{userDTO.cadastroPaciente.paciente}}-->
+        
+        <div class="row " >
+            <div class="col-lg-12  form-inline " >
+                <div  class="pull-right  " >
+                    <a  ng-click="editarTela('cadastrodepacientes.constroe_paciente')" class="btn btn-warning  text-center ">Editar &nbsp;|&nbsp;F2</a>
+                    <!--<a  ng-click="salvar('paciente')" class="btn btn-  text-center ">Editar &nbsp;|&nbsp;F2</a>-->
+                    <a ng-click="salvarAlteracoes('cadastrodepacientes.constroe_paciente')"  class="btn btn-info btn-outline"  ng-if="!compara(userDTO.cadastroPaciente.paciente,userDTO.cadastroPaciente.pacienteDB)"  data-toggle="tooltip" title="Salvar alterações"  ><i class="fa fa-floppy-o"></i>&nbsp;Salvar&nbsp;|&nbsp;F8</a>
+                    <a ui-sref="cadastrodepacientes.busca_paciente" class="btn btn-primary  text-center ">Voltar&nbsp;|&nbsp;Ctrl+esquerda</a>
+                    <a ui-sref="cadastrodepacientes.constroe_paciente_contato" class="btn btn-info  text-center ">Proximo&nbsp;|&nbsp;Ctrl+direita</a>
+                </div>
+            </div>
+        </div>
+        
+        
     </div>
 </fieldset>

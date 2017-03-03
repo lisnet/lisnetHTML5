@@ -11,7 +11,7 @@
 
 /* global y */
 
-function cadastroPaciente($scope, sairDoSistemaService, notificacaoProvider, buscaAPIService, $stateParams, $localStorage, $timeout, $filter,DTOptionsBuilder,helperService,$state,$rootScope,$timeout) {
+function cadastroPaciente($scope, sairDoSistemaService, notificacaoProvider, buscaAPIService, $stateParams, $localStorage, $timeout, $filter,DTOptionsBuilder,helperService,$state,$rootScope,$timeout,hotkeys) {
 
     var self = this;
     $scope.userDTO = sairDoSistemaService.validarLogin();
@@ -19,13 +19,19 @@ function cadastroPaciente($scope, sairDoSistemaService, notificacaoProvider, bus
     $scope.inputPAC_ST_NOMEBUSCA = true;
     if (!$scope.userDTO.cadastroPaciente) {
         $scope.inputPAC_ST_NOME = true;
-        $scope.userDTO.cadastroPaciente = {showBuscaPaciente:true,ultimoStep:'cadastrodepacientes',
+        $scope.userDTO.cadastroPaciente = {showWizard:false,ultimoStep:'cadastrodepacientes.busca_paciente',
             showConstroePaciente:false,showConstroeRequisicao:false,ultimoCampo:''
             ,pacienteDB:null,paciente:null,pacientes:{},requisicao:{exame:{},exames:[],solicitantes:[]}};
+          $state.transitionTo('cadastrodepacientes.busca_paciente');
+          $timeout(function (){$scope.userDTO.cadastroPaciente.ultimoStep = 'cadastrodepacientes.busca_paciente';},1000);
+          
     }else{
-//        console.log('redirecionando p : '+$scope.userDTO.cadastroPaciente.ultimoStep);
-//        $timeout(function (){$state.go($scope.userDTO.cadastroPaciente.ultimoStep);},2000);
+        console.log('redirecionando p : '+$scope.userDTO.cadastroPaciente.ultimoStep);
+        $timeout(function (){$state.go($scope.userDTO.cadastroPaciente.ultimoStep);},500);
+//        $state.go($scope.userDTO.cadastroPaciente.ultimoStep);
     }
+    
+    
     
     $scope.userDTO.cadastroPaciente.config = {
                 PAC_IN_CODIGO:{disable:true,min:4,max:15,visible:true,required:false,label:'Código Interno',position:0},
@@ -34,13 +40,14 @@ function cadastroPaciente($scope, sairDoSistemaService, notificacaoProvider, bus
                 PAC_IN_IDADE:{disable:false,min:5,max:20,visible:true,required:false,label:'Idade',position:3},
                 PAC_ST_SEXO:{disable:false,min:5,max:20,visible:true,required:true,label:'fa fa-venus-mars',position:4},
                 PAC_ST_ESTADOCIVIL:{disable:false,min:5,max:20,visible:true,required:false,label:'Estado Civil',position:5},
-                PAC_ST_RG:{disable:false,min:8,max:12,visible:true,required:false,label:'R.G',position:6},
+                PAC_ST_RG:{disable:false,min:2,max:12,visible:true,required:false,label:'R.G',position:6},
                 PAC_ST_CPF:{disable:false,min:11,max:14,visible:true,required:false,label:'CPF',position:7},
                 PAC_IN_CODSUS:{disable:false,min:10,max:15,visible:true,required:false,label:'S.U.S',position:8},
                 PAC_ST_PRONTUARIO:{disable:false,min:4,max:15,visible:true,required:false,label:'Prontuário',position:9},
                 PAC_ST_COR:{disable:false,min:1,max:2,visible:true,required:false,label:'Cor',position:10},
                 PAC_ST_RESP:{disable:false,min:8,max:50,visible:true,required:false,label:'Responsável',position:11},
                 PAC_ST_NOMEMAE:{disable:false,min:8,max:70,visible:true,required:false,label:'Nome da Mãe',position:12},
+                constroe_paciente:true,
                 PAC_ST_CEP:{disable:false,min:8,max:9,visible:true,required:false,label:'CEP',position:13},
                 PAC_ST_ENDERECO:{disable:false,min:8,max:70,visible:true,required:false,label:'Endereço',position:14},
                 PAC_ST_NUMERO:{disable:false,min:0,max:5,visible:true,required:false,label:'Numero',position:15},
@@ -52,6 +59,7 @@ function cadastroPaciente($scope, sairDoSistemaService, notificacaoProvider, bus
                 PAC_ST_CELULAR:{disable:false,min:0,max:20,visible:true,required:false,label:'Celular',position:21},
                 PAC_ST_EMAIL:{disable:false,min:0,max:50,visible:true,required:false,label:'Email',position:22},
                 PAC_BL_OBSERVACAO:{disable:false,min:0,max:50,visible:true,required:false,label:'Observação',position:23},
+                constroe_contato:true,
                 REQ_IN_CODIGO:{disable:false,min:0,max:50,visible:true,required:false,label:'Solicitação',position:24},
                 REQ_DT_CADASTRO:{disable:true,min:0,max:50,visible:true,required:true,label:'Data',position:25},
                 REQ_ST_MATRICULA:{disable:false,min:0,max:30,visible:true,required:false,label:'N. Cart.',position:26},
@@ -64,6 +72,7 @@ function cadastroPaciente($scope, sairDoSistemaService, notificacaoProvider, bus
                 REG_ST_CODIGO:{disable:false,min:3,max:3,visible:true,required:false,label:'Plano',position:33},
                 LOC_ST_CODIGO:{disable:false,min:3,max:3,visible:true,required:false,label:'Entrega',position:34},
                 CID_ST_CODIGO:{disable:false,min:3,max:3,visible:true,required:false,label:'C.I.D',position:35},
+                constroe_solicitacao:true,
                 REQ_ST_DUM:{disable:false,min:0,max:20,visible:true,required:false,label:'DUM',position:36},
                 REQ_CH_GESTANTE:{disable:false,min:0,max:1,visible:true,required:false,label:'Gestante',position:37},
                 REQ_CH_RN:{disable:false,min:0,max:1,visible:true,required:false,label:'R.N.',position:38},
@@ -74,13 +83,172 @@ function cadastroPaciente($scope, sairDoSistemaService, notificacaoProvider, bus
                 REQ_ST_QUARTO:{disable:false,min:0,max:10,visible:true,required:false,label:'Quarto',position:43},
                 REQ_ST_LEITO:{disable:false,min:0,max:10,visible:true,required:false,label:'Leito',position:44},
                 REQ_BL_OBSERVACAO:{disable:false,min:0,max:4000,visible:true,required:false,label:'Observação',position:45},
+                constroe_complementares:false,
                 SOL_ST_CODIGO:{disable:false,min:0,max:3,visible:true,required:false,label:'Solicitante',position:46},
                 REQ_ST_GUIA:{disable:false,min:0,max:20,visible:true,required:false,label:'N da Guia',position:47},
                 EXA_ST_CODIGO:{disable:false,min:2,max:10,visible:true,required:false,label:'Procedimento',position:48},
                 EXA_ST_DESCRICAO:{disable:false,min:2,max:10,visible:true,required:false,label:'Descrição Exame',position:49},
                 MAT_ST_CODIGO:{disable:false,min:0,max:5,visible:true,required:false,label:'Material',position:50},
-                MAT_ST_DESCRICAO:{disable:false,min:0,max:5,visible:true,required:false,label:'Descrição Material',position:50}
+                MAT_ST_DESCRICAO:{disable:false,min:0,max:5,visible:true,required:false,label:'Descrição Material',position:50},
+                constroe_exames:false
             };
+    
+    
+  hotkeys.add({
+    combo: 'f7',
+    description: 'This one goes to cadastrodepacientes',
+    allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
+    callback: function(event,hotkeys) {
+        event.preventDefault();
+      $scope.goToStep('cadastrodepacientes.busca_paciente');
+    }
+  });
+  
+  
+  hotkeys.add({
+    combo: 'f8',
+    description: 'Salvar alteracoes',
+    allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
+    callback: function(event,hotkeys) {
+        event.preventDefault();
+        console.log('Salvando alteracoes');
+        $scope.salvarAlteracoes($state.current.name);
+    }
+  });
+  
+  hotkeys.add({
+    combo: 'f2',
+    description: 'Editar tela em questao',
+    allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
+    callback: function(event,hotkeys) {
+        event.preventDefault();
+        $scope.editarTela($state.current.name);
+    }
+  });
+  
+  
+  hotkeys.add({
+    combo: 'ctrl+right',
+    description: 'This one goes to next page to the right',
+    allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
+    callback: function(event, hotkey) {
+        event.preventDefault();
+        console.log('next step right ...');
+      nextScreen();
+    }
+  });
+  
+  hotkeys.add({
+    combo: 'ctrl+left',
+    description: 'This one goes to next page to the left',
+    allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
+    callback: function(event, hotkey) {
+        event.preventDefault();
+      console.log('next step left ...');
+      nextPrevious();
+    }
+  });
+
+    $scope.compara = function (obj1,obj2){
+        return helperService.comparaObjetos(obj1,obj2);
+    };
+
+    $scope.salvarAlteracoes = function (stateTela){
+        console.log(stateTela);
+         switch (stateTela){
+                case 'cadastrodepacientes.constroe_paciente':
+                    $scope.userDTO.cadastroPaciente.config.constroe_paciente = true;
+                    $scope.userDTO.cadastroPaciente.pacienteDB = helperService.clonadorDeObj($scope.userDTO.cadastroPaciente.paciente);
+                    break;
+                    case 'cadastrodepacientes.constroe_paciente_contato':
+                    $scope.userDTO.cadastroPaciente.config.constroe_contato =true;
+                    break;
+                    case 'cadastrodepacientes.constroe_requisicao':
+                    $scope.userDTO.cadastroPaciente.config.constroe_solicitacao = true;
+                    break;
+                    
+            }
+    };
+
+    $scope.editarTela =  function (stateTela){
+        
+        switch (stateTela){
+                case 'cadastrodepacientes.constroe_paciente':
+                    $scope.userDTO.cadastroPaciente.config.constroe_paciente = $scope.userDTO.cadastroPaciente.config.constroe_paciente ? false : true;
+//                        $scope.inputPAC_ST_NOME = true;
+                        $timeout(function (){$scope.inputPAC_ST_NOME = true;  },500);
+                    break;
+                    case 'cadastrodepacientes.constroe_paciente_contato':
+                    $scope.userDTO.cadastroPaciente.config.constroe_contato = $scope.userDTO.cadastroPaciente.config.constroe_contato ? false : true;
+                        $timeout(function (){$scope.inputPAC_ST_CEP = false; $scope.inputPAC_ST_CEP = true;},500);
+                    break;
+                    case 'cadastrodepacientes.constroe_requisicao':
+                    $scope.userDTO.cadastroPaciente.config.constroe_solicitacao = $scope.userDTO.cadastroPaciente.config.constroe_solicitacao ? false : true;
+                        $timeout(function (){$scope.inputREQ_ST_MATRICULA = true;},500);
+                    break;
+                    
+            }
+        
+    };
+    
+     function nextScreen(){
+         
+        var _s = $state.current.name;
+        console.log('Inside nextScreen ....  state = '+_s);
+        switch (_s){
+            case 'cadastrodepacientes':
+                $scope.goToStep("cadastrodepacientes.constroe_paciente");
+            break;
+            case 'cadastrodepacientes.busca_paciente':
+                $scope.goToStep("cadastrodepacientes.constroe_paciente");
+            break;
+            case 'cadastrodepacientes.constroe_paciente':
+                $scope.goToStep("cadastrodepacientes.constroe_paciente_contato");
+            break;
+            case 'cadastrodepacientes.constroe_paciente_contato':
+                $scope.goToStep("cadastrodepacientes.constroe_requisicao");
+            break;
+            case 'cadastrodepacientes.constroe_requisicao':
+                $scope.goToStep("cadastrodepacientes.dados_complementares");
+            break;
+            case 'cadastrodepacientes.dados_complementares':
+                $scope.goToStep("cadastrodepacientes.inclue_exames");
+            break;
+            case 'cadastrodepacientes.inclue_exames':
+                $scope.goToStep("cadastrodepacientes");
+            break;
+        }  
+    };
+    
+    function nextPrevious(){
+         
+        var _s = $state.current.name;
+        console.log('Inside nextPrevious ....  state = '+_s);
+        
+        switch (_s){
+            
+            case 'cadastrodepacientes':
+                $scope.goToStep("cadastrodepacientes.inclue_exames");
+            break;
+            case 'cadastrodepacientes.constroe_paciente_contato':
+                $scope.goToStep("cadastrodepacientes.constroe_paciente");
+            break;
+            case 'cadastrodepacientes.constroe_paciente':
+                $scope.goToStep("cadastrodepacientes.busca_paciente");
+            break;
+            case 'cadastrodepacientes.inclue_exames':
+                $scope.goToStep("cadastrodepacientes.dados_complementares");
+            break;
+            case 'cadastrodepacientes.dados_complementares':
+                $scope.goToStep("cadastrodepacientes.constroe_requisicao");
+            break;
+            case 'cadastrodepacientes.constroe_requisicao':
+                $scope.goToStep("cadastrodepacientes.constroe_paciente_contato");
+            break;
+        }  
+    };
+    
+    
 
     $scope.paramsStateConfig = $stateParams;
     
@@ -93,7 +261,7 @@ function cadastroPaciente($scope, sairDoSistemaService, notificacaoProvider, bus
             self.message = "There are still invalid fields below";
         }
     };
-
+    
     $scope.trocarVisualizacao = function (tipoDebusca, valor) {
 //        console.log('tipoDebusca = ' + tipoDebusca);
         switch (tipoDebusca) {
@@ -182,10 +350,10 @@ function cadastroPaciente($scope, sairDoSistemaService, notificacaoProvider, bus
     };
     
     $scope.goToStep = function (step){
-        $scope.userDTO.cadastroPaciente.ultimoStep = step;
-        $scope.userDTO.cadastroPaciente.showBuscaPaciente =true;
+//        $scope.userDTO.cadastroPaciente.ultimoStep = step;
+//        $scope.userDTO.cadastroPaciente.showBuscaPaciente =true;
         $state.go(step);
-        $scope.inputPAC_ST_NOME = true;
+//        $scope.inputPAC_ST_NOME = true;
     };
     
     $scope.encontraPaciente = function (PAC_IN_CODIGO){
@@ -196,12 +364,28 @@ function cadastroPaciente($scope, sairDoSistemaService, notificacaoProvider, bus
         $scope.userDTO.cadastroPaciente.pacienteDB = _pac;
         $scope.userDTO.cadastroPaciente.paciente = helperService.clonadorDeObj(_pac);
 //        console.log("pacienteDB = "+JSON.stringify(_pac,null,2));
-        $scope.userDTO.cadastroPaciente.showBuscaPaciente = false;
-        $scope.userDTO.cadastroPaciente.showConstroePaciente = true;
-        $scope.userDTO.cadastroPaciente.ultimoStep = 'cadastrodepacientes.constroe_paciente';
-        $state.go('cadastrodepacientes.constroe_paciente');
-        $timeout(function (){$scope.inputPAC_ST_NOME = true;},3400);
-        
+//        $scope.userDTO.cadastroPaciente.showConstroePaciente = true;
+        //Mudar p MainLisnet.stateGO
+//        $state.go('cadastrodepacientes.constroe_paciente');
+//        $scope.userDTO.stateGO = 'cadastrodepacientes.constroe_paciente';
+//        $rootScope.$broadcast("stateGO");
+        $state.transitionTo('cadastrodepacientes.constroe_paciente');
+
+        _pac = buscaAPIService.buscaPaciente($scope.userDTO.configLisNet,_pac.PAC_IN_CODIGO).then(
+                function sucess(response){
+                    _pac = response.data;
+                    $scope.userDTO.cadastroPaciente.pacienteDB = _pac;
+                    $scope.userDTO.cadastroPaciente.paciente = helperService.clonadorDeObj(_pac);
+                    $scope.userDTO.cadastroPaciente.requisicao = {};
+                    
+                    $timeout(function (){$scope.inputPAC_ST_NOMEConstroePaciente = true;},400);
+                    $scope.userDTO.cadastroPaciente.requisicoes = [];
+                    $scope.userDTO.cadastroPaciente.pacientes = [];
+                },
+                function erro(response){
+                    console.log(response.statusText);
+                        notificacaoProvider.sweetError('Erro','Erro na busca de paciente por PAC_IN_CODIGO   ERRO: '+response.statusText);
+                });
     };
 
     $scope.constroeEndereco = function (p) {
@@ -280,30 +464,23 @@ function cadastroPaciente($scope, sairDoSistemaService, notificacaoProvider, bus
 
 
 $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams, options) {
-             if ( $scope.userDTO &&  $scope.userDTO.cadastroPaciente && $state.current.name.includes("cadastrodepacientes")) {
-                        console.log("$state.current.name: " + $state.current.name);
-                        $scope.userDTO.cadastroPaciente.ultimoStep = $state.current.name;
-                        switch ($state.current.name){
-                            case "cadastrodepacientes":
-                                $scope.inputPAC_ST_NOMEBUSCA = true;
-                                break;
-                            case "cadastrodepacientes.constroe_paciente"  :
-                                $scope.inputPAC_ST_NOME = true;
-                                break;
-                                case "cadastrodepacientes.constroe_paciente_contato": 
-                                    $scope.inputPAC_ST_CEP = true;
-                                break;
-                                case "cadastrodepacientes.constroe_requisicao": 
-                                    $scope.inputREQ_ST_MATRICULA = true;
-                                break;
-                                case "cadastrodepacientes.dados_complementares": 
-                                    $scope.inputREQ_ST_DUM = true;
-                                break;
-                                case "cadastrodepacientes.inclue_exames": 
-                                    $scope.inputSOL_ST_ESTADO = true;
-                                break;
-                               
+             if ( $scope.userDTO &&  $scope.userDTO.cadastroPaciente && $state.current.name.includes("cadastrodepacientes" )) {
+                        console.log("current state p ultimoStep: " + $state.current.name);
+                        
+                        var _s = $state.current.name;
+                        
+                        switch (_s){
+                            case 'cadastrodepacientes.busca_paciente':
+                                $scope.userDTO.cadastroPaciente.showWizard = false;
+                            break;
+                            default :
+                                $scope.userDTO.cadastroPaciente.showWizard = true;
                         }
+                        
+                        if(_s !== 'cadastrodepacientes'){
+                            $scope.userDTO.cadastroPaciente.ultimoStep = _s;
+                        }
+                        
                     }
    });
 

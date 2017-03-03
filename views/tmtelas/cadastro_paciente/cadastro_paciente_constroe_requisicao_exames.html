@@ -8,17 +8,17 @@
 
                 <div   ng-if="userDTO.cadastroPaciente.config.SOL_ST_CODIGO.visible" >
                     <select style="width: 70px;"   name="SOL_ST_ESTADO"  id="pesquisas" class="chosen-select form-control col-lg-2"   autofocus
-                            ng-model="userDTO.cadastroPaciente.requisicao.SOL_ST_ESTADO"  focus="inputSOL_ST_ESTADO"   >
+                            ng-model="userDTO.cadastroPaciente.requisicao.SOL_ST_ESTADO"   ng-disabled="userDTO.cadastroPaciente.config.SOL_ST_CODIGO.disable || userDTO.cadastroPaciente.config.constroe_exames"  focus="inputSOL_ST_ESTADO"   >
                         <option ng-repeat="u in userDTO.ufs" value="{{u}}"  >{{u}}</option>
                     </select>
-                    <input   style="width: 60px;" type="text" class="form-control  col-lg-2"  name="PRO_ST_CODIGO"   ng-model="userDTO.cadastroPaciente.requisicao.PRO_ST_CODIGO" ng-disabled="userDTO.cadastroPaciente.config.SOL_ST_CODIGO.disable"
+                    <input   style="width: 60px;" type="text" class="form-control  col-lg-2"  name="PRO_ST_CODIGO"   ng-model="userDTO.cadastroPaciente.requisicao.PRO_ST_CODIGO" ng-disabled="userDTO.cadastroPaciente.config.SOL_ST_CODIGO.disable || userDTO.cadastroPaciente.config.constroe_exames"
                              capitalize focus="inputPRO_ST_CODIGO"  ng-required="{{userDTO.cadastroPaciente.config.SOL_ST_CODIGO.required}}"
                              ng-minlength="0"  ng-maxlength="3"  />
 
-                    <input   style="width: 60px;" type="text" class="form-control  col-lg-2"  name="SOL_ST_CODIGO"   ng-model="userDTO.cadastroPaciente.requisicao.SOL_ST_CODIGO" ng-disabled="userDTO.cadastroPaciente.config.SOL_ST_CODIGO.disable"
+                    <input   style="width: 60px;" type="text" class="form-control  col-lg-2"  name="SOL_ST_CODIGO"   ng-model="userDTO.cadastroPaciente.requisicao.SOL_ST_CODIGO" ng-disabled="userDTO.cadastroPaciente.config.SOL_ST_CODIGO.disable || userDTO.cadastroPaciente.config.constroe_exames"
                              capitalize focus="inputSOL_ST_CODIGO"  ng-required="{{userDTO.cadastroPaciente.config.SOL_ST_CODIGO.required}}"
                              ng-minlength="userDTO.cadastroPaciente.config.SOL_ST_CODIGO.min"  ng-maxlength="userDTO.cadastroPaciente.config.SOL_ST_CODIGO.max"  />
-                    <div ng-messages="cpform.SOL_ST_CODIGO.$error"   class="ngmesssagecpform" >
+                    <div ng-messages="cpform.SOL_ST_CODIGO.$error"   class="error-messages" >
                         <div   ng-messages-include="views/tmtelas/messages.html" ></div>
                     </div>
 
@@ -36,14 +36,14 @@
 
                 <input   style="width: 85px;"  type="text"  placeholder="{{userDTO.cadastroPaciente.config.REQ_ST_GUIA.label}}"    class="form-control col-lg-1 "  name="REQ_ST_GUIA"   ng-model="userDTO.cadastroPaciente.requisicao.REQ_ST_GUIA" 
                          ng-minlength="userDTO.cadastroPaciente.config.REQ_ST_GUIA.min"  ng-maxlength="userDTO.cadastroPaciente.config.REQ_ST_GUIA.max"  capitalize focus="inputREQ_ST_GUIA"  
-                         ng-disabled="userDTO.cadastroPaciente.paciente.REQ_ST_GUIA.disable" ng-required="{{userDTO.cadastroPaciente.config.REQ_ST_GUIA.required}}"  />
-                <div ng-messages="cpform.REQ_ST_GUIA.$error"   class="ngmesssagecpform" >
+                         ng-disabled="userDTO.cadastroPaciente.paciente.REQ_ST_GUIA.disable || userDTO.cadastroPaciente.config.constroe_exames" ng-required="{{userDTO.cadastroPaciente.config.REQ_ST_GUIA.required}}"  />
+                <div ng-messages="cpform.REQ_ST_GUIA.$error"   class="error-messages" >
                     <div   ng-messages-include="views/tmtelas/messages.html" ></div>
                 </div>
                 <input style="width: 85px;"  type="text"   placeholder="{{userDTO.cadastroPaciente.config.EXA_ST_CODIGO.label}}"  class="form-control col-lg-1"  name="EXA_ST_CODIGO"   ng-model="userDTO.cadastroPaciente.requisicao.exame.EXA_ST_CODIGO" 
                        ng-minlength="userDTO.cadastroPaciente.config.EXA_ST_CODIGO.min"  ng-maxlength="userDTO.cadastroPaciente.config.EXA_ST_CODIGO.max"  capitalize focus="inputEXA_ST_CODIGO"  
-                       ng-disabled="userDTO.cadastroPaciente.paciente.EXA_ST_CODIGO.disable" ng-required="{{userDTO.cadastroPaciente.config.EXA_ST_CODIGO.required}}"  />
-                <div ng-messages="cpform.EXA_ST_CODIGO.$error"   class="ngmesssagecpform" >
+                       ng-disabled="userDTO.cadastroPaciente.paciente.EXA_ST_CODIGO.disable || userDTO.cadastroPaciente.config.constroe_exames" ng-required="{{userDTO.cadastroPaciente.config.EXA_ST_CODIGO.required}}"  />
+                <div ng-messages="cpform.EXA_ST_CODIGO.$error"   class="error-messages" >
                     <div   ng-messages-include="views/tmtelas/messages.html" ></div>
                 </div>
                 <div class="col-lg-4" >
@@ -54,8 +54,8 @@
 
                 <input   style="width: 85px;"  type="text"  placeholder="{{userDTO.cadastroPaciente.config.MAT_ST_CODIGO.label}}"    class="form-control col-lg-1 "  name="MAT_ST_CODIGOA"   ng-model="userDTO.cadastroPaciente.requisicao.exame.MAT_ST_CODIGOA" 
                          ng-minlength="userDTO.cadastroPaciente.config.MAT_ST_CODIGO.min"  ng-maxlength="userDTO.cadastroPaciente.config.MAT_ST_CODIGO.max"  capitalize focus="inputMAT_ST_CODIGO"  
-                         ng-disabled="userDTO.cadastroPaciente.paciente.MAT_ST_CODIGO.disable" ng-required="{{userDTO.cadastroPaciente.config.MAT_ST_CODIGO.required}}"  />
-                <div ng-messages="cpform.MAT_ST_CODIGO.$error"   class="ngmesssagecpform" >
+                         ng-disabled="userDTO.cadastroPaciente.paciente.MAT_ST_CODIGO.disable || userDTO.cadastroPaciente.config.constroe_exames" ng-required="{{userDTO.cadastroPaciente.config.MAT_ST_CODIGO.required}}"  />
+                <div ng-messages="cpform.MAT_ST_CODIGO.$error"   class="error-messages" >
                     <div   ng-messages-include="views/tmtelas/messages.html" ></div>
                 </div>
                 <div class="col-lg-4" >
@@ -139,5 +139,17 @@
         </div>
     </div>
 
+    
+    <hr>
+        <div class="row " >
+            <div class="col-lg-12  form-inline " >
+                <div  class="pull-right  " >
+                    <a  ng-click="editarTela('cadastrodepacientes.inclue_exames')" class="btn btn-warning  text-center ">Editar &nbsp;|&nbsp;F2</a>
+                    <!--<a  ng-click="salvar('paciente')" class="btn btn-  text-center ">Editar &nbsp;|&nbsp;F2</a>-->
+                    <a ng-click="salvarAlteracoes('cadastrodepacientes.constroe_paciente')"  class="btn btn-info btn-outline"  ng-if="!compara(userDTO.cadastroPaciente.requisicao , userDTO.cadastroPaciente.requisicaoDB)"  data-toggle="tooltip" title="Salvar alterações"  ><i class="fa fa-floppy-o"></i>&nbsp;Salvar&nbsp;|&nbsp;F8</a>
+                    <a ui-sref="cadastrodepacientes.dados_complementares" class="btn btn-primary  text-center ">Voltar&nbsp;|&nbsp;Ctrl+esquerda</a>
+                </div>
+            </div>
+        </div>
 
 </div>

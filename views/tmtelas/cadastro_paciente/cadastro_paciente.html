@@ -42,15 +42,16 @@
 }
 
 .ngmesssagecpform{
-    position: absolute; 
-    background-color: #FFF;
+    /*position: absolute;*/ 
+/*    background-color: #FFF;
     border-radius: 5px;
-    /*border: 2px solid gray;*/
+    border: 2px solid gray;
     padding-left: 5px; 
-    padding-top: 5px;
-    z-index: 5000;
-    display: none;
+    padding-top: 25px;
+    z-index: 5000;*/
+    /*display: none;*/
 }
+
 
 .panelcinza{
 
@@ -75,14 +76,36 @@ background: linear-gradient(to left, #44A08D , #093637);  W3C, IE 10+/ Edge, Fir
 }
 
 
+
+.col-fixed-10{
+    width:5px;
+    /*background:red;*/
+    /*position:fixed;*/
+    /*height:100%;*/
+    z-index:1;
+}
+
+.col-fixed-160{
+    margin-left:240px;
+    width:160px;
+    background:blue;
+    position:fixed;
+    height:100%;
+    z-index:1;
+}
+
+.col-offset-400{
+    padding-left:415px;
+    z-index:0;
+}
+
 </style>
 
 <div class="wrapper wrapper-content animated fadeInRight  inputcolor"   ng-controller="cadastroPaciente" style="padding-bottom: 0px;" >
     
-
-    <div ng-include="'views/tmtelas/cadastro_paciente/cadastro_paciente_busca_paciente.html'" ng-if="userDTO.cadastroPaciente.showBuscaPaciente"  ></div>
-    
-    <div class="row"  ng-hide="userDTO.cadastroPaciente.showBuscaPaciente" >
+        <!--<div ng-include="'views/tmtelas/cadastro_paciente/cadastro_paciente_busca_paciente.html'" ng-if="userDTO.cadastroPaciente.showBuscaPaciente"  ></div>-->
+        
+    <div class="row"  >
         <div class="col-lg-12">
             
             
@@ -90,11 +113,12 @@ background: linear-gradient(to left, #44A08D , #093637);  W3C, IE 10+/ Edge, Fir
                 
                 <div class="ibox-content wizard">
                     
-                    <div class="steps clearfix">
+                    <div class="steps clearfix"  ng-if="userDTO.cadastroPaciente.showWizard" >
                         
                         <ul>
-                            <li>
-                                <a   ng-click="goToStep('cadastrodepacientes')"  class="btn btn-danger  btn-outline" ><i class="fa fa-search "></i></a>
+                            <li ui-sref-active="current" >
+                                <!--<a   ng-click="goToStep('cadastrodepacientes')"  class="btn btn-danger  btn-outline" ><i class="fa fa-search ">&nbsp;&nbsp; F2</i></a>-->
+                                <a    ui-sref="cadastrodepacientes.busca_paciente" class="btn btn-danger  btn-outline"> <i class="fa fa-search ">&nbsp;&nbsp; F7</i></a>
                             </li>
                             <li ui-sref-active="current">
                                 <a    ui-sref="cadastrodepacientes.constroe_paciente" class="btn-default  text-center"> Paciente</a>
@@ -113,26 +137,17 @@ background: linear-gradient(to left, #44A08D , #093637);  W3C, IE 10+/ Edge, Fir
                             </li>
                         </ul>
                     </div>
+                    
                     <div class="wizard">
-
-                        <form name="cpform" ng-submit="processForm()" class="p-lg">
-
+                        <form name="cpform" autocomplete="off" >
                             <!-- telas nested serao incluidas aqui. -->
                             <div id="form-views" ui-view></div>
                         </form>
-
                     </div>
                 </div>
             </div>
         </div>
 
     </div>
-
-    <!--    
-        <div ng-include="'views/tmtelas/cadastro_paciente_constroe_paciente.html'" ng-if="userDTO.cadastroPaciente.showConstroePaciente"  ></div>
-        <div ng-include="'views/tmtelas/cadastro_paciente_constroe_requisicao.html'" ng-if="userDTO.cadastroPaciente.showConstroeRequisicao"  ></div>
-        <div ng-include="'views/tmtelas/cadastro_paciente_constroe_requisicao_dados_complementares.html'" ng-if="userDTO.cadastroPaciente.showConstroeRequisicaoDadosComplementares"  ></div>
-        <div ng-include="'views/tmtelas/cadastro_paciente_constroe_requisicao_exames.html'" ng-if="userDTO.cadastroPaciente.showConstroeRequisicaoExames"  ></div>-->
-
     
 </div>

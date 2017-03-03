@@ -192,58 +192,65 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
 //        console.log('$state.current .name =  ' + $state.current.name);
         vm.carregando = true;
         console.log('stateGO = '+stateGO);
-        if(stateGO){
+        
         $timeout(function () {
-            if ($state.current.name !== stateGO) {
-                try {
-                    
-                    if (stateGO === 'sair') {
-                        vm.logOut();
-                    } else {
-                        var hotPage = $state.href(stateGO);
-                        if (hotPage) {
-//                     console.log(hotPage);
+            if (stateGO) {
 
-                            console.log('this.userDTO.hotPages.length = ' + this.userDTO.hotPages.length);
-//                    this.userDTO.modalLoading = notificacaoProvider.modalLoading('Carregando ....', 'Buscando tela  código = ' + stateGO, $scope);;
-                            this.userDTO.ultimaTela = stateGO;
-                            $state.go(stateGO);
-                            $timeout(function () {
+                if ($state.current.name !== stateGO) {
+                    try {
+
+                        if (stateGO === 'sair') {
+                            vm.logOut();
+                        } else {
+                            var registroState = $state.href(stateGO);
+
+//                        console.log('$state.get(): '+ $state.get());
+                            if (registroState) {
+
+                                this.userDTO.ultimaTela = stateGO;
+                                $state.go(stateGO);
+
+                                var stateTokeep = $state.get().filter(function (s) {
+                                    return s.name === stateGO;
+                                })[0];
+
+                                console.log("stateTokeep : " + JSON.stringify(stateTokeep, null, 2));
 
                                 if (this.userDTO.hotPages.filter(function (e) {
-                                    return e.name == stateGO;
+                                    return e.name === stateGO;
                                 }).length > 0) {
                                     console.log('this.userDTO.hotPages contains the element we re looking for');
                                 } else if (stateGO !== 'widgets.lisnet') {
-                                    this.userDTO.hotPages.push($state.current);
+                                    $timeout(function (){this.userDTO.hotPages.push(stateTokeep);},300);
                                 }
-                            }, 500);
 
-                        } else {
+                            } else {
 //                    userDTO.modalLoading.dismiss('cancel');
-                            notificacaoProvider.sweetDialog("Erro", "Página não encontrada =  " + stateGO, 'warning', 'red', 'X');
-                            $state.go('problema.tela_nao_existe');
+                                notificacaoProvider.sweetDialog("Erro", "Página não encontrada =  " + stateGO, 'warning', 'red', 'X');
+                                $state.go('problema.tela_nao_existe');
 //                            vm.carregando = false;
+                            }
                         }
-                    }
 
-                } catch (error) {
-                    notificacaoProvider.sweetDialog("Erro", "Página não encontrada =  " + error, 'warning', 'red', 'X');
-                    $state.go('problema.tela_nao_existe');
-//                    vm.carregando = false;
+                    } catch (error) {
+                        notificacaoProvider.sweetDialog("Erro", "Página não encontrada =  " + error, 'warning', 'red', 'X');
+                        $state.go('problema.tela_nao_existe');
+                          vm.carregando = false;
+                    }
+                } else {
+                    vm.carregando = false;
+                    console.log('the same state');
                 }
+
+                $localStorage.userDTO = this.userDTO;
+
             } else {
                 vm.carregando = false;
-                console.log('the same state');
+                console.log('Do nothing ...');
             }
-
-            $localStorage.userDTO = this.userDTO;
-        }, 1);
-    
-        }else{
-            vm.carregando = false;
-        console.log('Do nothing ...');    
-        }
+        }, 150);
+        
+       
         
          $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams, options) {
              console.log('$stateChangeSuccess : '+$state.current.name);
@@ -257,6 +264,10 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
 
     };
     
+    
+    $rootScope.$on("stateGO", function(){
+        vm.stateGO(this.userDTO.stateGO);
+    });
     
     
 //    this.popUnidades =  function (){

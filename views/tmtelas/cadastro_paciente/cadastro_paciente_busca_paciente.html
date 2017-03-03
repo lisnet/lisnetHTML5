@@ -1,9 +1,9 @@
 
-
+<fieldset>
 <div class="ibox-content  animated fadeInRight"  >
         <div class="row">
             <div class="col-lg-12" >
-                <form name="cadastropacienteform" >
+                
                     <div class="ibox-title">
                         <h5  >Escolha o Filtro.</h5>
                         <!--<div ibox-tools></div>-->
@@ -13,18 +13,17 @@
                             <input   name="PAC_ST_NOME" placeholder="NOME" type="text"  id="inputTextPacStNome"  class="form-control "  ng-model="userDTO.cadastroPaciente.pacStNome"    
                                      ng-change="trocarVisualizacao('PAC_ST_NOME', userDTO.cadastroPaciente.pacStNome)"
                                      ng-focus="trocarVisualizacao('PAC_ST_NOME', userDTO.cadastroPaciente.pacStNome)"
-                                     ng-minlength="5" ng-maxlength="300" 
+                                     ng-minlength="userDTO.cadastroPaciente.config.PAC_ST_NOME.min"  ng-maxlength="userDTO.cadastroPaciente.config.PAC_ST_NOME.max"  
                                      enter-key="filtrar()" focus='inputPAC_ST_NOMEBUSCA'  capitalize  >
+                            
+                            
                             <span class="input-group-addon" ng-if="userDTO.cadastroPaciente.ultimoCampo === 'PAC_ST_NOME'" >
                                 <i ng-click="filtrar()"  class="fa fa-search  "  style="color: #006621 ; text-shadow: 1px 1px 1px #ccc;    font-size: 1.5em;   " ></i>
                             </span>
                         </div>
-                        <div role="alert " >
-                            <span class="error  has-error"   style="color: red;" ng-show="cadastropacienteform.PAC_ST_NOME.$error.minlength">
-                                Muito curto  , menos de 5 </span>
-                            <span class="error"   style="color: red;" ng-show="cadastropacienteform.PAC_ST_NOME.$error.maxlength">
-                                Muito longo, mais de 300 </span>
-                        </div>
+                        <div ng-messages="cpform.PAC_ST_NOME.$error"  class="error-messages"  >
+                                    <div   ng-messages-include="views/tmtelas/messages.html" ></div>
+                         </div>
                     </div>
 
                     <div class="col-lg-3">
@@ -40,7 +39,7 @@
 
                     <div class="col-lg-3">
                         <div class="input-group  "  style="width: 100%;" >
-                            <input type="text"  name="REQ_ST_CODIGO" class="form-control" data-mask="9999999999" placeholder="Solicitação" ng-model="userDTO.cadastroPaciente.reqStCodigo"
+                            <input type="text"  name="REQ_ST_CODIGO" class="form-control"  placeholder="Solicitação" ng-model="userDTO.cadastroPaciente.reqStCodigo"
                                    ng-change="trocarVisualizacao('REQ_ST_CODIGO', userDTO.cadastroPaciente.reqStCodigo)"
                                    ng-focus="trocarVisualizacao('REQ_ST_CODIGO', userDTO.cadastroPaciente.reqStCodigo)"
                                    ng-minlength="10" ng-maxlength="12"   />
@@ -48,17 +47,18 @@
                                 <i ng-click="filtrar()"  class="fa fa-search  "  style="color: #006621 ; text-shadow: 1px 1px 1px #ccc;    font-size: 1.5em;" ></i>
                             </span>
                         </div>
+                         <div ng-messages="cpform.REQ_ST_CODIGO.$error"  class="error-messages"  >
+                                    <div   ng-messages-include="views/tmtelas/messages.html" ></div>
+                         </div>
                     </div>
 
 
-                </form>
             </div>
         </div>
         <hr>
         <div class="row">
 
             <div class="col-lg-12" >
-                <form name="cadastropacienteform" >
 
                     <div class="col-lg-3">
                         <div class="input-group  " style="width: 100%;" >
@@ -82,13 +82,17 @@
                     </div>
                     <div class="col-lg-3">
                         <div class="input-group  " style="width: 100%;" >
-                            <input type="text" class="form-control " data-mask="99999999999999" placeholder="S.U.S" ng-model="userDTO.cadastroPaciente.pacStSUS"
+                            <input type="text" name="PAC_IN_CODSUS" class="form-control " data-mask="99999999999999" placeholder="S.U.S" ng-model="userDTO.cadastroPaciente.pacStSUS"
                                    ng-change="trocarVisualizacao('PAC_IN_CODSUS', userDTO.cadastroPaciente.pacStSUS)"
-                                   ng-focus="trocarVisualizacao('PAC_IN_CODSUS', userDTO.cadastroPaciente.pacStSUS)"  >
+                                   ng-focus="trocarVisualizacao('PAC_IN_CODSUS', userDTO.cadastroPaciente.pacStSUS)"  
+                                   ng-minlength="userDTO.cadastroPaciente.config.PAC_IN_CODSUS.min"  ng-maxlength="userDTO.cadastroPaciente.config.PAC_IN_CODSUS.max"  >
                             <span class="input-group-addon"  ng-if="userDTO.cadastroPaciente.ultimoCampo === 'PAC_IN_CODSUS'" >
                                 <i ng-click="filtrar()"  class="fa fa-search  "  style="color: #006621 ; text-shadow: 1px 1px 1px #ccc;    font-size: 1.5em;" ></i>
                             </span>
                         </div>
+                         <div ng-messages="cpform.PAC_IN_CODSUS.$error"  class="error-messages"  >
+                                    <div   ng-messages-include="views/tmtelas/messages.html" ></div>
+                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="input-group" style="width: 100%;" >
@@ -100,15 +104,11 @@
                             </span>
                         </div>
 
-                        <div role="alert " >
-                            <span class="error  has-error"   style="color: red;" ng-show="cadastropacienteform.REQ_ST_CODIGOALT.$error.minlength">
-                                Muito curto  , menos de 8 </span>
-                            <span class="error"   style="color: red;" ng-show="cadastropacienteform.REQ_ST_CODIGOALT.$error.maxlength">
-                                Muito longo, mais de 16 </span>
-                        </div>
+                        <div ng-messages="cpform.REQ_ST_CODIGOALT.$error"  class="error-messages"  >
+                                    <div   ng-messages-include="views/tmtelas/messages.html" ></div>
+                         </div>
                     </div>
 
-                </form>
             </div>
         </div>
 
@@ -184,8 +184,8 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="5">
-                                    <ul class="pagination pull-right"></ul>
+                                <td colspan="7" style="height: 20px;" >
+                                        <ul class="pagination pull-right"></ul>
                                 </td>
                             </tr>
                         </tfoot>
@@ -195,4 +195,6 @@
         </div>
     </div>
     
+    
+</fieldset>
     
