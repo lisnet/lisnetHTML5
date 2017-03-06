@@ -35,6 +35,7 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
 
 
 
+
     if ($localStorage.userDTO && typeof $localStorage.userDTO === 'object') {
 //        console.log('login userDTO no $localStorage');
         this.userDTO = $localStorage.userDTO;
@@ -254,7 +255,9 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
         
          $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams, options) {
              console.log('$stateChangeSuccess : '+$state.current.name);
-             vm.carregando = false;
+             
+             $timeout(function (){vm.carregando = false;},1500);
+             
              if(vm.modalLoading){
                  console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<  Cancelando Loading modal  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
                 vm.modalLoading.dismiss('cancel');

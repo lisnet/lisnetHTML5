@@ -31,68 +31,10 @@ function cadastroPaciente($scope, sairDoSistemaService, notificacaoProvider, bus
 //        $state.go($scope.userDTO.cadastroPaciente.ultimoStep);
     }
     
+    $scope.userDTO.cadastroPaciente.config =   configPadrao();
     
     
-    $scope.userDTO.cadastroPaciente.config = {
-                PAC_IN_CODIGO:{disable:true,min:4,max:15,visible:true,required:false,label:'Código Interno',position:0},
-                PAC_ST_NOME:{disable:false,min:5,max:70,visible:true,required:true,label:'Nome',position:1},
-                PAC_DT_NASCIMENTO:{disable:false,min:5,max:20,visible:true,required:false,label:'Data de Nascimento',position:2},
-                PAC_IN_IDADE:{disable:false,min:5,max:20,visible:true,required:false,label:'Idade',position:3},
-                PAC_ST_SEXO:{disable:false,min:5,max:20,visible:true,required:true,label:'fa fa-venus-mars',position:4},
-                PAC_ST_ESTADOCIVIL:{disable:false,min:5,max:20,visible:true,required:false,label:'Estado Civil',position:5},
-                PAC_ST_RG:{disable:false,min:2,max:12,visible:true,required:false,label:'R.G',position:6},
-                PAC_ST_CPF:{disable:false,min:11,max:14,visible:true,required:false,label:'CPF',position:7},
-                PAC_IN_CODSUS:{disable:false,min:10,max:15,visible:true,required:false,label:'S.U.S',position:8},
-                PAC_ST_PRONTUARIO:{disable:false,min:4,max:15,visible:true,required:false,label:'Prontuário',position:9},
-                PAC_ST_COR:{disable:false,min:1,max:2,visible:true,required:false,label:'Cor',position:10},
-                PAC_ST_RESP:{disable:false,min:8,max:50,visible:true,required:false,label:'Responsável',position:11},
-                PAC_ST_NOMEMAE:{disable:false,min:8,max:70,visible:true,required:false,label:'Nome da Mãe',position:12},
-                constroe_paciente:true,
-                PAC_ST_CEP:{disable:false,min:8,max:9,visible:true,required:false,label:'CEP',position:13},
-                PAC_ST_ENDERECO:{disable:false,min:8,max:70,visible:true,required:false,label:'Endereço',position:14},
-                PAC_ST_NUMERO:{disable:false,min:0,max:5,visible:true,required:false,label:'Numero',position:15},
-                PAC_ST_COMPLEMENTO:{disable:false,min:0,max:50,visible:true,required:false,label:'Complemento',position:16},
-                PAC_ST_BAIRRO:{disable:false,min:0,max:50,visible:true,required:false,label:'Bairro',position:17},
-                PAC_ST_CIDADE:{disable:false,min:0,max:50,visible:true,required:false,label:'Cidade',position:18},
-                PAC_ST_ESTADO:{disable:false,min:0,max:2,visible:true,required:false,label:'UF',position:19},
-                PAC_ST_TELEFONE:{disable:false,min:0,max:20,visible:true,required:false,label:'Telefone',position:20},
-                PAC_ST_CELULAR:{disable:false,min:0,max:20,visible:true,required:false,label:'Celular',position:21},
-                PAC_ST_EMAIL:{disable:false,min:0,max:50,visible:true,required:false,label:'Email',position:22},
-                PAC_BL_OBSERVACAO:{disable:false,min:0,max:50,visible:true,required:false,label:'Observação',position:23},
-                constroe_contato:true,
-                REQ_IN_CODIGO:{disable:false,min:0,max:50,visible:true,required:false,label:'Solicitação',position:24},
-                REQ_DT_CADASTRO:{disable:true,min:0,max:50,visible:true,required:true,label:'Data',position:25},
-                REQ_ST_MATRICULA:{disable:false,min:0,max:30,visible:true,required:false,label:'N. Cart.',position:26},
-                REQ_ST_SENHA:{disable:false,min:0,max:20,visible:true,required:false,label:'Senha',position:27},
-                REQ_DT_VALIDADESENHA:{disable:true,min:0,max:20,visible:true,required:false,label:'Validade',position:28},
-                REQ_ST_AUTORIZACAO:{disable:false,min:0,max:20,visible:true,required:false,label:'Autorização',position:29},
-                UNI_ST_CODIGO:{disable:false,min:3,max:3,visible:true,required:true,label:'Local',position:30},
-                ORI_ST_CODIGO:{disable:false,min:3,max:3,visible:true,required:true,label:'Posto',position:31},
-                CON_ST_CODIGO:{disable:false,min:3,max:3,visible:true,required:false,label:'Convênio',position:32},
-                REG_ST_CODIGO:{disable:false,min:3,max:3,visible:true,required:false,label:'Plano',position:33},
-                LOC_ST_CODIGO:{disable:false,min:3,max:3,visible:true,required:false,label:'Entrega',position:34},
-                CID_ST_CODIGO:{disable:false,min:3,max:3,visible:true,required:false,label:'C.I.D',position:35},
-                constroe_solicitacao:true,
-                REQ_ST_DUM:{disable:false,min:0,max:20,visible:true,required:false,label:'DUM',position:36},
-                REQ_CH_GESTANTE:{disable:false,min:0,max:1,visible:true,required:false,label:'Gestante',position:37},
-                REQ_CH_RN:{disable:false,min:0,max:1,visible:true,required:false,label:'R.N.',position:38},
-                REQ_ST_PESO:{disable:false,min:0,max:5,visible:true,required:false,label:'Peso',position:39},
-                REQ_ST_ALTURA:{disable:false,min:0,max:5,visible:true,required:false,label:'Altura',position:40},
-                COL_ST_CODIGO:{disable:false,min:0,max:20,visible:true,required:false,label:'Coletor',position:41},
-                REQ_DT_COLETA:{disable:false,min:0,max:20,visible:true,required:false,label:'Data & Hora',position:42},
-                REQ_ST_QUARTO:{disable:false,min:0,max:10,visible:true,required:false,label:'Quarto',position:43},
-                REQ_ST_LEITO:{disable:false,min:0,max:10,visible:true,required:false,label:'Leito',position:44},
-                REQ_BL_OBSERVACAO:{disable:false,min:0,max:4000,visible:true,required:false,label:'Observação',position:45},
-                constroe_complementares:false,
-                SOL_ST_CODIGO:{disable:false,min:0,max:3,visible:true,required:false,label:'Solicitante',position:46},
-                REQ_ST_GUIA:{disable:false,min:0,max:20,visible:true,required:false,label:'N da Guia',position:47},
-                EXA_ST_CODIGO:{disable:false,min:2,max:10,visible:true,required:false,label:'Procedimento',position:48},
-                EXA_ST_DESCRICAO:{disable:false,min:2,max:10,visible:true,required:false,label:'Descrição Exame',position:49},
-                MAT_ST_CODIGO:{disable:false,min:0,max:5,visible:true,required:false,label:'Material',position:50},
-                MAT_ST_DESCRICAO:{disable:false,min:0,max:5,visible:true,required:false,label:'Descrição Material',position:50},
-                constroe_exames:false
-            };
-    
+   
     
   hotkeys.add({
     combo: 'f7',
@@ -522,10 +464,71 @@ $scope.dtOptions = DTOptionsBuilder.newOptions()
                 }
             ]);
 
+
 };
 
+function configPadrao() {
 
-
+                return {
+                    PAC_IN_CODIGO: {disable: true, min: 4, max: 15, visible: true, required: false, label: 'Código Interno', position: 0},
+                    PAC_ST_NOME: {disable: false, min: 5, max: 70, visible: true, required: true, label: 'Nome', position: 1},
+                    PAC_DT_NASCIMENTO: {disable: false, min: 5, max: 20, visible: true, required: false, label: 'Data de Nascimento', position: 2},
+                    PAC_IN_IDADE: {disable: false, min: 5, max: 20, visible: true, required: false, label: 'Idade', position: 3},
+                    PAC_ST_SEXO: {disable: false, min: 5, max: 20, visible: true, required: true, label: 'fa fa-venus-mars', position: 4},
+                    PAC_ST_ESTADOCIVIL: {disable: false, min: 5, max: 20, visible: true, required: false, label: 'Estado Civil', position: 5},
+                    PAC_ST_RG: {disable: false, min: 2, max: 12, visible: true, required: false, label: 'R.G', position: 6},
+                    PAC_ST_CPF: {disable: false, min: 11, max: 14, visible: true, required: false, label: 'CPF', position: 7},
+                    PAC_IN_CODSUS: {disable: false, min: 10, max: 15, visible: true, required: false, label: 'S.U.S', position: 8},
+                    PAC_ST_PRONTUARIO: {disable: false, min: 4, max: 15, visible: true, required: false, label: 'Prontuário', position: 9},
+                    PAC_ST_COR: {disable: false, min: 1, max: 2, visible: true, required: false, label: 'Cor', position: 10},
+                    PAC_ST_RESP: {disable: false, min: 8, max: 50, visible: true, required: false, label: 'Responsável', position: 11},
+                    PAC_ST_NOMEMAE: {disable: false, min: 8, max: 70, visible: true, required: false, label: 'Nome da Mãe', position: 12},
+                    constroe_paciente: true,
+                    PAC_ST_CEP: {disable: false, min: 8, max: 9, visible: true, required: false, label: 'CEP', position: 13},
+                    PAC_ST_ENDERECO: {disable: false, min: 8, max: 70, visible: true, required: false, label: 'Endereço', position: 14},
+                    PAC_ST_NUMERO: {disable: false, min: 0, max: 5, visible: true, required: false, label: 'Numero', position: 15},
+                    PAC_ST_COMPLEMENTO: {disable: false, min: 0, max: 50, visible: true, required: false, label: 'Complemento', position: 16},
+                    PAC_ST_BAIRRO: {disable: false, min: 0, max: 50, visible: true, required: false, label: 'Bairro', position: 17},
+                    PAC_ST_CIDADE: {disable: false, min: 0, max: 50, visible: true, required: false, label: 'Cidade', position: 18},
+                    PAC_ST_ESTADO: {disable: false, min: 0, max: 2, visible: true, required: false, label: 'UF', position: 19},
+                    PAC_ST_TELEFONE: {disable: false, min: 0, max: 20, visible: true, required: false, label: 'Telefone', position: 20},
+                    PAC_ST_CELULAR: {disable: false, min: 0, max: 20, visible: true, required: false, label: 'Celular', position: 21},
+                    PAC_ST_EMAIL: {disable: false, min: 0, max: 50, visible: true, required: false, label: 'Email', position: 22},
+                    PAC_BL_OBSERVACAO: {disable: false, min: 0, max: 400, visible: true, required: false, label: 'Observação', position: 23},
+                    constroe_contato: true,
+                    REQ_IN_CODIGO: {disable: false, min: 0, max: 50, visible: true, required: false, label: 'Solicitação', position: 24},
+                    REQ_DT_CADASTRO: {disable: true, min: 0, max: 50, visible: true, required: true, label: 'Data', position: 25},
+                    REQ_ST_MATRICULA: {disable: false, min: 0, max: 30, visible: true, required: false, label: 'N. Cart.', position: 26},
+                    REQ_ST_SENHA: {disable: false, min: 0, max: 20, visible: true, required: false, label: 'Senha', position: 27},
+                    REQ_DT_VALIDADESENHA: {disable: true, min: 0, max: 20, visible: true, required: false, label: 'Validade', position: 28},
+                    REQ_ST_AUTORIZACAO: {disable: false, min: 0, max: 20, visible: true, required: false, label: 'Autorização', position: 29},
+                    UNI_ST_CODIGO: {disable: false, min: 3, max: 3, visible: true, required: true, label: 'Local', position: 30},
+                    ORI_ST_CODIGO: {disable: false, min: 3, max: 3, visible: true, required: true, label: 'Posto', position: 31},
+                    CON_ST_CODIGO: {disable: false, min: 3, max: 3, visible: true, required: false, label: 'Convênio', position: 32},
+                    REG_ST_CODIGO: {disable: false, min: 3, max: 3, visible: true, required: false, label: 'Plano', position: 33},
+                    LOC_ST_CODIGO: {disable: false, min: 3, max: 3, visible: true, required: false, label: 'Entrega', position: 34},
+                    CID_ST_CODIGO: {disable: false, min: 3, max: 3, visible: true, required: false, label: 'C.I.D', position: 35},
+                    constroe_solicitacao: true,
+                    REQ_ST_DUM: {disable: false, min: 0, max: 20, visible: true, required: false, label: 'DUM', position: 36},
+                    REQ_CH_GESTANTE: {disable: false, min: 0, max: 1, visible: true, required: false, label: 'Gestante', position: 37},
+                    REQ_CH_RN: {disable: false, min: 0, max: 1, visible: true, required: false, label: 'R.N.', position: 38},
+                    REQ_ST_PESO: {disable: false, min: 0, max: 5, visible: true, required: false, label: 'Peso', position: 39},
+                    REQ_ST_ALTURA: {disable: false, min: 0, max: 5, visible: true, required: false, label: 'Altura', position: 40},
+                    COL_ST_CODIGO: {disable: false, min: 0, max: 20, visible: true, required: false, label: 'Coletor', position: 41},
+                    REQ_DT_COLETA: {disable: false, min: 0, max: 20, visible: true, required: false, label: 'Data & Hora', position: 42},
+                    REQ_ST_QUARTO: {disable: false, min: 0, max: 10, visible: true, required: false, label: 'Quarto', position: 43},
+                    REQ_ST_LEITO: {disable: false, min: 0, max: 10, visible: true, required: false, label: 'Leito', position: 44},
+                    REQ_BL_OBSERVACAO: {disable: false, min: 0, max: 4000, visible: true, required: false, label: 'Observação', position: 45},
+                    constroe_complementares: false,
+                    SOL_ST_CODIGO: {disable: false, min: 0, max: 3, visible: true, required: false, label: 'Solicitante', position: 46},
+                    REQ_ST_GUIA: {disable: false, min: 0, max: 20, visible: true, required: false, label: 'N da Guia', position: 47},
+                    EXA_ST_CODIGO: {disable: false, min: 2, max: 10, visible: true, required: false, label: 'Procedimento', position: 48},
+                    EXA_ST_DESCRICAO: {disable: false, min: 2, max: 10, visible: true, required: false, label: 'Descrição Exame', position: 49},
+                    MAT_ST_CODIGO: {disable: false, min: 0, max: 5, visible: true, required: false, label: 'Material', position: 50},
+                    MAT_ST_DESCRICAO: {disable: false, min: 0, max: 5, visible: true, required: false, label: 'Descrição Material', position: 50},
+                    constroe_exames: false
+                };
+            };
 
 angular.module('lisnet')
         .controller('cadastroPaciente', cadastroPaciente);

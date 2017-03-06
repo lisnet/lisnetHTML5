@@ -9,7 +9,7 @@
  */
 
 
-function configuraPerfilUsuario($scope, sairDoSistemaService, notificacaoProvider, buscaAPIService, $stateParams, $localStorage, $timeout, $filter,DTOptionsBuilder,helperService) {
+function configuraPerfilUsuario($scope, sairDoSistemaService, notificacaoProvider, buscaAPIService, $stateParams, $localStorage, $timeout, $filter,DTOptionsBuilder,hotkeys,helperService) {
     console.log('rodando configuraPerfilUsuario');
     
     //    var self = this;
@@ -27,6 +27,27 @@ function configuraPerfilUsuario($scope, sairDoSistemaService, notificacaoProvide
     }
     $scope.paramsStateConfig = $stateParams;
     $scope.btnEditar = true;
+    
+    
+    hotkeys.add({
+    combo: 'f2',
+    description: 'Editar tela em questao',
+    allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
+    callback: function(event,hotkeys) {
+        event.preventDefault();
+        $scope.editar();
+    }
+  });
+  
+  hotkeys.add({
+    combo: 'f8',
+    description: 'Salvar usuario',
+    allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
+    callback: function(event,hotkeys) {
+        event.preventDefault();
+        $scope.salvarAlteracoes();
+    }
+  });
     
     $scope.editar = function (){
         if($scope.userDTO.configuraPerfil.editar){
@@ -61,35 +82,39 @@ function configuraPerfilUsuario($scope, sairDoSistemaService, notificacaoProvide
         return false;
     }
     
-    $scope.salvarAlteracoes = function (){
-        if(validar()){
-            console.log('$scope.userDTO.configuraPerfil.usuario: '+JSON.stringify($scope.userDTO.configuraPerfil.usuario,null,2));
-            
-                    try {
-                       buscaAPIService.atualizaUsuario($scope.userDTO.configLisNet, $scope.userDTO.configuraPerfil.usuario)
-                               .then(function   sucesso(response) {
-                                   var _response = response.data;
-                                   var _responseType = typeof _response;
-                                   if (_response && _responseType === 'string' && _response.indexOf('ORA-') !== -1) {
-                                       notificacaoProvider.sweetError('Erro', _response);
-                                   } else {
-                                       atualizaView();
-                                       notificacaoProvider.sweetSuccess('Perfil Atualizado','Parabéns , perfil atualizado.');
-                                       console.log(response.data);
-                                   }
+    $scope.salvarAlteracoes = function () {
 
-                               }, function erro(response) {
-                                   console.log(response.statusText);
-                                   notificacaoProvider.sweetError('Erro', response.statusText);
-                               });
-                   } catch (error) {
-                       console.log;
-                       (error);
-                       notificacaoProvider.sweetError('Erro', error);
-                   }
-               } else {
-                   notificacaoProvider.sweetError('Erro', 'os campos nao estao validos ...');
-               }
+        if (validar() && $scope.estaAlterado()) {
+            
+//                console.log('$scope.userDTO.configuraPerfil.usuario: ' + JSON.stringify($scope.userDTO.configuraPerfil.usuario, null, 2));
+
+                try {
+                    buscaAPIService.atualizaUsuario($scope.userDTO.configLisNet, $scope.userDTO.configuraPerfil.usuario)
+                            .then(function   sucesso(response) {
+                                var _response = response.data;
+                                var _responseType = typeof _response;
+                                if (_response && _responseType === 'string' && _response.indexOf('ORA-') !== -1) {
+                                    notificacaoProvider.sweetError('Erro', _response);
+                                } else {
+                                    atualizaView();
+                                    notificacaoProvider.sweetSuccess('Perfil Atualizado', 'Parabéns , perfil atualizado.');
+                                    console.log(response.data);
+                                }
+
+                            }, function erro(response) {
+                                console.log(response.statusText);
+                                notificacaoProvider.sweetError('Erro', response.statusText);
+                            });
+                } catch (error) {
+                    console.log;
+                    (error);
+                    notificacaoProvider.sweetError('Erro', error);
+                }
+          
+        } else {
+            notificacaoProvider.sweetError('Não existe alterações ou campos inválidos.');
+        }
+
     };
     
     function atualizaView(){

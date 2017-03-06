@@ -6,7 +6,7 @@
 
 /* global i, y, x */
 
-function notificacaoBarra($scope, $window,sairDoSistemaService,$rootScope){
+function notificacaoBarra($scope, $window,sairDoSistemaService,$rootScope,hotkeys){
     
     console.log('Inicializando notificacaoBarra');
     $scope.userDTO = sairDoSistemaService.validarLogin();
@@ -17,6 +17,19 @@ function notificacaoBarra($scope, $window,sairDoSistemaService,$rootScope){
     
     var qdtNotificacaoResumida = 6;
     $scope.notificacoesResumida = [];
+    
+    
+    hotkeys.add({
+    combo: 'ctrl+f',
+    description: 'This one goes to cadastrodepacientes',
+    allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
+    callback: function(event,hotkeys) {
+        event.preventDefault();
+//        notificacaoProvider.sweetSuccess('test','test');
+        $scope.inputPesquisaTelaFocus = true;
+    }
+  });
+    
     
     String.prototype.isNumber = function(){return /^\d+$/.test(this);};
     $scope.telaSelecionada = '';
