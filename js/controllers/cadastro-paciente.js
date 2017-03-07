@@ -75,7 +75,7 @@ function cadastroPaciente($scope, sairDoSistemaService, notificacaoProvider, bus
   });
   
   hotkeys.add({
-    combo: 'ctrl+right',
+    combo: 'alt+right',
     description: 'This one goes to next page to the right',
     allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
     callback: function(event, hotkey) {
@@ -86,7 +86,7 @@ function cadastroPaciente($scope, sairDoSistemaService, notificacaoProvider, bus
   });
   
   hotkeys.add({
-    combo: 'ctrl+left',
+    combo: 'alt+left',
     description: 'This one goes to next page to the left',
     allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
     callback: function(event, hotkey) {
