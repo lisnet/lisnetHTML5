@@ -40,7 +40,7 @@ function configuraPerfilUsuario($scope, sairDoSistemaService, notificacaoProvide
   });
   
   hotkeys.add({
-    combo: 'f8',
+    combo: 'f4',
     description: 'Salvar usuario',
     allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
     callback: function(event,hotkeys) {

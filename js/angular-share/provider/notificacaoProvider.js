@@ -140,12 +140,14 @@ angular.module('lisnet')
                                 title: title,
                                 text: text,
                                 type: "warning",
-                                showCancelButton: true,
+//                                showCancelButton: true,
                                 confirmButtonColor: "#DD6B55",
 //                                confirmButtonText: "Yes, delete it!",
-                                closeOnConfirm: false,
+//                                closeOnConfirm: false,
                                 closeOnCancel: false
-                            },function () { SweetAlert.swal("Ok!"); });
+                            }
+//                            ,function () { SweetAlert.swal("Ok!"); }
+                                    );
                         },sweetError : function (title,text) {
                             SweetAlert.swal({
                                 title: title,

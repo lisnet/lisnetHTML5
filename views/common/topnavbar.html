@@ -8,7 +8,7 @@
                 <div class="form-group"  >
                     
                     
-                    <input type="text" style="font-weight: bolder;  font-size: 16px;  width: 100%;" placeholder="Pesquisar tela (ctrl+f)" class="form-control" name="top-search" 
+                    <input type="text" style="font-weight: bolder;  font-size: 16px;  width: 100%;" placeholder="Pesquisar tela F1" class="form-control" name="top-search" 
                            id="top-search" ng-model="telaSelecionada" uib-typeahead="state for state in states | filter:$viewValue | limitTo:8"     typeahead-on-select="main.stateGO( cortaString($item))" focus="inputPesquisaTelaFocus"  >
                     <!--typeahead-on-select="main.stateGO( onSelect($item, $model, $label))"  enter-key="main.stateGO( cortaString(telaSelecionada))" --> 
                     

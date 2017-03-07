@@ -20,7 +20,7 @@ function notificacaoBarra($scope, $window,sairDoSistemaService,$rootScope,hotkey
     
     
     hotkeys.add({
-    combo: 'ctrl+f',
+    combo: 'f1',
     description: 'This one goes to cadastrodepacientes',
     allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
     callback: function(event,hotkeys) {

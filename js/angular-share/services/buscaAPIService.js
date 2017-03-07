@@ -455,7 +455,7 @@ angular.module('lisnet').service("buscaAPIService",function ($http){
         
         var urlExterna = 'https://viacep.com.br/ws/'+cep+'/json/';
         var params = '?caminho=' + urlExterna;
-        var url = configLisNet.baseUrl +'/buscaPaciente'+ params;
+        var url = configLisNet.baseUrl +'/buscaEndereco'+ params;
         
         console.log('buscaEndereco : '+cep);
         

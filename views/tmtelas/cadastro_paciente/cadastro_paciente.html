@@ -116,25 +116,34 @@ background: linear-gradient(to left, #44A08D , #093637);  W3C, IE 10+/ Edge, Fir
                     <div class="steps clearfix"  ng-if="userDTO.cadastroPaciente.showWizard" >
                         
                         <ul>
-                            <li ui-sref-active="current" >
-                                <!--<a   ng-click="goToStep('cadastrodepacientes')"  class="btn btn-danger  btn-outline" ><i class="fa fa-search ">&nbsp;&nbsp; F2</i></a>-->
-                                <a    ui-sref="cadastrodepacientes.busca_paciente" class="btn btn-danger  btn-outline"> <i class="fa fa-search ">&nbsp;&nbsp; F7</i></a>
+                            
+                            <li ng-repeat="s in steps  track by $index" ui-sref-active="current">
+                                <div ng-if="$index === 0" >
+                                    <a    ui-sref="{{s.state}}"  class="btn btn-danger  btn-outline"> <i class="fa fa-search ">{{s.label}}</i></a>
+                                </div>
+                                <div  ng-if="$index > 0" >
+                                    <a    eat-click-if="goToStep(s.state)"   ui-sref="{{s.state}}"  class="btn-default  text-center"> {{s.label}}</a>
+                                </div>
+                            </li>
+<!--                            <li ui-sref-active="current" >
+                                <a   ng-click="goToStep('cadastrodepacientes')"  class="btn btn-danger  btn-outline" ><i class="fa fa-search ">&nbsp;&nbsp; F2</i></a>
+                                <a  ng-click="goToStep(true,'cadastrodepacientes.busca_paciente')"  class="btn btn-danger  btn-outline"> <i class="fa fa-search ">&nbsp;&nbsp; F7</i></a>
                             </li>
                             <li ui-sref-active="current">
-                                <a    ui-sref="cadastrodepacientes.constroe_paciente" class="btn-default  text-center"> Paciente</a>
+                                <a    ng-click="goToStep(true,'cadastrodepacientes.constroe_paciente')"  class="btn-default  text-center"> Paciente</a>
                             </li>
                             <li ui-sref-active="current">
-                                <a    ui-sref="cadastrodepacientes.constroe_paciente_contato" class="btn-default  text-center"> End./Contato</a>
+                                <a    ng-click="goToStep(true,'cadastrodepacientes.constroe_paciente_contato')"   class="btn-default  text-center"> End./Contato</a>
                             </li>
                             <li ui-sref-active="current">
-                                <a  ui-sref="cadastrodepacientes.constroe_requisicao" class="btn-default  text-center"> Solicitação</a>
+                                <a   ng-click="goToStep(true,'cadastrodepacientes.constroe_requisicao')"  class="btn-default  text-center"> Solicitação</a>
                             </li>
                             <li ui-sref-active="current">
                                 <a   ui-sref="cadastrodepacientes.dados_complementares" class="btn-default  text-center">Complementares</a>
                             </li>
                             <li ui-sref-active="current">
                                 <a   ui-sref="cadastrodepacientes.inclue_exames" class="btn-default  text-center"> Exames</a>
-                            </li>
+                            </li>-->
                         </ul>
                     </div>
                     

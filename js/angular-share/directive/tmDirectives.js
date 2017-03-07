@@ -209,6 +209,40 @@ function keyFunction($timeout, $parse) {
 }
 
 
+function  eatClickIf($parse, $rootScope) {
+    return {
+      // this ensure eatClickIf be compiled before ngClick
+      priority: 100,
+      restrict: 'A',
+      compile: function($element, attr) {
+        var fn = $parse(attr.eatClickIf);
+        return {
+          pre: function link(scope, element) {
+            var eventName = 'click';
+            element.on(eventName, function(event) {
+              var callback = function() {
+                if (fn(scope, {$event: event})) {
+                  // prevents ng-click to be executed
+                  event.stopImmediatePropagation();
+                  // prevents href 
+                  event.preventDefault();
+                  return false;
+                }
+              };
+              if ($rootScope.$$phase) {
+                scope.$evalAsync(callback);
+              } else {
+                scope.$apply(callback);
+              }
+            });
+          },
+          post: function() {console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');}
+        };
+      }
+    };
+  }
+
+
 angular.module('lisnet')
         .directive('enterKey',enterKey)
         .directive('nextFocus',nextFocus)
@@ -217,6 +251,7 @@ angular.module('lisnet')
         .directive('autoNext',autoNext)
         .directive('fooTable',fooTable)
         .directive('capitalize',capitalize)
+        .directive('eatClickIf',eatClickIf)
         .directive('focus',focus)
         .directive('compareTo',compareTo);
 

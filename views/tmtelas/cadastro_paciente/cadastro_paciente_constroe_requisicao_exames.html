@@ -144,10 +144,9 @@
         <div class="row " >
             <div class="col-lg-12  form-inline " >
                 <div  class="pull-right  " >
-                    <a  ng-click="editarTela('cadastrodepacientes.inclue_exames')" class="btn btn-warning  text-center ">Editar &nbsp;|&nbsp;F2</a>
-                    <!--<a  ng-click="salvar('paciente')" class="btn btn-  text-center ">Editar &nbsp;|&nbsp;F2</a>-->
-                    <a ng-click="salvarAlteracoes('cadastrodepacientes.constroe_paciente')"  class="btn btn-info btn-outline"  ng-if="!compara(userDTO.cadastroPaciente.requisicao , userDTO.cadastroPaciente.requisicaoDB)"  data-toggle="tooltip" title="Salvar alterações"  ><i class="fa fa-floppy-o"></i>&nbsp;Salvar&nbsp;|&nbsp;F8</a>
-                    <a ui-sref="cadastrodepacientes.dados_complementares" class="btn btn-primary  text-center ">Voltar&nbsp;|&nbsp;Ctrl+esquerda</a>
+                    <button   type="button"   ng-click="editarTela('cadastrodepacientes.inclue_exames')" class="btn btn-warning  text-center btn-outline">Editar &nbsp;|&nbsp;F2</button>
+                    <button   type="button"  ng-click="salvarAlteracoes('cadastrodepacientes.constroe_paciente')"  class="btn btn-info btn-outline"  ng-if="!compara(userDTO.cadastroPaciente.requisicao , userDTO.cadastroPaciente.requisicaoDB)"  data-toggle="tooltip" title="Salvar alterações"  ><i class="fa fa-floppy-o"></i>&nbsp;Salvar&nbsp;|&nbsp;F4</button>
+                    <button   type="button"  ui-sref="cadastrodepacientes.dados_complementares" class="btn btn-primary  text-center   btn-outline">Voltar&nbsp;|&nbsp;Ctrl+esquerda</button>
                 </div>
             </div>
         </div>
