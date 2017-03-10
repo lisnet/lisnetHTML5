@@ -18,7 +18,7 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
     
     var intDbLength = 3;
     var intMinimoDelay = 1000;
-    var dialogLoading;
+//    var dialogLoading;
     
     deviceDetector.protocol = $location.protocol();
     deviceDetector.url = document.URL;
@@ -215,7 +215,7 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
                                     return s.name === stateGO;
                                 })[0];
 
-                                console.log("stateTokeep : " + JSON.stringify(stateTokeep, null, 2));
+//                                console.log("stateTokeep : " + JSON.stringify(stateTokeep, null, 2));
 
                                 if (this.userDTO.hotPages.filter(function (e) {
                                     return e.name === stateGO;

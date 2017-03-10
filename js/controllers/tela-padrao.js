@@ -263,7 +263,35 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, sairDoSistemaS
             _dataEnt.dataPicker = [];
             _newEnt[0] = _dataEnt;
             for (var x = 0; x < moduloPadrao.entidade.colunas.length; x++) {
-                _newEnt[x + 1] = null;
+                var _c =  moduloPadrao.entidade.colunas[x];
+                if (_c.padrao) {
+                    if (_c.padrao.indexOf('@') > -1) {
+                        console.log('_c.coluna : '+_c.coluna);
+                        _newEnt[x + 1] = buscaCodigodoUserDTO(_c.padrao);
+                    } else {
+                        
+                        console.log("_c.padrao : "+_c.padrao.indexOf('@'));
+                        
+                        switch (_c.tipo) {
+                            case 'C':
+                                if (_c.componente === 'E') {
+                                    _newEnt[x + 1] = _c.padrao;
+                                } else {
+                                    _newEnt[x + 1] = false;
+                                }
+                                break;
+                            case 'N':
+                                _newEnt[x + 1] = parseInt(_c.padrao);
+                                break;
+                            case 'D':
+                                _newEnt[x + 1] = new Date();
+                                break;
+                        }
+                    }
+                } else {
+                    _newEnt[x + 1] = null;
+                }
+                
             }
 //            console.log(_newEnt);
             if (angular.isUndefined(moduloPadrao.entidade.entidades)) {
@@ -277,8 +305,23 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, sairDoSistemaS
         }, 300);
     };
     
+    $scope.constroeNomeParaCampo  = function (colunaNome,entidadeId){
+        return "tpform."+colunaNome+entidadeId+".$error";
+    };
     
-    
+    function buscaCodigodoUserDTO(padrao){
+        switch(padrao){
+            case '@UNIDADE':
+                return $scope.userDTO.unidade.UNI_ST_CODIGO;
+            break;
+            case '@USUARIO':
+                return $scope.userDTO.USU_ST_CODIGO;
+            break;
+        default:
+                return $scope.userDTO.unidade.UNI_ST_CODIGO;
+        }
+        
+    }
     
     $scope.mudarStatus = function (ent, indexParent, indexChild) {
 
@@ -313,8 +356,6 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, sairDoSistemaS
             console.log('Entidade nao eh editavel no momento ...');
         }
     };
-    
-    
     
     function carregarLista(blFiltro) {
         $scope.limparTela();
@@ -419,7 +460,6 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, sairDoSistemaS
         moduloPadrao.msgBusca = "Faça a sua pesquisa.";
     };
 
-
     function retornaPesquisa(){
     if(moduloPadrao.entidade.pesquisas){
       for(y in moduloPadrao.entidade.pesquisas){
@@ -435,9 +475,11 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, sairDoSistemaS
     }
         
     };
+    
     function  encontraModulo(e) {
         return e.modStCodigo === modStCodigo;
     };
+    
     function montaModulo(_modStCodigo) {
         mp = {modStCodigo: _modStCodigo};
         mp.state = $state.current;
@@ -445,7 +487,6 @@ function telaPadrao($scope,$state ,buscaAPIService, $stateParams, sairDoSistemaS
         $scope.userDTO.telaPadrao.push(mp);
         return mp;
     };
-    
     
     function constroeDTOptionsBuilder(){
             return  DTOptionsBuilder.newOptions()

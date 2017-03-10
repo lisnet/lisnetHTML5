@@ -418,7 +418,10 @@ angular.module('lisnet').service("buscaAPIService",function ($http){
     /**
      * 
      * @param {type} configLisNet
-     * @param {type} modStCodigo
+     * @param {type} moduloPadrao
+     * @param {type} uniStCodigo
+     * @param {type} limit
+     * @param {type} blFiltro
      * @returns {unresolved}
      */
     this.buscaEntidadeTelaPadrao = function (configLisNet,moduloPadrao,uniStCodigo, limit ,blFiltro){
@@ -427,7 +430,7 @@ angular.module('lisnet').service("buscaAPIService",function ($http){
             params = params+'&pesquisaTipo='+moduloPadrao.entidade.pesquisaTipo+'&pesquisaCodigo='+moduloPadrao.entidade.pesquisaJSON.campo+'&pesquisaValor='+moduloPadrao.entidade.pesquisaInput+'&limit='+limit;
         }
         var url = configLisNet.baseUrl +'/buscaEntidadeTelaPadrao'+ params+'&limit='+limit;
-        console.log('buscaModuloTelaPadrao : '+url);
+//        console.log('buscaModuloTelaPadrao : '+url);
         return $http({method : 'GET',url : url,
             headers : {
                 'Content-Type' : 'application/x-www-form-urlencoded',

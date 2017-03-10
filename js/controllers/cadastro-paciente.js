@@ -118,9 +118,18 @@ function cadastroPaciente($scope, sairDoSistemaService, notificacaoProvider, bus
     };
 
     $scope.editarTela =  function (stateTela){
-        
+        console.log("editarTela  state : "+stateTela);
         switch (stateTela){
-                case 'cadastrodepacientes.constroe_paciente':
+                    case 'cadastrodepacientes.busca_paciente':
+                        $scope.userDTO.cadastroPaciente.paciente = {};
+                        $scope.userDTO.cadastroPaciente.pacienteDB = {};
+                        
+                        $state.go('cadastrodepacientes.constroe_paciente');
+                        //TODO busca código único de paciente PAC_IN_CODIGO
+                        $timeout(function (){$scope.userDTO.cadastroPaciente.config.constroe_paciente = false;  },100);
+                        $timeout(function (){$scope.inputPAC_ST_NOME = true;  },800);
+                    break;
+                    case 'cadastrodepacientes.constroe_paciente':
                     $scope.userDTO.cadastroPaciente.config.constroe_paciente = $scope.userDTO.cadastroPaciente.config.constroe_paciente ? false : true;
 //                        $scope.inputPAC_ST_NOME = true;
                         $timeout(function (){$scope.inputPAC_ST_NOME = true;  },500);
@@ -133,7 +142,6 @@ function cadastroPaciente($scope, sairDoSistemaService, notificacaoProvider, bus
                     $scope.userDTO.cadastroPaciente.config.constroe_solicitacao = $scope.userDTO.cadastroPaciente.config.constroe_solicitacao ? false : true;
                         $timeout(function (){$scope.inputREQ_ST_MATRICULA = true;},500);
                     break;
-                    
             }
         
     };
@@ -174,6 +182,8 @@ function cadastroPaciente($scope, sairDoSistemaService, notificacaoProvider, bus
 
     $scope.filtrar = function ( ) {
         console.log('ultimoCampo = ' + $scope.userDTO.cadastroPaciente.ultimoCampo);
+        $scope.userDTO.cadastroPaciente.paciente = null;
+        $scope.userDTO.cadastroPaciente.pacienteDB = null;
         if ($scope.userDTO.cadastroPaciente.ultimoCampo && $scope.userDTO.cadastroPaciente.valorCampo) {
             selfCadastroPaciente.modalLoading = notificacaoProvider.modalLoading('filtrando', 'filtrando', $scope);
             selfCadastroPaciente.activated = true;
@@ -400,7 +410,12 @@ function cadastroPaciente($scope, sairDoSistemaService, notificacaoProvider, bus
         console.log('Inside nextScreen ....  state = '+_s);
         switch (_s){
             case 'cadastrodepacientes':
-                $scope.goToStep("cadastrodepacientes.constroe_paciente");
+                if($scope.userDTO.cadastroPaciente.paciente){
+                    $scope.goToStep("cadastrodepacientes.constroe_paciente");return true;
+                }else{
+                    notificacaoProvider.sweetWarning('Info', 'Escolha um paciente ou crie um novo para proceguir. F2');
+                    return false;
+                }
             break;
             case 'cadastrodepacientes.busca_paciente':
                 
@@ -409,7 +424,7 @@ function cadastroPaciente($scope, sairDoSistemaService, notificacaoProvider, bus
                         $state.go("cadastrodepacientes.constroe_paciente");
                         return true;
                     } else {
-                        notificacaoProvider.sweetWarning('Info', 'Escolha um paciente ou crie um novo para proceguir.');
+                        notificacaoProvider.sweetWarning('Info', 'Escolha um paciente ou crie um novo para proceguir. F2');
                         return false;
                     }
                 } else {
@@ -576,7 +591,7 @@ function configPadrao() {
                     REG_ST_CODIGO: {disable: false, min: 3, max: 3, visible: true, required: false, label: 'Plano', position: 33},
                     LOC_ST_CODIGO: {disable: false, min: 3, max: 3, visible: true, required: false, label: 'Entrega', position: 34},
                     CID_ST_CODIGO: {disable: false, min: 3, max: 3, visible: true, required: false, label: 'C.I.D', position: 35},
-                    constroe_solicitacao: true,
+                    constroe_solicitacao: false,
                     REQ_ST_DUM: {disable: false, min: 0, max: 20, visible: true, required: false, label: 'DUM', position: 36},
                     REQ_CH_GESTANTE: {disable: false, min: 0, max: 1, visible: true, required: false, label: 'Gestante', position: 37},
                     REQ_CH_RN: {disable: false, min: 0, max: 1, visible: true, required: false, label: 'R.N.', position: 38},

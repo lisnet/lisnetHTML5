@@ -92,14 +92,16 @@ https://demos.scotch.io/angular-validation/demos/-->
             <div class="col-lg-12"  ng-cloak="true"  ng-if="moduloPadrao.entidade.entidades && moduloPadrao.entidade.entidades.length > 0"  >
                 <div class="ibox-content "  style="padding: 15px 5px 20px 5px; min-height: 400px;" >
                     <div class="table-responsive">
-                        <table   datatable="ng" dt-options="dTOptionsBuilder" class="table table-striped table-bordered table-hover dataTables-example  "  ng-cloak   >
+                        <form name="tpform" autocomplete="off" >
+                            <table   datatable="ng" dt-options="dTOptionsBuilder" class="table table-striped table-bordered table-hover dataTables-example  "  ng-cloak   >
                         <thead>
-                            <tr  >
-                                <th  ></th>
+                            <tr>
+                                    <th></th>
                                    <!--style=" width: {{moduloPadrao.entidade.colunas[$index - 1].tamanho}}"-->
-                                <th ng-repeat="col in :: moduloPadrao.entidade.colunas  track by $index"    >
-                                    {{col.nome}}
-                                </th>
+                                   <th ng-repeat="col in moduloPadrao.entidade.colunas  track by $index"   ng-if=" !col.padrao ||  col.padrao.indexOf('@')  === -1" >
+                                        {{col.nome}}
+                                    </th>
+                                   
                                 
                                 <!--<th style="display: none;  width: 1px; "    ></th>-->
                             </tr>
@@ -108,8 +110,8 @@ https://demos.scotch.io/angular-validation/demos/-->
 
                             <tr   ng-repeat="ent in moduloPadrao.entidade.entidades  track by $index"    >
                                 <!--ng-style="{{ moduloPadrao.entidade.colunas[$index - 1].tamanho? 'width:'moduloPadrao.entidade.colunas[$index - 1].tamanho'.px;' : 'width:10px;' }}"-->   
-                                <td   ng-repeat="e in ent track by $index "    > 
-                                    <form name="{{ent[0].id}}"  novalidate >
+                                <td   ng-repeat="e in ent track by $index "  ng-if=" !moduloPadrao.entidade.colunas[$index - 1].padrao ||  moduloPadrao.entidade.colunas[$index - 1].padrao.indexOf('@')  === -1"  > 
+                                    
 
                                         <div ng-if="$index === 0"  style="min-width: 35px;" >
 
@@ -145,18 +147,30 @@ https://demos.scotch.io/angular-validation/demos/-->
                                                 </span>
                                                 <span  class="form-group" ng-if="ent[0].editavel && moduloPadrao.entidade.colunas[$index - 1].chave !== 'S' || (moduloPadrao.entidade.colunas[$index - 1].chave === 'S' && ent[0].status === 'C') " >
                                                     <span ng-if="moduloPadrao.entidade.colunas[$index - 1].tipo === 'C' " >
-                                                        <input  autocomplete="off"  size="{{moduloPadrao.entidade.colunas[$index - 1].tamanho  }}"  name="{{moduloPadrao.entidade.colunas[$index - 1].nome }}"  
+                                                        <input name="name{{$index}}" 
+                                                                size="{{moduloPadrao.entidade.colunas[$index - 1].tamanho  }}"  
                                                                 style=" min-width: 150px;   width: {{moduloPadrao.entidade.colunas[$index - 1].tamanho * 7 }}px ;  max-width: 700px; "
                                                                 placeholder="{{moduloPadrao.entidade.colunas[$index - 1].nome }}"    
                                                                 ng-change="mudarStatus(ent,$parent.$index, $index)"     class="form-control  text-primary inputcolor "    
-                                                                required="{{moduloPadrao.entidade.colunas[$index - 1].obrigatorio === 'S' }}"  
-                                                                ng-minlength="{{moduloPadrao.entidade.colunas[$index - 1].obrigatorio === 'S'?1:0 }}" ng-maxlength="{{moduloPadrao.entidade.colunas[$index - 1].obrigatorio}}"   
+                                                                ng-required="{{moduloPadrao.entidade.colunas[$index - 1].obrigatorio === 'S' }}"  
+                                                                ng-minlength="{{moduloPadrao.entidade.colunas[$index - 1].obrigatorio === 'S'?1:0 }}" 
+                                                                ng-maxlength="moduloPadrao.entidade.colunas[$index - 1].tamanho"
+                                                                maxlength="{{moduloPadrao.entidade.colunas[$index - 1].tamanho}}"
                                                                 ng-model="ent[$index]"   >
-                                                        <!--<p ng-show="{{ent[0].id}}entidadeForm.{{moduloPadrao.entidade.colunas[$index - 1].nome }}.$invalid && !{{ent[0].id}}entidadeForm.{{moduloPadrao.entidade.colunas[$index - 1].nome }}.$pristine" class="help-block">O Campo {{moduloPadrao.entidade.colunas[$index - 1].nome }} é obrigatório.</p>-->
+                                                                <div  ng-messages="tpform['name'+$index].$error" class="error-messages"  >
+                                                                            <div   ng-messages-include="views/tmtelas/messages.html" ></div>
+                                                                </div>
+                                                        
                                                     </span>
                                                     <span ng-if="moduloPadrao.entidade.colunas[$index - 1].tipo === 'N' " >
-                                                        <input   autocomplete="off"   type="number"   style="width: {{moduloPadrao.entidade.colunas[$index - 1].tamanho * 4 }}px"  ng-change="mudarStatus(ent,$parent.$index, $index)"   name="{{moduloPadrao.entidade.colunas[$index - 1].nome }}"     
-                                                                  class="form-control  text-primary inputcolor "   required="{{moduloPadrao.entidade.colunas[$index - 1].obrigatorio === 'S' }}"  ng-model="ent[$index]"  >
+                                                        <input   name="num{{$index}}"    type="number"   style="width: {{moduloPadrao.entidade.colunas[$index - 1].tamanho * 4 }}px; min-width: 70px; max-width: 100px;    "  ng-change="mudarStatus(ent,$parent.$index, $index)"     
+                                                                  class="form-control  text-primary inputcolor "   ng-required="{{moduloPadrao.entidade.colunas[$index - 1].obrigatorio === 'S' }}" 
+                                                                  ng-model="ent[$index]" 
+                                                                  ng-maxlength="moduloPadrao.entidade.colunas[$index - 1].tamanho"
+                                                                  maxlength="{{moduloPadrao.entidade.colunas[$index - 1].tamanho}}" >
+                                                                  <div  ng-messages="tpform['num'+$index].$error" class="error-messages"  >
+                                                                            <div   ng-messages-include="views/tmtelas/messages.html" ></div>
+                                                                </div>
                                                     </span>
                                                 </span>
                                             </span>
@@ -164,12 +178,12 @@ https://demos.scotch.io/angular-validation/demos/-->
                                                 <!--{{e}}-->
                                                 <input      icheck type="checkbox"  ng-disabled="!ent[0].editavel  "  
                                                             ng-model="ent[$index]"   ng-change="mudarStatus(ent,$parent.$index, $index)"  
-                                                            required="{{moduloPadrao.entidade.colunas[$index - 1].obrigatorio === 'S' }}"  >
+                                                            ng-required="{{moduloPadrao.entidade.colunas[$index - 1].obrigatorio === 'S' }}"  >
                                             </span>
                                         </span>
                                         
                                           <!--Data & Hora-->
-                                        <span ng-if="moduloPadrao.entidade.colunas[$index - 1].tipo === 'D'" >
+                                        <span ng-if=" moduloPadrao.entidade.colunas[$index - 1].tipo === 'D'" >
                                             <span  ng-if="(moduloPadrao.entidade.colunas[$index - 1].coluna.indexOf('_DT_') !== -1)">
                                                 <spa ng-if="!ent[0].editavel" >
                                                     {{e| date  : 'dd/MM/yyyy'}}
@@ -177,7 +191,7 @@ https://demos.scotch.io/angular-validation/demos/-->
                                                 <spa ng-if="ent[0].editavel" >
 <!--                                                    {{  ent.popup.fim = false;  ent.openPopFim = function () {ent.popup.fim = true;};}}-->
                                                     <p class="input-group" style="width: 140px;" >
-                                                        <input   type="text" class="form-control"  
+                                                        <input   name="dt{{$index}}"   type="text" class="form-control"  
                                                              uib-datepicker-popup="dd/MM/yyyy" 
                                                              ng-model="ent[$index]"
                                                              ng-change="mudarStatus(ent,$parent.$index, $index)"  
@@ -185,13 +199,16 @@ https://demos.scotch.io/angular-validation/demos/-->
                                                              datepicker-options="dateOptions" 
                                                              close-text="Fechar"  
                                                              alt-input-formats="['MM/dd/yyyy']" 
-                                                             required="{{moduloPadrao.entidade.colunas[$index - 1].obrigatorio === 'S' }}" />
+                                                             ng-required="{{moduloPadrao.entidade.colunas[$index - 1].obrigatorio === 'S' }}" />
                                                       <span class="input-group-btn">
                                                           <button type="button" class="btn btn-default  " ng-click="opeDataPicker(ent,$index)">
                                                               <i class="glyphicon glyphicon-calendar"></i>
                                                           </button>
                                                       </span>
                                                   </p>
+                                                  <div  ng-messages="tpform['dt'+$index].$error" class="error-messages"  >
+                                                    <div   ng-messages-include="views/tmtelas/messages.html" ></div>
+                                                 </div>
                                                 </spa>
                                             </span>
                                             <span  ng-if="(moduloPadrao.entidade.colunas[$index - 1].coluna.indexOf('_HR_') !== -1)">
@@ -201,7 +218,10 @@ https://demos.scotch.io/angular-validation/demos/-->
                                                 <spa ng-if="ent[0].editavel" >
                                                     <!--<input type="datetime-local" id="exampleInput" name="input" ng-model="e" placeholder="HH:mm:ss"   required />-->
                                                     <p class="input-group date">
-                                                        <uib-timepicker ng-model="ent[$index]" ng-change="mudarStatus(ent,$parent.$index, $index)"    hour-step="1" minute-step="1" datetimepicker-neutral-timezone  required="{{moduloPadrao.entidade.colunas[$index - 1].obrigatorio === 'S' }}" ></uib-timepicker>
+                                                        <uib-timepicker  name="hr{{$index}}"  ng-model="ent[$index]" ng-change="mudarStatus(ent,$parent.$index, $index)"    hour-step="1" minute-step="1" datetimepicker-neutral-timezone  ng-required="{{moduloPadrao.entidade.colunas[$index - 1].obrigatorio === 'S' }}" ></uib-timepicker>
+                                                        <div  ng-messages="tpform['hr'+$index].$error" class="error-messages"  >
+                                                            <div   ng-messages-include="views/tmtelas/messages.html" ></div>
+                                                        </div>
                                                   </p>
                                                 </spa>
                                             </span>
@@ -209,13 +229,13 @@ https://demos.scotch.io/angular-validation/demos/-->
 
                                     </div>
 
-                                    </form>
                                 </td>
 
                             </tr>
                         </tbody>
 
                     </table>
+                        </form>
                     </div>
                 </div>
             </div>

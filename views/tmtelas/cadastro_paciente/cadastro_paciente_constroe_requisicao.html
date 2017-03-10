@@ -80,9 +80,9 @@
                 <div class="col-lg-4 "  ng-if="userDTO.cadastroPaciente.config.UNI_ST_CODIGO.visible" >
                     <label >{{userDTO.cadastroPaciente.config.UNI_ST_CODIGO.label}}</label>
                     <div class="form-group form-inline ">
-                            <input  type="text" class="form-control  col-lg-1"  name="UNI_ST_CODIGO"   ng-model="userDTO.cadastroPaciente.requisicao.UNI_ST_CODIGO" ng-disabled="userDTO.cadastroPaciente.config.UNI_ST_CODIGO.disable || userDTO.cadastroPaciente.config.constroe_solicitacao"
+                        <input  style="width: 4em;"  type="text" class="form-control  col-lg-1"  name="UNI_ST_CODIGO"   ng-model="userDTO.cadastroPaciente.requisicao.UNI_ST_CODIGO" ng-disabled="userDTO.cadastroPaciente.config.UNI_ST_CODIGO.disable || userDTO.cadastroPaciente.config.constroe_solicitacao"
                                  capitalize focus="inputUNI_ST_CODIGO"  ng-required="{{userDTO.cadastroPaciente.config.UNI_ST_CODIGO.required}}" />
-                        <input    type="text" class="form-control  col-lg-3"  name="UNI_ST_DESCRICAO"   ng-model="userDTO.cadastroPaciente.requisicao.unidade.UNI_ST_DESCRICAO" ng-disabled="true" />
+                        <input   style="width: 85%;"   type="text" class="form-control  col-lg-3"  name="UNI_ST_DESCRICAO"   ng-model="userDTO.cadastroPaciente.requisicao.unidade.UNI_ST_DESCRICAO" ng-disabled="true" />
                     </div>
                     <div ng-messages="cpform.UNI_ST_CODIGO.$error"   class="error-messages" >
                             <div   ng-messages-include="views/tmtelas/messages.html" ></div>
@@ -92,9 +92,9 @@
                 <div class="col-lg-4 "  ng-if="userDTO.cadastroPaciente.config.ORI_ST_CODIGO.visible" >
                     <label >{{userDTO.cadastroPaciente.config.ORI_ST_CODIGO.label}}</label>
                     <div class="form-group form-inline ">
-                        <input    type="text" class="form-control  col-lg-1"  name="ORI_ST_CODIGO"   ng-model="userDTO.cadastroPaciente.requisicao.ORI_ST_CODIGO" ng-disabled="userDTO.cadastroPaciente.config.ORI_ST_CODIGO.disable  || userDTO.cadastroPaciente.config.constroe_solicitacao"
+                        <input  style="width: 4em;"  type="text" class="form-control  col-lg-1"  name="ORI_ST_CODIGO"   ng-model="userDTO.cadastroPaciente.requisicao.ORI_ST_CODIGO" ng-disabled="userDTO.cadastroPaciente.config.ORI_ST_CODIGO.disable  || userDTO.cadastroPaciente.config.constroe_solicitacao"
                                  capitalize focus="inputORI_ST_CODIGO"  ng-required="{{userDTO.cadastroPaciente.config.ORI_ST_CODIGO.required}}" />
-                        <input  type="text" class="form-control inputsolicitacaoteladesc col-lg-3 "  name="ORI_ST_DESCRICAO"   ng-model="userDTO.cadastroPaciente.requisicao.origem.ORI_ST_DESCRICAO" ng-disabled="true" />
+                        <input  style="width: 85%;" type="text" class="form-control inputsolicitacaoteladesc col-lg-3 "  name="ORI_ST_DESCRICAO"   ng-model="userDTO.cadastroPaciente.requisicao.origem.ORI_ST_DESCRICAO" ng-disabled="true" />
                     </div>
                     <div ng-messages="cpform.ORI_ST_CODIGO.$error"   class="error-messages" >
                             <div   ng-messages-include="views/tmtelas/messages.html" ></div>
@@ -103,9 +103,9 @@
                 <div class="col-lg-4 "  ng-if="userDTO.cadastroPaciente.config.CON_ST_CODIGO.visible" >
                     <label >{{userDTO.cadastroPaciente.config.CON_ST_CODIGO.label}}</label>
                     <div class="form-group form-inline ">
-                        <input    type="text" class="form-control  col-lg-1"  name="CON_ST_CODIGO"   ng-model="userDTO.cadastroPaciente.requisicao.CON_ST_CODIGO" ng-disabled="userDTO.cadastroPaciente.config.CON_ST_CODIGO.disable || userDTO.cadastroPaciente.config.constroe_solicitacao"
+                        <input  style="width: 4em;"  type="text" class="form-control  col-lg-1"  name="CON_ST_CODIGO"   ng-model="userDTO.cadastroPaciente.requisicao.CON_ST_CODIGO" ng-disabled="userDTO.cadastroPaciente.config.CON_ST_CODIGO.disable || userDTO.cadastroPaciente.config.constroe_solicitacao"
                                  capitalize focus="inputCON_ST_CODIGO"  ng-required="{{userDTO.cadastroPaciente.config.CON_ST_CODIGO.required}}" />
-                        <input   type="text" class="form-control inputsolicitacaoteladesc col-lg-3 "  name="CON_ST_DESCRICAO"   ng-model="userDTO.cadastroPaciente.requisicao.convenio.CON_ST_DESCRICAO" ng-disabled="true" />
+                        <input   style="width: 85%;" type="text" class="form-control inputsolicitacaoteladesc col-lg-3 "  name="CON_ST_DESCRICAO"   ng-model="userDTO.cadastroPaciente.requisicao.convenio.CON_ST_DESCRICAO" ng-disabled="true" />
                     </div>
                     <div ng-messages="cpform.CON_ST_CODIGO.$error"   class="error-messages" >
                             <div   ng-messages-include="views/tmtelas/messages.html" ></div>
@@ -115,9 +115,9 @@
                 <div class="col-lg-4 "  ng-if="userDTO.cadastroPaciente.config.REG_ST_CODIGO.visible" >
                     <label >{{userDTO.cadastroPaciente.config.REG_ST_CODIGO.label}}</label>
                     <div class="form-group form-inline ">
-                        <input   type="text" class="form-control  col-lg-1"  name="REG_ST_CODIGO"   ng-model="userDTO.cadastroPaciente.requisicao.REG_ST_CODIGO" ng-disabled="userDTO.cadastroPaciente.config.REG_ST_CODIGO.disable || userDTO.cadastroPaciente.config.constroe_solicitacao"
+                        <input  style="width: 4em;"  type="text" class="form-control  col-lg-1"  name="REG_ST_CODIGO"   ng-model="userDTO.cadastroPaciente.requisicao.REG_ST_CODIGO" ng-disabled="userDTO.cadastroPaciente.config.REG_ST_CODIGO.disable || userDTO.cadastroPaciente.config.constroe_solicitacao"
                                  capitalize focus="inputREG_ST_CODIGO"  ng-required="{{userDTO.cadastroPaciente.config.REG_ST_CODIGO.required}}" />
-                        <input   type="text" class="form-control inputsolicitacaoteladesc  col-lg-3"  name="REG_ST_DESCRICAO"   ng-model="userDTO.cadastroPaciente.requisicao.regra.REG_ST_DESCRICAO" ng-disabled="true" />
+                        <input   style="width: 85%;" type="text" class="form-control inputsolicitacaoteladesc  col-lg-3"  name="REG_ST_DESCRICAO"   ng-model="userDTO.cadastroPaciente.requisicao.regra.REG_ST_DESCRICAO" ng-disabled="true" />
                     </div>
                      <div ng-messages="cpform.REG_ST_CODIGO.$error"   class="error-messages" >
                             <div   ng-messages-include="views/tmtelas/messages.html" ></div>
@@ -127,9 +127,9 @@
                 <div class="col-lg-4 "  ng-if="userDTO.cadastroPaciente.config.LOC_ST_CODIGO.visible" >
                     <label >{{userDTO.cadastroPaciente.config.LOC_ST_CODIGO.label}}</label>
                     <div class="form-group form-inline ">
-                        <input    type="text" class="form-control  col-lg-1"  name="LOC_ST_CODIGO"   ng-model="userDTO.cadastroPaciente.requisicao.LOC_ST_CODIGO" ng-disabled="userDTO.cadastroPaciente.config.LOC_ST_CODIGO.disable || userDTO.cadastroPaciente.config.constroe_solicitacao"
+                        <input   style="width: 4em;"  type="text" class="form-control  col-lg-1"  name="LOC_ST_CODIGO"   ng-model="userDTO.cadastroPaciente.requisicao.LOC_ST_CODIGO" ng-disabled="userDTO.cadastroPaciente.config.LOC_ST_CODIGO.disable || userDTO.cadastroPaciente.config.constroe_solicitacao"
                                  capitalize focus="inputLOC_ST_CODIGO"  ng-required="{{userDTO.cadastroPaciente.config.LOC_ST_CODIGO.required}}" />
-                        <input    type="text" class="form-control inputsolicitacaoteladesc col-lg-3 "  name="LOC_ST_DESCRICAO"   ng-model="userDTO.cadastroPaciente.requisicao.local.LOC_ST_DESCRICAO" ng-disabled="true" />
+                        <input    style="width: 85%;" type="text" class="form-control inputsolicitacaoteladesc col-lg-3 "  name="LOC_ST_DESCRICAO"   ng-model="userDTO.cadastroPaciente.requisicao.local.LOC_ST_DESCRICAO" ng-disabled="true" />
                     </div>
                     <div ng-messages="cpform.LOC_ST_CODIGO.$error"   class="error-messages" >
                             <div   ng-messages-include="views/tmtelas/messages.html" ></div>
@@ -139,9 +139,9 @@
                 <div class="col-lg-4 "  ng-if="userDTO.cadastroPaciente.config.CID_ST_CODIGO.visible" >
                     <label >{{userDTO.cadastroPaciente.config.CID_ST_CODIGO.label}}</label>
                     <div class="form-group form-inline ">
-                        <input   style="width: 15%;" type="text" class="form-control  col-lg-1"  name="CID_ST_CODIGO"   ng-model="userDTO.cadastroPaciente.requisicao.CID_ST_CODIGO" ng-disabled="userDTO.cadastroPaciente.config.CID_ST_CODIGO.disable || userDTO.cadastroPaciente.config.constroe_solicitacao"
+                        <input   style="width: 4em;" type="text" class="form-control  col-lg-1"  name="CID_ST_CODIGO"   ng-model="userDTO.cadastroPaciente.requisicao.CID_ST_CODIGO" ng-disabled="userDTO.cadastroPaciente.config.CID_ST_CODIGO.disable || userDTO.cadastroPaciente.config.constroe_solicitacao"
                                  capitalize focus="inputCID_ST_CODIGO"  ng-required="{{userDTO.cadastroPaciente.config.CID_ST_CODIGO.required}}" />
-                        <input   style="width: 75%"  type="text" class="form-control inputsolicitacaoteladesc col-lg-3"  name="CID_ST_DESCRICAO"   ng-model="userDTO.cadastroPaciente.requisicao.cid.CID_ST_DESCRICAO" ng-disabled="true" />
+                        <input   style="width: 85%;"  type="text" class="form-control inputsolicitacaoteladesc col-lg-3"  name="CID_ST_DESCRICAO"   ng-model="userDTO.cadastroPaciente.requisicao.cid.CID_ST_DESCRICAO" ng-disabled="true" />
                     </div>
                     <div ng-messages="cpform.CID_ST_CODIGO.$error"   class="error-messages" >
                             <div   ng-messages-include="views/tmtelas/messages.html" ></div>

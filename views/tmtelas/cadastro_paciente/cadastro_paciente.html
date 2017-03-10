@@ -119,7 +119,7 @@ background: linear-gradient(to left, #44A08D , #093637);  W3C, IE 10+/ Edge, Fir
                             
                             <li ng-repeat="s in steps  track by $index" ui-sref-active="current">
                                 <div ng-if="$index === 0" >
-                                    <a    ui-sref="{{s.state}}"  class="btn btn-danger  btn-outline"> <i class="fa fa-search ">{{s.label}}</i></a>
+                                    <a    ui-sref="{{s.state}}"  class="btn btn-danger  btn-outline"> <i class="fa fa-search "> &nbsp;&nbsp; {{s.label}}</i></a>
                                 </div>
                                 <div  ng-if="$index > 0" >
                                     <a    eat-click-if="goToStep(s.state)"   ui-sref="{{s.state}}"  class="btn-default  text-center"> {{s.label}}</a>
