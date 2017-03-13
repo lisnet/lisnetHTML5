@@ -1,4 +1,4 @@
-<div class="row border-bottom"  ng-controller="notificacaoBarra" >
+<div class="row border-bottom"  ng-controller="controleNotificacoes" >
     
     <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
         
@@ -9,7 +9,7 @@
                     
                     
                     <input type="text" style="font-weight: bolder;  font-size: 16px;  width: 100%;" placeholder="Pesquisar tela F1" class="form-control" name="top-search" 
-                           id="top-search" ng-model="telaSelecionada" uib-typeahead="state for state in states | filter:$viewValue | limitTo:8"     typeahead-on-select="main.stateGO( cortaString($item))" focus="inputPesquisaTelaFocus"  >
+                           id="top-search" ng-model="telaSelecionada" uib-typeahead="state for state in states | filter:$viewValue | limitTo:8"     typeahead-on-select="main.stateGO( cortaString($item))" focus="main.inputPesquisaTelaFocus"  >
                     <!--typeahead-on-select="main.stateGO( onSelect($item, $model, $label))"  enter-key="main.stateGO( cortaString(telaSelecionada))" --> 
                     
                 </div>
@@ -22,7 +22,7 @@
                 <span class="m-r-sm text-justify  "  style="font-weight: bold;"    > <label  class="hidden-md hidden-sm hidden-xs  text-justify " >Unidade:</label> 
                 <i  data-toggle="tooltip"    title="Unidade {{main.userDTO.unidade.UNI_ST_DESCRICAO }}" class="fa fa-home hidden-lg" style="color: #0044cc" ></i>   {{main.userDTO.unidade.UNI_ST_CODIGO }}</span>
             </li>
-            <li ng-controller="trocaUnidade"  style="padding-right: 1px;padding-left: 1px;"   class="b-r"  ng-click="popUnidades()"  >
+            <li ng-controller="controleNotificacoes"  style="padding-right: 1px;padding-left: 1px;"   class="b-r"  ng-click="popUnidades()"  >
                 <i  data-toggle="tooltip"    title="Trocar de Unidade." class="fa fa-exchange"  style="padding-right: 1px; color: orangered; " ></i>
                 <span class="m-r-sm text-danger  hidden-md hidden-sm hidden-xs "  style="font-weight: bold;"   >Trocar de Unidade.</span>
             </li>
@@ -126,7 +126,7 @@
 
                     <li  style="background-color: lightblue" ng-if="userDTO.notificacoes.length && userDTO.notificacoes.length > 0" >
                         <div class="text-center link-block"   >
-                            <a   ng-click="main.stateGO('controle.notificacoes')" >
+                            <a   ng-click="main.stateGO('controle_notificacoes')" >
                                 <strong>Veja todas as notificações.</strong>
                                 <i class="fa fa-angle-right  "></i>
                                 <i class="fa fa-angle-right  "></i>

@@ -10,24 +10,36 @@
         <div class="m-t" role="form"   >
             <div class="form-group">
                 <!--<pre>inputLoginFocus: {{ inputLoginFocus }}</pre>-->
-                <input      id="inputLogin" style="font-weight: bold;  "  size="20"  type="text" class="form-control text-uppercase  " placeholder="Usuário"   required  ng-model="login"    capitalize  focus="inputLoginFocus"  onkeypress="if(event.keyCode==13){   event.keyCode=9; return event.keyCode}" >
+                <input     name="inputLogin" id="inputLogin" style="font-weight: bold;  "  size="20"  type="text" class="form-control text-uppercase  " placeholder="Usuário"   ng-model="login"    capitalize  focus="inputLoginFocus"  onkeypress="if(event.keyCode==13){   event.keyCode=9; return event.keyCode}" 
+                           ng-minlength="3"  ng-maxlength="20"  maxlength="20"  ng-required="true" required="true" >
+                            <div ng-messages="loginform.inputLogin.$error"  class="error-messages"  >
+                                    <div   ng-messages-include="views/tmtelas/messages.html" ></div>
+                         </div>
             </div>
             <div class="form-group" ng-hide="main.userDTO.showpassword"  >
-                <input   id="inputPassord" style="font-weight: bold;" type="password" class="form-control  text-uppercase" placeholder="Senha" required="" ng-model="senha"    enter-key="main.buscaUser(login,senha)"    capitalize >
+                <input   name="inputPassord"  id="inputPassord" style="font-weight: bold;" type="password" class="form-control  text-uppercase" placeholder="Senha"   ng-model="senha"    enter-key="main.buscaUser(login,senha)"    capitalize 
+                         ng-minlength="3"  ng-maxlength="20"  maxlength="20"  ng-required="true" required="true"  >
+                 <div ng-messages="loginform.inputPassord.$error"  class="error-messages"  >
+                                    <div   ng-messages-include="views/tmtelas/messages.html" ></div>
+                  </div>
             </div>
              <div class="form-group"  ng-show="main.userDTO.showpassword"  >
-                <input style="font-weight: bold;" type="text" class="form-control  text-uppercase" placeholder="Senha" required=""    ng-model="senha"   enter-key="main.buscaUser(login,senha)"  capitalize >
+                <input  name='inputPassordtxt' style="font-weight: bold;" type="text" class="form-control  text-uppercase" placeholder="Senha"    ng-model="senha"   enter-key="main.buscaUser(login,senha)"  capitalize  
+                        ng-minlength="3"  ng-maxlength="20"  maxlength="20"     >
+                <div ng-messages="loginform.inputPassordtxt.$error"  class="error-messages"  >
+                                    <div   ng-messages-include="views/tmtelas/messages.html" ></div>
+                  </div>
             </div>
             <button type="submit" class="btn btn-primary block full-width m-b" ng-click="main.buscaUser(login,senha)"    >Login</button>
             <!--<input icheck type="checkbox" ng-model="main.userDTO.showpassword">-->
             
             <label> <input icheck type="checkbox" ng-model="main.userDTO.showpassword"> Mostra senha</label>
             
-            <a ui-sref="forgot_password"><small>Esqueci minha senha?</small></a>
+            <a ui-sref="login"><small>Esqueci minha senha?</small></a>
             <p class="text-muted text-center"><small>Você não é cadastrado?</small></p>
             <!--<a class="btn btn-sm btn-white btn-block"  ng-click="logOut()"  >Criar conta</a>-->
         </div>
-            </form>
+     </form>
         <!--{{main.userDTO}}-->
         <p class="m-t"> <small class="text-capitalize"  >Lisnet &copy;  <a href="http://tminformatica.com.br/"  target="_blank" > TMInformárica </a> </small> | <strong  class="text-justify  text-uppercase" >{{main.userDTO.cliente.CLI_ST_CODIGO}}</strong> </p>
         <!--<p class="m-t"> <strong>{{main.userDTO.cliente.CLI_ST_CODIGO.toUpperCase()}}</strong> </p>-->

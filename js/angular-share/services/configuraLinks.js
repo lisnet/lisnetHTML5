@@ -48,7 +48,7 @@ angular.module('lisnet')
                         urlFinal = urlFinal + split[i] + '/';
                     }
                     urlFinal = urlFinal + 'lisnet';
-                    console.log(urlFinal);
+                    console.log('configuraLinks urlFinal = '+urlFinal);
                     userDTO.configLisNet.baseUrl = urlFinal;
                     //                userDTO.configLisNet.defaultDB = locationHostSplit[0].toLowerCase();
                     //                console.log(_param1DBName);

@@ -44,98 +44,87 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
 
 
     $stateProvider
-            .state('geslab', {
-                url: "/geslab",
-                templateUrl: "views/geslab/geslab_site.html",
-                data: {pageTitle: 'GesLab', specialClass: 'landing-page'},
-                resolve: {
-                    loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load([
-                            {
-                                files: ['js/plugins/wow/wow.min.js']
-                            },
-                            {
-                                files: ['css/plugins/slick/slick.css', 'css/plugins/slick/slick-theme.css', 'js/plugins/slick/slick.min.js']
-                            },
-                            {
-                                name: 'slick',
-                                files: ['js/plugins/slick/angular-slick.min.js']
-                            }
-                        ]);
-                    }
-                }
-            })
-            .state('tmsite', {
-                url: "/tmsite",
-                templateUrl: "views/tmsite/tm_site.html",
-                data: {pageTitle: 'TMInformática', specialClass: 'landing-page'},
-                resolve: {
-                    loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load([
-                            {
-                                files: ['js/plugins/wow/wow.min.js']
-                            },
-                            {
-                                files: ['css/plugins/slick/slick.css', 'css/plugins/slick/slick-theme.css', 'js/plugins/slick/slick.min.js']
-                            },
-                            {
-                                name: 'slick',
-                                files: ['js/plugins/slick/angular-slick.min.js']
-                            }
-                        ]);
-                    }
-                }
-            })
-            .state('cientificalab', {//teste
-                url: "/cientificalab",
-                templateUrl: "views/cientificalab/cientificalab_site.html",
-                data: {pageTitle: 'CientificaLab', specialClass: 'landing-page'},
-                resolve: {
-                    loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load([
-                            {
-                                files: ['js/plugins/wow/wow.min.js']
-                            },
-                            {
-                                files: ['css/plugins/slick/slick.css', 'css/plugins/slick/slick-theme.css', 'js/plugins/slick/slick.min.js']
-                            },
-                            {
-                                name: 'slick',
-                                files: ['js/plugins/slick/angular-slick.min.js']
-                            }
-                        ]);
-                    }
-                }
-            })
-            .state('login', {
-                url: "/login",
-                templateUrl: "views/tmtelas/login.html",
-                data: {pageTitle: 'Login', specialClass: 'gray-bg'},
-                resolve: {
-                    loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(telaComplexa());
-                    }
-                }
-            })
-            //                                [
-//                             {
-//                                files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
-//                            },
-//                            {
-//                                name: 'oitozero.ngSweetAlert',
-//                                files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
-//                            },
-//                            {
-//                                files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
-//                            }
-//                        ]
-            .state('widgets', {
+            .state('lisnet', {
                 abstract: true,
-                url: "/widgets",
+                url: "/lisnet",
                 templateUrl: "views/common/content.html",
-                params: {titulo: 'Widgets', pagina: 'Widgets', modStCodigo: '00006', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true}
-            }).state('widgets.lisnet', {
-        url: "/lisnet",
+                resolve: {
+                    loadPlugin: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load(telaPadraoLazyLoad());
+                    }
+                }
+            }).state('geslab', {
+        url: "/geslab",
+        templateUrl: "views/geslab/geslab_site.html",
+        data: {pageTitle: 'GesLab', specialClass: 'landing-page'},
+        resolve: {
+            loadPlugin: function ($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                    {
+                        files: ['js/plugins/wow/wow.min.js']
+                    },
+                    {
+                        files: ['css/plugins/slick/slick.css', 'css/plugins/slick/slick-theme.css', 'js/plugins/slick/slick.min.js']
+                    },
+                    {
+                        name: 'slick',
+                        files: ['js/plugins/slick/angular-slick.min.js']
+                    }
+                ]);
+            }
+        }
+    }).state('tmsite', {
+        url: "/tmsite",
+        templateUrl: "views/tmsite/tm_site.html",
+        data: {pageTitle: 'TMInformática', specialClass: 'landing-page'},
+        resolve: {
+            loadPlugin: function ($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                    {
+                        files: ['js/plugins/wow/wow.min.js']
+                    },
+                    {
+                        files: ['css/plugins/slick/slick.css', 'css/plugins/slick/slick-theme.css', 'js/plugins/slick/slick.min.js']
+                    },
+                    {
+                        name: 'slick',
+                        files: ['js/plugins/slick/angular-slick.min.js']
+                    }
+                ]);
+            }
+        }
+    }).state('cientificalab', {//teste
+        url: "/cientificalab",
+        templateUrl: "views/cientificalab/cientificalab_site.html",
+        data: {pageTitle: 'CientificaLab', specialClass: 'landing-page'},
+        resolve: {
+            loadPlugin: function ($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                    {
+                        files: ['js/plugins/wow/wow.min.js']
+                    },
+                    {
+                        files: ['css/plugins/slick/slick.css', 'css/plugins/slick/slick-theme.css', 'js/plugins/slick/slick.min.js']
+                    },
+                    {
+                        name: 'slick',
+                        files: ['js/plugins/slick/angular-slick.min.js']
+                    }
+                ]);
+            }
+        }
+    }).state('login', {
+        url: "/login",
+        templateUrl: "views/tmtelas/login.html",
+        data: {pageTitle: 'Login', specialClass: 'gray-bg'},
+        resolve: {
+            loadPlugin: function ($ocLazyLoad) {
+                return $ocLazyLoad.load(telaPadraoLazyLoad());
+            }
+        }
+    }).state('widgets', {
+        url: "/widgets",
+        parent: 'lisnet',
         templateUrl: "views/tmtelas/widgets_lisnet.html",
         data: {pageTitle: 'Widgets'},
         resolve: {
@@ -147,188 +136,56 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                         files: ['js/plugins/flot/jquery.flot.js', 'js/plugins/flot/jquery.flot.time.js', 'js/plugins/flot/jquery.flot.tooltip.min.js', 'js/plugins/flot/jquery.flot.spline.js', 'js/plugins/flot/jquery.flot.resize.js', 'js/plugins/flot/jquery.flot.pie.js', 'js/plugins/flot/curvedLines.js', 'js/plugins/flot/angular-flot.js']
                     },
                     {
-                        files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
-                    },
-                    {
                         serie: true,
                         files: ['js/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js', 'js/plugins/jvectormap/jquery-jvectormap-2.0.2.css']
                     },
                     {
                         serie: true,
                         files: ['js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js']
-                    },
-                    {
-                        name: 'ui.checkbox',
-                        files: ['js/bootstrap/angular-bootstrap-checkbox.js']
-                    },
-                    {
-                        files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
-                    },
-                    {
-                        name: 'oitozero.ngSweetAlert',
-                        files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
-                    },
-                    {
-                        serie: true,
-                        files: ['js/plugins/dataTables/datatables.min.js', 'css/plugins/dataTables/datatables.min.css']
-                    },
-                    {
-                        serie: true,
-                        name: 'datatables',
-                        files: ['js/plugins/dataTables/angular-datatables.min.js']
-                    },
-                    {
-                        serie: true,
-                        name: 'datatables.buttons',
-                        files: ['js/plugins/dataTables/angular-datatables.buttons.min.js']
-                    },
-                    {
-                        files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
                     }
                 ]);
             }
         }
-    })
-            .state('configuraperfilusuario', {
-                url: "/configura_perfil_usuario",
-                templateUrl: "views/tmtelas/configura_perfil_usuario.html",
-                parent: 'lisnet',
-                params: {titulo: 'Configura Perfil de Usuário', pagina: 'Configura Perfil de Usuário'},
-                data: {pageTitle: 'Configura Perfil', specialClass: 'gray-bg'},
-                resolve: {
-                    loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(telaPadraoLazyLoad());
-                    }
-                }
-            })
-            .state('erro', {
-                url: "/erro",
-                templateUrl: "views/tmtelas/under_construction.html",
-                data: {pageTitle: 'Erro'}
-                , resolve: {
-                    loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load([
-                            {
-                                files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
-                            },
-                            {
-                                name: 'oitozero.ngSweetAlert',
-                                files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
-                            },
-                            {
-                                files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
-                            }
-                        ]);
-                    }
-                }
-            }).state('contrucao', {
-        abstract: true,
-        url: "/contrucao",
-        params: {titulo: 'Em conscrução', pagina: 'Em Construção'},
-        templateUrl: "views/common/content.html"
-    })
-            .state('contrucao.contrucao', {
-                url: "/under_construction",
-                templateUrl: "views/tmtelas/under_construction.html",
-                parent: 'contrucao',
-                data: {pageTitle: 'Em construção'}, resolve: {
-                    loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load([
-                            {
-                                files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
-                            },
-                            {
-                                name: 'oitozero.ngSweetAlert',
-                                files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
-                            },
-                            {
-                                files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
-                            }
-                        ]);
-                    }
-                }
-            })
-            .state('problema', {
-                abstract: true,
-                url: "/problema",
-                templateUrl: "views/common/content.html"
-            })
-            .state('problema.tela_nao_existe', {
-                url: "/problema.tela_nao_existe",
-                templateUrl: "views/tmtelas/tela_nao_existe.html",
-                parent: 'problema',
-                params: {titulo: 'Tela não existe', pagina: 'Tela não existe'},
-                data: {pageTitle: 'Tela não existe'}, resolve: {
-                    loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load([
-                            {
-                                files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
-                            },
-                            {
-                                name: 'oitozero.ngSweetAlert',
-                                files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
-                            },
-                            {
-                                files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
-                            }
-                        ]);
-                    }
-                }
-            })
-            .state('controle', {
-                abstract: true,
-                url: "/controle",
-                templateUrl: "views/common/content.html"
-            }).state('controle.notificacoes', {
+    }).state('configuraperfilusuario', {
+        url: "/configura_perfil_usuario",
+        templateUrl: "views/tmtelas/configura_perfil_usuario.html",
+        parent: 'lisnet',
+        params: {titulo: 'Configura Perfil de Usuário', pagina: 'Configura Perfil de Usuário'},
+        data: {pageTitle: 'Configura Perfil', specialClass: 'gray-bg'}
+    }
+    ).state('erro', {
+        url: "/erro",
+        parent: 'lisnet',
+        templateUrl: "views/tmtelas/under_construction.html",
+        data: {pageTitle: 'Erro'}
+    }).state('contrucao.contrucao', {
+        url: "/under_construction",
+        templateUrl: "views/tmtelas/under_construction.html",
+        parent: 'lisnet',
+        data: {pageTitle: 'Em construção'}
+   }).state('tela_nao_existe', {
+        url: "/tela_nao_existe",
+        templateUrl: "views/tmtelas/tela_nao_existe.html",
+        parent: 'lisnet',
+        params: {titulo: 'Tela não existe', pagina: 'Tela não existe'},
+        data: {pageTitle: 'Tela não existe'}
+    }).state('controle_notificacoes', {
         url: "/notificacoes",
+        parent:'lisnet',
         templateUrl: "views/tmtelas/controle_notificacoes.html",
-//            controller:"controleNotificacoes",
         params: {titulo: 'Notificações', pagina: 'Notificações'},
-        data: {pageTitle: 'Notificações'},
-        resolve: {
+        data: {pageTitle: 'Notificações'}
+    }).state('consultadelaudos', {
+        url: "/consulta/laudo/:userDTO",
+        templateUrl: "views/tmtelas/consulta_laudos.html",
+        parent: 'lisnet',
+        params: {titulo: 'Consulta de Laudos', pai: 'Consulta', filho: 'Laudos', pagina: 'Consulta de Laudos', limit: '500'},
+        data: {pageTitle: 'Consulta de Laudos'}, resolve: {
             loadPlugin: function ($ocLazyLoad) {
-                return $ocLazyLoad.load([
-                    {
-                        serie: true,
-                        files: ['js/plugins/dataTables/datatables.min.js', 'css/plugins/dataTables/datatables.min.css']
-                    },
-                    {
-                        serie: true,
-                        name: 'datatables',
-                        files: ['js/plugins/dataTables/angular-datatables.min.js']
-                    },
-                    {
-                        serie: true,
-                        name: 'datatables.buttons',
-                        files: ['js/plugins/dataTables/angular-datatables.buttons.min.js']
-                    },
-                    {
-                        files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
-                    },
-                    {
-                        name: 'oitozero.ngSweetAlert',
-                        files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
-                    }
-                ]);
+                return $ocLazyLoad.load(telaComplexa());
             }
         }
-    }).state('lisnet', {
-        abstract: true,
-        url: "/lisnet",
-        templateUrl: "views/common/content.html"
-    })
-            .state('consultadelaudos', {
-                url: "/consulta/laudo/:userDTO",
-                templateUrl: "views/tmtelas/consulta_laudos.html",
-                parent: 'lisnet',
-                params: {titulo: 'Consulta de Laudos', pai: 'Consulta', filho: 'Laudos', pagina: 'Consulta de Laudos', limit: '500'},
-                data: {pageTitle: 'Consulta de Laudos'}, resolve: {
-                    loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(telaComplexa());
-                    }
-                }
-            })
-            .state('estatisticafaturamento', {
+    }).state('estatisticafaturamento', {
                 url: "/faturamento_estatisticafaturamento",
                 templateUrl: "views/tmtelas/estatistica_faturamento.html",
                 parent: 'lisnet',
@@ -336,83 +193,28 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                 params: {titulo: 'Estatística Faturamento', pai: 'Estatística', pagina: 'Estatística Faturamento'},
                 data: {pageTitle: 'Estatística Faturamento'}, resolve: {
                     loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load([
-                            {
-                                serie: true,
-                                files: ['js/plugins/dataTables/datatables.min.js', 'css/plugins/dataTables/datatables.min.css']
-                            },
-                            {
-                                serie: true,
-                                name: 'datatables',
-                                files: ['js/plugins/dataTables/angular-datatables.min.js']
-                            },
-                            {
-                                serie: true,
-                                name: 'datatables.buttons',
-                                files: ['js/plugins/dataTables/angular-datatables.buttons.min.js']
-                            },
-                            {
-                                files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
-                            },
-                            {
-                                name: 'oitozero.ngSweetAlert',
-                                files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
-                            },
-                            {
-                                files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
-                            }
-
-                        ]);
+                        return $ocLazyLoad.load(telaComplexa());
                     }
                 }
-            })
-            .state('sobre', {
+     }).state('sobre', {
                 url: "/sobre",
                 templateUrl: "views/tmtelas/ajuda.html",
                 parent: 'lisnet',
                 params: {titulo: 'Sobre o LisNet e a Geslab', pai: 'Ajuda', pagina: 'Sobre o LisNet e a Geslab'},
-                data: {pageTitle: 'Sobre'}, resolve: {
-                    loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load([
-                            {
-                                files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
-                            },
-                            {
-                                name: 'oitozero.ngSweetAlert',
-                                files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
-                            },
-                            {
-                                files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
-                            }
+                data: {pageTitle: 'Sobre'}
 
-                        ]);
-                    }
-                }
             })
-//            .state('estatisticaporconvenio-unidade', {
-//                url: "/estatistica/conveniounidade",
-//                templateUrl: "views/tmtelas/relatorio_unidade_convenio.html",
-//                parent: 'lisnet',
-//                params: {titulo: 'Estatística por Convênio/Unidade',pai:'Estatística',pagina:'Estatística por Convênio/Unidade'},
-//                data: {pageTitle: 'Estatística por Convênio/Unidade', specialClass: 'gray-bg'},
-//                resolve: {
-//                    loadPlugin: function ($ocLazyLoad) {
-//                        return $ocLazyLoad.load(telaPadraoLazyLoad());
-//                            }
-//                }
-//            })
-            .state('cadastrodepacientes', {
-                url: "/cadastro_pacientes",
-                templateUrl: "views/tmtelas/cadastro_paciente/cadastro_paciente.html",
-                params: {titulo: 'Cadastro de Paciente', pai: 'Cadastro', pagina: 'Cadastro de Paciente', modStCodigo: '00220', limit: '500'},
-                parent: 'lisnet',
-                data: {pageTitle: 'Cadastro de Paciente'}, resolve: {
-                    loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(telaComplexa());
-                    }
-                }
-            })
-            .state('cadastrodepacientes.busca_paciente', {
+      .state('cadastrodepacientes', {
+        url: "/cadastro_pacientes",
+        templateUrl: "views/tmtelas/cadastro_paciente/cadastro_paciente.html",
+        params: {titulo: 'Cadastro de Paciente', pai: 'Cadastro', pagina: 'Cadastro de Paciente', modStCodigo: '00220', limit: '500'},
+        parent: 'lisnet',
+        data: {pageTitle: 'Cadastro de Paciente'}, resolve: {
+            loadPlugin: function ($ocLazyLoad) {
+                return $ocLazyLoad.load(telaComplexa());
+            }
+        }
+    }).state('cadastrodepacientes.busca_paciente', {
                 url: 'busca_paciente',
                 templateUrl: 'views/tmtelas/cadastro_paciente/cadastro_paciente_busca_paciente.html',
                 data: {pageTitle: 'Busca Paciente', state: 'cadastrodepacientes.busca_paciente'}
@@ -442,529 +244,252 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                 templateUrl: 'views/tmtelas/cadastro_paciente/cadastro_paciente_constroe_requisicao_exames.html',
                 data: {pageTitle: 'Incluir Exames', state: 'cadastrodepacientes.inclue_exames'}
             })
-            .state('convenios', {
+   .state('convenios', {
                 url: "/configura_convenios/",
                 templateUrl: "views/tmtelas/tela_padrao.html",
                 params: {titulo: 'Convênios', pai: 'Configura', pagina: 'Convênios', modStCodigo: '00006', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
                 parent: 'lisnet',
-                data: {pageTitle: 'Convênios'}, resolve: {
-                    loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(telaPadraoLazyLoad());
-                    }
-                }
-            }).state('material', {
+                data: {pageTitle: 'Convênios'}
+   }).state('material', {
         url: "/configura_materiais/",
         templateUrl: "views/tmtelas/tela_padrao.html",
         params: {titulo: 'Material', pai: 'Configura', pagina: 'Material', modStCodigo: '00013', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
         parent: 'lisnet',
-        data: {pageTitle: 'Materiais'}, resolve: {
-            loadPlugin: function ($ocLazyLoad) {
-                return $ocLazyLoad.load(telaPadraoLazyLoad());
-            }
-        }
+        data: {pageTitle: 'Materiais'}
     }).state('setores', {
         url: "/configura_setores/",
         templateUrl: "views/tmtelas/tela_padrao.html",
         params: {titulo: 'Setores', pai: 'Configura', pagina: 'Setores', modStCodigo: '00015', limit: '200', btnFiltrar: true, btnCriar: true, btnTodos: true},
         parent: 'lisnet',
-        data: {pageTitle: 'Setores'}, resolve: {
-            loadPlugin: function ($ocLazyLoad) {
-                return $ocLazyLoad.load(telaPadraoLazyLoad());
-            }
-        }
+        data: {pageTitle: 'Setores'}
     }).state('antibiotico', {
         url: "/configura_antibioticos/",
         templateUrl: "views/tmtelas/tela_padrao.html",
         params: {titulo: 'Antibiótico', pai: 'Configura', pagina: 'Antibiótico', modStCodigo: '00016', limit: '250', btnFiltrar: true, btnCriar: true, btnTodos: true},
         parent: 'lisnet',
-        data: {pageTitle: 'Antibioticos'}, resolve: {
-            loadPlugin: function ($ocLazyLoad) {
-                return $ocLazyLoad.load(telaPadraoLazyLoad());
-            }
-        }
+        data: {pageTitle: 'Antibioticos'}
     }).state('bacteriasfungosevirus', {
         url: "/configura_bacteriasfungosevirus/",
         templateUrl: "views/tmtelas/tela_padrao.html",
         params: {titulo: 'Bactéria,Fungo & Virús', pai: 'Configura', pagina: 'Bactéria,Fungo & Virús', modStCodigo: '00017', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
         parent: 'lisnet',
-//                            controller: 'consultaLaudos',
-        data: {pageTitle: 'Bacterias Fungos e Virus'}, resolve: {
-            loadPlugin: function ($ocLazyLoad) {
-                return $ocLazyLoad.load(telaPadraoLazyLoad());
-            }
-        }
+        data: {pageTitle: 'Bacterias Fungos e Virus'}
     }).state('cid', {
         url: "/configura_cid/",
         templateUrl: "views/tmtelas/tela_padrao.html",
         params: {titulo: 'CID', pai: 'Configura', pagina: 'CID', modStCodigo: '00018', limit: '500', btnFiltrar: true, btnCriar: true, btnTodos: true},
         parent: 'lisnet',
-        data: {pageTitle: 'CID'}, resolve: {
-            loadPlugin: function ($ocLazyLoad) {
-                return $ocLazyLoad.load(telaPadraoLazyLoad());
-            }
-        }
+        data: {pageTitle: 'CID'}
     }).state('feriado', {
         url: "/configura_feriado/",
         templateUrl: "views/tmtelas/tela_padrao.html",
         params: {titulo: 'Feriado', pai: 'Configura', pagina: 'Feriado', modStCodigo: '00021', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
         parent: 'lisnet',
-        data: {pageTitle: 'Feriado'}, resolve: {
-            loadPlugin: function ($ocLazyLoad) {
-                return $ocLazyLoad.load(telaPadraoLazyLoad());
-            }
-        }
+        data: {pageTitle: 'Feriado'}
     }).state('frasesparalaudo', {
         url: "/configura_frasesparalaudo/",
         templateUrl: "views/tmtelas/tela_padrao.html",
         params: {titulo: 'Frase para Laudo', pai: 'Configura', pagina: 'Frase para Laudo', modStCodigo: '00022', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
         parent: 'lisnet',
-        data: {pageTitle: 'Frases para Laudo'}, resolve: {
-            loadPlugin: function ($ocLazyLoad) {
-                return $ocLazyLoad.load(telaPadraoLazyLoad());
-            }
-        }
+        data: {pageTitle: 'Frases para Laudo'}
     }).state('metodo', {
         url: "/configura_metodo/",
         templateUrl: "views/tmtelas/tela_padrao.html",
         params: {titulo: 'Método', pai: 'Configura', pagina: 'Método', modStCodigo: '00023', limit: '500', btnFiltrar: true, btnCriar: true, btnTodos: true},
         parent: 'lisnet',
-        data: {pageTitle: 'Método'}, resolve: {
-            loadPlugin: function ($ocLazyLoad) {
-                return $ocLazyLoad.load(telaPadraoLazyLoad());
-            }
-        }
+        data: {pageTitle: 'Método'}
     }).state('motivo', {
         url: "/configura_motivo/",
         templateUrl: "views/tmtelas/tela_padrao.html",
         params: {titulo: 'Motivo', pai: 'Configura', pagina: 'Motivo', modStCodigo: '00024', limit: '500', btnFiltrar: true, btnCriar: true, btnTodos: true},
         parent: 'lisnet',
-        data: {pageTitle: 'Motivo'}, resolve: {
-            loadPlugin: function ($ocLazyLoad) {
-                return $ocLazyLoad.load(telaPadraoLazyLoad());
-            }
-        }
+        data: {pageTitle: 'Motivo'}
     }).state('observacao', {
         url: "/configura_observacao/",
         templateUrl: "views/tmtelas/tela_padrao.html",
         params: {titulo: 'Observação', pai: 'Configura', pagina: 'Observação', modStCodigo: '00025', limit: '30', btnFiltrar: true, btnCriar: true, btnTodos: true},
         parent: 'lisnet',
-        data: {pageTitle: 'Observação'}, resolve: {
-            loadPlugin: function ($ocLazyLoad) {
-                return $ocLazyLoad.load(telaPadraoLazyLoad());
-            }
-        }
+        data: {pageTitle: 'Observação'}
     }).state('parasitas', {
         url: "/configura_parasitas/",
         templateUrl: "views/tmtelas/tela_padrao.html",
         params: {titulo: 'Parasitas', pai: 'Configura', pagina: 'Parasitas', modStCodigo: '00027', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
         parent: 'lisnet',
-        data: {pageTitle: 'Parasitas'}, resolve: {
-            loadPlugin: function ($ocLazyLoad) {
-                return $ocLazyLoad.load(telaPadraoLazyLoad());
-            }
-        }
-    })
-//                    .state('statusamostras', {
-//                url: "/configura/statusamostras/",
-//                templateUrl: "views/tmtelas/tela_padrao.html",
-//                params: { modStCodigo: '00028',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
-//                parent: 'lisnet',
-//                data: {pageTitle: 'Status Amostras'}, resolve: {
-//                    loadPlugin: function ($ocLazyLoad) {
-//                        return $ocLazyLoad.load([
-//                            {
-//                                serie: true,
-//                                files: ['js/plugins/dataTables/datatables.min.js', 'css/plugins/dataTables/datatables.min.css']
-//                            },
-//                            {
-//                                serie: true,
-//                                name: 'datatables',
-//                                files: ['js/plugins/dataTables/angular-datatables.min.js']
-//                            },
-//                            {
-//                                serie: true,
-//                                name: 'datatables.buttons',
-//                                files: ['js/plugins/dataTables/angular-datatables.buttons.min.js']
-//                            },
-//                            {
-//                                files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
-//                            },
-//                            {
-//                                name: 'oitozero.ngSweetAlert',
-//                                files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
-//                            },
-//                            {
-//                                files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
-//                            }
-//
-//                        ]);
-//                    }
-//                }
-//            })
-//                    .state('questionario', {
-//                url: "/configura/questionario/",
-//                templateUrl: "views/tmtelas/tela_padrao.html",
-//                params: { modStCodigo: '00029',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
-//                parent: 'lisnet',
-//                data: {pageTitle: 'Questionário'}, resolve: {
-//                    loadPlugin: function ($ocLazyLoad) {
-//                        return $ocLazyLoad.load([
-//                            {
-//                                serie: true,
-//                                files: ['js/plugins/dataTables/datatables.min.js', 'css/plugins/dataTables/datatables.min.css']
-//                            },
-//                            {
-//                                serie: true,
-//                                name: 'datatables',
-//                                files: ['js/plugins/dataTables/angular-datatables.min.js']
-//                            },
-//                            {
-//                                serie: true,
-//                                name: 'datatables.buttons',
-//                                files: ['js/plugins/dataTables/angular-datatables.buttons.min.js']
-//                            },
-//                            {
-//                                files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
-//                            },
-//                            {
-//                                name: 'oitozero.ngSweetAlert',
-//                                files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
-//                            },
-//                            {
-//                                files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
-//                            }
-//
-//                        ]);
-//                    }
-//                }
-//            })
-//                    .state('prazo', {
-//                url: "/configura/prazo/",
-//                templateUrl: "views/tmtelas/tela_padrao.html",
-//                params: { modStCodigo: '00030',limit:'100',btnFiltrar:true,btnCriar:true,btnTodos:true},
-//                parent: 'lisnet',
-//                data: {pageTitle: 'Prazo'}, resolve: {
-//                    loadPlugin: function ($ocLazyLoad) {
-//                        return $ocLazyLoad.load([
-//                            {
-//                                serie: true,
-//                                files: ['js/plugins/dataTables/datatables.min.js', 'css/plugins/dataTables/datatables.min.css']
-//                            },
-//                            {
-//                                serie: true,
-//                                name: 'datatables',
-//                                files: ['js/plugins/dataTables/angular-datatables.min.js']
-//                            },
-//                            {
-//                                serie: true,
-//                                name: 'datatables.buttons',
-//                                files: ['js/plugins/dataTables/angular-datatables.buttons.min.js']
-//                            },
-//                            {
-//                                files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
-//                            },
-//                            {
-//                                name: 'oitozero.ngSweetAlert',
-//                                files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
-//                            },
-//                            {
-//                                files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
-//                            }
-//
-//                        ]);
-//                    }
-//                }
-//            })
-            .state('recipiente', {
-                url: "/configura_recipiente/",
-                templateUrl: "views/tmtelas/tela_padrao.html",
-                params: {titulo: 'Recipiente', pai: 'Configura', pagina: 'Recipiente', modStCodigo: '00031', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
-                parent: 'lisnet',
-                data: {pageTitle: 'Recipiente'}, resolve: {
-                    loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(telaPadraoLazyLoad());
-                    }
-                }
-            }).state('solicitantes', {
+        data: {pageTitle: 'Parasitas'}
+    }).state('recipiente', {
+        url: "/configura_recipiente/",
+        templateUrl: "views/tmtelas/tela_padrao.html",
+        params: {titulo: 'Recipiente', pai: 'Configura', pagina: 'Recipiente', modStCodigo: '00031', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
+        parent: 'lisnet',
+        data: {pageTitle: 'Recipiente'}
+    }).state('solicitantes', {
         url: "/configura_solicitantes/",
         templateUrl: "views/tmtelas/tela_padrao.html",
         params: {titulo: 'Solicitantes', pai: 'Configura', pagina: 'Solicitantes', modStCodigo: '00044', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
         parent: 'lisnet',
-        data: {pageTitle: 'Solicitantes'}, resolve: {
-            loadPlugin: function ($ocLazyLoad) {
-                return $ocLazyLoad.load(telaPadraoLazyLoad());
-            }
-        }
+        data: {pageTitle: 'Solicitantes'}
     }).state('profissoes', {
         url: "/configura_profissoes/",
         templateUrl: "views/tmtelas/tela_padrao.html",
         params: {titulo: 'Profissões', pai: 'Configura', pagina: 'Profissões', modStCodigo: '00046', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
         parent: 'lisnet',
-        data: {pageTitle: 'Profissões'}, resolve: {
-            loadPlugin: function ($ocLazyLoad) {
-                return $ocLazyLoad.load(telaPadraoLazyLoad());
-            }
-        }
+        data: {pageTitle: 'Profissões'}
     }).state('unidadesdemedida', {
         url: "/configura_unidadesdemedida/",
         templateUrl: "views/tmtelas/tela_padrao.html",
         params: {titulo: 'Unidade de Medida', pai: 'Configura', pagina: 'Unidade de Medida', modStCodigo: '00053', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
         parent: 'lisnet',
-        data: {pageTitle: 'Unidade de Medida'}, resolve: {
-            loadPlugin: function ($ocLazyLoad) {
-                return $ocLazyLoad.load(telaPadraoLazyLoad());
-            }
-        }
+        data: {pageTitle: 'Unidade de Medida'}
     }).state('mapadeantibioticos', {
         url: "/configura_mapadeantibioticos/",
         templateUrl: "views/tmtelas/tela_padrao.html",
         params: {titulo: 'Mapa de Antibióticos', pai: 'Configura', pagina: 'Mapa de Antibióticos', modStCodigo: '00054', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
         parent: 'lisnet',
-        data: {pageTitle: 'Mapa de Antibióticos'}, resolve: {
-            loadPlugin: function ($ocLazyLoad) {
-                return $ocLazyLoad.load(telaPadraoLazyLoad());
-            }
-        }
+        data: {pageTitle: 'Mapa de Antibióticos'}
     }).state('laboratoriodeapoio', {
         url: "/configura_laboratoriodeapoio/",
         templateUrl: "views/tmtelas/tela_padrao.html",
         params: {titulo: 'Laboratório de Apoio', pai: 'Configura', pagina: 'Laboratório de Apoio', modStCodigo: '00057', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
         parent: 'lisnet',
-        data: {pageTitle: 'Laboratório de Apoio'}, resolve: {
-            loadPlugin: function ($ocLazyLoad) {
-                return $ocLazyLoad.load(telaPadraoLazyLoad());
-            }
-        }
+        data: {pageTitle: 'Laboratório de Apoio'}
     }).state('coletores', {
         url: "/configura_coletores/",
         templateUrl: "views/tmtelas/tela_padrao.html",
         params: {titulo: 'Coletores', pai: 'Configura', pagina: 'Coletores', modStCodigo: '00058', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
         parent: 'lisnet',
-        data: {pageTitle: 'Coletores'}, resolve: {
-            loadPlugin: function ($ocLazyLoad) {
-                return $ocLazyLoad.load(telaPadraoLazyLoad());
-            }
-        }
+        data: {pageTitle: 'Coletores'}
     }).state('localdeentrega', {
         url: "/configura_localdeentrega/",
         templateUrl: "views/tmtelas/tela_padrao.html",
         params: {titulo: 'Local de Entrega', pai: 'Configura', pagina: 'Local de Entrega', modStCodigo: '00059', limit: '300', btnFiltrar: true, btnCriar: true, btnTodos: true},
         parent: 'lisnet',
-        data: {pageTitle: 'Local de Entrega'}, resolve: {
-            loadPlugin: function ($ocLazyLoad) {
-                return $ocLazyLoad.load(telaPadraoLazyLoad());
-            }
-        }
+        data: {pageTitle: 'Local de Entrega'}
     }).state('textoparalaudos', {
         url: "/configura_textoparalaudos/",
         templateUrl: "views/tmtelas/tela_padrao.html",
         params: {titulo: 'Texto para Laudo', pai: 'Configura', pagina: 'Texto para Laudo', modStCodigo: '00060', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
         parent: 'lisnet',
-        data: {pageTitle: 'Texto para Laudos'}, resolve: {
-            loadPlugin: function ($ocLazyLoad) {
-                return $ocLazyLoad.load(telaPadraoLazyLoad());
-            }
-        }
+        data: {pageTitle: 'Texto para Laudos'}
     }).state('mapaamostra', {
         url: "/configura_mapaamostra/",
         templateUrl: "views/tmtelas/tela_padrao.html",
         params: {titulo: 'Mapa de Amostra', pai: 'Configura', pagina: 'Mapa de Amostra', modStCodigo: '00073', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
         parent: 'lisnet',
-        data: {pageTitle: 'Mapa Amostra'}, resolve: {
-            loadPlugin: function ($ocLazyLoad) {
-                return $ocLazyLoad.load(telaPadraoLazyLoad());
-            }
-        }
+        data: {pageTitle: 'Mapa Amostra'}
     }).state('grupo', {
         url: "/configura_grupo/",
         templateUrl: "views/tmtelas/tela_padrao.html",
         params: {titulo: 'Grupo', pai: 'Configura', pagina: 'Grupo', modStCodigo: '00088', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
         parent: 'lisnet',
-        data: {pageTitle: 'Grupo'}, resolve: {
-            loadPlugin: function ($ocLazyLoad) {
-                return $ocLazyLoad.load(telaPadraoLazyLoad());
-            }
-        }
+        data: {pageTitle: 'Grupo'}
     }).state('examedepara', {
         url: "/configura_examedepara/",
         templateUrl: "views/tmtelas/tela_padrao.html",
         params: {titulo: 'Exame Depara', pai: 'Configura', pagina: 'Exame Depara', modStCodigo: '00090', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
         parent: 'lisnet',
-        data: {pageTitle: 'Exame Depara'}, resolve: {
-            loadPlugin: function ($ocLazyLoad) {
-                return $ocLazyLoad.load(telaPadraoLazyLoad());
-            }
-        }
+        data: {pageTitle: 'Exame Depara'}
     }).state('grupodetriagem', {
         url: "/configura_grupodetriagem/",
         templateUrl: "views/tmtelas/tela_padrao.html",
         params: {titulo: 'Grupo de Triagem', pai: 'Configura', pagina: 'Grupo de Triagem', modStCodigo: '00098', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
         parent: 'lisnet',
-        data: {pageTitle: 'Grupo de Triagem'}, resolve: {
-            loadPlugin: function ($ocLazyLoad) {
-                return $ocLazyLoad.load(telaPadraoLazyLoad());
-            }
-        }
+        data: {pageTitle: 'Grupo de Triagem'}
     }).state('localde-para', {
         url: "/configura_localdepara/",
         templateUrl: "views/tmtelas/tela_padrao.html",
         params: {titulo: 'Local Depara', pai: 'Configura', pagina: 'Local Depara', modStCodigo: '00101', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
         parent: 'lisnet',
-        data: {pageTitle: 'Local depara'}, resolve: {
-            loadPlugin: function ($ocLazyLoad) {
-                return $ocLazyLoad.load(telaPadraoLazyLoad());
-            }
-        }
+        data: {pageTitle: 'Local depara'}
     }).state('examedepararetorno', {
         url: "/configura_examedepararetorno/",
         templateUrl: "views/tmtelas/tela_padrao.html",
         params: {titulo: 'Exame Depara Retorno', pai: 'Configura', pagina: 'Exame Depara Retorno', modStCodigo: '00131', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
         parent: 'lisnet',
-        data: {pageTitle: 'Exame de para Retorno'}, resolve: {
-            loadPlugin: function ($ocLazyLoad) {
-                return $ocLazyLoad.load(telaPadraoLazyLoad());
-            }
-        }
+        data: {pageTitle: 'Exame de para Retorno'}
     }).state('materialde-para', {
         url: "/configura_materialdepara/",
         templateUrl: "views/tmtelas/tela_padrao.html",
         params: {titulo: 'Material Depara', pai: 'Configura', pagina: 'Material Depara', modStCodigo: '00133', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
         parent: 'lisnet',
-        data: {pageTitle: 'Material Depara'}, resolve: {
-            loadPlugin: function ($ocLazyLoad) {
-                return $ocLazyLoad.load(telaPadraoLazyLoad());
-            }
-        }
+        data: {pageTitle: 'Material Depara'}
     }).state('materialdecoleta(dasa)', {
         url: "/configura_materialdecoleta_dasa/",
         templateUrl: "views/tmtelas/tela_padrao.html",
         params: {titulo: 'Material de Coleta', pai: 'Configura', pagina: 'Material de Coleta', modStCodigo: '00138', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
         parent: 'lisnet',
-        data: {pageTitle: 'Material de Coleta(DASA)'}, resolve: {
-            loadPlugin: function ($ocLazyLoad) {
-                return $ocLazyLoad.load(telaPadraoLazyLoad());
-            }
-        }
+        data: {pageTitle: 'Material de Coleta(DASA)'}
     }).state('recipientedecoleta(dasa)', {
         url: "/configura_recipientedecoleta_dasa/",
         templateUrl: "views/tmtelas/tela_padrao.html",
         params: {titulo: 'Recipiente de Coleta', pai: 'Configura', pagina: 'Recipiente de Coleta', modStCodigo: '00139', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
         parent: 'lisnet',
-        data: {pageTitle: 'Recipiente de Coleta(DASA)'}, resolve: {
-            loadPlugin: function ($ocLazyLoad) {
-                return $ocLazyLoad.load(telaPadraoLazyLoad());
-            }
-        }
+        data: {pageTitle: 'Recipiente de Coleta(DASA)'}
     }).state('cadastrodecarros', {
         url: "/configura_cadastrodecarros/",
         templateUrl: "views/tmtelas/tela_padrao.html",
         params: {titulo: 'Cadastro de Carros', pai: 'Configura', pagina: 'Cadastro de Carros', modStCodigo: '00159', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
         parent: 'lisnet',
-        data: {pageTitle: 'Cadastro de Carros'}, resolve: {
-            loadPlugin: function ($ocLazyLoad) {
-                return $ocLazyLoad.load(telaPadraoLazyLoad());
-            }
-        }
+        data: {pageTitle: 'Cadastro de Carros'}
     }).state('procedimentodecoleta', {
         url: "/configura_procedimentodecoleta/",
         templateUrl: "views/tmtelas/tela_padrao.html",
         params: {titulo: 'Procedimento de Coleta', pai: 'Configura', pagina: 'Procedimento de Coleta', modStCodigo: '00161', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
         parent: 'lisnet',
-        data: {pageTitle: 'Procedimento de Coleta'}, resolve: {
-            loadPlugin: function ($ocLazyLoad) {
-                return $ocLazyLoad.load(telaPadraoLazyLoad());
-            }
-        }
+        data: {pageTitle: 'Procedimento de Coleta'}
     }).state('bandejamento', {
         url: "/configura_bandejamento/",
         templateUrl: "views/tmtelas/tela_padrao.html",
         params: {titulo: 'Badejamento', pai: 'Configura', pagina: 'Badejamento', modStCodigo: '00179', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
         parent: 'lisnet',
-        data: {pageTitle: 'Bandejamento'}, resolve: {
-            loadPlugin: function ($ocLazyLoad) {
-                return $ocLazyLoad.load(telaPadraoLazyLoad());
-            }
-        }
+        data: {pageTitle: 'Bandejamento'}
     }).state('flyer', {
         url: "/configura_flyer/",
         templateUrl: "views/tmtelas/tela_padrao.html",
         params: {titulo: 'Flyer', pai: 'Configura', pagina: 'Flyer', modStCodigo: '00184', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
         parent: 'lisnet',
-        data: {pageTitle: 'Flyer'}, resolve: {
-            loadPlugin: function ($ocLazyLoad) {
-                return $ocLazyLoad.load(telaPadraoLazyLoad());
-            }
-        }
+        data: {pageTitle: 'Flyer'}
     }).state('cadastrosparasoroteca', {
         url: "/configura_cadastrosparasoroteca/",
         templateUrl: "views/tmtelas/tela_padrao.html",
         params: {titulo: 'Cadastro para Soroteca', pai: 'Configura', pagina: 'Cadastro para Soroteca', modStCodigo: '00185', limit: '50', btnFiltrar: true, btnCriar: true, btnTodos: true},
         parent: 'lisnet',
-        data: {pageTitle: 'Cadastros para Soroteca'}, resolve: {
-            loadPlugin: function ($ocLazyLoad) {
-                return $ocLazyLoad.load(telaPadraoLazyLoad());
-            }
-        }
+        data: {pageTitle: 'Cadastros para Soroteca'}
     }).state('cadastrodesistemas', {
         url: "/configura_cadastrodesistemas/",
         templateUrl: "views/tmtelas/tela_padrao.html",
         params: {titulo: 'Cadastro de Sistemas', pai: 'Configura', pagina: 'Cadastro de Sistemas', modStCodigo: '00187', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
         parent: 'lisnet',
-        data: {pageTitle: 'Cadastro de Sistemas'}, resolve: {
-            loadPlugin: function ($ocLazyLoad) {
-                return $ocLazyLoad.load(telaPadraoLazyLoad());
-            }
-        }
+        data: {pageTitle: 'Cadastro de Sistemas'}
     }).state('grupodeantibioticos', {
         url: "/configura_grupodeantibioticos/",
         templateUrl: "views/tmtelas/tela_padrao.html",
         params: {titulo: 'Grupo de Antibióticos', pai: 'Configura', pagina: 'Grupo de Antibióticos', modStCodigo: '00190', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
         parent: 'lisnet',
-        data: {pageTitle: 'Grupo de Antibioticos'}, resolve: {
-            loadPlugin: function ($ocLazyLoad) {
-                return $ocLazyLoad.load(telaPadraoLazyLoad());
-            }
-        }
+        data: {pageTitle: 'Grupo de Antibioticos'}
     }).state('laudopadrao', {
         url: "/configura_laudopadrao/",
         templateUrl: "views/tmtelas/tela_padrao.html",
         params: {titulo: 'Laudo Padrão', pai: 'Configura', pagina: 'Laudo Padrão', modStCodigo: '00194', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
         parent: 'lisnet',
-        data: {pageTitle: 'Laudo Padrao'}, resolve: {
-            loadPlugin: function ($ocLazyLoad) {
-                return $ocLazyLoad.load(telaPadraoLazyLoad());
-            }
-        }
+        data: {pageTitle: 'Laudo Padrao'}
     }).state('usuarioxconvenio', {
         url: "/configura_usuarioxconvenio/",
         templateUrl: "views/tmtelas/tela_padrao.html",
         params: {titulo: 'Usuário x Convênio', pai: 'Configura', pagina: 'Usuário x Convênio', modStCodigo: '00199', limit: '220', btnFiltrar: true, btnCriar: true, btnTodos: true},
         parent: 'lisnet',
-        data: {pageTitle: 'Usuário x Convênio'}, resolve: {
-            loadPlugin: function ($ocLazyLoad) {
-                return $ocLazyLoad.load(telaPadraoLazyLoad());
-            }
-        }
+        data: {pageTitle: 'Usuário x Convênio'}
     }).state('periododefechamento', {
         url: "/configura_periododefechamento/",
         templateUrl: "views/tmtelas/tela_padrao.html",
         params: {titulo: 'Período de Fechamento', pai: 'Configura', pagina: 'Período de Fechamento', modStCodigo: '00229', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
         parent: 'lisnet',
-        data: {pageTitle: 'Periodo de Fechamento'}, resolve: {
-            loadPlugin: function ($ocLazyLoad) {
-                return $ocLazyLoad.load(telaPadraoLazyLoad());
-            }
-        }
+        data: {pageTitle: 'Periodo de Fechamento'}
     }).state('fraselaudo', {
         url: "/configura_fraselaudo/",
         templateUrl: "views/tmtelas/tela_padrao.html",
         params: {titulo: 'Frase do Laudo', pai: 'Configura', pagina: 'Frase do Laudo', modStCodigo: '00251', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
         parent: 'lisnet',
-        data: {pageTitle: 'Frase Laudo'}, resolve: {
-            loadPlugin: function ($ocLazyLoad) {
-                return $ocLazyLoad.load(telaPadraoLazyLoad());
-            }
-        }
+        data: {pageTitle: 'Frase Laudo'}
     });
 
 
@@ -2653,7 +2178,8 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
 
 
         ];
-    };
+    }
+    ;
 
 
 }

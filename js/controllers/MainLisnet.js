@@ -5,7 +5,7 @@
 
 
 function MainLisnet($scope, $rootScope,$state, $location, buscaAPIService, montaUrlLaudoProvider, deviceDetector,   
-$timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$interval,$filter,$localStorage,$state,resumePerfilService,configuraLinks,  $rootScope , notificacaoProvider,shareuser,helperService,moment) {
+$timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$interval,$filter,$localStorage,$state,resumePerfilService,configuraLinks,  $rootScope , notificacaoProvider,shareuser,helperService,moment,runtimeStates,hotkeys) {
     
     console.log('Inicializando MainLisnet ..');
     
@@ -33,7 +33,16 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
     var locationHostSplit = $location.host().split(".");
     var _param1DBName = $location.search()['dbname'];
 
-
+    hotkeys.add({
+    combo: 'f1',
+    description: 'This one goes to cadastrodepacientes',
+    allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
+    callback: function(event,hotkeys) {
+        event.preventDefault();
+//        notificacaoProvider.sweetSuccess('test','test');
+        vm.inputPesquisaTelaFocus = true;
+    }
+  });
 
 
     if ($localStorage.userDTO && typeof $localStorage.userDTO === 'object') {
@@ -135,14 +144,14 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
                         this.userDTO.status = 'in';
 //                        this.userDTO.dtLogon = $filter('date')(new Date(), " dd/MM/yyyy  HH:mm");
                         this.userDTO.dtLogon = new Date();
-                        this.userDTO.ultimaTela = 'widgets.lisnet';
+                        this.userDTO.ultimaTela = 'widgets';
                         //metthod preferencia de passar objs para outros controllers , usando memoria e nao IO.
                         shareuser.userDTO = this.userDTO;
                         //localStorage do userDTO para possibiliar  o refresh F5 , o perfil faz parte da autorizacao do login .
                         $localStorage.userDTO = this.userDTO;
 //                        $state.go(stateGO, {userDTO: angular.toJson(this.userDTO)});
 //                        $state.go('widgets.lisnet');
-                        vm.stateGO('widgets.lisnet');
+                        vm.stateGO('widgets');
                         //todas as chamadas no seu  tempo p nao sobrecarregar nem o cliente nem o servidor
                         $timeout(function () {
 //                            $timeout(function (){gerenciaRelatorioService.atualizaRelatorios(this.userDTO);
@@ -221,21 +230,21 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
                                     return e.name === stateGO;
                                 }).length > 0) {
                                     console.log('this.userDTO.hotPages contains the element we re looking for');
-                                } else if (stateGO !== 'widgets.lisnet') {
+                                } else if (stateGO !== 'widgets') {
                                     $timeout(function (){this.userDTO.hotPages.push(stateTokeep);},300);
                                 }
 
                             } else {
 //                    userDTO.modalLoading.dismiss('cancel');
                                 notificacaoProvider.sweetDialog("Erro", "Página não encontrada =  " + stateGO, 'warning', 'red', 'X');
-                                $state.go('problema.tela_nao_existe');
+                                $state.go('tela_nao_existe');
 //                            vm.carregando = false;
                             }
                         }
 
                     } catch (error) {
                         notificacaoProvider.sweetDialog("Erro", "Página não encontrada =  " + error, 'warning', 'red', 'X');
-                        $state.go('problema.tela_nao_existe');
+                        $state.go('tela_nao_existe');
                           vm.carregando = false;
                     }
                 } else {

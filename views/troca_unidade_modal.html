@@ -21,14 +21,14 @@
 }
 </style>
 
-<div class="inmodal"  ng-controller="trocaUnidade"  >
+<div class="inmodal"  ng-controller="controleNotificacoes"  >
     <div class="modal-header">
         <h4 class="modal-title">Trocar de Unidade</h4>
         <span class="m-r-sm text-justify  "  style="font-weight: bold;"    >Unidade: {{main.userDTO.unidade.UNI_ST_CODIGO }} - {{main.userDTO.unidade.UNI_ST_DESCRICAO}}</span> 
     </div>
     <div class="modal-body">
         <div  class="table-responsive">
-        <table datatable="ng" dt-options="dtOptionsWidgets"  class="table table-striped table-bordered table-hover dataTables-example"> 
+        <table datatable="ng" dt-options="dtOptionsTrocaUnidade"  class="table table-striped table-bordered table-hover dataTables-example"> 
         <thead> 
             <tr> 
                 <th style="width:50px;" >Escolha a Unidade</th> 

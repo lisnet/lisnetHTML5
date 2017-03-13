@@ -181,7 +181,7 @@ angular.module('lisnet').service("buscaAPIService",function ($http){
 //        console.log("buscaUnidades = " + JSON.stringify(configLisNet)   + "  ...........");
         var params = '?login=' + login + '&dbname='+configLisNet.defaultDB;
         var url = configLisNet.baseUrl +'/buscaUnidades' + params;
-        console.log('buscaUnidades  url construida = '+url);
+//        console.log('buscaUnidades  url construida = '+url);
         return $http({method : 'GET',url : url,
             headers : {
                 'Content-Type' : 'application/x-www-form-urlencoded',

@@ -1,6 +1,7 @@
 /* 
  Created on : Jan 12, 2016, 1:37:18 PM
  Author     : eros
+ http://stackoverflow.com/questions/25866387/angular-ui-router-programmatically-add-states
  */
 
 
