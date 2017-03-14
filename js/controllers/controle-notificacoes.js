@@ -14,6 +14,38 @@ function controleNotificacoes($scope,$localStorage,sairDoSistemaService,helperSe
 
     
 
+    if (!$scope.states) {
+        $scope.states = [];
+        $scope.states.push('configuraperfilusuario | Editar / Configurar Usuário');
+        $scope.states.push('controle_notificacoes | Controle de Notificações');
+        $scope.states.push('widgets | Home Painel de Widgets do Usuário, Inicio , Inĩcio, Começo, Casa');
+        $scope.states.push('sair | Sair do Sistema quit exit :q');
+        for (i in $scope.userDTO.perfil) {
+
+            var p = $scope.userDTO.perfil[i];
+//        $scope.states.push(p.MOD_ST_CODIGO);
+
+            for (y in p.telas) {
+
+                var f = p.telas[y];
+                if (f.telas && f.telas.length > 0) {
+                    for (x in f.telas) {
+                        var n = f.telas[x];
+                        if (n.visualisar) {
+                            $scope.states.push(n.MOD_ST_CODIGO + ' | ' + n.MOD_ST_DESCRICAO);
+                        }
+                    }
+                } else {
+                    if (f.visualisar) {
+                        $scope.states.push(f.MOD_ST_CODIGO + ' | ' + f.MOD_ST_DESCRICAO);
+                    }
+                }
+
+            }
+        }
+    }
+    
+
 
 $scope.userDTO.bellClass = "label-primary";
     checkNewNotification();
@@ -53,35 +85,9 @@ $scope.userDTO.bellClass = "label-primary";
 //        $scope.telaSelecionada = '';
         return  _array[0].trim();
     };
-    $scope.states = [];
-    $scope.states.push('configuraperfilusuario | Editar / Configurar Usuário');
-    $scope.states.push('controle.notificacoes | Controle de Notificações');
-    $scope.states.push('widgets.lisnet | Home Painel de Widgets do Usuário, Inicio , Inĩcio, Começo, Casa');
-    $scope.states.push('sair | Sair do Sistema quit exit :q');
+   
     
-    for (i in $scope.userDTO.perfil) {
-
-        var p = $scope.userDTO.perfil[i];
-//        $scope.states.push(p.MOD_ST_CODIGO);
-
-        for (y in p.telas) {
-
-            var f = p.telas[y];
-            if (f.telas && f.telas.length > 0 ) {
-                for (x in f.telas) {
-                    var n = f.telas[x];
-                    if (n.visualisar) {
-                        $scope.states.push(n.state +' | '+n.MOD_ST_DESCRICAO+' | '+n.MOD_ST_CODIGO  );
-                    }
-                }
-            } else {
-                if(f.visualisar){
-                    $scope.states.push(f.state +' | '+f.MOD_ST_DESCRICAO+' | '+f.MOD_ST_CODIGO);
-                }
-            }
-            
-        }
-    }
+    
 
     $scope.openRelatorio = function (status,codigo_rastreio){
         console.log('Inside openRelatorio codigo_rastreio = '+codigo_rastreio);

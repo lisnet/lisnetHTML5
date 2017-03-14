@@ -51,7 +51,7 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
         
         configuraLinks.configuraLinksAcesso(this.userDTO);
         this.userDTO.deviceDetector = deviceDetector;
-
+        resumePerfilService.resume(this.userDTO.perfil);
     } else {
         this.userDTO = configuraLinks.constroeUserDTONovo();
         configuraLinks.configuraLinksAcesso(this.userDTO);
@@ -133,8 +133,6 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
         }
     };
 
-
-
     function  buscaUsuarioMenu(login, perfil) {
         buscaAPIService.buscaUsuarioMenuJSONAjax(login, perfil, this.userDTO.configLisNet)
                 .then(function successCallback(response) {
@@ -194,9 +192,6 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
                                 }, intMinimoDelay);
                 });
     };
-    
-    
-    
     
     this.stateGO = function (stateGO) {
 //        console.log('$state.current .name =  ' + $state.current.name);

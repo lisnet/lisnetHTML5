@@ -15,7 +15,7 @@ function cadastroPaciente($scope, sairDoSistemaService, notificacaoProvider, bus
 
     var selfCadastroPaciente = this;
     $scope.userDTO = sairDoSistemaService.validarLogin();
-    $scope.steps = [{label:'F7',state:'cadastrodepacientes.busca_paciente'},{label:'Paciente',state:'cadastrodepacientes.constroe_paciente'},{label:'End./Contato',state:'cadastrodepacientes.constroe_paciente_contato'},{label:'Solicitação',state:'cadastrodepacientes.constroe_requisicao'},{label:'Compl.',state:'cadastrodepacientes.dados_complementares'},{label:'Exames',state:'cadastrodepacientes.inclue_exames'}];
+    $scope.steps = [{label:'F7',state:'00220.busca_paciente'},{label:'Paciente',state:'00220.constroe_paciente'},{label:'End./Contato',state:'00220.constroe_paciente_contato'},{label:'Solicitação',state:'00220.constroe_requisicao'},{label:'Compl.',state:'00220.dados_complementares'},{label:'Exames',state:'00220.inclue_exames'}];
     $scope.paramsStateConfig = $stateParams;
     selfCadastroPaciente.submit = function (isValid) {
         console.log("h");
@@ -30,11 +30,11 @@ function cadastroPaciente($scope, sairDoSistemaService, notificacaoProvider, bus
     
     if (!$scope.userDTO.cadastroPaciente) {
         $scope.inputPAC_ST_NOME = true;
-        $scope.userDTO.cadastroPaciente = {showWizard:false,ultimoStep:'cadastrodepacientes.busca_paciente',
+        $scope.userDTO.cadastroPaciente = {showWizard:false,ultimoStep:'00220.busca_paciente',
             showConstroePaciente:false,showConstroeRequisicao:false,ultimoCampo:''
             ,pacienteDB:null,paciente:null,pacientes:{},requisicao:{exame:{},exames:[],solicitantes:[]}};
-          $state.transitionTo('cadastrodepacientes.busca_paciente');
-          $timeout(function (){$scope.userDTO.cadastroPaciente.ultimoStep = 'cadastrodepacientes.busca_paciente';},1000);
+          $state.transitionTo('00220.busca_paciente');
+          $timeout(function (){$scope.userDTO.cadastroPaciente.ultimoStep = '00220.busca_paciente';},1000);
           
     }else{
         console.log('redirecionando p : '+$scope.userDTO.cadastroPaciente.ultimoStep);
@@ -49,7 +49,7 @@ function cadastroPaciente($scope, sairDoSistemaService, notificacaoProvider, bus
     allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
     callback: function(event,hotkeys) {
         event.preventDefault();
-      $scope.goToStep('cadastrodepacientes.busca_paciente');
+      $scope.goToStep('00220.busca_paciente');
     }
   });
   
@@ -103,15 +103,15 @@ function cadastroPaciente($scope, sairDoSistemaService, notificacaoProvider, bus
     $scope.salvarAlteracoes = function (stateTela){
         console.log(stateTela);
          switch (stateTela){
-                case 'cadastrodepacientes.constroe_paciente':
+                case '00220.constroe_paciente':
                     $scope.userDTO.cadastroPaciente.config.constroe_paciente = true;
                     $scope.userDTO.cadastroPaciente.pacienteDB = helperService.clonadorDeObj($scope.userDTO.cadastroPaciente.paciente);
                     break;
-                    case 'cadastrodepacientes.constroe_paciente_contato':
+                    case '00220.constroe_paciente_contato':
                     $scope.userDTO.cadastroPaciente.config.constroe_contato =true;
                     $scope.userDTO.cadastroPaciente.pacienteDB = helperService.clonadorDeObj($scope.userDTO.cadastroPaciente.paciente);
                     break;
-                    case 'cadastrodepacientes.constroe_requisicao':
+                    case '00220.constroe_requisicao':
                     $scope.userDTO.cadastroPaciente.config.constroe_solicitacao = true;
                     break;
             }
@@ -120,25 +120,25 @@ function cadastroPaciente($scope, sairDoSistemaService, notificacaoProvider, bus
     $scope.editarTela =  function (stateTela){
         console.log("editarTela  state : "+stateTela);
         switch (stateTela){
-                    case 'cadastrodepacientes.busca_paciente':
+                    case '00220.busca_paciente':
                         $scope.userDTO.cadastroPaciente.paciente = {};
                         $scope.userDTO.cadastroPaciente.pacienteDB = {};
                         
-                        $state.go('cadastrodepacientes.constroe_paciente');
+                        $state.go('00220.constroe_paciente');
                         //TODO busca código único de paciente PAC_IN_CODIGO
                         $timeout(function (){$scope.userDTO.cadastroPaciente.config.constroe_paciente = false;  },100);
                         $timeout(function (){$scope.inputPAC_ST_NOME = true;  },800);
                     break;
-                    case 'cadastrodepacientes.constroe_paciente':
+                    case '00220.constroe_paciente':
                     $scope.userDTO.cadastroPaciente.config.constroe_paciente = $scope.userDTO.cadastroPaciente.config.constroe_paciente ? false : true;
 //                        $scope.inputPAC_ST_NOME = true;
                         $timeout(function (){$scope.inputPAC_ST_NOME = true;  },500);
                     break;
-                    case 'cadastrodepacientes.constroe_paciente_contato':
+                    case '00220.constroe_paciente_contato':
                     $scope.userDTO.cadastroPaciente.config.constroe_contato = $scope.userDTO.cadastroPaciente.config.constroe_contato ? false : true;
                         $timeout(function (){$scope.inputPAC_ST_CEP = false; $scope.inputPAC_ST_CEP = true;},500);
                     break;
-                    case 'cadastrodepacientes.constroe_requisicao':
+                    case '00220.constroe_requisicao':
                     $scope.userDTO.cadastroPaciente.config.constroe_solicitacao = $scope.userDTO.cadastroPaciente.config.constroe_solicitacao ? false : true;
                         $timeout(function (){$scope.inputREQ_ST_MATRICULA = true;},500);
                     break;
@@ -242,7 +242,7 @@ function cadastroPaciente($scope, sairDoSistemaService, notificacaoProvider, bus
                     })[0];
         $scope.userDTO.cadastroPaciente.pacienteDB = _pac;
         $scope.userDTO.cadastroPaciente.paciente = helperService.clonadorDeObj(_pac);
-        $state.transitionTo('cadastrodepacientes.constroe_paciente');
+        $state.transitionTo('00220.constroe_paciente');
 
         _pac = buscaAPIService.buscaPaciente($scope.userDTO.configLisNet,_pac.PAC_IN_CODIGO).then(
                 function sucess(response){
@@ -389,7 +389,7 @@ function cadastroPaciente($scope, sairDoSistemaService, notificacaoProvider, bus
                         break;
                     }
                 }
-                console.log(JSON.stringify([_c,_n],null,2));
+//                console.log(JSON.stringify([_c,_n],null,2));
                 var _rt = true;
                 if(_c.index < _n.index){
                     console.log('going forward dude');
@@ -409,100 +409,100 @@ function cadastroPaciente($scope, sairDoSistemaService, notificacaoProvider, bus
         var _s = $state.current.name;
         console.log('Inside nextScreen ....  state = '+_s);
         switch (_s){
-            case 'cadastrodepacientes':
+            case '00220':
                 if($scope.userDTO.cadastroPaciente.paciente){
-                    $scope.goToStep("cadastrodepacientes.constroe_paciente");return true;
+                    $scope.goToStep("00220.busca_paciente");return true;
                 }else{
                     notificacaoProvider.sweetWarning('Info', 'Escolha um paciente ou crie um novo para proceguir. F2');
                     return false;
                 }
             break;
-            case 'cadastrodepacientes.busca_paciente':
+            case '00220.busca_paciente':
                 
                 if (direction) {
                     if ($scope.userDTO.cadastroPaciente.paciente) {
-                        $state.go("cadastrodepacientes.constroe_paciente");
+                        $state.go("00220.constroe_paciente");
                         return true;
                     } else {
                         notificacaoProvider.sweetWarning('Info', 'Escolha um paciente ou crie um novo para proceguir. F2');
                         return false;
                     }
                 } else {
-                    $state.go("cadastrodepacientes.busca_paciente");
+                    $state.go("00220.busca_paciente");
                     return true;
                 }
                 
             break;
-            case 'cadastrodepacientes.constroe_paciente':
+            case '00220.constroe_paciente':
                     if (direction) {
                         if (helperService.comparaObjetos($scope.userDTO.cadastroPaciente.paciente, $scope.userDTO.cadastroPaciente.pacienteDB)) {
-                            $state.go("cadastrodepacientes.constroe_paciente_contato");
+                            $state.go("00220.constroe_paciente_contato");
                             return true;
                         } else {
                             notificacaoProvider.sweetWarning('Info', 'É preciso salvar o paciente antes de proceguir , aperte F4 para salvar');
                             return false;
                         }
                     } else {
-                        $state.go("cadastrodepacientes.busca_paciente");
+                        $state.go("00220.busca_paciente");
                         return true;
                     }
                 
             break;
-            case 'cadastrodepacientes.constroe_paciente_contato':
+            case '00220.constroe_paciente_contato':
                     if (direction) {
                         if (helperService.comparaObjetos($scope.userDTO.cadastroPaciente.paciente, $scope.userDTO.cadastroPaciente.pacienteDB)) {
-                            $state.go("cadastrodepacientes.constroe_requisicao");
+                            $state.go("00220.constroe_requisicao");
                             return true;
                         } else {
                             notificacaoProvider.sweetWarning('Info', 'É preciso salvar as alterações antes de proceguir , aperte F4 para salvar');
                             return false;
                         }
                     } else {
-                        $state.go("cadastrodepacientes.constroe_paciente");
+                        $state.go("00220.constroe_paciente");
                         return true;
                     }
             break;
-            case 'cadastrodepacientes.constroe_requisicao':
+            case '00220.constroe_requisicao':
                 if (direction) {
                     if ($scope.userDTO.cadastroPaciente.requisicao && $scope.userDTO.cadastroPaciente.requisicao.unidade && $scope.userDTO.cadastroPaciente.local) {
-                        $state.go("cadastrodepacientes.dados_complementares");
+                        $state.go("00220.dados_complementares");
                         return true;
                     } else {
                         notificacaoProvider.sweetWarning('Info', 'Escolha um Local e um Posto');
                         return false;
                     }
                 } else {
-                    $state.go("cadastrodepacientes.constroe_paciente_contato");
+                    $state.go("00220.constroe_paciente_contato");
                     return true;
                 }
             break;
-            case 'cadastrodepacientes.dados_complementares':
+            case '00220.dados_complementares':
 //                $scope.goToStep("cadastrodepacientes.inclue_exames");
-                $state.go("cadastrodepacientes.inclue_exames");
+                $state.go("00220.inclue_exames");
             break;
-            case 'cadastrodepacientes.inclue_exames':
+            case '00220.inclue_exames':
 //                $scope.goToStep("cadastrodepacientes");
-                $state.go("cadastrodepacientes");
+                $state.go("00220");
             break;
         }  
     };
    
 
 $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams, options) {
-             if ( $scope.userDTO &&  $scope.userDTO.cadastroPaciente && $state.current.name.includes("cadastrodepacientes" )) {
+             if ( $scope.userDTO &&  $scope.userDTO.cadastroPaciente && $state.current.name.includes("00220" )) {
                         console.log("current state p ultimoStep: " + $state.current.name);
                         
                         var _s = $state.current.name;
                         
                         switch (_s){
-                            case 'cadastrodepacientes.busca_paciente':
+                            case '00220.busca_paciente':
                                 $scope.userDTO.cadastroPaciente.showWizard = false;
                             break;
                             default :
                                 $scope.userDTO.cadastroPaciente.showWizard = true;
                         }
                         
-                        if(_s !== 'cadastrodepacientes'){
+                        if(_s !== '00220'){
                             $scope.userDTO.cadastroPaciente.ultimoStep = _s;
                         }
                         

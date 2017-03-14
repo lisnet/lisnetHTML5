@@ -46,11 +46,45 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
     $stateProvider
             .state('lisnet', {
                 abstract: true,
-                url: "/lisnet",
                 templateUrl: "views/common/content.html",
                 resolve: {
                     loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(telaPadraoLazyLoad());
+                        return $ocLazyLoad.load([
+                            {
+                                files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
+                            },
+                            {
+                                name: 'oitozero.ngSweetAlert',
+                                files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
+                            },
+                            {
+                                files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
+                            },
+                            {
+                                serie: true,
+                                files: ['js/plugins/dataTables/datatables.min.js', 'css/plugins/dataTables/datatables.min.css']
+                            },
+                            {
+                                serie: true,
+                                name: 'datatables',
+                                files: ['js/plugins/dataTables/angular-datatables.min.js']
+                            },
+                            {
+                                serie: true,
+                                name: 'datatables.buttons',
+                                files: ['js/plugins/dataTables/angular-datatables.buttons.min.js']
+                            },
+                            {
+                                name: 'ui.switchery',
+                                files: ['css/plugins/switchery/switchery.css', 'js/plugins/switchery/switchery.js', 'js/plugins/switchery/ng-switchery.js']
+                            },
+                            {
+                                files: ['js/plugins/jasny/jasny-bootstrap.min.js']
+                            },
+                            {
+                                files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
+                            }
+                        ]);
                     }
                 }
             }).state('geslab', {
@@ -119,13 +153,49 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
         data: {pageTitle: 'Login', specialClass: 'gray-bg'},
         resolve: {
             loadPlugin: function ($ocLazyLoad) {
-                return $ocLazyLoad.load(telaPadraoLazyLoad());
+                return $ocLazyLoad.load([
+                    {
+                        files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
+                    },
+                    {
+                        name: 'oitozero.ngSweetAlert',
+                        files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
+                    },
+                    {
+                        files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
+                    },
+                    {
+                        serie: true,
+                        files: ['js/plugins/dataTables/datatables.min.js', 'css/plugins/dataTables/datatables.min.css']
+                    },
+                    {
+                        serie: true,
+                        name: 'datatables',
+                        files: ['js/plugins/dataTables/angular-datatables.min.js']
+                    },
+                    {
+                        serie: true,
+                        name: 'datatables.buttons',
+                        files: ['js/plugins/dataTables/angular-datatables.buttons.min.js']
+                    },
+                    {
+                        name: 'ui.switchery',
+                        files: ['css/plugins/switchery/switchery.css', 'js/plugins/switchery/switchery.js', 'js/plugins/switchery/ng-switchery.js']
+                    },
+                    {
+                        files: ['js/plugins/jasny/jasny-bootstrap.min.js']
+                    },
+                    {
+                        files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
+                    }
+                ]);
             }
         }
     }).state('widgets', {
         url: "/widgets",
         parent: 'lisnet',
         templateUrl: "views/tmtelas/widgets_lisnet.html",
+        params:{breadcrumb : [ {label:'Home',go:'widgets'}]},
         data: {pageTitle: 'Widgets'},
         resolve: {
             loadPlugin: function ($ocLazyLoad) {
@@ -150,347 +220,344 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
         url: "/configura_perfil_usuario",
         templateUrl: "views/tmtelas/configura_perfil_usuario.html",
         parent: 'lisnet',
-        params: {titulo: 'Configura Perfil de Usuário', pagina: 'Configura Perfil de Usuário'},
+        params: {titulo: 'Configura Perfil de Usuário', pagina: 'Configura Perfil de Usuário',breadcrumb : [ {label:'Home',go:'widgets'}]},
         data: {pageTitle: 'Configura Perfil', specialClass: 'gray-bg'}
     }
     ).state('erro', {
         url: "/erro",
         parent: 'lisnet',
         templateUrl: "views/tmtelas/under_construction.html",
+        params: {breadcrumb : [ {label:'Home',go:'widgets'}]},
         data: {pageTitle: 'Erro'}
     }).state('contrucao.contrucao', {
         url: "/under_construction",
         templateUrl: "views/tmtelas/under_construction.html",
         parent: 'lisnet',
+        params: {breadcrumb : [ {label:'Home',go:'widgets'}]},
         data: {pageTitle: 'Em construção'}
-   }).state('tela_nao_existe', {
+    }).state('tela_nao_existe', {
         url: "/tela_nao_existe",
         templateUrl: "views/tmtelas/tela_nao_existe.html",
         parent: 'lisnet',
-        params: {titulo: 'Tela não existe', pagina: 'Tela não existe'},
+        params: {breadcrumb : [ {label:'Home',go:'widgets'}]},
         data: {pageTitle: 'Tela não existe'}
     }).state('controle_notificacoes', {
         url: "/notificacoes",
-        parent:'lisnet',
+        parent: 'lisnet',
         templateUrl: "views/tmtelas/controle_notificacoes.html",
-        params: {titulo: 'Notificações', pagina: 'Notificações'},
+        params: {breadcrumb : [ {label:'Home',go:'widgets'}]},
         data: {pageTitle: 'Notificações'}
-    }).state('consultadelaudos', {
-        url: "/consulta/laudo/:userDTO",
-        templateUrl: "views/tmtelas/consulta_laudos.html",
-        parent: 'lisnet',
-        params: {titulo: 'Consulta de Laudos', pai: 'Consulta', filho: 'Laudos', pagina: 'Consulta de Laudos', limit: '500'},
-        data: {pageTitle: 'Consulta de Laudos'}, resolve: {
-            loadPlugin: function ($ocLazyLoad) {
-                return $ocLazyLoad.load(telaComplexa());
-            }
-        }
-    }).state('estatisticafaturamento', {
-                url: "/faturamento_estatisticafaturamento",
-                templateUrl: "views/tmtelas/estatistica_faturamento.html",
-                parent: 'lisnet',
-                controller: 'estatisticaFaturamento',
-                params: {titulo: 'Estatística Faturamento', pai: 'Estatística', pagina: 'Estatística Faturamento'},
-                data: {pageTitle: 'Estatística Faturamento'}, resolve: {
-                    loadPlugin: function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(telaComplexa());
-                    }
-                }
-     }).state('sobre', {
-                url: "/sobre",
-                templateUrl: "views/tmtelas/ajuda.html",
-                parent: 'lisnet',
-                params: {titulo: 'Sobre o LisNet e a Geslab', pai: 'Ajuda', pagina: 'Sobre o LisNet e a Geslab'},
-                data: {pageTitle: 'Sobre'}
-
-            })
-      .state('cadastrodepacientes', {
-        url: "/cadastro_pacientes",
-        templateUrl: "views/tmtelas/cadastro_paciente/cadastro_paciente.html",
-        params: {titulo: 'Cadastro de Paciente', pai: 'Cadastro', pagina: 'Cadastro de Paciente', modStCodigo: '00220', limit: '500'},
-        parent: 'lisnet',
-        data: {pageTitle: 'Cadastro de Paciente'}, resolve: {
-            loadPlugin: function ($ocLazyLoad) {
-                return $ocLazyLoad.load(telaComplexa());
-            }
-        }
-    }).state('cadastrodepacientes.busca_paciente', {
-                url: 'busca_paciente',
-                templateUrl: 'views/tmtelas/cadastro_paciente/cadastro_paciente_busca_paciente.html',
-                data: {pageTitle: 'Busca Paciente', state: 'cadastrodepacientes.busca_paciente'}
-            })
-            .state('cadastrodepacientes.constroe_paciente', {
-                url: 'constroe_paciente',
-                templateUrl: 'views/tmtelas/cadastro_paciente/cadastro_paciente_constroe_paciente.html',
-                data: {pageTitle: 'Constroe Paciente', state: 'cadastrodepacientes.constroe_paciente'}
-            })
-            .state('cadastrodepacientes.constroe_paciente_contato', {
-                url: 'constroe_paciente_contato',
-                templateUrl: 'views/tmtelas/cadastro_paciente/cadastro_paciente_constroe_paciente_contato.html',
-                data: {pageTitle: 'Contato', state: 'cadastrodepacientes.constroe_paciente_contato'}
-            })
-            .state('cadastrodepacientes.constroe_requisicao', {
-                url: 'constroe_requisicao',
-                templateUrl: 'views/tmtelas/cadastro_paciente/cadastro_paciente_constroe_requisicao.html',
-                data: {pageTitle: 'Constroe Requisição', state: 'cadastrodepacientes.constroe_requisicao'}
-            })
-            .state('cadastrodepacientes.dados_complementares', {
-                url: 'dados_complementares',
-                templateUrl: 'views/tmtelas/cadastro_paciente/cadastro_paciente_constroe_requisicao_dados_complementares.html',
-                data: {pageTitle: 'Dados Complementares', state: 'cadastrodepacientes.dados_complementares'}
-            })
-            .state('cadastrodepacientes.inclue_exames', {
-                url: 'inclue_exames',
-                templateUrl: 'views/tmtelas/cadastro_paciente/cadastro_paciente_constroe_requisicao_exames.html',
-                data: {pageTitle: 'Incluir Exames', state: 'cadastrodepacientes.inclue_exames'}
-            })
-   .state('convenios', {
-                url: "/configura_convenios/",
-                templateUrl: "views/tmtelas/tela_padrao.html",
-                params: {titulo: 'Convênios', pai: 'Configura', pagina: 'Convênios', modStCodigo: '00006', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
-                parent: 'lisnet',
-                data: {pageTitle: 'Convênios'}
-   }).state('material', {
-        url: "/configura_materiais/",
-        templateUrl: "views/tmtelas/tela_padrao.html",
-        params: {titulo: 'Material', pai: 'Configura', pagina: 'Material', modStCodigo: '00013', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
-        parent: 'lisnet',
-        data: {pageTitle: 'Materiais'}
-    }).state('setores', {
-        url: "/configura_setores/",
-        templateUrl: "views/tmtelas/tela_padrao.html",
-        params: {titulo: 'Setores', pai: 'Configura', pagina: 'Setores', modStCodigo: '00015', limit: '200', btnFiltrar: true, btnCriar: true, btnTodos: true},
-        parent: 'lisnet',
-        data: {pageTitle: 'Setores'}
-    }).state('antibiotico', {
-        url: "/configura_antibioticos/",
-        templateUrl: "views/tmtelas/tela_padrao.html",
-        params: {titulo: 'Antibiótico', pai: 'Configura', pagina: 'Antibiótico', modStCodigo: '00016', limit: '250', btnFiltrar: true, btnCriar: true, btnTodos: true},
-        parent: 'lisnet',
-        data: {pageTitle: 'Antibioticos'}
-    }).state('bacteriasfungosevirus', {
-        url: "/configura_bacteriasfungosevirus/",
-        templateUrl: "views/tmtelas/tela_padrao.html",
-        params: {titulo: 'Bactéria,Fungo & Virús', pai: 'Configura', pagina: 'Bactéria,Fungo & Virús', modStCodigo: '00017', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
-        parent: 'lisnet',
-        data: {pageTitle: 'Bacterias Fungos e Virus'}
-    }).state('cid', {
-        url: "/configura_cid/",
-        templateUrl: "views/tmtelas/tela_padrao.html",
-        params: {titulo: 'CID', pai: 'Configura', pagina: 'CID', modStCodigo: '00018', limit: '500', btnFiltrar: true, btnCriar: true, btnTodos: true},
-        parent: 'lisnet',
-        data: {pageTitle: 'CID'}
-    }).state('feriado', {
-        url: "/configura_feriado/",
-        templateUrl: "views/tmtelas/tela_padrao.html",
-        params: {titulo: 'Feriado', pai: 'Configura', pagina: 'Feriado', modStCodigo: '00021', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
-        parent: 'lisnet',
-        data: {pageTitle: 'Feriado'}
-    }).state('frasesparalaudo', {
-        url: "/configura_frasesparalaudo/",
-        templateUrl: "views/tmtelas/tela_padrao.html",
-        params: {titulo: 'Frase para Laudo', pai: 'Configura', pagina: 'Frase para Laudo', modStCodigo: '00022', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
-        parent: 'lisnet',
-        data: {pageTitle: 'Frases para Laudo'}
-    }).state('metodo', {
-        url: "/configura_metodo/",
-        templateUrl: "views/tmtelas/tela_padrao.html",
-        params: {titulo: 'Método', pai: 'Configura', pagina: 'Método', modStCodigo: '00023', limit: '500', btnFiltrar: true, btnCriar: true, btnTodos: true},
-        parent: 'lisnet',
-        data: {pageTitle: 'Método'}
-    }).state('motivo', {
-        url: "/configura_motivo/",
-        templateUrl: "views/tmtelas/tela_padrao.html",
-        params: {titulo: 'Motivo', pai: 'Configura', pagina: 'Motivo', modStCodigo: '00024', limit: '500', btnFiltrar: true, btnCriar: true, btnTodos: true},
-        parent: 'lisnet',
-        data: {pageTitle: 'Motivo'}
-    }).state('observacao', {
-        url: "/configura_observacao/",
-        templateUrl: "views/tmtelas/tela_padrao.html",
-        params: {titulo: 'Observação', pai: 'Configura', pagina: 'Observação', modStCodigo: '00025', limit: '30', btnFiltrar: true, btnCriar: true, btnTodos: true},
-        parent: 'lisnet',
-        data: {pageTitle: 'Observação'}
-    }).state('parasitas', {
-        url: "/configura_parasitas/",
-        templateUrl: "views/tmtelas/tela_padrao.html",
-        params: {titulo: 'Parasitas', pai: 'Configura', pagina: 'Parasitas', modStCodigo: '00027', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
-        parent: 'lisnet',
-        data: {pageTitle: 'Parasitas'}
-    }).state('recipiente', {
-        url: "/configura_recipiente/",
-        templateUrl: "views/tmtelas/tela_padrao.html",
-        params: {titulo: 'Recipiente', pai: 'Configura', pagina: 'Recipiente', modStCodigo: '00031', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
-        parent: 'lisnet',
-        data: {pageTitle: 'Recipiente'}
-    }).state('solicitantes', {
-        url: "/configura_solicitantes/",
-        templateUrl: "views/tmtelas/tela_padrao.html",
-        params: {titulo: 'Solicitantes', pai: 'Configura', pagina: 'Solicitantes', modStCodigo: '00044', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
-        parent: 'lisnet',
-        data: {pageTitle: 'Solicitantes'}
-    }).state('profissoes', {
-        url: "/configura_profissoes/",
-        templateUrl: "views/tmtelas/tela_padrao.html",
-        params: {titulo: 'Profissões', pai: 'Configura', pagina: 'Profissões', modStCodigo: '00046', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
-        parent: 'lisnet',
-        data: {pageTitle: 'Profissões'}
-    }).state('unidadesdemedida', {
-        url: "/configura_unidadesdemedida/",
-        templateUrl: "views/tmtelas/tela_padrao.html",
-        params: {titulo: 'Unidade de Medida', pai: 'Configura', pagina: 'Unidade de Medida', modStCodigo: '00053', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
-        parent: 'lisnet',
-        data: {pageTitle: 'Unidade de Medida'}
-    }).state('mapadeantibioticos', {
-        url: "/configura_mapadeantibioticos/",
-        templateUrl: "views/tmtelas/tela_padrao.html",
-        params: {titulo: 'Mapa de Antibióticos', pai: 'Configura', pagina: 'Mapa de Antibióticos', modStCodigo: '00054', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
-        parent: 'lisnet',
-        data: {pageTitle: 'Mapa de Antibióticos'}
-    }).state('laboratoriodeapoio', {
-        url: "/configura_laboratoriodeapoio/",
-        templateUrl: "views/tmtelas/tela_padrao.html",
-        params: {titulo: 'Laboratório de Apoio', pai: 'Configura', pagina: 'Laboratório de Apoio', modStCodigo: '00057', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
-        parent: 'lisnet',
-        data: {pageTitle: 'Laboratório de Apoio'}
-    }).state('coletores', {
-        url: "/configura_coletores/",
-        templateUrl: "views/tmtelas/tela_padrao.html",
-        params: {titulo: 'Coletores', pai: 'Configura', pagina: 'Coletores', modStCodigo: '00058', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
-        parent: 'lisnet',
-        data: {pageTitle: 'Coletores'}
-    }).state('localdeentrega', {
-        url: "/configura_localdeentrega/",
-        templateUrl: "views/tmtelas/tela_padrao.html",
-        params: {titulo: 'Local de Entrega', pai: 'Configura', pagina: 'Local de Entrega', modStCodigo: '00059', limit: '300', btnFiltrar: true, btnCriar: true, btnTodos: true},
-        parent: 'lisnet',
-        data: {pageTitle: 'Local de Entrega'}
-    }).state('textoparalaudos', {
-        url: "/configura_textoparalaudos/",
-        templateUrl: "views/tmtelas/tela_padrao.html",
-        params: {titulo: 'Texto para Laudo', pai: 'Configura', pagina: 'Texto para Laudo', modStCodigo: '00060', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
-        parent: 'lisnet',
-        data: {pageTitle: 'Texto para Laudos'}
-    }).state('mapaamostra', {
-        url: "/configura_mapaamostra/",
-        templateUrl: "views/tmtelas/tela_padrao.html",
-        params: {titulo: 'Mapa de Amostra', pai: 'Configura', pagina: 'Mapa de Amostra', modStCodigo: '00073', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
-        parent: 'lisnet',
-        data: {pageTitle: 'Mapa Amostra'}
-    }).state('grupo', {
-        url: "/configura_grupo/",
-        templateUrl: "views/tmtelas/tela_padrao.html",
-        params: {titulo: 'Grupo', pai: 'Configura', pagina: 'Grupo', modStCodigo: '00088', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
-        parent: 'lisnet',
-        data: {pageTitle: 'Grupo'}
-    }).state('examedepara', {
-        url: "/configura_examedepara/",
-        templateUrl: "views/tmtelas/tela_padrao.html",
-        params: {titulo: 'Exame Depara', pai: 'Configura', pagina: 'Exame Depara', modStCodigo: '00090', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
-        parent: 'lisnet',
-        data: {pageTitle: 'Exame Depara'}
-    }).state('grupodetriagem', {
-        url: "/configura_grupodetriagem/",
-        templateUrl: "views/tmtelas/tela_padrao.html",
-        params: {titulo: 'Grupo de Triagem', pai: 'Configura', pagina: 'Grupo de Triagem', modStCodigo: '00098', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
-        parent: 'lisnet',
-        data: {pageTitle: 'Grupo de Triagem'}
-    }).state('localde-para', {
-        url: "/configura_localdepara/",
-        templateUrl: "views/tmtelas/tela_padrao.html",
-        params: {titulo: 'Local Depara', pai: 'Configura', pagina: 'Local Depara', modStCodigo: '00101', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
-        parent: 'lisnet',
-        data: {pageTitle: 'Local depara'}
-    }).state('examedepararetorno', {
-        url: "/configura_examedepararetorno/",
-        templateUrl: "views/tmtelas/tela_padrao.html",
-        params: {titulo: 'Exame Depara Retorno', pai: 'Configura', pagina: 'Exame Depara Retorno', modStCodigo: '00131', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
-        parent: 'lisnet',
-        data: {pageTitle: 'Exame de para Retorno'}
-    }).state('materialde-para', {
-        url: "/configura_materialdepara/",
-        templateUrl: "views/tmtelas/tela_padrao.html",
-        params: {titulo: 'Material Depara', pai: 'Configura', pagina: 'Material Depara', modStCodigo: '00133', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
-        parent: 'lisnet',
-        data: {pageTitle: 'Material Depara'}
-    }).state('materialdecoleta(dasa)', {
-        url: "/configura_materialdecoleta_dasa/",
-        templateUrl: "views/tmtelas/tela_padrao.html",
-        params: {titulo: 'Material de Coleta', pai: 'Configura', pagina: 'Material de Coleta', modStCodigo: '00138', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
-        parent: 'lisnet',
-        data: {pageTitle: 'Material de Coleta(DASA)'}
-    }).state('recipientedecoleta(dasa)', {
-        url: "/configura_recipientedecoleta_dasa/",
-        templateUrl: "views/tmtelas/tela_padrao.html",
-        params: {titulo: 'Recipiente de Coleta', pai: 'Configura', pagina: 'Recipiente de Coleta', modStCodigo: '00139', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
-        parent: 'lisnet',
-        data: {pageTitle: 'Recipiente de Coleta(DASA)'}
-    }).state('cadastrodecarros', {
-        url: "/configura_cadastrodecarros/",
-        templateUrl: "views/tmtelas/tela_padrao.html",
-        params: {titulo: 'Cadastro de Carros', pai: 'Configura', pagina: 'Cadastro de Carros', modStCodigo: '00159', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
-        parent: 'lisnet',
-        data: {pageTitle: 'Cadastro de Carros'}
-    }).state('procedimentodecoleta', {
-        url: "/configura_procedimentodecoleta/",
-        templateUrl: "views/tmtelas/tela_padrao.html",
-        params: {titulo: 'Procedimento de Coleta', pai: 'Configura', pagina: 'Procedimento de Coleta', modStCodigo: '00161', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
-        parent: 'lisnet',
-        data: {pageTitle: 'Procedimento de Coleta'}
-    }).state('bandejamento', {
-        url: "/configura_bandejamento/",
-        templateUrl: "views/tmtelas/tela_padrao.html",
-        params: {titulo: 'Badejamento', pai: 'Configura', pagina: 'Badejamento', modStCodigo: '00179', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
-        parent: 'lisnet',
-        data: {pageTitle: 'Bandejamento'}
-    }).state('flyer', {
-        url: "/configura_flyer/",
-        templateUrl: "views/tmtelas/tela_padrao.html",
-        params: {titulo: 'Flyer', pai: 'Configura', pagina: 'Flyer', modStCodigo: '00184', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
-        parent: 'lisnet',
-        data: {pageTitle: 'Flyer'}
-    }).state('cadastrosparasoroteca', {
-        url: "/configura_cadastrosparasoroteca/",
-        templateUrl: "views/tmtelas/tela_padrao.html",
-        params: {titulo: 'Cadastro para Soroteca', pai: 'Configura', pagina: 'Cadastro para Soroteca', modStCodigo: '00185', limit: '50', btnFiltrar: true, btnCriar: true, btnTodos: true},
-        parent: 'lisnet',
-        data: {pageTitle: 'Cadastros para Soroteca'}
-    }).state('cadastrodesistemas', {
-        url: "/configura_cadastrodesistemas/",
-        templateUrl: "views/tmtelas/tela_padrao.html",
-        params: {titulo: 'Cadastro de Sistemas', pai: 'Configura', pagina: 'Cadastro de Sistemas', modStCodigo: '00187', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
-        parent: 'lisnet',
-        data: {pageTitle: 'Cadastro de Sistemas'}
-    }).state('grupodeantibioticos', {
-        url: "/configura_grupodeantibioticos/",
-        templateUrl: "views/tmtelas/tela_padrao.html",
-        params: {titulo: 'Grupo de Antibióticos', pai: 'Configura', pagina: 'Grupo de Antibióticos', modStCodigo: '00190', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
-        parent: 'lisnet',
-        data: {pageTitle: 'Grupo de Antibioticos'}
-    }).state('laudopadrao', {
-        url: "/configura_laudopadrao/",
-        templateUrl: "views/tmtelas/tela_padrao.html",
-        params: {titulo: 'Laudo Padrão', pai: 'Configura', pagina: 'Laudo Padrão', modStCodigo: '00194', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
-        parent: 'lisnet',
-        data: {pageTitle: 'Laudo Padrao'}
-    }).state('usuarioxconvenio', {
-        url: "/configura_usuarioxconvenio/",
-        templateUrl: "views/tmtelas/tela_padrao.html",
-        params: {titulo: 'Usuário x Convênio', pai: 'Configura', pagina: 'Usuário x Convênio', modStCodigo: '00199', limit: '220', btnFiltrar: true, btnCriar: true, btnTodos: true},
-        parent: 'lisnet',
-        data: {pageTitle: 'Usuário x Convênio'}
-    }).state('periododefechamento', {
-        url: "/configura_periododefechamento/",
-        templateUrl: "views/tmtelas/tela_padrao.html",
-        params: {titulo: 'Período de Fechamento', pai: 'Configura', pagina: 'Período de Fechamento', modStCodigo: '00229', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
-        parent: 'lisnet',
-        data: {pageTitle: 'Periodo de Fechamento'}
-    }).state('fraselaudo', {
-        url: "/configura_fraselaudo/",
-        templateUrl: "views/tmtelas/tela_padrao.html",
-        params: {titulo: 'Frase do Laudo', pai: 'Configura', pagina: 'Frase do Laudo', modStCodigo: '00251', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
-        parent: 'lisnet',
-        data: {pageTitle: 'Frase Laudo'}
     });
+
+//     .state('consultadelaudos', {
+//        url: "/consulta/laudo/:userDTO",
+//        templateUrl: "views/tmtelas/consulta_laudos.html",
+//        parent: 'lisnet',
+//        params: {titulo: 'Consulta de Laudos', pai: 'Consulta', filho: 'Laudos', pagina: 'Consulta de Laudos', limit: '500'},
+//        data: {pageTitle: 'Consulta de Laudos'}, resolve: {
+//            loadPlugin: function ($ocLazyLoad) {
+//                return $ocLazyLoad.load(telaComplexa());
+//            }
+//        }
+//    }).state('estatisticafaturamento', {
+//                url: "/faturamento_estatisticafaturamento",
+//                templateUrl: "views/tmtelas/estatistica_faturamento.html",
+//                parent: 'lisnet',
+//                controller: 'estatisticaFaturamento',
+//                params: {titulo: 'Estatística Faturamento', pai: 'Estatística', pagina: 'Estatística Faturamento'},
+//                data: {pageTitle: 'Estatística Faturamento'}, resolve: {
+//                    loadPlugin: function ($ocLazyLoad) {
+//                        return $ocLazyLoad.load(telaComplexa());
+//                    }
+//                }
+//     })
+//      .state('cadastrodepacientes', {
+//        url: "/cadastro_pacientes",
+//        templateUrl: "views/tmtelas/cadastro_paciente/cadastro_paciente.html",
+//        params: {titulo: 'Cadastro de Paciente', pai: 'Cadastro', pagina: 'Cadastro de Paciente', modStCodigo: '00220', limit: '500'},
+//        parent: 'lisnet',
+//        data: {pageTitle: 'Cadastro de Paciente'}, resolve: {
+//            loadPlugin: function ($ocLazyLoad) {
+//                return $ocLazyLoad.load(telaComplexa());
+//            }
+//        }
+//    }).state('cadastrodepacientes.busca_paciente', {
+//                url: 'busca_paciente',
+//                templateUrl: 'views/tmtelas/cadastro_paciente/cadastro_paciente_busca_paciente.html',
+//                data: {pageTitle: 'Busca Paciente', state: 'cadastrodepacientes.busca_paciente'}
+//            })
+//            .state('cadastrodepacientes.constroe_paciente', {
+//                url: 'constroe_paciente',
+//                templateUrl: 'views/tmtelas/cadastro_paciente/cadastro_paciente_constroe_paciente.html',
+//                data: {pageTitle: 'Constroe Paciente', state: 'cadastrodepacientes.constroe_paciente'}
+//            })
+//            .state('cadastrodepacientes.constroe_paciente_contato', {
+//                url: 'constroe_paciente_contato',
+//                templateUrl: 'views/tmtelas/cadastro_paciente/cadastro_paciente_constroe_paciente_contato.html',
+//                data: {pageTitle: 'Contato', state: 'cadastrodepacientes.constroe_paciente_contato'}
+//            })
+//            .state('cadastrodepacientes.constroe_requisicao', {
+//                url: 'constroe_requisicao',
+//                templateUrl: 'views/tmtelas/cadastro_paciente/cadastro_paciente_constroe_requisicao.html',
+//                data: {pageTitle: 'Constroe Requisição', state: 'cadastrodepacientes.constroe_requisicao'}
+//            })
+//            .state('cadastrodepacientes.dados_complementares', {
+//                url: 'dados_complementares',
+//                templateUrl: 'views/tmtelas/cadastro_paciente/cadastro_paciente_constroe_requisicao_dados_complementares.html',
+//                data: {pageTitle: 'Dados Complementares', state: 'cadastrodepacientes.dados_complementares'}
+//            })
+//            .state('cadastrodepacientes.inclue_exames', {
+//                url: 'inclue_exames',
+//                templateUrl: 'views/tmtelas/cadastro_paciente/cadastro_paciente_constroe_requisicao_exames.html',
+//                data: {pageTitle: 'Incluir Exames', state: 'cadastrodepacientes.inclue_exames'}
+//            })
+//   .state('convenios', {
+//                url: "/configura_convenios/",
+//                templateUrl: "views/tmtelas/tela_padrao.html",
+//                params: {titulo: 'Convênios', pai: 'Configura', pagina: 'Convênios', modStCodigo: '00006', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
+//                parent: 'lisnet',
+//                data: {pageTitle: 'Convênios'}
+//   }).state('material', {
+//        url: "/configura_materiais/",
+//        templateUrl: "views/tmtelas/tela_padrao.html",
+//        params: {titulo: 'Material', pai: 'Configura', pagina: 'Material', modStCodigo: '00013', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
+//        parent: 'lisnet',
+//        data: {pageTitle: 'Materiais'}
+//    }).state('setores', {
+//        url: "/configura_setores/",
+//        templateUrl: "views/tmtelas/tela_padrao.html",
+//        params: {titulo: 'Setores', pai: 'Configura', pagina: 'Setores', modStCodigo: '00015', limit: '200', btnFiltrar: true, btnCriar: true, btnTodos: true},
+//        parent: 'lisnet',
+//        data: {pageTitle: 'Setores'}
+//    }).state('antibiotico', {
+//        url: "/configura_antibioticos/",
+//        templateUrl: "views/tmtelas/tela_padrao.html",
+//        params: {titulo: 'Antibiótico', pai: 'Configura', pagina: 'Antibiótico', modStCodigo: '00016', limit: '250', btnFiltrar: true, btnCriar: true, btnTodos: true},
+//        parent: 'lisnet',
+//        data: {pageTitle: 'Antibioticos'}
+//    }).state('bacteriasfungosevirus', {
+//        url: "/configura_bacteriasfungosevirus/",
+//        templateUrl: "views/tmtelas/tela_padrao.html",
+//        params: {titulo: 'Bactéria,Fungo & Virús', pai: 'Configura', pagina: 'Bactéria,Fungo & Virús', modStCodigo: '00017', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
+//        parent: 'lisnet',
+//        data: {pageTitle: 'Bacterias Fungos e Virus'}
+//    }).state('cid', {
+//        url: "/configura_cid/",
+//        templateUrl: "views/tmtelas/tela_padrao.html",
+//        params: {titulo: 'CID', pai: 'Configura', pagina: 'CID', modStCodigo: '00018', limit: '500', btnFiltrar: true, btnCriar: true, btnTodos: true},
+//        parent: 'lisnet',
+//        data: {pageTitle: 'CID'}
+//    }).state('feriado', {
+//        url: "/configura_feriado/",
+//        templateUrl: "views/tmtelas/tela_padrao.html",
+//        params: {titulo: 'Feriado', pai: 'Configura', pagina: 'Feriado', modStCodigo: '00021', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
+//        parent: 'lisnet',
+//        data: {pageTitle: 'Feriado'}
+//    }).state('frasesparalaudo', {
+//        url: "/configura_frasesparalaudo/",
+//        templateUrl: "views/tmtelas/tela_padrao.html",
+//        params: {titulo: 'Frase para Laudo', pai: 'Configura', pagina: 'Frase para Laudo', modStCodigo: '00022', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
+//        parent: 'lisnet',
+//        data: {pageTitle: 'Frases para Laudo'}
+//    }).state('metodo', {
+//        url: "/configura_metodo/",
+//        templateUrl: "views/tmtelas/tela_padrao.html",
+//        params: {titulo: 'Método', pai: 'Configura', pagina: 'Método', modStCodigo: '00023', limit: '500', btnFiltrar: true, btnCriar: true, btnTodos: true},
+//        parent: 'lisnet',
+//        data: {pageTitle: 'Método'}
+//    }).state('motivo', {
+//        url: "/configura_motivo/",
+//        templateUrl: "views/tmtelas/tela_padrao.html",
+//        params: {titulo: 'Motivo', pai: 'Configura', pagina: 'Motivo', modStCodigo: '00024', limit: '500', btnFiltrar: true, btnCriar: true, btnTodos: true},
+//        parent: 'lisnet',
+//        data: {pageTitle: 'Motivo'}
+//    }).state('observacao', {
+//        url: "/configura_observacao/",
+//        templateUrl: "views/tmtelas/tela_padrao.html",
+//        params: {titulo: 'Observação', pai: 'Configura', pagina: 'Observação', modStCodigo: '00025', limit: '30', btnFiltrar: true, btnCriar: true, btnTodos: true},
+//        parent: 'lisnet',
+//        data: {pageTitle: 'Observação'}
+//    }).state('parasitas', {
+//        url: "/configura_parasitas/",
+//        templateUrl: "views/tmtelas/tela_padrao.html",
+//        params: {titulo: 'Parasitas', pai: 'Configura', pagina: 'Parasitas', modStCodigo: '00027', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
+//        parent: 'lisnet',
+//        data: {pageTitle: 'Parasitas'}
+//    }).state('recipiente', {
+//        url: "/configura_recipiente/",
+//        templateUrl: "views/tmtelas/tela_padrao.html",
+//        params: {titulo: 'Recipiente', pai: 'Configura', pagina: 'Recipiente', modStCodigo: '00031', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
+//        parent: 'lisnet',
+//        data: {pageTitle: 'Recipiente'}
+//    }).state('solicitantes', {
+//        url: "/configura_solicitantes/",
+//        templateUrl: "views/tmtelas/tela_padrao.html",
+//        params: {titulo: 'Solicitantes', pai: 'Configura', pagina: 'Solicitantes', modStCodigo: '00044', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
+//        parent: 'lisnet',
+//        data: {pageTitle: 'Solicitantes'}
+//    }).state('profissoes', {
+//        url: "/configura_profissoes/",
+//        templateUrl: "views/tmtelas/tela_padrao.html",
+//        params: {titulo: 'Profissões', pai: 'Configura', pagina: 'Profissões', modStCodigo: '00046', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
+//        parent: 'lisnet',
+//        data: {pageTitle: 'Profissões'}
+//    }).state('unidadesdemedida', {
+//        url: "/configura_unidadesdemedida/",
+//        templateUrl: "views/tmtelas/tela_padrao.html",
+//        params: {titulo: 'Unidade de Medida', pai: 'Configura', pagina: 'Unidade de Medida', modStCodigo: '00053', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
+//        parent: 'lisnet',
+//        data: {pageTitle: 'Unidade de Medida'}
+//    }).state('mapadeantibioticos', {
+//        url: "/configura_mapadeantibioticos/",
+//        templateUrl: "views/tmtelas/tela_padrao.html",
+//        params: {titulo: 'Mapa de Antibióticos', pai: 'Configura', pagina: 'Mapa de Antibióticos', modStCodigo: '00054', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
+//        parent: 'lisnet',
+//        data: {pageTitle: 'Mapa de Antibióticos'}
+//    }).state('laboratoriodeapoio', {
+//        url: "/configura_laboratoriodeapoio/",
+//        templateUrl: "views/tmtelas/tela_padrao.html",
+//        params: {titulo: 'Laboratório de Apoio', pai: 'Configura', pagina: 'Laboratório de Apoio', modStCodigo: '00057', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
+//        parent: 'lisnet',
+//        data: {pageTitle: 'Laboratório de Apoio'}
+//    }).state('coletores', {
+//        url: "/configura_coletores/",
+//        templateUrl: "views/tmtelas/tela_padrao.html",
+//        params: {titulo: 'Coletores', pai: 'Configura', pagina: 'Coletores', modStCodigo: '00058', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
+//        parent: 'lisnet',
+//        data: {pageTitle: 'Coletores'}
+//    }).state('localdeentrega', {
+//        url: "/configura_localdeentrega/",
+//        templateUrl: "views/tmtelas/tela_padrao.html",
+//        params: {titulo: 'Local de Entrega', pai: 'Configura', pagina: 'Local de Entrega', modStCodigo: '00059', limit: '300', btnFiltrar: true, btnCriar: true, btnTodos: true},
+//        parent: 'lisnet',
+//        data: {pageTitle: 'Local de Entrega'}
+//    }).state('textoparalaudos', {
+//        url: "/configura_textoparalaudos/",
+//        templateUrl: "views/tmtelas/tela_padrao.html",
+//        params: {titulo: 'Texto para Laudo', pai: 'Configura', pagina: 'Texto para Laudo', modStCodigo: '00060', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
+//        parent: 'lisnet',
+//        data: {pageTitle: 'Texto para Laudos'}
+//    }).state('mapaamostra', {
+//        url: "/configura_mapaamostra/",
+//        templateUrl: "views/tmtelas/tela_padrao.html",
+//        params: {titulo: 'Mapa de Amostra', pai: 'Configura', pagina: 'Mapa de Amostra', modStCodigo: '00073', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
+//        parent: 'lisnet',
+//        data: {pageTitle: 'Mapa Amostra'}
+//    }).state('grupo', {
+//        url: "/configura_grupo/",
+//        templateUrl: "views/tmtelas/tela_padrao.html",
+//        params: {titulo: 'Grupo', pai: 'Configura', pagina: 'Grupo', modStCodigo: '00088', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
+//        parent: 'lisnet',
+//        data: {pageTitle: 'Grupo'}
+//    }).state('examedepara', {
+//        url: "/configura_examedepara/",
+//        templateUrl: "views/tmtelas/tela_padrao.html",
+//        params: {titulo: 'Exame Depara', pai: 'Configura', pagina: 'Exame Depara', modStCodigo: '00090', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
+//        parent: 'lisnet',
+//        data: {pageTitle: 'Exame Depara'}
+//    }).state('grupodetriagem', {
+//        url: "/configura_grupodetriagem/",
+//        templateUrl: "views/tmtelas/tela_padrao.html",
+//        params: {titulo: 'Grupo de Triagem', pai: 'Configura', pagina: 'Grupo de Triagem', modStCodigo: '00098', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
+//        parent: 'lisnet',
+//        data: {pageTitle: 'Grupo de Triagem'}
+//    }).state('localde-para', {
+//        url: "/configura_localdepara/",
+//        templateUrl: "views/tmtelas/tela_padrao.html",
+//        params: {titulo: 'Local Depara', pai: 'Configura', pagina: 'Local Depara', modStCodigo: '00101', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
+//        parent: 'lisnet',
+//        data: {pageTitle: 'Local depara'}
+//    }).state('examedepararetorno', {
+//        url: "/configura_examedepararetorno/",
+//        templateUrl: "views/tmtelas/tela_padrao.html",
+//        params: {titulo: 'Exame Depara Retorno', pai: 'Configura', pagina: 'Exame Depara Retorno', modStCodigo: '00131', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
+//        parent: 'lisnet',
+//        data: {pageTitle: 'Exame de para Retorno'}
+//    }).state('materialde-para', {
+//        url: "/configura_materialdepara/",
+//        templateUrl: "views/tmtelas/tela_padrao.html",
+//        params: {titulo: 'Material Depara', pai: 'Configura', pagina: 'Material Depara', modStCodigo: '00133', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
+//        parent: 'lisnet',
+//        data: {pageTitle: 'Material Depara'}
+//    }).state('materialdecoleta(dasa)', {
+//        url: "/configura_materialdecoleta_dasa/",
+//        templateUrl: "views/tmtelas/tela_padrao.html",
+//        params: {titulo: 'Material de Coleta', pai: 'Configura', pagina: 'Material de Coleta', modStCodigo: '00138', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
+//        parent: 'lisnet',
+//        data: {pageTitle: 'Material de Coleta(DASA)'}
+//    }).state('recipientedecoleta(dasa)', {
+//        url: "/configura_recipientedecoleta_dasa/",
+//        templateUrl: "views/tmtelas/tela_padrao.html",
+//        params: {titulo: 'Recipiente de Coleta', pai: 'Configura', pagina: 'Recipiente de Coleta', modStCodigo: '00139', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
+//        parent: 'lisnet',
+//        data: {pageTitle: 'Recipiente de Coleta(DASA)'}
+//    }).state('cadastrodecarros', {
+//        url: "/configura_cadastrodecarros/",
+//        templateUrl: "views/tmtelas/tela_padrao.html",
+//        params: {titulo: 'Cadastro de Carros', pai: 'Configura', pagina: 'Cadastro de Carros', modStCodigo: '00159', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
+//        parent: 'lisnet',
+//        data: {pageTitle: 'Cadastro de Carros'}
+//    }).state('procedimentodecoleta', {
+//        url: "/configura_procedimentodecoleta/",
+//        templateUrl: "views/tmtelas/tela_padrao.html",
+//        params: {titulo: 'Procedimento de Coleta', pai: 'Configura', pagina: 'Procedimento de Coleta', modStCodigo: '00161', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
+//        parent: 'lisnet',
+//        data: {pageTitle: 'Procedimento de Coleta'}
+//    }).state('bandejamento', {
+//        url: "/configura_bandejamento/",
+//        templateUrl: "views/tmtelas/tela_padrao.html",
+//        params: {titulo: 'Badejamento', pai: 'Configura', pagina: 'Badejamento', modStCodigo: '00179', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
+//        parent: 'lisnet',
+//        data: {pageTitle: 'Bandejamento'}
+//    }).state('flyer', {
+//        url: "/configura_flyer/",
+//        templateUrl: "views/tmtelas/tela_padrao.html",
+//        params: {titulo: 'Flyer', pai: 'Configura', pagina: 'Flyer', modStCodigo: '00184', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
+//        parent: 'lisnet',
+//        data: {pageTitle: 'Flyer'}
+//    }).state('cadastrosparasoroteca', {
+//        url: "/configura_cadastrosparasoroteca/",
+//        templateUrl: "views/tmtelas/tela_padrao.html",
+//        params: {titulo: 'Cadastro para Soroteca', pai: 'Configura', pagina: 'Cadastro para Soroteca', modStCodigo: '00185', limit: '50', btnFiltrar: true, btnCriar: true, btnTodos: true},
+//        parent: 'lisnet',
+//        data: {pageTitle: 'Cadastros para Soroteca'}
+//    }).state('cadastrodesistemas', {
+//        url: "/configura_cadastrodesistemas/",
+//        templateUrl: "views/tmtelas/tela_padrao.html",
+//        params: {titulo: 'Cadastro de Sistemas', pai: 'Configura', pagina: 'Cadastro de Sistemas', modStCodigo: '00187', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
+//        parent: 'lisnet',
+//        data: {pageTitle: 'Cadastro de Sistemas'}
+//    }).state('grupodeantibioticos', {
+//        url: "/configura_grupodeantibioticos/",
+//        templateUrl: "views/tmtelas/tela_padrao.html",
+//        params: {titulo: 'Grupo de Antibióticos', pai: 'Configura', pagina: 'Grupo de Antibióticos', modStCodigo: '00190', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
+//        parent: 'lisnet',
+//        data: {pageTitle: 'Grupo de Antibioticos'}
+//    }).state('laudopadrao', {
+//        url: "/configura_laudopadrao/",
+//        templateUrl: "views/tmtelas/tela_padrao.html",
+//        params: {titulo: 'Laudo Padrão', pai: 'Configura', pagina: 'Laudo Padrão', modStCodigo: '00194', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
+//        parent: 'lisnet',
+//        data: {pageTitle: 'Laudo Padrao'}
+//    }).state('usuarioxconvenio', {
+//        url: "/configura_usuarioxconvenio/",
+//        templateUrl: "views/tmtelas/tela_padrao.html",
+//        params: {titulo: 'Usuário x Convênio', pai: 'Configura', pagina: 'Usuário x Convênio', modStCodigo: '00199', limit: '220', btnFiltrar: true, btnCriar: true, btnTodos: true},
+//        parent: 'lisnet',
+//        data: {pageTitle: 'Usuário x Convênio'}
+//    }).state('periododefechamento', {
+//        url: "/configura_periododefechamento/",
+//        templateUrl: "views/tmtelas/tela_padrao.html",
+//        params: {titulo: 'Período de Fechamento', pai: 'Configura', pagina: 'Período de Fechamento', modStCodigo: '00229', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
+//        parent: 'lisnet',
+//        data: {pageTitle: 'Periodo de Fechamento'}
+//    }).state('fraselaudo', {
+//        url: "/configura_fraselaudo/",
+//        templateUrl: "views/tmtelas/tela_padrao.html",
+//        params: {titulo: 'Frase do Laudo', pai: 'Configura', pagina: 'Frase do Laudo', modStCodigo: '00251', limit: '100', btnFiltrar: true, btnCriar: true, btnTodos: true},
+//        parent: 'lisnet',
+//        data: {pageTitle: 'Frase Laudo'}
+//    });
 
 
 
@@ -2021,168 +2088,167 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
 
 
 
-    function telaPadraoLazyLoad() {
-        return   [
-            {
-                files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
-            },
-            {
-                name: 'oitozero.ngSweetAlert',
-                files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
-            },
-            {
-                files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
-            },
-            {
-                serie: true,
-                files: ['js/plugins/dataTables/datatables.min.js', 'css/plugins/dataTables/datatables.min.css']
-            },
-            {
-                serie: true,
-                name: 'datatables',
-                files: ['js/plugins/dataTables/angular-datatables.min.js']
-            },
-            {
-                serie: true,
-                name: 'datatables.buttons',
-                files: ['js/plugins/dataTables/angular-datatables.buttons.min.js']
-            },
-            {
-                name: 'ui.switchery',
-                files: ['css/plugins/switchery/switchery.css', 'js/plugins/switchery/switchery.js', 'js/plugins/switchery/ng-switchery.js']
-            },
-            {
-                files: ['js/plugins/jasny/jasny-bootstrap.min.js']
-            },
-            {
-                files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
-            }
-        ];
-    }
-    ;
+//    function telaPadraoLazyLoad() {
+//        return   [
+//            {
+//                files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
+//            },
+//            {
+//                name: 'oitozero.ngSweetAlert',
+//                files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
+//            },
+//            {
+//                files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
+//            },
+//            {
+//                serie: true,
+//                files: ['js/plugins/dataTables/datatables.min.js', 'css/plugins/dataTables/datatables.min.css']
+//            },
+//            {
+//                serie: true,
+//                name: 'datatables',
+//                files: ['js/plugins/dataTables/angular-datatables.min.js']
+//            },
+//            {
+//                serie: true,
+//                name: 'datatables.buttons',
+//                files: ['js/plugins/dataTables/angular-datatables.buttons.min.js']
+//            },
+//            {
+//                name: 'ui.switchery',
+//                files: ['css/plugins/switchery/switchery.css', 'js/plugins/switchery/switchery.js', 'js/plugins/switchery/ng-switchery.js']
+//            },
+//            {
+//                files: ['js/plugins/jasny/jasny-bootstrap.min.js']
+//            },
+//            {
+//                files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
+//            }
+//        ];
+//    };
 
 
-    function telaComplexa() {
-        return   [
-            {
-                files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
-            },
-            {
-                name: 'oitozero.ngSweetAlert',
-                files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
-            },
-            {
-                files: ['js/plugins/moment/moment.min.js']
-            },
-            {
-                name: 'ui.knob',
-                files: ['js/plugins/jsKnob/jquery.knob.js', 'js/plugins/jsKnob/angular-knob.js']
-            },
-            {
-                files: ['css/plugins/ionRangeSlider/ion.rangeSlider.css', 'css/plugins/ionRangeSlider/ion.rangeSlider.skinFlat.css', 'js/plugins/ionRangeSlider/ion.rangeSlider.min.js']
-            },
-            {
-                insertBefore: '#loadBefore',
-                name: 'localytics.directives',
-                files: ['css/plugins/chosen/bootstrap-chosen.css', 'js/plugins/chosen/chosen.jquery.js', 'js/plugins/chosen/chosen.js']
-            },
-            {
-                name: 'nouislider',
-                files: ['css/plugins/nouslider/jquery.nouislider.css', 'js/plugins/nouslider/jquery.nouislider.min.js', 'js/plugins/nouslider/angular-nouislider.js']
-            },
-            {
-                name: 'datePicker',
-                files: ['css/plugins/datapicker/angular-datapicker.css', 'js/plugins/datapicker/angular-datepicker.js']
-            },
-            {
-                files: ['js/plugins/jasny/jasny-bootstrap.min.js']
-            },
-            {
-                files: ['css/plugins/clockpicker/clockpicker.css', 'js/plugins/clockpicker/clockpicker.js']
-            },
-            {
-                name: 'ui.switchery',
-                files: ['css/plugins/switchery/switchery.css', 'js/plugins/switchery/switchery.js', 'js/plugins/switchery/ng-switchery.js']
-            },
-            {
-                name: 'colorpicker.module',
-                files: ['css/plugins/colorpicker/colorpicker.css', 'js/plugins/colorpicker/bootstrap-colorpicker-module.js']
-            },
-            {
-                name: 'ngImgCrop',
-                files: ['js/plugins/ngImgCrop/ng-img-crop.js', 'css/plugins/ngImgCrop/ng-img-crop.css']
-            },
-            {
-                serie: true,
-                files: ['js/plugins/daterangepicker/daterangepicker.js', 'css/plugins/daterangepicker/daterangepicker-bs3.css']
-            },
-            {
-                name: 'daterangepicker',
-                files: ['js/plugins/daterangepicker/angular-daterangepicker.js']
-            },
-            {
-                files: ['css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css']
-            },
-            {
-                name: 'ui.select',
-                files: ['js/plugins/ui-select/select.min.js', 'css/plugins/ui-select/select.min.css']
-            },
-            {
-                files: ['css/plugins/touchspin/jquery.bootstrap-touchspin.min.css', 'js/plugins/touchspin/jquery.bootstrap-touchspin.min.js']
-            },
-            {
-                name: 'ngTagsInput',
-                files: ['js/plugins/ngTags//ng-tags-input.min.js', 'css/plugins/ngTags/ng-tags-input-custom.min.css']
-            },
-            {
-                files: ['js/plugins/dualListbox/jquery.bootstrap-duallistbox.js', 'css/plugins/dualListbox/bootstrap-duallistbox.min.css']
-            },
-            {
-                name: 'frapontillo.bootstrap-duallistbox',
-                files: ['js/plugins/dualListbox/angular-bootstrap-duallistbox.js']
-            },
-            {
-                serie: true,
-                files: ['js/plugins/dataTables/datatables.min.js', 'css/plugins/dataTables/datatables.min.css']
-            },
-            {
-                serie: true,
-                name: 'datatables',
-                files: ['js/plugins/dataTables/angular-datatables.min.js']
-            },
-            {
-                serie: true,
-                name: 'datatables.buttons',
-                files: ['js/plugins/dataTables/angular-datatables.buttons.min.js']
-            },
-            {
-                files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
-            },
-            {
-                name: 'oitozero.ngSweetAlert',
-                files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
-            },
-            {
-                files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
-            },
-            {
-                files: ['css/plugins/steps/jquery.steps.css']
-            },
-            {
-                files: ['js/plugins/footable/footable.all.min.js', 'css/plugins/footable/footable.core.css']
-            },
-            {
-                name: 'ui.footable',
-                files: ['js/plugins/footable/angular-footable.js']
-            }
-
-
-        ];
-    }
-    ;
+//    function telaComplexa() {
+//        return   [
+//            {
+//                files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
+//            },
+//            {
+//                name: 'oitozero.ngSweetAlert',
+//                files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
+//            },
+//            {
+//                files: ['js/plugins/moment/moment.min.js']
+//            },
+//            {
+//                name: 'ui.knob',
+//                files: ['js/plugins/jsKnob/jquery.knob.js', 'js/plugins/jsKnob/angular-knob.js']
+//            },
+//            {
+//                files: ['css/plugins/ionRangeSlider/ion.rangeSlider.css', 'css/plugins/ionRangeSlider/ion.rangeSlider.skinFlat.css', 'js/plugins/ionRangeSlider/ion.rangeSlider.min.js']
+//            },
+//            {
+//                insertBefore: '#loadBefore',
+//                name: 'localytics.directives',
+//                files: ['css/plugins/chosen/bootstrap-chosen.css', 'js/plugins/chosen/chosen.jquery.js', 'js/plugins/chosen/chosen.js']
+//            },
+//            {
+//                name: 'nouislider',
+//                files: ['css/plugins/nouslider/jquery.nouislider.css', 'js/plugins/nouslider/jquery.nouislider.min.js', 'js/plugins/nouslider/angular-nouislider.js']
+//            },
+//            {
+//                name: 'datePicker',
+//                files: ['css/plugins/datapicker/angular-datapicker.css', 'js/plugins/datapicker/angular-datepicker.js']
+//            },
+//            {
+//                files: ['js/plugins/jasny/jasny-bootstrap.min.js']
+//            },
+//            {
+//                files: ['css/plugins/clockpicker/clockpicker.css', 'js/plugins/clockpicker/clockpicker.js']
+//            },
+//            {
+//                name: 'ui.switchery',
+//                files: ['css/plugins/switchery/switchery.css', 'js/plugins/switchery/switchery.js', 'js/plugins/switchery/ng-switchery.js']
+//            },
+//            {
+//                name: 'colorpicker.module',
+//                files: ['css/plugins/colorpicker/colorpicker.css', 'js/plugins/colorpicker/bootstrap-colorpicker-module.js']
+//            },
+//            {
+//                name: 'ngImgCrop',
+//                files: ['js/plugins/ngImgCrop/ng-img-crop.js', 'css/plugins/ngImgCrop/ng-img-crop.css']
+//            },
+//            {
+//                serie: true,
+//                files: ['js/plugins/daterangepicker/daterangepicker.js', 'css/plugins/daterangepicker/daterangepicker-bs3.css']
+//            },
+//            {
+//                name: 'daterangepicker',
+//                files: ['js/plugins/daterangepicker/angular-daterangepicker.js']
+//            },
+//            {
+//                files: ['css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css']
+//            },
+//            {
+//                name: 'ui.select',
+//                files: ['js/plugins/ui-select/select.min.js', 'css/plugins/ui-select/select.min.css']
+//            },
+//            {
+//                files: ['css/plugins/touchspin/jquery.bootstrap-touchspin.min.css', 'js/plugins/touchspin/jquery.bootstrap-touchspin.min.js']
+//            },
+//            {
+//                name: 'ngTagsInput',
+//                files: ['js/plugins/ngTags//ng-tags-input.min.js', 'css/plugins/ngTags/ng-tags-input-custom.min.css']
+//            },
+//            {
+//                files: ['js/plugins/dualListbox/jquery.bootstrap-duallistbox.js', 'css/plugins/dualListbox/bootstrap-duallistbox.min.css']
+//            },
+//            {
+//                name: 'frapontillo.bootstrap-duallistbox',
+//                files: ['js/plugins/dualListbox/angular-bootstrap-duallistbox.js']
+//            },
+//            {
+//                serie: true,
+//                files: ['js/plugins/dataTables/datatables.min.js', 'css/plugins/dataTables/datatables.min.css']
+//            },
+//            {
+//                serie: true,
+//                name: 'datatables',
+//                files: ['js/plugins/dataTables/angular-datatables.min.js']
+//            },
+//            {
+//                serie: true,
+//                name: 'datatables.buttons',
+//                files: ['js/plugins/dataTables/angular-datatables.buttons.min.js']
+//            },
+//            {
+//                files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
+//            },
+//            {
+//                name: 'oitozero.ngSweetAlert',
+//                files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
+//            },
+//            {
+//                files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
+//            },
+//            {
+//                files: ['css/plugins/steps/jquery.steps.css']
+//            },
+//            {
+//                files: ['js/plugins/footable/footable.all.min.js', 'css/plugins/footable/footable.core.css']
+//            },
+//            {
+//                name: 'ui.footable',
+//                files: ['js/plugins/footable/angular-footable.js']
+//            }
+//
+//
+//        ];
+//    };
 
 
 }
+
 angular
         .module('lisnet')
         .config(config)
@@ -2191,9 +2257,3 @@ angular
             $rootScope.$state = $state;
 //        $rootScope.$stateProvider = $stateProvider;
         });
-
-
-// angular.module("lisnet")
-//         .constant ('angularMomentConfig',
-//    {preprocess: 'utc',timezone: 'Europe/France'}
-//);

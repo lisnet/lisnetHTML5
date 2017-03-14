@@ -5,20 +5,9 @@
     
         <!--<h4>{{$state.params.titulo}}</h4>-->
         <ol class="breadcrumb"  >
-            <li>
-                <a  ng-click="main.stateGO('widgets.lisnet')" ><b  style="color: #007FBB;" class="text-primary" >Home</b></a>
-            </li>
-            <li ng-if="$state.params.pai" >
-                <a>{{$state.params.pai}}</a>
-            </li>
-            <li ng-if="$state.params.filho" >
-                <strong>{{$state.params.filho}}</strong>
-            </li>
-            <li ng-if="$state.params.neto" >
-                <strong>{{$state.params.neto}}</strong>
-            </li>
-            <li class="active"  ng-if="$state.params.pagina" >
-                <strong>{{$state.params.pagina}}</strong>
+            <li ng-repeat="s in $state.params.breadcrumb track by $index " >
+                <a  ng-if="$index === 0" ng-click="main.stateGO(s.go)"   ><b  style="color: #007FBB;" class="text-primary" >{{s.label}}</b></a>
+                <strong ng-if="$index !== 0" >{{s.label}}</strong>
             </li>
         </ol>
     </div>
