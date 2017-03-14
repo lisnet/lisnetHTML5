@@ -229,7 +229,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
         templateUrl: "views/tmtelas/under_construction.html",
         params: {breadcrumb : [ {label:'Home',go:'widgets'}]},
         data: {pageTitle: 'Erro'}
-    }).state('contrucao.contrucao', {
+    }).state('contrucao', {
         url: "/under_construction",
         templateUrl: "views/tmtelas/under_construction.html",
         parent: 'lisnet',

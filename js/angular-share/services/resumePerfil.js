@@ -31,36 +31,41 @@ angular.module('lisnet').service('resumePerfilService', function ($state,runtime
                         filho.visualisar = true;
                         for (z in filho.telas) {
                             var neto = filho.telas[z];
-//                            neto.visualisar = this.findState(neto.state, arrayStates);
+                            
                             var _n = this.findStateJSON(neto.MOD_ST_CODIGO);
-                            if(_n){
+                            if (_n) {
                                 neto.visualisar = true;
-                                _n.state.params.breadcrumb = [ {label:'Home',go:'widgets'}, {label:pai.MOD_ST_DESCRICAO,go:null} ,{label:filho.MOD_ST_DESCRICAO,go:null} ,{label:neto.MOD_ST_DESCRICAO,go:neto.MOD_ST_CODIGO}];
-                                runtimeStates.addState(_n.MOD_ST_CODIGO, _n.state);
-                                if(_n.states){
-                                    console.log('bastardos neto '+_n.states.length);
-                                    for(i in _n.states){
-                                        var _bastardo = _n.states[i];
-                                        runtimeStates.addState(_bastardo.MOD_ST_CODIGO, _bastardo.state);
+                                if (!$state.href(neto.MOD_ST_CODIGO)) {
+                                    _n.state.params.breadcrumb = [{label: 'Home', go: 'widgets'}, {label: pai.MOD_ST_DESCRICAO, go: null}, {label: filho.MOD_ST_DESCRICAO, go: null}, {label: neto.MOD_ST_DESCRICAO, go: neto.MOD_ST_CODIGO}];
+                                    runtimeStates.addState(_n.MOD_ST_CODIGO, _n.state);
+                                    if (_n.states) {
+                                        console.log('bastardos neto ' + _n.states.length);
+                                        for (i in _n.states) {
+                                            var _bastardo = _n.states[i];
+                                            runtimeStates.addState(_bastardo.MOD_ST_CODIGO, _bastardo.state);
+                                        }
                                     }
                                 }
                             }
                         }
                     } else {
-//                        filho.visualisar = this.findState(filho.state, arrayStates);
+
                         var _f = this.findStateJSON(filho.MOD_ST_CODIGO);
-                            if(_f){
-                                filho.visualisar = true;
-                                _f.state.params.breadcrumb = [ {label:'Home',go:'widgets'}, {label:pai.MOD_ST_DESCRICAO,go:null} ,{label:filho.MOD_ST_DESCRICAO,go:filho.MOD_ST_CODIGO} ];
+                        if (_f) {
+                            filho.visualisar = true;
+                            if (!$state.href(filho.MOD_ST_CODIGO)) {
+                                _f.state.params.breadcrumb = [{label: 'Home', go: 'widgets'}, {label: pai.MOD_ST_DESCRICAO, go: null}, {label: filho.MOD_ST_DESCRICAO, go: filho.MOD_ST_CODIGO}];
                                 runtimeStates.addState(_f.MOD_ST_CODIGO, _f.state);
-                                if(_f.states){
-                                    console.log('bastardos filho '+_f.states.length);
-                                    for(y in _f.states){
+                                if (_f.states) {
+                                    console.log('bastardos filho ' + _f.states.length);
+                                    for (y in _f.states) {
                                         var _bastardo = _f.states[y];
                                         runtimeStates.addState(_bastardo.MOD_ST_CODIGO, _bastardo.state);
                                     }
                                 }
                             }
+
+                        }
                     }
                 }
             } else {
