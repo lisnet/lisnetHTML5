@@ -4,6 +4,33 @@
  */
 
 
+/**
+ * pageTitle - Directive for set Page title - mata title
+ */
+function pageTitle($rootScope, $timeout,configLisNet,shareuser) {
+    return {
+        link: function(scope, element) {
+            var listener = function(event, toState, toParams, fromState, fromParams) {
+                // Default title - load on Dashboard 1
+                var title = 'LISNET | TMInformática';
+                // Create your own title pattern
+                if (toState.data && toState.data.pageTitle) {
+                    if(shareuser.userDTO.cliente){
+                        title = shareuser.userDTO.cliente.CLI_ST_NOME.toUpperCase()+' | ' + toState.data.pageTitle;
+                    }else if(configLisNet){
+                        title = configLisNet.defaultDB.toUpperCase()+' | ' + toState.data.pageTitle;
+                    }else{
+                        title = 'ERRO | ' + toState.data.pageTitle;
+                    }
+                }
+                $timeout(function() {
+                    element.text(title);
+                });
+            };
+            $rootScope.$on('$stateChangeStart', listener);
+        }
+    };
+};
 
 /**
  * 
@@ -244,6 +271,7 @@ function  eatClickIf($parse, $rootScope) {
 
 
 angular.module('lisnet')
+        .directive('pageTitle', pageTitle)
         .directive('enterKey',enterKey)
         .directive('nextFocus',nextFocus)
         .directive('myPage',myPage)

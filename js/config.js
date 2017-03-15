@@ -6,13 +6,15 @@
  * Initial there are written state for all view in theme.
  *
  */
-function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdleProvider, KeepaliveProvider) {
+function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdleProvider, KeepaliveProvider,$qProvider) {
 //var xhttp = new XMLHttpRequest();
     // Configure Idle settings
     IdleProvider.idle(5); // in seconds
     IdleProvider.timeout(120); // in seconds
     console.log('construing config , registrando state');
-
+    
+    //silencia erro sem manipulacao  ex:angular.js:15126 Possibly unhandled rejection: cancel
+    $qProvider.errorOnUnhandledRejections(false);
 
 
     $urlRouterProvider.otherwise("login");

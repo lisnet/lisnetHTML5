@@ -115,7 +115,7 @@ https://demos.scotch.io/angular-validation/demos/-->
 
                                         <div ng-if="$index === 0"  style="min-width: 35px;" >
 
-                                            <i   ng-if="ent[0].status === 'R'  " style="{{ent[0].ngStyle}} ; padding-right: 6px;"  class="{{ent[0].ngClass}}"   aria-hidden="true"    ng-click="manipulaEntidade(ent,'editar')"     data-toggle="tooltip" title="{{ent[0].toolTip}}"  ></i>
+                                            <i   ng-if="ent[0].status === 'R'  " style="{{ent[0].ngStyle}} ; padding-right: 6px;"  ng-class="ent[0].ngClass"   aria-hidden="true"    ng-click="manipulaEntidade(ent,'editar')"     data-toggle="tooltip" title="{{ent[0].toolTip}}"  ></i>
                                             <i   ng-if="ent[0].status === 'D'  || ent[0].status === 'C'  "  style="color: red; font-weight: bold; padding-right: 6px;"  class="fa fa-times"   aria-hidden="true"    ng-click="manipulaEntidade(ent,'excluir')"     data-toggle="tooltip" title="excluir linha ?"  ></i>
                                             <i   ng-if="ent[0].status === 'D'  || ent[0].status === 'U' "  style="color:green ; padding-right: 6px;"  class="fa fa-backward"   aria-hidden="true"    ng-click="manipulaEntidade(ent,'desfazer')"     data-toggle="tooltip" title="reverter alterações ?"  ></i>
                                             <i   ng-disabled="entidadeForm.$invalid"  ng-if="ent[0].status === 'U'  || ent[0].status === 'C' "  style="color: #000\9 ; font-weight: bold;"   class="fa fa-clipboard"   aria-hidden="true"    ng-click="manipulaEntidade(ent,'salvar')"     data-toggle="tooltip" title="salvar alterações ?"  ></i>

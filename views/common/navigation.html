@@ -44,7 +44,7 @@
             <li  ng-repeat="p in  main.userDTO.perfil"  ng-class="{active: $state.includes(p.MOD_ST_CODIGO)}"  >
                 <a href="index.html"><i class="{{main.voltaLogo(p.MOD_ST_CODIGO)}}"></i> <span class="nav-label">{{p.MOD_ST_DESCRICAO}}</span> <span class="fa arrow"></span></a>
                 <!--ng-class="{in: $state.includes(p.state)}"-->
-                <ul class="nav nav-second-level collapse"  ng-class="{in: $state.includes(p.MOD_ST_CODIGO)}"   > 
+                <ul class="nav nav-second-level collapse  text-left "  ng-class="{in: $state.includes(p.MOD_ST_CODIGO)}"   > 
                     <li ui-sref-active="active" ng-repeat="f in p.telas"    >
                         <!--<a ng-click="main.stateGO(f.stateComposto)"  ng-show="n.visualisar"  class="font-italic text-muted  text-info"  ng-hide="f.telas"   > {{f.MOD_ST_DESCRICAO}}</a>-->
                         
@@ -52,11 +52,11 @@
                         <!--<a ng-click="main.stateGO(f.state)"  class="font-italic text-muted  text-info"       ng-show="main.visualisar(f.state)"     > {{f.MOD_ST_DESCRICAO}}</a>-->
                         
                         <!--<a href="index.html"ng-show="f.telas"   ng-hide="!n.visualisar"  ><i  class="{{voltaLogo(f.MOD_ST_CODIGO)}}" ></i> {{f.MOD_ST_DESCRICAO }} <span class="fa arrow"></span></a>-->
-                        <a style="color: gold;" class="text-capitalize"  href="index.html"ng-show="f.telas  &&  f.telas.length"   ><i  class="{{main.voltaLogo(f.MOD_ST_CODIGO)}}" ></i> {{f.MOD_ST_DESCRICAO }} <span class="fa arrow"></span></a>
+                        <a style="color: #59922b;" class="text-capitalize"  href="index.html"ng-show="f.telas  &&  f.telas.length"   ><i  class="{{main.voltaLogo(f.MOD_ST_CODIGO)}}" ></i> {{f.MOD_ST_DESCRICAO }} <span class="fa arrow"></span></a>
                         <!--{{acheiOFDP(f.stateN)}}-->
-                        <ul class="nav nav-thrird-level collapse"    ng-show="f.telas"   >
+                        <ul class="nav nav-thrird-level collapse text-righ"    ng-show="f.telas"   >
                             <li ui-sref-active="active" ng-repeat="n in f.telas"   >
-                                <a   ng-click="main.stateGO(n.MOD_ST_CODIGO)"   ng-show="n.visualisar"  class="font-italic text-error" > {{n.MOD_ST_CODIGO}}-{{n.MOD_ST_DESCRICAO}}</a>
+                                <a   ng-click="main.stateGO(n.MOD_ST_CODIGO)"   ng-show="n.visualisar"  class="font-italic " ><i style="color:#0097cf; " >{{n.MOD_ST_CODIGO}}-{{n.MOD_ST_DESCRICAO}}</i> </a>
                                     <!--<a ng-click="main.stateGO(n.state)"   ng-show="main.visualisar(n.state)"  class="font-italic text-muted  text-info" > {{n.MOD_ST_DESCRICAO}}</a>-->
                             </li>
                         </ul>
