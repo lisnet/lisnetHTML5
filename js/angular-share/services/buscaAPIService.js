@@ -406,7 +406,7 @@ angular.module('lisnet').service("buscaAPIService",function ($http){
      this.buscaModuloTelaPadrao = function (configLisNet,modStCodigo){
         var params = '?MOD_ST_CODIGO=' + modStCodigo + '&dbname='+configLisNet.defaultDB;
         var url = configLisNet.baseUrl +'/buscaModuloTelaPadrao'+ params;
-        console.log('buscaModuloTelaPadrao : '+url);
+//        console.log('buscaModuloTelaPadrao : '+url);
         return $http({method : 'GET',url : url,
             headers : {
                 'Content-Type' : 'application/x-www-form-urlencoded',

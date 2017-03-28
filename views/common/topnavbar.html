@@ -9,7 +9,7 @@
                     
                     
                     <input type="text" style="font-weight: bolder;  font-size: 16px;  width: 100%;" placeholder="Pesquisar tela F1" class="form-control" name="top-search" 
-                           id="top-search" ng-model="telaSelecionada" uib-typeahead="state for state in states | filter:$viewValue | limitTo:8"     typeahead-on-select="main.stateGO( cortaString($item))" focus="main.inputPesquisaTelaFocus"  >
+                           id="top-search" ng-model="userDTO.controleNotificacaoConfig.telaSelecionada" uib-typeahead="state for state in userDTO.controleNotificacaoConfig.statesPesquisa | filter:$viewValue | limitTo:8"     typeahead-on-select="main.stateGO( cortaString($item))" focus="main.inputPesquisaTelaFocus"  >
                     <!--typeahead-on-select="main.stateGO( onSelect($item, $model, $label))"  enter-key="main.stateGO( cortaString(telaSelecionada))" --> 
                     
                 </div>
@@ -104,12 +104,12 @@
 
             <li uib-dropdown       ng-click="resumeNofificacao()" >
                 <a class="count-info" href uib-dropdown-toggle   >
-                    <i  class="fa fa-bell "  ></i> <span    class="label "  ng-class="userDTO.bellClass" >{{userDTO.notificacoes.length}}</span>
+                    <i  class="fa fa-bell "  ></i> <span    class="label "  ng-class="userDTO.controleNotificacaoConfig.bellClass" >{{userDTO.notificacoes.length}}</span>
                 </a>
                 <ul class="dropdown-alerts" uib-dropdown-menu>
 
 
-                    <span  ng-repeat="n in notificacoesResumida" >
+                    <span  ng-repeat="n in  userDTO.controleNotificacaoConfig.notificacoesResumida" >
                         <li >
                             <span >
                                 <div>

@@ -4,69 +4,25 @@
  */
 
 
-function controleNotificacoes($scope,$localStorage,sairDoSistemaService,helperService,$rootScope,$window,hotkeys,$uibModal,DTOptionsBuilder){
+function controleNotificacoes($scope,sairDoSistemaService,helperService,$rootScope,$window,$uibModal,DTOptionsBuilder,resumePerfilService){
     
     console.log('Inicializando controleNotificacoes');
 
     $scope.userDTO = sairDoSistemaService.validarLogin();
     
-    $scope.qtdNotificacaoDesc = $scope.userDTO.deviceDetector.isMobileDevice ? 30 : 300;
 
-    
-
-    if (!$scope.states) {
-        $scope.states = [];
-        $scope.states.push('configuraperfilusuario | Editar / Configurar Usuário');
-        $scope.states.push('controle_notificacoes | Controle de Notificações');
-        $scope.states.push('widgets | Home Painel de Widgets do Usuário, Inicio , Inĩcio, Começo, Casa');
-        $scope.states.push('sair | Sair do Sistema quit exit :q');
-        for (i in $scope.userDTO.perfil) {
-
-            var p = $scope.userDTO.perfil[i];
-//        $scope.states.push(p.MOD_ST_CODIGO);
-
-            for (y in p.telas) {
-
-                var f = p.telas[y];
-                if (f.telas && f.telas.length > 0) {
-                    for (x in f.telas) {
-                        var n = f.telas[x];
-                        if (n.visualisar) {
-                            $scope.states.push(n.MOD_ST_CODIGO + ' | ' + n.MOD_ST_DESCRICAO);
-                        }
-                    }
-                } else {
-                    if (f.visualisar) {
-                        $scope.states.push(f.MOD_ST_CODIGO + ' | ' + f.MOD_ST_DESCRICAO);
-                    }
-                }
-
-            }
-        }
+    if (!$scope.userDTO.controleNotificacaoConfig) {
+        $scope.userDTO.controleNotificacaoConfig = {telaSelecionada:'',statesPesquisa:resumePerfilService.retornaStatesPesquisa($scope,$scope.userDTO),qdtNotificacaoResumida:6,notificacoesResumida:[],bellClass:'label-primary'};
+        checkNewNotification();
     }
     
 
-
-$scope.userDTO.bellClass = "label-primary";
-    checkNewNotification();
     
-    
-    var qdtNotificacaoResumida = 6;
-    $scope.notificacoesResumida = [];
-    
-    
-    
-    
-    
-    String.prototype.isNumber = function(){return /^\d+$/.test(this);};
-    
-    $scope.telaSelecionada = '';
-    
-    $scope.cortaString = function (str){
+ $scope.cortaString = function (str){
         var _array = str.split('|');
 //        return _array[0];
         var idDaPagina = _array[0].trim();
-        $scope.telaSelecionada = '';
+        $scope.userDTO.controleNotificacaoConfig.telaSelecionada = '';
         return idDaPagina;
     };
     
@@ -77,19 +33,8 @@ $scope.userDTO.bellClass = "label-primary";
     console.log("$item = "+$item+" $model =  "+ $model+ "  $label = " +  $label);
         return  $scope.cortaString($item);
 };
-    
-    $scope.cortaStringModStCodigo = function (str){
-        var _array = str.split('|');
-//        return _array[0];
-//        var modStCodigo = _array[0].trim();
-//        $scope.telaSelecionada = '';
-        return  _array[0].trim();
-    };
-   
-    
-    
 
-    $scope.openRelatorio = function (status,codigo_rastreio){
+ $scope.openRelatorio = function (status,codigo_rastreio){
         console.log('Inside openRelatorio codigo_rastreio = '+codigo_rastreio);
         if(status === 'P'){
             var url = $scope.userDTO.configLisNet.baseUrl +'/relatorio/download?codigo_rastreio=' +codigo_rastreio+'&dbname='+$scope.userDTO.configLisNet.defaultDB;
@@ -99,40 +44,28 @@ $scope.userDTO.bellClass = "label-primary";
         }
     };
     
-    $scope.startTimer = function (){
+ $scope.startTimer = function (){
         $rootScope.$broadcast("startNotificacaoTimer");
     };
     
-    $scope.resumeNofificacao = function (){
+ $scope.resumeNofificacao = function (){
         checkNewNotification();
-    if($scope.userDTO && $scope.userDTO.notificacoes && $scope.userDTO.notificacoes.length < qdtNotificacaoResumida){
-            $scope.notificacoesResumida = $scope.userDTO && $scope.userDTO.notificacoes;
-    }else if($scope.userDTO && $scope.userDTO.notificacoes && $scope.userDTO.notificacoes.length > qdtNotificacaoResumida){
-            $scope.notificacoesResumida =  $scope.userDTO.notificacoes.slice(0,qdtNotificacaoResumida);
+        var _n = $scope.userDTO.controleNotificacaoConfig;
+    if($scope.userDTO && $scope.userDTO.notificacoes && $scope.userDTO.notificacoes.length < _n.qdtNotificacaoResumida){
+            _n.notificacoesResumida = $scope.userDTO.notificacoes;
+    }else if($scope.userDTO && $scope.userDTO.notificacoes && $scope.userDTO.notificacoes.length > _n.qdtNotificacaoResumida){
+            _n.notificacoesResumida =  $scope.userDTO.notificacoes.slice(0,_n.qdtNotificacaoResumida);
     }else{
-            $scope.notificacoesResumida =  $scope.userDTO.notificacoes;
+            _n.notificacoesResumida =  $scope.userDTO.notificacoes;
     }
   $rootScope.$broadcast("startNotificacaoTimer");
 };
- 
-    function checkNewNotification() {
-        for (var x in $scope.userDTO.notificacoes) {
-            var not = $scope.userDTO.notificacoes[x];
-            if (not.isNew) {
-                $scope.userDTO.bellClass =  "label-danger";
-                break;
-            }
-        }
-        $scope.userDTO.bellClass =   "label-primary";
-    };
-
 
  $scope.escolheUnidade = function (uniStCodigo){
         $scope.userDTO.unidade = helperService.retornaUnidade(uniStCodigo,$scope.userDTO.unidades);
-    };
+  };
     
-    
-    $scope.popUnidades =  function (){
+ $scope.popUnidades =  function (){
         
         var modalInstance  = $uibModal.open({
             templateUrl: 'views/troca_unidade_modal.html',
@@ -143,7 +76,7 @@ $scope.userDTO.bellClass = "label-primary";
         
     };
     
-    function ModalInstanceCtrl($scope, $uibModalInstance) {
+function ModalInstanceCtrl($scope, $uibModalInstance) {
 
         $scope.ok = function () {
             $uibModalInstance.close();
@@ -152,7 +85,19 @@ $scope.userDTO.bellClass = "label-primary";
         $scope.cancel = function () {
             $uibModalInstance.dismiss('cancel');
         };
-    }
+ }
+ 
+function checkNewNotification() {
+        var _n = $scope.userDTO.controleNotificacaoConfig;
+        for (var x in $scope.userDTO.notificacoes) {
+            var not = $scope.userDTO.notificacoes[x];
+            if (not.isNew) {
+                _n.bellClass =  "label-danger";
+                break;
+            }
+        }
+        _n.bellClass =   "label-primary";
+    };
 
  $scope.dtOptionsTrocaUnidade = DTOptionsBuilder.newOptions()
                 .withDOM('<"html5buttons"B>lTfgitp')

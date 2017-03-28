@@ -5,7 +5,7 @@
 
 
 angular.module('lisnet')
-        .service('sairDoSistemaService', function ($state, $localStorage, $window, $rootScope,shareuser) {
+        .service('sairDoSistemaService', function ($state, $localStorage, $window, $rootScope,shareuser,$location) {
 
             this.logOut = function () {
                 console.log('saindo do sistema, limpando o cache  ...');
@@ -25,29 +25,33 @@ angular.module('lisnet')
                 
                 $rootScope = $rootScope.$new(true);
 //            $scope = $scope.$new(true);
-
-                $window.open('index.html', '_self');
+//                    console.log('$state.current.name = '+$state.current.name+'  $location.path()  : '+$location.path());
+                    
+                    $window.open('index.html', '_self');
                 
             };
             
             this.validarLogin = function () {
-                var userDTO = shareuser.userDTO && shareuser.userDTO.perfil ? shareuser.userDTO : $localStorage.userDTO;
+                var userDTO = this.validaUserDTO();
                 if(shareuser.userDTO && shareuser.userDTO.perfil  ){
                     console.log('Pegando do share service  da memoria ...');
 //                    userDTO = shareuser.userDTO;
                 }else{
                     shareuser.userDTO = userDTO;
                     console.log('Pegando do $localStorage ...');
-//                    userDTO = $localStorage.userDTO;
                 }
                 
                 if (userDTO && userDTO.USU_CH_ATIVO && userDTO.USU_CH_ATIVO === 'S' && userDTO.perfil && userDTO.status && userDTO.status === 'in') {
                     return userDTO;
                 } else {
                     console.log('login invalido , saindo do sistema agora ..');
-                    this.logOut();
+                        this.logOut();
                 }
                 
+            };
+            
+            this.validaUserDTO = function (){
+                return shareuser.userDTO && shareuser.userDTO.perfil ? shareuser.userDTO : $localStorage.userDTO;
             };
 
 

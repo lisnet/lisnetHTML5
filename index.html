@@ -23,7 +23,7 @@
     
     
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- DatePicker -->
 <!--    <link href="css/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css"/>
@@ -36,9 +36,6 @@
     <link href="css/animate.min.css" rel="stylesheet" >
     <link id="loadBefore" href="css/style.min.css" rel="stylesheet">
     
-    
-    <!-- Google Material -->
-    <!--<link href="css/angular-material.min.css" rel="stylesheet" type="text/css"/>-->
     
     <link href="css/plugins/iCheck/custom.css" rel="stylesheet" type="text/css"/>
     <!--Lisnet-->
@@ -69,22 +66,22 @@
 <div ui-view></div>
 
 <!-- jQuery and Bootstrap -->
-<script src="js/jquery/jquery-2.1.1.min.js"></script>
-<script src="js/plugins/jquery-ui/jquery-ui.min.js"></script>
-<script src="js/bootstrap/bootstrap.min.js"></script>
-<script src="js/jquery/moment.min.js" type="text/javascript"></script>
+<script src="bower_components/jQuery/dist/jquery.min.js"></script>
+<script src="bower_components/jquery-ui/ui/jquery-ui.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/moment/min/moment.min.js" type="text/javascript"></script>
 
 
 
 
 <!-- MetsiMenu -->
-<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="bower_components/metisMenu/dist/metisMenu.min.js"></script>
 
 <!-- SlimScroll -->
-<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="bower_components/slimScroll/jquery.slimscroll.min.js"></script>
 
 <!-- Peace JS -->
-<script src="js/plugins/pace/pace.min.js"></script>
+<script src="bower_components/PACE/pace.min.js"></script>
 
 <!-- Custom and plugin javascript -->
 <script src="js/inspinia.js"></script>
@@ -92,31 +89,32 @@
 
 
 <!-- Main Angular scripts-->
-<script src="js/angular/angular.min.js"></script>
-<script src="js/angular/angular-resource.min.js" type="text/javascript"></script>
-<script src="js/angular/angular-sanitize.min.js"></script>
-<script src="js/plugins/oclazyload/dist/ocLazyLoad.min.js"></script>
-<script src="js/angular-translate/angular-translate.min.js"></script>
-<script src="js/ui-router/angular-ui-router.min.js"></script>
-<script src="js/angular/i18n/angular-locale_pt-br.js" type="text/javascript"></script>
-<script src="js/bootstrap/ui-bootstrap-tpls-1.1.2.min.js"></script>
-<script src="js/plugins/angular-idle/angular-idle.js"></script>
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-resource/angular-resource.min.js" type="text/javascript"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+<script src="bower_components/angular-route/angular-route.min.js" type="text/javascript"></script>
+<script src="bower_components/angular-animate/angular-animate.min.js"></script>
+<script src="bower_components/oclazyload/dist/ocLazyLoad.min.js"></script>
+<script src="bower_components/angular-translate/angular-translate.min.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="bower_components/ng-idle/angular-idle.min.js"></script>
+<script src="bower_components/re-tree/re-tree.min.js" type="text/javascript"></script>
+<script src="bower_components/ng-device-detector/ng-device-detector.min.js" type="text/javascript"></script>
 
-<script src="js/angular/ngStorage.min.js" ></script>
-<script src="js/angular/angular-moment.min.js" type="text/javascript"></script>
-<script src="js/angular/angular-messages.min.js"></script>
-<script src="js/angular/angular-route.min.js" type="text/javascript"></script>
-<script src="js/angular/angular-aria.min.js"></script>
 
-<!--<script src="js/angular/angular-sanitize.js"></script>-->
-<script src="js/re-tree/re-tree.min.js" type="text/javascript"></script>
-
-<script src="js/angular/ng-device-detector.min.js" type="text/javascript"></script>
-<script src="js/angular/angular-animate.min.js"></script>
-<script src="js/plugins/sweetalert/angular-sweetalert.min.js" type="text/javascript"></script>
-<script src="js/plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
+<script src="bower_components/ngstorage/ngStorage.min.js" ></script>
+<script src="bower_components/angular-moment/angular-moment.min.js" type="text/javascript"></script>
+<script src="bower_components/angular-messages/angular-messages.min.js"></script>
+<script src="bower_components/angular-aria/angular-aria.min.js"></script>
+<script src="bower_components/ngSweetAlert/SweetAlert.min.js" type="text/javascript"></script>
+<script src="bower_components/sweetalert/dist/sweetalert.min.js" type="text/javascript"></script>
 <!-- Hot-Keys -->
-    <script src="js/angular/hotkeys.min.js" type="text/javascript"></script>
+ <script src="bower_components/angular-hotkeys/build/hotkeys.min.js" type="text/javascript"></script>
+    
+
+ <script src="js/angular/i18n/angular-locale_pt-br.js" type="text/javascript"></script>
+<script src="js/bootstrap/ui-bootstrap-tpls-1.1.2.min.js"></script>
+ 
 <!--<script src="js/plugins/iCheck/icheck.min.js" type="text/javascript"></script>-->
 <!--
  You need to include this script on any page that has a Google Map.
@@ -126,7 +124,7 @@
 -->
 <!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQTpXj82d8UpCi97wzo_nKXL7nYrd4G70"></script>-->
 
-<!-- Anglar App Script -->
+<!-- Angular App Script -->
 <script src="js/app.js"></script>
 <script src="js/config.js"></script>
 <script src="js/translations.js"></script>

@@ -8,13 +8,14 @@ function MainLisnet($scope, $rootScope,$state, $location, buscaAPIService, monta
 $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$interval,$filter,$localStorage,$state,resumePerfilService,configuraLinks,  $rootScope , notificacaoProvider,shareuser,helperService,moment,runtimeStates,hotkeys) {
     
     console.log('Inicializando MainLisnet ..');
-    
     var vm = this;
     $scope.$storage = $localStorage;
     this.login ;
     this.senha ;
     this.mostrar = true;
     $scope.inputLoginFocus = true; 
+    
+    
     
     var intDbLength = 3;
     var intMinimoDelay = 1000;
@@ -44,10 +45,11 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
     }
   });
 
-
-    if ($localStorage.userDTO && typeof $localStorage.userDTO === 'object') {
+        this.userDTO = sairDoSistemaService.validaUserDTO();
+        if (this.userDTO) {
+//    if ($localStorage.userDTO && typeof $localStorage.userDTO === 'object') {
 //        console.log('login userDTO no $localStorage');
-        this.userDTO = $localStorage.userDTO;
+//        this.userDTO = $localStorage.userDTO;
         
         configuraLinks.configuraLinksAcesso(this.userDTO);
         this.userDTO.deviceDetector = deviceDetector;
@@ -257,17 +259,31 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
         
        
         
-         $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams, options) {
-             console.log('$stateChangeSuccess : '+$state.current.name);
-             
-             $timeout(function (){vm.carregando = false;},1500);
-             
-             if(vm.modalLoading){
-                 console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<  Cancelando Loading modal  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
-                vm.modalLoading.dismiss('cancel');
-             }
-             
-          });
+//         $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams, options) {
+//             console.log('$stateChangeSuccess : '+$state.current.name);
+//             
+//                $timeout(function (){vm.carregando = false;},1500);
+////                console.log(vm.modalLoading);
+//                if(vm.modalLoading){
+//                    console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<  Cancelando Loading modal   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
+//                   vm.modalLoading.dismiss('cancel');
+//                }
+//             
+//          });
+          
+          /*
+           * Dessa maneira evita que o listener seja iciado toda vez que o controller for chamado 
+           */
+          var deregisterStateChangeSuccess = $rootScope.$on('$stateChangeSuccess', function (event) {
+                // Do something here.
+                 $timeout(function (){vm.carregando = false;},1500);
+//                console.log(vm.modalLoading);
+                if(vm.modalLoading){
+                    console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<  Cancelando Loading modal   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
+                   vm.modalLoading.dismiss('cancel');
+                }
+                deregisterStateChangeSuccess();
+            });
 
     };
     

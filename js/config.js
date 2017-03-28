@@ -42,9 +42,6 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
     });
 
 
-
-
-
     $stateProvider
             .state('lisnet', {
                 abstract: true,
@@ -52,39 +49,37 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                 resolve: {
                     loadPlugin: function ($ocLazyLoad) {
                         return $ocLazyLoad.load([
+                            
                             {
-                                files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
+                                serie: true,
+                                files: ['js/plugins/dataTables/datatables.min.js', 'css/plugins/dataTables/datatables.min.css']
+                            },
+                            {
+                                files: ['bower_components/sweetalert/dist/sweetalert.min.js', 'bower_components/sweetalert/dist/sweetalert.css']
                             },
                             {
                                 name: 'oitozero.ngSweetAlert',
-                                files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
+                                files: ['bower_components/ngSweetAlert/SweetAlert.min.js']
                             },
                             {
                                 files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
                             },
                             {
                                 serie: true,
-                                files: ['js/plugins/dataTables/datatables.min.js', 'css/plugins/dataTables/datatables.min.css']
-                            },
-                            {
-                                serie: true,
                                 name: 'datatables',
-                                files: ['js/plugins/dataTables/angular-datatables.min.js']
+                                files: ['bower_components/angular-datatables/dist/angular-datatables.min.js']
                             },
                             {
                                 serie: true,
                                 name: 'datatables.buttons',
-                                files: ['js/plugins/dataTables/angular-datatables.buttons.min.js']
+                                files: ['bower_components/angular-datatables/dist/plugins/buttons/angular-datatables.buttons.min.js']
                             },
                             {
                                 name: 'ui.switchery',
                                 files: ['css/plugins/switchery/switchery.css', 'js/plugins/switchery/switchery.js', 'js/plugins/switchery/ng-switchery.js']
                             },
                             {
-                                files: ['js/plugins/jasny/jasny-bootstrap.min.js']
-                            },
-                            {
-                                files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
+                                files: ['bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js']
                             }
                         ]);
                     }
@@ -157,38 +152,21 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
             loadPlugin: function ($ocLazyLoad) {
                 return $ocLazyLoad.load([
                     {
-                        files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
+                        files: ['bower_components/sweetalert/dist/sweetalert.min.js', 'bower_components/sweetalert/dist/sweetalert.css']
                     },
                     {
                         name: 'oitozero.ngSweetAlert',
-                        files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
+                        files: ['bower_components/ngSweetAlert/SweetAlert.min.js']
                     },
                     {
                         files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
-                    },
-                    {
-                        serie: true,
-                        files: ['js/plugins/dataTables/datatables.min.js', 'css/plugins/dataTables/datatables.min.css']
-                    },
-                    {
-                        serie: true,
-                        name: 'datatables',
-                        files: ['js/plugins/dataTables/angular-datatables.min.js']
-                    },
-                    {
-                        serie: true,
-                        name: 'datatables.buttons',
-                        files: ['js/plugins/dataTables/angular-datatables.buttons.min.js']
                     },
                     {
                         name: 'ui.switchery',
                         files: ['css/plugins/switchery/switchery.css', 'js/plugins/switchery/switchery.js', 'js/plugins/switchery/ng-switchery.js']
                     },
                     {
-                        files: ['js/plugins/jasny/jasny-bootstrap.min.js']
-                    },
-                    {
-                        files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
+                        files: ['bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js']
                     }
                 ]);
             }
