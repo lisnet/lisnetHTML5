@@ -200,33 +200,64 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
         url: "/configura_perfil_usuario",
         templateUrl: "views/tmtelas/configura_perfil_usuario.html",
         parent: 'lisnet',
-        params: {titulo: 'Configura Perfil de Usuário', pagina: 'Configura Perfil de Usuário',breadcrumb : [ {label:'Home',go:'widgets'}]},
+        params: {titulo: 'Configura Perfil de Usuário', pagina: 'Configura Perfil de Usuário',breadcrumb : [ {label:'Home',go:'widgets'},{label:'Configura Perfil de Usuário'}]},
         data: {pageTitle: 'Configura Perfil', specialClass: 'gray-bg'}
     }
     ).state('erro', {
         url: "/erro",
         parent: 'lisnet',
         templateUrl: "views/tmtelas/under_construction.html",
-        params: {breadcrumb : [ {label:'Home',go:'widgets'}]},
+        params: {breadcrumb : [ {label:'Home',go:'widgets'},{label:'Em construção'}]},
         data: {pageTitle: 'Erro'}
     }).state('contrucao', {
         url: "/under_construction",
         templateUrl: "views/tmtelas/under_construction.html",
         parent: 'lisnet',
-        params: {breadcrumb : [ {label:'Home',go:'widgets'}]},
+        params: {breadcrumb : [ {label:'Home',go:'widgets'},,{label:'Erro'}]},
         data: {pageTitle: 'Em construção'}
     }).state('tela_nao_existe', {
         url: "/tela_nao_existe",
         templateUrl: "views/tmtelas/tela_nao_existe.html",
         parent: 'lisnet',
-        params: {breadcrumb : [ {label:'Home',go:'widgets'}]},
+        params: {breadcrumb : [ {label:'Home',go:'widgets'},{label:'Tela Inexistente'}]},
         data: {pageTitle: 'Tela não existe'}
     }).state('controle_notificacoes', {
         url: "/notificacoes",
         parent: 'lisnet',
         templateUrl: "views/tmtelas/controle_notificacoes.html",
-        params: {breadcrumb : [ {label:'Home',go:'widgets'}]},
+        params: {breadcrumb : [ {label: 'Home', go: 'widgets'}, {label: 'Controle de Notificações', go: null}]},
         data: {pageTitle: 'Notificações'}
+    }).state('monitordelaboratorio', {
+            url: "/monitordelaboratorio",
+            parent: 'lisnet',
+            templateUrl: "views/tmtelas/monitor_laboratorio.html",
+            params: {breadcrumb : [ {label:'Home',go:'widgets'},{label:'Monitor de Laboratório',go:null}]},
+            data: {pageTitle: 'Notificações'},
+            resolve: {
+            loadPlugin: function ($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                    {
+                        files: ['bower_components/Chart.js/Chart.js']
+                    }
+                    ,
+                    {
+                        name: 'angles',
+                        files: ['js/plugins/chartJs/angles.js']
+                    },
+                    {
+                        serie: true,
+                        files: ['js/plugins/daterangepicker/daterangepicker.js', 'css/plugins/daterangepicker/daterangepicker-bs3.css']
+                    },
+                    {
+                        name: 'daterangepicker',
+                        files: ['js/plugins/daterangepicker/angular-daterangepicker.js']
+                    }, 
+                    {
+                        files: ['bower_components/moment/min/moment.min.js']
+                    }
+                ]);
+            }
+        }
     });
 
 //     .state('consultadelaudos', {

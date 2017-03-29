@@ -12,6 +12,7 @@
                 "ng-cloak": {}
             }
         },
+        "text": {},
         "slick": {}
     },
     "attributes": {
@@ -38,11 +39,17 @@
         "ui-sref": {
             "context": "a"
         },
+        "linechart": {
+            "context": "canvas"
+        },
         "uib-dropdown-menu": {
             "context": "ul"
         },
         "ibox-tools": {
             "context": "div"
+        },
+        "barchart": {
+            "context": "canvas"
         },
         "uib-dropdown": {
             "context": "div"

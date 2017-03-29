@@ -1,30 +1,10 @@
 {
     "status": "in",
     "perfilId": 2,
-    "dtCriacao": "2017-03-09T18:05:55.716Z",
-    "ultimaTela": "setores",
+    "dtCriacao": "2017-03-29T13:20:43.023Z",
+    "ultimaTela": "widgets",
     "notificationTimer": 10000,
     "hotPages": [
-        {
-            "url": "/configura_setores/",
-            "templateUrl": "views/tmtelas/tela_padrao.html",
-            "params": {
-                "titulo": "Setores",
-                "pai": "Configura",
-                "pagina": "Setores",
-                "modStCodigo": "00015",
-                "limit": "200",
-                "btnFiltrar": true,
-                "btnCriar": true,
-                "btnTodos": true
-            },
-            "parent": "lisnet",
-            "data": {
-                "pageTitle": "Setores"
-            },
-            "resolve": {},
-            "name": "setores"
-        }
     ],
     "notificacoes": [
         {
@@ -320,10 +300,1612 @@
     ],
     "configLisNet": {
         "baseUrl": "http://localhost:8080/node/dev",
-        "baseUrlJava": "http://localhost:8080/lisnet",
-        "baseUrlPHP": "http://localhost:8080/lisnet",
-        "baseUrlDelphi": "http://localhost:8080/lisnet",
         "defaultDB": "fleming",
+        "statesPesquisa": [
+            "configuraperfilusuario | Editar / Configurar Usuário",
+            "controle_notificacoes | Controle de Notificações",
+            "widgets | Home Painel de Widgets do Usuário, Inicio , Inĩcio, Começo, Casa",
+            "sair | Sair do Sistema quit exit :q",
+            "00273 | Consulta de Laudos",
+            "00220 | Cadastro de Pacientes",
+            "00021 | Feriado",
+            "00251 | Frase Laudo",
+            "00194 | Laudo Padrão",
+            "00199 | Usuário x Convênio",
+            "00090 | Exame De Para",
+            "00013 | Material",
+            "00017 | Bactérias Fungos e Vírus",
+            "00022 | Frases para Laudo",
+            "00023 | Método",
+            "00027 | Parasitas",
+            "00031 | Recipiente",
+            "00053 | Unidades de Medida",
+            "00060 | Texto para Laudos",
+            "00098 | Grupo de Triagem",
+            "00016 | Antibiótico",
+            "00190 | Grupo de Antibióticos",
+            "00054 | Mapa de Antibióticos",
+            "00006 | Convênios",
+            "00015 | Setores",
+            "00044 | Solicitantes",
+            "00059 | Local de Entrega",
+            "00046 | Profissões",
+            "00057 | Laboratório de Apoio",
+            "00058 | Coletores",
+            "00018 | CID",
+            "00024 | Motivo",
+            "00025 | Observação",
+            "00088 | Grupo",
+            "00101 | Local De/Para",
+            "00131 | Exame De Para Retorno",
+            "00133 | Material De/Para",
+            "00138 | Material de Coleta (DASA)",
+            "00159 | Cadastro de Carros",
+            "00161 | Procedimento de Coleta",
+            "00185 | Cadastros para Soroteca",
+            "00187 | Cadastro de Sistemas",
+            "00263 | Estatística Faturamento",
+            "00229 | Período de Fechamento",
+            "00049 | Sobre"
+        ],
+        "stateArray": [
+            {
+                "MOD_ST_CODIGO": "00006",
+                "state": {
+                    "url": "/configura_convenios/",
+                    "templateUrl": "views/tmtelas/tela_padrao.html",
+                    "params": {
+                        "limit": "100",
+                        "btnFiltrar": true,
+                        "btnCriar": true,
+                        "btnTodos": true,
+                        "breadcrumb": [
+                            {
+                                "label": "Home",
+                                "go": "widgets"
+                            },
+                            {
+                                "label": "Cadastros",
+                                "go": null
+                            },
+                            {
+                                "label": "Exames Menu",
+                                "go": null
+                            },
+                            {
+                                "label": "Convênios",
+                                "go": "00006"
+                            }
+                        ],
+                        "modStCodigo": "00006"
+                    },
+                    "parent": "lisnet",
+                    "data": {
+                        "pageTitle": "Convênios"
+                    },
+                    "name": "00006"
+                }
+            },
+            {
+                "MOD_ST_CODIGO": "00013",
+                "state": {
+                    "url": "/configura_materiais/",
+                    "templateUrl": "views/tmtelas/tela_padrao.html",
+                    "params": {
+                        "limit": "100",
+                        "btnFiltrar": true,
+                        "btnCriar": true,
+                        "btnTodos": true,
+                        "breadcrumb": [
+                            {
+                                "label": "Home",
+                                "go": "widgets"
+                            },
+                            {
+                                "label": "Cadastros",
+                                "go": null
+                            },
+                            {
+                                "label": "Exames Menu",
+                                "go": null
+                            },
+                            {
+                                "label": "Material",
+                                "go": "00013"
+                            }
+                        ],
+                        "modStCodigo": "00013"
+                    },
+                    "parent": "lisnet",
+                    "data": {
+                        "pageTitle": "Materiais"
+                    },
+                    "name": "00013"
+                }
+            },
+            {
+                "MOD_ST_CODIGO": "00015",
+                "state": {
+                    "url": "/configura_setores/",
+                    "templateUrl": "views/tmtelas/tela_padrao.html",
+                    "params": {
+                        "limit": "200",
+                        "btnFiltrar": true,
+                        "btnCriar": true,
+                        "btnTodos": true,
+                        "breadcrumb": [
+                            {
+                                "label": "Home",
+                                "go": "widgets"
+                            },
+                            {
+                                "label": "Cadastros",
+                                "go": null
+                            },
+                            {
+                                "label": "Setores",
+                                "go": "00015"
+                            }
+                        ],
+                        "modStCodigo": "00015"
+                    },
+                    "parent": "lisnet",
+                    "data": {
+                        "pageTitle": "Setores"
+                    },
+                    "name": "00015"
+                }
+            },
+            {
+                "MOD_ST_CODIGO": "00016",
+                "state": {
+                    "url": "/configura_antibioticos/",
+                    "templateUrl": "views/tmtelas/tela_padrao.html",
+                    "params": {
+                        "limit": "250",
+                        "btnFiltrar": true,
+                        "btnCriar": true,
+                        "btnTodos": true,
+                        "breadcrumb": [
+                            {
+                                "label": "Home",
+                                "go": "widgets"
+                            },
+                            {
+                                "label": "Cadastros",
+                                "go": null
+                            },
+                            {
+                                "label": "Exames Menu",
+                                "go": null
+                            },
+                            {
+                                "label": "Antibiótico",
+                                "go": "00016"
+                            }
+                        ],
+                        "modStCodigo": "00016"
+                    },
+                    "parent": "lisnet",
+                    "data": {
+                        "pageTitle": "Antibioticos"
+                    },
+                    "name": "00016"
+                }
+            },
+            {
+                "MOD_ST_CODIGO": "00017",
+                "state": {
+                    "url": "/configura_bacteriasfungosevirus/",
+                    "templateUrl": "views/tmtelas/tela_padrao.html",
+                    "params": {
+                        "limit": "100",
+                        "btnFiltrar": true,
+                        "btnCriar": true,
+                        "btnTodos": true,
+                        "breadcrumb": [
+                            {
+                                "label": "Home",
+                                "go": "widgets"
+                            },
+                            {
+                                "label": "Cadastros",
+                                "go": null
+                            },
+                            {
+                                "label": "Exames Menu",
+                                "go": null
+                            },
+                            {
+                                "label": "Bactérias Fungos e Vírus",
+                                "go": "00017"
+                            }
+                        ],
+                        "modStCodigo": "00017"
+                    },
+                    "parent": "lisnet",
+                    "data": {
+                        "pageTitle": "Bacterias Fungos e Virus"
+                    },
+                    "name": "00017"
+                }
+            },
+            {
+                "MOD_ST_CODIGO": "00018",
+                "state": {
+                    "url": "/configura_cid/",
+                    "templateUrl": "views/tmtelas/tela_padrao.html",
+                    "params": {
+                        "limit": "500",
+                        "btnFiltrar": true,
+                        "btnCriar": true,
+                        "btnTodos": true,
+                        "breadcrumb": [
+                            {
+                                "label": "Home",
+                                "go": "widgets"
+                            },
+                            {
+                                "label": "Cadastros",
+                                "go": null
+                            },
+                            {
+                                "label": "CID",
+                                "go": "00018"
+                            }
+                        ],
+                        "modStCodigo": "00018"
+                    },
+                    "parent": "lisnet",
+                    "data": {
+                        "pageTitle": "CID"
+                    },
+                    "name": "00018"
+                }
+            },
+            {
+                "MOD_ST_CODIGO": "00021",
+                "state": {
+                    "url": "/configura_feriado/",
+                    "templateUrl": "views/tmtelas/tela_padrao.html",
+                    "params": {
+                        "limit": "100",
+                        "btnFiltrar": true,
+                        "btnCriar": true,
+                        "btnTodos": true,
+                        "breadcrumb": [
+                            {
+                                "label": "Home",
+                                "go": "widgets"
+                            },
+                            {
+                                "label": "Menu Diario",
+                                "go": null
+                            },
+                            {
+                                "label": "Feriado",
+                                "go": "00021"
+                            }
+                        ],
+                        "modStCodigo": "00021"
+                    },
+                    "parent": "lisnet",
+                    "data": {
+                        "pageTitle": "Feriado"
+                    },
+                    "name": "00021"
+                }
+            },
+            {
+                "MOD_ST_CODIGO": "00022",
+                "state": {
+                    "url": "/configura_frasesparalaudo/",
+                    "templateUrl": "views/tmtelas/tela_padrao.html",
+                    "params": {
+                        "limit": "100",
+                        "btnFiltrar": true,
+                        "btnCriar": true,
+                        "btnTodos": true,
+                        "breadcrumb": [
+                            {
+                                "label": "Home",
+                                "go": "widgets"
+                            },
+                            {
+                                "label": "Cadastros",
+                                "go": null
+                            },
+                            {
+                                "label": "Exames Menu",
+                                "go": null
+                            },
+                            {
+                                "label": "Frases para Laudo",
+                                "go": "00022"
+                            }
+                        ],
+                        "modStCodigo": "00022"
+                    },
+                    "parent": "lisnet",
+                    "data": {
+                        "pageTitle": "Frases para Laudo"
+                    },
+                    "name": "00022"
+                }
+            },
+            {
+                "MOD_ST_CODIGO": "00023",
+                "state": {
+                    "url": "/configura_metodo/",
+                    "templateUrl": "views/tmtelas/tela_padrao.html",
+                    "params": {
+                        "limit": "500",
+                        "btnFiltrar": true,
+                        "btnCriar": true,
+                        "btnTodos": true,
+                        "breadcrumb": [
+                            {
+                                "label": "Home",
+                                "go": "widgets"
+                            },
+                            {
+                                "label": "Cadastros",
+                                "go": null
+                            },
+                            {
+                                "label": "Exames Menu",
+                                "go": null
+                            },
+                            {
+                                "label": "Método",
+                                "go": "00023"
+                            }
+                        ],
+                        "modStCodigo": "00023"
+                    },
+                    "parent": "lisnet",
+                    "data": {
+                        "pageTitle": "Método"
+                    },
+                    "name": "00023"
+                }
+            },
+            {
+                "MOD_ST_CODIGO": "00024",
+                "state": {
+                    "url": "/configura_motivo/",
+                    "templateUrl": "views/tmtelas/tela_padrao.html",
+                    "params": {
+                        "limit": "500",
+                        "btnFiltrar": true,
+                        "btnCriar": true,
+                        "btnTodos": true,
+                        "breadcrumb": [
+                            {
+                                "label": "Home",
+                                "go": "widgets"
+                            },
+                            {
+                                "label": "Cadastros",
+                                "go": null
+                            },
+                            {
+                                "label": "Motivo",
+                                "go": "00024"
+                            }
+                        ],
+                        "modStCodigo": "00024"
+                    },
+                    "parent": "lisnet",
+                    "data": {
+                        "pageTitle": "Motivo"
+                    },
+                    "name": "00024"
+                }
+            },
+            {
+                "MOD_ST_CODIGO": "00025",
+                "state": {
+                    "url": "/configura_observacao/",
+                    "templateUrl": "views/tmtelas/tela_padrao.html",
+                    "params": {
+                        "limit": "30",
+                        "btnFiltrar": true,
+                        "btnCriar": true,
+                        "btnTodos": true,
+                        "breadcrumb": [
+                            {
+                                "label": "Home",
+                                "go": "widgets"
+                            },
+                            {
+                                "label": "Cadastros",
+                                "go": null
+                            },
+                            {
+                                "label": "Observação",
+                                "go": "00025"
+                            }
+                        ],
+                        "modStCodigo": "00025"
+                    },
+                    "parent": "lisnet",
+                    "data": {
+                        "pageTitle": "Observação"
+                    },
+                    "name": "00025"
+                }
+            },
+            {
+                "MOD_ST_CODIGO": "00027",
+                "state": {
+                    "url": "/configura_parasitas/",
+                    "templateUrl": "views/tmtelas/tela_padrao.html",
+                    "params": {
+                        "limit": "100",
+                        "btnFiltrar": true,
+                        "btnCriar": true,
+                        "btnTodos": true,
+                        "breadcrumb": [
+                            {
+                                "label": "Home",
+                                "go": "widgets"
+                            },
+                            {
+                                "label": "Cadastros",
+                                "go": null
+                            },
+                            {
+                                "label": "Exames Menu",
+                                "go": null
+                            },
+                            {
+                                "label": "Parasitas",
+                                "go": "00027"
+                            }
+                        ],
+                        "modStCodigo": "00027"
+                    },
+                    "parent": "lisnet",
+                    "data": {
+                        "pageTitle": "Parasitas"
+                    },
+                    "name": "00027"
+                }
+            },
+            {
+                "MOD_ST_CODIGO": "00031",
+                "state": {
+                    "url": "/configura_recipiente/",
+                    "templateUrl": "views/tmtelas/tela_padrao.html",
+                    "params": {
+                        "limit": "100",
+                        "btnFiltrar": true,
+                        "btnCriar": true,
+                        "btnTodos": true,
+                        "breadcrumb": [
+                            {
+                                "label": "Home",
+                                "go": "widgets"
+                            },
+                            {
+                                "label": "Cadastros",
+                                "go": null
+                            },
+                            {
+                                "label": "Exames Menu",
+                                "go": null
+                            },
+                            {
+                                "label": "Recipiente",
+                                "go": "00031"
+                            }
+                        ],
+                        "modStCodigo": "00031"
+                    },
+                    "parent": "lisnet",
+                    "data": {
+                        "pageTitle": "Recipiente"
+                    },
+                    "name": "00031"
+                }
+            },
+            {
+                "MOD_ST_CODIGO": "00044",
+                "state": {
+                    "url": "/configura_solicitantes/",
+                    "templateUrl": "views/tmtelas/tela_padrao.html",
+                    "params": {
+                        "limit": "100",
+                        "btnFiltrar": true,
+                        "btnCriar": true,
+                        "btnTodos": true,
+                        "breadcrumb": [
+                            {
+                                "label": "Home",
+                                "go": "widgets"
+                            },
+                            {
+                                "label": "Cadastros",
+                                "go": null
+                            },
+                            {
+                                "label": "Solicitantes",
+                                "go": "00044"
+                            }
+                        ],
+                        "modStCodigo": "00044"
+                    },
+                    "parent": "lisnet",
+                    "data": {
+                        "pageTitle": "Solicitantes"
+                    },
+                    "name": "00044"
+                }
+            },
+            {
+                "MOD_ST_CODIGO": "00046",
+                "state": {
+                    "url": "/configura_profissoes/",
+                    "templateUrl": "views/tmtelas/tela_padrao.html",
+                    "params": {
+                        "limit": "100",
+                        "btnFiltrar": true,
+                        "btnCriar": true,
+                        "btnTodos": true,
+                        "breadcrumb": [
+                            {
+                                "label": "Home",
+                                "go": "widgets"
+                            },
+                            {
+                                "label": "Cadastros",
+                                "go": null
+                            },
+                            {
+                                "label": "Profissões",
+                                "go": "00046"
+                            }
+                        ],
+                        "modStCodigo": "00046"
+                    },
+                    "parent": "lisnet",
+                    "data": {
+                        "pageTitle": "Profissões"
+                    },
+                    "name": "00046"
+                }
+            },
+            {
+                "MOD_ST_CODIGO": "00053",
+                "state": {
+                    "url": "/configura_unidadesdemedida/",
+                    "templateUrl": "views/tmtelas/tela_padrao.html",
+                    "params": {
+                        "limit": "100",
+                        "btnFiltrar": true,
+                        "btnCriar": true,
+                        "btnTodos": true,
+                        "breadcrumb": [
+                            {
+                                "label": "Home",
+                                "go": "widgets"
+                            },
+                            {
+                                "label": "Cadastros",
+                                "go": null
+                            },
+                            {
+                                "label": "Exames Menu",
+                                "go": null
+                            },
+                            {
+                                "label": "Unidades de Medida",
+                                "go": "00053"
+                            }
+                        ],
+                        "modStCodigo": "00053"
+                    },
+                    "parent": "lisnet",
+                    "data": {
+                        "pageTitle": "Unidade de Medida"
+                    },
+                    "name": "00053"
+                }
+            },
+            {
+                "MOD_ST_CODIGO": "00054",
+                "state": {
+                    "url": "/configura_mapadeantibioticos/",
+                    "templateUrl": "views/tmtelas/tela_padrao.html",
+                    "params": {
+                        "limit": "100",
+                        "btnFiltrar": true,
+                        "btnCriar": true,
+                        "btnTodos": true,
+                        "breadcrumb": [
+                            {
+                                "label": "Home",
+                                "go": "widgets"
+                            },
+                            {
+                                "label": "Cadastros",
+                                "go": null
+                            },
+                            {
+                                "label": "Exames Menu",
+                                "go": null
+                            },
+                            {
+                                "label": "Mapa de Antibióticos",
+                                "go": "00054"
+                            }
+                        ],
+                        "modStCodigo": "00054"
+                    },
+                    "parent": "lisnet",
+                    "data": {
+                        "pageTitle": "Mapa de Antibióticos"
+                    },
+                    "name": "00054"
+                }
+            },
+            {
+                "MOD_ST_CODIGO": "00057",
+                "state": {
+                    "url": "/configura_laboratoriodeapoio/",
+                    "templateUrl": "views/tmtelas/tela_padrao.html",
+                    "params": {
+                        "limit": "100",
+                        "btnFiltrar": true,
+                        "btnCriar": true,
+                        "btnTodos": true,
+                        "breadcrumb": [
+                            {
+                                "label": "Home",
+                                "go": "widgets"
+                            },
+                            {
+                                "label": "Cadastros",
+                                "go": null
+                            },
+                            {
+                                "label": "Laboratório de Apoio",
+                                "go": "00057"
+                            }
+                        ],
+                        "modStCodigo": "00057"
+                    },
+                    "parent": "lisnet",
+                    "data": {
+                        "pageTitle": "Laboratório de Apoio"
+                    },
+                    "name": "00057"
+                }
+            },
+            {
+                "MOD_ST_CODIGO": "00058",
+                "state": {
+                    "url": "/configura_coletores/",
+                    "templateUrl": "views/tmtelas/tela_padrao.html",
+                    "params": {
+                        "limit": "100",
+                        "btnFiltrar": true,
+                        "btnCriar": true,
+                        "btnTodos": true,
+                        "breadcrumb": [
+                            {
+                                "label": "Home",
+                                "go": "widgets"
+                            },
+                            {
+                                "label": "Cadastros",
+                                "go": null
+                            },
+                            {
+                                "label": "Coletores",
+                                "go": "00058"
+                            }
+                        ],
+                        "modStCodigo": "00058"
+                    },
+                    "parent": "lisnet",
+                    "data": {
+                        "pageTitle": "Coletores"
+                    },
+                    "name": "00058"
+                }
+            },
+            {
+                "MOD_ST_CODIGO": "00059",
+                "state": {
+                    "url": "/configura_localdeentrega/",
+                    "templateUrl": "views/tmtelas/tela_padrao.html",
+                    "params": {
+                        "limit": "300",
+                        "btnFiltrar": true,
+                        "btnCriar": true,
+                        "btnTodos": true,
+                        "breadcrumb": [
+                            {
+                                "label": "Home",
+                                "go": "widgets"
+                            },
+                            {
+                                "label": "Cadastros",
+                                "go": null
+                            },
+                            {
+                                "label": "Local de Entrega",
+                                "go": "00059"
+                            }
+                        ],
+                        "modStCodigo": "00059"
+                    },
+                    "parent": "lisnet",
+                    "data": {
+                        "pageTitle": "Local de Entrega"
+                    },
+                    "name": "00059"
+                }
+            },
+            {
+                "MOD_ST_CODIGO": "00060",
+                "state": {
+                    "url": "/configura_textoparalaudos/",
+                    "templateUrl": "views/tmtelas/tela_padrao.html",
+                    "params": {
+                        "limit": "100",
+                        "btnFiltrar": true,
+                        "btnCriar": true,
+                        "btnTodos": true,
+                        "breadcrumb": [
+                            {
+                                "label": "Home",
+                                "go": "widgets"
+                            },
+                            {
+                                "label": "Cadastros",
+                                "go": null
+                            },
+                            {
+                                "label": "Exames Menu",
+                                "go": null
+                            },
+                            {
+                                "label": "Texto para Laudos",
+                                "go": "00060"
+                            }
+                        ],
+                        "modStCodigo": "00060"
+                    },
+                    "parent": "lisnet",
+                    "data": {
+                        "pageTitle": "Texto para Laudos"
+                    },
+                    "name": "00060"
+                }
+            },
+            {
+                "MOD_ST_CODIGO": "00073",
+                "state": {
+                    "url": "/configura_mapaamostra/",
+                    "templateUrl": "views/tmtelas/tela_padrao.html",
+                    "params": {
+                        "limit": "100",
+                        "btnFiltrar": true,
+                        "btnCriar": true,
+                        "btnTodos": true
+                    },
+                    "parent": "lisnet",
+                    "data": {
+                        "pageTitle": "Mapa Amostra"
+                    }
+                }
+            },
+            {
+                "MOD_ST_CODIGO": "00088",
+                "state": {
+                    "url": "/configura_grupo/",
+                    "templateUrl": "views/tmtelas/tela_padrao.html",
+                    "params": {
+                        "limit": "100",
+                        "btnFiltrar": true,
+                        "btnCriar": true,
+                        "btnTodos": true,
+                        "breadcrumb": [
+                            {
+                                "label": "Home",
+                                "go": "widgets"
+                            },
+                            {
+                                "label": "Cadastros",
+                                "go": null
+                            },
+                            {
+                                "label": "Grupo",
+                                "go": "00088"
+                            }
+                        ],
+                        "modStCodigo": "00088"
+                    },
+                    "parent": "lisnet",
+                    "data": {
+                        "pageTitle": "Grupo"
+                    },
+                    "name": "00088"
+                }
+            },
+            {
+                "MOD_ST_CODIGO": "00090",
+                "state": {
+                    "url": "/configura_examedepara/",
+                    "templateUrl": "views/tmtelas/tela_padrao.html",
+                    "params": {
+                        "limit": "100",
+                        "btnFiltrar": true,
+                        "btnCriar": true,
+                        "btnTodos": true,
+                        "breadcrumb": [
+                            {
+                                "label": "Home",
+                                "go": "widgets"
+                            },
+                            {
+                                "label": "Cadastros",
+                                "go": null
+                            },
+                            {
+                                "label": "Exames Menu",
+                                "go": null
+                            },
+                            {
+                                "label": "Exame De Para",
+                                "go": "00090"
+                            }
+                        ],
+                        "modStCodigo": "00090"
+                    },
+                    "parent": "lisnet",
+                    "data": {
+                        "pageTitle": "Exame Depara"
+                    },
+                    "name": "00090"
+                }
+            },
+            {
+                "MOD_ST_CODIGO": "00098",
+                "state": {
+                    "url": "/configura_grupodetriagem/",
+                    "templateUrl": "views/tmtelas/tela_padrao.html",
+                    "params": {
+                        "limit": "100",
+                        "btnFiltrar": true,
+                        "btnCriar": true,
+                        "btnTodos": true,
+                        "breadcrumb": [
+                            {
+                                "label": "Home",
+                                "go": "widgets"
+                            },
+                            {
+                                "label": "Cadastros",
+                                "go": null
+                            },
+                            {
+                                "label": "Exames Menu",
+                                "go": null
+                            },
+                            {
+                                "label": "Grupo de Triagem",
+                                "go": "00098"
+                            }
+                        ],
+                        "modStCodigo": "00098"
+                    },
+                    "parent": "lisnet",
+                    "data": {
+                        "pageTitle": "Grupo de Triagem"
+                    },
+                    "name": "00098"
+                }
+            },
+            {
+                "MOD_ST_CODIGO": "00101",
+                "state": {
+                    "url": "/configura_localdepara/",
+                    "templateUrl": "views/tmtelas/tela_padrao.html",
+                    "params": {
+                        "limit": "100",
+                        "btnFiltrar": true,
+                        "btnCriar": true,
+                        "btnTodos": true,
+                        "breadcrumb": [
+                            {
+                                "label": "Home",
+                                "go": "widgets"
+                            },
+                            {
+                                "label": "Cadastros",
+                                "go": null
+                            },
+                            {
+                                "label": "Local De/Para",
+                                "go": "00101"
+                            }
+                        ],
+                        "modStCodigo": "00101"
+                    },
+                    "parent": "lisnet",
+                    "data": {
+                        "pageTitle": "Local depara"
+                    },
+                    "name": "00101"
+                }
+            },
+            {
+                "MOD_ST_CODIGO": "00131",
+                "state": {
+                    "url": "/configura_examedepararetorno/",
+                    "templateUrl": "views/tmtelas/tela_padrao.html",
+                    "params": {
+                        "limit": "100",
+                        "btnFiltrar": true,
+                        "btnCriar": true,
+                        "btnTodos": true,
+                        "breadcrumb": [
+                            {
+                                "label": "Home",
+                                "go": "widgets"
+                            },
+                            {
+                                "label": "Cadastros",
+                                "go": null
+                            },
+                            {
+                                "label": "Exame De Para Retorno",
+                                "go": "00131"
+                            }
+                        ],
+                        "modStCodigo": "00131"
+                    },
+                    "parent": "lisnet",
+                    "data": {
+                        "pageTitle": "Exame de para Retorno"
+                    },
+                    "name": "00131"
+                }
+            },
+            {
+                "MOD_ST_CODIGO": "00133",
+                "state": {
+                    "url": "/configura_materialdepara/",
+                    "templateUrl": "views/tmtelas/tela_padrao.html",
+                    "params": {
+                        "limit": "100",
+                        "btnFiltrar": true,
+                        "btnCriar": true,
+                        "btnTodos": true,
+                        "breadcrumb": [
+                            {
+                                "label": "Home",
+                                "go": "widgets"
+                            },
+                            {
+                                "label": "Cadastros",
+                                "go": null
+                            },
+                            {
+                                "label": "Material De/Para",
+                                "go": "00133"
+                            }
+                        ],
+                        "modStCodigo": "00133"
+                    },
+                    "parent": "lisnet",
+                    "data": {
+                        "pageTitle": "Material Depara"
+                    },
+                    "name": "00133"
+                }
+            },
+            {
+                "MOD_ST_CODIGO": "00138",
+                "state": {
+                    "url": "/configura_materialdecoleta_dasa/",
+                    "templateUrl": "views/tmtelas/tela_padrao.html",
+                    "params": {
+                        "limit": "100",
+                        "btnFiltrar": true,
+                        "btnCriar": true,
+                        "btnTodos": true,
+                        "breadcrumb": [
+                            {
+                                "label": "Home",
+                                "go": "widgets"
+                            },
+                            {
+                                "label": "Cadastros",
+                                "go": null
+                            },
+                            {
+                                "label": "Material de Coleta (DASA)",
+                                "go": "00138"
+                            }
+                        ],
+                        "modStCodigo": "00138"
+                    },
+                    "parent": "lisnet",
+                    "data": {
+                        "pageTitle": "Material de Coleta(DASA)"
+                    },
+                    "name": "00138"
+                }
+            },
+            {
+                "MOD_ST_CODIGO": "00139",
+                "state": {
+                    "url": "/configura_recipientedecoleta_dasa/",
+                    "templateUrl": "views/tmtelas/tela_padrao.html",
+                    "params": {
+                        "limit": "100",
+                        "btnFiltrar": true,
+                        "btnCriar": true,
+                        "btnTodos": true
+                    },
+                    "parent": "lisnet",
+                    "data": {
+                        "pageTitle": "Recipiente de Coleta(DASA)"
+                    }
+                }
+            },
+            {
+                "MOD_ST_CODIGO": "00159",
+                "state": {
+                    "url": "/configura_cadastrodecarros/",
+                    "templateUrl": "views/tmtelas/tela_padrao.html",
+                    "params": {
+                        "limit": "100",
+                        "btnFiltrar": true,
+                        "btnCriar": true,
+                        "btnTodos": true,
+                        "breadcrumb": [
+                            {
+                                "label": "Home",
+                                "go": "widgets"
+                            },
+                            {
+                                "label": "Cadastros",
+                                "go": null
+                            },
+                            {
+                                "label": "Cadastro de Carros",
+                                "go": "00159"
+                            }
+                        ],
+                        "modStCodigo": "00159"
+                    },
+                    "parent": "lisnet",
+                    "data": {
+                        "pageTitle": "Cadastro de Carros"
+                    },
+                    "name": "00159"
+                }
+            },
+            {
+                "MOD_ST_CODIGO": "00161",
+                "state": {
+                    "url": "/configura_procedimentodecoleta/",
+                    "templateUrl": "views/tmtelas/tela_padrao.html",
+                    "params": {
+                        "limit": "100",
+                        "btnFiltrar": true,
+                        "btnCriar": true,
+                        "btnTodos": true,
+                        "breadcrumb": [
+                            {
+                                "label": "Home",
+                                "go": "widgets"
+                            },
+                            {
+                                "label": "Cadastros",
+                                "go": null
+                            },
+                            {
+                                "label": "Procedimento de Coleta",
+                                "go": "00161"
+                            }
+                        ],
+                        "modStCodigo": "00161"
+                    },
+                    "parent": "lisnet",
+                    "data": {
+                        "pageTitle": "Procedimento de Coleta"
+                    },
+                    "name": "00161"
+                }
+            },
+            {
+                "MOD_ST_CODIGO": "00179",
+                "state": {
+                    "url": "/configura_bandejamento/",
+                    "templateUrl": "views/tmtelas/tela_padrao.html",
+                    "params": {
+                        "limit": "100",
+                        "btnFiltrar": true,
+                        "btnCriar": true,
+                        "btnTodos": true
+                    },
+                    "parent": "lisnet",
+                    "data": {
+                        "pageTitle": "Bandejamento"
+                    }
+                }
+            },
+            {
+                "MOD_ST_CODIGO": "00184",
+                "state": {
+                    "url": "/configura_flyer/",
+                    "templateUrl": "views/tmtelas/tela_padrao.html",
+                    "params": {
+                        "limit": "100",
+                        "btnFiltrar": true,
+                        "btnCriar": true,
+                        "btnTodos": true
+                    },
+                    "parent": "lisnet",
+                    "data": {
+                        "pageTitle": "Flyer"
+                    }
+                }
+            },
+            {
+                "MOD_ST_CODIGO": "00185",
+                "state": {
+                    "url": "/configura_cadastrosparasoroteca/",
+                    "templateUrl": "views/tmtelas/tela_padrao.html",
+                    "params": {
+                        "limit": "50",
+                        "btnFiltrar": true,
+                        "btnCriar": true,
+                        "btnTodos": true,
+                        "breadcrumb": [
+                            {
+                                "label": "Home",
+                                "go": "widgets"
+                            },
+                            {
+                                "label": "Cadastros",
+                                "go": null
+                            },
+                            {
+                                "label": "Cadastros para Soroteca",
+                                "go": "00185"
+                            }
+                        ],
+                        "modStCodigo": "00185"
+                    },
+                    "parent": "lisnet",
+                    "data": {
+                        "pageTitle": "Cadastros para Soroteca"
+                    },
+                    "name": "00185"
+                }
+            },
+            {
+                "MOD_ST_CODIGO": "00187",
+                "state": {
+                    "url": "/configura_cadastrodesistemas/",
+                    "templateUrl": "views/tmtelas/tela_padrao.html",
+                    "params": {
+                        "limit": "100",
+                        "btnFiltrar": true,
+                        "btnCriar": true,
+                        "btnTodos": true,
+                        "breadcrumb": [
+                            {
+                                "label": "Home",
+                                "go": "widgets"
+                            },
+                            {
+                                "label": "Cadastros",
+                                "go": null
+                            },
+                            {
+                                "label": "Cadastro de Sistemas",
+                                "go": "00187"
+                            }
+                        ],
+                        "modStCodigo": "00187"
+                    },
+                    "parent": "lisnet",
+                    "data": {
+                        "pageTitle": "Cadastro de Sistemas"
+                    },
+                    "name": "00187"
+                }
+            },
+            {
+                "MOD_ST_CODIGO": "00190",
+                "state": {
+                    "url": "/configura_grupodeantibioticos/",
+                    "templateUrl": "views/tmtelas/tela_padrao.html",
+                    "params": {
+                        "limit": "100",
+                        "btnFiltrar": true,
+                        "btnCriar": true,
+                        "btnTodos": true,
+                        "breadcrumb": [
+                            {
+                                "label": "Home",
+                                "go": "widgets"
+                            },
+                            {
+                                "label": "Cadastros",
+                                "go": null
+                            },
+                            {
+                                "label": "Exames Menu",
+                                "go": null
+                            },
+                            {
+                                "label": "Grupo de Antibióticos",
+                                "go": "00190"
+                            }
+                        ],
+                        "modStCodigo": "00190"
+                    },
+                    "parent": "lisnet",
+                    "data": {
+                        "pageTitle": "Grupo de Antibioticos"
+                    },
+                    "name": "00190"
+                }
+            },
+            {
+                "MOD_ST_CODIGO": "00194",
+                "state": {
+                    "url": "/configura_laudopadrao/",
+                    "templateUrl": "views/tmtelas/tela_padrao.html",
+                    "params": {
+                        "btnFiltrar": true,
+                        "btnCriar": true,
+                        "btnTodos": true,
+                        "breadcrumb": [
+                            {
+                                "label": "Home",
+                                "go": "widgets"
+                            },
+                            {
+                                "label": "Cadastros",
+                                "go": null
+                            },
+                            {
+                                "label": "Laudo Padrão",
+                                "go": "00194"
+                            }
+                        ],
+                        "modStCodigo": "00194"
+                    },
+                    "parent": "lisnet",
+                    "data": {
+                        "pageTitle": "Laudo Padrao"
+                    },
+                    "name": "00194"
+                }
+            },
+            {
+                "MOD_ST_CODIGO": "00199",
+                "state": {
+                    "url": "/configura_usuarioxconvenio/",
+                    "templateUrl": "views/tmtelas/tela_padrao.html",
+                    "params": {
+                        "limit": "220",
+                        "btnFiltrar": true,
+                        "btnCriar": true,
+                        "btnTodos": true,
+                        "breadcrumb": [
+                            {
+                                "label": "Home",
+                                "go": "widgets"
+                            },
+                            {
+                                "label": "Cadastros",
+                                "go": null
+                            },
+                            {
+                                "label": "Usuário x Convênio",
+                                "go": "00199"
+                            }
+                        ],
+                        "modStCodigo": "00199"
+                    },
+                    "parent": "lisnet",
+                    "data": {
+                        "pageTitle": "Usuário x Convênio"
+                    },
+                    "name": "00199"
+                }
+            },
+            {
+                "MOD_ST_CODIGO": "00229",
+                "state": {
+                    "url": "/configura_periododefechamento/",
+                    "templateUrl": "views/tmtelas/tela_padrao.html",
+                    "params": {
+                        "limit": "100",
+                        "btnFiltrar": true,
+                        "btnCriar": true,
+                        "btnTodos": true,
+                        "breadcrumb": [
+                            {
+                                "label": "Home",
+                                "go": "widgets"
+                            },
+                            {
+                                "label": "Faturamento",
+                                "go": null
+                            },
+                            {
+                                "label": "Período de Fechamento",
+                                "go": "00229"
+                            }
+                        ],
+                        "modStCodigo": "00229"
+                    },
+                    "parent": "lisnet",
+                    "data": {
+                        "pageTitle": "Periodo de Fechamento"
+                    },
+                    "name": "00229"
+                }
+            },
+            {
+                "MOD_ST_CODIGO": "00251",
+                "state": {
+                    "url": "/configura_fraselaudo/",
+                    "templateUrl": "views/tmtelas/tela_padrao.html",
+                    "params": {
+                        "limit": "100",
+                        "btnFiltrar": true,
+                        "btnCriar": true,
+                        "btnTodos": true,
+                        "breadcrumb": [
+                            {
+                                "label": "Home",
+                                "go": "widgets"
+                            },
+                            {
+                                "label": "Cadastros",
+                                "go": null
+                            },
+                            {
+                                "label": "Frase Laudo",
+                                "go": "00251"
+                            }
+                        ],
+                        "modStCodigo": "00251"
+                    },
+                    "parent": "lisnet",
+                    "data": {
+                        "pageTitle": "Frase Laudo"
+                    },
+                    "name": "00251"
+                }
+            },
+            {
+                "MOD_ST_CODIGO": "00273",
+                "state": {
+                    "url": "/consulta/laudo/:userDTO",
+                    "templateUrl": "views/tmtelas/consulta_laudos.html",
+                    "parent": "lisnet",
+                    "params": {
+                        "limit": "500",
+                        "breadcrumb": [
+                            {
+                                "label": "Home",
+                                "go": "widgets"
+                            },
+                            {
+                                "label": "Menu Diario",
+                                "go": null
+                            },
+                            {
+                                "label": "Consulta de Laudos",
+                                "go": "00273"
+                            }
+                        ],
+                        "modStCodigo": "00273"
+                    },
+                    "data": {
+                        "pageTitle": "Consulta de Laudos"
+                    },
+                    "resolve": {},
+                    "name": "00273"
+                }
+            },
+            {
+                "MOD_ST_CODIGO": "00263",
+                "state": {
+                    "url": "/faturamento_estatisticafaturamento",
+                    "templateUrl": "views/tmtelas/estatistica_faturamento.html",
+                    "parent": "lisnet",
+                    "controller": "estatisticaFaturamento",
+                    "params": {
+                        "limit": "0",
+                        "breadcrumb": [
+                            {
+                                "label": "Home",
+                                "go": "widgets"
+                            },
+                            {
+                                "label": "Faturamento",
+                                "go": null
+                            },
+                            {
+                                "label": "Estatística Faturamento",
+                                "go": "00263"
+                            }
+                        ],
+                        "modStCodigo": "00263"
+                    },
+                    "data": {
+                        "pageTitle": "Estatística Faturamento"
+                    },
+                    "resolve": {},
+                    "name": "00263"
+                }
+            },
+            {
+                "MOD_ST_CODIGO": "00273",
+                "state": {
+                    "url": "/consulta/laudo/:userDTO",
+                    "templateUrl": "views/tmtelas/consulta_laudos.html",
+                    "parent": "lisnet",
+                    "params": {
+                        "limit": "500"
+                    },
+                    "data": {
+                        "pageTitle": "Consulta de Laudos"
+                    },
+                    "resolve": {}
+                }
+            },
+            {
+                "MOD_ST_CODIGO": "00049",
+                "state": {
+                    "url": "/sobre",
+                    "templateUrl": "views/tmtelas/ajuda.html",
+                    "parent": "lisnet",
+                    "params": {
+                        "breadcrumb": [
+                            {
+                                "label": "Home",
+                                "go": "widgets"
+                            },
+                            {
+                                "label": "Ajuda",
+                                "go": null
+                            },
+                            {
+                                "label": "Sobre",
+                                "go": "00049"
+                            }
+                        ],
+                        "modStCodigo": "00049"
+                    },
+                    "data": {
+                        "pageTitle": "Sobre"
+                    },
+                    "name": "00049"
+                }
+            },
+            {
+                "MOD_ST_CODIGO": "00220",
+                "state": {
+                    "url": "/cadastro_pacientes",
+                    "templateUrl": "views/tmtelas/cadastro_paciente/cadastro_paciente.html",
+                    "params": {
+                        "limit": "500",
+                        "breadcrumb": [
+                            {
+                                "label": "Home",
+                                "go": "widgets"
+                            },
+                            {
+                                "label": "Menu Diario",
+                                "go": null
+                            },
+                            {
+                                "label": "Cadastro de Pacientes",
+                                "go": "00220"
+                            }
+                        ],
+                        "modStCodigo": "00220"
+                    },
+                    "parent": "lisnet",
+                    "data": {
+                        "pageTitle": "Cadastro de Paciente"
+                    },
+                    "resolve": {},
+                    "name": "00220"
+                },
+                "states": [
+                    {
+                        "MOD_ST_CODIGO": "00220.busca_paciente",
+                        "state": {
+                            "url": "busca_paciente",
+                            "templateUrl": "views/tmtelas/cadastro_paciente/cadastro_paciente_busca_paciente.html",
+                            "data": {
+                                "pageTitle": "Busca Paciente",
+                                "state": "00220.busca_paciente"
+                            },
+                            "name": "00220.busca_paciente"
+                        }
+                    },
+                    {
+                        "MOD_ST_CODIGO": "00220.constroe_paciente",
+                        "state": {
+                            "url": "constroe_paciente",
+                            "templateUrl": "views/tmtelas/cadastro_paciente/cadastro_paciente_constroe_paciente.html",
+                            "data": {
+                                "pageTitle": "Constroe Paciente",
+                                "state": "00220.constroe_paciente"
+                            },
+                            "name": "00220.constroe_paciente"
+                        }
+                    },
+                    {
+                        "MOD_ST_CODIGO": "00220.constroe_paciente_contato",
+                        "state": {
+                            "url": "constroe_paciente_contato",
+                            "templateUrl": "views/tmtelas/cadastro_paciente/cadastro_paciente_constroe_paciente_contato.html",
+                            "data": {
+                                "pageTitle": "Contato",
+                                "state": "00220.constroe_paciente_contato"
+                            },
+                            "name": "00220.constroe_paciente_contato"
+                        }
+                    },
+                    {
+                        "MOD_ST_CODIGO": "00220.constroe_requisicao",
+                        "state": {
+                            "url": "constroe_requisicao",
+                            "templateUrl": "views/tmtelas/cadastro_paciente/cadastro_paciente_constroe_requisicao.html",
+                            "data": {
+                                "pageTitle": "Constroe Requisição",
+                                "state": "00220.constroe_requisicao"
+                            },
+                            "name": "00220.constroe_requisicao"
+                        }
+                    },
+                    {
+                        "MOD_ST_CODIGO": "00220.dados_complementares",
+                        "state": {
+                            "url": "dados_complementares",
+                            "templateUrl": "views/tmtelas/cadastro_paciente/cadastro_paciente_constroe_requisicao_dados_complementares.html",
+                            "data": {
+                                "pageTitle": "Dados Complementares",
+                                "state": "00220.dados_complementares"
+                            },
+                            "name": "00220.dados_complementares"
+                        }
+                    },
+                    {
+                        "MOD_ST_CODIGO": "00220.inclue_exames",
+                        "state": {
+                            "url": "inclue_exames",
+                            "templateUrl": "views/tmtelas/cadastro_paciente/cadastro_paciente_constroe_requisicao_exames.html",
+                            "data": {
+                                "pageTitle": "Incluir Exames",
+                                "state": "00220.inclue_exames"
+                            },
+                            "name": "00220.inclue_exames"
+                        }
+                    }
+                ]
+            }
+        ],
         "clientes": [
             {
                 "CLI_IN_CODIGO": 1002,
@@ -336,7 +1918,7 @@
     },
     "deviceDetector": {
         "raw": {
-            "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36",
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.98 Safari/537.36",
             "os": {
                 "windows": false,
                 "mac": false,
@@ -356,7 +1938,8 @@
                 "opera": false,
                 "ie": false,
                 "ms-edge": false,
-                "fb-messanger": false,
+                "fb-messenger": false,
+                "cordova": false,
                 "unknown": false
             },
             "device": {
@@ -393,6 +1976,21 @@
                 "windows-phone-8-1": false,
                 "windows-phone-10": false,
                 "windows-nt-4-0": false,
+                "mac-os-x-15": false,
+                "mac-os-x-14": false,
+                "mac-os-x-13": false,
+                "mac-os-x-12": false,
+                "mac-os-x-11": false,
+                "mac-os-x-10": false,
+                "mac-os-x-9": false,
+                "mac-os-x-8": false,
+                "mac-os-x-7": false,
+                "mac-os-x-6": false,
+                "mac-os-x-5": false,
+                "mac-os-x-4": false,
+                "mac-os-x-3": false,
+                "mac-os-x-2": false,
+                "mac-os-x": false,
                 "unknown": false
             }
         },
@@ -400,7 +1998,8 @@
         "browser": "chrome",
         "device": "unknown",
         "os_version": "unknown",
-        "browser_version": "56.0.2924.87",
+        "browser_version": "57.0.2987.98",
+        "custom": {},
         "protocol": "http",
         "url": "http://localhost:8080/lisnetHTML5/index.html",
         "screenHeight": 1044,
@@ -449,8 +2048,7 @@
                     "MOD_ST_DESCRICAO": "Orçamento",
                     "state": "orcamento",
                     "stateN": "00001.00227",
-                    "stateComposto": "00001.00227",
-                    "visualisar": false
+                    "stateComposto": "00001.00227"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 4,
@@ -459,8 +2057,7 @@
                     "MOD_ST_DESCRICAO": "Conferência de Cadastro",
                     "state": "conferenciadecadastro",
                     "stateN": "00001.00223",
-                    "stateComposto": "00001.00223",
-                    "visualisar": false
+                    "stateComposto": "00001.00223"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 5,
@@ -469,8 +2066,7 @@
                     "MOD_ST_DESCRICAO": "Soroteca Central",
                     "state": "sorotecacentral",
                     "stateN": "00001.00222",
-                    "stateComposto": "00001.00222",
-                    "visualisar": false
+                    "stateComposto": "00001.00222"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 6,
@@ -479,8 +2075,7 @@
                     "MOD_ST_DESCRICAO": "Relatório de notificação",
                     "state": "relatoriodenotificacao",
                     "stateN": "00001.00230",
-                    "stateComposto": "00001.00230",
-                    "visualisar": false
+                    "stateComposto": "00001.00230"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 7,
@@ -489,8 +2084,7 @@
                     "MOD_ST_DESCRICAO": "Relatorio de Pendências",
                     "state": "relatoriodependencias",
                     "stateN": "00001.00228",
-                    "stateComposto": "00001.00228",
-                    "visualisar": false
+                    "stateComposto": "00001.00228"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 8,
@@ -499,8 +2093,7 @@
                     "MOD_ST_DESCRICAO": "Impressão Mapa de Trabalho",
                     "state": "impressaomapadetrabalho",
                     "stateN": "00001.00221",
-                    "stateComposto": "00001.00221",
-                    "visualisar": false
+                    "stateComposto": "00001.00221"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 9,
@@ -519,8 +2112,7 @@
                     "MOD_ST_DESCRICAO": "Recepção de Amostras",
                     "state": "recepcaodeamostras",
                     "stateN": "00001.00035",
-                    "stateComposto": "00001.00035",
-                    "visualisar": false
+                    "stateComposto": "00001.00035"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 11,
@@ -529,8 +2121,7 @@
                     "MOD_ST_DESCRICAO": "Gerenciamento",
                     "state": "gerenciamento",
                     "stateN": "00001.00072",
-                    "stateComposto": "00001.00072",
-                    "visualisar": false
+                    "stateComposto": "00001.00072"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 12,
@@ -539,8 +2130,7 @@
                     "MOD_ST_DESCRICAO": "Manutenção de Requisições",
                     "state": "manutencaoderequisicoes",
                     "stateN": "00001.00043",
-                    "stateComposto": "00001.00043",
-                    "visualisar": false
+                    "stateComposto": "00001.00043"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 13,
@@ -549,8 +2139,7 @@
                     "MOD_ST_DESCRICAO": "Caixa",
                     "state": "caixa",
                     "stateN": "00001.00192",
-                    "stateComposto": "00001.00192",
-                    "visualisar": false
+                    "stateComposto": "00001.00192"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 14,
@@ -559,8 +2148,7 @@
                     "MOD_ST_DESCRICAO": "Controle de Caixa",
                     "state": "controledecaixa",
                     "stateN": "00001.00225",
-                    "stateComposto": "00001.00225",
-                    "visualisar": false
+                    "stateComposto": "00001.00225"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 15,
@@ -569,8 +2157,7 @@
                     "MOD_ST_DESCRICAO": "Fechamento de Caixa",
                     "state": "fechamentodecaixa",
                     "stateN": "00001.00226",
-                    "stateComposto": "00001.00226",
-                    "visualisar": false
+                    "stateComposto": "00001.00226"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 16,
@@ -579,8 +2166,7 @@
                     "MOD_ST_DESCRICAO": "Relatorios",
                     "state": "relatorios",
                     "stateN": "00001.00074",
-                    "stateComposto": "00001.00074",
-                    "visualisar": false
+                    "stateComposto": "00001.00074"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 17,
@@ -589,8 +2175,7 @@
                     "MOD_ST_DESCRICAO": "Estatística Demonstrativo de Faturamento",
                     "state": "estatisticademonstrativodefaturamento",
                     "stateN": "00001.00132",
-                    "stateComposto": "00001.00132",
-                    "visualisar": false
+                    "stateComposto": "00001.00132"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 18,
@@ -599,8 +2184,7 @@
                     "MOD_ST_DESCRICAO": "Manual de Exames",
                     "state": "manualdeexames",
                     "stateN": "00001.00143",
-                    "stateComposto": "00001.00143",
-                    "visualisar": false
+                    "stateComposto": "00001.00143"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 19,
@@ -609,8 +2193,7 @@
                     "MOD_ST_DESCRICAO": "Impressão do Mapa de Trabalho",
                     "state": "impressaodomapadetrabalho",
                     "stateN": "00001.00036",
-                    "stateComposto": "00001.00036",
-                    "visualisar": false
+                    "stateComposto": "00001.00036"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 20,
@@ -619,8 +2202,7 @@
                     "MOD_ST_DESCRICAO": "Controle de Material Faltante e Novas Coletas",
                     "state": "controledematerialfaltanteenovascoletas",
                     "stateN": "00001.00033",
-                    "stateComposto": "00001.00033",
-                    "visualisar": false
+                    "stateComposto": "00001.00033"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 21,
@@ -629,8 +2211,7 @@
                     "MOD_ST_DESCRICAO": "Consulta Laudos",
                     "state": "consultalaudos",
                     "stateN": "00001.00080",
-                    "stateComposto": "00001.00080",
-                    "visualisar": false
+                    "stateComposto": "00001.00080"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 22,
@@ -639,8 +2220,7 @@
                     "MOD_ST_DESCRICAO": "Painel de Controle",
                     "state": "paineldecontrole",
                     "stateN": "00001.00095",
-                    "stateComposto": "00001.00095",
-                    "visualisar": false
+                    "stateComposto": "00001.00095"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 23,
@@ -649,8 +2229,7 @@
                     "MOD_ST_DESCRICAO": "Painel de Controle por usuário",
                     "state": "paineldecontroleporusuario",
                     "stateN": "00001.00096",
-                    "stateComposto": "00001.00096",
-                    "visualisar": false
+                    "stateComposto": "00001.00096"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 24,
@@ -659,8 +2238,7 @@
                     "MOD_ST_DESCRICAO": "Estatística Avançada",
                     "state": "estatisticaavancada",
                     "stateN": "00001.00126",
-                    "stateComposto": "00001.00126",
-                    "visualisar": false
+                    "stateComposto": "00001.00126"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 25,
@@ -669,8 +2247,7 @@
                     "MOD_ST_DESCRICAO": "Painel de Controle Unidades",
                     "state": "paineldecontroleunidades",
                     "stateN": "00001.00106",
-                    "stateComposto": "00001.00106",
-                    "visualisar": false
+                    "stateComposto": "00001.00106"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 26,
@@ -679,8 +2256,7 @@
                     "MOD_ST_DESCRICAO": "Produtividade Cadastro Por Hora",
                     "state": "produtividadecadastroporhora",
                     "stateN": "00001.00154",
-                    "stateComposto": "00001.00154",
-                    "visualisar": false
+                    "stateComposto": "00001.00154"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 27,
@@ -689,8 +2265,7 @@
                     "MOD_ST_DESCRICAO": "Pesquisa Manual Exame",
                     "state": "pesquisamanualexame",
                     "stateN": "00001.00148",
-                    "stateComposto": "00001.00148",
-                    "visualisar": false
+                    "stateComposto": "00001.00148"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 28,
@@ -699,8 +2274,7 @@
                     "MOD_ST_DESCRICAO": "Agendamento",
                     "state": "agendamento",
                     "stateN": "00001.00150",
-                    "stateComposto": "00001.00150",
-                    "visualisar": false
+                    "stateComposto": "00001.00150"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 29,
@@ -709,8 +2283,7 @@
                     "MOD_ST_DESCRICAO": "Lotes para Triagem",
                     "state": "lotesparatriagem",
                     "stateN": "00001.00155",
-                    "stateComposto": "00001.00155",
-                    "visualisar": false
+                    "stateComposto": "00001.00155"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 30,
@@ -719,8 +2292,7 @@
                     "MOD_ST_DESCRICAO": "Auditoria",
                     "state": "auditoria",
                     "stateN": "00001.00153",
-                    "stateComposto": "00001.00153",
-                    "visualisar": false
+                    "stateComposto": "00001.00153"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 31,
@@ -729,8 +2301,7 @@
                     "MOD_ST_DESCRICAO": "Protocolar Amostras",
                     "state": "protocolaramostras",
                     "stateN": "00001.00163",
-                    "stateComposto": "00001.00163",
-                    "visualisar": false
+                    "stateComposto": "00001.00163"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 32,
@@ -739,8 +2310,7 @@
                     "MOD_ST_DESCRICAO": "Monitoramentos de Carros",
                     "state": "monitoramentosdecarros",
                     "stateN": "00001.00162",
-                    "stateComposto": "00001.00162",
-                    "visualisar": false
+                    "stateComposto": "00001.00162"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 33,
@@ -749,8 +2319,7 @@
                     "MOD_ST_DESCRICAO": "Liberação de Carros",
                     "state": "liberacaodecarros",
                     "stateN": "00001.00160",
-                    "stateComposto": "00001.00160",
-                    "visualisar": false
+                    "stateComposto": "00001.00160"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 34,
@@ -759,8 +2328,7 @@
                     "MOD_ST_DESCRICAO": "Controle de Coleta",
                     "state": "controledecoleta",
                     "stateN": "00001.00167",
-                    "stateComposto": "00001.00167",
-                    "visualisar": false
+                    "stateComposto": "00001.00167"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 35,
@@ -769,8 +2337,7 @@
                     "MOD_ST_DESCRICAO": "Gerenciamento de Imagem",
                     "state": "gerenciamentodeimagem",
                     "stateN": "00001.00169",
-                    "stateComposto": "00001.00169",
-                    "visualisar": false
+                    "stateComposto": "00001.00169"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 36,
@@ -779,8 +2346,7 @@
                     "MOD_ST_DESCRICAO": "Gerenciamento Lote",
                     "state": "gerenciamentolote",
                     "stateN": "00001.00178",
-                    "stateComposto": "00001.00178",
-                    "visualisar": false
+                    "stateComposto": "00001.00178"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 37,
@@ -789,8 +2355,7 @@
                     "MOD_ST_DESCRICAO": "Contador de Células",
                     "state": "contadordecelulas",
                     "stateN": "00001.00176",
-                    "stateComposto": "00001.00176",
-                    "visualisar": false
+                    "stateComposto": "00001.00176"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 38,
@@ -799,8 +2364,7 @@
                     "MOD_ST_DESCRICAO": "Gera Requisição para Tomografia",
                     "state": "gerarequisicaoparatomografia",
                     "stateN": "00001.00174",
-                    "stateComposto": "00001.00174",
-                    "visualisar": false
+                    "stateComposto": "00001.00174"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 39,
@@ -809,8 +2373,7 @@
                     "MOD_ST_DESCRICAO": "Agendamento de Exames",
                     "state": "agendamentodeexames",
                     "stateN": "00001.00002",
-                    "stateComposto": "00001.00002",
-                    "visualisar": false
+                    "stateComposto": "00001.00002"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 40,
@@ -819,8 +2382,7 @@
                     "MOD_ST_DESCRICAO": "Emissão de Laudos",
                     "state": "emissaodelaudos",
                     "stateN": "00001.00039",
-                    "stateComposto": "00001.00039",
-                    "visualisar": false
+                    "stateComposto": "00001.00039"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 41,
@@ -829,8 +2391,7 @@
                     "MOD_ST_DESCRICAO": "Estatistica Faturamento",
                     "state": "estatisticafaturamento",
                     "stateN": "00001.00051",
-                    "stateComposto": "00001.00051",
-                    "visualisar": true
+                    "stateComposto": "00001.00051"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 42,
@@ -839,8 +2400,7 @@
                     "MOD_ST_DESCRICAO": "Gestão de Amostras",
                     "state": "gestaodeamostras",
                     "stateN": "00001.00063",
-                    "stateComposto": "00001.00063",
-                    "visualisar": false
+                    "stateComposto": "00001.00063"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 43,
@@ -849,8 +2409,7 @@
                     "MOD_ST_DESCRICAO": "Conferência de Postos",
                     "state": "conferenciadepostos",
                     "stateN": "00001.00075",
-                    "stateComposto": "00001.00075",
-                    "visualisar": false
+                    "stateComposto": "00001.00075"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 44,
@@ -859,8 +2418,7 @@
                     "MOD_ST_DESCRICAO": "Iniciar Rotina",
                     "state": "iniciarrotina",
                     "stateN": "00001.00164",
-                    "stateComposto": "00001.00164",
-                    "visualisar": false
+                    "stateComposto": "00001.00164"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 45,
@@ -869,8 +2427,7 @@
                     "MOD_ST_DESCRICAO": "Soroteca Central",
                     "state": "sorotecacentral",
                     "stateN": "00001.00171",
-                    "stateComposto": "00001.00171",
-                    "visualisar": false
+                    "stateComposto": "00001.00171"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 46,
@@ -879,8 +2436,7 @@
                     "MOD_ST_DESCRICAO": "Etiqueta Transporte",
                     "state": "etiquetatransporte",
                     "stateN": "00001.00149",
-                    "stateComposto": "00001.00149",
-                    "visualisar": false
+                    "stateComposto": "00001.00149"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 47,
@@ -889,8 +2445,7 @@
                     "MOD_ST_DESCRICAO": "Atendimento",
                     "state": "atendimento",
                     "stateN": "00001.00157",
-                    "stateComposto": "00001.00157",
-                    "visualisar": false
+                    "stateComposto": "00001.00157"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 48,
@@ -909,8 +2464,7 @@
                     "MOD_ST_DESCRICAO": "Orçamento de Exames",
                     "state": "orcamentodeexames",
                     "stateN": "00001.00117",
-                    "stateComposto": "00001.00117",
-                    "visualisar": false
+                    "stateComposto": "00001.00117"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 50,
@@ -919,8 +2473,7 @@
                     "MOD_ST_DESCRICAO": "Questionário",
                     "state": "questionario",
                     "stateN": "00001.00029",
-                    "stateComposto": "00001.00029",
-                    "visualisar": false
+                    "stateComposto": "00001.00029"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 52,
@@ -929,8 +2482,7 @@
                     "MOD_ST_DESCRICAO": "Relatorios de Tomografia",
                     "state": "relatoriosdetomografia",
                     "stateN": "00001.00180",
-                    "stateComposto": "00001.00180",
-                    "visualisar": false
+                    "stateComposto": "00001.00180"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 53,
@@ -939,8 +2491,7 @@
                     "MOD_ST_DESCRICAO": "Comprovante de Entrega",
                     "state": "comprovantedeentrega",
                     "stateN": "00001.00181",
-                    "stateComposto": "00001.00181",
-                    "visualisar": false
+                    "stateComposto": "00001.00181"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 54,
@@ -949,8 +2500,7 @@
                     "MOD_ST_DESCRICAO": "Container de Setores",
                     "state": "containerdesetores",
                     "stateN": "00001.00182",
-                    "stateComposto": "00001.00182",
-                    "visualisar": false
+                    "stateComposto": "00001.00182"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 55,
@@ -959,18 +2509,7 @@
                     "MOD_ST_DESCRICAO": "Atraso de Resultados",
                     "state": "atrasoderesultados",
                     "stateN": "00001.00183",
-                    "stateComposto": "00001.00183",
-                    "visualisar": false
-                },
-                {
-                    "PUS_IN_SEQUENCIA": 56,
-                    "PUS_IN_SEQUENCIAPAI": 1,
-                    "MOD_ST_CODIGO": "00184",
-                    "MOD_ST_DESCRICAO": "Flyer",
-                    "state": "flyer",
-                    "stateN": "00001.00184",
-                    "stateComposto": "00001.00184",
-                    "visualisar": true
+                    "stateComposto": "00001.00183"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 57,
@@ -979,8 +2518,7 @@
                     "MOD_ST_DESCRICAO": "Registro de Flyers",
                     "state": "registrodeflyers",
                     "stateN": "00001.00186",
-                    "stateComposto": "00001.00186",
-                    "visualisar": false
+                    "stateComposto": "00001.00186"
                 }
             ]
         },
@@ -1009,8 +2547,7 @@
                     "MOD_ST_DESCRICAO": "Planos",
                     "state": "planos",
                     "stateN": "00003.00196",
-                    "stateComposto": "00003.00196",
-                    "visualisar": false
+                    "stateComposto": "00003.00196"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 61,
@@ -1019,8 +2556,7 @@
                     "MOD_ST_DESCRICAO": "Tabela de equivalência",
                     "state": "tabeladeequivalencia",
                     "stateN": "00003.00195",
-                    "stateComposto": "00003.00195",
-                    "visualisar": false
+                    "stateComposto": "00003.00195"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 62,
@@ -1058,8 +2594,7 @@
                             "MOD_ST_DESCRICAO": "Mapa de Triagem",
                             "state": "mapadetriagem",
                             "stateN": "00003.00097",
-                            "stateComposto": "00003.00097",
-                            "visualisar": false
+                            "stateComposto": "00003.00097"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 66,
@@ -1128,8 +2663,7 @@
                             "MOD_ST_DESCRICAO": "Prazo",
                             "state": "prazo",
                             "stateN": "00003.00030",
-                            "stateComposto": "00003.00030",
-                            "visualisar": false
+                            "stateComposto": "00003.00030"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 73,
@@ -1158,8 +2692,7 @@
                             "MOD_ST_DESCRICAO": "Sequência de Amostra",
                             "state": "sequenciadeamostra",
                             "stateN": "00003.00055",
-                            "stateComposto": "00003.00055",
-                            "visualisar": false
+                            "stateComposto": "00003.00055"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 76,
@@ -1172,24 +2705,13 @@
                             "visualisar": true
                         },
                         {
-                            "PUS_IN_SEQUENCIA": 77,
-                            "PUS_IN_SEQUENCIAPAI": 2,
-                            "MOD_ST_CODIGO": "00073",
-                            "MOD_ST_DESCRICAO": "Mapa Amostra",
-                            "state": "mapaamostra",
-                            "stateN": "00003.00073",
-                            "stateComposto": "00003.00073",
-                            "visualisar": true
-                        },
-                        {
                             "PUS_IN_SEQUENCIA": 78,
                             "PUS_IN_SEQUENCIAPAI": 2,
                             "MOD_ST_CODIGO": "00011",
                             "MOD_ST_DESCRICAO": "Formatação de Exames",
                             "state": "formatacaodeexames",
                             "stateN": "00003.00011",
-                            "stateComposto": "00003.00011",
-                            "visualisar": false
+                            "stateComposto": "00003.00011"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 79,
@@ -1198,8 +2720,7 @@
                             "MOD_ST_DESCRICAO": "Grupo de Exames",
                             "state": "grupodeexames",
                             "stateN": "00003.00056",
-                            "stateComposto": "00003.00056",
-                            "visualisar": false
+                            "stateComposto": "00003.00056"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 80,
@@ -1258,8 +2779,7 @@
                             "MOD_ST_DESCRICAO": "Cadastro de Convênios",
                             "state": "cadastrodeconvenios",
                             "stateN": "00003.00010",
-                            "stateComposto": "00003.00010",
-                            "visualisar": false
+                            "stateComposto": "00003.00010"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 86,
@@ -1268,8 +2788,7 @@
                             "MOD_ST_DESCRICAO": "Convenio De/Para",
                             "state": "conveniode-para",
                             "stateN": "00003.00103",
-                            "stateComposto": "00003.00103",
-                            "visualisar": false
+                            "stateComposto": "00003.00103"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 87,
@@ -1278,8 +2797,7 @@
                             "MOD_ST_DESCRICAO": "Convenio Unidade",
                             "state": "conveniounidade",
                             "stateN": "00003.00019",
-                            "stateComposto": "00003.00019",
-                            "visualisar": false
+                            "stateComposto": "00003.00019"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 88,
@@ -1288,8 +2806,7 @@
                             "MOD_ST_DESCRICAO": "Tabela de Preços",
                             "state": "tabeladeprecos",
                             "stateN": "00003.00042",
-                            "stateComposto": "00003.00042",
-                            "visualisar": false
+                            "stateComposto": "00003.00042"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 89,
@@ -1298,8 +2815,7 @@
                             "MOD_ST_DESCRICAO": "Tabela de Preço Original",
                             "state": "tabeladeprecooriginal",
                             "stateN": "00003.00081",
-                            "stateComposto": "00003.00081",
-                            "visualisar": false
+                            "stateComposto": "00003.00081"
                         }
                     ],
                     "visualisar": true
@@ -1311,8 +2827,7 @@
                     "MOD_ST_DESCRICAO": "Unidades",
                     "state": "unidades",
                     "stateN": "00003.00014",
-                    "stateComposto": "00003.00014",
-                    "visualisar": false
+                    "stateComposto": "00003.00014"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 91,
@@ -1321,8 +2836,7 @@
                     "MOD_ST_DESCRICAO": "Postos de Coleta",
                     "state": "postosdecoleta",
                     "stateN": "00003.00026",
-                    "stateComposto": "00003.00026",
-                    "visualisar": false
+                    "stateComposto": "00003.00026"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 92,
@@ -1371,8 +2885,7 @@
                     "MOD_ST_DESCRICAO": "Mapa de Trabalho",
                     "state": "mapadetrabalho",
                     "stateN": "00003.00052",
-                    "stateComposto": "00003.00052",
-                    "visualisar": false
+                    "stateComposto": "00003.00052"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 97,
@@ -1431,8 +2944,7 @@
                     "MOD_ST_DESCRICAO": "Status Amostras",
                     "state": "statusamostras",
                     "stateN": "00003.00028",
-                    "stateComposto": "00003.00028",
-                    "visualisar": false
+                    "stateComposto": "00003.00028"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 103,
@@ -1461,8 +2973,7 @@
                     "MOD_ST_DESCRICAO": "Usuários",
                     "state": "usuarios",
                     "stateN": "00003.00038",
-                    "stateComposto": "00003.00038",
-                    "visualisar": false
+                    "stateComposto": "00003.00038"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 106,
@@ -1471,8 +2982,7 @@
                     "MOD_ST_DESCRICAO": "Perfil de Usuários",
                     "state": "perfildeusuarios",
                     "stateN": "00003.00113",
-                    "stateComposto": "00003.00113",
-                    "visualisar": false
+                    "stateComposto": "00003.00113"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 107,
@@ -1501,8 +3011,7 @@
                     "MOD_ST_DESCRICAO": "Recipiente De/Para",
                     "state": "recipientede-para",
                     "stateN": "00003.00134",
-                    "stateComposto": "00003.00134",
-                    "visualisar": false
+                    "stateComposto": "00003.00134"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 110,
@@ -1511,8 +3020,7 @@
                     "MOD_ST_DESCRICAO": "Câmara Fria",
                     "state": "câmarafria",
                     "stateN": "00003.00135",
-                    "stateComposto": "00003.00135",
-                    "visualisar": false
+                    "stateComposto": "00003.00135"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 111,
@@ -1525,24 +3033,13 @@
                     "visualisar": true
                 },
                 {
-                    "PUS_IN_SEQUENCIA": 112,
-                    "PUS_IN_SEQUENCIAPAI": 1,
-                    "MOD_ST_CODIGO": "00139",
-                    "MOD_ST_DESCRICAO": "Recipiente de Coleta (DASA)",
-                    "state": "recipientedecoleta(dasa)",
-                    "stateN": "00003.00139",
-                    "stateComposto": "00003.00139",
-                    "visualisar": true
-                },
-                {
                     "PUS_IN_SEQUENCIA": 113,
                     "PUS_IN_SEQUENCIAPAI": 1,
                     "MOD_ST_CODIGO": "00140",
                     "MOD_ST_DESCRICAO": "Sementes",
                     "state": "sementes",
                     "stateN": "00003.00140",
-                    "stateComposto": "00003.00140",
-                    "visualisar": false
+                    "stateComposto": "00003.00140"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 114,
@@ -1551,8 +3048,7 @@
                     "MOD_ST_DESCRICAO": "Cor",
                     "state": "cor",
                     "stateN": "00003.00020",
-                    "stateComposto": "00003.00020",
-                    "visualisar": false
+                    "stateComposto": "00003.00020"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 115,
@@ -1561,8 +3057,7 @@
                     "MOD_ST_DESCRICAO": "Configurar Agenda",
                     "state": "configuraragenda",
                     "stateN": "00003.00151",
-                    "stateComposto": "00003.00151",
-                    "visualisar": false
+                    "stateComposto": "00003.00151"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 116,
@@ -1571,8 +3066,7 @@
                     "MOD_ST_DESCRICAO": "Locais de Agendamento",
                     "state": "locaisdeagendamento",
                     "stateN": "00003.00152",
-                    "stateComposto": "00003.00152",
-                    "visualisar": false
+                    "stateComposto": "00003.00152"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 117,
@@ -1581,8 +3075,7 @@
                     "MOD_ST_DESCRICAO": "Gerenciar Agendas",
                     "state": "gerenciaragendas",
                     "stateN": "00003.00156",
-                    "stateComposto": "00003.00156",
-                    "visualisar": false
+                    "stateComposto": "00003.00156"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 118,
@@ -1611,8 +3104,7 @@
                     "MOD_ST_DESCRICAO": "Configuração do Pianinho",
                     "state": "configuracaodopianinho",
                     "stateN": "00003.00173",
-                    "stateComposto": "00003.00173",
-                    "visualisar": false
+                    "stateComposto": "00003.00173"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 121,
@@ -1621,8 +3113,7 @@
                     "MOD_ST_DESCRICAO": "Usuário por posto",
                     "state": "usuarioporposto",
                     "stateN": "00003.00108",
-                    "stateComposto": "00003.00108",
-                    "visualisar": false
+                    "stateComposto": "00003.00108"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 122,
@@ -1651,8 +3142,7 @@
                     "MOD_ST_DESCRICAO": "Flyer De Para",
                     "state": "flyerdepara",
                     "stateN": "00003.00188",
-                    "stateComposto": "00003.00188",
-                    "visualisar": false
+                    "stateComposto": "00003.00188"
                 }
             ]
         },
@@ -1680,8 +3170,7 @@
                             "MOD_ST_DESCRICAO": "Estatística Geral",
                             "state": "estatisticageral",
                             "stateN": "00007.00062",
-                            "stateComposto": "00007.00062",
-                            "visualisar": false
+                            "stateComposto": "00007.00062"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 128,
@@ -1690,8 +3179,7 @@
                             "MOD_ST_DESCRICAO": "Estatística por Unidade/Posto/Exames",
                             "state": "estatisticaporunidade-posto-exames",
                             "stateN": "00007.00082",
-                            "stateComposto": "00007.00082",
-                            "visualisar": false
+                            "stateComposto": "00007.00082"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 129,
@@ -1700,8 +3188,7 @@
                             "MOD_ST_DESCRICAO": "Estatística por Convênios",
                             "state": "estatisticaporconvenios",
                             "stateN": "00007.00070",
-                            "stateComposto": "00007.00070",
-                            "visualisar": false
+                            "stateComposto": "00007.00070"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 130,
@@ -1710,8 +3197,7 @@
                             "MOD_ST_DESCRICAO": "Estatística por Requisição",
                             "state": "estatisticaporrequisicao",
                             "stateN": "00007.00078",
-                            "stateComposto": "00007.00078",
-                            "visualisar": false
+                            "stateComposto": "00007.00078"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 131,
@@ -1720,8 +3206,7 @@
                             "MOD_ST_DESCRICAO": "Estatística por Convênio/Unidade",
                             "state": "estatisticaporconvenio-unidade",
                             "stateN": "00007.00071",
-                            "stateComposto": "00007.00071",
-                            "visualisar": false
+                            "stateComposto": "00007.00071"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 132,
@@ -1730,8 +3215,7 @@
                             "MOD_ST_DESCRICAO": "Estatística por Unidade/Posto/Cod.AMB SUS",
                             "state": "estatisticaporunidade-posto-cod.ambsus",
                             "stateN": "00007.00100",
-                            "stateComposto": "00007.00100",
-                            "visualisar": false
+                            "stateComposto": "00007.00100"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 133,
@@ -1740,8 +3224,7 @@
                             "MOD_ST_DESCRICAO": "Estatística por Unidade/Posto/Setor",
                             "state": "estatisticaporunidade-posto-setor",
                             "stateN": "00007.00083",
-                            "stateComposto": "00007.00083",
-                            "visualisar": false
+                            "stateComposto": "00007.00083"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 134,
@@ -1750,8 +3233,7 @@
                             "MOD_ST_DESCRICAO": "Estatística por Unidade (Quota Exames/Regra Escalonamento)",
                             "state": "estatisticaporunidade(quotaexames-regraescalonamento)",
                             "stateN": "00007.00065",
-                            "stateComposto": "00007.00065",
-                            "visualisar": false
+                            "stateComposto": "00007.00065"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 135,
@@ -1760,8 +3242,7 @@
                             "MOD_ST_DESCRICAO": "Estatística por Unidade/Postos",
                             "state": "estatisticaporunidade-postos",
                             "stateN": "00007.00066",
-                            "stateComposto": "00007.00066",
-                            "visualisar": false
+                            "stateComposto": "00007.00066"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 136,
@@ -1770,8 +3251,7 @@
                             "MOD_ST_DESCRICAO": "Estatística por Unidade/Postos/Data",
                             "state": "estatisticaporunidade-postos-data",
                             "stateN": "00007.00079",
-                            "stateComposto": "00007.00079",
-                            "visualisar": false
+                            "stateComposto": "00007.00079"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 137,
@@ -1780,8 +3260,7 @@
                             "MOD_ST_DESCRICAO": "Estatística por Unidade/Posto/Grupo",
                             "state": "estatisticaporunidade-posto-grupo",
                             "stateN": "00007.00089",
-                            "stateComposto": "00007.00089",
-                            "visualisar": false
+                            "stateComposto": "00007.00089"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 138,
@@ -1790,8 +3269,7 @@
                             "MOD_ST_DESCRICAO": "Estatística por Unidade/Postos/Sexo",
                             "state": "estatisticaporunidade-postos-sexo",
                             "stateN": "00007.00121",
-                            "stateComposto": "00007.00121",
-                            "visualisar": false
+                            "stateComposto": "00007.00121"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 139,
@@ -1800,8 +3278,7 @@
                             "MOD_ST_DESCRICAO": "Estatística por Unidade/Convênios",
                             "state": "estatisticaporunidade-convenios",
                             "stateN": "00007.00067",
-                            "stateComposto": "00007.00067",
-                            "visualisar": false
+                            "stateComposto": "00007.00067"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 140,
@@ -1810,8 +3287,7 @@
                             "MOD_ST_DESCRICAO": "Estatística por Unidade/Postos/Convênios",
                             "state": "estatisticaporunidade-postos-convenios",
                             "stateN": "00007.00069",
-                            "stateComposto": "00007.00069",
-                            "visualisar": false
+                            "stateComposto": "00007.00069"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 141,
@@ -1820,8 +3296,7 @@
                             "MOD_ST_DESCRICAO": "Estatística por Unidade/Regra",
                             "state": "estatisticaporunidade-regra",
                             "stateN": "00007.00102",
-                            "stateComposto": "00007.00102",
-                            "visualisar": false
+                            "stateComposto": "00007.00102"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 142,
@@ -1830,8 +3305,7 @@
                             "MOD_ST_DESCRICAO": "Estatística por Unidade/Setor",
                             "state": "estatisticaporunidade-setor",
                             "stateN": "00007.00084",
-                            "stateComposto": "00007.00084",
-                            "visualisar": false
+                            "stateComposto": "00007.00084"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 143,
@@ -1840,8 +3314,7 @@
                             "MOD_ST_DESCRICAO": "Estatística por Unidade/Convênios Tab.Preço",
                             "state": "estatisticaporunidade-conveniostab.preco",
                             "stateN": "00007.00068",
-                            "stateComposto": "00007.00068",
-                            "visualisar": false
+                            "stateComposto": "00007.00068"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 144,
@@ -1850,8 +3323,7 @@
                             "MOD_ST_DESCRICAO": "Estatística por Prontuário",
                             "state": "estatisticaporprontuario",
                             "stateN": "00007.00093",
-                            "stateComposto": "00007.00093",
-                            "visualisar": false
+                            "stateComposto": "00007.00093"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 145,
@@ -1860,8 +3332,7 @@
                             "MOD_ST_DESCRICAO": "Estatística por Unidade/Posto/Regra",
                             "state": "estatisticaporunidade-posto-regra",
                             "stateN": "00007.00104",
-                            "stateComposto": "00007.00104",
-                            "visualisar": false
+                            "stateComposto": "00007.00104"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 146,
@@ -1870,8 +3341,7 @@
                             "MOD_ST_DESCRICAO": "Estatística por Unidade / Local Entrega",
                             "state": "estatisticaporunidade-localentrega",
                             "stateN": "00007.00105",
-                            "stateComposto": "00007.00105",
-                            "visualisar": false
+                            "stateComposto": "00007.00105"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 147,
@@ -1880,8 +3350,7 @@
                             "MOD_ST_DESCRICAO": "Estatística por Unidade Execução/Setor",
                             "state": "estatisticaporunidadeexecucao-setor",
                             "stateN": "00007.00086",
-                            "stateComposto": "00007.00086",
-                            "visualisar": false
+                            "stateComposto": "00007.00086"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 148,
@@ -1890,8 +3359,7 @@
                             "MOD_ST_DESCRICAO": "Estatística de Quantidade de Pacientes por Unidade/Posto",
                             "state": "estatisticadequantidadedepacientesporunidade-posto",
                             "stateN": "00007.00099",
-                            "stateComposto": "00007.00099",
-                            "visualisar": false
+                            "stateComposto": "00007.00099"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 149,
@@ -1900,8 +3368,7 @@
                             "MOD_ST_DESCRICAO": "Estatística de Exames Unidade Posto CRM Qt.Exames",
                             "state": "estatisticadeexamesunidadepostocrmqt.exames",
                             "stateN": "00007.00168",
-                            "stateComposto": "00007.00168",
-                            "visualisar": false
+                            "stateComposto": "00007.00168"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 150,
@@ -1910,8 +3377,7 @@
                             "MOD_ST_DESCRICAO": "Estatística de Exames por Unidade/Postos/Solicitantes",
                             "state": "estatisticadeexamesporunidade-postos-solicitantes",
                             "stateN": "00007.00120",
-                            "stateComposto": "00007.00120",
-                            "visualisar": false
+                            "stateComposto": "00007.00120"
                         }
                     ],
                     "visualisar": true
@@ -1932,8 +3398,7 @@
                             "MOD_ST_DESCRICAO": "Estatística de Exames Alterados por Unidade/Posto Detalhado",
                             "state": "estatisticadeexamesalteradosporunidade-postodetalhado",
                             "stateN": "00007.00110",
-                            "stateComposto": "00007.00110",
-                            "visualisar": false
+                            "stateComposto": "00007.00110"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 153,
@@ -1942,8 +3407,7 @@
                             "MOD_ST_DESCRICAO": "Estatística de Quantidade de Tubos por Unidade/Posto",
                             "state": "estatisticadequantidadedetubosporunidade-posto",
                             "stateN": "00007.00115",
-                            "stateComposto": "00007.00115",
-                            "visualisar": false
+                            "stateComposto": "00007.00115"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 154,
@@ -1952,8 +3416,7 @@
                             "MOD_ST_DESCRICAO": "Estatística de Produção de Exames por Unidade/Postos",
                             "state": "estatisticadeproducaodeexamesporunidade-postos",
                             "stateN": "00007.00111",
-                            "stateComposto": "00007.00111",
-                            "visualisar": false
+                            "stateComposto": "00007.00111"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 155,
@@ -1962,8 +3425,7 @@
                             "MOD_ST_DESCRICAO": "Relatório Específico Projetos Especiais",
                             "state": "relatorioespecificoprojetosespeciais",
                             "stateN": "00007.00137",
-                            "stateComposto": "00007.00137",
-                            "visualisar": false
+                            "stateComposto": "00007.00137"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 156,
@@ -1972,8 +3434,7 @@
                             "MOD_ST_DESCRICAO": "Estatística de Exames Nova Coleta",
                             "state": "estatisticadeexamesnovacoleta",
                             "stateN": "00007.00124",
-                            "stateComposto": "00007.00124",
-                            "visualisar": false
+                            "stateComposto": "00007.00124"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 157,
@@ -1982,8 +3443,7 @@
                             "MOD_ST_DESCRICAO": "Estatística de Exames Alterados por Unidade/Posto",
                             "state": "estatisticadeexamesalteradosporunidade-posto",
                             "stateN": "00007.00130",
-                            "stateComposto": "00007.00130",
-                            "visualisar": false
+                            "stateComposto": "00007.00130"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 158,
@@ -1992,8 +3452,7 @@
                             "MOD_ST_DESCRICAO": "Estatística de Exames Nova Coleta por Coletor",
                             "state": "estatisticadeexamesnovacoletaporcoletor",
                             "stateN": "00007.00142",
-                            "stateComposto": "00007.00142",
-                            "visualisar": false
+                            "stateComposto": "00007.00142"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 159,
@@ -2002,8 +3461,7 @@
                             "MOD_ST_DESCRICAO": "Estatistica de Remarcacoes",
                             "state": "estatisticaderemarcacoes",
                             "stateN": "00007.00158",
-                            "stateComposto": "00007.00158",
-                            "visualisar": false
+                            "stateComposto": "00007.00158"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 160,
@@ -2012,8 +3470,7 @@
                             "MOD_ST_DESCRICAO": "Estatística de Quant.Pacientes/Exames por Unidade/Posto/Data",
                             "state": "estatisticadequant.pacientes-examesporunidade-posto-data",
                             "stateN": "00007.00109",
-                            "stateComposto": "00007.00109",
-                            "visualisar": false
+                            "stateComposto": "00007.00109"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 161,
@@ -2022,8 +3479,7 @@
                             "MOD_ST_DESCRICAO": "Estatística de Tempo por Unidade/Posto/Paciente/Setor/Local",
                             "state": "estatisticadetempoporunidade-posto-paciente-setor-local",
                             "stateN": "00007.00122",
-                            "stateComposto": "00007.00122",
-                            "visualisar": false
+                            "stateComposto": "00007.00122"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 162,
@@ -2032,8 +3488,7 @@
                             "MOD_ST_DESCRICAO": "Estatística de Exames por Local de Coleta Semanal",
                             "state": "estatisticadeexamesporlocaldecoletasemanal",
                             "stateN": "00007.00118",
-                            "stateComposto": "00007.00118",
-                            "visualisar": false
+                            "stateComposto": "00007.00118"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 163,
@@ -2042,8 +3497,7 @@
                             "MOD_ST_DESCRICAO": "Estatística de Quantidade de Tubos por Unidade",
                             "state": "estatisticadequantidadedetubosporunidade",
                             "stateN": "00007.00116",
-                            "stateComposto": "00007.00116",
-                            "visualisar": false
+                            "stateComposto": "00007.00116"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 164,
@@ -2052,8 +3506,7 @@
                             "MOD_ST_DESCRICAO": "Estatística por Unidade Execução",
                             "state": "estatisticaporunidadeexecucao",
                             "stateN": "00007.00085",
-                            "stateComposto": "00007.00085",
-                            "visualisar": false
+                            "stateComposto": "00007.00085"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 165,
@@ -2062,8 +3515,7 @@
                             "MOD_ST_DESCRICAO": "Estatística de Pacientes por Faixa Etária",
                             "state": "estatisticadepacientesporfaixaetaria",
                             "stateN": "00007.00123",
-                            "stateComposto": "00007.00123",
-                            "visualisar": false
+                            "stateComposto": "00007.00123"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 166,
@@ -2072,8 +3524,7 @@
                             "MOD_ST_DESCRICAO": "Estatística de Exames Unidade/Posto/Dia",
                             "state": "estatisticadeexamesunidade-posto-dia",
                             "stateN": "00007.00125",
-                            "stateComposto": "00007.00125",
-                            "visualisar": false
+                            "stateComposto": "00007.00125"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 167,
@@ -2082,8 +3533,7 @@
                             "MOD_ST_DESCRICAO": "Estatística de Produção de Exames por Unidade",
                             "state": "estatisticadeproducaodeexamesporunidade",
                             "stateN": "00007.00112",
-                            "stateComposto": "00007.00112",
-                            "visualisar": false
+                            "stateComposto": "00007.00112"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 168,
@@ -2092,8 +3542,7 @@
                             "MOD_ST_DESCRICAO": "Relatório Específico Projeto Doenças Notificação Compulsória",
                             "state": "relatorioespecificoprojetodoencasnotificacaocompulsoria",
                             "stateN": "00007.00141",
-                            "stateComposto": "00007.00141",
-                            "visualisar": false
+                            "stateComposto": "00007.00141"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 169,
@@ -2102,8 +3551,7 @@
                             "MOD_ST_DESCRICAO": "Estatística de Produtividade por Usuário Etapas",
                             "state": "estatisticadeprodutividadeporusuarioetapas",
                             "stateN": "00007.00146",
-                            "stateComposto": "00007.00146",
-                            "visualisar": false
+                            "stateComposto": "00007.00146"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 170,
@@ -2112,8 +3560,7 @@
                             "MOD_ST_DESCRICAO": "Estatística de Exames Unidade Posto Quant.Paciente Qt.Exames",
                             "state": "estatisticadeexamesunidadepostoquant.pacienteqt.exames",
                             "stateN": "00007.00166",
-                            "stateComposto": "00007.00166",
-                            "visualisar": false
+                            "stateComposto": "00007.00166"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 171,
@@ -2122,8 +3569,7 @@
                             "MOD_ST_DESCRICAO": "Estatística Tomografia Laudos/Revisão por Usuário",
                             "state": "estatisticatomografialaudos-revisaoporusuario",
                             "stateN": "00007.00175",
-                            "stateComposto": "00007.00175",
-                            "visualisar": false
+                            "stateComposto": "00007.00175"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 172,
@@ -2132,8 +3578,7 @@
                             "MOD_ST_DESCRICAO": "Estatística Qt.Tubos, Pacientes,Exames por Unidade,Setor",
                             "state": "estatisticaqt.tubos,pacientes,examesporunidade,setor",
                             "stateN": "00007.00170",
-                            "stateComposto": "00007.00170",
-                            "visualisar": false
+                            "stateComposto": "00007.00170"
                         },
                         {
                             "PUS_IN_SEQUENCIA": 173,
@@ -2142,8 +3587,7 @@
                             "MOD_ST_DESCRICAO": "Estatística de Produtividade",
                             "state": "estatisticadeprodutividade",
                             "stateN": "00007.00119",
-                            "stateComposto": "00007.00119",
-                            "visualisar": false
+                            "stateComposto": "00007.00119"
                         }
                     ],
                     "visualisar": true
@@ -2185,8 +3629,7 @@
                     "MOD_ST_DESCRICAO": "Conferência de Faturamento",
                     "state": "conferenciadefaturamento",
                     "stateN": "00005.00224",
-                    "stateComposto": "00005.00224",
-                    "visualisar": false
+                    "stateComposto": "00005.00224"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 179,
@@ -2195,8 +3638,7 @@
                     "MOD_ST_DESCRICAO": "Estatística de Pendências",
                     "state": "estatisticadependencias",
                     "stateN": "00005.00114",
-                    "stateComposto": "00005.00114",
-                    "visualisar": false
+                    "stateComposto": "00005.00114"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 180,
@@ -2205,8 +3647,7 @@
                     "MOD_ST_DESCRICAO": "Pendências de Faturamento",
                     "state": "pendenciasdefaturamento",
                     "stateN": "00005.00045",
-                    "stateComposto": "00005.00045",
-                    "visualisar": false
+                    "stateComposto": "00005.00045"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 181,
@@ -2215,8 +3656,7 @@
                     "MOD_ST_DESCRICAO": "Emissão da Fatura",
                     "state": "emissaodafatura",
                     "stateN": "00005.00040",
-                    "stateComposto": "00005.00040",
-                    "visualisar": false
+                    "stateComposto": "00005.00040"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 182,
@@ -2225,8 +3665,7 @@
                     "MOD_ST_DESCRICAO": "Conferência de Requisições por Prontuário",
                     "state": "conferenciaderequisicoesporprontuario",
                     "stateN": "00005.00092",
-                    "stateComposto": "00005.00092",
-                    "visualisar": false
+                    "stateComposto": "00005.00092"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 183,
@@ -2235,8 +3674,7 @@
                     "MOD_ST_DESCRICAO": "Conferência de Requisições",
                     "state": "conferenciaderequisicoes",
                     "stateN": "00005.00032",
-                    "stateComposto": "00005.00032",
-                    "visualisar": false
+                    "stateComposto": "00005.00032"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 184,
@@ -2245,8 +3683,7 @@
                     "MOD_ST_DESCRICAO": "Faturamento",
                     "state": "faturamento",
                     "stateN": "00005.00249",
-                    "stateComposto": "00005.00249",
-                    "visualisar": false
+                    "stateComposto": "00005.00249"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 185,
@@ -2255,8 +3692,7 @@
                     "MOD_ST_DESCRICAO": "Consulta de Lotes",
                     "state": "consultadelotes",
                     "stateN": "00005.00107",
-                    "stateComposto": "00005.00107",
-                    "visualisar": false
+                    "stateComposto": "00005.00107"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 186,
@@ -2265,8 +3701,7 @@
                     "MOD_ST_DESCRICAO": "Calcula Exames Sem Preço",
                     "state": "calculaexamessempreco",
                     "stateN": "00005.00094",
-                    "stateComposto": "00005.00094",
-                    "visualisar": false
+                    "stateComposto": "00005.00094"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 187,
@@ -2275,8 +3710,7 @@
                     "MOD_ST_DESCRICAO": "Relatório de Exames Sem Preço",
                     "state": "relatoriodeexamessempreco",
                     "stateN": "00005.00077",
-                    "stateComposto": "00005.00077",
-                    "visualisar": false
+                    "stateComposto": "00005.00077"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 188,
@@ -2285,8 +3719,7 @@
                     "MOD_ST_DESCRICAO": "Controle de Faturamento Externo",
                     "state": "controledefaturamentoexterno",
                     "stateN": "00005.00144",
-                    "stateComposto": "00005.00144",
-                    "visualisar": false
+                    "stateComposto": "00005.00144"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 189,
@@ -2295,8 +3728,7 @@
                     "MOD_ST_DESCRICAO": "Relatorio de Fechamento de Caixa",
                     "state": "relatoriodefechamentodecaixa",
                     "stateN": "00005.00177",
-                    "stateComposto": "00005.00177",
-                    "visualisar": false
+                    "stateComposto": "00005.00177"
                 }
             ]
         },
@@ -2315,8 +3747,7 @@
                     "MOD_ST_DESCRICAO": "Executar Pesquisa no Banco de Dados",
                     "state": "executarpesquisanobancodedados",
                     "stateN": "00008.00172",
-                    "stateComposto": "00008.00172",
-                    "visualisar": false
+                    "stateComposto": "00008.00172"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 192,
@@ -2325,8 +3756,7 @@
                     "MOD_ST_DESCRICAO": "Executa Script",
                     "state": "executascript",
                     "stateN": "00008.00076",
-                    "stateComposto": "00008.00076",
-                    "visualisar": false
+                    "stateComposto": "00008.00076"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 193,
@@ -2335,8 +3765,7 @@
                     "MOD_ST_DESCRICAO": "Integração com a Central de Relacionamento",
                     "state": "integracaocomacentralderelacionamento",
                     "stateN": "00008.00147",
-                    "stateComposto": "00008.00147",
-                    "visualisar": false
+                    "stateComposto": "00008.00147"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 194,
@@ -2345,8 +3774,7 @@
                     "MOD_ST_DESCRICAO": "Exportação de Arquivo",
                     "state": "exportacaodearquivo",
                     "stateN": "00008.00145",
-                    "stateComposto": "00008.00145",
-                    "visualisar": false
+                    "stateComposto": "00008.00145"
                 },
                 {
                     "PUS_IN_SEQUENCIA": 195,
@@ -2355,8 +3783,7 @@
                     "MOD_ST_DESCRICAO": "Integração do Faturamento com EMS",
                     "state": "integracaodofaturamentocomems",
                     "stateN": "00008.00136",
-                    "stateComposto": "00008.00136",
-                    "visualisar": false
+                    "stateComposto": "00008.00136"
                 }
             ]
         },
@@ -2381,9 +3808,62 @@
             ]
         }
     ],
-    "dtLogon": "2017-03-09T18:06:04.076Z",
-    "bellClass": "label-primary",
-    "tempoLogado": "0 minuto(s)",
+    "dtLogon": "2017-03-29T13:20:46.085Z",
+    "controleNotificacaoConfig": {
+        "telaSelecionada": "",
+        "statesPesquisa": [
+            "configuraperfilusuario | Editar / Configurar Usuário",
+            "controle_notificacoes | Controle de Notificações",
+            "widgets | Home Painel de Widgets do Usuário, Inicio , Inĩcio, Começo, Casa",
+            "sair | Sair do Sistema quit exit :q",
+            "00273 | Consulta de Laudos",
+            "00220 | Cadastro de Pacientes",
+            "00021 | Feriado",
+            "00251 | Frase Laudo",
+            "00194 | Laudo Padrão",
+            "00199 | Usuário x Convênio",
+            "00090 | Exame De Para",
+            "00013 | Material",
+            "00017 | Bactérias Fungos e Vírus",
+            "00022 | Frases para Laudo",
+            "00023 | Método",
+            "00027 | Parasitas",
+            "00031 | Recipiente",
+            "00053 | Unidades de Medida",
+            "00060 | Texto para Laudos",
+            "00098 | Grupo de Triagem",
+            "00016 | Antibiótico",
+            "00190 | Grupo de Antibióticos",
+            "00054 | Mapa de Antibióticos",
+            "00006 | Convênios",
+            "00015 | Setores",
+            "00044 | Solicitantes",
+            "00059 | Local de Entrega",
+            "00046 | Profissões",
+            "00057 | Laboratório de Apoio",
+            "00058 | Coletores",
+            "00018 | CID",
+            "00024 | Motivo",
+            "00025 | Observação",
+            "00088 | Grupo",
+            "00101 | Local De/Para",
+            "00131 | Exame De Para Retorno",
+            "00133 | Material De/Para",
+            "00138 | Material de Coleta (DASA)",
+            "00159 | Cadastro de Carros",
+            "00161 | Procedimento de Coleta",
+            "00185 | Cadastros para Soroteca",
+            "00187 | Cadastro de Sistemas",
+            "00263 | Estatística Faturamento",
+            "00229 | Período de Fechamento",
+            "00049 | Sobre"
+        ],
+        "qdtNotificacaoResumida": 6,
+        "notificacoesResumida": [
+        ],
+        "bellClass": "label-primary"
+    },
+    "tempoLogado": "1 minuto(s)",
     "job": {},
     "unidades": [
         {
@@ -2435,7 +3915,6 @@
         "UNI_IN_CODIGO": 1,
         "PRJ_ST_CODIGO": "FLEMING"
     },
-    "notificacoesEmExecucao": 6,
     "convenios": [
         {
             "CON_ST_CODIGO": "216",
@@ -2676,117 +4155,222 @@
         {
             "CON_ST_CODIGO": "279",
             "CON_ST_DESCRICAO": "CLINICA CARVALHO"
+        },
+        {
+            "CON_ST_CODIGO": "280",
+            "CON_ST_DESCRICAO": "SP IMPLANTES TRATAMENTOS ODONTOLÓGICOS"
+        },
+        {
+            "CON_ST_CODIGO": "281",
+            "CON_ST_DESCRICAO": "SOMPO SAÚDE"
+        },
+        {
+            "CON_ST_CODIGO": "282",
+            "CON_ST_DESCRICAO": "CLUB SAÚDE LTDA "
+        },
+        {
+            "CON_ST_CODIGO": "283",
+            "CON_ST_DESCRICAO": "DRA LIGIA SUZAN"
+        },
+        {
+            "CON_ST_CODIGO": "284",
+            "CON_ST_DESCRICAO": "MAHLE METAL LEVE"
+        },
+        {
+            "CON_ST_CODIGO": "285",
+            "CON_ST_DESCRICAO": "DRA  ANA AMELIA"
+        },
+        {
+            "CON_ST_CODIGO": "286",
+            "CON_ST_DESCRICAO": "DR JOSE MARTINS JUNIOR "
+        },
+        {
+            "CON_ST_CODIGO": "287",
+            "CON_ST_DESCRICAO": "TESTE"
+        },
+        {
+            "CON_ST_CODIGO": "288",
+            "CON_ST_DESCRICAO": "OPUS JUNDIAI SERVIÇOS DE SAÚDE LTDA EPP"
+        },
+        {
+            "CON_ST_CODIGO": "289",
+            "CON_ST_DESCRICAO": "UNIBEM MEDICINA E SEGURANÇA NO TRABALHO"
+        },
+        {
+            "CON_ST_CODIGO": "290",
+            "CON_ST_DESCRICAO": "PRÓ-CLÍNICA"
+        },
+        {
+            "CON_ST_CODIGO": "291",
+            "CON_ST_DESCRICAO": "DRA. DEBORAH DE FREITA"
+        },
+        {
+            "CON_ST_CODIGO": "292",
+            "CON_ST_DESCRICAO": "CARINA SCAPINELLI PARTICULAR"
+        },
+        {
+            "CON_ST_CODIGO": "293",
+            "CON_ST_DESCRICAO": " DR. RODRIGO CAMARGO"
+        },
+        {
+            "CON_ST_CODIGO": "294",
+            "CON_ST_DESCRICAO": "DR.MARCOS ANTONIO DIAS"
+        },
+        {
+            "CON_ST_CODIGO": "295",
+            "CON_ST_DESCRICAO": "DESCONTO ESPECIAL UNIMED"
+        },
+        {
+            "CON_ST_CODIGO": "296",
+            "CON_ST_DESCRICAO": "RICAELI"
+        },
+        {
+            "CON_ST_CODIGO": "297",
+            "CON_ST_DESCRICAO": "JBS SEARA"
+        },
+        {
+            "CON_ST_CODIGO": "298",
+            "CON_ST_DESCRICAO": "UNICORP JUNDIAI"
+        },
+        {
+            "CON_ST_CODIGO": "299",
+            "CON_ST_DESCRICAO": "ASSOCIAÇÃO DOS APOSENTADOS DE JUNDIAÍ"
+        },
+        {
+            "CON_ST_CODIGO": "300",
+            "CON_ST_DESCRICAO": "MONT SERRAT"
         }
     ],
-    "telaPadrao": [
-        {
-            "modStCodigo": "00015",
-            "state": {
-                "url": "/configura_setores/",
-                "templateUrl": "views/tmtelas/tela_padrao.html",
-                "params": {
-                    "titulo": "Setores",
-                    "pai": "Configura",
-                    "pagina": "Setores",
-                    "modStCodigo": "00015",
-                    "limit": "200",
-                    "btnFiltrar": true,
-                    "btnCriar": true,
-                    "btnTodos": true
+    "notificacoesEmExecucao": 6,
+    "configMonitorLaboratorio": {
+        "unidade": "TODAS",
+        "unidadeEx": "TODAS",
+        "URGENTE": false,
+        "RANGE": "DIA",
+        "aba": "resumo",
+        "lineOptions": {
+            "scaleShowGridLines": true,
+            "scaleGridLineColor": "rgba(0,0,0,.05)",
+            "scaleGridLineWidth": 1,
+            "bezierCurve": true,
+            "bezierCurveTension": 0.4,
+            "pointDot": true,
+            "pointDotRadius": 4,
+            "pointDotStrokeWidth": 1,
+            "pointHitDetectionRadius": 20,
+            "datasetStroke": true,
+            "datasetStrokeWidth": 2,
+            "datasetFill": true,
+            "responsive": true
+        },
+        "barOptions": {
+            "scaleBeginAtZero": true,
+            "scaleShowGridLines": true,
+            "scaleGridLineColor": "rgba(0,0,0,.05)",
+            "scaleGridLineWidth": 1,
+            "barShowStroke": true,
+            "barStrokeWidth": 2,
+            "barValueSpacing": 5,
+            "barDatasetSpacing": 1,
+            "responsive": true
+        },
+        "lineData": {
+            "labels": [
+                "January",
+                "February",
+                "March",
+                "April",
+                "May",
+                "June",
+                "July"
+            ],
+            "datasets": [
+                {
+                    "label": "Example dataset",
+                    "fillColor": "rgba(220,220,220,0.5)",
+                    "strokeColor": "rgba(220,220,220,1)",
+                    "pointColor": "rgba(220,220,220,1)",
+                    "pointStrokeColor": "#fff",
+                    "pointHighlightFill": "#fff",
+                    "pointHighlightStroke": "rgba(220,220,220,1)",
+                    "data": [
+                        65,
+                        59,
+                        80,
+                        81,
+                        56,
+                        55,
+                        40
+                    ]
                 },
-                "parent": "lisnet",
-                "data": {
-                    "pageTitle": "Setores"
+                {
+                    "label": "Example dataset",
+                    "fillColor": "rgba(26,179,148,0.5)",
+                    "strokeColor": "rgba(26,179,148,0.7)",
+                    "pointColor": "rgba(26,179,148,1)",
+                    "pointStrokeColor": "#fff",
+                    "pointHighlightFill": "#fff",
+                    "pointHighlightStroke": "rgba(26,179,148,1)",
+                    "data": [
+                        28,
+                        48,
+                        40,
+                        19,
+                        86,
+                        27,
+                        90
+                    ]
+                }
+            ]
+        },
+        "barData": {
+            "labels": [
+                "January",
+                "February",
+                "March",
+                "April",
+                "May",
+                "June",
+                "July"
+            ],
+            "datasets": [
+                {
+                    "label": "My First dataset",
+                    "fillColor": "rgba(220,220,220,0.5)",
+                    "strokeColor": "rgba(220,220,220,0.8)",
+                    "highlightFill": "rgba(220,220,220,0.75)",
+                    "highlightStroke": "rgba(220,220,220,1)",
+                    "data": [
+                        65,
+                        59,
+                        80,
+                        81,
+                        56,
+                        55,
+                        40
+                    ]
                 },
-                "resolve": {},
-                "name": "setores"
-            },
-            "entidade": {
-                "entidade": "LAB_SETOR",
-                "chaves": [
-                    "UNI_ST_CODIGO",
-                    "SET_ST_CODIGO"
-                ],
-                "pesquisas": [
-                    {
-                        "campo": "SET_ST_CODIGO",
-                        "nome": "Código"
-                    },
-                    {
-                        "campo": "SET_ST_DESCRICAO",
-                        "nome": "Descrição"
-                    }
-                ],
-                "colunas": [
-                    {
-                        "nome": "Unidade",
-                        "coluna": "UNI_ST_CODIGO",
-                        "componente": "E",
-                        "tipo": "C",
-                        "obrigatorio": "S",
-                        "tamanho": 3,
-                        "chave": "S",
-                        "padrao": "@UNIDADE"
-                    },
-                    {
-                        "nome": "Código",
-                        "coluna": "SET_ST_CODIGO",
-                        "componente": "E",
-                        "tipo": "C",
-                        "obrigatorio": "S",
-                        "tamanho": 3,
-                        "chave": "S"
-                    },
-                    {
-                        "nome": "Descrição",
-                        "coluna": "SET_ST_DESCRICAO",
-                        "componente": "E",
-                        "tipo": "C",
-                        "obrigatorio": "N",
-                        "tamanho": 60,
-                        "chave": "N"
-                    },
-                    {
-                        "nome": "Sequencia",
-                        "coluna": "SET_IN_SEQUENCIA",
-                        "componente": "E",
-                        "tipo": "N",
-                        "obrigatorio": "N",
-                        "tamanho": 22,
-                        "chave": "N"
-                    },
-                    {
-                        "nome": "Descarte",
-                        "coluna": "SET_IN_DESCARTE",
-                        "componente": "E",
-                        "tipo": "N",
-                        "obrigatorio": "N",
-                        "tamanho": 22,
-                        "chave": "N"
-                    },
-                    {
-                        "nome": "Cor",
-                        "coluna": "SET_IN_COR",
-                        "componente": "E",
-                        "tipo": "N",
-                        "obrigatorio": "N",
-                        "tamanho": 22,
-                        "chave": "N"
-                    },
-                    {
-                        "nome": "Dias Pendência",
-                        "coluna": "SET_IN_DIASPENDENCIA",
-                        "componente": "E",
-                        "tipo": "N",
-                        "obrigatorio": "N",
-                        "tamanho": 22,
-                        "chave": "N",
-                        "padrao": "60"
-                    }
-                ],
-                "pesquisaTipo": "0",
-                "pesquisa": "Código"
-            }
+                {
+                    "label": "My Second dataset",
+                    "fillColor": "rgba(26,179,148,0.5)",
+                    "strokeColor": "rgba(26,179,148,0.8)",
+                    "highlightFill": "rgba(26,179,148,0.75)",
+                    "highlightStroke": "rgba(26,179,148,1)",
+                    "data": [
+                        28,
+                        48,
+                        40,
+                        19,
+                        86,
+                        27,
+                        90
+                    ]
+                }
+            ]
+        },
+        "data": {
+            "startDate": "2017-03-30T02:59:59.000Z",
+            "endDate": "2017-03-30T02:59:59.999Z"
         }
-    ]
+    }
 }
