@@ -116,7 +116,7 @@
                     </div>
                     <div class="ibox-content">
                         <div>
-                            <canvas linechart options="userDTO.configMonitorLaboratorio.lineOptions" data="userDTO.configMonitorLaboratorio.lineDataResumoProcedimentos"  height="220" width="472"  responsive=true ></canvas>
+                            <canvas  ng-if="userDTO.configMonitorLaboratorio.resumoProcedimentos.blink"  linechart options="userDTO.configMonitorLaboratorio.lineOptions" data="userDTO.configMonitorLaboratorio.lineDataResumoProcedimentos"  height="220" width="472"  responsive=true ></canvas>
 
                             <nav class="navbar navbar-inverse">
                                 <div class="container-fluid">
@@ -154,7 +154,7 @@
                     </div>
                     <div class="ibox-content">
                         <div>
-                            <canvas barchart options="userDTO.configMonitorLaboratorio.barOptions" data="userDTO.configMonitorLaboratorio.barDataPacientes" height="220" width="472"  responsive=true ></canvas>
+                            <canvas  ng-if="userDTO.configMonitorLaboratorio.resumoPacientes.blink" barchart options="userDTO.configMonitorLaboratorio.barOptions" data="userDTO.configMonitorLaboratorio.barDataPacientes" height="220" width="472"  responsive=true ></canvas>
                             <nav class="navbar navbar-inverse">
                                 <div class="container-fluid">
                                     <div class="navbar-header">
@@ -190,7 +190,7 @@
                     </div>
                     <div class="ibox-content">
                         <div>
-                            <canvas barchart options="userDTO.configMonitorLaboratorio.barOptions" data="userDTO.configMonitorLaboratorio.barDataFaturamento" height="220" width="472"  responsive=true ></canvas>
+                            <canvas ng-if="userDTO.configMonitorLaboratorio.faturamentoEstimado.blink"   barchart options="userDTO.configMonitorLaboratorio.barOptions" data="userDTO.configMonitorLaboratorio.barDataFaturamento" height="220" width="472"  responsive=true ></canvas>
                             <nav class="navbar navbar-inverse">
                                 <div class="container-fluid">
                                     <div class="navbar-header">

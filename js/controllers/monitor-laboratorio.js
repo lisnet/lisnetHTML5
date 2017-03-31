@@ -21,9 +21,9 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
         $scope.userDTO.configMonitorLaboratorio = {
             unidade: 'TODAS', unidadeEx: 'TODAS', urgente: false, RANGE: 'DIA', aba: 'resumo', 
             data: {"startDate": moment(), "endDate": moment()},
-            resumoProcedimentos: {periodo: '1D', data: new Date(),loading:false,total:0}, 
-            resumoPacientes: {periodo: '1D', data: new Date(),loading:false,total:0}, 
-            faturamentoEstimado: {periodo: '1D', data: new Date(),loading:false,total:0}
+            resumoProcedimentos: {periodo: '1D', data: new Date(),loading:false,total:0,blink:true}, 
+            resumoPacientes: {periodo: '1D', data: new Date(),loading:false,total:0,blink:true}, 
+            faturamentoEstimado: {periodo: '1D', data: new Date(),loading:false,total:0,blink:true}
         };
         
 
@@ -155,9 +155,11 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
                         _g.labels = _d[0];
                         _g.datasets[0].data = _d[1];
                         _p.loading = false;
+                        _p.blink = false;
                         _p.total = _d[1].reduce(function (prev,current){
                             return prev +  (current ? current: 0)  ;
                         },0);
+                        $timeout(function (){_p.blink = true;},3);
 
                     }, function error(response) {
 
@@ -185,10 +187,11 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
                         _g.labels = _d[0];
                         _g.datasets[0].data = _d[1];
                         _p.loading = false;
+                        _p.blink = false;
                         _p.total = _d[1].reduce(function (prev,current){
                             return prev +  (current ? current: 0)  ;
                         },0);
-
+                        $timeout(function (){_p.blink = true;},3);
                     }, function error(response) {
 
                     }
@@ -214,10 +217,11 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
                         _g.labels = _d[0];
                         _g.datasets[0].data = _d[1];
                         _p.loading = false;
+                        _p.blink = false;
                         _p.total = _d[1].reduce(function (prev,current){
                             return prev +  (current ? current: 0)  ;
                         },0);
-
+                        $timeout(function (){_p.blink = true;},3);
                     }, function error(response) {
 
                     }
