@@ -48,8 +48,8 @@
                     </div>
                     <div class="col-lg-pull-9">
                         <select    chosen id="inputunidade" class="chosen-select form-control "  tabindex="4" ng-model="userDTO.configMonitorLaboratorio.unidade" >
-                            <option selected  >TODAS</option>
-                            <option  ng-repeat=" u in userDTO.unidades track by $index" >
+                            <option selected  value="TODAS" >TODAS</option>
+                            <option   value="{{u.UNI_ST_CODIGO}}" ng-repeat=" u in userDTO.unidades track by $index" >
                                 {{u.UNI_ST_CODIGO}}-{{u.UNI_ST_DESCRICAO| cutchars:15}}
                             </option>
                         </select>
@@ -62,8 +62,8 @@
                     </div>
                     <div class="col-lg-pull-8" >
                         <select    chosen id="inputunidadeEx" class="chosen-select form-control "  tabindex="4" ng-model="userDTO.configMonitorLaboratorio.unidadeEx" >
-                            <option selected  >TODAS</option>
-                            <option  ng-repeat=" u in userDTO.unidades track by $index" >
+                            <option selected  value="TODAS"  >TODAS</option>
+                            <option   value="{{u.UNI_ST_CODIGO}}" ng-repeat=" u in userDTO.unidades track by $index" >
                                 {{u.UNI_ST_CODIGO}}-{{u.UNI_ST_DESCRICAO| cutchars:15}}
                             </option>
                         </select>
@@ -80,12 +80,12 @@
                         <div class="col-xs-3" >
                             <label for="inputurgente" class="control-label">Urgente</label>    
                             <div style="padding-top: 7px;" >
-                                <input     id="inputurgente" icheck type="checkbox" ng-model="userDTO.configMonitorLaboratorio.URGENTE">
+                                <input     id="inputurgente" icheck type="checkbox" ng-model="userDTO.configMonitorLaboratorio.urgente">
                             </div>
                         </div>
 
                         <div class="col-xs-2" style="padding-top: 25px;"  >
-                            <button class="btn btn-outline  btn-success  btn-rounded  "    >&nbsp;Filtrar&nbsp;</button>
+                            <button class="btn btn-outline  btn-success  btn-rounded  "   ng-click="atualizar()"   >&nbsp;Atualizar&nbsp;</button>
                         </div>
                     </div>
                 </div>
@@ -102,29 +102,70 @@
         <div class="row">
             <div class="col-lg-4">
                 <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <h5>Resumo Procedimentos
-                            <small class="text-primary font-bold " >em 03/05/2016.</small>
-                            <small><strong>329 </strong>Total.</small>
+                    <div class="ibox-title" style="height: 53px;" >
+                        
+                        <h5>
+                            Resumo Procedimentos
+                            <small>em </small><strong class="text-primary font-bold  "  style="color: #003bb3"  ng-class="grabCSS('resumoProcedimentos')"    >{{userDTO.configMonitorLaboratorio.resumoProcedimentos.data | date : 'dd/MM/yyyy'}} </strong>
+                            <small><strong>Total: {{userDTO.configMonitorLaboratorio.resumoProcedimentos.total}} </strong></small>
+                        </h5>
+                        <h5 style="padding-left: 20px;" >
+                            <a  ng-if="userDTO.configMonitorLaboratorio.resumoProcedimentos.loading"   class="fa fa-circle-o-notch  fa-2x  fa-spin" aria-hidden="true"></a>
                         </h5>
                         <!--<div ibox-tools></div>-->
                     </div>
                     <div class="ibox-content">
                         <div>
-                            <canvas linechart options="userDTO.configMonitorLaboratorio.lineOptions" data="userDTO.configMonitorLaboratorio.lineData" height="140" responsive=true ></canvas>
-
+                            <canvas linechart options="userDTO.configMonitorLaboratorio.lineOptions" data="userDTO.configMonitorLaboratorio.lineDataResumoProcedimentos"  height="220" width="472"  responsive=false ></canvas>
 
                             <nav class="navbar navbar-inverse">
                                 <div class="container-fluid">
                                     <div class="navbar-header">
-                                        <a class="navbar-brand fa fa-backward" aria-hidden="true" ></a>
+                                        <a class="navbar-brand fa fa-backward" aria-hidden="true"  ng-click="shiftDate(false,'resumoProcedimentos')  "  ></a>
                                     </div>
                                     <ul class="nav navbar-nav">
-                                        <li  ng-repeat="f in filtros track by $index " ng-if="$index === 0" class="active"   > <a ng-click="escolhePeriodo(f, 'resumoProcedimentos')"    class="font-bold text-danger" >   {{f}}</a> </li>
-                                        <li  ng-repeat="f in filtros" ng-if="$index !== 0"   > <a ng-click="escolhePeriodo(f, 'resumoProcedimentos')"    class="font-bold text-danger" >   {{f}}</a> </li>
+                                        <li  ng-class="{ active: isActive(f,'resumoProcedimentos')} "  ng-repeat="f in filtros"    > <a ng-click="escolhePeriodo(f, 'resumoProcedimentos')"    class="font-bold text-danger" >   {{f}}</a> </li>
                                     </ul>
+                                    
                                     <div class="navbar-footer pull-right ">
-                                        <a class="navbar-brand fa fa-forward" aria-hidden="true" ></a>
+                                        <a class="navbar-brand fa fa-forward" aria-hidden="true"     ng-click="shiftDate(true,'resumoProcedimentos')" ></a>
+                                    </div>
+                                </div>
+                            </nav>
+
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-lg-4">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title" style="height: 53px;" >
+                        
+                        <h5>
+                            Resumo Pacientes
+                            <small>em </small><strong class="text-primary font-bold  "  style="color: #003bb3"  ng-class="grabCSS('resumoPacientes')"    >{{userDTO.configMonitorLaboratorio.resumoPacientes.data | date : 'dd/MM/yyyy'}} </strong>
+                            <small><strong>Total: {{userDTO.configMonitorLaboratorio.resumoPacientes.total}} </strong></small>
+                        </h5>
+                        <h5 style="padding-left: 20px;" >
+                            <a  ng-if="userDTO.configMonitorLaboratorio.resumoPacientes.loading"   class="fa fa-circle-o-notch  fa-2x  fa-spin" aria-hidden="true"></a>
+                        </h5>
+                        <!--<div ibox-tools></div>-->
+                    </div>
+                    <div class="ibox-content">
+                        <div>
+                            <canvas barchart options="userDTO.configMonitorLaboratorio.barOptions" data="userDTO.configMonitorLaboratorio.barDataPacientes" height="220" width="472"  responsive=false ></canvas>
+                            <nav class="navbar navbar-inverse">
+                                <div class="container-fluid">
+                                    <div class="navbar-header">
+                                        <a class="navbar-brand fa fa-backward" aria-hidden="true"  ng-click="shiftDate(false,'resumoPacientes')  "  ></a>
+                                    </div>
+                                    <ul class="nav navbar-nav">
+                                        <li  ng-class="{ active: isActive(f,'resumoPacientes')} "  ng-repeat="f in filtros"    > <a ng-click="escolhePeriodo(f, 'resumoPacientes')"    class="font-bold text-danger" >   {{f}}</a> </li>
+                                    </ul>
+                                    
+                                    <div class="navbar-footer pull-right ">
+                                        <a class="navbar-brand fa fa-forward" aria-hidden="true"     ng-click="shiftDate(true,'resumoPacientes')" ></a>
                                     </div>
                                 </div>
                             </nav>
@@ -135,63 +176,40 @@
             </div>
             <div class="col-lg-4">
                 <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <h5>Resumo Pacientes
-                            <small class="text-primary font-bold " >em 03/05/2016.</small>
-                            <small><strong>31 </strong>Total.</small>
+                    <div class="ibox-title" style="height: 53px;" >
+                        
+                        <h5>
+                            Faturamento Estimado
+                            <small>em </small><strong class="text-primary font-bold  "  style="color: #003bb3"  ng-class="grabCSS('faturamentoEstimado')"    >{{userDTO.configMonitorLaboratorio.faturamentoEstimado.data | date : 'dd/MM/yyyy'}} </strong>
+                            <small><strong> Total : {{ userDTO.configMonitorLaboratorio.faturamentoEstimado.total | currency : symbol : fractionSize}}  </strong></small>
+                        </h5>
+                        <h5 style="padding-left: 20px;" >
+                            <a  ng-if="userDTO.configMonitorLaboratorio.faturamentoEstimado.loading"   class="fa fa-circle-o-notch  fa-2x  fa-spin" aria-hidden="true"></a>
                         </h5>
                         <!--<div ibox-tools></div>-->
                     </div>
                     <div class="ibox-content">
                         <div>
-                            <canvas barchart options="userDTO.configMonitorLaboratorio.barOptions" data="userDTO.configMonitorLaboratorio.barData" height="140" responsive=true ></canvas>
+                            <canvas barchart options="userDTO.configMonitorLaboratorio.barOptions" data="userDTO.configMonitorLaboratorio.barDataFaturamento" height="220" width="472"  responsive=false ></canvas>
                             <nav class="navbar navbar-inverse">
                                 <div class="container-fluid">
                                     <div class="navbar-header">
-                                        <a class="navbar-brand fa fa-backward" aria-hidden="true" ></a>
+                                        <a class="navbar-brand fa fa-backward" aria-hidden="true"  ng-click="shiftDate(false,'faturamentoEstimado')  "  ></a>
                                     </div>
                                     <ul class="nav navbar-nav">
-                                        <li  ng-repeat="f in filtros track by $index " ng-if="$index === 0" class="active"   > <a ng-click="escolhePeriodo(f, 'resumoProcedimentos')"    class="font-bold text-danger" >   {{f}}</a> </li>
-                                        <li  ng-repeat="f in filtros" ng-if="$index !== 0"   > <a ng-click="escolhePeriodo(f, 'resumoProcedimentos')"    class="font-bold text-danger" >   {{f}}</a> </li>
+                                        <li  ng-class="{ active: isActive(f,'faturamentoEstimado')} "  ng-repeat="f in filtros"    > <a ng-click="escolhePeriodo(f, 'faturamentoEstimado')"    class="font-bold text-danger" >   {{f}}</a> </li>
                                     </ul>
+                                    
                                     <div class="navbar-footer pull-right ">
-                                        <a class="navbar-brand fa fa-forward" aria-hidden="true" ></a>
+                                        <a class="navbar-brand fa fa-forward" aria-hidden="true"     ng-click="shiftDate(true,'faturamentoEstimado')" ></a>
                                     </div>
                                 </div>
                             </nav>
+
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <h5>Faturamento Estimado
-                            <small class="text-primary font-bold " >em 03/05/2016.</small>
-                            <strong class="font-bold text-justify" >R$ 23,80 Total.</strong>
-                        </h5>
-                        <!--<div ibox-tools></div>-->
-                    </div>
-                    <div class="ibox-content">
-                        <div>
-                            <canvas barchart options="userDTO.configMonitorLaboratorio.barOptions" data="userDTO.configMonitorLaboratorio.barData" height="140" responsive=true ></canvas>
-                            <nav class="navbar navbar-inverse">
-                                <div class="container-fluid">
-                                    <div class="navbar-header">
-                                        <a class="navbar-brand fa fa-backward" aria-hidden="true" ></a>
-                                    </div>
-                                    <ul class="nav navbar-nav">
-                                        <li  ng-repeat="f in filtros track by $index " ng-if="$index === 0" class="active"   > <a ng-click="escolhePeriodo(f, 'resumoProcedimentos')"    class="font-bold text-danger" >   {{f}}</a> </li>
-                                        <li  ng-repeat="f in filtros" ng-if="$index !== 0"   > <a ng-click="escolhePeriodo(f, 'resumoProcedimentos')"    class="font-bold text-danger" >   {{f}}</a> </li>
-                                    </ul>
-                                    <div class="navbar-footer pull-right ">
-                                        <a class="navbar-brand fa fa-forward" aria-hidden="true" ></a>
-                                    </div>
-                                </div>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
         </div>
     </div>

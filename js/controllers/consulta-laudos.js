@@ -61,7 +61,7 @@ console.log('typeof = '+typeof $scope.strMax  +"  strMax = "+$scope.strMax);
 //    };
     
     //Watch for date changes
-    $scope.$watch('date', function(newDate) {
+    $scope.$watch('data', function(newDate) {
 //        console.log('New date set: ', newDate);
         ultimoCampo = 'datas';
     }, false);

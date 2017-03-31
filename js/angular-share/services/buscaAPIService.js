@@ -502,6 +502,20 @@ angular.module('lisnet').service("buscaAPIService",function ($http){
         );
     };
     
+    this.buscaGrafico = function (tipo,periodo,json,configLisNet){
+        console.log('buscaGrafico : '+JSON.stringify(json));
+        var url = configLisNet.baseUrl +'/buscaGrafico/'+tipo+'/' +periodo+'?dbname='+configLisNet.defaultDB;
+        console.log('url : '+url);
+        return $http.post(url,json,
+            {
+                'Content-Type' : 'application/x-www-form-urlencoded',
+                'Access-Control-Allow-Headers': '*',
+                'Access-Control-Allow-Methods':'GET, POST, PUT',
+                'Access-Control-Allow-Origin': '*'
+            }
+        );
+    };
+    
     
 });
 
