@@ -14,6 +14,7 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
     var self = this;
     $scope.userDTO = sairDoSistemaService.validarLogin();
     $scope.filtros = ['1D', '1W', '1M'];
+    self.configLisnet = $scope.userDTO.configLisNet;
 
     var abas = [{label: 'resumo', desc: 'Resumo Geral'}, {label: 'pendencia', desc: 'Pendências'}, {label: 'setores', desc: 'Pendências por Setor'}];
     if (!$scope.userDTO.configMonitorLaboratorio) {
@@ -26,60 +27,62 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
             faturamentoEstimado: {periodo: '1D', data: new Date(),formatoData:'dd/MM/yyyy',loading:false,total:0,blink:true}
         };
         
-
-
         /**
-         * Data for Line chart
+         * Data for Line chart Resumo Procedimentos
          */
         $scope.userDTO.configMonitorLaboratorio.lineDataResumoProcedimentos = {
             labels: ["0", "1", "2", "3", "4", "5", "6"],
             datasets: [
                 {
-                    label: "Example dataset",
-                    fillColor: "rgba(26,179,148,0.5)",
-                    strokeColor: "rgba(26,179,148,0.7)",
-                    pointColor: "rgba(26,179,148,1)",
+                    label: "Resumo de Procedimentos",
+                    fillColor: self.configLisnet.colorsChart[0].fillColor,
+                    strokeColor: self.configLisnet.colorsChart[0].strokeColor,
+                    pointColor: self.configLisnet.colorsChart[0].highlightStroke,
+                    pointHighlightStroke: self.configLisnet.colorsChart[0].highlightStroke,
                     pointStrokeColor: "#fff",
                     pointHighlightFill: "#fff",
-                    pointHighlightStroke: "rgba(26,179,148,1)",
                     data: [0, 0, 0, 0, 0, 0, 0]
                 }
             ]
         };
 
         /**
-         * Data for Bar chart
+         * Data for Bar chart Paciente
          */
         $scope.userDTO.configMonitorLaboratorio.barDataPacientes = {
             labels: ["0", "1", "2", "3", "4", "5", "6"],
             datasets: [
                 {
-                    label: "My Second dataset",
-                    fillColor: "rgba(26,179,148,0.5)",
-                    strokeColor: "rgba(26,179,148,0.8)",
-                    highlightFill: "rgba(26,179,148,0.75)",
-                    highlightStroke: "rgba(26,179,148,1)",
+                    label: "Resumo de Pacientes",
+                    fillColor: self.configLisnet.colorsChart[10].fillColor,
+                    strokeColor: self.configLisnet.colorsChart[10].strokeColor,
+                    highlightFill: self.configLisnet.colorsChart[10].highlightFill,
+                    highlightStroke: self.configLisnet.colorsChart[10].highlightStroke,
                     data: [0, 0, 0, 0, 0, 0, 0]
                 }
             ]
         };
+        
+        /**
+         * Data for Bar chart Faturamento
+         */
         $scope.userDTO.configMonitorLaboratorio.barDataFaturamento = {
             labels: ["0", "1", "2", "3", "4", "5", "6"],
             datasets: [
                 {
-                    label: "My Second dataset",
-                    fillColor: "rgba(26,179,148,0.5)",
-                    strokeColor: "rgba(26,179,148,0.8)",
-                    highlightFill: "rgba(26,179,148,0.75)",
-                    highlightStroke: "rgba(26,179,148,1)",
+                    label: "Faturamento Estimado",
+                    fillColor: self.configLisnet.colorsChart[8].fillColor,
+                    strokeColor: self.configLisnet.colorsChart[8].strokeColor,
+                    highlightFill: self.configLisnet.colorsChart[8].highlightFill,
+                    highlightStroke: self.configLisnet.colorsChart[8].highlightStroke,
                     data: [0, 0, 0, 0, 0, 0, 0]
                 }
             ]
         };
         
         atualizarResumoProcedimentos();
-        $timeout(function (){atualizarResumoPacientes();},1000);
-        $timeout(function (){atualizarFaturamentoEstimado();},1500);
+        $timeout(function (){atualizarResumoPacientes();},3000);
+        $timeout(function (){atualizarFaturamentoEstimado();},6000);
         
     }
     
@@ -110,19 +113,7 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
     self.config.resumoPacientes.data = new Date(self.config.resumoPacientes.data);
     self.config.faturamentoEstimado.data = new Date(self.config.faturamentoEstimado.data);
 
-    $scope.escolhePeriodo = function (periodo, grafico) {
-        self.config[grafico].periodo = periodo;
-        escolherFormatoData(periodo, grafico);
-        encontraGraficoParaAtualizar(grafico);
-    };
-
-    $scope.atualizar = function (){
-        atualizarResumoProcedimentos();
-        $timeout(function (){ atualizarResumoPacientes(); },1000);
-        $timeout(function (){atualizarFaturamentoEstimado();},1500);
-        
-    };
-
+   
     function escolherFormatoData(periodo, grafico){
         switch (periodo){
             case '1D':
@@ -283,6 +274,19 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
         return {unidades:unidades,unidadesEx:unidadesEx};
     };
     
+    $scope.escolhePeriodo = function (periodo, grafico) {
+        self.config[grafico].periodo = periodo;
+        escolherFormatoData(periodo, grafico);
+        encontraGraficoParaAtualizar(grafico);
+    };
+
+    $scope.atualizar = function (){
+        atualizarResumoProcedimentos();
+        $timeout(function (){ atualizarResumoPacientes(); },1000);
+        $timeout(function (){atualizarFaturamentoEstimado();},1500);
+        
+    };
+
     $scope.isActive = function (periodo, grafico) {
         return self.config[grafico].periodo === periodo;
     };
@@ -324,7 +328,7 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
     }
     
 
-/**
+        /**
          * Options for Line chart
          */
         $scope.userDTO.configMonitorLaboratorio.lineOptions = {

@@ -419,7 +419,20 @@ stateArray : [{MOD_ST_CODIGO:'00006',state:{
                             templateUrl: 'views/tmtelas/cadastro_paciente/cadastro_paciente_constroe_requisicao_exames.html',
                             data: {pageTitle: 'Incluir Exames', state: '00220.inclue_exames'}
                         }}]
-    }]
+    }],
+    colorsChart: [
+        {fillColor: 'rgba(229, 0, 3, 0.5)',strokeColor:'rgba(229, 0, 3, 0.8)',highlightFill:'rgba(229, 0, 3, 0.75)',highlightStroke:'rgba(229, 0, 3, 1)',label: 'vermelho'}, 
+        {fillColor: 'rgba(26,179,148,0.5)',strokeColor:'rgba(26,179,148, 0.8)',highlightFill:'rgba(26,179,148, 0.75)',highlightStroke:'rgba(26,179,148, 1)',label: 'verde'}, 
+        {fillColor: 'rgba(255, 251, 61,0.5)',strokeColor:'rgba(255, 251, 61, 0.8)',highlightFill:'rgba(255, 251, 61, 0.75)',highlightStroke:'rgba(255, 251, 61, 1)',label: 'amarelo'}, 
+        {fillColor: 'rgba(56, 198, 255,0.5)',strokeColor:'rgba(56, 198, 255, 0.8)',highlightFill:'rgba(56, 198, 255, 0.75)',highlightStroke:'rgba(56, 198, 255, 1)',label: 'azul'}, 
+        {fillColor: 'rgba(255, 75, 5,0.5)',strokeColor:'rgba(255, 75, 5, 0.8)',highlightFill:'rgba(255, 75, 5, 0.75)',highlightStroke:'rgba(255, 75, 5, 1)',label: 'laranja'}, 
+        {fillColor: 'rgba(142, 137, 117,0.5)',strokeColor:'rgba(142, 137, 117, 0.8)',highlightFill:'rgba(142, 137, 117, 0.75)',highlightStroke:'rgba(142, 137, 117, 1)',label: 'cinza'}, 
+        {fillColor: 'rgba(129, 0, 234,0.5)',strokeColor:'rgba(129, 0, 234, 0.8)',highlightFill:'rgba(129, 0, 234, 0.75)',highlightStroke:'rgba(129, 0, 234, 1)',label: 'roxo'},
+        {fillColor: 'rgba(191, 199, 35,0.5)',strokeColor:'rgba(191, 199, 35, 0.8)',highlightFill:'rgba(191, 199, 35, 0.75)',highlightStroke:'rgba(191, 199, 35, 1)',label: 'lima'}, 
+        {fillColor: 'rgba(35, 166, 199, 0.7)',strokeColor:'rgba(35, 166, 199, 0.8)',highlightFill:'rgba(35, 166, 199, 0.75)',highlightStroke:'rgba(35, 166, 199, 1)',label: 'azulbebe'}, 
+        {fillColor: 'rgba(183, 139, 36, 0.7)',strokeColor:'rgba(183, 139, 36, 0.8)',highlightFill:'rgba(183, 139, 36, 0.75)',highlightStroke:'rgba(183, 139, 36, 1)',label: 'marrom'}, 
+        {fillColor: 'rgba(213, 72, 166, 0.7)',strokeColor:'rgba(213, 72, 166, 0.8)',highlightFill:'rgba(213, 72, 166, 0.75)',highlightStroke:'rgba(213, 72, 166, 1)',label: 'roxinho'}, 
+        {fillColor: 'rgba(72, 213, 189, 0.7)',strokeColor:'rgba(72, 213, 189, 0.8)',highlightFill:'rgba(72, 213, 189, 0.75)',highlightStroke:'rgba(72, 213, 189, 1)',label: 'verdeagua'}]
 });
 
 
