@@ -139,7 +139,7 @@
                         
                         <h5>
                             Resumo Procedimentos
-                            <small>em </small><strong class="text-primary font-bold  "  style="color: #003bb3"  ng-class="grabCSS('resumoProcedimentos')"    >{{userDTO.configMonitorLaboratorio.resumoProcedimentos.data | date : 'dd/MM/yyyy'}} </strong>
+                            <small>em </small><strong class="text-primary font-bold  "  style="color: #003bb3"  ng-class="grabCSS('resumoProcedimentos')"    >{{userDTO.configMonitorLaboratorio.resumoProcedimentos.data | date : userDTO.configMonitorLaboratorio.resumoProcedimentos.formatoData }} </strong>
                             <small><strong>Total: {{userDTO.configMonitorLaboratorio.resumoProcedimentos.total}} </strong></small>
                         </h5>
                         <a  ng-if="userDTO.configMonitorLaboratorio.resumoProcedimentos.loading"   class="fa fa-circle-o-notch  fa-2x  fa-spin"  style="padding-left: 10px;  z-index: 2;"   aria-hidden="true"></a>
@@ -175,7 +175,7 @@
                         
                         <h5>
                             Resumo Pacientes
-                            <small>em </small><strong class="text-primary font-bold  "  style="color: #003bb3"  ng-class="grabCSS('resumoPacientes')"    >{{userDTO.configMonitorLaboratorio.resumoPacientes.data | date : 'dd/MM/yyyy'}} </strong>
+                            <small>em </small><strong class="text-primary font-bold  "  style="color: #003bb3"  ng-class="grabCSS('resumoPacientes')"    >{{userDTO.configMonitorLaboratorio.resumoPacientes.data | date : userDTO.configMonitorLaboratorio.resumoPacientes.formatoData}} </strong>
                             <small><strong>Total: {{userDTO.configMonitorLaboratorio.resumoPacientes.total}} </strong></small>
                         </h5>
                         <a  ng-if="userDTO.configMonitorLaboratorio.resumoPacientes.loading"   style="padding-left: 10px;  z-index: 2;"   class="fa fa-circle-o-notch  fa-2x  fa-spin" aria-hidden="true"></a>
@@ -209,7 +209,7 @@
                         
                         <h5>
                             Faturamento Estimado
-                            <small>em </small><strong class="text-primary font-bold  "  style="color: #003bb3"  ng-class="grabCSS('faturamentoEstimado')"    >{{userDTO.configMonitorLaboratorio.faturamentoEstimado.data | date : 'dd/MM/yyyy'}} </strong>
+                            <small>em </small><strong class="text-primary font-bold  "  style="color: #003bb3"  ng-class="grabCSS('faturamentoEstimado')"    >{{userDTO.configMonitorLaboratorio.faturamentoEstimado.data | date : userDTO.configMonitorLaboratorio.faturamentoEstimado.formatoData }} </strong>
                             <small><strong> Total : {{ userDTO.configMonitorLaboratorio.faturamentoEstimado.total | currency : symbol : fractionSize}}  </strong></small>
                         </h5>
                         <a  ng-if="userDTO.configMonitorLaboratorio.faturamentoEstimado.loading"  style="padding-left: 10px;  z-index: 2;"  class="fa fa-circle-o-notch  fa-2x  fa-spin" aria-hidden="true"></a>

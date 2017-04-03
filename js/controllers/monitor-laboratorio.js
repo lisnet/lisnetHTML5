@@ -21,9 +21,9 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
         $scope.userDTO.configMonitorLaboratorio = {
             unidade: 'TODAS', unidadeEx: 'TODAS', urgente: false, RANGE: 'DIA', aba: 'resumo', 
             data: {"startDate": moment(), "endDate": moment()},
-            resumoProcedimentos: {periodo: '1D', data: new Date(),loading:false,total:0,blink:true}, 
-            resumoPacientes: {periodo: '1D', data: new Date(),loading:false,total:0,blink:true}, 
-            faturamentoEstimado: {periodo: '1D', data: new Date(),loading:false,total:0,blink:true}
+            resumoProcedimentos: {periodo: '1D', data: new Date(),formatoData:'dd/MM/yyyy',loading:false,total:0,blink:true}, 
+            resumoPacientes: {periodo: '1D', data: new Date(),formatoData:'dd/MM/yyyy',loading:false,total:0,blink:true}, 
+            faturamentoEstimado: {periodo: '1D', data: new Date(),formatoData:'dd/MM/yyyy',loading:false,total:0,blink:true}
         };
         
 
@@ -111,29 +111,39 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
     self.config.faturamentoEstimado.data = new Date(self.config.faturamentoEstimado.data);
 
     $scope.escolhePeriodo = function (periodo, grafico) {
-//        console.log('periodo: '+periodo+"     grafico: "+grafico);
-        switch (grafico) {
-            case'resumoProcedimentos':
-                self.config.resumoProcedimentos.periodo = periodo;
-                break;
-            case'resumoPacientes':
-                self.config.resumoPacientes.periodo = periodo;
-                break;
-            case'faturamentoEstimado':
-                self.config.faturamentoEstimado.periodo = periodo;
-                break;
-            default:
-                console.log('Nenhum dos cases foi acionado.');
-        }
+        self.config[grafico].periodo = periodo;
+        escolherFormatoData(periodo, grafico);
         encontraGraficoParaAtualizar(grafico);
-
     };
 
     $scope.atualizar = function (){
         atualizarResumoProcedimentos();
         $timeout(function (){ atualizarResumoPacientes(); },1000);
         $timeout(function (){atualizarFaturamentoEstimado();},1500);
+        
     };
+
+    function escolherFormatoData(periodo, grafico){
+        switch (periodo){
+            case '1D':
+                self.config[grafico].formatoData = 'dd/MM/yyyy';
+            break;
+            case '1W':
+                self.config[grafico].formatoData = 'w/MM';
+            break;
+            case '1M':
+                self.config[grafico].formatoData = 'MM/yyyy';
+            break;
+            case '3M':
+                self.config[grafico].formatoData = 'MM/yyyy';
+            break;
+            case '6M':
+                self.config[grafico].formatoData = 'MM/yyyy';
+            break;
+            
+        }
+        animacaoEscolahData(grafico);
+    }
     
     function  atualizarResumoProcedimentos() {
         var _c =  $scope.userDTO.configMonitorLaboratorio;
@@ -288,12 +298,16 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
         } else {
             self.config[grafico].data.setDate(self.config[grafico].data.getDate() - 1);
         }
+        animacaoEscolahData(grafico);
+        encontraGraficoParaAtualizar(grafico);
+    };
+    
+    function animacaoEscolahData(grafico){
          self.config[grafico].css = 'animated fadeOutLeft';
         $timeout(function () {
             self.config[grafico].css = 'animated fadeInLeft';
         }, 1000);
-        encontraGraficoParaAtualizar(grafico);
-    };
+    }
     
     function encontraGraficoParaAtualizar(grafico){
         switch (grafico){

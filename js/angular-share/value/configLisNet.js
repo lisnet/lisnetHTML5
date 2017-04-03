@@ -12,9 +12,9 @@ Desc: Module/Value destinado a guardar todos as confs statticas do sistema
 angular.module("lisnet").value("configLisNet",{
    baseUrl: 'http://localhost:8080/lisnet' ,
 //      defaultDB: 'stellamaris',
-//   defaultDB: 'fleming',
+   defaultDB: 'fleming',
 //   defaultDB: 'labclim',
-defaultDB:'einstein',
+//defaultDB:'einstein',
 //defaultDB:'union',
 //defaultDB:'hpp',
 statesPesquisa:['configuraperfilusuario | Editar / Configurar Usuário','controle_notificacoes | Controle de Notificações','widgets | Home Painel de Widgets do Usuário, Inicio , Inĩcio, Começo, Casa','sair | Sair do Sistema quit exit :q'],

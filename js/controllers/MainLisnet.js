@@ -318,7 +318,7 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
 //    };
     
     
-
+//TODO mudar p array c filter e colocar no configLisNet
     this.voltaLogo = function (MOD_ST_CODIGO){
         switch (MOD_ST_CODIGO){
             case "00001":
@@ -344,6 +344,9 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
            break;
            case "00129":
                 return "fa fa-bar-chart";
+           break;
+           case "00500":
+                return "fa fa-area-chart";
            break;
            default:
            return "fa fa-tag";
