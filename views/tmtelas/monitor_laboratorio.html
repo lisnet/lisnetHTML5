@@ -17,6 +17,46 @@
         background-color: #203329;
         border-color: #080808;
     }
+    
+    
+    
+/*    @media (max-width: 950px) {
+    .navbar-header {
+        float: none;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+    .navbar-nav {
+        float: none!important;
+        margin: 7.5px -15px;
+    }
+    .navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .navbar-text {
+        float: none;
+        margin: 15px 0;
+    }
+    .navbar-collapse.collapse.in { 
+        display: block!important;
+    }
+    .collapsing {
+        overflow: hidden!important;
+    }
+}*/
+
 
 </style>
 <div class="wrapper wrapper-content animated fadeInRight  inputcolor"   ng-controller="monitorLaboratorio" style="padding-bottom: 0px;" >
@@ -96,10 +136,10 @@
 
         </div>
     </div>
-    <div class="ibox-content">
+    <div class="ibox-content"  >
 
 
-        <div class="row">
+        <div class="row"  style="height: 60%" >
             <div class="col-lg-4">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title" style="height: 53px;" >
@@ -109,16 +149,14 @@
                             <small>em </small><strong class="text-primary font-bold  "  style="color: #003bb3"  ng-class="grabCSS('resumoProcedimentos')"    >{{userDTO.configMonitorLaboratorio.resumoProcedimentos.data | date : 'dd/MM/yyyy'}} </strong>
                             <small><strong>Total: {{userDTO.configMonitorLaboratorio.resumoProcedimentos.total}} </strong></small>
                         </h5>
-                        <h5 style="padding-left: 20px;" >
-                            <a  ng-if="userDTO.configMonitorLaboratorio.resumoProcedimentos.loading"   class="fa fa-circle-o-notch  fa-2x  fa-spin" aria-hidden="true"></a>
-                        </h5>
+                        <a  ng-if="userDTO.configMonitorLaboratorio.resumoProcedimentos.loading"   class="fa fa-circle-o-notch  fa-2x  fa-spin"  style="padding-left: 10px;  z-index: 2;"   aria-hidden="true"></a>
                         <!--<div ibox-tools></div>-->
                     </div>
                     <div class="ibox-content">
                         <div>
-                            <canvas  ng-if="userDTO.configMonitorLaboratorio.resumoProcedimentos.blink"  linechart options="userDTO.configMonitorLaboratorio.lineOptions" data="userDTO.configMonitorLaboratorio.lineDataResumoProcedimentos"  height="220" width="472"  responsive=true ></canvas>
+                            <canvas  ng-if="userDTO.configMonitorLaboratorio.resumoProcedimentos.blink"  linechart options="userDTO.configMonitorLaboratorio.lineOptions" data="userDTO.configMonitorLaboratorio.lineDataResumoProcedimentos"  height="100"  width="100"  responsive=true ></canvas>
 
-                            <nav class="navbar navbar-inverse">
+                            <nav class="navbar navbar-inverse "  ng-if="userDTO.configMonitorLaboratorio.resumoProcedimentos.blink" >
                                 <div class="container-fluid">
                                     <div class="navbar-header">
                                         <a class="navbar-brand fa fa-backward" aria-hidden="true"  ng-click="shiftDate(false,'resumoProcedimentos')  "  ></a>
@@ -147,15 +185,13 @@
                             <small>em </small><strong class="text-primary font-bold  "  style="color: #003bb3"  ng-class="grabCSS('resumoPacientes')"    >{{userDTO.configMonitorLaboratorio.resumoPacientes.data | date : 'dd/MM/yyyy'}} </strong>
                             <small><strong>Total: {{userDTO.configMonitorLaboratorio.resumoPacientes.total}} </strong></small>
                         </h5>
-                        <h5 style="padding-left: 20px;" >
-                            <a  ng-if="userDTO.configMonitorLaboratorio.resumoPacientes.loading"   class="fa fa-circle-o-notch  fa-2x  fa-spin" aria-hidden="true"></a>
-                        </h5>
+                        <a  ng-if="userDTO.configMonitorLaboratorio.resumoPacientes.loading"   style="padding-left: 10px;  z-index: 2;"   class="fa fa-circle-o-notch  fa-2x  fa-spin" aria-hidden="true"></a>
                         <!--<div ibox-tools></div>-->
                     </div>
                     <div class="ibox-content">
                         <div>
-                            <canvas  ng-if="userDTO.configMonitorLaboratorio.resumoPacientes.blink" barchart options="userDTO.configMonitorLaboratorio.barOptions" data="userDTO.configMonitorLaboratorio.barDataPacientes" height="220" width="472"  responsive=true ></canvas>
-                            <nav class="navbar navbar-inverse">
+                            <canvas  ng-if="userDTO.configMonitorLaboratorio.resumoPacientes.blink" barchart options="userDTO.configMonitorLaboratorio.barOptions" data="userDTO.configMonitorLaboratorio.barDataPacientes"  height="100"  width="100"  responsive=true ></canvas>
+                            <nav class="navbar navbar-inverse" ng-if="userDTO.configMonitorLaboratorio.resumoPacientes.blink" >
                                 <div class="container-fluid">
                                     <div class="navbar-header">
                                         <a class="navbar-brand fa fa-backward" aria-hidden="true"  ng-click="shiftDate(false,'resumoPacientes')  "  ></a>
@@ -183,15 +219,13 @@
                             <small>em </small><strong class="text-primary font-bold  "  style="color: #003bb3"  ng-class="grabCSS('faturamentoEstimado')"    >{{userDTO.configMonitorLaboratorio.faturamentoEstimado.data | date : 'dd/MM/yyyy'}} </strong>
                             <small><strong> Total : {{ userDTO.configMonitorLaboratorio.faturamentoEstimado.total | currency : symbol : fractionSize}}  </strong></small>
                         </h5>
-                        <h5 style="padding-left: 20px;" >
-                            <a  ng-if="userDTO.configMonitorLaboratorio.faturamentoEstimado.loading"   class="fa fa-circle-o-notch  fa-2x  fa-spin" aria-hidden="true"></a>
-                        </h5>
+                        <a  ng-if="userDTO.configMonitorLaboratorio.faturamentoEstimado.loading"  style="padding-left: 10px;  z-index: 2;"  class="fa fa-circle-o-notch  fa-2x  fa-spin" aria-hidden="true"></a>
                         <!--<div ibox-tools></div>-->
                     </div>
                     <div class="ibox-content">
                         <div>
-                            <canvas ng-if="userDTO.configMonitorLaboratorio.faturamentoEstimado.blink"   barchart options="userDTO.configMonitorLaboratorio.barOptions" data="userDTO.configMonitorLaboratorio.barDataFaturamento" height="220" width="472"  responsive=true ></canvas>
-                            <nav class="navbar navbar-inverse">
+                            <canvas ng-if="userDTO.configMonitorLaboratorio.faturamentoEstimado.blink"   barchart options="userDTO.configMonitorLaboratorio.barOptions" data="userDTO.configMonitorLaboratorio.barDataFaturamento"  height="100"  width="100"  responsive=true ></canvas>
+                            <nav class="navbar navbar-inverse"  ng-if="userDTO.configMonitorLaboratorio.faturamentoEstimado.blink" >
                                 <div class="container-fluid">
                                     <div class="navbar-header">
                                         <a class="navbar-brand fa fa-backward" aria-hidden="true"  ng-click="shiftDate(false,'faturamentoEstimado')  "  ></a>
