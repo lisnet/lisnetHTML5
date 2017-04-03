@@ -18,46 +18,39 @@
         border-color: #080808;
     }
     
-    
-    
-/*    @media (max-width: 950px) {
-    .navbar-header {
-        float: none;
-    }
-    .navbar-toggle {
-        display: block;
-    }
-    .navbar-collapse {
-        border-top: 1px solid transparent;
-        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
-    }
-    .navbar-collapse.collapse {
-        display: none!important;
-    }
-    .navbar-nav {
-        float: none!important;
-        margin: 7.5px -15px;
-    }
-    .navbar-nav>li {
-        float: none;
-    }
-    .navbar-nav>li>a {
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
-    .navbar-text {
-        float: none;
-        margin: 15px 0;
-    }
-    .navbar-collapse.collapse.in { 
-        display: block!important;
-    }
-    .collapsing {
-        overflow: hidden!important;
-    }
-}*/
 
-
+    
+    @media (min-width: 350px) {
+        .navbar-header {
+            float: left;
+        }
+        .navbar-toggle {
+            display: none;
+        }
+        .navbar-collapse {
+            border-top: 0 none;
+            box-shadow: none;
+            width: auto;
+        }
+        .navbar-collapse.collapse {
+            display: block !important;
+            height: auto !important;
+            padding-bottom: 0;
+            overflow: visible !important;
+        }
+        .navbar-nav {
+            float: left !important;
+            margin: 0;
+        }
+        .navbar-nav>li {
+            float: left;
+        }
+        .navbar-nav>li>a {
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+    }
+    
 </style>
 <div class="wrapper wrapper-content animated fadeInRight  inputcolor"   ng-controller="monitorLaboratorio" style="padding-bottom: 0px;" >
 
@@ -156,7 +149,7 @@
                         <div>
                             <canvas  ng-if="userDTO.configMonitorLaboratorio.resumoProcedimentos.blink"  linechart options="userDTO.configMonitorLaboratorio.lineOptions" data="userDTO.configMonitorLaboratorio.lineDataResumoProcedimentos"  height="100"  width="100"  responsive=true ></canvas>
 
-                            <nav class="navbar navbar-inverse "  ng-if="userDTO.configMonitorLaboratorio.resumoProcedimentos.blink" >
+                            <nav  id="cssmenu" class="navbar navbar-inverse "  ng-if="userDTO.configMonitorLaboratorio.resumoProcedimentos.blink" >
                                 <div class="container-fluid">
                                     <div class="navbar-header">
                                         <a class="navbar-brand fa fa-backward" aria-hidden="true"  ng-click="shiftDate(false,'resumoProcedimentos')  "  ></a>
