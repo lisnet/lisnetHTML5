@@ -82,7 +82,7 @@
                     <div class="col-lg-pull-9">
                         <select    chosen id="inputunidade" class="chosen-select form-control "  tabindex="4" ng-model="userDTO.configMonitorLaboratorio.unidade" >
                             <option selected  value="TODAS" >TODAS</option>
-                            <option   value="{{u.UNI_ST_CODIGO}}" ng-repeat=" u in userDTO.unidades track by $index" >
+                            <option   value="{{u.UNI_ST_CODIGO}}" ng-repeat=" u in userDTO.unidades track by $index"   ng-if="u.UNI_CH_ATIVO === 'S'" >
                                 {{u.UNI_ST_CODIGO}}-{{u.UNI_ST_DESCRICAO| cutchars:15}}
                             </option>
                         </select>
@@ -96,7 +96,7 @@
                     <div class="col-lg-pull-8" >
                         <select    chosen id="inputunidadeEx" class="chosen-select form-control "  tabindex="4" ng-model="userDTO.configMonitorLaboratorio.unidadeEx" >
                             <option selected  value="TODAS"  >TODAS</option>
-                            <option   value="{{u.UNI_ST_CODIGO}}" ng-repeat=" u in userDTO.unidades track by $index" >
+                            <option   value="{{u.UNI_ST_CODIGO}}" ng-repeat=" u in userDTO.unidades track by $index"   ng-if="u.UNI_CH_ATIVO === 'S'" >
                                 {{u.UNI_ST_CODIGO}}-{{u.UNI_ST_DESCRICAO| cutchars:15}}
                             </option>
                         </select>

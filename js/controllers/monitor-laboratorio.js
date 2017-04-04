@@ -256,8 +256,13 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
         var _u = $scope.userDTO;
         var unidades  = [];
         
+        var _uAtivas = $scope.userDTO.unidades.filter(function (unidade){
+                return unidade.UNI_CH_ATIVO === 'S';
+            });
+        
         if(_u.configMonitorLaboratorio.unidade === 'TODAS'){
-            unidades= $scope.userDTO.unidades.map(function (unidade){
+            
+            unidades= _uAtivas.map(function (unidade){
                 return unidade.UNI_ST_CODIGO;
             });
         }else{
@@ -265,7 +270,7 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
         }
         var unidadesEx = [];
         if(_u.configMonitorLaboratorio.unidadeEx === 'TODAS'){
-             unidadesEx = $scope.userDTO.unidades.map(function (unidade){
+             unidadesEx = _uAtivas.map(function (unidade){
                 return unidade.UNI_ST_CODIGO;
             });
         }else{

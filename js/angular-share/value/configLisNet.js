@@ -11,8 +11,8 @@ Desc: Module/Value destinado a guardar todos as confs statticas do sistema
 
 angular.module("lisnet").value("configLisNet",{
    baseUrl: 'http://localhost:8080/lisnet' ,
-//      defaultDB: 'stellamaris',
-   defaultDB: 'fleming',
+      defaultDB: 'stellamaris',
+//   defaultDB: 'fleming',
 //   defaultDB: 'labclim',
 //defaultDB:'einstein',
 //defaultDB:'union',
