@@ -22,9 +22,9 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
         $scope.userDTO.configMonitorLaboratorio = {
             unidade: 'TODAS', unidadeEx: 'TODAS', urgente: false, RANGE: 'DIA', aba: 'resumo', 
             data: {"startDate": moment(), "endDate": moment()},
-            resumoProcedimentos: {periodo: '1D', data: new Date(),formatoData:'dd/MM/yyyy',loading:false,total:0,blink:true}, 
-            resumoPacientes: {periodo: '1D', data: new Date(),formatoData:'dd/MM/yyyy',loading:false,total:0,blink:true}, 
-            faturamentoEstimado: {periodo: '1D', data: new Date(),formatoData:'dd/MM/yyyy',loading:false,total:0,blink:true}
+            resumoProcedimentos: {periodo: '1D', data: new Date(),formatoData:'dd/MM/yyyy',loading:true,total:0,blink:true}, 
+            resumoPacientes: {periodo: '1D', data: new Date(),formatoData:'dd/MM/yyyy',loading:true,total:0,blink:true}, 
+            faturamentoEstimado: {periodo: '1D', data: new Date(),formatoData:'dd/MM/yyyy',loading:true,total:0,blink:true}
         };
         
         /**
@@ -54,10 +54,10 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
             datasets: [
                 {
                     label: "Resumo de Pacientes",
-                    fillColor: self.configLisnet.colorsChart[10].fillColor,
-                    strokeColor: self.configLisnet.colorsChart[10].strokeColor,
-                    highlightFill: self.configLisnet.colorsChart[10].highlightFill,
-                    highlightStroke: self.configLisnet.colorsChart[10].highlightStroke,
+                    fillColor: self.configLisnet.colorsChart[12].fillColor,
+                    strokeColor: self.configLisnet.colorsChart[12].strokeColor,
+                    highlightFill: self.configLisnet.colorsChart[12].highlightFill,
+                    highlightStroke: self.configLisnet.colorsChart[12].highlightStroke,
                     data: [0, 0, 0, 0, 0, 0, 0]
                 }
             ]
@@ -71,16 +71,16 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
             datasets: [
                 {
                     label: "Faturamento Estimado",
-                    fillColor: self.configLisnet.colorsChart[8].fillColor,
-                    strokeColor: self.configLisnet.colorsChart[8].strokeColor,
-                    highlightFill: self.configLisnet.colorsChart[8].highlightFill,
-                    highlightStroke: self.configLisnet.colorsChart[8].highlightStroke,
+                    fillColor: self.configLisnet.colorsChart[1].fillColor,
+                    strokeColor: self.configLisnet.colorsChart[1].strokeColor,
+                    highlightFill: self.configLisnet.colorsChart[1].highlightFill,
+                    highlightStroke: self.configLisnet.colorsChart[1].highlightStroke,
                     data: [0, 0, 0, 0, 0, 0, 0]
                 }
             ]
         };
         
-        atualizarResumoProcedimentos();
+        $timeout(function (){atualizarResumoProcedimentos();},800);
         $timeout(function (){atualizarResumoPacientes();},3000);
         $timeout(function (){atualizarFaturamentoEstimado();},6000);
         

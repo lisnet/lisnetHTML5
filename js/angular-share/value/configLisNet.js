@@ -378,6 +378,38 @@ stateArray : [{MOD_ST_CODIGO:'00006',state:{
             }
         }
     }},
+//{MOD_ST_CODIGO:'00502',state:{
+//            url: "/monitordelaboratorio",
+//            parent: 'lisnet',
+//            templateUrl: "views/tmtelas/monitor_laboratorio.html",
+//            params: {breadcrumb : [ {label:'Home',go:'widgets'},{label:'Monitor de Laboratório',go:null}]},
+//            data: {pageTitle: 'Notificações'},
+//            resolve: {
+//            loadPlugin: function ($ocLazyLoad) {
+//                return $ocLazyLoad.load([
+//                    {
+//                        files: ['bower_components/Chart.js/Chart.js']
+//                    }
+//                    ,
+//                    {
+//                        name: 'angles',
+//                        files: ['js/plugins/chartJs/angles.js']
+//                    },
+//                    {
+//                        serie: true,
+//                        files: ['js/plugins/daterangepicker/daterangepicker.js', 'css/plugins/daterangepicker/daterangepicker-bs3.css']
+//                    },
+//                    {
+//                        name: 'daterangepicker',
+//                        files: ['js/plugins/daterangepicker/angular-daterangepicker.js']
+//                    }, 
+//                    {
+//                        files: ['bower_components/moment/min/moment.min.js']
+//                    }
+//                ]);
+//            }
+//        }
+//    }},
 {MOD_ST_CODIGO:'00220',state:{
             url: "/cadastro_pacientes",
             templateUrl: "views/tmtelas/cadastro_paciente/cadastro_paciente.html",
@@ -432,7 +464,8 @@ stateArray : [{MOD_ST_CODIGO:'00006',state:{
         {fillColor: 'rgba(35, 166, 199, 0.7)',strokeColor:'rgba(35, 166, 199, 0.8)',highlightFill:'rgba(35, 166, 199, 0.75)',highlightStroke:'rgba(35, 166, 199, 1)',label: 'azulbebe'}, 
         {fillColor: 'rgba(183, 139, 36, 0.7)',strokeColor:'rgba(183, 139, 36, 0.8)',highlightFill:'rgba(183, 139, 36, 0.75)',highlightStroke:'rgba(183, 139, 36, 1)',label: 'marrom'}, 
         {fillColor: 'rgba(213, 72, 166, 0.7)',strokeColor:'rgba(213, 72, 166, 0.8)',highlightFill:'rgba(213, 72, 166, 0.75)',highlightStroke:'rgba(213, 72, 166, 1)',label: 'roxinho'}, 
-        {fillColor: 'rgba(72, 213, 189, 0.7)',strokeColor:'rgba(72, 213, 189, 0.8)',highlightFill:'rgba(72, 213, 189, 0.75)',highlightStroke:'rgba(72, 213, 189, 1)',label: 'verdeagua'}]
+        {fillColor: 'rgba(72, 213, 189, 0.7)',strokeColor:'rgba(72, 213, 189, 0.8)',highlightFill:'rgba(72, 213, 189, 0.75)',highlightStroke:'rgba(72, 213, 189, 1)',label: 'verdeagua'},
+        {fillColor: 'rgba(20, 28, 183, 0.7)',strokeColor:'rgba(20, 28, 183, 0.8)',highlightFill:'rgba(20, 28, 183, 0.75)',highlightStroke:'rgba(20, 28, 183, 1)',label: 'azulescuro'}]
 });
 
 
