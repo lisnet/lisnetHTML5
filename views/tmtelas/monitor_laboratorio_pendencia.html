@@ -52,6 +52,9 @@
     }
     
 </style>
+
+
+
 <div class="wrapper wrapper-content animated fadeInRight  inputcolor"   ng-controller="monitorLaboratorio" style="padding-bottom: 0px;" >
 
     <div class="ibox-content" >
@@ -132,71 +135,72 @@
     
     <div class="ibox-content"  >
 
+        
+        <div class="row"  style="height: 60%"  >
+            
+            <div class="col-lg-4">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title" style="height: 53px;" >
+                        <h5>
+                            Resumo Entregues
+                            <small>em </small><strong class="text-primary font-bold  "  style="color: #003bb3"  ng-class="grabCSS('resumoEntregues')"    >{{userDTO.configMonitorLaboratorio.resumoEntregues.data | date : userDTO.configMonitorLaboratorio.resumoEntregues.formatoData }} </strong>
+                            <strong>Total: </strong> <small class="font-bold "  style="color: #003bb3"   >{{userDTO.configMonitorLaboratorio.resumoEntregues.total}} </small>
+                            <strong>Entregues:</strong><small  class="font-bold "  style="color: #003bb3"  > {{userDTO.configMonitorLaboratorio.resumoEntregues.entregues}} </small>
+                        </h5>
+                        <a  ng-if="userDTO.configMonitorLaboratorio.resumoEntregues.loading"   class="fa fa-circle-o-notch  fa-2x  fa-spin"  style="padding-left: 10px;  z-index: 2;"   aria-hidden="true"></a>
+                        <!--<div ibox-tools></div>-->
+                    </div>
+                    <div class="ibox-content">
+                        <div>
+                            <canvas  ng-if="userDTO.configMonitorLaboratorio.resumoEntregues.blink"  linechart options="userDTO.configMonitorLaboratorio.lineOptions" data="userDTO.configMonitorLaboratorio.lineDataResumoEntregues"  height="100"  width="100"  responsive=true ></canvas>
 
-        <div class="row"  style="height: 60%"  ng-if="$state.params.modStCodigo === '00501'" >
+                            <nav  id="cssmenu" class="navbar navbar-inverse "  ng-if="userDTO.configMonitorLaboratorio.resumoEntregues.blink" >
+                                <div class="container-fluid">
+                                    <div class="navbar-header">
+                                        <a class="navbar-brand fa fa-backward" aria-hidden="true"  ng-click="shiftDate(false,'resumoEntregues')  "  ></a>
+                                    </div>
+                                    <ul class="nav navbar-nav">
+                                        <li  ng-class="{ active: isActive(f,'resumoEntregues')} "  ng-repeat="f in filtros"    > <a ng-click="escolhePeriodo(f, 'resumoEntregues')"    class="font-bold text-danger" >   {{f}}</a> </li>
+                                    </ul>
+                                    
+                                    <div class="navbar-footer pull-right ">
+                                        <a class="navbar-brand fa fa-forward" aria-hidden="true"     ng-click="shiftDate(true,'resumoEntregues')" ></a>
+                                    </div>
+                                </div>
+                            </nav>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <div class="col-lg-4">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title" style="height: 53px;" >
                         
                         <h5>
+                            Resumo dos Status
+                            <small>em </small><strong class="text-primary font-bold  "  style="color: #003bb3"  ng-class="grabCSS('resumoStatus')"    >{{userDTO.configMonitorLaboratorio.resumoStatus.data | date : userDTO.configMonitorLaboratorio.resumoStatus.formatoData }} </strong>
+                            <!--<small><strong>Total: {{userDTO.configMonitorLaboratorio.resumoStatus.total}} </strong></small>-->
+                        </h5>
+                        <a  ng-if="userDTO.configMonitorLaboratorio.resumoStatus.loading"   style="padding-left: 10px;  z-index: 2;"   class="fa fa-circle-o-notch  fa-2x  fa-spin" aria-hidden="true"></a>
+                        <!--<div ibox-tools></div>-->
+                    </div>
+                    <div class="ibox-content">
+                        <div>
+                            <canvas  ng-if="userDTO.configMonitorLaboratorio.resumoStatus.blink"  id="doughnutchartResumoStatus" doughnutchart options="userDTO.configMonitorLaboratorio.doughnutOptions" data="userDTO.configMonitorLaboratorio.doughnutDataResumoStatus"   height="300"  responsive=true    ></canvas>
                             
-                            Resumo Procedimentos
-                            <small>em </small><strong class="text-primary font-bold  "  style="color: #003bb3"  ng-class="grabCSS('resumoProcedimentos')"    >{{userDTO.configMonitorLaboratorio.resumoProcedimentos.data | date : userDTO.configMonitorLaboratorio.resumoProcedimentos.formatoData }} </strong>
-                            <small><strong>Total: {{userDTO.configMonitorLaboratorio.resumoProcedimentos.total}} </strong></small>
-                        </h5>
-                        <a  ng-if="userDTO.configMonitorLaboratorio.resumoProcedimentos.loading"   class="fa fa-circle-o-notch  fa-2x  fa-spin"  style="padding-left: 10px;  z-index: 2;"   aria-hidden="true"></a>
-                        <!--<div ibox-tools></div>-->
-                    </div>
-                    <div class="ibox-content">
-                        <div>
-                            <canvas  ng-if="userDTO.configMonitorLaboratorio.resumoProcedimentos.blink"  linechart options="userDTO.configMonitorLaboratorio.lineOptions" data="userDTO.configMonitorLaboratorio.lineDataResumoProcedimentos"  height="100"  width="100"  responsive=true ></canvas>
-
-                            <nav  id="cssmenu" class="navbar navbar-inverse "  ng-if="userDTO.configMonitorLaboratorio.resumoProcedimentos.blink" >
+                            <nav class="navbar navbar-inverse" ng-if="userDTO.configMonitorLaboratorio.resumoStatus.blink" >
                                 <div class="container-fluid">
                                     <div class="navbar-header">
-                                        <a class="navbar-brand fa fa-backward" aria-hidden="true"  ng-click="shiftDate(false,'resumoProcedimentos')  "  ></a>
+                                        <a class="navbar-brand fa fa-backward" aria-hidden="true"  ng-click="shiftDate(false,'resumoStatus')  "  ></a>
                                     </div>
                                     <ul class="nav navbar-nav">
-                                        <li  ng-class="{ active: isActive(f,'resumoProcedimentos')} "  ng-repeat="f in filtros"    > <a ng-click="escolhePeriodo(f, 'resumoProcedimentos')"    class="font-bold text-danger" >   {{f}}</a> </li>
+                                        <li  ng-class="{ active: isActive(f,'resumoStatus')} "  ng-repeat="f in filtros"    > <a ng-click="escolhePeriodo(f, 'resumoStatus')"    class="font-bold text-danger" >   {{f}}</a> </li>
                                     </ul>
                                     
                                     <div class="navbar-footer pull-right ">
-                                        <a class="navbar-brand fa fa-forward" aria-hidden="true"     ng-click="shiftDate(true,'resumoProcedimentos')" ></a>
-                                    </div>
-                                </div>
-                            </nav>
-
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-            <div class="col-lg-4">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title" style="height: 53px;" >
-                        
-                        <h5>
-                            Resumo Pacientes
-                            <small>em </small><strong class="text-primary font-bold  "  style="color: #003bb3"  ng-class="grabCSS('resumoPacientes')"    >{{userDTO.configMonitorLaboratorio.resumoPacientes.data | date : userDTO.configMonitorLaboratorio.resumoPacientes.formatoData}} </strong>
-                            <small><strong>Total: {{userDTO.configMonitorLaboratorio.resumoPacientes.total}} </strong></small>
-                        </h5>
-                        <a  ng-if="userDTO.configMonitorLaboratorio.resumoPacientes.loading"   style="padding-left: 10px;  z-index: 2;"   class="fa fa-circle-o-notch  fa-2x  fa-spin" aria-hidden="true"></a>
-                        <!--<div ibox-tools></div>-->
-                    </div>
-                    <div class="ibox-content">
-                        <div>
-                            <canvas  ng-if="userDTO.configMonitorLaboratorio.resumoPacientes.blink" barchart options="userDTO.configMonitorLaboratorio.barOptions" data="userDTO.configMonitorLaboratorio.barDataPacientes"  height="100"  width="100"  responsive=true ></canvas>
-                            <nav class="navbar navbar-inverse" ng-if="userDTO.configMonitorLaboratorio.resumoPacientes.blink" >
-                                <div class="container-fluid">
-                                    <div class="navbar-header">
-                                        <a class="navbar-brand fa fa-backward" aria-hidden="true"  ng-click="shiftDate(false,'resumoPacientes')  "  ></a>
-                                    </div>
-                                    <ul class="nav navbar-nav">
-                                        <li  ng-class="{ active: isActive(f,'resumoPacientes')} "  ng-repeat="f in filtros"    > <a ng-click="escolhePeriodo(f, 'resumoPacientes')"    class="font-bold text-danger" >   {{f}}</a> </li>
-                                    </ul>
-                                    
-                                    <div class="navbar-footer pull-right ">
-                                        <a class="navbar-brand fa fa-forward" aria-hidden="true"     ng-click="shiftDate(true,'resumoPacientes')" ></a>
+                                        <a class="navbar-brand fa fa-forward" aria-hidden="true"     ng-click="shiftDate(true,'resumoStatus')" ></a>
                                     </div>
                                 </div>
                             </nav>
@@ -210,27 +214,27 @@
                     <div class="ibox-title" style="height: 53px;" >
                         
                         <h5>
-                            Faturamento Estimado
-                            <small>em </small><strong class="text-primary font-bold  "  style="color: #003bb3"  ng-class="grabCSS('faturamentoEstimado')"    >{{userDTO.configMonitorLaboratorio.faturamentoEstimado.data | date : userDTO.configMonitorLaboratorio.faturamentoEstimado.formatoData }} </strong>
-                            <small><strong> Total : {{ userDTO.configMonitorLaboratorio.faturamentoEstimado.total | currency : symbol : fractionSize}}  </strong></small>
+                            Resumo de Pendências
+                            <small>em </small><strong class="text-primary font-bold  "  style="color: #003bb3"  ng-class="grabCSS('resumoPendencias')"    >{{userDTO.configMonitorLaboratorio.resumoPendencias.data | date : userDTO.configMonitorLaboratorio.resumoPendencias.formatoData }} </strong>
+                            <!--<small><strong>Total: {{userDTO.configMonitorLaboratorio.resumoStatus.total}} </strong></small>-->
                         </h5>
-                        <a  ng-if="userDTO.configMonitorLaboratorio.faturamentoEstimado.loading"  style="padding-left: 10px;  z-index: 2;"  class="fa fa-circle-o-notch  fa-2x  fa-spin" aria-hidden="true"></a>
+                        <a  ng-if="userDTO.configMonitorLaboratorio.resumoPendencias.loading"   style="padding-left: 10px;  z-index: 2;"   class="fa fa-circle-o-notch  fa-2x  fa-spin" aria-hidden="true"></a>
                         <!--<div ibox-tools></div>-->
                     </div>
                     <div class="ibox-content">
                         <div>
-                            <canvas ng-if="userDTO.configMonitorLaboratorio.faturamentoEstimado.blink"   barchart options="userDTO.configMonitorLaboratorio.barOptions" data="userDTO.configMonitorLaboratorio.barDataFaturamento"  height="100"  width="100"  responsive=true ></canvas>
-                            <nav class="navbar navbar-inverse"  ng-if="userDTO.configMonitorLaboratorio.faturamentoEstimado.blink" >
+                            <canvas  ng-if="userDTO.configMonitorLaboratorio.resumoPendencias.blink"  id="doughnutchartResumoStatus" doughnutchart options="userDTO.configMonitorLaboratorio.doughnutOptions" data="userDTO.configMonitorLaboratorio.doughnutDataResumoPendencias"   height="300"  responsive=true    ></canvas>
+                            
+                            <nav class="navbar navbar-inverse" ng-if="userDTO.configMonitorLaboratorio.resumoPendencias.blink" >
                                 <div class="container-fluid">
                                     <div class="navbar-header">
-                                        <a class="navbar-brand fa fa-backward" aria-hidden="true"  ng-click="shiftDate(false,'faturamentoEstimado')  "  ></a>
+                                        <a class="navbar-brand fa fa-backward" aria-hidden="true"  ng-click="shiftDate(false,'resumoPendencias')  "  ></a>
                                     </div>
                                     <ul class="nav navbar-nav">
-                                        <li  ng-class="{ active: isActive(f,'faturamentoEstimado')} "  ng-repeat="f in filtros"    > <a ng-click="escolhePeriodo(f, 'faturamentoEstimado')"    class="font-bold text-danger" >   {{f}}</a> </li>
+                                        <li  ng-class="{ active: isActive(f,'resumoPendencias')} "  ng-repeat="f in filtros"    > <a ng-click="escolhePeriodo(f, 'resumoPendencias')"    class="font-bold text-danger" >   {{f}}</a> </li>
                                     </ul>
-                                    
                                     <div class="navbar-footer pull-right ">
-                                        <a class="navbar-brand fa fa-forward" aria-hidden="true"     ng-click="shiftDate(true,'faturamentoEstimado')" ></a>
+                                        <a class="navbar-brand fa fa-forward" aria-hidden="true"     ng-click="shiftDate(true,'resumoPendencias')" ></a>
                                     </div>
                                 </div>
                             </nav>
@@ -242,4 +246,8 @@
             
         </div>
         
+        
     </div>
+    
+    
+    

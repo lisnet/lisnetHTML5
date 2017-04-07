@@ -57,6 +57,7 @@
         "page-scroll": {
             "context": "a"
         },
+        "doughnutchart": {},
         "ui-sref-active": {
             "context": "li"
         }

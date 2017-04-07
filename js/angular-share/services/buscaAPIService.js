@@ -177,11 +177,11 @@ angular.module('lisnet').service("buscaAPIService",function ($http){
      * @param {type} configLisNet
      * @returns {unresolved}
      */
-    this.buscaUnidades = function (login, configLisNet){
+    this.buscaUnidades = function (login,cli_in_codigo ,configLisNet){
 //        console.log("buscaUnidades = " + JSON.stringify(configLisNet)   + "  ...........");
-        var params = '?login=' + login + '&dbname='+configLisNet.defaultDB;
+        var params = '?login=' + login + '&dbname='+configLisNet.defaultDB+'&cliente='+cli_in_codigo;
         var url = configLisNet.baseUrl +'/buscaUnidades' + params;
-//        console.log('buscaUnidades  url construida = '+url);
+        console.log('buscaUnidades  url construida = '+url);
         return $http({method : 'GET',url : url,
             headers : {
                 'Content-Type' : 'application/x-www-form-urlencoded',
@@ -505,7 +505,7 @@ angular.module('lisnet').service("buscaAPIService",function ($http){
     this.buscaGrafico = function (tipo,periodo,json,configLisNet){
         console.log('buscaGrafico : '+JSON.stringify(json));
         var url = configLisNet.baseUrl +'/buscaGrafico/'+tipo+'/' +periodo+'?dbname='+configLisNet.defaultDB;
-        console.log('url : '+url);
+//        console.log('url : '+url);
         return $http.post(url,json,
             {
                 'Content-Type' : 'application/x-www-form-urlencoded',

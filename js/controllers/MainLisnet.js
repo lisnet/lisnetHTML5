@@ -161,7 +161,7 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
 //                              
 //                            vm.modalLoading.dismiss('cancel');
                                  $timeout(function () {
-                                      buscaAPIService.buscaUnidades(this.userDTO.USU_ST_CODIGO, this.userDTO.configLisNet).then(function sucessCallBack(response) {
+                                      buscaAPIService.buscaUnidades(this.userDTO.USU_ST_CODIGO,this.userDTO.cliente.CLI_IN_CODIGO ,this.userDTO.configLisNet).then(function sucessCallBack(response) {
                                           this.userDTO.unidades = response.data;
                                           if(this.userDTO.unidades && this.userDTO.unidades.length > 0){
                                               this.userDTO.unidade = helperService.retornaUnidade(this.userDTO.UNI_ST_CODIGO,this.userDTO.unidades);
@@ -488,13 +488,6 @@ $timeout, sairDoSistemaService,$localStorage,$window,gerenciaRelatorioService,$i
 //    }
 //  $rootScope.$broadcast("startNotificacaoTimer");
 //};
-
-
-
-
-
-
-
 
 }
 angular.module('lisnet')

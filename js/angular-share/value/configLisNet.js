@@ -11,7 +11,8 @@ Desc: Module/Value destinado a guardar todos as confs statticas do sistema
 
 angular.module("lisnet").value("configLisNet",{
    baseUrl: 'http://localhost:8080/lisnet' ,
-      defaultDB: 'stellamaris',
+      defaultDB: 'mboimirim',
+//      defaultDB: 'stellamaris',
 //   defaultDB: 'fleming',
 //   defaultDB: 'labclim',
 //defaultDB:'einstein',
@@ -347,11 +348,11 @@ stateArray : [{MOD_ST_CODIGO:'00006',state:{
                 data: {pageTitle: 'Sobre'}
             }},
 {MOD_ST_CODIGO:'00501',state:{
-            url: "/monitordelaboratorio",
+            url: "/monitordelaboratoriogeral",
             parent: 'lisnet',
             templateUrl: "views/tmtelas/monitor_laboratorio.html",
-            params: {breadcrumb : [ {label:'Home',go:'widgets'},{label:'Monitor de Laboratório',go:null}]},
-            data: {pageTitle: 'Notificações'},
+            params: {},
+            data: {pageTitle: '00501-Geral'},
             resolve: {
             loadPlugin: function ($ocLazyLoad) {
                 return $ocLazyLoad.load([
@@ -378,38 +379,38 @@ stateArray : [{MOD_ST_CODIGO:'00006',state:{
             }
         }
     }},
-//{MOD_ST_CODIGO:'00502',state:{
-//            url: "/monitordelaboratorio",
-//            parent: 'lisnet',
-//            templateUrl: "views/tmtelas/monitor_laboratorio.html",
-//            params: {breadcrumb : [ {label:'Home',go:'widgets'},{label:'Monitor de Laboratório',go:null}]},
-//            data: {pageTitle: 'Notificações'},
-//            resolve: {
-//            loadPlugin: function ($ocLazyLoad) {
-//                return $ocLazyLoad.load([
-//                    {
-//                        files: ['bower_components/Chart.js/Chart.js']
-//                    }
-//                    ,
-//                    {
-//                        name: 'angles',
-//                        files: ['js/plugins/chartJs/angles.js']
-//                    },
-//                    {
-//                        serie: true,
-//                        files: ['js/plugins/daterangepicker/daterangepicker.js', 'css/plugins/daterangepicker/daterangepicker-bs3.css']
-//                    },
-//                    {
-//                        name: 'daterangepicker',
-//                        files: ['js/plugins/daterangepicker/angular-daterangepicker.js']
-//                    }, 
-//                    {
-//                        files: ['bower_components/moment/min/moment.min.js']
-//                    }
-//                ]);
-//            }
-//        }
-//    }},
+{MOD_ST_CODIGO:'00502',state:{
+            url: "/monitordelaboratoriopendencia",
+            parent: 'lisnet',
+            templateUrl: "views/tmtelas/monitor_laboratorio_pendencia.html",
+            params: {},
+            data: {pageTitle: '00502-Pendências'},
+            resolve: {
+            loadPlugin: function ($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                       {
+                            name: 'angles',
+                            files: ['js/plugins/chartJs/angles.js', 'bower_components/Chart.js/Chart.js']
+                        },
+                        {
+                            name: 'angles',
+                            files: ['js/plugins/chartJs/angles.js']
+                        },
+                    {
+                        serie: true,
+                        files: ['js/plugins/daterangepicker/daterangepicker.js', 'css/plugins/daterangepicker/daterangepicker-bs3.css']
+                    },
+                    {
+                        name: 'daterangepicker',
+                        files: ['js/plugins/daterangepicker/angular-daterangepicker.js']
+                    }, 
+                    {
+                        files: ['bower_components/moment/min/moment.min.js']
+                    }
+                ]);
+            }
+        }
+    }},
 {MOD_ST_CODIGO:'00220',state:{
             url: "/cadastro_pacientes",
             templateUrl: "views/tmtelas/cadastro_paciente/cadastro_paciente.html",

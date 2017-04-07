@@ -227,38 +227,39 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
         templateUrl: "views/tmtelas/controle_notificacoes.html",
         params: {breadcrumb : [ {label: 'Home', go: 'widgets'}, {label: 'Controle de Notificações', go: null}]},
         data: {pageTitle: 'Notificações'}
-    }).state('monitordelaboratorio', {
-            url: "/monitordelaboratorio",
-            parent: 'lisnet',
-            templateUrl: "views/tmtelas/monitor_laboratorio.html",
-            params: {breadcrumb : [ {label:'Home',go:'widgets'},{label:'Monitor de Laboratório',go:null}]},
-            data: {pageTitle: 'Notificações'},
-            resolve: {
-            loadPlugin: function ($ocLazyLoad) {
-                return $ocLazyLoad.load([
-                    {
-                        files: ['bower_components/Chart.js/Chart.js']
-                    }
-                    ,
-                    {
-                        name: 'angles',
-                        files: ['js/plugins/chartJs/angles.js']
-                    },
-                    {
-                        serie: true,
-                        files: ['js/plugins/daterangepicker/daterangepicker.js', 'css/plugins/daterangepicker/daterangepicker-bs3.css']
-                    },
-                    {
-                        name: 'daterangepicker',
-                        files: ['js/plugins/daterangepicker/angular-daterangepicker.js']
-                    }, 
-                    {
-                        files: ['bower_components/moment/min/moment.min.js']
-                    }
-                ]);
-            }
-        }
     });
+//            .state('monitordelaboratorio', {
+//            url: "/monitordelaboratorio",
+//            parent: 'lisnet',
+//            templateUrl: "views/tmtelas/monitor_laboratorio.html",
+//            params: {breadcrumb : [ {label:'Home',go:'widgets'},{label:'Monitor de Laboratório',go:null}]},
+//            data: {pageTitle: 'Notificações'},
+//            resolve: {
+//            loadPlugin: function ($ocLazyLoad) {
+//                return $ocLazyLoad.load([
+//                    {
+//                        files: ['bower_components/Chart.js/Chart.js']
+//                    }
+//                    ,
+//                    {
+//                        name: 'angles',
+//                        files: ['js/plugins/chartJs/angles.js']
+//                    },
+//                    {
+//                        serie: true,
+//                        files: ['js/plugins/daterangepicker/daterangepicker.js', 'css/plugins/daterangepicker/daterangepicker-bs3.css']
+//                    },
+//                    {
+//                        name: 'daterangepicker',
+//                        files: ['js/plugins/daterangepicker/angular-daterangepicker.js']
+//                    }, 
+//                    {
+//                        files: ['bower_components/moment/min/moment.min.js']
+//                    }
+//                ]);
+//            }
+//        }
+//    });
 
 //     .state('consultadelaudos', {
 //        url: "/consulta/laudo/:userDTO",
