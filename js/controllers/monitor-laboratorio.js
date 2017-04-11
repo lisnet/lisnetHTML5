@@ -19,9 +19,20 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
     $scope.filtros = ['1D', '1W', '1M'];
     self.configLisnet = $scope.userDTO.configLisNet;
     self.config = $scope.userDTO.configMonitorLaboratorio;
+//    $scope.options = { legend: { display: true } };
 //    $scope.paramsStateConfig =  $stateParams;
 //    console.log(JSON.stringify($stateParams,null,2));
     $scope.colours = [{fillColor:["#FF0000", "#00FF00", "#0000FF", "#00FFFF", "#FFFF00"]}];
+    
+        $scope.series = ['Series A'];
+        $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
+        
+        $scope.options = { legend: { display: true },scales: {yAxes: [{id: 'y-axis-1',type: 'linear',display: true,position: 'left',color:'red'},{id: 'y-axis-2',type: 'linear',display: true,position: 'right'}]}};
+        
+  $scope.onClick = function (points, evt) {
+    console.log(points, evt);
+  };
+    
 
 //    var abas = [{label: 'resumo', desc: 'Resumo Geral'}, {label: 'pendencia', desc: 'Pendências'}, {label: 'setores', desc: 'Pendências por Setor'}];
     if (!$scope.userDTO.configMonitorLaboratorio) {
@@ -41,15 +52,21 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
          * Data for Doughnut chart Resume Status
          */
         $scope.userDTO.configMonitorLaboratorio.doughnutDataResumoStatus = [{value: 0,color:"#a3e1d4",highlight: "#1ab394",label: "App"}];
+        $scope.userDTO.configMonitorLaboratorio.dataResumoStatus = [];
+        $scope.userDTO.configMonitorLaboratorio.labelResumoStatus = [];
     
         /**
          * Data for Doughnut chart Resumo Pendencias
          */
+        $scope.userDTO.configMonitorLaboratorio.labelResumoPendencias = [];
+        $scope.userDTO.configMonitorLaboratorio.dataResumoPendencias = [];
         $scope.userDTO.configMonitorLaboratorio.doughnutDataResumoPendencias = [{value: 0,color:"#a3e1d4",highlight: "#1ab394",label: "App"}];
     
         /**
          * Data for Line chart Resumo Procedimentos
          */
+        $scope.userDTO.configMonitorLaboratorio.labelResumoProcedimentos = [];
+        $scope.userDTO.configMonitorLaboratorio.dataResumoProcedimentos = [[]];
         $scope.userDTO.configMonitorLaboratorio.lineDataResumoProcedimentos = {
             labels: ["0", "1", "2", "3", "4", "5", "6"],
             datasets: [
@@ -85,6 +102,11 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
             ]
         };
         
+        
+        $scope.userDTO.configMonitorLaboratorio.labelResumoEntregues = [];
+        $scope.userDTO.configMonitorLaboratorio.dataResumoEntregues = [[]];
+        $scope.userDTO.configMonitorLaboratorio.datasetOverrideResumoEntregues = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
+        
         /**
          * Data for Line chart Resumo 
          */
@@ -107,6 +129,9 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
         /**
          * Data for Bar chart Paciente
          */
+        $scope.userDTO.configMonitorLaboratorio.labelPacientes = [];
+        $scope.userDTO.configMonitorLaboratorio.dataPacientes = [[]];
+        $scope.userDTO.configMonitorLaboratorio.seriesPacientes = ['Pacientes'];
         $scope.userDTO.configMonitorLaboratorio.barDataPacientes = {
             labels: ["0", "1", "2", "3", "4", "5", "6"],
             datasets: [
@@ -124,6 +149,9 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
         /**
          * Data for Bar chart Faturamento
          */
+        $scope.userDTO.configMonitorLaboratorio.labelFaturamento = [];
+        $scope.userDTO.configMonitorLaboratorio.dataFaturamento = [[]];
+        $scope.userDTO.configMonitorLaboratorio.seriesFaturamento = ['Seilah'];
         $scope.userDTO.configMonitorLaboratorio.barDataFaturamento = {
             labels: ["0", "1", "2", "3", "4", "5", "6"],
             datasets: [
@@ -235,8 +263,12 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
                         var _d = response.data;
 //                        console.log(JSON.stringify(_d, null, 2));
                         var _g = $scope.userDTO.configMonitorLaboratorio.lineDataResumoProcedimentos;
+                        $scope.userDTO.configMonitorLaboratorio.labelResumoProcedimentos = [];
+                        $scope.userDTO.configMonitorLaboratorio.dataResumoProcedimentos = [[]];
                         _g.labels = _d[0];
                         _g.datasets[0].data = _d[1];
+                        $scope.userDTO.configMonitorLaboratorio.labelResumoProcedimentos = _d[0];
+                        $scope.userDTO.configMonitorLaboratorio.dataResumoProcedimentos[0] = _d[1];
                         _p.loading = false;
                         _p.blink = false;
                         _p.total = _d[1].reduce(function (prev,current){
@@ -283,6 +315,8 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
                         var _g = $scope.userDTO.configMonitorLaboratorio.barDataPacientes;
                         _g.labels = _d[0];
                         _g.datasets[0].data = _d[1];
+                        $scope.userDTO.configMonitorLaboratorio.labelPacientes = _d[0];
+                        $scope.userDTO.configMonitorLaboratorio.dataPacientes = [_d[1]];
                         _p.loading = false;
                         _p.blink = false;
                         _p.total = _d[1].reduce(function (prev,current){
@@ -313,6 +347,9 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
                         var _g = $scope.userDTO.configMonitorLaboratorio.barDataFaturamento;
                         _g.labels = _d[0];
                         _g.datasets[0].data = _d[1];
+                        $scope.userDTO.configMonitorLaboratorio.labelFaturamento = _d[0];
+                        $scope.userDTO.configMonitorLaboratorio.dataFaturamento = [_d[1]];
+                        $scope.userDTO.configMonitorLaboratorio.seriesFaturamento = ['Seilah','kjkkjh'];
                         _f.loading = false;
                         _f.blink = false;
                         _f.total = _d[1].reduce(function (prev,current){
@@ -342,6 +379,8 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
                         var _g = $scope.userDTO.configMonitorLaboratorio.lineDataResumoEntregues;
                         _g.labels = _d[0];
                         _g.datasets[0].data = _d[1];
+                        $scope.userDTO.configMonitorLaboratorio.labelResumoEntregues = _d[0];
+                        $scope.userDTO.configMonitorLaboratorio.dataResumoEntregues = [_d[1]];
                         _e.loading = false;
                         _e.blink = false;
                         _e.total = _d[1].reduce(function (prev,current){
@@ -381,9 +420,13 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
 //                            _p.resolveStatus = data;
 //                          alert('Success: ' + data);
 
-                                $scope.userDTO.configMonitorLaboratorio.doughnutDataResumoStatus = [];
+                               $scope.userDTO.configMonitorLaboratorio.doughnutDataResumoStatus = [];
+                               $scope.userDTO.configMonitorLaboratorio.labelResumoStatus = [];
+                               $scope.userDTO.configMonitorLaboratorio.dataResumoStatus = [];
                                for (_i in data) {
                                    $scope.userDTO.configMonitorLaboratorio.doughnutDataResumoStatus[_i] = {value: data[_i][1], label: data[_i][0], color: _color[_i].fillColor, highlight: _color[_i].highlightFill};
+                                   $scope.userDTO.configMonitorLaboratorio.labelResumoStatus.push(data[_i][0]);
+                                   $scope.userDTO.configMonitorLaboratorio.dataResumoStatus.push(data[_i][1]);
                                }
                                 _s.loading = false;
                                _s.blink = false;
@@ -416,9 +459,17 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
                                var data = response.data;
 
 //                               console.log(JSON.stringify(data,null,2));
+                                $scope.userDTO.configMonitorLaboratorio.colorsResumoPendencias = [];
+                                $scope.userDTO.configMonitorLaboratorio.labelResumoPendencias = [];
+                                $scope.userDTO.configMonitorLaboratorio.dataResumoPendencias = [];
+                                $scope.userDTO.configMonitorLaboratorio.seriesResumoPendencias = []
                                $scope.userDTO.configMonitorLaboratorio.doughnutDataResumoPendencias = [];
                                for (_i in data) {
                                    $scope.userDTO.configMonitorLaboratorio.doughnutDataResumoPendencias[_i] = {value: data[_i][1], label: data[_i][0], color: data[_i][2], highlight: data[_i][2]};
+                                   $scope.userDTO.configMonitorLaboratorio.labelResumoPendencias.push(data[_i][0]);
+                                   $scope.userDTO.configMonitorLaboratorio.dataResumoPendencias.push(data[_i][1]);
+                                   $scope.userDTO.configMonitorLaboratorio.colorsResumoPendencias.push(data[_i][2]);
+                                   $scope.userDTO.configMonitorLaboratorio.seriesResumoPendencias.push(data[_i][0]);
                                }
 
                                _p.loading = false;

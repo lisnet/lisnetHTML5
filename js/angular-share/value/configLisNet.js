@@ -388,14 +388,18 @@ stateArray : [{MOD_ST_CODIGO:'00006',state:{
             resolve: {
             loadPlugin: function ($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                       {
-                            name: 'angles',
-                            files: ['js/plugins/chartJs/angles.js', 'bower_components/Chart.js/Chart.js']
-                        },
+//                       {
+//                            name: 'angles',
+//                            files: ['js/plugins/chartJs/angles.js', 'bower_components/Chart.js/Chart.js']
+//                        },
+//                        {
+//                            name: 'angles',
+//                            files: ['js/plugins/chartJs/angles.js']
+//                        }
                         {
-                            name: 'angles',
-                            files: ['js/plugins/chartJs/angles.js']
-                        },
+                              files: ['bower_components/angular-chart.js/dist/angular-chart.min.js', 'bower_components/chart.js/dist/Chart.min.js']
+                        }
+                        ,
                     {
                         serie: true,
                         files: ['js/plugins/daterangepicker/daterangepicker.js', 'css/plugins/daterangepicker/daterangepicker-bs3.css']

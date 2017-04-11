@@ -149,9 +149,10 @@
                     </div>
                     <div class="ibox-content">
                         <div>
-                            <canvas  ng-if="userDTO.configMonitorLaboratorio.resumoProcedimentos.blink"  linechart options="userDTO.configMonitorLaboratorio.lineOptions" data="userDTO.configMonitorLaboratorio.lineDataResumoProcedimentos"  height="100"  width="100"  responsive=true ></canvas>
-
-                            <nav  id="cssmenu" class="navbar navbar-inverse "  ng-if="userDTO.configMonitorLaboratorio.resumoProcedimentos.blink" >
+                            <!--<canvas  ng-if="userDTO.configMonitorLaboratorio.resumoProcedimentos.blink"  linechart options="userDTO.configMonitorLaboratorio.lineOptions" data="userDTO.configMonitorLaboratorio.lineDataResumoProcedimentos"  height="100"  width="100"  responsive=true ></canvas>-->
+                            <canvas id="lineResumoEntregues" class="chart chart-line" chart-data="userDTO.configMonitorLaboratorio.dataResumoProcedimentos" chart-labels="userDTO.configMonitorLaboratorio.labelResumoProcedimentos" 
+                                    chart-series="['Procedimentos']" chart-options="options"  chart-colors=" [ '#ff0909']"  chart-dataset-override="userDTO.configMonitorLaboratorio.datasetOverrideResumoEntregues" chart-click="onClick"  responsive=true  height="100"  width="100"  ></canvas>
+                            <nav  id="cssmenu" class="navbar navbar-inverse "   >
                                 <div class="container-fluid">
                                     <div class="navbar-header">
                                         <a class="navbar-brand fa fa-backward" aria-hidden="true"  ng-click="shiftDate(false,'resumoProcedimentos')  "  ></a>
@@ -171,6 +172,7 @@
                 </div>
                 
             </div>
+            
             <div class="col-lg-4">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title" style="height: 53px;" >
@@ -181,12 +183,15 @@
                             <small><strong>Total: {{userDTO.configMonitorLaboratorio.resumoPacientes.total}} </strong></small>
                         </h5>
                         <a  ng-if="userDTO.configMonitorLaboratorio.resumoPacientes.loading"   style="padding-left: 10px;  z-index: 2;"   class="fa fa-circle-o-notch  fa-2x  fa-spin" aria-hidden="true"></a>
-                        <!--<div ibox-tools></div>-->
+                        <div ibox-tools></div>
                     </div>
                     <div class="ibox-content">
                         <div>
-                            <canvas  ng-if="userDTO.configMonitorLaboratorio.resumoPacientes.blink" barchart options="userDTO.configMonitorLaboratorio.barOptions" data="userDTO.configMonitorLaboratorio.barDataPacientes"  height="100"  width="100"  responsive=true ></canvas>
-                            <nav class="navbar navbar-inverse" ng-if="userDTO.configMonitorLaboratorio.resumoPacientes.blink" >
+<!--                            <canvas  ng-if="userDTO.configMonitorLaboratorio.resumoPacientes.blink" barchart options="userDTO.configMonitorLaboratorio.barOptions" data="userDTO.configMonitorLaboratorio.barDataPacientes"  height="100"  width="100"  responsive=true ></canvas>-->
+                            <!--<canvas id="lineResumoEntregues" class="chart chart-line" chart-data="userDTO.configMonitorLaboratorio.dataPacientes" chart-labels="userDTO.configMonitorLaboratorio.labelPacientes" chart-series="series" chart-options="options" chart-dataset-override="userDTO.configMonitorLaboratorio.datasetOverrideResumoEntregues" chart-click="onClick"  responsive=true  height="100"  width="100"  ></canvas>-->
+                            <canvas id="barPacientes" class="chart chart-bar"chart-data="userDTO.configMonitorLaboratorio.dataPacientes" chart-labels="userDTO.configMonitorLaboratorio.labelPacientes"  
+                                   chart-series="['Pacientes']" chart-options="options"   chart-series="userDTO.configMonitorLaboratorio.seriesPacientes"  chart-colors=" [ '#1351b5']" height="100" width="100" responsive=true  ></canvas>
+                            <nav class="navbar navbar-inverse" >
                                 <div class="container-fluid">
                                     <div class="navbar-header">
                                         <a class="navbar-brand fa fa-backward" aria-hidden="true"  ng-click="shiftDate(false,'resumoPacientes')  "  ></a>
@@ -205,6 +210,8 @@
                     </div>
                 </div>
             </div>
+
+
             <div class="col-lg-4">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title" style="height: 53px;" >
@@ -215,12 +222,14 @@
                             <small><strong> Total : {{ userDTO.configMonitorLaboratorio.faturamentoEstimado.total | currency : symbol : fractionSize}}  </strong></small>
                         </h5>
                         <a  ng-if="userDTO.configMonitorLaboratorio.faturamentoEstimado.loading"  style="padding-left: 10px;  z-index: 2;"  class="fa fa-circle-o-notch  fa-2x  fa-spin" aria-hidden="true"></a>
-                        <!--<div ibox-tools></div>-->
+                        <div ibox-tools></div>
                     </div>
                     <div class="ibox-content">
                         <div>
-                            <canvas ng-if="userDTO.configMonitorLaboratorio.faturamentoEstimado.blink"   barchart options="userDTO.configMonitorLaboratorio.barOptions" data="userDTO.configMonitorLaboratorio.barDataFaturamento"  height="100"  width="100"  responsive=true ></canvas>
-                            <nav class="navbar navbar-inverse"  ng-if="userDTO.configMonitorLaboratorio.faturamentoEstimado.blink" >
+                            <!--<canvas ng-if="userDTO.configMonitorLaboratorio.faturamentoEstimado.blink"   barchart options="userDTO.configMonitorLaboratorio.barOptions" data="userDTO.configMonitorLaboratorio.barDataFaturamento"  height="100"  width="100"  responsive=true ></canvas>-->
+                            <canvas id="barPacientes" class="chart chart-bar"chart-data="userDTO.configMonitorLaboratorio.dataFaturamento" chart-labels="userDTO.configMonitorLaboratorio.labelFaturamento"  
+                                    chart-series="['Faturamento']" chart-options="options"  chart-colors=" [ '#42ff08']"   height="100"  width="100"  responsive=true  ></canvas>
+                            <nav class="navbar navbar-inverse"  >
                                 <div class="container-fluid">
                                     <div class="navbar-header">
                                         <a class="navbar-brand fa fa-backward" aria-hidden="true"  ng-click="shiftDate(false,'faturamentoEstimado')  "  ></a>

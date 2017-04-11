@@ -152,9 +152,11 @@
                     </div>
                     <div class="ibox-content">
                         <div>
-                            <canvas  ng-if="userDTO.configMonitorLaboratorio.resumoEntregues.blink"  linechart options="userDTO.configMonitorLaboratorio.lineOptions" data="userDTO.configMonitorLaboratorio.lineDataResumoEntregues"  height="100"  width="100"  responsive=true ></canvas>
+                            <!--<canvas  ng-if="userDTO.configMonitorLaboratorio.resumoEntregues.blink"  linechart options="userDTO.configMonitorLaboratorio.lineOptions" data="userDTO.configMonitorLaboratorio.lineDataResumoEntregues"  height="100"  width="100"  responsive=true ></canvas>-->
+                            <canvas id="lineResumoEntregues" class="chart chart-line" chart-data="userDTO.configMonitorLaboratorio.dataResumoEntregues" chart-labels="userDTO.configMonitorLaboratorio.labelResumoEntregues" 
+                                    chart-series="['Exames']" chart-options="options" chart-dataset-override="userDTO.configMonitorLaboratorio.datasetOverrideResumoEntregues" chart-click="onClick"  chart-colors=" [ '#42ff08']"  responsive=true  height="100"  width="100"  ></canvas>
 
-                            <nav  id="cssmenu" class="navbar navbar-inverse "  ng-if="userDTO.configMonitorLaboratorio.resumoEntregues.blink" >
+                            <nav  id="cssmenu" class="navbar navbar-inverse "   >
                                 <div class="container-fluid">
                                     <div class="navbar-header">
                                         <a class="navbar-brand fa fa-backward" aria-hidden="true"  ng-click="shiftDate(false,'resumoEntregues')  "  ></a>
@@ -181,16 +183,17 @@
                         <h5>
                             Resumo dos Status
                             <small>em </small><strong class="text-primary font-bold  "  style="color: #003bb3"  ng-class="grabCSS('resumoStatus')"    >{{userDTO.configMonitorLaboratorio.resumoStatus.data | date : userDTO.configMonitorLaboratorio.resumoStatus.formatoData }} </strong>
-                            <!--<small><strong>Total: {{userDTO.configMonitorLaboratorio.resumoStatus.total}} </strong></small>-->
+                            <small><strong>Total: {{userDTO.configMonitorLaboratorio.resumoStatus.total}} </strong></small>
                         </h5>
                         <a  ng-if="userDTO.configMonitorLaboratorio.resumoStatus.loading"   style="padding-left: 10px;  z-index: 2;"   class="fa fa-circle-o-notch  fa-2x  fa-spin" aria-hidden="true"></a>
-                        <!--<div ibox-tools></div>-->
+                        <div ibox-tools></div>
                     </div>
                     <div class="ibox-content">
                         <div>
-                            <canvas  ng-if="userDTO.configMonitorLaboratorio.resumoStatus.blink"  id="doughnutchartResumoStatus" doughnutchart options="userDTO.configMonitorLaboratorio.doughnutOptions" data="userDTO.configMonitorLaboratorio.doughnutDataResumoStatus"   height="300"  responsive=true    ></canvas>
-                            
-                            <nav class="navbar navbar-inverse" ng-if="userDTO.configMonitorLaboratorio.resumoStatus.blink" >
+                            <!--<canvas  ng-if="userDTO.configMonitorLaboratorio.resumoStatus.blink"  id="doughnutchartResumoStatus" doughnutchart options="userDTO.configMonitorLaboratorio.doughnutOptions" data="userDTO.configMonitorLaboratorio.doughnutDataResumoStatus"   height="300"  responsive=true    ></canvas>-->
+                            <canvas id="doughnutResumoStatus" class="chart chart-doughnut" chart-data="userDTO.configMonitorLaboratorio.dataResumoStatus" chart-labels="userDTO.configMonitorLaboratorio.labelResumoStatus"  
+                                    chart-colors="[ '#803690', '#00ADF9', '#DCDCDC', '#46BFBD', '#FDB45C', '#949FB1', '#4D5360'] "    chart-options="{ legend: { display: true }}"   height="300"  responsive=true  ></canvas> 
+                            <nav class="navbar navbar-inverse"  >
                                 <div class="container-fluid">
                                     <div class="navbar-header">
                                         <a class="navbar-brand fa fa-backward" aria-hidden="true"  ng-click="shiftDate(false,'resumoStatus')  "  ></a>
@@ -209,6 +212,8 @@
                     </div>
                 </div>
             </div>
+
+
             <div class="col-lg-4">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title" style="height: 53px;" >
@@ -216,16 +221,17 @@
                         <h5>
                             Resumo de Pendências
                             <small>em </small><strong class="text-primary font-bold  "  style="color: #003bb3"  ng-class="grabCSS('resumoPendencias')"    >{{userDTO.configMonitorLaboratorio.resumoPendencias.data | date : userDTO.configMonitorLaboratorio.resumoPendencias.formatoData }} </strong>
-                            <!--<small><strong>Total: {{userDTO.configMonitorLaboratorio.resumoStatus.total}} </strong></small>-->
+                            <small><strong>Total: {{userDTO.configMonitorLaboratorio.resumoStatus.total}} </strong></small>
                         </h5>
                         <a  ng-if="userDTO.configMonitorLaboratorio.resumoPendencias.loading"   style="padding-left: 10px;  z-index: 2;"   class="fa fa-circle-o-notch  fa-2x  fa-spin" aria-hidden="true"></a>
-                        <!--<div ibox-tools></div>-->
+                        <div ibox-tools></div>
                     </div>
                     <div class="ibox-content">
                         <div>
-                            <canvas  ng-if="userDTO.configMonitorLaboratorio.resumoPendencias.blink"  id="doughnutchartResumoStatus" doughnutchart options="userDTO.configMonitorLaboratorio.doughnutOptions" data="userDTO.configMonitorLaboratorio.doughnutDataResumoPendencias"   height="300"  responsive=true    ></canvas>
-                            
-                            <nav class="navbar navbar-inverse" ng-if="userDTO.configMonitorLaboratorio.resumoPendencias.blink" >
+                            <!--<canvas  ng-if="userDTO.configMonitorLaboratorio.resumoPendencias.blink"  id="doughnutchartResumoStatus" doughnutchart options="userDTO.configMonitorLaboratorio.doughnutOptions" data="userDTO.configMonitorLaboratorio.doughnutDataResumoPendencias"   height="300"  responsive=true    ></canvas>-->
+                            <canvas id="doughnutResumoPendencias" class="chart chart-doughnut" chart-data="userDTO.configMonitorLaboratorio.dataResumoPendencias" chart-labels="userDTO.configMonitorLaboratorio.labelResumoPendencias"  
+                                    chart-colors="userDTO.configMonitorLaboratorio.colorsResumoPendencias" chart-series="userDTO.configMonitorLaboratorio.seriesResumoPendencias"    chart-options="{ legend: { display: true }}"  height="300"  responsive=true  ></canvas> 
+                            <nav class="navbar navbar-inverse"  >
                                 <div class="container-fluid">
                                     <div class="navbar-header">
                                         <a class="navbar-brand fa fa-backward" aria-hidden="true"  ng-click="shiftDate(false,'resumoPendencias')  "  ></a>

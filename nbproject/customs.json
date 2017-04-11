@@ -58,6 +58,9 @@
             "context": "a"
         },
         "doughnutchart": {},
+        "chart-data": {
+            "context": "canvas"
+        },
         "ui-sref-active": {
             "context": "li"
         }

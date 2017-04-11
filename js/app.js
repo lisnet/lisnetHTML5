@@ -19,7 +19,8 @@
         'ngResource',
         'oitozero.ngSweetAlert',
         'ngMessages',
-        'cfp.hotkeys'
+        'cfp.hotkeys',
+        'chart.js'
 //        'daterangepicker'
     ]);
 })();
