@@ -80,7 +80,7 @@
                         <label for="inputunidade" class="control-label">Unidade</label>
                     </div>
                     <div class="col-lg-pull-9">
-                        <select     id="inputunidade" class="chosen-select form-control "  tabindex="4" ng-model="userDTO.configMonitorLaboratorio.unidade" >
+                        <select    chosen id="inputunidade" class="chosen-select form-control "  tabindex="4" ng-model="userDTO.configMonitorLaboratorio.unidade" >
                             <option selected  value="TODAS" >TODAS</option>
                             <option   value="{{u.UNI_ST_CODIGO}}" ng-repeat=" u in userDTO.unidades track by $index"   ng-if="u.UNI_CH_ATIVO === 'S'" >
                                 {{u.UNI_ST_CODIGO}}-{{u.UNI_ST_DESCRICAO| cutchars:15}}
