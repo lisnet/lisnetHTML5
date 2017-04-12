@@ -564,22 +564,27 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
     };
 
     $scope.atualizar = function (){
-        $scope.userDTO.configMonitorLaboratorio.resumoProcedimentos.loading = true;
-        $scope.userDTO.configMonitorLaboratorio.resumoEntregues.loading = true;
-        $scope.userDTO.configMonitorLaboratorio.resumoPacientes.loading = true;
-        $scope.userDTO.configMonitorLaboratorio.faturamentoEstimado.loading = true;
-        $scope.userDTO.configMonitorLaboratorio.resumoStatus.loading = true;
-        $scope.userDTO.configMonitorLaboratorio.resumoPendencias.loading = true;
+       
         atualizarTudo();
     };
     
     function atualizarTudo(){
-        $timeout(function (){atualizarResumoProcedimentos();},800);
-        $timeout(function (){ atualizarResumoPacientes(); },1000);
-        $timeout(function (){atualizarFaturamentoEstimado();},1500);
-        $timeout(function (){atualizarResumoEntregues();},2000);
-        $timeout(function (){atualizarResumoStatus();},2500);
-        $timeout(function (){atualizarResumoPendencias();},500);
+        
+            if($stateParams.modStCodigo === '00501'){
+                   $scope.userDTO.configMonitorLaboratorio.resumoProcedimentos.loading = true;
+                   $scope.userDTO.configMonitorLaboratorio.faturamentoEstimado.loading = true;
+                   $scope.userDTO.configMonitorLaboratorio.resumoPacientes.loading = true;
+                   $timeout(function (){atualizarResumoProcedimentos();},800);
+                   $timeout(function (){ atualizarResumoPacientes(); },1000);
+                   $timeout(function (){atualizarFaturamentoEstimado();},1500);
+            }else{
+                    $scope.userDTO.configMonitorLaboratorio.resumoPendencias.loading = true;    
+                    $scope.userDTO.configMonitorLaboratorio.resumoEntregues.loading = true;
+                    $scope.userDTO.configMonitorLaboratorio.resumoStatus.loading = true;
+                    $timeout(function (){atualizarResumoEntregues();},500);
+                    $timeout(function (){atualizarResumoStatus();},1000);
+                    $timeout(function (){atualizarResumoPendencias();},1500);
+            }
     }
 
     

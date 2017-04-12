@@ -110,15 +110,22 @@
 
                     <div class="col-xs-12" >
 
-                        <div class="col-xs-3" >
+                        <div class="col-xs-3  hidden-md hidden-sm hidden-xs " >
                             <label for="inputurgente" class="control-label">Urgente</label>    
                             <div style="padding-top: 7px;" >
                                 <input     id="inputurgente" icheck type="checkbox" ng-model="userDTO.configMonitorLaboratorio.urgente">
                             </div>
                         </div>
 
-                        <div class="col-xs-2" style="padding-top: 25px;"  >
+                        <div class="col-xs-2 hidden-md hidden-sm hidden-xs  " style="padding-top: 25px;"  >
                             <button class="btn btn-outline  btn-success  btn-rounded  "   ng-click="atualizar()"   >&nbsp;Atualizar&nbsp;</button>
+                        </div>
+                         <div class="col-lg-5 hidden-lg  " >
+                             <label for="inputurgente" class="control-label">Urgente</label>    
+                              <input     id="inputurgente" icheck type="checkbox" ng-model="userDTO.configMonitorLaboratorio.urgente">
+                            <button  class="btn btn-rounded btn-info btn-outline "  ng-click="escolhePeriodoAll('1D',userDTO.configMonitorLaboratorio.arrayGeral)"   >1D</button>
+                            <button class="btn btn-rounded btn-info btn-outline" ng-click="escolhePeriodoAll('1W',userDTO.configMonitorLaboratorio.arrayGeral)"  >1W</button>
+                            <button class="btn btn-rounded btn-info btn-outline" ng-click="escolhePeriodoAll('1M',userDTO.configMonitorLaboratorio.arrayGeral)"  >1M</button>
                         </div>
                     </div>
                 </div>
@@ -135,13 +142,14 @@
 
         <div class="row"  style="height: 60%"  >
             
-            <nav class="navbar navbar-inverse  hidden-lg"  >
+            
+<!--            <nav class="navbar navbar-inverse  hidden-lg"  >
                                 <div class="container-fluid">
                                     <ul class="nav navbar-nav">
                                         <li  ng-class="{ active: isActive(f,'faturamentoEstimado')} "  ng-repeat="f in filtros"    > <a ng-click="escolhePeriodoAll(f,userDTO.configMonitorLaboratorio.arrayGeral)"    class="font-bold text-danger" >   {{f}}</a> </li>
                                     </ul>
                                 </div>
-          </nav>
+          </nav>-->
             
             <div class="col-lg-4">
                 <div class="ibox float-e-margins">
