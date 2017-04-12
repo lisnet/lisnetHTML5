@@ -62,7 +62,24 @@ angular.module('lisnet').service('helperService', function () {
                   return null;
               }
           };
+          this.retornaSemanaDoMes = function (data, exact) {
 
+                var month = data.getMonth()
+                        , year = data.getFullYear()
+                        , firstWeekday = new Date(year, month, 1).getDay()
+                        , lastDateOfMonth = new Date(year, month + 1, 0).getDate()
+                        , offsetDate = data.getDate() + firstWeekday - 1
+                        , index = 1 // start index at 0 or 1, your choice
+                        , weeksInMonth = index + Math.ceil((lastDateOfMonth + firstWeekday - 7) / 7)
+                        , week = index + Math.floor(offsetDate / 7)
+                        ;
+                if (exact || week < 2 + index){
+                    return week;
+                }else{
+                    return week === weeksInMonth ? index + 5 : week;
+                }
+
+            };
 
         }
 

@@ -19,6 +19,22 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
     $scope.filtros = ['1D', '1W', '1M'];
     self.configLisnet = $scope.userDTO.configLisNet;
     self.config = $scope.userDTO.configMonitorLaboratorio;
+    
+    
+    Date.prototype.getWeekOfMonth = function(exact) {
+        var month = this.getMonth()
+            , year = this.getFullYear()
+            , firstWeekday = new Date(year, month, 1).getDay()
+            , lastDateOfMonth = new Date(year, month + 1, 0).getDate()
+            , offsetDate = this.getDate() + firstWeekday - 1
+            , index = 1 // start index at 0 or 1, your choice
+            , weeksInMonth = index + Math.ceil((lastDateOfMonth + firstWeekday - 7) / 7)
+            , week = index + Math.floor(offsetDate / 7)
+        ;
+        if (exact || week < 2 + index) return week;
+        return week === weeksInMonth ? index + 5 : week;
+    };
+    
 //    $scope.options = { legend: { display: true } };
 //    $scope.paramsStateConfig =  $stateParams;
 //    console.log(JSON.stringify($stateParams,null,2));
@@ -38,12 +54,12 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
     if (!$scope.userDTO.configMonitorLaboratorio) {
         var _u = $scope.userDTO;
         $scope.userDTO.configMonitorLaboratorio = {
-            resumoProcedimentos: {periodo: '1D', data: new Date(),formatoData:'dd/MM/yyyy',loading:false,total:0,blink:true}, 
-            resumoPacientes: {periodo: '1D', data: new Date(),formatoData:'dd/MM/yyyy',loading:false,total:0,blink:true}, 
-            faturamentoEstimado: {periodo: '1D', data: new Date(),formatoData:'dd/MM/yyyy',loading:false,total:0,blink:true},
-            resumoEntregues: {periodo: '1D', data: new Date(),formatoData:'dd/MM/yyyy',loading:false,total:0,blink:true},
-            resumoStatus: {periodo: '1D', data: new Date(),formatoData:'dd/MM/yyyy',loading:false,total:0,blink:true},
-            resumoPendencias: {periodo: '1D', data: new Date(),formatoData:'dd/MM/yyyy',loading:false,total:0,blink:true},
+            resumoProcedimentos: {periodo: '1D', data: new Date(),formatoData:'dd/MM/yyyy',loading:false,total:0,blink:true,dataFormatada : $filter('date')(new Date(), "dd/MM/yyyy")}, 
+            resumoPacientes: {periodo: '1D', data: new Date(),formatoData:'dd/MM/yyyy',loading:false,total:0,blink:true,dataFormatada : $filter('date')(new Date(), "dd/MM/yyyy")}, 
+            faturamentoEstimado: {periodo: '1D', data: new Date(),formatoData:'dd/MM/yyyy',loading:false,total:0,blink:true,dataFormatada : $filter('date')(new Date(), "dd/MM/yyyy")},
+            resumoEntregues: {periodo: '1D', data: new Date(),formatoData:'dd/MM/yyyy',loading:false,total:0,blink:true,dataFormatada : $filter('date')(new Date(), "dd/MM/yyyy")},
+            resumoStatus: {periodo: '1D', data: new Date(),formatoData:'dd/MM/yyyy',loading:false,total:0,blink:true,dataFormatada : $filter('date')(new Date(), "dd/MM/yyyy")},
+            resumoPendencias: {periodo: '1D', data: new Date(),formatoData:'dd/MM/yyyy',loading:false,total:0,blink:true,dataFormatada : $filter('date')(new Date(), "dd/MM/yyyy")},
             unidade: _u.unidades[0].UNI_ST_CODIGO,
             unidadeEx: 'TODAS', urgente: false, RANGE: 'DIA', aba: 'resumo',
             data: {"startDate": moment(), "endDate": moment()},
@@ -232,21 +248,29 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
     }, false);
    
     function escolherFormatoData(periodo, grafico){
+        var _c = $scope.userDTO.configMonitorLaboratorio[grafico];
         switch (periodo){
             case '1D':
-                $scope.userDTO.configMonitorLaboratorio[grafico].formatoData = 'dd/MM/yyyy';
+//                console.log(_c.data.getWeekOfMonth(true));;
+                _c.dataFormatada = $filter('date')(_c.data, "dd/MM/yyyy");
+//                $scope.userDTO.configMonitorLaboratorio[grafico].formatoData = 'dd/MM/yyyy';
             break;
             case '1W':
-                $scope.userDTO.configMonitorLaboratorio[grafico].formatoData = 'w/MM';
+//                _c.dataFormatada = _c.data.getWeekOfMonth(true) +'/'+$filter('date')(_c.data, "MM");
+                _c.dataFormatada =  helperService.retornaSemanaDoMes(_c.data,true) +'/'+$filter('date')(_c.data, "MM");
+//                $scope.userDTO.configMonitorLaboratorio[grafico].formatoData = 'w/MM';
             break;
             case '1M':
-                $scope.userDTO.configMonitorLaboratorio[grafico].formatoData = 'MM/yyyy';
+                _c.dataFormatada = $filter('date')(_c.data, "MM/yyyy");
+//                $scope.userDTO.configMonitorLaboratorio[grafico].formatoData = 'MM/yyyy';
             break;
             case '3M':
-                $scope.userDTO.configMonitorLaboratorio[grafico].formatoData = 'MM/yyyy';
+                _c.dataFormatada = $filter('date')(_c.data, "MM/yyyy");
+//                $scope.userDTO.configMonitorLaboratorio[grafico].formatoData = 'MM/yyyy';
             break;
             case '6M':
-                $scope.userDTO.configMonitorLaboratorio[grafico].formatoData = 'MM/yyyy';
+                _c.dataFormatada = $filter('date')(_c.data, "MM/yyyy");
+//                $scope.userDTO.configMonitorLaboratorio[grafico].formatoData = 'MM/yyyy';
             break;
             
         }
@@ -584,7 +608,7 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
                    $scope.userDTO.configMonitorLaboratorio.faturamentoEstimado.loading = true;
                    $scope.userDTO.configMonitorLaboratorio.resumoPacientes.loading = true;
                    atualizarResumoProcedimentos();
-                   $timeout(function (){ atualizarResumoPacientes(); },2000);
+                   $timeout(function (){ atualizarResumoPacientes(); },2500);
                    $timeout(function (){atualizarFaturamentoEstimado();},4000);
     }
     function atualizarPendencias(){
@@ -592,7 +616,7 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
                     $scope.userDTO.configMonitorLaboratorio.resumoEntregues.loading = true;
                     $scope.userDTO.configMonitorLaboratorio.resumoStatus.loading = true;
                     atualizarResumoEntregues();
-                    $timeout(function (){atualizarResumoStatus();},2000);
+                    $timeout(function (){atualizarResumoStatus();},2500);
                     $timeout(function (){atualizarResumoPendencias();},4000);   
     }
 

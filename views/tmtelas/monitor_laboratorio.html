@@ -80,7 +80,7 @@
                         <label for="inputunidade" class="control-label">Unidade</label>
                     </div>
                     <div class="col-lg-pull-9">
-                        <select    chosen id="inputunidade" class="chosen-select form-control "  tabindex="4" ng-model="userDTO.configMonitorLaboratorio.unidade" >
+                        <select     id="inputunidade" class="chosen-select form-control "  tabindex="4" ng-model="userDTO.configMonitorLaboratorio.unidade" >
                             <option selected  value="TODAS" >TODAS</option>
                             <option   value="{{u.UNI_ST_CODIGO}}" ng-repeat=" u in userDTO.unidades track by $index"   ng-if="u.UNI_CH_ATIVO === 'S'" >
                                 {{u.UNI_ST_CODIGO}}-{{u.UNI_ST_DESCRICAO| cutchars:15}}
@@ -159,7 +159,7 @@
                         <h5>
                             
                             Resumo Procedimentos
-                            <small>em </small><strong class="text-primary font-bold  "  style="color: #003bb3"  ng-class="grabCSS('resumoProcedimentos')"    >{{userDTO.configMonitorLaboratorio.resumoProcedimentos.data | date : userDTO.configMonitorLaboratorio.resumoProcedimentos.formatoData }} </strong>
+                            <small>em </small><strong class="text-primary font-bold  "  style="color: #003bb3"  ng-class="grabCSS('resumoProcedimentos')"    >{{userDTO.configMonitorLaboratorio.resumoProcedimentos.dataFormatada  }} </strong>
                             <small><strong>Total: {{userDTO.configMonitorLaboratorio.resumoProcedimentos.total}} </strong></small>
                         </h5>
                         <a  ng-if="userDTO.configMonitorLaboratorio.resumoProcedimentos.loading"   class="fa fa-circle-o-notch  fa-2x  fa-spin"  style="padding-left: 10px;  z-index: 2;"   aria-hidden="true"></a>
@@ -196,7 +196,7 @@
                         
                         <h5>
                             Resumo Pacientes
-                            <small>em </small><strong class="text-primary font-bold  "  style="color: #003bb3"  ng-class="grabCSS('resumoPacientes')"    >{{userDTO.configMonitorLaboratorio.resumoPacientes.data | date : userDTO.configMonitorLaboratorio.resumoPacientes.formatoData}} </strong>
+                            <small>em </small><strong class="text-primary font-bold  "  style="color: #003bb3"  ng-class="grabCSS('resumoPacientes')"    >{{userDTO.configMonitorLaboratorio.resumoPacientes.dataFormatada}} </strong>
                             <small><strong>Total: {{userDTO.configMonitorLaboratorio.resumoPacientes.total}} </strong></small>
                         </h5>
                         <a  ng-if="userDTO.configMonitorLaboratorio.resumoPacientes.loading"   style="padding-left: 10px;  z-index: 2;"   class="fa fa-circle-o-notch  fa-2x  fa-spin" aria-hidden="true"></a>
@@ -231,7 +231,7 @@
                         
                         <h5>
                             Faturamento Estimado
-                            <small>em </small><strong class="text-primary font-bold  "  style="color: #003bb3"  ng-class="grabCSS('faturamentoEstimado')"    >{{userDTO.configMonitorLaboratorio.faturamentoEstimado.data | date : userDTO.configMonitorLaboratorio.faturamentoEstimado.formatoData }} </strong>
+                            <small>em </small><strong class="text-primary font-bold  "  style="color: #003bb3"  ng-class="grabCSS('faturamentoEstimado')"    >{{userDTO.configMonitorLaboratorio.faturamentoEstimado.dataFormatada }} </strong>
                             <small><strong> Total : {{ userDTO.configMonitorLaboratorio.faturamentoEstimado.total | currency : symbol : fractionSize}}  </strong></small>
                         </h5>
                         <a  ng-if="userDTO.configMonitorLaboratorio.faturamentoEstimado.loading"  style="padding-left: 10px;  z-index: 2;"  class="fa fa-circle-o-notch  fa-2x  fa-spin" aria-hidden="true"></a>
