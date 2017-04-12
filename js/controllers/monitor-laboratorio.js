@@ -36,15 +36,16 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
 
 //    var abas = [{label: 'resumo', desc: 'Resumo Geral'}, {label: 'pendencia', desc: 'Pendências'}, {label: 'setores', desc: 'Pendências por Setor'}];
     if (!$scope.userDTO.configMonitorLaboratorio) {
-        
+        var _u = $scope.userDTO;
         $scope.userDTO.configMonitorLaboratorio = {
-            resumoProcedimentos: {periodo: '1D', data: new Date(),formatoData:'dd/MM/yyyy',loading:true,total:0,blink:true}, 
-            resumoPacientes: {periodo: '1D', data: new Date(),formatoData:'dd/MM/yyyy',loading:true,total:0,blink:true}, 
-            faturamentoEstimado: {periodo: '1D', data: new Date(),formatoData:'dd/MM/yyyy',loading:true,total:0,blink:true},
-            resumoEntregues: {periodo: '1D', data: new Date(),formatoData:'dd/MM/yyyy',loading:true,total:0,blink:true},
-            resumoStatus: {periodo: '1D', data: new Date(),formatoData:'dd/MM/yyyy',loading:true,total:0,blink:true},
-            resumoPendencias: {periodo: '1D', data: new Date(),formatoData:'dd/MM/yyyy',loading:true,total:0,blink:true},
-            unidade: 'TODAS', unidadeEx: 'TODAS', urgente: false, RANGE: 'DIA', aba: 'resumo',
+            resumoProcedimentos: {periodo: '1D', data: new Date(),formatoData:'dd/MM/yyyy',loading:false,total:0,blink:true}, 
+            resumoPacientes: {periodo: '1D', data: new Date(),formatoData:'dd/MM/yyyy',loading:false,total:0,blink:true}, 
+            faturamentoEstimado: {periodo: '1D', data: new Date(),formatoData:'dd/MM/yyyy',loading:false,total:0,blink:true},
+            resumoEntregues: {periodo: '1D', data: new Date(),formatoData:'dd/MM/yyyy',loading:false,total:0,blink:true},
+            resumoStatus: {periodo: '1D', data: new Date(),formatoData:'dd/MM/yyyy',loading:false,total:0,blink:true},
+            resumoPendencias: {periodo: '1D', data: new Date(),formatoData:'dd/MM/yyyy',loading:false,total:0,blink:true},
+            unidade: _u.unidades[0].UNI_ST_CODIGO,
+            unidadeEx: 'TODAS', urgente: false, RANGE: 'DIA', aba: 'resumo',
             data: {"startDate": moment(), "endDate": moment()},
             arrayGeral:['faturamentoEstimado','resumoPacientes','resumoProcedimentos'],
             arrayPendencias:['resumoEntregues','resumoStatus','resumoPendencias']
@@ -186,7 +187,9 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
             ]
         };
         
-        atualizarTudo();
+        atualizarGeral();
+        $timeout(function (){atualizarPendencias();},1500);
+        
     }else{
             //transforma datas extraidas do localStorage
                 for (var _attr in self.config) {
@@ -420,7 +423,7 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
             
              var promise = promiseResumoStatus(_s.periodo, _json);
                         promise.then(function(data) {
-//                            console.log(JSON.stringify(data,null,2));
+                            console.log(JSON.stringify(data,null,2));
 //                            _p.resolveStatus = data;
 //                          alert('Success: ' + data);
 
@@ -429,7 +432,7 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
                                $scope.userDTO.configMonitorLaboratorio.dataResumoStatus = [];
                                for (var _i in data) {
                                    $scope.userDTO.configMonitorLaboratorio.doughnutDataResumoStatus[_i] = {value: data[_i][1], label: data[_i][0], color: _color[_i].fillColor, highlight: _color[_i].highlightFill};
-                                   $scope.userDTO.configMonitorLaboratorio.labelResumoStatus.push(data[_i][0]);
+                                   $scope.userDTO.configMonitorLaboratorio.labelResumoStatus.push(data[_i][2]+'  total:'+data[_i][1]);
                                    $scope.userDTO.configMonitorLaboratorio.dataResumoStatus.push(data[_i][1]);
                                }
                                 _s.loading = false;
@@ -470,7 +473,7 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
                                $scope.userDTO.configMonitorLaboratorio.doughnutDataResumoPendencias = [];
                                for (_i in data) {
                                    $scope.userDTO.configMonitorLaboratorio.doughnutDataResumoPendencias[_i] = {value: data[_i][1], label: data[_i][0], color: data[_i][2], highlight: data[_i][2]};
-                                   $scope.userDTO.configMonitorLaboratorio.labelResumoPendencias.push(data[_i][0]);
+                                   $scope.userDTO.configMonitorLaboratorio.labelResumoPendencias.push(data[_i][0]+' total:'+data[_i][1]);
                                    $scope.userDTO.configMonitorLaboratorio.dataResumoPendencias.push(data[_i][1]);
                                    $scope.userDTO.configMonitorLaboratorio.colorsResumoPendencias.push(data[_i][2]);
                                    $scope.userDTO.configMonitorLaboratorio.seriesResumoPendencias.push(data[_i][0]);
@@ -564,27 +567,33 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
     };
 
     $scope.atualizar = function (){
-       
         atualizarTudo();
     };
     
     function atualizarTudo(){
-        
             if($stateParams.modStCodigo === '00501'){
+                   atualizarGeral();
+            }else{
+                    atualizarPendencias();
+            }
+    }
+    
+    
+     function atualizarGeral(){
                    $scope.userDTO.configMonitorLaboratorio.resumoProcedimentos.loading = true;
                    $scope.userDTO.configMonitorLaboratorio.faturamentoEstimado.loading = true;
                    $scope.userDTO.configMonitorLaboratorio.resumoPacientes.loading = true;
-                   $timeout(function (){atualizarResumoProcedimentos();},800);
-                   $timeout(function (){ atualizarResumoPacientes(); },1000);
-                   $timeout(function (){atualizarFaturamentoEstimado();},1500);
-            }else{
-                    $scope.userDTO.configMonitorLaboratorio.resumoPendencias.loading = true;    
+                   atualizarResumoProcedimentos();
+                   $timeout(function (){ atualizarResumoPacientes(); },2000);
+                   $timeout(function (){atualizarFaturamentoEstimado();},4000);
+    }
+    function atualizarPendencias(){
+                     $scope.userDTO.configMonitorLaboratorio.resumoPendencias.loading = true;    
                     $scope.userDTO.configMonitorLaboratorio.resumoEntregues.loading = true;
                     $scope.userDTO.configMonitorLaboratorio.resumoStatus.loading = true;
-                    $timeout(function (){atualizarResumoEntregues();},500);
-                    $timeout(function (){atualizarResumoStatus();},1000);
-                    $timeout(function (){atualizarResumoPendencias();},1500);
-            }
+                    atualizarResumoEntregues();
+                    $timeout(function (){atualizarResumoStatus();},2000);
+                    $timeout(function (){atualizarResumoPendencias();},4000);   
     }
 
     
