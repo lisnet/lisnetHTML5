@@ -45,7 +45,9 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
             resumoStatus: {periodo: '1D', data: new Date(),formatoData:'dd/MM/yyyy',loading:true,total:0,blink:true},
             resumoPendencias: {periodo: '1D', data: new Date(),formatoData:'dd/MM/yyyy',loading:true,total:0,blink:true},
             unidade: 'TODAS', unidadeEx: 'TODAS', urgente: false, RANGE: 'DIA', aba: 'resumo',
-            data: {"startDate": moment(), "endDate": moment()}
+            data: {"startDate": moment(), "endDate": moment()},
+            arrayGeral:['faturamentoEstimado','resumoPacientes','resumoProcedimentos'],
+            arrayPendencias:['resumoEntregues','resumoStatus','resumoPendencias']
         };
         self.config = $scope.userDTO.configMonitorLaboratorio;
         /**
@@ -376,9 +378,11 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
                     function success(response) {
                         var _d = response.data;
 //                        console.log(JSON.stringify(_d, null, 2));
-                        var _g = $scope.userDTO.configMonitorLaboratorio.lineDataResumoEntregues;
-                        _g.labels = _d[0];
-                        _g.datasets[0].data = _d[1];
+//                        var _g = $scope.userDTO.configMonitorLaboratorio.lineDataResumoEntregues;
+//                        _g.labels = _d[0];
+//                        _g.datasets[0].data = _d[1];
+                        $scope.userDTO.configMonitorLaboratorio.labelResumoEntregues = [];
+                        $scope.userDTO.configMonitorLaboratorio.dataResumoEntregues = [];
                         $scope.userDTO.configMonitorLaboratorio.labelResumoEntregues = _d[0];
                         $scope.userDTO.configMonitorLaboratorio.dataResumoEntregues = [_d[1]];
                         _e.loading = false;
@@ -397,7 +401,7 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
                         $timeout(function (){_e.blink = true;},3);
 
                     }, function error(response) {
-
+                        console.log(response);
                     }
             );
     }
@@ -405,7 +409,7 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
     function  atualizarResumoStatus() {
           var _c =  $scope.userDTO.configMonitorLaboratorio;
         var _s = $scope.userDTO.configMonitorLaboratorio.resumoStatus;
-            var _user = $scope.userDTO;
+//            var _user = $scope.userDTO;
             var _u = retornaUnidades();
             var _color = self.configLisnet.colorsChart;
             _s.loading = true;
@@ -420,10 +424,10 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
 //                            _p.resolveStatus = data;
 //                          alert('Success: ' + data);
 
-                               $scope.userDTO.configMonitorLaboratorio.doughnutDataResumoStatus = [];
+//                               $scope.userDTO.configMonitorLaboratorio.doughnutDataResumoStatus = [];
                                $scope.userDTO.configMonitorLaboratorio.labelResumoStatus = [];
                                $scope.userDTO.configMonitorLaboratorio.dataResumoStatus = [];
-                               for (_i in data) {
+                               for (var _i in data) {
                                    $scope.userDTO.configMonitorLaboratorio.doughnutDataResumoStatus[_i] = {value: data[_i][1], label: data[_i][0], color: _color[_i].fillColor, highlight: _color[_i].highlightFill};
                                    $scope.userDTO.configMonitorLaboratorio.labelResumoStatus.push(data[_i][0]);
                                    $scope.userDTO.configMonitorLaboratorio.dataResumoStatus.push(data[_i][1]);
@@ -543,7 +547,17 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
         return {unidades:unidades,unidadesEx:unidadesEx};
     };
     
+    $scope.escolhePeriodoAll = function (periodo,array) {
+        for(var _x in array){
+            var _grafico = array[_x];
+              console.log('_grafico : '+_grafico);
+             self.config[_grafico].periodo = periodo;
+        }
+        $timeout(function (){$scope.atualizar();},500);
+    };
+    
     $scope.escolhePeriodo = function (periodo, grafico) {
+        console.log('periodo: '+periodo+'   grafico: '+grafico);
         self.config[grafico].periodo = periodo;
         escolherFormatoData(periodo, grafico);
         encontraGraficoParaAtualizar(grafico);
