@@ -13,12 +13,31 @@
  */
 
 
-function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairDoSistemaService, notificacaoProvider, $timeout, DTOptionsBuilder, helperService, $filter,buscaAPIService,$q) {
+function monitorLaboratorio($scope, $window,$state, buscaAPIService, $stateParams, sairDoSistemaService, notificacaoProvider, $timeout, DTOptionsBuilder, helperService, $filter,buscaAPIService,$q) {
     var self = this;
     $scope.userDTO = sairDoSistemaService.validarLogin();
     $scope.filtros = ['1D', '1W', '1M'];
     self.configLisnet = $scope.userDTO.configLisNet;
     self.config = $scope.userDTO.configMonitorLaboratorio;
+    
+    
+//        var w = angular.element($window);
+//        $scope.getWindowDimensions = function () {
+//            return {
+//                'h': w.height(),
+//                'w': w.width()
+//            };
+//        };
+//        $scope.$watch($scope.getWindowDimensions, function (newValue, oldValue) {
+////            console.log(JSON.stringify(newValue,null,2));
+//            if(newValue.w < 1590){
+//                refazerLabels();
+//            }
+//        }, true);
+//
+//        w.bind('resize', function () {
+//            $scope.$apply();
+//        });
     
     
     Date.prototype.getWeekOfMonth = function(exact) {
@@ -43,7 +62,19 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
         $scope.series = ['Series A'];
         $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
         
-        $scope.options = { legend: { display: true },scales: {yAxes: [{id: 'y-axis-1',type: 'linear',display: true,position: 'left',color:'red'},{id: 'y-axis-2',type: 'linear',display: true,position: 'right'}]}};
+        $scope.options = { legend: { display: true ,
+//                labels: {
+//                    padding:30,
+//                    usePointStyle:false,
+//                fontColor: 'rgb(255, 99, 132)'
+//            }
+        },
+            responsive:true,
+            scales: {yAxes: [{id: 'y-axis-1',type: 'linear',display: true,position: 'left',color:'red'},{id: 'y-axis-2',type: 'linear',display: false,position: 'right'}],
+            xAxes: [{
+                display: true
+            }]}};
+//        $scope.options = { legend: { display: true }};
         
   $scope.onClick = function (points, evt) {
     console.log(points, evt);
@@ -225,7 +256,7 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
         //Watch for date changes
     $scope.$watch('userDTO.configMonitorLaboratorio.data', function(newDate) {
         var _c =  $scope.userDTO.configMonitorLaboratorio;
-        console.log('New date set: ',  JSON.stringify(newDate) );
+//        console.log('New date set: ',  JSON.stringify(newDate) );
         var arrayAttr = [];
         //Looping objs and setting newDate and animation
         for (var attr in _c) {
@@ -234,7 +265,7 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
                 _c[attr].data = new Date(newDate.startDate);
                 _c[attr].css = 'animated fadeOutLeft';
                 arrayAttr.push(attr);
-                  
+                  escolherFormatoData(_c[attr].periodo,attr);
             }
         }
 
@@ -243,11 +274,12 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
             for(var _yy in arrayAttr){
                 _c[arrayAttr[_yy]].css = 'animated fadeInLeft';
             }
-
+//            atualizarTudo();
         }, 1000);
     }, false);
    
     function escolherFormatoData(periodo, grafico){
+//        console.log('periodo: '+periodo+'   grafico: '+grafico);
         var _c = $scope.userDTO.configMonitorLaboratorio[grafico];
         switch (periodo){
             case '1D':
@@ -447,7 +479,7 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
             
              var promise = promiseResumoStatus(_s.periodo, _json);
                         promise.then(function(data) {
-                            console.log(JSON.stringify(data,null,2));
+//                            console.log(JSON.stringify(data,null,2));
 //                            _p.resolveStatus = data;
 //                          alert('Success: ' + data);
 
@@ -493,7 +525,7 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
                                 $scope.userDTO.configMonitorLaboratorio.colorsResumoPendencias = [];
                                 $scope.userDTO.configMonitorLaboratorio.labelResumoPendencias = [];
                                 $scope.userDTO.configMonitorLaboratorio.dataResumoPendencias = [];
-                                $scope.userDTO.configMonitorLaboratorio.seriesResumoPendencias = []
+                                $scope.userDTO.configMonitorLaboratorio.seriesResumoPendencias = [];
                                $scope.userDTO.configMonitorLaboratorio.doughnutDataResumoPendencias = [];
                                for (_i in data) {
                                    $scope.userDTO.configMonitorLaboratorio.doughnutDataResumoPendencias[_i] = {value: data[_i][1], label: data[_i][0], color: data[_i][2], highlight: data[_i][2]};
@@ -584,7 +616,7 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
     };
     
     $scope.escolhePeriodo = function (periodo, grafico) {
-        console.log('periodo: '+periodo+'   grafico: '+grafico);
+//        console.log('periodo: '+periodo+'   grafico: '+grafico);
         self.config[grafico].periodo = periodo;
         escolherFormatoData(periodo, grafico);
         encontraGraficoParaAtualizar(grafico);
@@ -728,6 +760,31 @@ function monitorLaboratorio($scope, $state, buscaAPIService, $stateParams, sairD
         $timeout(function () {
             $scope.userDTO.configMonitorLaboratorio[grafico].css = 'animated fadeInLeft';
         }, 1000);
+    }
+
+
+    function refazerLabels() {
+
+//        var _a = [$scope.userDTO.configMonitorLaboratorio.labelResumoStatus,
+//            $scope.userDTO.configMonitorLaboratorio.labelResumoPendencias,
+//            $scope.userDTO.configMonitorLaboratorio.labelResumoProcedimentos,
+//            $scope.userDTO.configMonitorLaboratorio.labelResumoEntregues,
+//            $scope.userDTO.configMonitorLaboratorio.labelPacientes,
+//            $scope.userDTO.configMonitorLaboratorio.labelFaturamento];
+//
+//        if ($scope.userDTO.configMonitorLaboratorio.labelResumoProcedimentos && $scope.userDTO.configMonitorLaboratorio.labelResumoProcedimentos.length > 8) {
+//            var count = 0;
+//            for (var _i in $scope.userDTO.configMonitorLaboratorio.labelResumoProcedimentos) {
+//                count++;
+//                if (count > 1 && count < 5) {
+//                    $scope.userDTO.configMonitorLaboratorio.labelResumoProcedimentos[_i] = ".";
+//                }
+//                if (count === 5)
+//                    count = 1;
+//            }
+//            $scope.userDTO.configMonitorLaboratorio.labelResumoProcedimentos = new Array($scope.userDTO.configMonitorLaboratorio.labelResumoProcedimentos.length);
+//        }
+
     }
 
 }
