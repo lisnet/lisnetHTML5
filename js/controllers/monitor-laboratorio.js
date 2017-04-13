@@ -611,6 +611,7 @@ function monitorLaboratorio($scope, $window,$state, buscaAPIService, $stateParam
             var _grafico = array[_x];
               console.log('_grafico : '+_grafico);
              self.config[_grafico].periodo = periodo;
+             escolherFormatoData(periodo,_grafico);
         }
         $timeout(function (){$scope.atualizar();},500);
     };

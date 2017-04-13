@@ -160,7 +160,7 @@
                     <div class="ibox-title" style="height: 53px;" >
                         <h5>
                             Resumo Entregues
-                            <small>em </small><strong class="text-primary font-bold  "  style="color: #003bb3"  ng-class="grabCSS('resumoEntregues')"    >{{userDTO.configMonitorLaboratorio.resumoEntregues.data | date : userDTO.configMonitorLaboratorio.resumoEntregues.formatoData }} </strong>
+                            <small>em </small><strong class="text-primary font-bold  "  style="color: #003bb3"  ng-class="grabCSS('resumoEntregues')"    >{{userDTO.configMonitorLaboratorio.resumoEntregues.dataFormatada}} </strong>
                             <strong>Total: </strong> <small class="font-bold "  style="color: #003bb3"   >{{userDTO.configMonitorLaboratorio.resumoEntregues.total}} </small>
                             <strong>Entregues:</strong><small  class="font-bold "  style="color: #003bb3"  > {{userDTO.configMonitorLaboratorio.resumoEntregues.entregues}} </small>
                         </h5>
@@ -200,7 +200,7 @@
                         
                         <h5>
                             Resumo dos Status
-                            <small>em </small><strong class="text-primary font-bold  "  style="color: #003bb3"  ng-class="grabCSS('resumoStatus')"    >{{userDTO.configMonitorLaboratorio.resumoStatus.data | date : userDTO.configMonitorLaboratorio.resumoStatus.formatoData }} </strong>
+                            <small>em </small><strong class="text-primary font-bold  "  style="color: #003bb3"  ng-class="grabCSS('resumoStatus')"    >{{userDTO.configMonitorLaboratorio.resumoStatus.dataFormatada }} </strong>
                             <!--<small><strong>Total: {{userDTO.configMonitorLaboratorio.resumoStatus.total}} </strong></small>-->
                         </h5>
                         <a  ng-if="userDTO.configMonitorLaboratorio.resumoStatus.loading"   style="padding-left: 10px;  z-index: 2;"   class="fa fa-circle-o-notch  fa-2x  fa-spin" aria-hidden="true"></a>
@@ -236,7 +236,7 @@
                         
                         <h5>
                             Resumo de Pendências
-                            <small>em </small><strong class="text-primary font-bold  "  style="color: #003bb3"  ng-class="grabCSS('resumoPendencias')"    >{{userDTO.configMonitorLaboratorio.resumoPendencias.data | date : userDTO.configMonitorLaboratorio.resumoPendencias.formatoData }} </strong>
+                            <small>em </small><strong class="text-primary font-bold  "  style="color: #003bb3"  ng-class="grabCSS('resumoPendencias')"    >{{userDTO.configMonitorLaboratorio.resumoPendencias.dataFormatada}} </strong>
                             <!--<small><strong>Total: {{userDTO.configMonitorLaboratorio.resumoStatus.total}} </strong></small>-->
                         </h5>
                         <a  ng-if="userDTO.configMonitorLaboratorio.resumoPendencias.loading"   style="padding-left: 10px;  z-index: 2;"   class="fa fa-circle-o-notch  fa-2x  fa-spin" aria-hidden="true"></a>
