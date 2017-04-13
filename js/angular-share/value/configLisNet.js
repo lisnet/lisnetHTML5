@@ -418,6 +418,34 @@ stateArray : [{MOD_ST_CODIGO:'00006',state:{
             }
         }
     }},
+{MOD_ST_CODIGO:'00504',state:{
+            url: "/formulariocriacaousuario",
+            templateUrl: "views/tmtelas/criacao_usuario/criacao_usuario.html",
+            params: {},
+            parent: 'lisnet',
+            data: {pageTitle: 'Formulário Criação Usuário'}, 
+            resolve: {
+                loadPlugin: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load(telaComplexa());
+                }
+            }
+                }
+                ,states:[
+                        {MOD_ST_CODIGO:'00504.define_detalhes',state: {
+                            url: 'define_perfil_usuario_detalhes',
+                            templateUrl: 'views/tmtelas/criacao_usuario/criacao_usuario_detalhes.html',
+                            data: {pageTitle: 'Define Perfil'}
+                        }} ,{MOD_ST_CODIGO:'00504.define_perfil',state: {
+                            url: 'define_perfil_usuario',
+                            templateUrl: 'views/tmtelas/criacao_usuario/define_perfil.html',
+                            data: {pageTitle: 'Define Perfil'}
+                        }} ,
+                    {MOD_ST_CODIGO:'00504.define_aplicativos', state: {
+                            url: 'define_aplicativos',
+                            templateUrl: 'views/tmtelas/criacao_usuario/define_aplicativos.html',
+                            data: {pageTitle: 'Define Aplicativos'}
+                    }}]
+    },
 {MOD_ST_CODIGO:'00220',state:{
             url: "/cadastro_pacientes",
             templateUrl: "views/tmtelas/cadastro_paciente/cadastro_paciente.html",
